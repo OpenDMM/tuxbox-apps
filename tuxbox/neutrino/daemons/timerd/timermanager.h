@@ -193,7 +193,9 @@ class CTimerManager
 		CTimerEventMap		events;
 		pthread_t			thrTimer;
       bool              m_saveEvents;
-      bool       m_isTimeSet;
+      bool              m_isTimeSet;
+		int               m_extraTimeStart;
+		int               m_extraTimeEnd;
 
 		CTimerManager();
 		static void* timerThread(void *arg);
@@ -215,6 +217,9 @@ class CTimerManager
 		void loadEventsFromConfig();
 		bool shutdown();
 		void shutdownOnWakeup();
+		void getRecordingSafety(int &pre, int &post){pre=m_extraTimeStart;post=m_extraTimeEnd;}
+		void setRecordingSafety(int pre, int post);  
+		void loadRecordingSafety();
 };
 
 #endif

@@ -44,6 +44,7 @@ CTimerManager::CTimerManager()
 	eventServer = new CEventServer;
    m_saveEvents = false;
 	m_isTimeSet = false;
+	loadRecordingSafety();
 
 	//thread starten
 	if(pthread_create (&thrTimer, NULL, timerThread, (void *) this) != 0 )
@@ -462,8 +463,25 @@ void CTimerManager::loadEventsFromConfig()
 	saveEventsToConfig();
 }
 // -------------------------------------------------------------------------------------
+void CTimerManager::loadRecordingSafety()
+{
+	CConfigFile config(',');
+
+	if(!config.loadConfig(CONFIGFILE))
+	{
+		/* set defaults if no configuration file exists */
+		dprintf("%s not found\n", CONFIGFILE);
+	}
+	else
+	{
+		m_extraTimeStart = config.getInt32 ("EXTRA_TIME_START",0);
+		m_extraTimeEnd  = config.getInt32 ("EXTRA_TIME_END",0);
+	}
+}
+// -------------------------------------------------------------------------------------
 void CTimerManager::saveEventsToConfig()
 {
+	// Sperren !!!
 	CConfigFile config(',');
 	config.clear();
 	dprintf("[Timerd] save %d events to config ... saving ", events.size());
@@ -475,7 +493,10 @@ void CTimerManager::saveEventsToConfig()
 		event->saveToConfig(&config);
 	}
 	dprintf("\n");
+	config.setInt32 ("EXTRA_TIME_START", m_extraTimeStart);
+	config.setInt32 ("EXTRA_TIME_END", m_extraTimeEnd);
 	config.saveConfig(CONFIGFILE);
+	// Freigeben !!!
 }
 //------------------------------------------------------------
 bool CTimerManager::shutdown()
@@ -565,6 +586,12 @@ void CTimerManager::shutdownOnWakeup()
 		}
 		close(fd);
 	}
+}
+void CTimerManager::setRecordingSafety(int pre, int post)
+{
+	m_extraTimeStart=pre;
+	m_extraTimeEnd=post;
+   m_saveEvents=true; // also saves extra times
 }
 //------------------------------------------------------------
 //=============================================================

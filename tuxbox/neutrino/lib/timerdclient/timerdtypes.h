@@ -82,6 +82,7 @@ class CTimerd
 			t_channel_id       channel_id;
 			std::string             apids;
 			CChannelMode       mode;
+			bool               recordingSafety;
 		};
 		
 		struct TransferEventInfo
@@ -91,6 +92,7 @@ class CTimerd
 			t_channel_id       channel_id;
 			char               apids[TIMERD_APIDS_MAXLEN];
 			CChannelMode       mode;
+			bool               recordingSafety;
 		};
 		
 		class RecordingInfo : public EventInfo

@@ -260,6 +260,14 @@ bool parse_command(CBasicMessage::Header &rmsg, int connfd)
 
 				case CTimerd::TIMER_RECORD :
 					CBasicServer::receive_data(connfd, &evInfo, sizeof(CTimerd::TransferEventInfo));
+				   if(evInfo.recordingSafety)
+					{
+						int pre,post;
+						CTimerManager::getInstance()->getRecordingSafety(pre,post);
+						msgAddTimer.announceTime -= pre;
+						msgAddTimer.alarmTime -= pre;
+						msgAddTimer.stopTime += post;
+					}
 					event = new CTimerEvent_Record(
 															msgAddTimer.announceTime,
 															msgAddTimer.alarmTime,
@@ -363,6 +371,20 @@ bool parse_command(CBasicMessage::Header &rmsg, int connfd)
 				CTimerdMsg::commandSetAPid data;
 				CBasicServer::receive_data(connfd,&data, sizeof(data));
 				CTimerManager::getInstance()->modifyEvent(data.eventID , data.apids);
+			}
+			break;
+		case CTimerdMsg::CMD_SETRECSAFETY:				  // aufnahmekorrektur setzen
+			{
+				CTimerdMsg::commandRecordingSafety data;
+				CBasicServer::receive_data(connfd,&data, sizeof(data));
+				CTimerManager::getInstance()->setRecordingSafety(data.pre , data.post);
+			}
+			break;
+		case CTimerdMsg::CMD_GETRECSAFETY:				  // aufnahmekorrektur lesen
+			{
+				CTimerdMsg::commandRecordingSafety data;
+				CTimerManager::getInstance()->getRecordingSafety(data.pre , data.post);
+				CBasicServer::send_data(connfd, &data, sizeof(data));
 			}
 			break;
 		default:

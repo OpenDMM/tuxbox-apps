@@ -54,7 +54,9 @@ class CTimerdMsg : public CBasicMessage
 			CMD_UNREGISTEREVENT,
 			CMD_TIMERDAVAILABLE,
 			CMD_SHUTDOWN,
-			CMD_SETAPID
+			CMD_SETAPID,
+			CMD_GETRECSAFETY,
+			CMD_SETRECSAFETY
 		};
 
 
@@ -100,6 +102,12 @@ class CTimerdMsg : public CBasicMessage
 	struct commandSetStandby
 	{
 		bool standby_on;
+	};
+
+	struct commandRecordingSafety
+	{
+		int pre;
+		int post;
 	};
 
 
