@@ -34,7 +34,7 @@ CScanSettings::CScanSettings(void)
 	{
 		satName[i][0] = 0;
 		satDiseqc[i] = -1;
-		satMotorPos[i] = -1;
+		satMotorPos[i] = 0;
 	}
 }
 
