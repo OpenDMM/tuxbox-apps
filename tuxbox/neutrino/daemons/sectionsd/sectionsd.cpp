@@ -23,6 +23,9 @@
 //    Foundation, Inc., 675 Mass Ave, Cambridge, MA 02139, USA.
 //
 //  $Log$
+//  Revision 1.98  2002/02/23 20:52:41  field
+//  Bugfix
+//
 //  Revision 1.97  2002/02/23 20:23:23  McClean
 //  fix up
 //
@@ -1909,7 +1912,7 @@ struct sectionsd::msgResponseHeader responseHeader;
 	strcpy(p, e.userClassification.c_str());
 	p+=strlen(e.userClassification.c_str())+1;
 	SIevent tmp = e;
-	*p = tmp.getFSK();
+	*p = e.getFSK();
 	p++;
 
     sectionsd::sectionsdTime zeit;
