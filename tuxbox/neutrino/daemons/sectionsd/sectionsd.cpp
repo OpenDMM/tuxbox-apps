@@ -23,6 +23,9 @@
 //    Foundation, Inc., 675 Mass Ave, Cambridge, MA 02139, USA.
 //
 //  $Log$
+//  Revision 1.8  2001/07/14 17:36:04  fnbrd
+//  Verbindungsthreads sind jetzt detached (kein Mem-leak mehr)
+//
 //  Revision 1.7  2001/07/14 16:41:44  fnbrd
 //  fork angemacht
 //
@@ -404,8 +407,8 @@ static void parseDescriptors(const char *des, unsigned len, const char *countryC
     des+=desc->descriptor_length+2;
   }
 }
-*/
 
+*/
 static void *timeThread(void *)
 {
 int fd;
@@ -657,7 +660,9 @@ struct sockaddr_in serverAddr;
     return 1;
   }
 
-
+  pthread_attr_t conn_attrs;
+  pthread_attr_init(&conn_attrs);
+  pthread_attr_setdetachstate(&conn_attrs, PTHREAD_CREATE_DETACHED);
   // Unsere Endlosschliefe
   socklen_t clientInputLen = sizeof(serverAddr);
   for(;;) {
@@ -667,7 +672,7 @@ struct sockaddr_in serverAddr;
       client->connectionSocket = accept(listenSocket, (struct sockaddr *)&(client->clientAddr), &clientInputLen);
     } while(client->connectionSocket == -1);
     pthread_t threadConnection;
-    rc=pthread_create(&threadConnection, 0, connectionThread, client);
+    rc=pthread_create(&threadConnection, &conn_attrs, connectionThread, client);
     if(rc) {
       fprintf(stderr, "failed to create connection-thread (rc=%d)\n", rc);
       return 4;
