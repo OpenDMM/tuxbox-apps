@@ -861,7 +861,8 @@ void CNeutrinoApp::SetupFonts()
 
 void CNeutrinoApp::ClearFrameBuffer()
 {
-	memset(frameBuffer->getFrameBufferPointer(), 255, frameBuffer->getStride()*576);
+	if (frameBuffer->getActive())
+		memset(frameBuffer->getFrameBufferPointer(), 255, frameBuffer->getStride()*576);
 
 	//backgroundmode
 	frameBuffer->setBackgroundColor(COL_BACKGROUND);
@@ -2377,7 +2378,8 @@ void CNeutrinoApp::ExitRun()
 		frameBuffer->paletteSetColor(x, 0x000000, 0xffff);
 	frameBuffer->paletteSet();
 
-	frameBuffer->loadPicture2Mem("shutdown.raw", frameBuffer->getFrameBufferPointer() );
+	if (!frameBuffer->getActive())
+		frameBuffer->loadPicture2Mem("shutdown.raw", frameBuffer->getFrameBufferPointer() );
 	frameBuffer->loadPal("shutdown.pal");
 
 	saveSetup();
@@ -2527,7 +2529,8 @@ void CNeutrinoApp::tvMode( bool rezap )
 
 	//printf( "tv-mode\n" );
 
-	memset(frameBuffer->getFrameBufferPointer(), 255, frameBuffer->getStride()*576);
+	if (!frameBuffer->getActive())
+		memset(frameBuffer->getFrameBufferPointer(), 255, frameBuffer->getStride()*576);
 	frameBuffer->useBackground(false);
 
     if ( rezap )
@@ -2550,7 +2553,8 @@ void CNeutrinoApp::scartMode( bool bOnOff )
 	if ( bOnOff )
 	{
 		// SCART AN
-		memset(frameBuffer->getFrameBufferPointer(), 255, frameBuffer->getStride()*576);
+		if (!frameBuffer->getActive())
+			memset(frameBuffer->getFrameBufferPointer(), 255, frameBuffer->getStride()*576);
 		g_Controld->setScartMode( 1 );
 
 		lastMode = mode;
@@ -2596,7 +2600,8 @@ void CNeutrinoApp::standbyMode( bool bOnOff )
 			g_Controld->setScartMode( 0 );
 		}
 
-		memset(frameBuffer->getFrameBufferPointer(), 255, frameBuffer->getStride()*576);
+		if (!frameBuffer->getActive())
+			memset(frameBuffer->getFrameBufferPointer(), 255, frameBuffer->getStride()*576);
 
 		g_lcdd->setMode(CLcddClient::MODE_STANDBY);
 		g_Controld->videoPowerDown(true);
