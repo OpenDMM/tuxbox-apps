@@ -508,6 +508,7 @@ void *start_scanthread(void *)
 				if ((frontend->getDiseqcType() == DISEQC_1_2) && (currentSatellitePosition != satellitePosition))
 				{
 					printf("[scan] start_scanthread: moving satellite dish from satellite position %d to %d\n", currentSatellitePosition, satellitePosition);
+					printf("[scan] motorPosition = %d\n", motorPositions[providerName]);
 					frontend->positionMotor(motorPositions[providerName]);
 				}
 						

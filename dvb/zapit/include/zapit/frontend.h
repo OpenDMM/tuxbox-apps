@@ -102,6 +102,7 @@ class CFrontend
 		//void secResetOverload ();
 		const secStatus *secGetStatus ();
 		void positionMotor(uint8_t diseqc);
+		void sendMotorCommand(uint8_t cmdtype, uint8_t cmd, uint8_t address, uint8_t num_parameters, uint8_t parameter1, uint8_t parameter2);
 
 		/* zapit tuner api */
 		const bool tuneChannel (CZapitChannel *channel);
