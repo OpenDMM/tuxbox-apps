@@ -130,11 +130,11 @@ int parse_nit (unsigned char DiSEqC)
 						break;
 
 					case 0x43:
-						satellite_delivery_system_descriptor(buffer + pos2, transport_stream_id, original_network_id, DiSEqC);
+						if(!satellite_delivery_system_descriptor(buffer + pos2, transport_stream_id, original_network_id, DiSEqC)) return -2;
 						break;
 
 					case 0x44:
-						cable_delivery_system_descriptor(buffer + pos2, transport_stream_id, original_network_id);
+						if(!cable_delivery_system_descriptor(buffer + pos2, transport_stream_id, original_network_id)) return -2;
 						break;
 
 					case 0x5F:

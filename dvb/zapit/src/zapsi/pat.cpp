@@ -34,7 +34,7 @@
 extern CEventServer * eventServer;
 extern unsigned int found_transponders;
 
-int fake_pat (unsigned short onid, FrontendParameters feparams)
+int fake_pat (unsigned short onid, FrontendParameters feparams, uint8_t polarity, uint8_t DiSEqC)
 {
 	unsigned short tsid;
 	int demux_fd;
@@ -86,8 +86,8 @@ int fake_pat (unsigned short onid, FrontendParameters feparams)
 					tsid,
 					onid,
 					feparams,
-					0,
-					0
+					polarity,
+					DiSEqC
 				)
 			)
 		);
