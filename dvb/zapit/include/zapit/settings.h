@@ -37,6 +37,7 @@
 #define SERVICES_XML    CONFIGDIR "/zapit/services.xml"
 #define SERVICES_TMP    "/tmp/services.tmp"
 #define BOUQUETS_XML    CONFIGDIR "/zapit/bouquets.xml"
+#define BOUQUETS_TMP    "/tmp/bouquets.tmp"
 
 #define CABLES_XML      "/share/tuxbox/cables.xml"
 #define SATELLITES_XML  "/share/tuxbox/satellites.xml" 

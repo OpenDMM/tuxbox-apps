@@ -271,7 +271,7 @@ void write_xml_footer(FILE *fd)
 	fclose(fd);
 }
 
-void write_bouquets(void)
+void write_bouquets(char * providerName)
 {
 	if (bouquetMode == CZapitClient::BM_DELETEBOUQUETS) 
 	{
@@ -283,7 +283,7 @@ void write_bouquets(void)
 		INFO("leaving bouquets untouched");
 
 	else
-		scanBouquetManager->saveBouquets();
+		scanBouquetManager->saveBouquets(bouquetMode, providerName);
 }
 
 void write_transponder(FILE *fd, t_transport_stream_id transport_stream_id, t_original_network_id original_network_id)
@@ -471,6 +471,7 @@ void *start_scanthread(void *)
 	FILE *fd = NULL;
 	FILE *fd1 = NULL;
 	char providerName[32] = "";
+	char providerName2[32] = "";
 	char *frontendType = NULL;
 	uint8_t diseqc_pos = 0;
 	bool satfeed = false;
@@ -520,6 +521,8 @@ void *start_scanthread(void *)
 		/* provider is not wanted - jump to the next one */
 		if (spI != scanProviders.end())
 		{
+			strncpy(providerName2, providerName, 30);
+			
 			/* Special mode for cable-users with sat-feed */
 			if (frontend->getInfo()->type == FE_QAM)
 				if (!strcmp(frontendType, "cable") && xmlGetAttribute(search, "satfeed"))
@@ -578,7 +581,7 @@ void *start_scanthread(void *)
 
 	/* write bouquets if services were found */
 	if (scan_status != -1)
-		write_bouquets();
+		write_bouquets(providerName2);
 
 	/* report status */
 	INFO("found %d transponders and %d channels", found_transponders, found_channels);
