@@ -31,6 +31,7 @@ CTransponder::CTransponder()
 	symbolrate = 0;
 	polarisation = 0;
 	innerFec = 0;
+	diseqc = 0;
 	originalNetworkId = 0;
 	transportStreamId = 0;
 }
@@ -73,6 +74,16 @@ unsigned char CTransponder::getPolarisation()
 void CTransponder::setPolarisation(unsigned char cpolarisation)
 {
 	polarisation = cpolarisation;
+}
+
+unsigned char CTransponder::getDiseqc()
+{
+	return diseqc;
+}
+
+void CTransponder::setDiseqc(unsigned char cdiseqc)
+{
+	diseqc = cdiseqc;
 }
 
 unsigned char CTransponder::getInnerFec()

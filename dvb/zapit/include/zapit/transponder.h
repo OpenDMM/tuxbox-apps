@@ -32,6 +32,7 @@ class CTransponder
 		unsigned int	symbolrate;
 		unsigned char	polarisation;
 		unsigned char	innerFec;
+		unsigned char	diseqc;
 
 		unsigned short	originalNetworkId;
 		unsigned short	transportStreamId;
@@ -51,6 +52,9 @@ class CTransponder
 
 		unsigned char getPolarisation();
 		void setPolarisation(unsigned char);
+
+		unsigned char getDiseqc();
+		void setDiseqc(unsigned char);
 
 		unsigned char getInnerFec();
 		void setInnerFec(unsigned char);
