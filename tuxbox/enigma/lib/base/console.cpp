@@ -188,14 +188,14 @@ eConsoleAppContainer::eConsoleAppContainer( const eString &cmd )
   
 	if ( (pid = bidirpipe(fd, argv[0], argv)) == -1 )
 	{
-		while ( cnt-- > 0 )
-			delete [] argv[cnt];
+		while ( cnt > 0 )
+			delete [] argv[cnt--];
 		delete [] argv;
 		return;
 	}
 
-	while ( cnt-- > 0 )  // release heap memory
-		delete [] argv[cnt];
+	while ( cnt > 0 )  // release heap memory
+		delete [] argv[cnt--];
 	delete [] argv;
 
 //	eDebug("pipe in = %d, out = %d, err = %d", fd[0], fd[1], fd[2]);
