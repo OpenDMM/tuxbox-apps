@@ -2243,10 +2243,14 @@ void parse_command()
 				msgResponseIsScanReady.transponder = found_transponders;
 				msgResponseIsScanReady.services    = found_channels;
 		      	if (scan_runs>0)
-						msgResponseIsScanReady.scanReady   = false;
-					else
-						msgResponseIsScanReady.scanReady   = true;
-				write( connfd, &msgStartScan, sizeof(msgStartScan));
+				{
+					msgResponseIsScanReady.scanReady   = false;
+				}
+				else
+				{
+					msgResponseIsScanReady.scanReady   = true;
+				}
+				send( connfd, &msgResponseIsScanReady, sizeof(msgResponseIsScanReady),0);
 			break;
 			
 			case CZapitClient::CMD_BQ_ADD_BOUQUET :
