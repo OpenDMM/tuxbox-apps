@@ -50,9 +50,7 @@ class CFrontend
 		/* information about the used frontend type */
 		FrontendInfo *info;
 		/* current tuned transport stream id / original network id */
-		//uint32_t currentTsidOnid;
-		/* current tuned satellite position / transport stream id / original network id */
-		uint64_t currentSposTsidOnid;
+		uint32_t currentTsidOnid;
 		/* current tuned frequency */
 		uint32_t currentFrequency;
 		/* current 22kHz tone mode */
