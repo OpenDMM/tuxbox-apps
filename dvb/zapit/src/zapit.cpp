@@ -755,12 +755,28 @@ bool parse_command(CBasicMessage::Header &rmsg, int connfd)
 	case CZapitMessages::CMD_SCANSETSCANMOTORPOSLIST:
 	{
 		CZapitClient::commandSetScanMotorPosList pos;
+		bool changed = false;
+		FILE * fd;
 		
-		motorPositions.clear();
 		while (CBasicServer::receive_data(connfd, &pos, sizeof(pos))) 
 		{
 			DBG("adding %s (motorPos %d)", pos.satName, pos.motorPos);
+			changed |= (motorPositions[pos.satName] != pos.motorPos);
 			motorPositions[pos.satName] = pos.motorPos;
+		}
+		
+		if (changed)
+		{
+			// save to motor.conf
+			printf("[zapit] saving motor.conf\n");
+			fd = fopen(MOTORCONFIGFILE, "w");
+			std::map<std::string, uint8_t>::iterator it;
+			for (it = motorPositions.begin(); it != motorPositions.end(); it++)
+			{
+				printf("[zapit] saving %s: %d\n", it->first.c_str(), it->second);
+				fprintf(fd, "%s:%d\n", it->first.c_str(), it->second);
+			}
+			fclose(fd);
 		}
 		break;
 	}
