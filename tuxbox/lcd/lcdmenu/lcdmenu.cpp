@@ -73,6 +73,9 @@ CLCDMenu::CLCDMenu (std::string configFilename)
 	visibleEntries = config->getInt32("visible_entries");
 	entryCount = entries.size();
 
+	if (entryCount < visibleEntries)
+		visibleEntries = entryCount;
+
 	if (defaultEntry >= visibleEntries)
 	{
 		upperRow = defaultEntry - visibleEntries + 1;
