@@ -470,6 +470,8 @@ const char * locale_real_names[] =
 	"lcdcontroler.contrast",
 	"lcdcontroler.head",
 	"lcdmenu.autodimm",
+	"lcdmenu.dim_brightness",
+	"lcdmenu.dim_time",
 	"lcdmenu.head",
 	"lcdmenu.inverse",
 	"lcdmenu.lcdcontroler",
