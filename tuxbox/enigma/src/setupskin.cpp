@@ -90,6 +90,7 @@ void eSkinSetup::skinSelected(eListBoxEntrySkin *skin)
 	}
 
 	eConfig::getInstance()->setKey("/ezap/ui/skin", skin->getESML().c_str());
+	eConfig::getInstance()->flush();
 
 	close(0);
 }

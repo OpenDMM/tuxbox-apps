@@ -78,6 +78,7 @@ eZapLanguageSetup::eZapLanguageSetup(): eWindow(0)
 void eZapLanguageSetup::okPressed()
 {
 	eConfig::getInstance()->setKey("/elitedvb/language", ((eString*) language->getCurrent()->getKey())->c_str() );
+	eConfig::getInstance()->flush();
 	setlocale(LC_ALL, ((eString*)language->getCurrent()->getKey())->c_str() );
 
 	close(1);
