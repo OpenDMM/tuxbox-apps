@@ -201,7 +201,6 @@ class CNeutrinoApp : public CMenuTarget, COnPaintNotifier, CChangeObserver
 		CStreamFeaturesChangeExec	*StreamFeaturesChanger;
 		CIPChangeNotifier			*MyIPChanger;
 
-		CChannelList				*channelList;
 
 		void isCamValid();
 		void firstChannel();
@@ -252,6 +251,7 @@ class CNeutrinoApp : public CMenuTarget, COnPaintNotifier, CChangeObserver
         long long last_profile_call;
 
 	public:
+		CChannelList				*channelList;
 
 		CNeutrinoApp();
 		~CNeutrinoApp();
