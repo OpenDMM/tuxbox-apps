@@ -25,6 +25,9 @@
 //    Foundation, Inc., 675 Mass Ave, Cambridge, MA 02139, USA.
 //
 //  $Log$
+//  Revision 1.5  2001/07/17 12:39:18  fnbrd
+//  Neue Kommandos
+//
 //  Revision 1.4  2001/07/16 12:52:30  fnbrd
 //  Fehler behoben.
 //
@@ -49,12 +52,14 @@ struct msgSectionsdResponseHeader {
   unsigned short dataLength;
 };
 
-#define NUMBER_OF_SECTIONSD_COMMANDS 3
+#define NUMBER_OF_SECTIONSD_COMMANDS 5
 
 enum sectionsdCommands {
   actualEPGchannelName=0,
   actualEventListTVshort,
-  currentNextInformation
+  currentNextInformation,
+  dumpStatusinformation,
+  allEventsChannelName
 };
 
 //
