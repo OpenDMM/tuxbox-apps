@@ -450,7 +450,7 @@ int parse_ca_pmt(const unsigned char *buffer, const unsigned int length)
 
 #if 0
 	printf("ca_pmt_list_management: %02x\n", pmt->ca_pmt_list_management);
-	printf("prugram number: %04x\n", pmt->program_number);
+	printf("program number: %04x\n", pmt->program_number);
 	printf("program_info_length: %04x\n", pmt->program_info_length);
 #endif
 
