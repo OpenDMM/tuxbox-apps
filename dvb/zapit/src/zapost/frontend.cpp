@@ -603,6 +603,12 @@ const bool CFrontend::tuneFrequency (FrontendParameters feparams, uint8_t polari
 
 		/* wait for completion */
 		getEvent();
+
+		if (tuned == false)
+		{
+			// unknown state
+			currentFrequency = 0;
+		}
 	}
 
 	return tuned;
