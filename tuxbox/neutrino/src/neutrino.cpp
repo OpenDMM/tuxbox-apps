@@ -1002,8 +1002,7 @@ void CNeutrinoApp::InitMainMenu(CMenuWidget &mainMenu, CMenuWidget &mainSettings
 	mainMenu.addItem( new CMenuForwarder("mainmenu.mp3player", true, "", new CMP3PlayerGui(), "", true) );
 
 #if HAVE_DVB_API_VERSION >= 3
-	// Temporary disabled
-	// mainMenu.addItem( new CMenuForwarder("mainmenu.movieplayer", true, "", new CMoviePlayerGui(), "", true) );
+	mainMenu.addItem( new CMenuForwarder("mainmenu.movieplayer", true, "", new CMoviePlayerGui(), "", true) );
 #endif
 
 	mainMenu.addItem( new CMenuForwarder("mainmenu.pictureviewer", true, "", new CPictureViewerGui(), "", true) );
