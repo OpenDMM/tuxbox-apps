@@ -91,6 +91,14 @@
   along with this program; if not, write to the Free Software
   Foundation, Inc., 675 Mass Ave, Cambridge, MA 02139, USA.
 
+
+$Log$
+Revision 1.115  2002/04/04 14:41:08  rasc
+- New functions in zapitclient for handling favorites
+  - test if a bouquet exists
+- Some Log - CVS Entries in modules
+
+
 */
 
 #include "zapit.h"
@@ -2492,7 +2500,7 @@ void parse_command()
 	else if (rmsg.version == CZapitClient::ACTVERSION)
 	{
 		CZapitClient::responseCmd              response;
-		CZapitClient::responseGeneralTrueFalse responseTrueFalse;	// 2002-04-03 rasc
+		CZapitClient::responseGeneralInteger   responseInteger;		// 2002-04-03 rasc
 
 		switch( rmsg.cmd)
 		{
@@ -2628,14 +2636,10 @@ void parse_command()
 			break;
 
 			case CZapitClient::CMD_BQ_EXISTS_BOUQUET :		// 2002-04-03 rasc
-				bool  status;
 				CZapitClient::commandExistsBouquet msgExistsBouquet;
 				read( connfd, &msgExistsBouquet, sizeof(msgExistsBouquet));
-				status = g_BouquetMan->existsBouquet(msgExistsBouquet.name);
-
-				// send back: found  true/false
-				responseTrueFalse.status = status;
-				send( connfd, &responseTrueFalse, sizeof(responseTrueFalse),0);
+				responseInteger.number = g_BouquetMan->existsBouquet(msgExistsBouquet.name);
+				send( connfd, &responseInteger, sizeof(responseInteger),0);
 #warning "Help needed here, someone check this please: simplex?? (rasc)"
 			break;
 
