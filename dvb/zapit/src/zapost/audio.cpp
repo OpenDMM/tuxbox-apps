@@ -218,7 +218,7 @@ int CAudio::stop ()
 
 int CAudio::selectChannel (audioChannelSelect_t sel)
 {
-	if (ioctl(fd, AUDIO_CHANNEL_SELECT, &sel) < 0)
+	if (ioctl(fd, AUDIO_CHANNEL_SELECT, sel) < 0)
 	{
 		perror("AUDIO_CHANNEL_SELECT");
 		return -1;
