@@ -128,7 +128,8 @@ void ParseChannels (XMLTreeNode *node, t_transport_stream_id transport_stream_id
 						transport_stream_id,
 						original_network_id,
 						service_type,
-						DiSEqC
+						DiSEqC,
+						CA_STATUS_FTA
 					)
 				)
 			);

@@ -52,5 +52,6 @@ struct sdt_generic_descriptor {
 
 int parse_sdt(const uint8_t DiSEqC);
 unsigned int get_sdt_TsidOnid ();
+bool get_sdt_free_CA_mode ( t_service_id p_service_id);
 
 #endif /* __sdt_h__ */

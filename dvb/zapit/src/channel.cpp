@@ -22,14 +22,16 @@
 
 #include <zapit/channel.h>
 
-CZapitChannel::CZapitChannel (std::string p_name, t_service_id p_sid, t_transport_stream_id p_tsid, t_original_network_id p_onid, unsigned char p_service_type, unsigned char p_DiSEqC)
+CZapitChannel::CZapitChannel (std::string p_name, t_service_id p_sid, t_transport_stream_id p_tsid, t_original_network_id p_onid, unsigned char p_service_type, unsigned char p_DiSEqC, ca_status_t p_CA_STATUS )
 {
 	name = p_name;
 	service_id = p_sid;
 	transport_stream_id = p_tsid;
 	original_network_id = p_onid;
+//	network_id = p_nid;
 	serviceType = p_service_type;
 	DiSEqC = p_DiSEqC;
+	CA_STATUS = p_CA_STATUS;
 
 	caPmt = NULL;
 	resetPids();
