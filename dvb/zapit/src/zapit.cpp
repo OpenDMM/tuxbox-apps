@@ -1397,7 +1397,7 @@ int startPlayBack()
 	/* start demux filters */
 	setDmxPesFilter(dmx_pcr_fd, DMX_OUT_DECODER, DMX_PES_PCR, channel->getPcrPid());
 	setDmxPesFilter(dmx_audio_fd, DMX_OUT_DECODER, DMX_PES_AUDIO, channel->getAudioPid());
-	if (channel->getVideoPid() != 0)
+	if ((channel->getVideoPid() > 0) && (currentMode & TV_MODE))
 		setDmxPesFilter(dmx_video_fd, DMX_OUT_DECODER, DMX_PES_VIDEO, channel->getVideoPid());
 
 	video->setSource(VIDEO_SOURCE_DEMUX);
@@ -1405,7 +1405,7 @@ int startPlayBack()
 
 	startDmxFilter(dmx_pcr_fd);
 	startDmxFilter(dmx_audio_fd);
-	if (channel->getVideoPid() != 0)
+	if ((channel->getVideoPid() > 0) && (currentMode & TV_MODE))
 		startDmxFilter(dmx_video_fd);
 
 	/* set bypass mode */
