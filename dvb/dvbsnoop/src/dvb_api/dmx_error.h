@@ -12,7 +12,7 @@ $Id$
 */
 
 #ifndef __DMX_ERROR_H
-#define __DMX_ERROR_H 1
+#define __DMX_ERROR_H
 
 
 int  IO_error (u_char *str);

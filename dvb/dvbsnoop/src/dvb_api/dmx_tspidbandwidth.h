@@ -12,7 +12,7 @@ $Id$
 */
 
 #ifndef __DMX_TSPIDBANDWIDTH_H
-#define __DMX_TSPIDBANDWIDTH_H 1
+#define __DMX_TSPIDBANDWIDTH_H
 
 
 int ts_pidbandwidth (OPTION *opt);

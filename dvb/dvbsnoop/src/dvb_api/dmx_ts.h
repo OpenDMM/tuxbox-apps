@@ -12,7 +12,7 @@ $Id$
 */
 
 #ifndef __DMX_TS_H
-#define __DMX_TS_H 1
+#define __DMX_TS_H
 
 
 int  doReadTS (OPTION *opt);

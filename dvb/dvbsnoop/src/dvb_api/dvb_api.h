@@ -13,7 +13,7 @@ $Id$
 */
 
 #ifndef __DVB_API_H
-#define __DVB_API_H 1
+#define __DVB_API_H
 
 
 #include <sys/ioctl.h>

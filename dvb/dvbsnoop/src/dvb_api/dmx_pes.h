@@ -14,7 +14,7 @@ $Id$
 
 
 #ifndef __DMX_PES_H
-#define __DMX_PES_H 1
+#define __DMX_PES_H
 
 
 int  doReadPES (OPTION *opt);

@@ -15,7 +15,7 @@ $Id$
 
 
 #ifndef __DMX_SECT_H
-#define __DMX_SECT_H 1
+#define __DMX_SECT_H
 
 
 int  doReadSECT (OPTION *opt);

@@ -34,6 +34,7 @@ typedef struct _OPTIONS {
   int         printhex;			// hexdump mode
   int         printdecode;		// decode verbose mode
   int         binary_out;		// binary output?
+  char        *outPidFile;		// write to file (implies binary_out)
   char        *inpPidFile;		// read from file instead of dmux if not NULL
   char        *devDemux;		// input device DMX
   char        *devDvr;			// input device DVR

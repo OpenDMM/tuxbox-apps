@@ -12,7 +12,7 @@ $Id$
 */
 
 #ifndef __DMX_TSPIDSCAN_H
-#define __DMX_TSPIDSCAN_H 1
+#define __DMX_TSPIDSCAN_H
 
 
 int ts_pidscan (OPTION *opt);
