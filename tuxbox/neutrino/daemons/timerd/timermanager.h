@@ -34,7 +34,7 @@
 
 //#include "timerdclient.h"
 #include "eventserver.h"
-#include "../../libconfigfile/configfile.h"
+#include <configfile.h>
 #include "config.h"
 
 #define CONFIGFILE CONFIGDIR "/timerd.conf"

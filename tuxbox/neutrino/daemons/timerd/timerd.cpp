@@ -45,7 +45,7 @@
 #include "timerdMsg.h"
 #include "debug.h"
 #include "config.h"
-#include "configfile.h"
+#include <configfile.h>
 
 void loadTimersFromConfig()
 {
@@ -59,14 +59,14 @@ void loadTimersFromConfig()
    else
    {
       vector<int> savedIDs;
-      savedIDs = config->getIntVector ("IDS");
+      savedIDs = config->getInt32Vector ("IDS");
       printf("[TIMERD]IDS: %d\n",savedIDs.size());
       for(unsigned int i=0; i < savedIDs.size(); i++)
       {
          stringstream ostr;
          ostr << savedIDs[i];
          string id=ostr.str();
-         CTimerEvent::CTimerEventTypes type=(CTimerEvent::CTimerEventTypes)config->getInt ("EVENT_TYPE_"+id,0);
+         CTimerEvent::CTimerEventTypes type=(CTimerEvent::CTimerEventTypes)config->getInt32 ("EVENT_TYPE_"+id,0);
          time_t now = time(NULL);
          switch(type)
          {
