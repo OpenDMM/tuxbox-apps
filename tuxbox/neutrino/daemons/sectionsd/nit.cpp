@@ -22,6 +22,9 @@
 //    Foundation, Inc., 675 Mass Ave, Cambridge, MA 02139, USA.
 //
 // $Log$
+// Revision 1.5  2003/03/14 04:27:55  obi
+// make it compileable with -W -Werror
+//
 // Revision 1.4  2001/06/11 19:22:54  fnbrd
 // Events haben jetzt mehrere Zeiten, fuer den Fall von NVODs (cinedoms)
 //
@@ -48,7 +51,7 @@
 #include "SIevents.hpp"
 #include "SIsections.hpp"
 
-int main(int argc, char **argv)
+int main(int /*argc*/, char** /*argv*/)
 {
   time_t starttime, endtime;
   SIsectionsNIT nitset;
