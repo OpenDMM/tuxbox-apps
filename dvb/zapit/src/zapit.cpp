@@ -1468,6 +1468,19 @@ void parse_command ()
 				send( connfd, &msgCurrentSID, sizeof(msgCurrentSID), 0);
 			break;
 
+			case CZapitClient::CMD_GET_CURRENT_SERVICEINFO :
+				CZapitClient::responseCurrentServiceInfo msgCurrentServiceInfo;
+				msgCurrentServiceInfo.onid = channel->getOnidSid() >> 8;
+				msgCurrentServiceInfo.sid = channel->getOnidSid() & 0xffff;
+				msgCurrentServiceInfo.tsid = frontend->getTsidOnid() >> 8;
+				msgCurrentServiceInfo.vdid = channel->getVideoPid();
+				msgCurrentServiceInfo.apid = channel->getAudioChannel();
+				msgCurrentServiceInfo.vtxtpid = channel->getTeletextPid();
+				msgCurrentServiceInfo.pcrpid = channel->getPcrPid();;
+
+				send( connfd, &msgCurrentServiceInfo, sizeof(msgCurrentServiceInfo), 0);
+			break;
+
 			case CZapitClient::CMD_GET_BOUQUETS :
 				CZapitClient::commandGetBouquets msgGetBouquets;
 				read( connfd, &msgGetBouquets, sizeof(msgGetBouquets));
