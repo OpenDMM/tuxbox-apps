@@ -239,7 +239,7 @@ void save_settings (bool write)
 		if (currentMode & RADIO_MODE)
 		{
 			CBouquetManager::ChannelIterator cit = bouquetManager->radioChannelsFind(channel->getOnidSid());
-			if (cit != bouquetManager->radioChannelsEnd())
+			if (!(cit.EndOfChannels()))
 			{
 				config->setInt("lastChannelRadio", (*cit)->getChannelNumber());
 				config->setInt("lastChannelMode", 1);
@@ -248,7 +248,7 @@ void save_settings (bool write)
 		else
 		{
 			CBouquetManager::ChannelIterator cit = bouquetManager->tvChannelsFind(channel->getOnidSid());
-			if (cit != bouquetManager->tvChannelsEnd())
+			if (!(cit.EndOfChannels()))
 			{
 				config->setInt("lastChannelTV", (*cit)->getChannelNumber());
 				config->setInt("lastChannelMode", 0);
@@ -1445,12 +1445,12 @@ void sendChannels( CZapitClient::channelsMode mode, CZapitClient::channelsOrder 
 	{
 		if (((currentMode & RADIO_MODE) && (mode == CZapitClient::MODE_CURRENT)) || (mode==CZapitClient::MODE_RADIO))
 		{
-			for (CBouquetManager::ChannelIterator radiocit = bouquetManager->radioChannelsBegin(); radiocit != bouquetManager->radioChannelsEnd(); radiocit++)
+			for (CBouquetManager::ChannelIterator radiocit = bouquetManager->radioChannelsBegin(); !(radiocit.EndOfChannels()); radiocit++)
 				channels.push_back(*radiocit);
 		}
 		else
 		{
-			for (CBouquetManager::ChannelIterator tvcit = bouquetManager->tvChannelsBegin(); tvcit != bouquetManager->tvChannelsEnd(); tvcit++)
+			for (CBouquetManager::ChannelIterator tvcit = bouquetManager->tvChannelsBegin(); !(tvcit.EndOfChannels()); tvcit++)
 				channels.push_back(*tvcit);
 		}
 	}
