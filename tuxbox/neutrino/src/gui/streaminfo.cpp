@@ -5,6 +5,9 @@ Module StreamInfo
 
 History:
  $Log$
+ Revision 1.10  2001/10/22 15:24:48  McClean
+ small designupdate
+
  Revision 1.9  2001/10/09 21:48:37  McClean
  ucode-check
 
@@ -66,7 +69,7 @@ void CStreamInfo::paint()
 {
 	int ypos=y;
 	g_FrameBuffer->paintBoxRel(x, ypos, width, hheight, COL_MENUHEAD);
-	g_Fonts->menu_title->RenderString(x+10, ypos+ hheight, width, g_Locale->getText("streaminfo.head").c_str(), COL_MENUHEAD);
+	g_Fonts->menu_title->RenderString(x+10, ypos+ hheight+1, width, g_Locale->getText("streaminfo.head").c_str(), COL_MENUHEAD);
 	g_FrameBuffer->paintBoxRel(x, ypos+ hheight, width, height- hheight, COL_MENUCONTENT);
 
 	ypos+= hheight + (mheight >>1);
