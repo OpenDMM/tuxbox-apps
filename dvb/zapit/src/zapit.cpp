@@ -907,14 +907,17 @@ bool parse_command(CBasicMessage::Header &rmsg, int connfd)
 
 	case CZapitMessages::CMD_GETPIDS:
 	{
-		CZapitClient::responseGetOtherPIDs responseGetOtherPIDs;
-		responseGetOtherPIDs.vpid = channel->getVideoPid();
-		responseGetOtherPIDs.ecmpid = NONE; // TODO: remove
-		responseGetOtherPIDs.vtxtpid = channel->getTeletextPid();
-		responseGetOtherPIDs.pcrpid = channel->getPcrPid();
-		responseGetOtherPIDs.selected_apid = channel->getAudioChannelIndex();
-		send(connfd, &responseGetOtherPIDs, sizeof(responseGetOtherPIDs), 0);
-		sendAPIDs(connfd);
+		if (channel)
+		{
+			CZapitClient::responseGetOtherPIDs responseGetOtherPIDs;
+			responseGetOtherPIDs.vpid = channel->getVideoPid();
+			responseGetOtherPIDs.ecmpid = NONE; // TODO: remove
+			responseGetOtherPIDs.vtxtpid = channel->getTeletextPid();
+			responseGetOtherPIDs.pcrpid = channel->getPcrPid();
+			responseGetOtherPIDs.selected_apid = channel->getAudioChannelIndex();
+			send(connfd, &responseGetOtherPIDs, sizeof(responseGetOtherPIDs), 0);
+			sendAPIDs(connfd);
+		}
 		break;
 	}
 
