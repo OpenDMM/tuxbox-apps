@@ -32,6 +32,9 @@
 	Foundation, Inc., 675 Mass Ave, Cambridge, MA 02139, USA.
 
   $Log$
+  Revision 1.90  2001/12/05 21:38:09  rasc
+  gamelist: eigener Fontdef fuer 2-zeiliges Menue
+
   Revision 1.89  2001/12/05 01:40:55  McClean
   fixed bouquet-options bugs, soft-update-bug and add scartmode-support
 
@@ -989,6 +992,9 @@ void CNeutrinoApp::SetupFonts()
 	g_Fonts->eventlist_itemSmall=g_fontRenderer->getFont("Arial", "Regular", 14);
 //	g_Fonts->eventlist_datetime=g_fontRenderer->getFont("Arial", "Italic", 16);
 	g_Fonts->eventlist_datetime=g_fontRenderer->getFont("Arial", "Regular", 16);
+
+	g_Fonts->gamelist_itemLarge=g_fontRenderer->getFont("Arial", "Bold", 20);
+	g_Fonts->gamelist_itemSmall=g_fontRenderer->getFont("Arial", "Regular", 16);
 
 	g_Fonts->channellist=g_fontRenderer->getFont("Arial", "Regular", 20);
 	g_Fonts->channellist_number=g_fontRenderer->getFont("Arial", "Regular", 14);

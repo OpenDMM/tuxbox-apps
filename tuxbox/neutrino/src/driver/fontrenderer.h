@@ -34,6 +34,9 @@ $Id$
 
 
 $Log$
+Revision 1.16  2001/12/05 21:38:09  rasc
+gamelist: eigener Fontdef fuer 2-zeiliges Menue
+
 Revision 1.15  2001/11/15 11:42:41  McClean
 gpl-headers added
 
@@ -156,6 +159,9 @@ class FontsDef
 			*eventlist_itemLarge,
 			*eventlist_datetime,
 			*eventlist_itemSmall,
+
+			*gamelist_itemLarge,
+			*gamelist_itemSmall,
 
 			*alert, 
 			*channellist,
