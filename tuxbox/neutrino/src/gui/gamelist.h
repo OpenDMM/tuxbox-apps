@@ -31,8 +31,8 @@
 $Id$
 
 $Log$
-Revision 1.11  2002/02/22 17:23:24  field
-Neues Offset-Cmd
+Revision 1.12  2002/02/22 22:10:38  field
+vtxt: avia_vbi start/stop
 
 Revision 1.8  2002/01/15 23:17:59  McClean
 cleanup
@@ -70,6 +70,7 @@ using namespace std;
 #include <fcntl.h>
 
 #include <include/plugin.h>
+#include <dbox/avia_vbi.h>
 
 class CPlugins
 {
