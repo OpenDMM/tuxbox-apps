@@ -616,7 +616,6 @@ int parse_ca_pmt (const unsigned char * buffer, const unsigned int length)
 
 		if (current_onid == 0)
 		{
-			free(pmt);
 			return -1;
 		}
 
