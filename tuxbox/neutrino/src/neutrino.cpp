@@ -336,7 +336,7 @@ void CNeutrinoApp::setupDefaults()
 	g_settings.key_subchannel_up = CRCInput::RC_right;
 	g_settings.key_subchannel_down = CRCInput::RC_left;
 
-	if ( g_settings.box_Type == 2 )
+	if ( g_Controld->getBoxType() == 2 )
 	{
 		// Sagem - andere Defaults...
 		strcpy(g_settings.repeat_blocker, "150");

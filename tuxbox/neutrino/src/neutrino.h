@@ -127,7 +127,6 @@ struct messages {
 			EVT_MUTECHANGED	=	 		CRCInput::RC_Events + 2,
 			EVT_VCRCHANGED	= 			CRCInput::RC_Events + 3,
 			EVT_MODECHANGED = 			CRCInput::RC_Events + 4,
-			EVT_TIMESET 	= 			CRCInput::RC_Events + 5,
 			EVT_BOUQUETSCHANGED =		CRCInput::RC_Events + 6,
 			EVT_SERVICESCHANGED =		CRCInput::RC_Events + 7,
 			EVT_CURRENTNEXT_EPG =		CRCInput::RC_Events + 8,
@@ -146,7 +145,8 @@ struct messages {
 			EVT_CURRENTEPG 		=		CRCInput::RC_WithData + 1,
 			EVT_SCAN_SATELLITE	=		CRCInput::RC_WithData + 2,
 			EVT_SCAN_PROVIDER	=		CRCInput::RC_WithData + 3,
-			EVT_NEXTPROGRAM		=		CRCInput::RC_WithData + 4
+			EVT_NEXTPROGRAM		=		CRCInput::RC_WithData + 4,
+			EVT_TIMESET 		= 		CRCInput::RC_WithData + 5
 		};
 };
 
