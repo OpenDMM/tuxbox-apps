@@ -20,6 +20,9 @@
   Foundation, Inc., 675 Mass Ave, Cambridge, MA 02139, USA.
 
   $Log$
+  Revision 1.9  2002/01/29 20:44:07  Simplex
+  made some Bouquetmanager-stuff "hot"
+
   Revision 1.8  2002/01/29 17:22:33  field
   Speedup (debug-out), Cant decode verbessert
 
@@ -315,9 +318,7 @@ void CBouquetManager::parseBouquetsXml(XMLTreeNode *root)
 		search = search->GetNext();
 	}
 
-#ifdef USEBOUQUETMAN
 	makeRemainingChannelsBouquet( nChNrTV, nChNrRadio, "Andere");  // TODO: use locales
-#endif
 
 	printf("\n[zapit] Found %d bouquets.\n", Bouquets.size());
 
