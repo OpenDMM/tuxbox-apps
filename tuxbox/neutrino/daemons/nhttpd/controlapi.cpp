@@ -42,7 +42,8 @@ bool CControlAPI::Execute(CWebserverRequest* request)
 	{
 		"timer","setmode","standby","getdate","gettime","settings","getservicesxml",
 		"getbouquetsxml","getonidsid","message","info","shutdown","volume",
-		"channellist","getbouquet","getbouquets","epg","version","zapto", "startplugin", NULL
+		"channellist","getbouquet","getbouquets","epg","version","zapto", "startplugin",
+		"getmode",NULL
 	};
 
 	dprintf("Execute CGI : %s\n",request->Filename.c_str());
@@ -121,6 +122,8 @@ bool CControlAPI::Execute(CWebserverRequest* request)
 		return ZaptoCGI(request);
 	case 19:
 		return StartPluginCGI(request);
+	case 20:
+		return GetModeCGI(request);
 	default:
 		request->SendError();
 		return false;
@@ -212,6 +215,25 @@ bool CControlAPI::SetModeCGI(CWebserverRequest *request)
 		request->SendError();
 		return false;
 	}
+}
+
+//-------------------------------------------------------------------------
+
+bool CControlAPI::GetModeCGI(CWebserverRequest *request)
+{
+	int mode;
+
+	// Standard httpd header senden
+	request->SendPlainHeader("text/plain");
+	
+	mode = Parent->Zapit->getMode();
+	if ( mode == CZapitClient::MODE_TV)
+		request->SocketWriteLn("tv");
+	else if ( mode == CZapitClient::MODE_RADIO)
+		request->SocketWriteLn("radio");
+	else
+		request->SocketWriteLn("unknown");
+	return true;
 }
 
 //-------------------------------------------------------------------------

@@ -49,6 +49,7 @@ class CControlAPI
 		// CGI functions for ExecuteCGI
 		bool TimerCGI(CWebserverRequest *request);
 		bool SetModeCGI(CWebserverRequest *request);
+		bool GetModeCGI(CWebserverRequest *request);
 		bool StandbyCGI(CWebserverRequest *request);
 		bool GetDateCGI(CWebserverRequest *request);
 		bool GetTimeCGI(CWebserverRequest *request);
