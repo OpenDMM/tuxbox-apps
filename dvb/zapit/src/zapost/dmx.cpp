@@ -29,6 +29,9 @@ int setDmxSctFilter (int fd, unsigned short pid, unsigned char * filter, unsigne
 {
 	struct dmxSctFilterParams sctFilterParams;
 
+	if (fd < 0)
+		return -1;
+
 	memset(&sctFilterParams, 0x00, sizeof(sctFilterParams));
 	memcpy(&sctFilterParams.filter.filter, filter, DMX_FILTER_SIZE);
 	memcpy(&sctFilterParams.filter.mask, mask, DMX_FILTER_SIZE);
@@ -221,10 +224,11 @@ int setDmxPesFilter (int fd, dmxOutput_t output, dmxPesType_t pesType, unsigned 
 {
 	dmxPesFilterParams pesFilterParams;
 
-	if ((pid < 0x0020) || (pid > 0x1FFB))
-	{
+	if (fd < 0)
 		return -1;
-	}
+
+	if ((pid < 0x0020) || (pid > 0x1FFB))
+		return -1;
 
 	pesFilterParams.pid = pid;
 	pesFilterParams.input = DMX_IN_FRONTEND;
@@ -243,6 +247,9 @@ int setDmxPesFilter (int fd, dmxOutput_t output, dmxPesType_t pesType, unsigned 
 
 int startDmxFilter (int fd)
 {
+	if (fd < 0)
+		return -1;
+
 	if (ioctl(fd, DMX_START) < 0)
 	{
 		perror("[dmx.cpp] DMX_START");
@@ -254,6 +261,9 @@ int startDmxFilter (int fd)
 
 int stopDmxFilter (int fd)
 {
+	if (fd < 0)
+		return -1;
+
 	if (ioctl(fd, DMX_STOP) < 0)
 	{
 		perror("[dmx.cpp] DMX_STOP");
