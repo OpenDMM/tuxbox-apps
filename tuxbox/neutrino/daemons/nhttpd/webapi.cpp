@@ -698,6 +698,8 @@ bool CWebAPI::ShowEPG(CWebserverRequest *request,string Title, string Info1, str
 	params["Title"] = (Title != "")?Title:"Kein EPG vorhanden";
 	params["Info1"] = (Info1 != "")?Info1:"keine ausführlichen Informationen verfügbar";
 	params["Info2"] = (Info2 != "")?Info2:" ";
+
+	request->SendPlainHeader("text/html");
 	request->ParseFile("epg.html",params);
 	return true;
 }
