@@ -23,11 +23,20 @@
 
 Ac3Descriptor::Ac3Descriptor(const uint8_t * const buffer) : Descriptor(buffer)
 {
-	ac3TypeFlag = (buffer[2] >> 7) & 0x01;
-	bsidFlag = (buffer[2] >> 6) & 0x01;
-	mainidFlag = (buffer[2] >> 5) & 0x01;
-	asvcFlag = (buffer[2] >> 4) & 0x01;
-	reserved = buffer[2] & 0x0F;
+	if (descriptorLength != 0) {
+		ac3TypeFlag = (buffer[2] >> 7) & 0x01;
+		bsidFlag = (buffer[2] >> 6) & 0x01;
+		mainidFlag = (buffer[2] >> 5) & 0x01;
+		asvcFlag = (buffer[2] >> 4) & 0x01;
+		reserved = buffer[2] & 0x0F;
+	}
+	else {
+		ac3TypeFlag = 0;
+		bsidFlag = 0;
+		mainidFlag = 0;
+		asvcFlag = 0;
+		reserved = 0;
+	}
 
 	if (ac3TypeFlag == 1)
 		ac3Type = buffer[3];
