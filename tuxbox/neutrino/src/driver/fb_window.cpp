@@ -21,6 +21,10 @@
  *
  */
 
+#ifdef HAVE_CONFIG_H
+#include <config.h>
+#endif
+
 #include <driver/fb_window.h>
 
 #include <driver/fontrenderer.h>
