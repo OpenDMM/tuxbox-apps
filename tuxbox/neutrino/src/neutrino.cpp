@@ -436,55 +436,10 @@ void CNeutrinoApp::saveSetup()
 **************************************************************************************/
 
 void CNeutrinoApp::firstChannel()
-{
-	int sock_fd;
-	SAI servaddr;
-	char rip[]="127.0.0.1";
-	char *return_buf;
-
-	sendmessage.version=1;
-	sendmessage.cmd = 'a';
-
-	sock_fd=socket(AF_INET, SOCK_STREAM, IPPROTO_TCP);
-	memset(&servaddr,0,sizeof(servaddr));
-	servaddr.sin_family=AF_INET;
-	servaddr.sin_port=htons(1505);
-	inet_pton(AF_INET, rip, &servaddr.sin_addr);
-
-	if(connect(sock_fd, (SA *)&servaddr, sizeof(servaddr))==-1)
-	{
-		perror("neutrino: connect(zapit)");
-		exit(-1);
-	}
-
-	write(sock_fd, &sendmessage, sizeof(sendmessage));
-	return_buf = (char*) malloc(4);
-	memset(return_buf, 0, 4);
-
-	if (recv(sock_fd, return_buf, 3,0) <= 0 )
-	{
-		perror("recv(zapit)");
-		exit(-1);
-	}
-
-	//	printf("That was returned: %s\n", return_buf);
-
-	if (strncmp(return_buf,"00a",3))
-	{
-		printf("Wrong Command was sent for firstChannel(). Exiting.\n");
-		free(return_buf);
-		return;
-	}
-	free(return_buf);
-
-
-	memset(&firstchannel, 0, sizeof(firstchannel));
-	if (recv(sock_fd, &firstchannel, sizeof(firstchannel),0) <= 0 )
-	{
-		perror("Nothing could be received\n");
-		exit(-1);
-	}
-	//firstchannel.chan_nr = ((firstchannel.chan_nr & 0x00ff) << 8) | ((firstchannel.chan_nr & 0xff00) >> 8);
+{	
+	string tmp;
+	g_Zapit->getLastChannel(tmp, firstchannel.chan_nr, firstchannel.mode);
+	strcpy( firstchannel.name, tmp.c_str() );
 }
 
 /**************************************************************************************
@@ -495,7 +450,7 @@ void CNeutrinoApp::firstChannel()
 
 void CNeutrinoApp::isCamValid()
 {
-
+/*
 	int sock_fd;
 	SAI servaddr;
 	char rip[]="127.0.0.1";
@@ -556,7 +511,7 @@ void CNeutrinoApp::isCamValid()
 			}
 		}
 	}
-
+*/
 }
 
 
