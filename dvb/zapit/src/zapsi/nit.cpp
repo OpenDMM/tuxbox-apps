@@ -137,7 +137,7 @@ int parse_nit (unsigned char DiSEqC)
 			original_network_id = (buffer[pos + 2] << 8) | buffer[pos + 3];
 			transport_descriptors_length = ((buffer[pos + 4] & 0x0F) << 8) | buffer[pos + 5];
 
-			if (transponders.count((transport_stream_id << 16) | original_network_id) == 0)
+			if (transponders.find((transport_stream_id << 16) | original_network_id) == transponders.end())
 			{
 				for (pos2 = pos + 6; pos2 < pos + transport_descriptors_length + 6; pos2 += buffer[pos2 + 1] + 2)
 				{

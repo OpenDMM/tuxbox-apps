@@ -95,6 +95,10 @@ struct bouquet_mulmap
 	}
 };
 
+typedef std::map <uint32_t, scanchannel>::iterator sciterator;
+typedef std::map <uint32_t, transpondermap>::iterator stiterator;
+typedef std::multimap <std::string, bouquet_mulmap>::iterator sbiterator;
+
 extern std::map <uint32_t, transpondermap> scantransponders;
 extern std::map <uint32_t, scanchannel> scanchannels;
 extern CBouquetManager* scanBouquetManager;

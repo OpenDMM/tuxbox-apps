@@ -19,10 +19,6 @@
 #define CONFIGDIR "/var/tuxbox/config"
 #endif
 
-typedef std::map <uint32_t, scanchannel>::iterator sciterator;
-typedef std::map <uint32_t, transpondermap>::iterator stiterator;
-typedef std::multimap <std::string, bouquet_mulmap>::iterator sbiterator;
-
 short scan_runs;
 short curr_sat;
 static int status = 0;
