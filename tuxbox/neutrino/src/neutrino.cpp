@@ -32,6 +32,9 @@
 	Foundation, Inc., 675 Mass Ave, Cambridge, MA 02139, USA.
 
   $Log$
+  Revision 1.155  2002/02/14 14:41:36  field
+  EPG-Handling verbessert
+
   Revision 1.154  2002/02/10 14:37:56  McClean
   fix standby-exit bug
 
@@ -1174,7 +1177,7 @@ void CNeutrinoApp::SetupFrameBuffer()
 
 void CNeutrinoApp::SetupFonts()
 {
-	g_Fonts->menu =         g_fontRenderer->getFont("Arial", "Regular", 20);
+	g_Fonts->menu =         g_fontRenderer->getFont("Arial", "Bold", 20);
 	g_Fonts->menu_title =   g_fontRenderer->getFont("Arial", "Bold", 30);
 	g_Fonts->menu_info =    g_fontRenderer->getFont("Arial", "Regular", 16);
 
@@ -1878,7 +1881,7 @@ int CNeutrinoApp::run(int argc, char **argv)
 	//show messages (cam usw)
 	//CMessageBox messageBox( "bouqueteditor.name", "bouqueteditor.savechanges?", NULL );
 	//messageBox.exec( NULL, "");
-	
+
 	//init programm
 	InitZapper();
 
@@ -1962,11 +1965,11 @@ void CNeutrinoApp::RealRun(CMenuWidget &mainMenu)
 				g_Controld->videoPowerDown(false);
 				#ifdef USEACTIONLOG
 					if(mode==mode_tv)
-					{	
+					{
 						g_ActionLog->println("mode: tv");
 					}
 					else if(mode==mode_radio)
-					{	
+					{
 						g_ActionLog->println("mode: radio");
 					}
 
