@@ -42,7 +42,7 @@ int fake_pat(uint16_t onid, FrontendParameters feparams)
 	if ((demux_fd = open(DEMUX_DEV, O_RDWR)) < 0)
 	{
 		perror("[pat.cpp] " DEMUX_DEV);
-		return;
+		return -1;
 	}
 
 	/* buffer for program association table */
