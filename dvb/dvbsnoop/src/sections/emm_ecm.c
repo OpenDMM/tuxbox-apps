@@ -8,6 +8,9 @@ $Id$
 
 
 $Log$
+Revision 1.3  2001/10/16 18:05:43  rasc
+no message
+
 Revision 1.2  2001/10/06 18:19:18  Toerli
 Steuerzeichen entfernt. rasc wuerdest du mal bitte nen gescheiten unix-konformen Editor verwenden... windows editoren sind ungeeignet
 
@@ -69,6 +72,7 @@ void decode_EMM_ECM (u_char *b, int len)
 
  //  !!! decoding the complete ECM/EMM stream may be illegal
  //      so we don't do this!
-
+ //      secrets are secrets even if they are openly transmitted!
+ //      you are not allowed to enhance this section!
 
 }
