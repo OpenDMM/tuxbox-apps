@@ -90,6 +90,9 @@
   Foundation, Inc., 675 Mass Ave, Cambridge, MA 02139, USA.
 
   $Log$
+  Revision 1.49  2001/12/19 18:42:57  faralla
+  added switch for vtxtd
+
   Revision 1.48  2001/12/19 14:52:33  faralla
   sending pid to vtxtd
 
@@ -312,6 +315,7 @@ extern int found_transponders;
 extern int found_channels;
 extern short curr_sat;
 extern short scan_runs;
+boolean use_vtxtd = false;
 
 void start_scan();
 volatile sig_atomic_t keep_going = 1; /* controls program termination */
@@ -359,7 +363,9 @@ int set_vtxt(uint vpid)
     struct sockaddr_un vtxtsrv;
     char vtxtbuf[255];
     char hexpid[20];
-    
+
+    if (use_vtxtd)
+    {    
     memset(&hexpid,0, sizeof(hexpid));
     sprintf(hexpid,"%x",vpid);
     vtxtsock=socket(AF_LOCAL, SOCK_STREAM,0);
@@ -390,7 +396,10 @@ int set_vtxt(uint vpid)
     	}
     	fclose(vtxtfd);
     }
-
+   }
+   else
+   {
+   	
     fd = open("/dev/dbox/vbi0", O_RDWR);
     if (fd < 0)
     {
@@ -415,6 +424,7 @@ int set_vtxt(uint vpid)
         }
     }
     close(fd);
+    }
     return 0;
 }
 
@@ -2243,21 +2253,27 @@ int main(int argc, char **argv) {
 
     if (argc > 1)
     {
-        int i= 1;
+        for (int i= 1;i<argc;i++)
+        {
         if (!strcmp(argv[i], "-d"))
         {
             debug=1;
-            i++;
         }
         else
         if (!strcmp(argv[i], "-o"))
         {
             offset = atoi(argv[++i]);
         }
+        else if (!strcmp(argv[i], "-v"))
+        {
+        	printf("[zapit] using vtxtd\n");
+        	use_vtxtd = true;
+        }
         else
         {
             printf("Usage: zapit [-d] [-o offset in Hz]\n");
             exit(0);
+        }
         }
     }
 
