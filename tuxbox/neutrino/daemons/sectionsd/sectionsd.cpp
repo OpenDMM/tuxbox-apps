@@ -2919,8 +2919,17 @@ static void *timeThread(void *)
 				}
 			}
 			
-			if (timeset && first_time) {
+			if (timeset && first_time)
+			{
 				first_time = false;
+
+				/*
+				 * automatically restart scanning of events, because
+				 * current events were most likely ignored as they seem 
+				 * to be too far in the future (cf. secondsToCache)
+				 */
+				dmxEIT.change(0);
+				dmxSDT.change(0);
 			}
 			else {
 				if (timeset) {
