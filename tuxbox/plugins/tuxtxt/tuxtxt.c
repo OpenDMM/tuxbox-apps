@@ -4,6 +4,10 @@
  *             (c) Thomas "LazyT" Loewe 2002-2003 (LazyT@gmx.net)             *
  ******************************************************************************
  * $Log$
+ * Revision 1.37.2.13  2003/07/26 12:46:50  ghostrider
+ * fix for dreambox PIG support (new drivers needed)
+ * when you compile for dreambox add tuxtxt_la_CFLAGS = -DDREAMBOX to Makefile.am in the tuxtxt dir
+ *
  * Revision 1.37.2.12  2003/07/25 11:53:32  ghostrider
  * changes for dreambox PIG
  *
@@ -2653,6 +2657,7 @@ void RenderMessage(int Message)
 
 	//set colors
 
+#ifndef DREAMBOX
 		if(screenmode == 1)
 		{
 			fbcolor   = black;
@@ -2660,6 +2665,7 @@ void RenderMessage(int Message)
 			menucolor = menu1;
 		}
 		else
+#endif
 		{
 			fbcolor   = transp;
 			timecolor = transp<<4 | transp;
