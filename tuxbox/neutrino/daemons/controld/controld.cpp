@@ -630,7 +630,7 @@ void setVolume(char volume)
 
 
 	lcdd.setVolume(volume);
-	eventServer.sendEvent(CControldClient::EVT_VOLUMECHANGED, 0);
+	eventServer.sendEvent( CControldClient::EVT_VOLUMECHANGED, 0, &volume, sizeof(volume) );
 }
 
 void Mute()
@@ -654,7 +654,7 @@ void Mute()
 	close(fd);
 
 	lcdd.setMute(true);
-	eventServer.sendEvent(CControldClient::EVT_MUTECHANGED, 0);
+	eventServer.sendEvent(CControldClient::EVT_MUTECHANGED, 0, &settings.mute, sizeof(settings.mute));
 }
 
 void UnMute()
@@ -678,7 +678,7 @@ void UnMute()
 	close(fd);
 
 	lcdd.setMute(false);
-	eventServer.sendEvent(CControldClient::EVT_MUTECHANGED, 0);
+	eventServer.sendEvent(CControldClient::EVT_MUTECHANGED, 0, &settings.mute, sizeof(settings.mute));
 }
 
 
