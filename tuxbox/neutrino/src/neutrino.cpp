@@ -2499,6 +2499,13 @@ int CNeutrinoApp::handleMsg(uint msg, uint data)
 	}
 	else if( msg == NeutrinoMessages::ANNOUNCE_RECORD)
 	{
+		if( g_settings.recording_server_wakeup )
+		{
+			string command;
+			command = "ether-wake "+ string(g_settings.recording_server_mac);
+			if(system(command.c_str()) != NULL)
+				perror("ether-wake failed");
+		}
 		if( mode != mode_scart )
 			ShowHint ( "messagebox.info", g_Locale->getText("recordtimer.announce") );
 		CTimerd::EventInfo * eventinfo; 
@@ -2652,12 +2659,6 @@ void CNeutrinoApp::ExitRun()
 #endif
 
 	dprintf(DEBUG_INFO, "exit\n");
-/*  moved to controld
-	//shutdown screen
-	g_lcdd->shutdown();
-	// timerd beenden und wakeup programmieren
-	g_Timerd->shutdown();
-*/
 	for(int x=0;x<256;x++)
 		frameBuffer->paletteSetColor(x, 0x000000, 0xffff);
 	frameBuffer->paletteSet();
