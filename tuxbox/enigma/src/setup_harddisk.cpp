@@ -451,7 +451,7 @@ eHarddiskMenu::eHarddiskMenu(int dev): dev(dev)
 
 	new eListBoxEntryText( *fs, ("reiserfs"), (void*) 0 );
 	new eListBoxEntryText( *fs, ("ext3"), (void*) 1 );
-	fs->setCurrent((void*)0);
+	fs->setCurrent((void*)1);
   
 	if (eSkin::getActive()->build(this, "eHarddiskMenu"))
 		eFatal("skin load of \"eHarddiskMenu\" failed");
