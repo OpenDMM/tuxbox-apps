@@ -36,8 +36,8 @@
 #define SERVICES_XML    CONFIGDIR "/zapit/services.xml"
 #define BOUQUETS_XML    CONFIGDIR "/zapit/bouquets.xml"
 
-#define CABLES_XML      "/etc/cables.xml"
-#define SATELLITES_XML  "/etc/satellites.xml"
+#define CABLES_XML      "/share/tuxbox/cables.xml"
+#define SATELLITES_XML  "/share/tuxbox/satellites.xml" 
 
 #define AUDIO_DEVICE    "/dev/dvb/card0/audio0"
 #define DEMUX_DEVICE    "/dev/dvb/card0/demux0"
