@@ -2866,8 +2866,6 @@ void CNeutrinoApp::ExitRun()
 	saveSetup();
 	g_Controld->shutdown();
 
-	sleep(55);
-
 	if (g_RCInput != NULL)
 		delete g_RCInput;
 

@@ -111,18 +111,9 @@ void saveSettings()
 
 void shutdownBox()
 {
-	//lcdd.shutdown();
-
-	zapit.shutdown();
-
 	timerd.shutdown();
 
 	saveSettings();
-
-	if (execlp("/sbin/halt", "/sbin/halt", 0)<0)
-	{
-		perror("exec failed - halt\n");
-	}
 }
 
 void setvideooutput(int format, bool bSaveSettings = true)
