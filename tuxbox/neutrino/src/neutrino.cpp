@@ -1963,38 +1963,6 @@ int CNeutrinoApp::handleMsg(uint msg, uint data)
 		return messages_return::handled;
 	}
 
-	else if ( msg == NeutrinoMessages::EVT_NEXTPROGRAM )
-	{
-		int* p = (int*)data;
-		int evUniqueKey = *p;
-		p++;
-		int evOnidSid = *p;
-		p++;
-		char evName[50];
-		strncpy( evName, (char*)p, 50);
-		(char*)p += 50;
-		int evFSK = *(int*)p;
-		CChannelList::CChannel* evChannel = channelList->getChannelFromOnidSid(evOnidSid);
-		if (evChannel != NULL)
-		{
-			printf("[neutrino] now starting %s on  %s (FSK: %d)\n", evName, evChannel->name.c_str(), evFSK);
-
-			if (evFSK > 0)
-			{
-				evChannel->lockedProgramStarts( evFSK);
-				if ( channelList->getActiveChannelOnid_sid() == evOnidSid)
-				{
-					channelList->handleLockage( evChannel);
-				}
-			}
-			else
-			{
-				evChannel->lockedProgramEnds();
-			}
-		}
-		return messages_return::handled;
-	}
-
 	if ( ( msg>= CRCInput::RC_WithData ) && ( msg< CRCInput::RC_WithData+ 0x10000000 ) )
 		delete (unsigned char*) data;
 
