@@ -24,6 +24,7 @@
 
 /* system */
 #include <stdint.h>
+#include <linux/kernel.h>
 
 /* nokia api */
 #include <ost/frontend.h>

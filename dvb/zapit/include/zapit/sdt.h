@@ -2,7 +2,7 @@
  * $Id$
  *
  * (C) 2002 by Andreas Oberritter <obi@tuxbox.org>
- * 
+ *
  * This program is free software; you can redistribute it and/or modify
  * it under the terms of the GNU General Public License as published by
  * the Free Software Foundation; either version 2 of the License, or
@@ -44,6 +44,6 @@ enum service_type_e
 };
 
 int parse_sdt ();
-uint16_t get_onid ();
+uint32_t get_sdt_TsidOnid ();
 
 #endif /* __sdt_h__ */

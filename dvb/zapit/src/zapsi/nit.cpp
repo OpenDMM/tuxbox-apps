@@ -111,6 +111,13 @@ int parse_nit (unsigned char DiSEqC)
 			}
 		}
 
+		if ( !(transport_stream_loop_length = (((buffer[pos] & 0x0F) << 8) | buffer[pos + 1])))
+		{
+			/* Falls NIT leer, verlasse Auswertung */
+			printf("[nit.cpp] NIT-Table Auswertung fehlgeschlagen \n");
+			close(demux_fd);
+			return -3;
+		}
 		transport_stream_loop_length = ((buffer[pos] & 0x0F) << 8) | buffer[pos + 1];
 
 		for (pos += 2; pos < section_length - 3; pos += transport_descriptors_length + 6)

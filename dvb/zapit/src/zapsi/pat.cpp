@@ -34,37 +34,9 @@
 extern CEventServer * eventServer;
 extern unsigned int found_transponders;
 
-int fake_pat (unsigned short onid, FrontendParameters feparams, uint8_t polarity, uint8_t DiSEqC)
+int fake_pat (uint32_t TsidOnid, FrontendParameters feparams, uint8_t polarity, uint8_t DiSEqC)
 {
-	unsigned short tsid;
-	int demux_fd;
-
-	if ((demux_fd = open(DEMUX_DEV, O_RDWR)) < 0)
-	{
-		perror("[pat.cpp] " DEMUX_DEV);
-		return -1;
-	}
-
-	/* buffer for program association table */
-	unsigned char buffer[PAT_LENGTH];
-
-	/* set filter for program association section */
-	if (setDmxSctFilter(demux_fd, 0x0000, 0x00) < 0)
-	{
-		return -1;
-	}
-
-	/* read section */
-	if (read(demux_fd, buffer, PAT_LENGTH) < 0)
-	{
-		perror("[pat.cpp] read");
-		close(demux_fd);
-		return -1;
-	}
-
-	tsid = (buffer[3]<<8)|buffer[4];
-
-	if (scantransponders.count((tsid << 16) | onid) == 0)
+	if (scantransponders.count(TsidOnid) == 0)
 	{
 		found_transponders++;
 
@@ -80,11 +52,11 @@ int fake_pat (unsigned short onid, FrontendParameters feparams, uint8_t polarity
 		(
 			std::pair <unsigned int, transpondermap>
 			(
-				(tsid << 16) | onid,
+				TsidOnid,
 				transpondermap
 				(
-					tsid,
-					onid,
+					(TsidOnid >> 16),
+					TsidOnid,
 					feparams,
 					polarity,
 					DiSEqC
@@ -93,7 +65,6 @@ int fake_pat (unsigned short onid, FrontendParameters feparams, uint8_t polarity
 		);
 	}
 
-	close(demux_fd);
 	return 0;
 }
 
