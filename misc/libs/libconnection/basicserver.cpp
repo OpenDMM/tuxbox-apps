@@ -66,10 +66,12 @@ bool CBasicServer::prepare(const char* socketname)
 		return false;
 	}
 
+	name = socketname;
+
 	return true;
 }
 
-void CBasicServer::run(bool (parse_command)(CBasicMessage::Header &rmsg, int connfd))
+void CBasicServer::run(bool (parse_command)(CBasicMessage::Header &rmsg, int connfd), const CBasicMessage::t_version version)
 {
 	int conn_fd;
 
@@ -84,7 +86,12 @@ void CBasicServer::run(bool (parse_command)(CBasicMessage::Header &rmsg, int con
 		conn_fd = accept(sock_fd, (struct sockaddr*) &servaddr, (socklen_t*) &clilen);
 		memset(&rmsg, 0, sizeof(rmsg));
 		read(conn_fd, &rmsg, sizeof(rmsg));
-		parse_another_command = parse_command(rmsg, conn_fd);
+
+		if (rmsg.version == version)
+			parse_another_command = parse_command(rmsg, conn_fd);
+		else
+			printf("[%s] Command ignored: cmd version %d received - server cmd version is %d\n", name.c_str(), rmsg.version, version);
+
 		close(conn_fd);
 	}
 	while (parse_another_command);

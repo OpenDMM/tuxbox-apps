@@ -26,15 +26,19 @@
  *
  */
 
+#include <string>
+
 #include <zapit/client/basicmessage.h>
 
 class CBasicServer
 {
-    int sock_fd;
+ private:
+	int sock_fd;
+	std::string name;
 
  public:
 	bool prepare(const char* socketname);
-	void run(bool (parse_command)(CBasicMessage::Header &rmsg, int connfd));
+	void run(bool (parse_command)(CBasicMessage::Header &rmsg, int connfd), const CBasicMessage::t_version version);
 };
 
 #endif

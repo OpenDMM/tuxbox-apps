@@ -557,8 +557,8 @@ bool parse_command(CBasicMessage::Header &rmsg, int connfd)
 {
 	debug("[zapit] cmd %d (version %d) received\n", rmsg.cmd, rmsg.version);
 
-	if (rmsg.version == CZapitMessages::ACTVERSION)
-	{
+//	if (rmsg.version == CZapitMessages::ACTVERSION) // check now done by basicserver
+//	{
 		switch (rmsg.cmd)
 		{
 			case CZapitMessages::CMD_SHUTDOWN:
@@ -1016,9 +1016,7 @@ bool parse_command(CBasicMessage::Header &rmsg, int connfd)
 				break;
 		}
 		debug("[zapit] cmd %d processed\n", rmsg.cmd);
-	}
-	else
-		printf("[zapit] Command ignored: cmd version %d received - zapit cmd version is %d\n", rmsg.version, CZapitMessages::ACTVERSION);
+//	}
 
 	return true;
 }
@@ -1146,7 +1144,8 @@ int main (int argc, char **argv)
 	signal(SIGUSR1, signal_handler);
 
 	CBasicServer zapit_server;
-	zapit_server.prepare(ZAPIT_UDS_NAME);
+	if (!zapit_server.prepare(ZAPIT_UDS_NAME))
+		return -1;
 
 	if (debug == false)
 	{
@@ -1172,7 +1171,7 @@ int main (int argc, char **argv)
 	// create eventServer
 	eventServer = new CEventServer;
 
-	zapit_server.run(parse_command);
+	zapit_server.run(parse_command, CZapitMessages::ACTVERSION);
 
 	CZapitDestructor(); // <- should not return
 

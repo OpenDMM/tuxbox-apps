@@ -28,11 +28,14 @@
 class CBasicMessage
 {
  public:
+	
+	typedef unsigned char t_version;
+	typedef unsigned char t_cmd;
 
 	struct Header
 	{
-		unsigned char version;
-		unsigned char cmd;
+		t_version version;
+		t_cmd     cmd;
 	};
 };
 
