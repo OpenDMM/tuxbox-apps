@@ -19,6 +19,8 @@
  *
  */
 
+#include <iostream>
+
 #include "frontend.h"
 
 #define FRONTEND_DEVICE	"/dev/ost/frontend0"

@@ -28,8 +28,6 @@
 #include <stdio.h>
 #include <sys/ioctl.h>
 
-#include <iostream>
-
 #include "nit.h"
 
 enum diseqc_t
