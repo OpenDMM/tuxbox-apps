@@ -224,6 +224,7 @@ int zapit(const t_channel_id channel_id, bool in_nvod, uint32_t tsid_onid)
 		switch (frontend->setParameters(&t->second.feparams, t->second.polarization, t->second.DiSEqC)) {
 		case -1:
 			WARN("tuning failed\n");
+			tuned_transponder_id = 0;
 			return -1;
 		case 0:
 			break;
