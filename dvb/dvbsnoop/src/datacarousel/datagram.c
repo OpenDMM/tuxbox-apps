@@ -5,7 +5,6 @@ $Id$
  DVBSNOOP
 
  a dvb sniffer  and mpeg2 stream analyzer tool
- mainly for me to learn about dvb streams, mpeg2, mhp, dsm-cc, ...
 
  http://dvbsnoop.sourceforge.net/
 
@@ -18,6 +17,9 @@ $Id$
 
 
 $Log$
+Revision 1.13  2003/12/26 23:27:38  rasc
+DSM-CC  UNT section
+
 Revision 1.12  2003/11/26 23:54:46  rasc
 -- bugfixes on Linkage descriptor
 
@@ -204,7 +206,7 @@ void decode_DSMCC_DATAGRAM (u_char *b, int len)
 
 
   
- // $$$$ unknown 
+ // $$$$ unknown TODO
  //    how do i distinguish between N1  datagram bytes and N2 stuffing bytes?
  //    is there an else clause in specs missing????
 

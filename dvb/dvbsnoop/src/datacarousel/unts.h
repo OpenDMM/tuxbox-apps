@@ -13,11 +13,11 @@ $Id$
 */
 
 
-#ifndef __INTS_H
-#define __INTS_H 1
+#ifndef __UNTS_H
+#define __UNTS_H 1
 
 
-void  decode_DSMCC_INT (u_char *b, int len);
+void  decode_DSMCC_UNT (u_char *b, int len);
 
 
 #endif
