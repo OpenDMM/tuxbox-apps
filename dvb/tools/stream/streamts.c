@@ -326,7 +326,7 @@ int main(int argc, char **argv)
 		if (demuxfd_count != 2)
 		{
 			usage();
-			return 0;
+			bye(0);
 		}
 
 		dvr_to_ps(dvrfd, pids[0], pids[1], mode);
