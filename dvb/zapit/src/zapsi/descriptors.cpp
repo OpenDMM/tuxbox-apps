@@ -456,7 +456,7 @@ void service_descriptor(const unsigned char * const buffer, const t_service_id s
 
  //scanifostruct scaninfo;
 
-	if (providerName == "")
+	if (providerName.empty())
 		providerName = CDVBString(UNKNOWN_PROVIDER_NAME, strlen(UNKNOWN_PROVIDER_NAME)).getContent();
 
 	if (lastProviderName != providerName)

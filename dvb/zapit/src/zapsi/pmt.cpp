@@ -199,7 +199,7 @@ unsigned short parse_ES_info(const unsigned char * const buffer, CZapitChannel *
 
 	case 0x03:
 	case 0x04:
-		if (description == "")
+		if (description.empty())
 			description = esInfo->elementary_PID;
 		channel->addAudioChannel(esInfo->elementary_PID, false, description, componentTag);
 		descramble = true;
@@ -209,8 +209,10 @@ unsigned short parse_ES_info(const unsigned char * const buffer, CZapitChannel *
 		break;
 
 	case 0x06:
-		if ((isAc3) || (isDts)) {
-			if (description == "") {
+		if ((isAc3) || (isDts))
+		{
+			if (description.empty())
+			{
 				description = esInfo->elementary_PID;
 				if (isAc3)
 					description += " (AC3)";
