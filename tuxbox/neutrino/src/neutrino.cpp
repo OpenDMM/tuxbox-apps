@@ -3249,6 +3249,7 @@ bool CNeutrinoApp::changeNotify(string OptionName, void *Data)
 				recording_id=0;
 				eventinfo.channel_id = g_RemoteControl->current_channel_id;
 				eventinfo.epgID = g_RemoteControl->current_EPGid;
+				eventinfo.epg_starttime = 0;
 				eventinfo.apid = 0;
 				if(getMode()==mode_radio)
 					eventinfo.mode = CTimerd::MODE_RADIO;

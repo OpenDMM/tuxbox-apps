@@ -1179,6 +1179,7 @@ time_t	announceTimeT = 0,
 	bool standby_on = (request->ParameterList["sbon"]=="1");
 	CTimerd::EventInfo eventinfo;
 	eventinfo.epgID      = 0;
+	eventinfo.epg_starttime = 0;
 	if(request->ParameterList["channel_id"].substr(0,1)=="R")
 		eventinfo.mode = CTimerd::MODE_RADIO;
 	else
