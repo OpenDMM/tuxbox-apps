@@ -56,7 +56,7 @@ eZapLanguageSetup::eZapLanguageSetup(): eWindow(0)
 
 	if (!f)
 	{
-		new eListBoxEntryText(language, "Englisch", (void*) new eString("C"));
+		new eListBoxEntryText(language, "English", (void*) new eString("C"));
 		new eListBoxEntryText(language, "Deutsch", (void*) new eString("de_DE"));
 	} else
 	{
