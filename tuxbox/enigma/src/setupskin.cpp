@@ -130,33 +130,21 @@ eSkinSetup::~eSkinSetup()
 {
 }
 
-int eSkinSetup::eventFilter(const eWidgetEvent &event)
+int eSkinSetup::keyDown(int rc)
 {
-	int inlist=0;
-	if (focusList()->current() == lskins)
-		inlist=1;
-	switch (event.type)
+	switch(rc)
 	{
-	case eWidgetEvent::keyDown:
-		switch(event.parameter)
-		{
-		case eRCInput::RC_RIGHT:
-			focusNext(eWidget::focusDirE);
-			return 1;
-		case eRCInput::RC_DOWN:
-			if (inlist)
-				break;
-			focusNext(eWidget::focusDirS);
-			return 1;
-		case eRCInput::RC_LEFT:
-			focusNext(eWidget::focusDirW);
-			return 1;
-		case eRCInput::RC_UP:
-			if (inlist)
-				break;
-			focusNext(eWidget::focusDirN);
-			return 1;
-		}
+	case eRCInput::RC_RIGHT:
+		focusNext(eWidget::focusDirE);
+		return 1;
+	case eRCInput::RC_DOWN:
+		focusNext(eWidget::focusDirS);
+		return 1;
+	case eRCInput::RC_LEFT:
+		focusNext(eWidget::focusDirW);
+		return 1;
+	case eRCInput::RC_UP:
+		focusNext(eWidget::focusDirN);
+		return 1;
 	}
-	return 0;
 }

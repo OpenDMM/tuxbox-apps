@@ -112,6 +112,7 @@ void eZapLanguageSetup::toggleLanguage()
 
 int eZapLanguageSetup::eventFilter(const eWidgetEvent &event)
 {
+#if 0
 	switch (event.type)
 	{
 	case eWidgetEvent::keyDown:
@@ -131,5 +132,6 @@ int eZapLanguageSetup::eventFilter(const eWidgetEvent &event)
 			return 1;
 		}
 	}
+#endif
 	return 0;
 }
