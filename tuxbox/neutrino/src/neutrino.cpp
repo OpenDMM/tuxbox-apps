@@ -34,6 +34,9 @@
 
 
 $Log$
+Revision 1.214  2002/04/05 22:42:45  rasc
+-- Default for Scan changed: keep bouquet
+
 Revision 1.213  2002/04/05 01:14:43  rasc
 -- Favorites Bouquet handling (Easy Add Channels)
 
@@ -291,7 +294,7 @@ void CNeutrinoApp::setupDefaults()
         g_settings.scan_digituerk = 0;
 	g_settings.scan_sirius = 0;
 	g_settings.scan_thor = 0;
-	g_settings.scan_bouquet = 1024; //erase bouquets
+	g_settings.scan_bouquet = 256; // keep bouquets (because of favorites, and sort)
 
 
 	//timing  (10 = 1 sec )
