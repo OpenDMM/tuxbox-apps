@@ -56,6 +56,7 @@
 #define NEUTRINO_ICON_BUTTON_LEFT      "left.raw"
 
 #define NEUTRINO_ICON_SETTINGS      "settings.raw"
+#define NEUTRINO_ICON_INFO          "info.raw"
 
 /* icon widths */
 
