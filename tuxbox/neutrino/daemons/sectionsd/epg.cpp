@@ -5,6 +5,9 @@
 // $Id$
 //
 // $Log$
+// Revision 1.3  2001/05/13 00:00:36  fnbrd
+// Fehler behoben, falls keine missing sections.
+//
 // Revision 1.2  2001/05/12 23:55:04  fnbrd
 // Ueberarbeitet, geht aber noch nicht ganz.
 //
@@ -179,6 +182,9 @@ int main(int argc, char **argv)
 
 //  printf("Sections read: %d\n", i);
   printf("Sections read: %d\n\n", epgset.size());
+
+  if(missingSections.size()) {
+
   printf("Sections misssing:\n");
 
   // Die fehlenden Sections ausgeben
@@ -232,6 +238,9 @@ int main(int argc, char **argv)
       delete[] buf;
   }
   close(fd);
+
+  } // if missingSections.size()
+
   endtime=time(NULL);
 
   printf("\nSections read: %d\n", i);
