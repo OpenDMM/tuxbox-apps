@@ -40,6 +40,7 @@ enum stream2file_status_t
 	STREAM2FILE_STATUS_BUFFER_OVERFLOW    = -1,
 	STREAM2FILE_STATUS_WRITE_OPEN_FAILURE = -2,
 	STREAM2FILE_STATUS_WRITE_FAILURE      = -3,
+	STREAM2FILE_STATUS_READ_FAILURE = -4
 };
 
 stream2file_error_msg_t start_recording(const char * const filename,
@@ -51,4 +52,3 @@ stream2file_error_msg_t start_recording(const char * const filename,
 stream2file_error_msg_t stop_recording(void);
 
 #endif
-
