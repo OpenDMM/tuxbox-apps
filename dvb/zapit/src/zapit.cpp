@@ -819,6 +819,8 @@ channel_msg load_settings()
 	return output_msg;
 }
 
+pthread_t dec_thread;
+
 #ifndef USE_EXTERNAL_CAMD
 void *decode_thread(void *ptr)
 {
@@ -850,6 +852,7 @@ void *decode_thread(void *ptr)
 
 	free(vals);
 	dprintf("[zapit] ending decode_thread\n");
+	dec_thread= 0;
 	pthread_exit(0);
 }
 #endif /* USE_EXTERNAL_CAMD */
@@ -867,7 +870,6 @@ int zapit (uint onid_sid, bool in_nvod)
 	int ac3d;
 	bool new_tsid = false;
 #ifndef USE_EXTERNAL_CAMD
-	pthread_t dec_thread;
 	bool do_cam_reset = false;
 #else
 	char vpidbuf[5];
@@ -1107,6 +1109,12 @@ int zapit (uint onid_sid, bool in_nvod)
 			vals->do_search_emmpids = do_search_emmpid;
 			vals->do_cam_reset = do_cam_reset;
 
+			if (dec_thread!= 0)
+			{
+				dprintf("[zapit] waiting for decode_thread\n");
+				pthread_join(dec_thread,0);
+			}
+
 			pthread_create(&dec_thread, 0,decode_thread, (void*) vals);
 		}
 #endif /* USE_EXTERNAL_CAMD */
@@ -1235,8 +1243,8 @@ int zapit (uint onid_sid, bool in_nvod)
 		}
 #ifndef USE_EXTERNAL_CAMD
 		//wait for decode_thread to exit
-		dprintf("[zapit] waiting for decode_thread\n");
-		pthread_join(dec_thread,0);
+		//dprintf("[zapit] waiting for decode_thread\n");
+		//pthread_join(dec_thread,0);
 #endif /* DVBS */
 	}
 	else
