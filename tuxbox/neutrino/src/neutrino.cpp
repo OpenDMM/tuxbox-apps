@@ -49,6 +49,7 @@
 
 #include "gui/widget/menue.h"
 #include "gui/widget/messagebox.h"
+#include "gui/widget/hintbox.h"
 #include "gui/widget/colorchooser.h"
 #include "gui/widget/keychooser.h"
 #include "gui/widget/stringinput.h"
@@ -1746,14 +1747,13 @@ int CNeutrinoApp::run(int argc, char **argv)
 	{
 		printf("config file missing\n");
 		saveSetup();
-		ShowMsg ( "messagebox.info", g_Locale->getText("settings.noconffile"), CMessageBox::mbrCancel, CMessageBox::mbCancel, "error.raw" );
-
+		ShowHint ( "messagebox.info", g_Locale->getText("settings.noconffile") );
 	}
 	else if(loadSettingsErg==2)
 	{
 		printf("parts of configfile missing\n");
 		saveSetup();
-		ShowMsg ( "messagebox.info", g_Locale->getText("settings.missingoptionsconffile"), CMessageBox::mbrCancel, CMessageBox::mbCancel, "error.raw" );
+		ShowHint ( "messagebox.info", g_Locale->getText("settings.missingoptionsconffile") );
 	}
 
 	//init programm
