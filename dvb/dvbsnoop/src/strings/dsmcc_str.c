@@ -15,6 +15,10 @@ $Id$
 
 
 $Log$
+Revision 1.16  2004/01/02 16:40:43  rasc
+DSM-CC  INT/UNT descriptors complete
+minor changes and fixes
+
 Revision 1.15  2004/01/02 02:18:34  rasc
 more DSM-CC  INT/UNT descriptors
 
@@ -652,6 +656,32 @@ char *dsmccStr_UpdateMethod (u_int id)
 
   return findTableID (TableIDs, id);
 }
+
+
+
+/*
+  -- DSM-CC (INT) Time Units
+  --  e.g. from ISO 13818-6 // TS 102 006
+  --  
+*/
+
+char *dsmccStr_TimeUnits (u_int id)
+
+{
+  STR_TABLE  TableIDs[] = {
+	{ 0x00, 0x00,   "second" },
+	{ 0x01, 0x01,   "minute" },
+	{ 0x02, 0x02,   "hour" },
+	{ 0x03, 0x03,   "day" },
+      	{  0,0, NULL }
+  };
+
+  return findTableID (TableIDs, id);
+}
+
+
+
+
 
 
 

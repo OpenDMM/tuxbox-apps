@@ -16,6 +16,10 @@ $Id$
 
 
 $Log$
+Revision 1.6  2004/01/02 16:40:38  rasc
+DSM-CC  INT/UNT descriptors complete
+minor changes and fixes
+
 Revision 1.5  2004/01/01 20:09:29  rasc
 DSM-CC INT/UNT descriptors
 PES-sync changed, TS sync changed,
@@ -184,7 +188,7 @@ static void dsmcc_control (u_char *b, int len)
 				xlen = dsmcc_timecode (b+1);
 			b += xlen+1;
 //			len -= (xlen+1);
-		   indent (-2);
+		   indent (-1);
 		}
 
 		if (play_flag) {
@@ -199,7 +203,7 @@ static void dsmcc_control (u_char *b, int len)
 		   		xlen = dsmcc_timecode (b+1);
 		   	b += xlen+1;
 //			len -= (xlen+1);
-		   indent (-2);
+		   indent (-1);
 		}
 
 	indent (-1);
