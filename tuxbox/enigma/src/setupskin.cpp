@@ -53,6 +53,8 @@ void eSkinSetup::loadSkins()
 {
 	const char *skinPath = DATADIR "/enigma/skins/";
 	struct dirent **namelist;
+	char *current_skin="";
+	eConfig::getInstance()->getKey("/ezap/ui/skin", current_skin);
 
 	int n = scandir(skinPath, &namelist, 0, alphasort);
 
@@ -74,13 +76,19 @@ void eSkinSetup::loadSkins()
 			eString esml=getInfo(fileName.c_str(), "esml");
 			eString name=getInfo(fileName.c_str(), "name");
 			if (esml.size() && name.size())
-				new eListboxSkin(lskins, name, esml);
+			{
+				eListboxSkin *s=new eListboxSkin(lskins, name, esml);
+				if (esml == current_skin)
+				{
+					eDebug("got current");
+					lskins->setCurrent(s);
+				}
+			}
 		}
 
 		free(namelist[count]);
   }
   free(namelist);
-
 }
 
 void eSkinSetup::accept()
@@ -93,7 +101,6 @@ void eSkinSetup::skinSelected(eListboxEntry *l)
 	if (!l)
 		close(1);
 	eListboxSkin *skin=(eListboxSkin*)l;
-	eDebug("accepted new skin (%s)!", skin->getESML().c_str());
 	eConfig::getInstance()->setKey("/ezap/ui/skin", skin->getESML().c_str());
 	close(0);
 }
@@ -109,6 +116,8 @@ eSkinSetup::eSkinSetup()
 	CONNECT(baccept->selected, eSkinSetup::accept);
 	CONNECT(breject->selected, eSkinSetup::reject);
 	CONNECT(lskins->selected, eSkinSetup::skinSelected);
+	
+	setFocus(lskins);
 
 	eSkin *skin=eSkin::getActive();
 	if (skin->build(this, "setup.skins"))
