@@ -20,14 +20,12 @@
  * $Id$
  */
 
-#include "setupskin.h"
+#include <setupskin.h>
 
 #include <dirent.h>
-#include "config.h"
-
-#include <core/gui/ebutton.h>
-#include <core/gui/emessage.h>
-#include <core/system/econfig.h>
+#include <lib/gui/ebutton.h>
+#include <lib/gui/emessage.h>
+#include <lib/system/econfig.h>
 
 extern eString getInfo(const char *file, const char *info);
 

@@ -20,11 +20,11 @@
  * $Id$
  */
 
-#include "setup_language.h"
+#include <setup_language.h>
 
-#include <core/base/i18n.h>
-#include <core/gui/eskin.h>
-#include <core/system/econfig.h>
+#include <lib/base/i18n.h>
+#include <lib/gui/eskin.h>
+#include <lib/system/econfig.h>
 
 eZapLanguageSetup::eZapLanguageSetup(): eWindow(0)
 {

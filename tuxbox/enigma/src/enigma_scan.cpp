@@ -20,19 +20,19 @@
  * $Id$
  */
 
-#include "enigma_scan.h"
+#include <enigma_scan.h>
 
-#include <apps/enigma/satconfig.h>
-#include <apps/enigma/scan.h>
-#include <core/dvb/edvb.h>
-#include <core/dvb/frontend.h>
-#include <core/gui/ewindow.h>
-#include <core/gui/eskin.h>
-#include <core/gui/elabel.h>
-#include <core/base/i18n.h>
+#include <satconfig.h>
+#include <scan.h>
+#include <lib/dvb/edvb.h>
+#include <lib/dvb/frontend.h>
+#include <lib/gui/ewindow.h>
+#include <lib/gui/eskin.h>
+#include <lib/gui/elabel.h>
+#include <lib/base/i18n.h>
 
 eZapScan::eZapScan()
-	:eListBoxWindow<eListBoxEntryMenu>(_("Channels"), 8, 220)
+	:eListBoxWindow<eListBoxEntryMenu>(_("Channels"), 4, 220)
 {
 	move(ePoint(150, 136));
 	CONNECT((new eListBoxEntryMenu(&list, _("[back]")))->selected, eZapScan::sel_close);

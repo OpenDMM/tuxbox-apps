@@ -26,11 +26,11 @@
 #include <map>
 #include <string>
 
-#include <core/gui/ewindow.h>
-#include <core/gui/statusbar.h>
-#include <core/gui/ebutton.h>
-#include <core/gui/elabel.h>
-#include <core/gui/listbox.h>
+#include <lib/gui/ewindow.h>
+#include <lib/gui/statusbar.h>
+#include <lib/gui/ebutton.h>
+#include <lib/gui/elabel.h>
+#include <lib/gui/listbox.h>
 
 
 class eZapLanguageSetup: public eWindow
