@@ -32,6 +32,9 @@
 	Foundation, Inc., 675 Mass Ave, Cambridge, MA 02139, USA.
 
   $Log$
+  Revision 1.51  2001/10/02 17:56:33  McClean
+  time in infobar (thread probs?) and "0" quickzap added
+
   Revision 1.50  2001/10/01 20:41:08  McClean
   plugin interface for games - beta but nice.. :)
 
@@ -219,20 +222,22 @@ void CNeutrinoApp::PluginDemo()
 	char		*error;
 	SPluginInfo	info;
 
-	handle = dlopen ("/pacman.so", RTLD_LAZY);
+	string pluginname = "tetris";
+
+	handle = dlopen ( ("/"+pluginname+".so").c_str(), RTLD_LAZY);
 	if (!handle)
 	{
 		fputs (dlerror(), stderr);
 		return;
 	}
 	
-	getInfo = (int(*)(SPluginInfo*)) dlsym(handle, "pacman_getInfo");
+	getInfo = (int(*)(SPluginInfo*)) dlsym(handle,(pluginname+"_getInfo").c_str());
 	if ((error = dlerror()) != NULL)
 	{
 		fputs(error, stderr);
 		return;
 	}
-	execPlugin = (int(*)(int fb, int rc, int lcd)) dlsym(handle, "pacman_exec");
+	execPlugin = (int(*)(int fb, int rc, int lcd)) dlsym(handle, (pluginname+"_exec").c_str());
 	if ((error = dlerror()) != NULL)
 	{
 		fputs(error, stderr);
