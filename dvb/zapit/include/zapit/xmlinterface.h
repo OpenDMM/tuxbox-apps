@@ -37,6 +37,8 @@ inline char*      xmlGetAttribute     (xmlNodePtr cur, char * s) { return cur->G
 inline char*      xmlGetName          (xmlNodePtr cur)           { return cur->GetType();  };
 
 
+xmlNodePtr xmlGetNextOccurence        (xmlNodePtr cur, const char * s);
+
 std::string Unicode_Character_to_UTF8(const int character);
 
 std::string convert_UTF8_To_UTF8_XML(const std::string s);

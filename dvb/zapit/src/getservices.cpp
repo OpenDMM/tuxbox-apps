@@ -34,8 +34,8 @@ void ParseTransponders(xmlNodePtr node, const uint8_t DiSEqC)
 	uint8_t tmp;
 
 	/* read all transponders */
-	while ((node != NULL) && (!strcmp(xmlGetName(node), "transponder"))) {
-
+	while ((node = xmlGetNextOccurence(node, "transponder")) != NULL)
+	{
 		/* common */
 		GET_ATTR(node, "id", "%hx", transport_stream_id);
 		GET_ATTR(node, "onid", "%hx", original_network_id);
@@ -123,7 +123,7 @@ void ParseChannels(xmlNodePtr node, const t_transport_stream_id transport_stream
 	std::string  name;
 	uint8_t      service_type;
 
-	while ((node != NULL) && (!strcmp(xmlGetName(node), "channel")))
+	while ((node = xmlGetNextOccurence(node, "channel")) != NULL)
 	{
 		GET_ATTR(node, "service_id", "%hx", service_id);
 		name = xmlGetAttribute(node, "name");

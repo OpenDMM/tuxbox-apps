@@ -27,6 +27,14 @@
 #include <zapit/debug.h>
 #include <zapit/xmlinterface.h>
 
+xmlNodePtr xmlGetNextOccurence(xmlNodePtr cur, const char * s)
+{
+    while ((cur != NULL) && (strcmp(xmlGetName(cur), s) != 0))
+	cur = cur->xmlNextNode;
+
+    return cur;
+};
+
 std::string Unicode_Character_to_UTF8(const int character)
 {
 	char buf[XML_UTF8_ENCODE_MAX];
