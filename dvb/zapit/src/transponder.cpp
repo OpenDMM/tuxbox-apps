@@ -20,7 +20,7 @@
  */
 
 
-#include "transponder.h"
+#include <zapit/transponder.h>
 
 
 CTransponder::CTransponder()

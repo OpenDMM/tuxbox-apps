@@ -4,13 +4,12 @@
 
 #include <stdio.h>
 
-#include <zapost/frontend.h>
-
-#include "settings.h"
-#include "bouquets.h"
-#include "channel.h"
-#include "getservices.h"
-#include "xmlinterface.h"
+#include <zapit/bouquets.h>
+#include <zapit/channel.h>
+#include <zapit/frontend.h>
+#include <zapit/getservices.h>
+#include <zapit/settings.h>
+#include <zapit/xmlinterface.h>
 
 uint8_t curr_diseqc = 0;
 

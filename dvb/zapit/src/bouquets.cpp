@@ -29,11 +29,10 @@
 /* tuxbox headers */
 #include <configfile.h>
 
-#include <zapsi/sdt.h>
-
-#include "settings.h"
-#include "bouquets.h"
-#include "xmlinterface.h"
+#include <zapit/bouquets.h>
+#include <zapit/sdt.h>
+#include <zapit/settings.h>
+#include <zapit/xmlinterface.h>
 
 extern tallchans allchans;   //  defined in zapit.cpp
 extern CConfigFile * config; //  defined in zapit.cpp

@@ -35,9 +35,15 @@
 #include <sys/wait.h>
 #include <unistd.h>
 
+#ifdef HAVE_CONFIG_H
+#include <config.h>
+#endif
+
 /* tuxbox headers */
 #include <configfile.h>
+#ifdef DBOX2
 #include <lcddclient.h>
+#endif
 
 /* zapit headers */
 #include <zapit/audio.h>
