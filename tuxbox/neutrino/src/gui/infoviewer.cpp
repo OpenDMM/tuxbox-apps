@@ -2,6 +2,9 @@
 // $Id$
 //
 // $Log$
+// Revision 1.8  2001/08/16 23:19:18  McClean
+// epg-view and quickview changed
+//
 // Revision 1.7  2001/08/16 00:19:44  fnbrd
 // Removed debug output.
 //
@@ -47,8 +50,10 @@ void CInfoViewer::setDuration( int Duration )
 	intShowDuration = Duration;
 }
 
-void CInfoViewer::showTitle( int ChanNum, string Channel )
+void CInfoViewer::showTitle( int ChanNum, string Channel, bool reshow )
 {
+	if (reshow)
+		CurrentChannel = "";
 	if (CurrentChannel==Channel)
 	{
 		intTimer = intShowDuration;
@@ -131,6 +136,14 @@ void CInfoViewer::killTitle()
 {
 	intTimer = 0;
 	frameBuffer->paintBackgroundBox(BoxStartX, BoxStartY, BoxEndX, BoxEndY );
+}
+
+bool CInfoViewer::isActive()
+{
+	if(intTimer!=0)
+		return true;
+	else
+		return false;
 }
 
 void * CInfoViewer::InfoViewerThread (void *arg)
