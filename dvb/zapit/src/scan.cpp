@@ -510,6 +510,7 @@ void *start_scanthread(void *)
 					printf("[scan] start_scanthread: moving satellite dish from satellite position %d to %d\n", currentSatellitePosition, satellitePosition);
 					printf("[scan] motorPosition = %d\n", motorPositions[providerName]);
 					frontend->positionMotor(motorPositions[providerName]);
+					frontend->setCurrentSatellitePosition(currentSatellitePosition);
 				}
 						
 				scan_provider(search, providerName, satfeed, diseqc_pos);
