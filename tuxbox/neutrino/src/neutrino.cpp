@@ -32,6 +32,9 @@
 	Foundation, Inc., 675 Mass Ave, Cambridge, MA 02139, USA.
 
   $Log$
+  Revision 1.113  2001/12/30 23:15:47  Simplex
+  bugfix in adjusting bouquet's channellist to current channel
+
   Revision 1.112  2001/12/30 15:47:29  McClean
   use sms-input..
 
@@ -1681,8 +1684,6 @@ void CNeutrinoApp::InitZapper()
 		//remoteControl.radioMode();
 		radioMode();
 	}
-	if (bouquetList!=NULL)
-		bouquetList->adjustToChannel( channelList->getActiveChannelNumber());
 }
 
 int CNeutrinoApp::run(int argc, char **argv)
@@ -1869,8 +1870,6 @@ void CNeutrinoApp::RealRun(CMenuWidget &mainMenu)
 			{
 				//quickzap
 				channelList->quickZap( key );
-				if (bouquetList!=NULL)
-					bouquetList->adjustToChannel( channelList->getActiveChannelNumber());
 			}
 			else if (key==CRCInput::RC_help)
 			{	//epg
@@ -1892,8 +1891,6 @@ void CNeutrinoApp::RealRun(CMenuWidget &mainMenu)
 			else if ((key>=0) && (key<=9))
 			{ //numeric zap
 				channelList->numericZap( key );
-				if (bouquetList!=NULL)
-					bouquetList->adjustToChannel( channelList->getActiveChannelNumber());
 			}
 			else if (key==CRCInput::RC_spkr)
 			{	//mute
