@@ -472,7 +472,6 @@ void *start_scanthread(void *)
  	found_tv_chans = 0;
  	found_radio_chans = 0;
  	found_data_chans = 0;
- 	string prov =" ";
 
 
 	curr_sat = 0;
@@ -530,9 +529,9 @@ void *start_scanthread(void *)
 					diseqc_pos = spI->first;
 				
 				/* position satellite dish if provider is on a different satellite */
-				if ((frontend->getDiseqcType() == DISEQC_1_2) && (frontend->getCurrentSatellitePosition() != satellitePositions[prov]))
+				if ((frontend->getDiseqcType() == DISEQC_1_2) && (frontend->getCurrentSatellitePosition() != satellitePositions[providerName]))
 				{
-					printf("[scan] start_scanthread: moving satellite dish from satellite position %d to %d\n", frontend->getCurrentSatellitePosition(), satellitePositions[prov]);
+					printf("[scan] start_scanthread: moving satellite dish from satellite position %d to %d\n", frontend->getCurrentSatellitePosition(), satellitePositions[providerName]);
 					frontend->positionMotor(diseqc_pos);
 				}
 						
