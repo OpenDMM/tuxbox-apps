@@ -1187,6 +1187,7 @@ void CNeutrinoApp::InitServiceSettings(CMenuWidget &service, CMenuWidget &scanSe
 	service.addItem( new CMenuSeparator(CMenuSeparator::LINE) );
 	service.addItem( new CMenuForwarder("bouqueteditor.name", true, "", new CBEBouquetWidget()));
 	service.addItem( new CMenuForwarder("servicemenu.scants", true, "", &scanSettings ) );
+	service.addItem( new CMenuForwarder("servicemenu.reload", true, "", this, "reloadchannels" ) );
 	service.addItem( new CMenuForwarder("servicemenu.ucodecheck", true, "", UCodeChecker ) );
 
 	//softupdate
@@ -3356,8 +3357,13 @@ int CNeutrinoApp::exec(CMenuTarget* parent, std::string actionKey)
 	}
 	else if(actionKey=="recording")
 	{
-      setupRecordingDevice();
-   }
+		setupRecordingDevice();
+	}
+	else if(actionKey=="reloadchannels")
+	{
+		dprintf(DEBUG_INFO, "reloading channels...\n");
+		g_Zapit->reinitChannels();
+	}
 	return returnval;
 }
 
