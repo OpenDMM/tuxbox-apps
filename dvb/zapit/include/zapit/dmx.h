@@ -2,7 +2,7 @@
  * $Id$
  *
  * (C) 2002 by Andreas Oberritter <obi@tuxbox.org>
- * 
+ *
  * This program is free software; you can redistribute it and/or modify
  * it under the terms of the GNU General Public License as published by
  * the Free Software Foundation; either version 2 of the License, or
@@ -19,6 +19,11 @@
  *
  */
 
+/* system */
+#include <stdint.h>
+#include <time.h>
+
+/* nokia api */
 #include <ost/dmx.h>
 
 #ifndef __dmx_h__

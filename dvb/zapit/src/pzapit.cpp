@@ -22,6 +22,7 @@
  */
 
 #include <iostream>
+#include <stdio.h>
 #include <string.h>
 
 #include <clientlib/zapitclient.h>

@@ -22,6 +22,7 @@
 
 #include <fcntl.h>
 #include <stdint.h>
+#include <stdio.h>
 #include <sys/ioctl.h>
 #include <sys/stat.h>
 #include <sys/types.h>

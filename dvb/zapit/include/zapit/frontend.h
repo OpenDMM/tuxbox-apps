@@ -22,10 +22,14 @@
 #ifndef __frontend_h__
 #define __frontend_h__
 
-#include <ost/frontend.h>
-#include <ost/sec.h>
+/* system */
 #include <stdint.h>
 
+/* nokia api */
+#include <ost/frontend.h>
+#include <ost/sec.h>
+
+/* zapit */
 #include <getservices.h>
 
 #define MAX_LNBS 4
