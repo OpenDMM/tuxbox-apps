@@ -49,7 +49,7 @@ void CWebDbox::UpdateBouquets(void)
 
 //-------------------------------------------------------------------------
 
-void CWebDbox::ZapTo(string target)
+void CWebDbox::ZapTo(std::string target)
 {
 	t_channel_id channel_id = atoi(target.c_str());
 	
@@ -69,7 +69,7 @@ void CWebDbox::ZapTo(string target)
 
 //-------------------------------------------------------------------------
 
-void CWebDbox::ZapToSubService(string target)
+void CWebDbox::ZapToSubService(std::string target)
 {
 	t_channel_id channel_id = atoi(target.c_str());
 
@@ -206,7 +206,7 @@ bool CWebDbox::GetChannelEvents(void)
 
 //-------------------------------------------------------------------------
 
-string CWebDbox::GetServiceName(t_channel_id channel_id)
+std::string CWebDbox::GetServiceName(t_channel_id channel_id)
 {
 	unsigned int i;
 

@@ -319,7 +319,7 @@ bool CControlAPI::GetChannel_IDCGI(CWebserverRequest *request) // sendet die akt
 bool CControlAPI::MessageCGI(CWebserverRequest *request)
 {
 	request->SendPlainHeader("text/plain");          // Standard httpd header senden
-	string message;
+	std::string message;
 	int event = 0;
 
 	if (request->ParameterList.size() == 0)
@@ -683,7 +683,7 @@ bool CControlAPI::ZaptoCGI(CWebserverRequest *request)
 
 bool CControlAPI::StartPluginCGI(CWebserverRequest *request)
 {
-	string pluginname;
+	std::string pluginname;
 	if (request->ParameterList.size() == 1)
 	{
 

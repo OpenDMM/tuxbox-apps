@@ -49,7 +49,7 @@
 struct Cmyconn
 {
 	socklen_t	clilen;
-	string		Client_Addr;
+	std::string	Client_Addr;
 	int		Socket;
 	CWebserver	*Parent;	
 };
