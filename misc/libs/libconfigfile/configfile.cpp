@@ -161,7 +161,7 @@ bool CConfigFile::getBool (const std::string key, const bool defaultVal)
 		storeBool(key, defaultVal);
 	}
 
-	return (configData[key] == "true");
+	return !((configData[key] == "false") || (configData[key] == "0"));
 }
 
 int32_t CConfigFile::getInt32 (const std::string key, const int32_t defaultVal)
