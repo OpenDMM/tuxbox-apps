@@ -728,5 +728,4 @@ void CPictureViewerGui::showHelp()
 	helpbox.addLine("Version: $Revision$");
 	hide();
 	helpbox.show(LOCALE_MESSAGEBOX_INFO);
-	printf("help vorbei\n");
 }
