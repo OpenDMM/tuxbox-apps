@@ -709,9 +709,7 @@ void CNeutrinoApp::saveSetup()
 
 void CNeutrinoApp::firstChannel()
 {
-	string tmp;
-	g_Zapit->getLastChannel(tmp, firstchannel.chan_nr, firstchannel.mode);
-	strcpy( firstchannel.name, tmp.c_str() );
+	g_Zapit->getLastChannel(firstchannel.channelNumber, firstchannel.mode);
 }
 
 /**************************************************************************************
@@ -2809,7 +2807,7 @@ void CNeutrinoApp::tvMode( bool rezap )
 		g_RemoteControl->tvMode();
 		firstChannel();
 		channelsInit();
-		channelList->zapTo( firstchannel.chan_nr -1 );
+		channelList->zapTo( firstchannel.channelNumber -1 );
 	}
 }
 
@@ -2932,7 +2930,7 @@ void CNeutrinoApp::radioMode( bool rezap)
 		g_RemoteControl->radioMode();
 		firstChannel();
 		channelsInit();
-		channelList->zapTo( firstchannel.chan_nr -1 );
+		channelList->zapTo( firstchannel.channelNumber -1 );
 	}
 }
 
@@ -3049,7 +3047,6 @@ bool CNeutrinoApp::changeNotify(string OptionName, void *Data)
 **************************************************************************************/
 int main(int argc, char **argv)
 {
-	exit(0);
 	setDebugLevel(DEBUG_NORMAL);
 	dprintf( DEBUG_NORMAL, "NeutrinoNG $Id$\n\n");
 
@@ -3060,4 +3057,3 @@ int main(int argc, char **argv)
 	initGlobals();
 	return CNeutrinoApp::getInstance()->run(argc, argv);
 }
-
