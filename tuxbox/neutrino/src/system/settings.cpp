@@ -144,9 +144,9 @@ void CScanSettings::toMotorPosList(CZapitClient::ScanMotorPosList& motorPosList)
 	
 	for (int i = 0; i < MAX_SATELLITES; i++)
 	{
-		if (satName[i][0] != 0)
+		if (strlen(satName[i]) != 0)
 		{
-			strncpy(sat.satName, satName[i], 30);
+			sat.satPosition = satPosition[i];
 			sat.motorPos = satMotorPos[i];
 			motorPosList.insert(motorPosList.end(), sat);
 		}
