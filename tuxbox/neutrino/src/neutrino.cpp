@@ -32,6 +32,9 @@
 	Foundation, Inc., 675 Mass Ave, Cambridge, MA 02139, USA.
 
   $Log$
+  Revision 1.97  2001/12/12 19:11:32  McClean
+  prepare timing setup...
+
   Revision 1.96  2001/12/12 18:45:39  McClean
   fix gamelist-design, manual-update bug, add save settings now
 
@@ -522,6 +525,13 @@ void CNeutrinoApp::setupDefaults()
 
 	//colors
 	setupColors_neutrino();
+
+	//timing  (10 = 1 sec )
+	g_settings.timing_menu = 1000;
+	g_settings.timing_chanlist = 300;
+	g_settings.timing_epg = 90000;
+	g_settings.timing_infobar = 15; // 15 means 7,5 sec
+
 
 	//network
 	g_settings.networkSetOnStartup = 0;

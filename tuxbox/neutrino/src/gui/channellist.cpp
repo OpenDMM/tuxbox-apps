@@ -33,6 +33,9 @@
 // $Id$
 //
 // $Log$
+// Revision 1.43  2001/12/12 19:11:32  McClean
+// prepare timing setup...
+//
 // Revision 1.42  2001/12/12 11:46:06  McClean
 // performance-improvements
 //
@@ -380,7 +383,7 @@ int CChannelList::show()
 	bool loop=true;
 	while (loop)
 	{
-		int key = g_RCInput->getKey(100);
+		int key = g_RCInput->getKey(g_settings.timing_chanlist);
 		if ((key==CRCInput::RC_timeout) || (key==g_settings.key_channelList_cancel))
 		{
 			selected = oldselected;
