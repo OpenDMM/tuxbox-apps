@@ -2436,7 +2436,7 @@ unsigned int zapTo_ServiceID (unsigned int serviceID, bool isSubService )
 	}
 
 	if ( !( result & CZapitClient::ZAP_OK ) )
-		eventServer->sendEvent(CZapitClient::EVT_ZAP_FAILED, CEventServer::INITID_ZAPIT, &serviceID, sizeof(serviceID) );
+		eventServer->sendEvent(( isSubService )?CZapitClient::EVT_ZAP_SUB_FAILED:CZapitClient::EVT_ZAP_FAILED, CEventServer::INITID_ZAPIT, &serviceID, sizeof(serviceID) );
 	else
 	{
 		if ( isSubService )
