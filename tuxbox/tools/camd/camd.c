@@ -20,7 +20,6 @@
  */
 
 #include <fcntl.h>
-#include <ost/ca.h>
 #include <pthread.h>
 #include <stdio.h>
 #include <stdlib.h>
@@ -30,6 +29,8 @@
 #include <sys/types.h>
 #include <sys/un.h>
 #include <unistd.h>
+
+#include <linux/dvb/ca.h>
 
 #include "camd.h"
 #include "cat.h"
@@ -806,9 +807,9 @@ int main (int argc, char ** argv)
 		return -1;
 	}
 
-	if ((camfd = open("/dev/dvb/card0/ca0", O_RDWR)) < 0)
+	if ((camfd = open("/dev/dvb/adapter0/ca0", O_RDWR)) < 0)
 	{
-		perror("[camd] /dev/dvb/card0/ca0");
+		perror("[camd] /dev/dvb/adapter0/ca0");
 		return -1;
 	}
 
