@@ -496,6 +496,7 @@ int CNeutrinoApp::loadSetup()
 	g_settings.lcd_contrast = configfile.getInt32("lcd_contrast", 0x0F);
 	g_settings.lcd_power = configfile.getInt32("lcd_power", 0x01);
 	g_settings.lcd_inverse = configfile.getInt32("lcd_inverse", 0x00);
+	g_settings.lcd_show_volume = configfile.getInt32("lcd_show_volume", 1);
 
 	strcpy( g_settings.picviewer_slide_time, configfile.getString( "picviewer_slide_time", "10" ).c_str() );
 	g_settings.picviewer_scaling = configfile.getInt32("picviewer_scaling", 1 /*(int)CPictureViewer::SIMPLE*/);
@@ -721,6 +722,7 @@ void CNeutrinoApp::saveSetup()
 	configfile.setInt32( "lcd_contrast", g_settings.lcd_contrast );
 	configfile.setInt32( "lcd_power", g_settings.lcd_power );
 	configfile.setInt32( "lcd_inverse", g_settings.lcd_inverse );
+	configfile.setInt32( "lcd_show_volume", g_settings.lcd_show_volume );
 
 	configfile.setString( "picviewer_slide_time", g_settings.picviewer_slide_time );
 	configfile.setInt32( "picviewer_scaling", g_settings.picviewer_scaling );
@@ -1803,6 +1805,12 @@ void CNeutrinoApp::InitLcdSettings(CMenuWidget &lcdSettings)
 
 	lcdSettings.addItem( new CMenuSeparator(CMenuSeparator::LINE) );
 	lcdSettings.addItem( new CMenuForwarder("lcdmenu.lcdcontroler", true, "", lcdsliders ));
+
+	lcdSettings.addItem( new CMenuSeparator(CMenuSeparator::LINE) );
+	oj = new CMenuOptionChooser("lcdmenu.statusline", &g_settings.lcd_show_volume, true );
+	oj->addOption(0, "lcdmenu.statusline.playtime");
+	oj->addOption(1, "lcdmenu.statusline.volume");
+	lcdSettings.addItem( oj );
 }
 
 void CNeutrinoApp::InitKeySettings(CMenuWidget &keySettings)
