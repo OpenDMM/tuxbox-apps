@@ -479,6 +479,12 @@ int CNeutrinoApp::loadSetup()
 		scanSettings.useDefaults();
 	}
 
+	if(!g_Timer->loadTimerEvents(CONFIGDIR "/neutrino.timerevents.conf"))
+	{
+		dprintf(DEBUG_NORMAL,"error while loading timerevents, using defaults!\n");
+	}
+
+
 	return erg;
 }
 
@@ -489,6 +495,13 @@ int CNeutrinoApp::loadSetup()
 **************************************************************************************/
 void CNeutrinoApp::saveSetup()
 {
+
+	if(!g_Timer->saveTimerEvents(CONFIGDIR "/neutrino.timerevents.conf"))
+	{
+		dprintf(DEBUG_NORMAL,"error while saving timerevents!\n");
+	}
+
+
 	if(!scanSettings.saveSettings(scanSettingsFile))
 	{
 		dprintf(DEBUG_NORMAL, "error while saveing scan-settings!\n");
