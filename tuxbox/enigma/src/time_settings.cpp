@@ -22,10 +22,11 @@
 
 #include <time_settings.h>
 #include <setup_timezone.h>
-#include <enigma_main.h>
+#include <time_correction.h>
 #include <timer.h>
 #include <lib/dvb/edvb.h>
 #include <lib/dvb/dvbservice.h>
+#include <lib/gui/emessage.h>
 
 eTimeSettings::eTimeSettings()
 	:eSetupWindow(_("Time Settings"), 5, 350)
