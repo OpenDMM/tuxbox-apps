@@ -91,16 +91,16 @@ class CBouquetManager
 		{
 			private:
 				CBouquetManager* Owner;
+				bool tv;           // true -> tvChannelIterator, false -> radioChannelIterator
 				unsigned int b;
 				int c;
-				bool tv;           // true -> tvChannelIterator, false -> radioChannelIterator
 				ChannelList* getBouquet() { return (tv ? &(Owner->Bouquets[b]->tvChannels) : &(Owner->Bouquets[b]->radioChannels)); };
 			public:
-				ChannelIterator(CBouquetManager* owner, bool TV=true) { Owner = owner; b = 0; c = -1; tv = TV; (*this)++; };
+				ChannelIterator(CBouquetManager* owner, const bool TV = true);
 				ChannelIterator operator ++(int);
 				CZapitChannel* operator *();
 				ChannelIterator FindChannelNr(const unsigned int channel);
-				bool EndOfChannels() { return (c == -2) && (b == 0); };
+				bool EndOfChannels() { return (c == -2); };
 		};
 
 		ChannelIterator tvChannelsBegin() { return ChannelIterator(this, true); };
