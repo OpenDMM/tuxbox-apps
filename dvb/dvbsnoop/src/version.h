@@ -15,6 +15,7 @@ $Id$
  * Version set in configure.ac
  */
 #define DVBSNOOP_VERSION     PACKAGE_VERSION
+#define DVBSNOOP_PROG_VERSION    "dvbsnoop V"PACKAGE_VERSION
 
 
 #define DVBSNOOP_URL         "http://dvbsnoop.sourceforge.net/"
