@@ -890,7 +890,7 @@ bool parse_command(CBasicMessage::Header &rmsg, int connfd)
 	{
 		CZapitMessages::commandInt msg;
 		CBasicServer::receive_data(connfd, &msg, sizeof(msg));
-		audioDecoder->selectChannel((audioChannelSelect_t) msg.val);
+		audioDecoder->setChannel((audio_channel_select_t) msg.val);
 		break;
 	}
 
