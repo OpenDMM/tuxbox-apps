@@ -73,10 +73,10 @@ DMX::DMX(const unsigned char p, const unsigned short bufferSizeInKB)
 
 DMX::~DMX()
 {
-	closefd();
 	pthread_mutex_destroy(&pauselock);
 	pthread_mutex_destroy(&start_stop_mutex);
 	pthread_cond_destroy (&change_cond);
+	closefd();
 }
 
 ssize_t DMX::read(char * const buf, const size_t buflength, const unsigned timeoutMInSeconds)
