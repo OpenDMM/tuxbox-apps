@@ -231,22 +231,28 @@ bool CControlAPI::GetDateCGI(CWebserverRequest *request)
 
 bool CControlAPI::GetTimeCGI(CWebserverRequest *request)
 {
+time_t now = time(NULL);
+
 	request->SendPlainHeader("text/plain");          // Standard httpd header senden
 	if (request->ParameterList.size()==0)
 	{	//paramlos
 		char *timestr = new char[50];
-		time_t jetzt = time(NULL);
-		struct tm *tm = localtime(&jetzt);
+		struct tm *tm = localtime(&now);
 		strftime(timestr, 50, "%H:%M:%S\n", tm );	// aktuelles datum ausgeben
 		request->SocketWrite(timestr);
 		delete[] timestr;
 		return true;
 	}
-	else
+
+	if( request->ParameterList["1"].compare("rawtime") == 0)
 	{
-		request->SendError();
-		return false;
+		request->printf("%ld\n",now);
+		return true;
 	}
+
+	// if nothing matches
+	request->SendError();
+	return false;
 }
 //-------------------------------------------------------------------------
 
