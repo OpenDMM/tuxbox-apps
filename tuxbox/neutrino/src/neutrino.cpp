@@ -2195,7 +2195,12 @@ void CNeutrinoApp::ExitRun()
 	frameBuffer->loadPal("shutdown.pal");
 
 	saveSetup();
-	g_Timer->setBoxWakeupTime (g_Timer->getNextTimerEventStart() -120);
+	{ time_t   nextTimerEvent;
+	   nextTimerEvent = g_Timer->getNextTimerEventStart();
+	   if (nextTimerEvent) {
+		   g_Timer->setBoxWakeupTime (nextTimerEvent-120);
+	   }
+	}
 	g_Controld->shutdown();
 	sleep(55555);
 }
