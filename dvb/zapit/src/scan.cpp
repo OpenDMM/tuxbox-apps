@@ -272,7 +272,7 @@ void write_xml_footer(FILE *fd)
 	fclose(fd);
 }
 
-void write_bouquets(char * providerName)
+void write_bouquets(const char * const providerName)
 {
 	if (bouquetMode == CZapitClient::BM_DELETEBOUQUETS) 
 	{

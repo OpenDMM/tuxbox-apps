@@ -96,7 +96,7 @@ class CBouquetManager
 		BouquetList storedBouquets;
 
 		void saveBouquets(void);
-		void saveBouquets(CZapitClient::bouquetMode bouquetMode, char * providerName);
+		void saveBouquets(const CZapitClient::bouquetMode bouquetMode, const char * const providerName);
 		void loadBouquets(bool ignoreBouquetFile = false);
 		void storeBouquets();
 		void restoreBouquets();
