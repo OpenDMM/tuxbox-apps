@@ -75,7 +75,7 @@ const bool CConfigFile::loadConfig(const std::string filename)
 	}
 	else
 	{
-		std::cerr << "[ConfigFile] Unable to open file " << filename << "for reading." << std::endl;
+		std::cerr << "[ConfigFile] Unable to open file " << filename << " for reading." << std::endl;
 		return false;
 	}
 }
@@ -96,7 +96,7 @@ const bool CConfigFile::saveConfig(const std::string filename)
 	}
 	else
 	{
-		std::cerr << "[ConfigFile] Unable to open file " << filename << "for writing." << std::endl;
+		std::cerr << "[ConfigFile] Unable to open file " << filename << " for writing." << std::endl;
 		return false;
 	}
 }
