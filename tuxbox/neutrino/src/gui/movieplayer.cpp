@@ -1137,6 +1137,7 @@ PlayFileThread (void *filename)
 	fileposition = 0;
 	if (isTS && !failed)
 	{
+		int mincache_counter = 0;
 		while ((r = read (fd, buf, cache)) > 0 && playstate >= CMoviePlayerGui::PLAY)
 		{
 			done = 0;
@@ -1153,8 +1154,14 @@ PlayFileThread (void *filename)
 			case CMoviePlayerGui::FF:
 			case CMoviePlayerGui::REW:
 				ioctl (dmxa, DMX_STOP);
-				lseek (fd, cache * speed, SEEK_CUR);
-				fileposition += cache * speed;
+                if (mincache_counter == 0) {
+                    lseek (fd, cache * speed, SEEK_CUR);
+                    fileposition += cache * speed;
+                }
+                mincache_counter ++;
+                if (mincache_counter == 2) {
+                    mincache_counter = 0;
+                }
 				break;
 			case CMoviePlayerGui::SOFTRESET:
 				ioctl (vdec, VIDEO_STOP);
