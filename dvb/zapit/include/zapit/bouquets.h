@@ -82,7 +82,7 @@ class CBouquetManager
 	private:
 		CBouquet* remainChannels;
 		void makeRemainingChannelsBouquet(unsigned int tvChanNr, unsigned int radioChanNr, string strTitle);
-		void parseBouquetsXml(const XMLTreeNode *root, int &nChNrRadio, int &nChNrTv);
+		void parseBouquetsXml(const XMLTreeNode *root, int &nChNrTv, int &nChNrRadio);
 		string convertForXML( string s);
 		void storeBouquets();
 	public:
