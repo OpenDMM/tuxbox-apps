@@ -558,7 +558,7 @@ int ePartitionCheck::eventHandler( const eWidgetEvent &e )
 					eDebug("reiserfsck opened");
 					CONNECT( fsck->dataAvail, ePartitionCheck::getData );
 					CONNECT( fsck->appClosed, ePartitionCheck::fsckClosed );
-					fsck->write("Yes\n");
+					fsck->write("Yes\n",4);
 				}
 			}
 			else
@@ -618,9 +618,9 @@ void ePartitionCheck::getData( eString str )
 {
 	str.removeChars('\x8');
 	if ( str.find("<y>") != eString::npos )
-		fsck->write("y");
+		fsck->write("y",1);
 	else if ( str.find("[N/Yes]") != eString::npos )
-		fsck->write("Yes");
+		fsck->write("Yes",3);
 
 	lState->setText(str);
 }
