@@ -543,6 +543,13 @@ bool parse_command(CBasicMessage::Header &rmsg, int connfd)
 		break;
 	}
 	
+	case CZapitMessages::CMD_GET_CURRENT_SATELLITE_POSITION:
+	{
+		int32_t currentSatellitePosition = frontend->getCurrentSatellitePosition();
+		CBasicServer::send_data(connfd, &currentSatellitePosition, sizeof(currentSatellitePosition));
+		break;
+	}
+	
 	case CZapitMessages::CMD_SET_AUDIOCHAN:
 	{
 		CZapitMessages::commandSetAudioChannel msgSetAudioChannel;
