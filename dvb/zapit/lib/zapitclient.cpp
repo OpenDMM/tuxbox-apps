@@ -62,11 +62,12 @@ void CZapitClient::send(const unsigned char command, char* data = NULL, const un
 /***********************************************/
 
 /* zaps to channel of specified bouquet */
+/* exception: bouquets are numbered starting at 0 in this routine! */
 void CZapitClient::zapTo(const unsigned int bouquet, const unsigned int channel)
 {
 	CZapitMessages::commandZapto msg;
 
-	msg.bouquet = bouquet - 1;
+	msg.bouquet = bouquet;
 	msg.channel = channel - 1;
 
 	send(CZapitMessages::CMD_ZAPTO, (char*)&msg, sizeof(msg));
