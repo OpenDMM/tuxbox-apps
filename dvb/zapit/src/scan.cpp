@@ -306,12 +306,14 @@ void *start_scanthread(void *param)
 
 	char providerName[32];
 	char * type;
-
+	
+	
 	uint8_t diseqc_pos = 0;
 	uint8_t polarization = 0;
 
 	bool satfeed = false;
 
+	uint processed_transponders = 0;
 	scanBouquetManager = new CBouquetManager();
 
 	curr_sat = 0;
@@ -414,6 +416,9 @@ void *start_scanthread(void *param)
 
 			/* next transponder */
 			transponder = transponder->xmlNextNode;
+			/* msg to neutrino */
+			processed_transponders++;
+			eventServer->sendEvent(CZapitClient::EVT_SCAN_REPORT_NUM_SCANNED_TRANSPONDERS, CEventServer::INITID_ZAPIT, &processed_transponders,sizeof(processed_transponders));
 		}
 
 		/* 
