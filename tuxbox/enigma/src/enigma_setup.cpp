@@ -41,7 +41,7 @@
 #include <lib/dvb/edvb.h>
 #include <lib/gui/eskin.h>
 #include <lib/gui/elabel.h>
-#include <tuxbox/tuxbox.h>
+#include <libtuxbox.h>
 #include "upgrade.h"
 
 eZapSetup::eZapSetup()
