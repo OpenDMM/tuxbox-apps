@@ -51,6 +51,8 @@ class CFrontend
 		FrontendInfo *info;
 		/* current tuned transport stream id / original network id */
 		uint32_t currentTsidOnid;
+		/* current tuned satellite position / transport stream id / original network id */
+		uint64_t currentSposTsidOnid;
 		/* current tuned frequency */
 		uint32_t currentFrequency;
 		/* current 22kHz tone mode */
@@ -125,6 +127,7 @@ class CFrontend
 		const diseqc_t getDiseqcType()		{ return diseqcType; }
 		const bool isInitialized()		{ return initialized; }
 		const uint32_t getTsidOnid()		{ return currentTsidOnid; }
+		const uint64_t getSposTsidOnid()	{ return currentSposTsidOnid; }
 
 		void setLnbOffset(bool high, uint8_t index, int32_t offset)
 		{
