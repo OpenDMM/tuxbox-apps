@@ -36,6 +36,9 @@ $Id$
 
 History:
  $Log$
+ Revision 1.17  2002/02/26 17:24:16  field
+ Key-Handling weiter umgestellt EIN/AUS= KAPUTT!
+
  Revision 1.16  2002/02/25 19:32:26  field
  Events <-> Key-Handling umgestellt! SEHR BETA!
 
@@ -130,15 +133,9 @@ class CRCInput
 		    RC_timeout=-1, RC_nokey=-2
 		};
 
-		enum
-		{
-			MSG_ignore 	= 0x00,
-			MSG_handled	= 0x01,
-			MSG_unhandled= 0x02,
-			MSG_cancel_all= 0x03
-		};
-
 		static const int RC_KeyBoard = 0x4000;
+		static const int RC_Events 	 = 0x80000000;
+		static const int RC_Messages = 0x90000000;
 
 		//only used for plugins (games) !!
 		int getFileHandle()
