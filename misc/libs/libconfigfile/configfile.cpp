@@ -24,6 +24,8 @@
 #include <stdint.h>
 #include "configfile.h"
 
+using namespace std;
+
 CConfigFile::CConfigFile(const char p_delimiter)
 {
 	modifiedFlag = false;
