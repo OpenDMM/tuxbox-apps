@@ -45,9 +45,11 @@ eSystemSettings::eSystemSettings()
 	if ( eSystemInfo::getInstance()->hasRFMod() )
 		CONNECT((new eListBoxEntryMenu(&list, _("UHF Modulator"), eString().sprintf("(%d) %s", ++entry, _("open UHF-Modulator setup")) ))->selected, eSystemSettings::uhf_modulator);
 #endif
+#ifndef DISABLE_HDD
 #ifndef DISABLE_FILE
 	if ( eSystemInfo::getInstance()->hasHDD() )
 		CONNECT((new eListBoxEntryMenu(&list, _("Harddisc Setup"), eString().sprintf("(%d) %s", ++entry, _("open harddisc setup")) ))->selected, eSystemSettings::harddisc_setup);
+#endif
 #endif
 #ifdef ENABLE_KEYBOARD
 	if ( eSystemInfo::getInstance()->hasKeyboard() )
