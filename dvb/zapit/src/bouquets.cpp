@@ -35,7 +35,7 @@
 #include <zapit/xmlinterface.h>
 
 extern tallchans allchans;   //  defined in zapit.cpp
-extern CConfigFile * config; //  defined in zapit.cpp
+extern CConfigFile config;   //  defined in zapit.cpp
 
 /**** class CBouquet ********************************************************/
 
@@ -337,7 +337,7 @@ void CBouquetManager::renumServices()
 {
 	deleteBouquet(remainChannels);
 	
-	if (config->getBool("makeRemainingChannelsBouquet", true))
+	if (config.getBool("makeRemainingChannelsBouquet", true))
 	    makeRemainingChannelsBouquet();
 
 	storeBouquets();
