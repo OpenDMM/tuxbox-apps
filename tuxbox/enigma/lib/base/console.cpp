@@ -28,7 +28,7 @@
 #include <signal.h>
 #include <errno.h>
 
-inline int bidirpipe(int pfd[], char *cmd , char *argv[])
+int bidirpipe(int pfd[], char *cmd , char *argv[])
 {
 	int pfdin[2];  /* from child to parent */
 	int pfdout[2]; /* from parent to child */
