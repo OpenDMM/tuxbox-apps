@@ -22,7 +22,7 @@
 #ifndef __descriptors_h__
 #define __descriptors_h__
 
-#include <stdint.h>
+#include <types.h>
 
 uint8_t generic_descriptor (uint8_t *buffer);
 uint8_t video_stream_descriptor (uint8_t *buffer);
@@ -60,7 +60,7 @@ uint8_t cable_delivery_system_descriptor (uint8_t *buffer, uint16_t transport_st
 uint8_t VBI_data_descriptor (uint8_t *buffer);
 uint8_t VBI_teletext_descriptor (uint8_t *buffer);
 uint8_t bouquet_name_descriptor (uint8_t *buffer);
-uint8_t service_descriptor (uint8_t *buffer, uint16_t service_id, uint16_t transport_stream_id, uint16_t original_network_id);
+uint8_t service_descriptor (uint8_t *buffer, const t_service_id service_id, const t_transport_stream_id transport_stream_id, const t_original_network_id original_network_id, const uint8_t DiSEqC);
 uint8_t country_availability_descriptor (uint8_t *buffer);
 uint8_t linkage_descriptor (uint8_t *buffer);
 uint8_t NVOD_reference_descriptor (uint8_t *buffer);

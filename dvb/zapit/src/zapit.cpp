@@ -543,6 +543,7 @@ int start_scan ()
 	}
 
 	transponders.clear();
+	allchans.clear();
 	found_transponders = 0;
 	found_channels = 0;
 

@@ -22,6 +22,8 @@
 #ifndef __sdt_h__
 #define __sdt_h__
 
+#include <types.h>
+
 enum service_type_e
 {
 	RESERVED,
@@ -48,7 +50,7 @@ struct sdt_generic_descriptor {
         u_char  descriptor_length               : 8;
 };
 
-int parse_sdt ();
+int parse_sdt(const uint8_t DiSEqC);
 unsigned int get_sdt_TsidOnid ();
 
 #endif /* __sdt_h__ */
