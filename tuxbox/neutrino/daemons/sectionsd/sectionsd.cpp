@@ -23,6 +23,9 @@
 //    Foundation, Inc., 675 Mass Ave, Cambridge, MA 02139, USA.
 //
 //  $Log$
+//  Revision 1.125  2002/05/04 00:14:51  rasc
+//  -- default cache 21 days, processor load should be no problem
+//
 //  Revision 1.124  2002/04/27 10:48:07  field
 //  Geschindigkeit gefixt
 //
@@ -424,7 +427,8 @@
 #define CHECK_RESTART_DMX_AFTER_TIMEOUTS 3
 
 // Wieviele Sekunden EPG gecached werden sollen
-static long secondsToCache=4*24*60L*60L; // 4 Tage - weniger Prozessorlast?!
+//static long secondsToCache=4*24*60L*60L; // 4 Tage - weniger Prozessorlast?!
+static long secondsToCache=21*24*60L*60L; // 21 Tage - Prozessorlast <3% (rasc)
 // Ab wann ein Event als alt gilt (in Sekunden)
 static long oldEventsAre=60*60L; // 1h
 static int debug=0;
