@@ -20,6 +20,9 @@
  * Foundation, Inc., 59 Temple Place - Suite 330, Boston, MA  02111-1307, USA.
  *
  * $Log$
+ * Revision 1.12  2001/12/15 12:49:21  obi
+ * do not protect any entry with pin by default
+ *
  * Revision 1.11  2001/12/14 16:57:13  obi
  * power off after three pin failures
  *
@@ -83,7 +86,7 @@ CLCDMenu::CLCDMenu()
 	addEntry("Lcars");
 	addEntry("Maintenance");
 	config->setStringVector("menu_items", entries);
-	addPinProtection(3);
+	//addPinProtection(3);
 	config->setIntVector("pin_protect", pinEntries);
     }
 
