@@ -32,6 +32,9 @@
 	Foundation, Inc., 675 Mass Ave, Cambridge, MA 02139, USA.
 
   $Log$
+  Revision 1.100  2001/12/15 13:52:22  obi
+  moved configuation files to CONFIGDIR
+
   Revision 1.99  2001/12/14 16:56:42  faralla
   better bouquet-key handling
 
@@ -360,7 +363,7 @@ CNeutrinoApp::CNeutrinoApp()
 	g_fontRenderer = new fontRenderClass;
 	SetupFrameBuffer();
 
-	settingsFile = "/var/neutrino.conf";
+	settingsFile = CONFIGDIR "/neutrino.conf";
 
 	mode = 0;
 	channelList = NULL;
