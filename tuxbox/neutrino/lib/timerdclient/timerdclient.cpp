@@ -36,11 +36,7 @@
 //#include <netdb.h>
 //#include <arpa/inet.h>
 
-
-#include "timerdclient.h"
-#include "timerdMsg.h"
-#include "../timermanager.h"
-#include "../debug.h"
+#include <timerdclient.h>
 
 
 CTimerdClient::CTimerdClient()

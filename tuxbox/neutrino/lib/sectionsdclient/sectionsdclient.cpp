@@ -20,6 +20,11 @@
   Foundation, Inc., 675 Mass Ave, Cambridge, MA 02139, USA.
 
   $Log$
+  Revision 1.22  2002/10/13 05:42:51  woglinde
+
+
+  2nd round of moving headers in lib/include
+
   Revision 1.21  2002/10/07 10:46:09  thegoodguy
   Enhancement in Clientlib (setEventsAreOldInMinutes) & code cleanup
 
@@ -79,7 +84,10 @@
 
 */
 
-#include "sectionsdclient.h"
+
+#include <sectionsdclient.h>
+#include <eventserver.h>
+
 
 CSectionsdClient::CSectionsdClient()
 {
