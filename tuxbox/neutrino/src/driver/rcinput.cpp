@@ -36,6 +36,9 @@
 
 History:
  $Log$
+ Revision 1.15  2001/12/25 03:28:42  McClean
+ better pushback-handling
+
  Revision 1.14  2001/11/26 02:34:04  McClean
  include (.../../stuff) changed - correct unix-formated files now
 
@@ -98,6 +101,18 @@ CRCInput::~CRCInput()
 {
 	if (fd>=0)
 		close(fd);
+}
+
+/**************************************************************************
+*       isNumeric - test if key is 0..9
+*
+**************************************************************************/
+bool CRCInput::isNumeric(int key)
+{
+	if( (key>=RC_0) && (key<=RC_9))
+		return true;
+	else
+		return false;
 }
 
 /**************************************************************************
