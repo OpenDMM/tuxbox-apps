@@ -487,9 +487,22 @@ int CFrontend::setParameters(struct dvb_frontend_parameters *feparams, const uin
 	 * are set to auto inversion will try without first
 	 */
 
-	bool auto_inversion = (feparams->inversion == INVERSION_AUTO);
-	if ((!(info.caps & FE_CAN_INVERSION_AUTO)) && (auto_inversion))
-		feparams->inversion = INVERSION_OFF;
+	bool sw_auto_inversion;
+
+	if ((feparams->inversion == INVERSION_AUTO) && (!(info.caps & FE_CAN_INVERSION_AUTO)))
+		sw_auto_inversion = true;
+	else
+		sw_auto_inversion = false;
+
+
+
+	/*
+	 * frontends which can not handle auto modulation detection
+	 * are set to QAM64 which is common in Germany.
+	 */
+
+	if ((feparams->u.qam.modulation == QAM_AUTO) && (!(info.caps & FE_CAN_QAM_AUTO)))
+		feparams->u.qam.modulation = QAM_64;
 
 
 
@@ -505,12 +518,9 @@ int CFrontend::setParameters(struct dvb_frontend_parameters *feparams, const uin
 		 * software auto inversion for stupid frontends
 		 */
 
-		if ((!(info.caps & FE_CAN_INVERSION_AUTO))
-			&& (auto_inversion)
-			&& (feparams->inversion == INVERSION_OFF)
-			&& ((!tuned) || (event.parameters.frequency - feparams->frequency))) {
-				feparams->inversion = INVERSION_ON;
-				continue;
+		if ((!tuned) && (sw_auto_inversion) && (feparams->inversion == INVERSION_OFF)) {
+			feparams->inversion = INVERSION_ON;
+			continue;
 		}
 
 	} while (0);
