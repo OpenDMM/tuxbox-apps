@@ -80,7 +80,7 @@ static int dvrfd;
 
 static unsigned char demuxfd_count = 0;
 
-static unsigned char exit_flag = 0;
+static unsigned char exit_flag;
 static unsigned char busy_count = 0;
 
 static pthread_t demux_thread[MAXPIDS];
@@ -372,6 +372,8 @@ stream2file_error_msg_t start_recording(const char * const filename,
 		return STREAM2FILE_BUSY; // other thread is running
 
 	busy_count++;
+
+	exit_flag = 0;
 
 	strcpy(myfilename, filename);
 
