@@ -22,10 +22,12 @@
 
 #include <enigma_info.h>
 
+#include <satfind.h>
 #include <streaminfo.h>
 #include <showbnversion.h>
 
 #include <lib/dvb/edvb.h>
+#include <lib/dvb/frontend.h>
 #include <lib/gui/ewindow.h>
 #include <lib/gui/eskin.h>
 #include <lib/gui/elabel.h>
@@ -37,13 +39,13 @@ eZapInfo::eZapInfo()
 	:eListBoxWindow<eListBoxEntryMenu>(_("Infos"), 8, 220)
 {
 	move(ePoint(150, 136));
-	CONNECT((new eListBoxEntryMenu(&list, _("[back]")))->selected, eZapInfo::sel_close);
-	CONNECT((new eListBoxEntryMenu(&list, _("Streaminfo")))->selected, eZapInfo::sel_streaminfo);
+	CONNECT((new eListBoxEntryMenu(&list, _("[back]"), _("go back to mainmenu")))->selected, eZapInfo::sel_close);
+	CONNECT((new eListBoxEntryMenu(&list, _("Streaminfo"), _("open the Streaminfo")))->selected, eZapInfo::sel_streaminfo);
 	if ( eDVB::getInstance()->getInfo("mID") != "05" )
-		CONNECT((new eListBoxEntryMenu(&list, _("Show BN version")))->selected, eZapInfo::sel_bnversion);
+		CONNECT((new eListBoxEntryMenu(&list, _("Show BN version"),_("show the Current Version of the Betanova FW")))->selected, eZapInfo::sel_bnversion);
 
-	CONNECT((new eListBoxEntryMenu(&list, _("About...")))->selected, eZapInfo::sel_about);
-	
+	CONNECT((new eListBoxEntryMenu(&list, _("About..."), _("open the about dialog")))->selected, eZapInfo::sel_about);
+	CONNECT((new eListBoxEntryMenu(&list, _("Satfind"), _("shows the satfinder")))->selected, eZapInfo::sel_satfind);	
 }
 
 eZapInfo::~eZapInfo()
@@ -53,6 +55,16 @@ eZapInfo::~eZapInfo()
 void eZapInfo::sel_close()
 {
 	close(0);
+}
+
+void eZapInfo::sel_satfind()
+{
+	eSatfind s(eFrontend::getInstance());
+	hide();
+	s.show();
+	s.exec();
+	s.hide();
+	show();
 }
 
 void eZapInfo::sel_streaminfo()
