@@ -118,7 +118,7 @@ int CBookmarkManager::createBookmark (std::string name, std::string url, std::st
 }
 
 int CBookmarkManager::createBookmark (std::string url, std::string time) {
-    char *bookmarkname="";
+    char bookmarkname[26]="";
     CStringInputSMS * bookmarkname_input = new CStringInputSMS("movieplayer.bookmarkname", bookmarkname, 25, "movieplayer.bookmarkname_hint1", "movieplayer.bookmarkname_hint1", "abcdefghijklmnopqrstuvwxyz0123456789-_");
     bookmarkname_input->exec(NULL, "");
     std::string *namestring = new std::string(bookmarkname);
