@@ -624,6 +624,7 @@ typedef enum
 	LOCALE_RECORDINGMENU_STOPPLAYBACK                     ,
 	LOCALE_RECORDINGMENU_STOPSECTIONSD                    ,
 	LOCALE_RECORDINGMENU_STREAM_ALL_AUDIO_PIDS            ,
+	LOCALE_RECORDINGMENU_USE_O_SYNC                       ,
 	LOCALE_RECORDINGMENU_VCR                              ,
 //	LOCALE_RECORDINGMENU_VCR_DEVICENAME                   , /* FIXME: unused */
 	LOCALE_RECORDTIMER_ANNOUNCE                           ,

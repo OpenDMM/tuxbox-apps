@@ -615,6 +615,7 @@ const char * locale_real_names[] =
 	"recordingmenu.stopplayback",
 	"recordingmenu.stopsectionsd",
 	"recordingmenu.stream_all_audio_pids",
+	"recordingmenu.use_o_sync",
 	"recordingmenu.vcr",
 	"recordtimer.announce",
 	"repeatblocker.hint_1",
