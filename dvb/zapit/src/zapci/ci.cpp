@@ -20,7 +20,7 @@
  */
 
 #include <zapit/ci.h>
-#include <connection/messagetools.h>
+#include <messagetools.h>
 
 /*
  * conditional access descriptors

@@ -24,7 +24,7 @@
 #define __zapit_cam_h__
 
 #include "ci.h"
-#include <connection/basicclient.h>
+#include <basicclient.h>
 
 class CCam : public CBasicClient
 {

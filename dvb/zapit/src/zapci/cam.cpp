@@ -22,8 +22,8 @@
 
 /* zapit */
 #include <zapit/cam.h>
-#include <zapit/settings.h>           /* CAMD_UDS_NAME         */
-#include <connection/messagetools.h>  /* get_length_field_size */
+#include <zapit/settings.h> /* CAMD_UDS_NAME         */
+#include <messagetools.h>   /* get_length_field_size */
 
 
 const unsigned char CCam::getVersion(void) const
