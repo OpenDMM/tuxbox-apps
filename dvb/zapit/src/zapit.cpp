@@ -68,7 +68,7 @@ CVideo * video = NULL;
 /* the current channel */
 CZapitChannel * channel = NULL;
 /* the transponder scan xml input */
-XMLTreeParser * scanInputParser = NULL;
+xmlDocPtr scanInputParser = NULL;
 /* the bouquet manager */
 CBouquetManager * bouquetManager = NULL;
 
@@ -664,12 +664,12 @@ bool parse_command(CBasicMessage::Header &rmsg, int connfd)
 		}
 
 		CZapitClient::responseGetSatelliteList msgResponseGetSatelliteList;
-		XMLTreeNode *search = scanInputParser->RootNode()->GetChild();
+		xmlNodePtr search = scanInputParser->RootNode()->xmlChildrenNode;
 
 		while (search) {
 			strncpy(msgResponseGetSatelliteList.satName, search->GetAttributeValue("name"), sizeof(msgResponseGetSatelliteList.satName));
 			send(connfd, &msgResponseGetSatelliteList, sizeof(msgResponseGetSatelliteList), 0);
-			search = search->GetNext();
+			search = search->xmlNextNode;
 		}
 		break;
 	}

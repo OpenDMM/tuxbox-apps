@@ -84,10 +84,10 @@ std::string convert_to_UTF8(const std::string s)
 	return r;
 }
 
-XMLTreeParser* parseXmlFile(const std::string filename)
+xmlDocPtr parseXmlFile(const std::string filename)
 {
 	char buffer[2048];
-	XMLTreeParser* tree_parser;
+	xmlDocPtr tree_parser;
 	size_t done;
 	size_t length;
 	FILE* xml_file;
@@ -100,9 +100,7 @@ XMLTreeParser* parseXmlFile(const std::string filename)
 		return NULL;
 	}
 
-//	tree_parser = new XMLTreeParser("ISO-8859-1"); // old encoding
 	tree_parser = new XMLTreeParser(NULL);
-//	tree_parser = new XMLTreeParser("UTF-8");      // new encoding
 
 	do
 	{

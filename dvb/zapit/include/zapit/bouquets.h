@@ -63,7 +63,7 @@ class CBouquetManager
 	private:
 		CBouquet* remainChannels;
 		void makeRemainingChannelsBouquet();
-		void parseBouquetsXml(const XMLTreeNode *root);
+		void parseBouquetsXml(const xmlNodePtr root);
 		void storeBouquets();
 	public:
 		CBouquetManager() { remainChannels = NULL; };
