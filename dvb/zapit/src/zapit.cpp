@@ -1071,6 +1071,19 @@ bool parse_command(CBasicMessage::Header &rmsg, int connfd)
 		break;
 	}
 
+	case CZapitMessages::CMD_GET_FE_SIGNAL:
+	{
+		CZapitClient::responseFESignal response_FEsig;
+
+		response_FEsig.sig = frontend->getSignalStrength();
+		response_FEsig.snr = frontend->getSignalNoiseRatio();
+		response_FEsig.ber = frontend->getBitErrorRate();
+
+		CBasicServer::send_data(connfd, &response_FEsig, sizeof(CZapitClient::responseFESignal));
+		sendAPIDs(connfd);
+		break;
+	}
+
 	case CZapitMessages::CMD_SETSUBSERVICES:
 	{
 		CZapitClient::commandAddSubServices msgAddSubService;

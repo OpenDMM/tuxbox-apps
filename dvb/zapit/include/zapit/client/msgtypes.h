@@ -119,7 +119,9 @@ class CZapitMessages
 			CMD_SEND_MOTOR_COMMAND             = 68,
 
 			CMD_GET_CHANNEL_NAME               = 69,
-			CMD_IS_TV_CHANNEL                  = 70
+			CMD_IS_TV_CHANNEL                  = 70,
+
+			CMD_GET_FE_SIGNAL                  = 71
 		};
 
 	struct commandBoolean
@@ -311,6 +313,7 @@ class CZapitMessages
 		uint8_t param1;
 		uint8_t param2;
 	};
+
 
 };
 

@@ -594,6 +594,23 @@ void CZapitClient::setScanBouquetMode(const bouquetMode mode)
 	close_connection();
 }
 
+//
+// -- query Frontend Signal parameters
+//
+void CZapitClient::getFESignal (struct responseFESignal &f)
+{
+	struct responseFESignal rsignal;
+
+	send(CZapitMessages::CMD_GET_FE_SIGNAL);
+	CBasicClient::receive_data((char *) &rsignal, sizeof(rsignal));
+
+	f.sig = rsignal.sig;
+	f.snr = rsignal.snr;
+	f.ber = rsignal.ber;
+
+	close_connection();
+}
+
 
 /***********************************************/
 /*                                             */
