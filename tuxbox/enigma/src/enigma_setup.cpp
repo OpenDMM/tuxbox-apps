@@ -31,6 +31,7 @@
 #include <setup_lcd.h>
 #include <setup_rc.h>
 #include <setup_harddisk.h>
+#include <enigma_ci.h>
 #include <enigma_scan.h>
 #include <setupskin.h>
 #include <lib/gui/emessage.h>
@@ -40,10 +41,10 @@
 #include <lib/gui/elabel.h>
 
 eZapSetup::eZapSetup()
-	:eListBoxWindow<eListBoxEntryMenu>(_("Setup"), 11, 220, true)
+	:eListBoxWindow<eListBoxEntryMenu>(_("Setup"), 12, 220, true)
 {
 	eDebug("statusbar = %p", statusbar);
-	move(ePoint(150, 116));
+	move(ePoint(150, 90)); //116
 	CONNECT((new eListBoxEntryMenu(&list, _("[back]"), _("back to Mainmenu") ))->selected, eZapSetup::sel_close);
 	CONNECT((new eListBoxEntryMenu(&list, _("Channels..."), _("open channel setup") ))->selected, eZapSetup::sel_channels);
 	CONNECT((new eListBoxEntryMenu(&list, _("Network..."), _("open network setup") ))->selected, eZapSetup::sel_network);
@@ -57,6 +58,7 @@ eZapSetup::eZapSetup()
 	if (eDVB::getInstance()->getInfo("mID") == "05")
 	{
 		CONNECT((new eListBoxEntryMenu(&list, _("Harddisk..."), _("initialize harddisc") ))->selected, eZapSetup::sel_harddisk);
+		CONNECT((new eListBoxEntryMenu(&list, _("Common Interface..."), _("initialize harddisc") ))->selected, eZapSetup::sel_ci);
 	}
 //	CONNECT(list.selchanged, eZapSetup::onSelChanged );
 }
@@ -205,5 +207,16 @@ void eZapSetup::sel_harddisk()
 		setup.exec();
 		setup.hide();
 	}
+	show();
+}
+
+void eZapSetup::sel_ci()
+{
+	hide();
+	enigmaCI ci;
+	ci.setLCD(LCDTitle, LCDElement);
+	ci.show();
+	ci.exec();
+	ci.hide();
 	show();
 }
