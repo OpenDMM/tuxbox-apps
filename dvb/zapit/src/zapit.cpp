@@ -282,11 +282,8 @@ int zapit (uint32_t onid_sid, bool in_nvod)
 	{
 		current_is_nvod = true;
 
-		if (nvodchannels.count(onid_sid) > 0)
-		{
-			cit = nvodchannels.find(onid_sid);
-		}
-		else
+		cit = nvodchannels.find(onid_sid);
+		if (cit == nvodchannels.end())
 		{
 			debug("[zapit] onid_sid %08x not found\n", onid_sid);
 			return -1;
@@ -298,11 +295,8 @@ int zapit (uint32_t onid_sid, bool in_nvod)
 
 		if (currentMode & RADIO_MODE)
 		{
-			if (allchans_radio.count(onid_sid) > 0)
-			{
-				cit = allchans_radio.find(onid_sid);
-			}
-			else
+			cit = allchans_radio.find(onid_sid);
+			if (cit == allchans_radio.end())
 			{
 				debug("[zapit] onid_sid %08x not found\n", onid_sid);
 				return -1;
@@ -310,16 +304,13 @@ int zapit (uint32_t onid_sid, bool in_nvod)
 		}
 		else
 		{
-			if (allchans_tv.count(onid_sid) > 0)
-			{
-				cit = allchans_tv.find(onid_sid);
-				nvodname = cit->second.getName();
-			}
-			else
+			cit = allchans_tv.find(onid_sid);
+			if (cit == allchans_tv.end())
 			{
 				debug("[zapit] onid_sid %08x not found\n", onid_sid);
 				return -1;
 			}
+			nvodname = cit->second.getName();
 		}
 	}
 
