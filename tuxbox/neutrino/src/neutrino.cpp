@@ -32,6 +32,9 @@
 	Foundation, Inc., 675 Mass Ave, Cambridge, MA 02139, USA.
 
   $Log$
+  Revision 1.144  2002/01/30 10:34:25  McClean
+  remove ifdefs
+
   Revision 1.143  2002/01/30 10:16:59  McClean
   move bouquet-edit to service
 
@@ -1256,9 +1259,7 @@ void CNeutrinoApp::InitServiceSettings(CMenuWidget &service)
 	CMenuWidget* TSScan = new CMenuWidget("servicemenu.scants", "mainmenue.raw");
 	TSScan->addItem( new CMenuForwarder("menu.back") );
 	TSScan->addItem( new CMenuSeparator(CMenuSeparator::LINE) );
-	#ifdef USEBOUQUETEDDI
-		service.addItem( new CMenuForwarder("bouqueteditor.name", true, "", new CBEBouquetWidget()));
-	#endif
+	service.addItem( new CMenuForwarder("bouqueteditor.name", true, "", new CBEBouquetWidget()));
 	CMenuOptionChooser* oj = new CMenuOptionChooser("scants.bouquet", &g_settings.scan_bouquet, true );
 	oj->addOption(256, "scants.bouquet_leave");
 	oj->addOption(512, "scants.bouquet_create");
