@@ -60,6 +60,7 @@ bool CBasicClient::open_connection(const char* socketname)
 	if (connect(sock_fd, (struct sockaddr*) &servaddr, clilen) < 0)
 	{
 		printf("[CBasicClient] connect failed.\n");
+		perror(socketname);
 		close_connection();
 		return false;
 	}
