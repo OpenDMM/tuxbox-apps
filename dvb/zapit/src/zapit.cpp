@@ -66,6 +66,9 @@
   Foundation, Inc., 675 Mass Ave, Cambridge, MA 02139, USA.
   
   $Log$
+  Revision 1.4  2001/09/30 16:49:26  faralla
+  auto-pmt support added
+
   Revision 1.3  2001/09/30 14:14:34  faralla
   nvod-support
 
@@ -863,7 +866,13 @@ else
   if (cit->second.pmt == 0 && cit->second.service_type != 4)
     {
       printf("Trying to find pmt for %04x\n", cit->second.sid);
-      pat(cit->second.onid);
+      if (in_nvod)
+	pat(cit->second.onid,&nvodchannels);
+      else
+	if (Radiomode_on)
+	  pat(cit->second.onid,&allchans_radio);
+	else
+	  pat(cit->second.onid,&allchans_tv);
     }
  
   memset(&parse_pmt_pids,0,sizeof(parse_pmt_pids));
