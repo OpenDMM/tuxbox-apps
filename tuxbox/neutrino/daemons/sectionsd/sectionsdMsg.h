@@ -23,6 +23,9 @@
 //    Foundation, Inc., 675 Mass Ave, Cambridge, MA 02139, USA.
 //
 //  $Log$
+//  Revision 1.2  2001/07/15 11:58:20  fnbrd
+//  Vergangene Zeit in Prozent beim EPG
+//
 //  Revision 1.1  2001/07/15 04:33:10  fnbrd
 //  first release
 //
@@ -42,7 +45,7 @@ struct msgSectionsdResponseHeader {
 
 enum sectionsdCommands {
   actualEPGchannelName=0,
-  eventListTV
+  actualEventListTVshort
 };
 
 //
