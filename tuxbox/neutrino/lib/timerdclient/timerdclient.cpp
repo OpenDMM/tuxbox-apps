@@ -212,7 +212,7 @@ void CTimerdClient::getTimer( CTimerd::responseGetTimer &timer, unsigned timerID
 //-------------------------------------------------------------------------
 
 
-bool CTimerdClient::modifyTimerEvent(int eventid, time_t announcetime, time_t alarmtime, time_t stoptime)
+bool CTimerdClient::modifyTimerEvent(int eventid, time_t announcetime, time_t alarmtime, time_t stoptime, CTimerEvent::CTimerEventRepeat evrepeat)
 {
 	// set new time values for event eventid
 	CTimerd::commandHead msg;
@@ -224,6 +224,7 @@ bool CTimerdClient::modifyTimerEvent(int eventid, time_t announcetime, time_t al
 	msgModifyTimer.announceTime = announcetime;
 	msgModifyTimer.alarmTime = alarmtime;
 	msgModifyTimer.stopTime = stoptime;
+	msgModifyTimer.eventRepeat = evrepeat;
 
 	timerd_connect();
 	send((char*)&msg, sizeof(msg));

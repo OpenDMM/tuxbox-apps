@@ -122,6 +122,7 @@ class CTimerd
 			time_t		announceTime;
 			time_t		alarmTime;
 			time_t		stopTime;
+			CTimerEvent::CTimerEventRepeat	eventRepeat;
 		};
 
 		struct responseGetTimer

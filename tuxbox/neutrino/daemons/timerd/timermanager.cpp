@@ -192,7 +192,7 @@ bool CTimerManager::listEvents(CTimerEventMap &Events)
 		return false;
 }
 
-int CTimerManager::modifyEvent(int eventID, time_t announceTime, time_t alarmTime, time_t stopTime)
+int CTimerManager::modifyEvent(int eventID, time_t announceTime, time_t alarmTime, time_t stopTime, CTimerEvent::CTimerEventRepeat evrepeat)
 {
 	if(events.find(eventID)!=events.end())
 	{
@@ -201,6 +201,7 @@ int CTimerManager::modifyEvent(int eventID, time_t announceTime, time_t alarmTim
 		event->alarmTime = alarmTime;
 		event->stopTime = stopTime;
 		event->eventState = CTimerEvent::TIMERSTATE_SCHEDULED;
+		event->eventRepeat = evrepeat;
 		saveEventsToConfig();
 	}
 	return eventID;
