@@ -3049,6 +3049,7 @@ bool CNeutrinoApp::changeNotify(string OptionName, void *Data)
 **************************************************************************************/
 int main(int argc, char **argv)
 {
+	exit(0);
 	setDebugLevel(DEBUG_NORMAL);
 	dprintf( DEBUG_NORMAL, "NeutrinoNG $Id$\n\n");
 
