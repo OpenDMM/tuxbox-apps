@@ -452,7 +452,7 @@ void CTimerEvent::Reschedule()
 							weekday_arr[6]=((weekdays & 0x20) > 0); //Sa
 							struct tm *t= localtime(&alarmTime);
 							int day;
-							for(day=t->tm_wday+1 ; !weekday_arr[day%7] ; day++){}
+							for(day=1 ; !weekday_arr[(t->tm_wday+day)%7] ; day++){}
 							t->tm_mday+=day;
 						}
 					}
