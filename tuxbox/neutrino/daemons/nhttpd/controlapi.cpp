@@ -665,7 +665,7 @@ void CControlAPI::SendcurrentVAPid(CWebserverRequest* request)
 CZapitClient::responseGetPIDs pids;
 	Parent->Zapit->getPIDS(pids);
 
-	printf("%u\n%u\n", pids.PIDs.vpid, pids.APIDs[0].pid);
+	request->printf("%u\n%u\n", pids.PIDs.vpid, pids.APIDs[0].pid);
 }
 
 //-------------------------------------------------------------------------
