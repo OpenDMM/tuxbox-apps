@@ -123,7 +123,9 @@ public:
 	{
 		int mID=atoi( eDVB::getInstance()->getInfo("mID").c_str());
 		
-		eString translation_info=gettext("");
+		const char *magic="";
+		
+		eString translation_info=gettext(magic);
 		unsigned int i;
 		i=translation_info.find("Language-Team:");
 		if (i != eString::npos)
