@@ -775,7 +775,6 @@ channel_msg load_settings()
 {
 	FILE *channel_settings;
 	channel_msg output_msg;
-	char *buffer;
 
 	memset(&output_msg, 0, sizeof(output_msg));
 
@@ -2187,7 +2186,6 @@ void parse_command()
 
 	else if (rmsg.version == CZapitClient::ACTVERSION)
 	{
-		printf("[zapit] command version 2\n");
 		CZapitClient::responseCmd response;
 		switch( rmsg.cmd)
 		{
