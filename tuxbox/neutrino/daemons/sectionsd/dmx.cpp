@@ -35,6 +35,9 @@
 #include <string>
 
 
+const char DEMUX_DEVICE[] = "/dev/dvb/adapter0/demux0";
+
+
 extern int readNbytes(int fd, char *buf, const size_t n, unsigned timeoutInMSeconds);
 extern void showProfiling(std::string text);
 extern bool timeset;
@@ -189,7 +192,7 @@ char * DMX::getSection(const unsigned timeoutInMSeconds, int &timeouts)
 	if (((initial_header.table_id ^ filters[filter_index].filter) & filters[filter_index].mask) != 0)
 	{
 		delete[] buf;
-		dprintf("[sectionsd] filter 0x%x mask 0x%x -> skip sections for table 0x%x\n", filters[filter_index].filter, filters[filter_index].mask, initial_header.table_id);
+		printf("[sectionsd] filter 0x%x mask 0x%x -> skip sections for table 0x%x\n", filters[filter_index].filter, filters[filter_index].mask, initial_header.table_id);
 		return NULL;
 	}
 	
@@ -219,9 +222,9 @@ int DMX::start(void)
 		return 0;
 	}
 
-	if ((fd = open("/dev/dvb/adapter0/demux0", O_RDWR)) == -1)
+	if ((fd = open(DEMUX_DEVICE, O_RDWR)) == -1)
 	{
-		perror("[sectionsd] DMX: /dev/dvb/adapter0/demux0");
+		perror("[sectionsd] open dmx: ");
 		pthread_mutex_unlock(&start_stop_mutex);
 		return 2;
 	}
@@ -404,9 +407,9 @@ int DMX::change(const int new_filter_index)
 //	if (new_filter_index != filter_index)
 	{
 
-		if ((fd = open("/dev/dvb/adapter0/demux0", O_RDWR)) == -1)
+		if ((fd = open(DEMUX_DEVICE, O_RDWR)) == -1)
 		{
-			perror("[sectionsd] DMX: /dev/dvb/adapter0/demux0");
+			perror("[sectionsd] open dmx: ");
 			pthread_mutex_unlock(&start_stop_mutex);
 			return 2;
 		}
