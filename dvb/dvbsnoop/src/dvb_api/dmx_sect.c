@@ -10,6 +10,9 @@ $Id$
 
 
 $Log$
+Revision 1.5  2003/05/28 01:35:01  obi
+fixed read() return code handling
+
 Revision 1.4  2002/11/01 20:38:40  Jolt
 Changes for the new API
 
@@ -96,10 +99,11 @@ int  doReadSECT (OPTION *opt)
       -- error ?
     */
 
-    if (n <= 0) {
-        fprintf (stderr,"Error on read: %ld\n",n);
-        continue;
-    }
+    if (n == -1)
+	perror("read");
+
+    if (n <= 0)
+	continue;
 
 
 
