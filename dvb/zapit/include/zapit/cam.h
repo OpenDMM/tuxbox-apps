@@ -25,8 +25,8 @@
 #include <ost/ca.h>
 #include <stdint.h>
 
+#include <getservices.h>
 #include "ci.h"
-#include "getservices.h"
 
 class CCam
 {

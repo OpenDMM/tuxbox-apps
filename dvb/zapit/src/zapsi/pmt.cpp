@@ -26,8 +26,9 @@
 #include <sys/stat.h>
 #include <sys/types.h>
 
+#include <zapost/dmx.h>
+
 #include "descriptors.h"
-#include "dmx.h"
 #include "pmt.h"
 
 #define DEMUX_DEV "/dev/ost/demux0"

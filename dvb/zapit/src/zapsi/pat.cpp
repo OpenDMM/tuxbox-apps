@@ -19,13 +19,16 @@
  *
  */
 
-#include "dmx.h"
-#include "pat.h"
-#include "scan.h"
-#include "zapitclient.h"
 #include <sys/types.h>
 #include <sys/stat.h>
 #include <fcntl.h>
+
+#include <clientlib/zapitclient.h>
+#include <zapost/dmx.h>
+
+#include <scan.h>
+
+#include "pat.h"
 
 #define DEMUX_DEV "/dev/ost/demux0"
 

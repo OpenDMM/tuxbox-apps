@@ -2,7 +2,7 @@
  * $Id$
  *
  * (C) 2002 by Andreas Oberritter <obi@tuxbox.org>
- * 
+ *
  * This program is free software; you can redistribute it and/or modify
  * it under the terms of the GNU General Public License as published by
  * the Free Software Foundation; either version 2 of the License, or
@@ -26,7 +26,7 @@
 #include <ost/sec.h>
 #include <stdint.h>
 
-#include "getservices.h"
+#include <getservices.h>
 
 #define MAX_LNBS 4
 

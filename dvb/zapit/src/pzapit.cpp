@@ -24,7 +24,7 @@
 #include <iostream>
 #include <string.h>
 
-#include "clientlib/zapitclient.h"
+#include <clientlib/zapitclient.h>
 
 int usage (std::string basename)
 {

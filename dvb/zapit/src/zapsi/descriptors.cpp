@@ -23,12 +23,14 @@
 #include <map>
 #include <string>
 
+#include <clientlib/zapitclient.h>
+#include <zapost/frontend.h>
+
+#include <bouquets.h>
+#include <scan.h>
+
 #include "descriptors.h"
-#include "frontend.h"
 #include "sdt.h"
-#include "scan.h"
-#include "zapitclient.h"
-#include "bouquets.h"
 
 std::map <uint32_t, transpondermap> scantransponders;
 std::map <uint32_t, scanchannel> scanchannels;
@@ -395,7 +397,7 @@ uint8_t cable_delivery_system_descriptor (uint8_t *buffer, uint16_t transport_st
 			&found_transponders,
 			sizeof(found_transponders)
 		);
-		
+
 		scantransponders.insert
 		(
 			std::pair <uint32_t, transpondermap>

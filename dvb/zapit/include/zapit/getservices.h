@@ -13,11 +13,12 @@
 #include <iostream>
 #include <string>
 
-#include "ci.h"
-#include "descriptors.h"
-#include "eventserver.h"
-#include "sdt.h"
-#include "xml/xmltree.h"
+#include <eventserver.h>
+
+#include <xml/xmltree.h>
+#include <zapci/ci.h>
+#include <zapsi/descriptors.h>
+#include <zapsi/sdt.h>
 
 #ifdef HAVE_CONFIG_H
 #include "config.h"

@@ -2,7 +2,8 @@
  * $Id$
  */
 
-#include "frontend.h"
+#include <zapost/frontend.h>
+
 #include "getservices.h"
 
 uint8_t curr_diseqc = 0;

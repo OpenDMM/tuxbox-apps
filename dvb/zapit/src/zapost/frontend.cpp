@@ -31,8 +31,9 @@
 
 #include <iostream>
 
+#include <zapsi/nit.h>
+
 #include "frontend.h"
-#include "nit.h"
 
 #define FRONTEND_DEVICE	"/dev/ost/frontend0"
 #define SEC_DEVICE	"/dev/ost/sec0"
