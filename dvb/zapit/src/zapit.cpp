@@ -459,6 +459,8 @@ int prepare_channels(fe_type_t frontendType, diseqc_t diseqcType)
 
 	INFO("LoadServices: success");
 	bouquetManager->loadBouquets();
+	bouquetManager->storeBouquets();
+
 	return 0;
 }
 
@@ -702,6 +704,7 @@ bool parse_command(CBasicMessage::Header &rmsg, int connfd)
 	{
 		CZapitMessages::responseCmd response;
 		bouquetManager->renumServices();
+		bouquetManager->storeBouquets();
 		response.cmd = CZapitMessages::CMD_READY;
 		CBasicServer::send_data(connfd, &response, sizeof(response));
 		eventServer->sendEvent(CZapitClient::EVT_BOUQUETS_CHANGED, CEventServer::INITID_ZAPIT);
@@ -953,6 +956,7 @@ bool parse_command(CBasicMessage::Header &rmsg, int connfd)
 	
 	case CZapitMessages::CMD_BQ_RENUM_CHANNELLIST:
 		bouquetManager->renumServices();
+		bouquetManager->storeBouquets();
 		break;
 
 	case CZapitMessages::CMD_BQ_SAVE_BOUQUETS:

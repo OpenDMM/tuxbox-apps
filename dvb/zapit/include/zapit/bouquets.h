@@ -49,13 +49,13 @@ class CBouquet
 		void addService(CZapitChannel* newChannel);
 
 		void removeService(CZapitChannel* oldChannel);
-		void removeService(const t_channel_id channel_id, unsigned char serviceType = 0) { removeService(getChannelByChannelID(channel_id, serviceType)); }
+		void removeService(const t_channel_id channel_id, unsigned char serviceType = ST_RESERVED) { removeService(getChannelByChannelID(channel_id, serviceType)); }
 
 		void moveService (const unsigned int oldPosition, const unsigned int newPosition, const unsigned char serviceType);
 
 		int recModeRadioSize(unsigned int);
 		int recModeTVSize(unsigned int);
-		CZapitChannel* getChannelByChannelID(const t_channel_id channel_id, const unsigned char serviceType = 0);
+		CZapitChannel* getChannelByChannelID(const t_channel_id channel_id, const unsigned char serviceType = ST_RESERVED);
 };
 
 typedef vector<CBouquet*> BouquetList;
@@ -66,7 +66,6 @@ class CBouquetManager
 		CBouquet* remainChannels;
 		void makeRemainingChannelsBouquet();
 		void parseBouquetsXml(const xmlNodePtr root);
-		void storeBouquets();
 		void writeBouquetHeader(FILE * bouq_fd, uint i, const char * bouquetName);
 		void writeBouquetFooter(FILE * bouq_fd);
 		void writeBouquetChannels(FILE * bouq_fd, uint i);
@@ -99,6 +98,7 @@ class CBouquetManager
 		void saveBouquets(void);
 		void saveBouquets(CZapitClient::bouquetMode bouquetMode, char * providerName);
 		void loadBouquets(bool ignoreBouquetFile = false);
+		void storeBouquets();
 		void restoreBouquets();
 		void renumServices();
 
