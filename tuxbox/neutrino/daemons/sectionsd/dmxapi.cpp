@@ -99,12 +99,14 @@ bool getUTC(UTC_t * const UTC, const bool TDT)
 	if (::ioctl(fd, DMX_SET_FILTER, &flt) == -1)
 	{
 		perror("[sectionsd] getUTC: set filter");
+		::close(fd);
 		return false;
 	}
 
 	if (::read(fd, &tdt_tot_header, sizeof(tdt_tot_header)) != sizeof(tdt_tot_header))
 	{
 		perror("[sectionsd] getUTC: read");
+		::close(fd);
 		return false;
 	}
 
