@@ -46,11 +46,6 @@
 #define VIDEO_DEVICE    "/dev/dvb/card0/video0"
 
 
-#ifdef DBOX2
-#define VBI_DEVICE      "/dev/dbox/vbi0"
-#endif
-
-
 #define CAMD_UDS_NAME  "/tmp/camd.socket"
 
 
