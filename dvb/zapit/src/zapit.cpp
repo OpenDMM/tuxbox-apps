@@ -389,7 +389,7 @@ int changeapid (uint8_t index)
 		return -1;
 
 	/* stop audio playback */
-	//audio->stop();
+	audio->stop();
 
 	/* update current channel */
 	channel->setAudioChannel(index);
@@ -405,7 +405,7 @@ int changeapid (uint8_t index)
 		return -1;
 
 	/* start audio playback */
-	//audio->start();
+	audio->start();
 
 	/* start demux filter */
 	INFO("audio dmx start");
