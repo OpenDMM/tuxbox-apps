@@ -39,11 +39,11 @@ eZapScan::eZapScan()
 	move(ePoint(150, 136));
 	CONNECT((new eListBoxEntryMenu(&list, _("[back]"), _("back to mainmenu")))->selected, eZapScan::sel_close);
 	CONNECT((new eListBoxEntryMenu(&list, _("Transponder scan"), _("goto transponder scan")))->selected, eZapScan::sel_scan);	
-	if ( eFrontend::getInstance()->Type() == eFrontend::feSatellite )  // only when a sat box is avail we shows a satellite config
+/*	if ( eFrontend::getInstance()->Type() == eFrontend::feSatellite )  // only when a sat box is avail we shows a satellite config
 	{
 		CONNECT((new eListBoxEntryMenu(&list, _("Satellites..."), _("goto satellite config")))->selected, eZapScan::sel_satconfig);
 		CONNECT((new eListBoxEntryMenu(&list, _("Rotor Setup..."), _("goto Rotor Setup")))->selected, eZapScan::sel_rotorConfig);
-	}
+	}*/
 	CONNECT((new eListBoxEntryMenu(&list, _("SID...")))->selected, eZapScan::sel_bouquet);
 }
 
