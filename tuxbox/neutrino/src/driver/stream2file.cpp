@@ -155,7 +155,7 @@ void * FileThread(void * v_arg)
 					close(fd2);
 				if ((fd2 = open(filename, O_WRONLY | O_CREAT | O_SYNC | O_TRUNC | O_LARGEFILE, S_IRUSR | S_IWUSR | S_IRGRP | S_IROTH)) < 0)
 				{
-					perror("[streamfile]: opening outfile");
+					perror("[stream2file]: error opening outfile");
 					exit_flag = 1;
 					pthread_exit(NULL);
 				}
@@ -182,7 +182,7 @@ void * FileThread(void * v_arg)
 					if (errno != EAGAIN)
 					{
 						exit_flag = 1;
-						perror("[streamfile]: write");
+						perror("[stream2file]: error in write");
 						goto terminate_thread;
 					}
 				}
@@ -241,7 +241,7 @@ void * DMXThread(void * v_arg)
 	/* write raw transport stream */
 	if ((dvrfd = open(DVRDEV, O_RDONLY)) < 0)
 	{
-		perror ("[streamfile]: open dvr");
+		perror ("[stream2file]: error opening dvr");
 		goto the_end;
 	}
 
