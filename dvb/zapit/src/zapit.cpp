@@ -128,6 +128,7 @@ void saveSettings(bool write)
 	}
 
 	if (write) {
+		config.setInt32("lastSatellitePosition", frontend->getCurrentSatellitePosition());
 		config.setInt32("diseqcRepeats", frontend->getDiseqcRepeats());
 		config.setInt32("diseqcType", frontend->getDiseqcType());
 		config.saveConfig(CONFIGFILE);
@@ -1357,6 +1358,7 @@ void leaveStandby(void)
 
 	frontend->setDiseqcType((diseqc_t) config.getInt32("diseqcType", NO_DISEQC));
 	frontend->setDiseqcRepeats(config.getInt32("diseqcRepeats", 0));
+	frontend->setCurrentSatellitePosition(config.getInt32("lastSatellitePosition", 192));
 
 	for (unsigned int i = 0; i < MAX_LNBS; i++) {
 		char tmp[16];
