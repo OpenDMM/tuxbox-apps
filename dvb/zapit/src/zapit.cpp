@@ -1796,6 +1796,7 @@ int main(int argc, char **argv)
 				"lastChannelRadio" ", "
 				"lastChannelTV" ", "
 				"lastSatellitePosition" ", "
+				"writeChannelsNames" ", "
 				"makeRemainingChannelsBouquet" ", "
 			        "diseqcRepeats" ", "
 				"diseqcType" ", "
