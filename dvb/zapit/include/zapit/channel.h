@@ -41,9 +41,6 @@ class CZapitAudioChannel
 class CZapitChannel
 {
 	private:
-		/* is this channel a copy ? */
-		bool iscopy;
-
 		/* channel name */
 		std::string name;
 
@@ -101,7 +98,6 @@ class CZapitChannel
 		int addAudioChannel(unsigned short pid, bool isAc3, std::string description, unsigned char componentTag);
 
 		/* set methods */
-		void setIsCopy(const bool new_iscopy)			{ iscopy = new_iscopy; }
 		void setName(std::string pName)				{ name = pName; }
 		void setAudioChannel(unsigned char pAudioChannel)	{ if (pAudioChannel < audioChannels.size()) currentAudioChannel = pAudioChannel; }
 		void setPcrPid(unsigned short pPcrPid)			{ pcrPid = pPcrPid; }

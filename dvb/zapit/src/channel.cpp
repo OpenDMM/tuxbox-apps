@@ -24,7 +24,6 @@
 
 CZapitChannel::CZapitChannel (std::string p_name, unsigned short p_sid, unsigned short p_tsid, unsigned short p_onid, unsigned char p_service_type, unsigned char p_DiSEqC)
 {
-	iscopy = false;
 	name = p_name;
 	serviceId = p_sid;
 	transportStreamId = p_tsid;
@@ -38,8 +37,6 @@ CZapitChannel::CZapitChannel (std::string p_name, unsigned short p_sid, unsigned
 
 CZapitChannel::~CZapitChannel ()
 {
-	if (iscopy) return;
-
 	resetPids();
 
 	if (caPmt)
