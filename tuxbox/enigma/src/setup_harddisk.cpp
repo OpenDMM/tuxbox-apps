@@ -179,7 +179,7 @@ eHarddiskSetup::eHarddiskSetup()
 	move(ePoint(150, 136));
 	
 	new eListBoxEntryText(&list, _("back"), (void*)-1);
-	
+	new eListBoxEntrySeparator( (eListBox<eListBoxEntry>*)&list, eSkin::getActive()->queryImage("listbox.separator"), 0, true );
 	for (int host=0; host<1; host++)
 		for (int bus=0; bus<1; bus++)
 			for (int target=0; target<1; target++)

@@ -41,12 +41,13 @@ eZapInfo::eZapInfo()
 	:eListBoxWindow<eListBoxEntryMenu>(_("Infos"), 8, 320)
 {
 	move(ePoint(150, 136));
-	CONNECT((new eListBoxEntryMenu(&list, _("[back]"), _("back to mainmenu")))->selected, eZapInfo::sel_close);
+	CONNECT((new eListBoxEntryMenu(&list, _("back"), _("back to mainmenu")))->selected, eZapInfo::sel_close);
+	new eListBoxEntrySeparator( (eListBox<eListBoxEntry>*)&list, eSkin::getActive()->queryImage("listbox.separator"), 0, true );
 	CONNECT((new eListBoxEntryMenu(&list, _("Streaminfo"), _("open the Streaminfo")))->selected, eZapInfo::sel_streaminfo);
 	if ( eDVB::getInstance()->getmID() < 5 )
 		CONNECT((new eListBoxEntryMenu(&list, _("Show BN version"),_("show the Current Version of the Betanova FW")))->selected, eZapInfo::sel_bnversion);
-	CONNECT((new eListBoxEntryMenu(&list, _("About..."), _("open the about dialog")))->selected, eZapInfo::sel_about);
 	CONNECT((new eListBoxEntryMenu(&list, _("Satfind"), _("shows the satfinder")))->selected, eZapInfo::sel_satfind);	
+	CONNECT((new eListBoxEntryMenu(&list, _("About..."), _("open the about dialog")))->selected, eZapInfo::sel_about);
 }
 
 eZapInfo::~eZapInfo()

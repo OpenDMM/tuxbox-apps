@@ -31,19 +31,21 @@
 #include <lib/gui/testpicture.h>
 
 eZapAVSetup::eZapAVSetup()
-	:eListBoxWindow<eListBoxEntryMenu>(_("A/V Setup"), 6, 300, true)
+	:eListBoxWindow<eListBoxEntryMenu>(_("A/V Setup"), 7, 300, true)
 {
 	move(ePoint(135, 120));
 
 	int entry=0;
 
-	CONNECT((new eListBoxEntryMenu(&list, _("[back]"), eString().sprintf("(%d) %s", ++entry, _("back to setup")) ))->selected, eWidget::accept);
+	CONNECT((new eListBoxEntryMenu(&list, _("back"), eString().sprintf("(%d) %s", ++entry, _("back to setup")) ))->selected, eWidget::accept);
+	new eListBoxEntrySeparator( (eListBox<eListBoxEntry>*)&list, eSkin::getActive()->queryImage("listbox.separator"), 0, true );
 	CONNECT((new eListBoxEntryMenu(&list, _("Video..."), eString().sprintf("(%d) %s", ++entry, _("open video setup")) ))->selected, eZapAVSetup::sel_video);
 	CONNECT((new eListBoxEntryMenu(&list, _("Video calibration..."), eString().sprintf("(%d) %s", ++entry, _("show calibration picture")) ))->selected, eZapAVSetup::sel_test);
 #ifdef ENABLE_RFMOD
 	if (eDVB::getInstance()->getmID() == 6)
 		CONNECT((new eListBoxEntryMenu(&list, _("RF-Modulator..."), eString().sprintf("(%d) %s", ++entry, _("setup modulator")) ))->selected, eZapAVSetup::sel_rfmod);
 #endif
+	new eListBoxEntrySeparator( (eListBox<eListBoxEntry>*)&list, eSkin::getActive()->queryImage("listbox.separator"), 0, true );
 	CONNECT((new eListBoxEntryMenu(&list, _("Audio..."), eString().sprintf("(%d) %s", ++entry, _("open audio setup")) ))->selected, eZapAVSetup::sel_sound);
 
 	addActionMap(&i_shortcutActions->map);

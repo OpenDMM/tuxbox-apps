@@ -35,10 +35,11 @@
 #include <lib/base/i18n.h>
 
 eZapScan::eZapScan()
-	:eListBoxWindow<eListBoxEntryMenu>(_("Channels"), 6, 300, true)
+	:eListBoxWindow<eListBoxEntryMenu>(_("Channels"), 7, 300, true)
 {
 	move(ePoint(150, 136));
-	CONNECT((new eListBoxEntryMenu(&list, _("[back]"), _("back to main menu")))->selected, eZapScan::sel_close);
+	CONNECT((new eListBoxEntryMenu(&list, _("back"), _("back to main menu")))->selected, eZapScan::sel_close);
+	new eListBoxEntrySeparator( (eListBox<eListBoxEntry>*)&list, eSkin::getActive()->queryImage("listbox.separator"), 0, true );
 	CONNECT((new eListBoxEntryMenu(&list, _("Transponder scan"), _("goto transponder scan")))->selected, eZapScan::sel_scan);	
 	if ( eFrontend::getInstance()->Type() == eFrontend::feSatellite )  // only when a sat box is avail we shows a satellite config
 	{
@@ -183,7 +184,8 @@ eLNBSelector::eLNBSelector()
 	:eListBoxWindow<eListBoxEntryText>(_("Select LNB"), 5, 300, true)
 {
 	move(ePoint(150, 136));
-	new eListBoxEntryText(&list, _("[back]"), 0, 0, _("go to prev menu") );
+	new eListBoxEntryText(&list, _("back"), 0, 0, _("go to prev menu") );
+	new eListBoxEntrySeparator( (eListBox<eListBoxEntry>*)&list, eSkin::getActive()->queryImage("listbox.separator"), 0, true );
 	int cnt=0;
 	for ( std::list<eLNB>::iterator it( eTransponderList::getInstance()->getLNBs().begin()); it != eTransponderList::getInstance()->getLNBs().end(); it++, cnt++ )
 	{
