@@ -83,17 +83,6 @@ enum
 
 int currentMode;
 
-struct rmsg
-{
-	uint8_t version;
-	uint8_t cmd;
-	uint8_t param;
-	unsigned short param2;
-	char param3[30];
-
-}
-rmsg;
-
 int connfd;
 
 #ifndef DVBS
@@ -723,7 +712,7 @@ int getPlaybackStatus ()
 }
 
 
-void parse_command ()
+void parse_command (CZapitClient::commandHead &rmsg)
 {
 	#ifdef DEBUG
 		debug("Command received\n");
@@ -1418,10 +1407,11 @@ int main (int argc, char **argv)
 
 	while (true)
 	{
+		CZapitClient::commandHead rmsg;
 		connfd = accept(listenfd, (struct sockaddr*) &servaddr, (socklen_t*) &clilen);
 		memset(&rmsg, 0, sizeof(rmsg));
 		read(connfd, &rmsg, sizeof(rmsg));
-		parse_command();
+		parse_command(rmsg);
 		close(connfd);
 		connfd = -1;
 	}
