@@ -2901,7 +2901,7 @@ void CNeutrinoApp::ExitRun()
 	frameBuffer->paletteSet();
 
 	if(frameBuffer->getActive())
-		frameBuffer->loadPicture2Mem("shutdown.raw", frameBuffer->getFrameBufferPointer() );
+		frameBuffer->loadPicture2FrameBuffer("shutdown.raw");
 	frameBuffer->loadPal("shutdown.pal");
 
 	saveSetup();
