@@ -33,7 +33,7 @@
 #include <core/base/i18n.h>
 
 eZapInfo::eZapInfo()
-	:eListBoxWindow<eListBoxEntryMenu>(_("Infos"), 8, eSkin::getActive()->queryValue("fontsize", 20), 220)
+	:eListBoxWindow<eListBoxEntryMenu>(_("Infos"), 8, 220)
 {
 	move(ePoint(150, 136));
 	CONNECT((new eListBoxEntryMenu(&list, _("[back]")))->selected, eZapInfo::sel_close);

@@ -96,7 +96,7 @@ eSkinSetup::eSkinSetup()
 	baccept->setName("accept");
 	breject=new eButton(this);
 	breject->setName("reject");
-	lskins=new eListBox<eListBoxEntrySkin>(this, eSkin::getActive()->queryValue("fontsize", 20));
+	lskins=new eListBox<eListBoxEntrySkin>(this);
 	lskins->setName("skins");
 	CONNECT(baccept->selected, eSkinSetup::accept);
 	CONNECT(breject->selected, eSkinSetup::reject);

@@ -36,7 +36,7 @@
 #include <core/gui/elabel.h>
 
 eZapSetup::eZapSetup()
-	:eListBoxWindow<eListBoxEntryMenu>(_("Setup"), 8, eSkin::getActive()->queryValue("fontsize", 20), 220)
+	:eListBoxWindow<eListBoxEntryMenu>(_("Setup"), 8, 220)
 {
 	move(ePoint(150, 136));
 	CONNECT((new eListBoxEntryMenu(&list, _("[back]")))->selected, eZapSetup::sel_close);
