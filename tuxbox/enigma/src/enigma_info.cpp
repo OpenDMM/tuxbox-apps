@@ -54,9 +54,9 @@ void eZapInfo::sel_close(eListboxEntry *)
 
 void eZapInfo::sel_streaminfo(eListboxEntry *)
 {
+	hide();	
 	eStreaminfo si;
 	si.setLCD(LCDTitle, LCDElement);
-	hide();	
 	si.show();
 	si.exec();
 	si.hide();
@@ -65,9 +65,9 @@ void eZapInfo::sel_streaminfo(eListboxEntry *)
 
 void eZapInfo::sel_bnversion(eListboxEntry *)
 {
+	hide();	
 	ShowBNVersion bn;
 	bn.setLCD(LCDTitle, LCDElement);
-	hide();	
 	bn.show();
 	bn.exec();
 	bn.hide();
