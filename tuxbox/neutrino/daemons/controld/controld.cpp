@@ -557,20 +557,18 @@ void disableVideoOutput(bool disable)
 
 void setBoxType()
 {
-	unsigned int manufacturer = tuxbox_get_manufacturer();
-
-	switch ( manufacturer )
+	switch ( tuxbox_get_vendor() )
 	{
-	case TUXBOX_MANUFACTURER_SAGEM:	settings.boxtype= CControldClient::BOXTYPE_SAGEM;
+	case TUXBOX_VENDOR_SAGEM:	settings.boxtype= CControldClient::BOXTYPE_SAGEM;
 		break;
-	case TUXBOX_MANUFACTURER_PHILIPS:	settings.boxtype= CControldClient::BOXTYPE_PHILIPS;
+	case TUXBOX_VENDOR_PHILIPS:	settings.boxtype= CControldClient::BOXTYPE_PHILIPS;
 		break;
-	case TUXBOX_MANUFACTURER_NOKIA:
+	case TUXBOX_VENDOR_NOKIA:
 	default:
 		settings.boxtype= CControldClient::BOXTYPE_NOKIA;
 	}
 
-	printf("[controld] Boxtype detected: (%d, %d, %s %s)\n", manufacturer, settings.boxtype, tuxbox_get_manufacturer_str(), tuxbox_get_model_str());
+	printf("[controld] Boxtype detected: (%d, %d, %s %s)\n", tuxbox_get_vendor(), settings.boxtype, tuxbox_get_vendor_str(), tuxbox_get_model_str());
 }
 
 
