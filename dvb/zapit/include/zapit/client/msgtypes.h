@@ -288,6 +288,7 @@ class CZapitMessages
 	{
 		bool scanReady;
 		unsigned int satellite;
+		unsigned int processed_transponder;
 		unsigned int transponder;
 		unsigned int services;
 	};

@@ -474,7 +474,7 @@ bool CZapitClient::startScan()
 }
 
 /* query if ts-scan is ready - response gives status */
-bool CZapitClient::isScanReady(unsigned int &satellite, unsigned int &transponder, unsigned int &services )
+bool CZapitClient::isScanReady(unsigned int &satellite,  unsigned int &processed_transponder, unsigned int &transponder, unsigned int &services )
 {
 	send(CZapitMessages::CMD_SCANREADY);
 
@@ -482,6 +482,7 @@ bool CZapitClient::isScanReady(unsigned int &satellite, unsigned int &transponde
 	CBasicClient::receive_data((char* )&response, sizeof(response));
 
 	satellite = response.satellite;
+	processed_transponder = response.processed_transponder;
 	transponder = response.transponder;
 	services = response.services;
 
