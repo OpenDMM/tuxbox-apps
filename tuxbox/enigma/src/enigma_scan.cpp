@@ -102,11 +102,15 @@ void eZapScan::sel_satconfig()
 eLNB* eZapScan::getRotorLNB(int silent)
 {
 	int c=0;
+	std::list<eLNB>::iterator RotorLnb = eTransponderList::getInstance()->getLNBs().end();
 	std::list<eLNB>::iterator it( eTransponderList::getInstance()->getLNBs().begin());
 	for (; it != eTransponderList::getInstance()->getLNBs().end(); it++ )
 	{
 		if ( it->getDiSEqC().DiSEqCMode == eDiSEqC::V1_2 )
-			c++;
+		{
+			if (!c++)
+				RotorLnb=it;
+		}
 	}
 	if ( c > 1 )  // we have more than one LNBs with DiSEqC 1.2
 	{
@@ -132,7 +136,7 @@ eLNB* eZapScan::getRotorLNB(int silent)
 		return 0;
 	}
 	else // only one lnb with DiSEqC 1.2 is found.. this is correct :)
-		return &(*eTransponderList::getInstance()->getLNBs().begin());
+		return &(*RotorLnb);
 }
 
 void eZapScan::sel_rotorConfig()
