@@ -522,7 +522,7 @@ bool CWebAPI::ShowBouquet(CWebserverRequest* request, int BouquetNr)
 		request->printf("%s<A CLASS=\"clist\" HREF=\"switch.dbox2?zapto=%d%s\">%d. %s</A>&nbsp;<A HREF=\"epg.dbox2?eventlist=%u\">%s</A>",((channel->channel_id == current_channel)?"<A NAME=akt></a>":" "),channel->channel_id,bouquetstr.c_str(),channel->nr,channel->name,channel->channel_id,((Parent->ChannelListEvents[channel->channel_id])?"<img border=0 src=\"../images/elist.gif\" ALT=\"Programmvorschau\">":""));
 
 		if(channel->channel_id == current_channel)
-			request->printf("&nbsp;&nbsp;<A HREF=\"/fb/info.dbox2\"><IMG SRC=\"/images/streaminfo.gif\" BORDER=0 ALT=\"Streaminfo\"></A>");
+			request->printf("&nbsp;&nbsp;<A HREF=\"/fb/info.dbox2\"><IMG SRC=\"/images/streaminfo.png\" BORDER=0 ALT=\"Streaminfo\"></A>");
 		request->printf("</TD></TR>");
 		CChannelEvent *event = Parent->ChannelListEvents[channel->channel_id];
 		if(event)
