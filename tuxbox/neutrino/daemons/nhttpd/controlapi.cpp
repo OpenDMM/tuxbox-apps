@@ -583,6 +583,30 @@ bool CControlAPI::EpgCGI(CWebserverRequest *request)
 				return true;
 			}
 		}
+		else if (request->ParameterList["onidsid"] != "")
+		{
+			unsigned channel_id = atol( request->ParameterList["onidsid"].c_str());
+			Parent->eList = Parent->Sectionsd->getEventsServiceKey(channel_id);
+			CChannelEventList::iterator eventIterator;
+
+			for (eventIterator = Parent->eList.begin(); eventIterator != Parent->eList.end(); eventIterator++)
+			{
+			CShortEPGData epg;
+			
+				if (Parent->Sectionsd->getEPGidShort(eventIterator->eventID,&epg))
+				{
+					request->printf("%llu %ld %d\n", eventIterator->eventID, eventIterator->startTime, eventIterator->duration);
+					if(epg.title.length() > 0)
+					request->printf("%s\n",epg.title.c_str());
+					if(epg.info1.length() > 0)
+					request->printf("%s\n",epg.info1.c_str());
+					if(epg.info2.length() > 0)
+					request->printf("%s\n\n",epg.info2.c_str());
+				}
+			}
+			return true;
+		
+		}
 		else
 		{
 			//eventlist for a chan
