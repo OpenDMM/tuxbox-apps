@@ -33,6 +33,7 @@ class CTransponder
 		unsigned char	polarisation;
 		unsigned char	innerFec;
 		unsigned char	diseqc;
+		unsigned char	inversion;
 
 		unsigned short	originalNetworkId;
 		unsigned short	transportStreamId;
@@ -58,6 +59,9 @@ class CTransponder
 
 		unsigned char getInnerFec();
 		void setInnerFec(unsigned char);
+
+		unsigned char getInversion();
+		void setInversion(unsigned char);
 
 		unsigned short getOriginalNetworkId();
 		void setOriginalNetworkId(unsigned short);

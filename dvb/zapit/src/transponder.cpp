@@ -32,6 +32,7 @@ CTransponder::CTransponder()
 	polarisation = 0;
 	innerFec = 0;
 	diseqc = 0;
+	inversion = 0;
 	originalNetworkId = 0;
 	transportStreamId = 0;
 }
@@ -94,6 +95,16 @@ unsigned char CTransponder::getInnerFec()
 void CTransponder::setInnerFec(unsigned char cinnerFec)
 {
 	innerFec = cinnerFec;
+}
+
+unsigned char CTransponder::getInversion()
+{
+	return inversion;
+}
+
+void CTransponder::setInversion(unsigned char cinversion)
+{
+	inversion = cinversion;
 }
 
 unsigned short CTransponder::getOriginalNetworkId()
