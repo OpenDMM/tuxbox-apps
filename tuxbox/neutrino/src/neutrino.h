@@ -31,6 +31,9 @@
 	Foundation, Inc., 675 Mass Ave, Cambridge, MA 02139, USA.
 
 //  $Log$
+//  Revision 1.19  2001/09/20 19:21:37  fnbrd
+//  Channellist mit IDs.
+//
 //  Revision 1.18  2001/09/20 00:36:32  field
 //  epg mit zaopit zum grossteil auf onid & s_id umgestellt
 //
@@ -119,7 +122,6 @@ class CNeutrinoApp : public CMenuTarget
 		
     channel_msg         firstchannel;
 	st_rmsg				sendmessage;
-	bool				zapit;
 
 	CColorSetupNotifier    *colorSetupNotifier;
 	CAudioSetupNotifier    *audioSetupNotifier;

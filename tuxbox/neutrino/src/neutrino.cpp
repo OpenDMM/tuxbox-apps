@@ -32,6 +32,9 @@
 	Foundation, Inc., 675 Mass Ave, Cambridge, MA 02139, USA.
 
   $Log$
+  Revision 1.43  2001/09/20 19:21:37  fnbrd
+  Channellist mit IDs.
+
   Revision 1.42  2001/09/20 17:02:16  field
   event-liste zeigt jetzt auch epgs an...
 
@@ -101,7 +104,7 @@
   works with zapit again
 
   Revision 1.18  2001/08/22 00:03:24  ge0rg
-  verst„ndliche Fehlermeldungen
+  verständliche Fehlermeldungen
 
   Revision 1.17  2001/08/21 18:30:15  ge0rg
   added power down LCD logo
@@ -929,7 +932,7 @@ void CNeutrinoApp::SelectAPID()
     if ( ( strcmp(g_RemoteControl->apid_info.name, channelList->getActiveChannelName().c_str() )== 0 ) &&
          ( g_RemoteControl->apid_info.count_apids> 1 ) )
     {
-        // wir haben APIDs für diesen Kanal!
+        // wir haben APIDs fr diesen Kanal!
 
     	CMenuWidget APIDSelector("apidselector.head", "audio.raw");
 
@@ -1028,13 +1031,13 @@ void CNeutrinoApp::RealRun(CMenuWidget &mainSettings)
 				{
                     g_InfoViewer->killTitle();
 					g_EpgData->show( channelList->getActiveChannelName(),
-                                     channelList->getActiveChannelOnid_tsid() );
+                                     channelList->getActiveChannelOnid_sid() );
 				}
 				else
 				{
 					g_InfoViewer->showTitle( channelList->getActiveChannelNumber(),
 					                         channelList->getActiveChannelName(),
-                                             channelList->getActiveChannelOnid_tsid(),
+                                             channelList->getActiveChannelOnid_sid(),
                                              false
                                             );
 				}
