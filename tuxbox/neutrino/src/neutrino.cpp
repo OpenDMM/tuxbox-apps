@@ -32,6 +32,9 @@
 	Foundation, Inc., 675 Mass Ave, Cambridge, MA 02139, USA.
 
   $Log$
+  Revision 1.159  2002/02/22 16:01:16  field
+  Plugin-Interface weiter verbessert
+
   Revision 1.158  2002/02/20 00:07:52  McClean
   add -flash for directly neutrino-start (for alexW)
 
@@ -515,6 +518,7 @@ static void initGlobals(void)
 	g_UcodeCheck = NULL;
 
 	g_Locale = NULL;
+	g_PluginList = NULL;
 }
 // Ende globale Variablen
 
@@ -1835,6 +1839,9 @@ int CNeutrinoApp::run(int argc, char **argv)
 	g_ScreenSetup = new CScreenSetup;
 	g_EventList = new EventList;
 	g_Update = new CFlashUpdate;
+
+	g_PluginList = new CPlugins;
+	g_PluginList->setPluginDir(PLUGINDIR);
 
 	#ifdef USEACTIONLOG
 		g_ActionLog = new CActionLog;

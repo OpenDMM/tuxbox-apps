@@ -31,8 +31,8 @@
 $Id$
 
 $Log$
-Revision 1.9  2002/02/22 14:56:43  field
-neues Plugin-Interface
+Revision 1.10  2002/02/22 16:01:16  field
+Plugin-Interface weiter verbessert
 
 Revision 1.8  2002/01/15 23:17:59  McClean
 cleanup
@@ -64,11 +64,6 @@ using namespace std;
 #include <dirent.h>
 #include <map>
 #include <dlfcn.h>
-/*#include <strstream.h>
-#include <sstream>
-#include <fstream>
-#include <iostream.h>
-*/
 #include <config.h>
 
 #include <unistd.h>
@@ -76,7 +71,7 @@ using namespace std;
 
 #include <include/plugin.h>
 
-class plugins
+class CPlugins
 {
 	struct plugin
 	{
@@ -107,7 +102,7 @@ class plugins
 	std::map<std::string, std::string> params;
 public:
 
-	~plugins();
+	~CPlugins();
 
 	void loadPlugins();
 
@@ -143,9 +138,6 @@ class CGameList : public CMenuTarget
 	int fb, rc, lcd, pid;
 	int number_of_plugins;
 	std::string plugin_dir;
-
-	plugins plugin_list;
-
 
 		unsigned int	liststart;
 		unsigned int	listmaxshow;
