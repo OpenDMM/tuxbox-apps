@@ -57,7 +57,7 @@ void TWebDbox::UpdateBouquets(void)
 void TWebDbox::ZapTo(string target)
 {
 	int sidonid = atoi(target.c_str());
-	if(sidonid == zapit->getCurrentServiceID())
+	if(sidonid == (int) zapit->getCurrentServiceID())
 	{
 		if(Parent->DEBUG) printf("Kanal ist aktuell\n");
 		return;

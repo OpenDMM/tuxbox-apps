@@ -63,7 +63,7 @@ void* CTimerManager::timerThread(void *arg)
 	while (1)
 	{
 		time_t now = time(NULL);
-		dprintf("Timer Thread time: %u\n", now);
+		dprintf("Timer Thread time: %u\n", (uint) now);
 
 		// fire events who's time has come
 		CTimerEvent *event;
@@ -291,9 +291,9 @@ void CTimerEvent::printEvent(void)
 	struct tm *alarmtime, *announcetime;
 	dprintf("eventID: %03d type: %d state: %d repeat: %d ",eventID,eventType,eventState,eventRepeat);
 	announcetime = localtime(&announceTime);
-	dprintf("announce: %u %02d.%02d. %02d:%02d:%02d ",announceTime,announcetime->tm_mday,announcetime->tm_mon+1,announcetime->tm_hour,announcetime->tm_min,announcetime->tm_sec);
+	dprintf("announce: %u %02d.%02d. %02d:%02d:%02d ",(uint) announceTime,announcetime->tm_mday,announcetime->tm_mon+1,announcetime->tm_hour,announcetime->tm_min,announcetime->tm_sec);
 	alarmtime = localtime(&alarmTime);
-	dprintf("alarm: %u %02d.%02d. %02d:%02d:%02d ",alarmTime,alarmtime->tm_mday,alarmtime->tm_mon+1,alarmtime->tm_hour,alarmtime->tm_min,alarmtime->tm_sec);
+	dprintf("alarm: %u %02d.%02d. %02d:%02d:%02d ",(uint) alarmTime,alarmtime->tm_mday,alarmtime->tm_mon+1,alarmtime->tm_hour,alarmtime->tm_min,alarmtime->tm_sec);
 	switch(eventType)
 	{		
 		case CTimerEvent::TIMER_ZAPTO :
