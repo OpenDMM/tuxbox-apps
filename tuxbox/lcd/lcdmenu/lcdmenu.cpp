@@ -23,6 +23,8 @@
 
 #include "lcdmenu.h"
 
+#include <iostream>
+
 CLCDMenu *CLCDMenu::instance;
 
 CLCDMenu::CLCDMenu (std::string configFilename)
@@ -282,7 +284,7 @@ bool CLCDMenu::rcLoop ()
 			break;
 		default:
 #ifdef DEBUG
-			cout << "pressedKey: " << pressedKey << endl;
+			std::cout << "pressedKey: " << pressedKey << std::endl;
 #endif
 			break;
 		}
