@@ -94,7 +94,7 @@
 
 #define MOVIEPLAYER_ConnectLineBox_Width	15
 
-#define RINGBUFFERSIZE 348*188*3
+#define RINGBUFFERSIZE 348*188*10
 #define MAXREADSIZE 348*188
 #define MINREADSIZE 348*188
 
@@ -120,40 +120,6 @@ size_t
 CurlDummyWrite (void *ptr, size_t size, size_t nmemb, void *data)
 {
 	return size * nmemb;
-}
-
-//------------------------------------------------------------------------
-
-/* 
-  -- get bits out of buffer
-  -- (getting more than 24 bits is not save)
-  -- return: value
-*/
-
-unsigned long getBits (u_char *buf, int byte_offset, int startbit, int bitlen)
-
-{
- u_char *b;
- unsigned long  v;
- unsigned long mask;
- unsigned long tmp_long;
-
- b = &buf[byte_offset + (startbit / 8)];
- startbit %= 8;
-
- tmp_long = (unsigned long)( ((*b)<<24) + (*(b+1)<<16) +
-		 (*(b+2)<<8) + *(b+3) );
-
- startbit = 32 - startbit - bitlen;
-
- tmp_long = tmp_long >> startbit;
-
- // ja, das ULL muss so sein (fuer bitlen == 32 z.b.)...
- mask = (1ULL << bitlen) - 1;
-
- v = tmp_long & mask;
-
- return v;
 }
 
 //------------------------------------------------------------------------
