@@ -1403,6 +1403,8 @@ void enterStandby(void)
 		delete videoDecoder;
 		videoDecoder = NULL;
 	}
+
+	tuned_transponder_id = 0;
 }
 
 void leaveStandby(void)
