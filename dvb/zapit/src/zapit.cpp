@@ -938,7 +938,6 @@ void parse_command (CZapitClient::commandHead &rmsg)
 			{
 				CZapitClient::commandRenameBouquet msgRenameBouquet;
 				read(connfd, &msgRenameBouquet, sizeof(msgRenameBouquet));
-				bouquetManager->addBouquet(msgRenameBouquet.name);
 				bouquetManager->Bouquets[msgRenameBouquet.bouquet - 1]->Name = msgRenameBouquet.name;
 				break;
 			}
