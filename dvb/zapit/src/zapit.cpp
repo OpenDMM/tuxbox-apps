@@ -278,6 +278,23 @@ channel_msg load_settings()
 	return output_msg;
 }
 
+bool setAudioMute (bool mute)
+{
+	if ((audio_fd == -1) && ((audio_fd = open(AUDIO_DEV, O_RDWR)) < 0))
+	{
+		perror("[zapit] " AUDIO_DEV);
+		return false;
+	}
+
+	if (ioctl(audio_fd, AUDIO_SET_MUTE, mute) < 0)
+	{
+		perror("[zapit] AUDIO_SET_MUTE");
+		return false;
+	}
+
+	return true;
+}
+
 bool setAudioBypassMode (bool isAc3)
 {
 	if (isAc3 == wasAc3)
@@ -1436,8 +1453,15 @@ void parse_command ()
 				eventServer->unRegisterEvent( connfd );
 			break;
 
+			case CZapitClient::CMD_MUTE:
+				CZapitClient::commandBoolean msgBoolean;
+				read(connfd, &msgBoolean, sizeof(msgBoolean));
+				setAudioMute(msgBoolean.truefalse);
+				break;
+
 			default:
 				printf("[zapit] unknown command (version %d)\n", CZapitClient::ACTVERSION);
+				break;
 		}
 	}
 	else
