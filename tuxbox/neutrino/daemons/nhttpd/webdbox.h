@@ -38,7 +38,6 @@
 #include <zapit/client/zapitclient.h>
 #include <eventserver.h>
 #include <controldclient/controldclient.h>
-#include <sectionsdclient/sectionsdMsg.h>
 #include <sectionsdclient/sectionsdclient.h>
 #include <timerdclient/timerdclient.h>
 

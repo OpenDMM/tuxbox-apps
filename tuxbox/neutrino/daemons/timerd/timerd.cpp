@@ -32,7 +32,6 @@
 #include <configfile.h>
 #include <timermanager.h>
 #include <debug.h>
-#include <sectionsdclient/sectionsdMsg.h>
 #include <sectionsdclient/sectionsdclient.h>
 
 #include <connection/basicserver.h>

@@ -32,7 +32,6 @@
 #include <timermanager.h>
 #include <timerdclient/timerdclient.h>
 #include <debug.h>
-#include <sectionsdclient/sectionsdMsg.h>
 #include <sectionsdclient/sectionsdclient.h>
 
 //CTimerEvent_NextProgram::EventMap CTimerEvent_NextProgram::events;
