@@ -19,6 +19,9 @@ $Id$
 
 
 $Log$
+Revision 1.25  2004/02/15 22:22:28  rasc
+cmd option: -hexdumpbuffer -nohexdumpbuffer
+
 Revision 1.24  2004/01/25 22:36:52  rasc
 minor changes & enhancments
 
@@ -241,7 +244,7 @@ int  doReadPES (OPTION *opt)
        print_packet_header (opt, "PES", opt->pid, count, n, skipped_bytes);
 
 
-       if (opt->printhex) {
+       if (opt->buffer_hexdump) {
            printhex_buf (0, b, n);
            out_NL(0);
        }
