@@ -6,6 +6,9 @@
 #include <sys/stat.h>
 #include <sys/types.h>
 
+/* libevent */
+#include <eventserver.h>
+
 #include <clientlib/zapitclient.h>
 #include <zapost/frontend.h>
 #include <zapsi/bat.h>
@@ -13,12 +16,11 @@
 #include <zapsi/pat.h>
 #include <zapsi/sdt.h>
 
+#include "settings.h"
 #include "bouquets.h"
 #include "scan.h"
 #include "zapit.h"
 #include "xmlinterface.h"
-
-#define DEMUX_DEV "/dev/dvb/card0/demux0"
 
 short scan_runs;
 short curr_sat;
@@ -220,13 +222,13 @@ void write_bouquets()
 {
 	if (bouquetMode == CZapitClient::BM_DELETEBOUQUETS)
 	{
-		printf("[zapit] removing existing bouqets.xml\n");
-		unlink(CONFIGDIR "/zapit/bouquets.xml");
+		printf("[zapit] removing existing bouquets.\n");
+		unlink(BOUQUETS_XML);
 	}
 
 	else if ((bouquetMode == CZapitClient::BM_DONTTOUCHBOUQUETS)/* || (scanbouquets.empty())*/)
 	{
-		printf("[zapit] leavin bouquets.xml untouched\n");
+		printf("[zapit] leaving bouquets untouched.\n");
 	}
 
 	else
@@ -304,7 +306,7 @@ FILE *write_provider(FILE *fd, const char *type, const char *provider_name, cons
 		/* create new file if needed */
 		if (fd == NULL)
 		{
-			fd = write_xml_header(CONFIGDIR "/zapit/services.xml");
+			fd = write_xml_header(SERVICES_XML);
 		}
 
 		/* cable tag */

@@ -32,6 +32,7 @@
 /* zapit */
 #include <getservices.h>
 #include <zapost/dmx.h>
+#include <settings.h>  // DEMUX_DEV
 
 #include "descriptors.h"
 #include "nit.h"

@@ -23,6 +23,9 @@
 #include <sys/stat.h>
 #include <fcntl.h>
 
+/* libevent */
+#include <eventserver.h>
+
 #include <clientlib/zapitclient.h>
 #include <scan.h>
 #include <zapost/dmx.h>

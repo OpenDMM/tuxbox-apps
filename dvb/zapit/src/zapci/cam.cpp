@@ -31,7 +31,8 @@
 
 #include "cam.h"
 
-#define CAMD_UDS_NAME "/tmp/camd.socket"
+/* zapit */
+#include <settings.h>   // CAMD_UDS_NAME
 
 CCam::CCam ()
 {

@@ -28,6 +28,7 @@
 
 #include <zapsi/sdt.h>
 
+#include "settings.h"
 #include "bouquets.h"
 #include "xmlinterface.h"
 
@@ -165,11 +166,11 @@ int CBouquet::recModeTVSize( unsigned int tsid)
 void CBouquetManager::saveBouquets()
 {
 	printf("[zapit] creating new bouquets.xml\n");
-	FILE* bouq_fd = fopen(CONFIGDIR "/zapit/bouquets.xml", "w");
+	FILE* bouq_fd = fopen(BOUQUETS_XML, "w");
 
 	if (bouq_fd == NULL)
 	{
-		perror("fopen " CONFIGDIR "/zapit/bouquets.xml");
+		perror("fopen " BOUQUETS_XML);
 		return;
 	}
 
@@ -259,7 +260,7 @@ void CBouquetManager::loadBouquets(bool ignoreBouquetFile)
 
 	if (ignoreBouquetFile == false)
 	{
-		parser = parseXmlFile(string(CONFIGDIR "/zapit/bouquets.xml"));
+		parser = parseXmlFile(string(BOUQUETS_XML));
 
 		if (parser != NULL)
 		{

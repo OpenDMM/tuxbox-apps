@@ -1,7 +1,9 @@
 /*
- * $Id$
+ * $Header$
  *
- * (C) 2002 by Andreas Oberritter <obi@tuxbox.org>
+ * zapit's settings - d-box2 linux project
+ *
+ * (C) 2002 by thegoodguy <thegoodguy@berlios.de>
  *
  * This program is free software; you can redistribute it and/or modify
  * it under the terms of the GNU General Public License as published by
@@ -19,19 +21,31 @@
  *
  */
 
-#ifndef __dmx_h__
-#define __dmx_h__
+#ifndef __zapit__settings_h__
+#define __zapit__settings_h__
 
-/* system c */
-#include <stdint.h>
-#include <time.h>
+#ifdef HAVE_CONFIG_H
+#include "config.h"
+#else
+#define CONFIGDIR "/var/tuxbox/config"
+#endif
 
-/* nokia api */
-#include <ost/dmx.h>
+#define CONFIGFILE     CONFIGDIR "/zapit/zapit.conf"
+#define SATELLITES_XML CONFIGDIR "/satellites.xml"
+#define CABLES_XML     CONFIGDIR "/cables.xml"
+#define SERVICES_XML   CONFIGDIR "/zapit/services.xml"
+#define BOUQUETS_XML   CONFIGDIR "/zapit/bouquets.xml"
 
-int setDmxSctFilter (int fd, unsigned short pid, unsigned char * filter, unsigned char * mask);
-int setDmxPesFilter (int fd, dmxOutput_t output, dmxPesType_t pesType, unsigned short pid);
-int startDmxFilter (int fd);
-int stopDmxFilter (int fd);
 
-#endif /* __dmx_h__ */
+#define DEMUX_DEV      "/dev/dvb/card0/demux0"
+
+
+#ifdef DBOX2
+#define VBI_DEV        "/dev/dbox/vbi0"
+#endif
+
+
+#define CAMD_UDS_NAME  "/tmp/camd.socket"
+
+
+#endif /* __zapit__settings_h__ */

@@ -6,6 +6,7 @@
 
 #include <zapost/frontend.h>
 
+#include "settings.h"
 #include "bouquets.h"
 #include "channel.h"
 #include "getservices.h"
@@ -156,7 +157,7 @@ void FindTransponder (XMLTreeNode *search)
 
 int LoadServices(void)
 {
-	XMLTreeParser *parser = parseXmlFile(string(CONFIGDIR "/zapit/services.xml"));
+	XMLTreeParser *parser = parseXmlFile(string(SERVICES_XML));
 
 	if (parser == NULL)
 		return -1;

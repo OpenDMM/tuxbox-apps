@@ -29,9 +29,7 @@
 
 /* zapit */
 #include <zapci/ci.h>
-
-typedef uint32_t t_channel_id;
-#define CREATE_CHANNEL_ID ((original_network_id << 16) | service_id)
+#include "types.h"
 
 class CZapitAudioChannel
 {

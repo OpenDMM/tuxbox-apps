@@ -35,7 +35,6 @@
 /* d-box specific headers */
 #ifdef DBOX2
 #include <dbox/avia_gt_vbi.h>
-#define VBI_DEV "/dev/dbox/vbi0"
 #endif
 
 /* tuxbox headers */
@@ -52,13 +51,12 @@
 #include <zapsi/pmt.h>
 
 /* zapit headers */
+#include "settings.h"
 #include "getservices.h"
 #include "xmlinterface.h"
 #include "zapit.h"
 
 #define debug(fmt, args...) { if (debug) { printf(fmt, ## args); fflush(stdout); } }
-
-#define CONFIGFILE CONFIGDIR "/zapit/zapit.conf"
 
 /* the conditional access module */
 CCam * cam = NULL;
@@ -564,11 +562,11 @@ void parseScanInputXml()
 	switch (frontend->getInfo()->type)
 	{
 			case FE_QPSK:
-			scanInputParser = parseXmlFile(string(CONFIGDIR "/satellites.xml"));
+			scanInputParser = parseXmlFile(string(SATELLITES_XML));
 			break;
 
 			case FE_QAM:
-			scanInputParser = parseXmlFile(string(CONFIGDIR "/cables.xml"));
+			scanInputParser = parseXmlFile(string(CABLES_XML));
 			break;
 
 			default:

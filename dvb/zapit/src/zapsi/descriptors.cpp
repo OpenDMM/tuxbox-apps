@@ -23,6 +23,9 @@
 #include <map>
 #include <string>
 
+/* libevent */
+#include <eventserver.h>
+
 #include <clientlib/zapitclient.h>
 #include <zapost/frontend.h>
 

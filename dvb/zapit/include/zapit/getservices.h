@@ -20,12 +20,6 @@
 #include <zapsi/descriptors.h>
 #include <zapsi/sdt.h>
 
-#ifdef HAVE_CONFIG_H
-#include "config.h"
-#else
-#define CONFIGDIR "/var/tuxbox/config"
-#endif
-
 #define zapped_chan_is_nvod 0x80
 
 #define NONE 0x0000

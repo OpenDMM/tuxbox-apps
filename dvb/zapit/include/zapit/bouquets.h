@@ -16,12 +16,6 @@
 #include "channel.h"
 #include "xmlinterface.h"
 
-#ifdef HAVE_CONFIG_H
-#include "config.h"
-#else
-#define CONFIGDIR "/var/tuxbox/config/zapit"
-#endif
-
 using namespace std;
 
 typedef __gnu_cxx::hash_map<t_channel_id, CZapitChannel> tallchans;

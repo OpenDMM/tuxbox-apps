@@ -12,6 +12,7 @@
 
 /* zapit */
 #include <zapost/dmx.h>
+#include <settings.h>  // DEMUX_DEV
 
 #include "descriptors.h"
 #include "sdt.h"
