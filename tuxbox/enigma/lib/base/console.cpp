@@ -169,7 +169,7 @@ void eConsoleAppContainer::kill()
 	{
 		eDebug("user kill console App");
 		killstate=-1;
-		system( eString().sprintf("kill %d", pid).c_str() );
+		::kill(pid, SIGKILL);
 		closePipes();
 	}
 }

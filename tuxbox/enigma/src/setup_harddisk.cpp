@@ -503,8 +503,7 @@ int ePartitionCheck::eventHandler( const eWidgetEvent &e )
 	{
 		case eWidgetEvent::execBegin:
 		{
-			system("killall nmbd");
-			system("killall smbd");
+			system("killall nmbd smbd");
 			eEPGCache::getInstance()->messages.send(eEPGCache::Message(eEPGCache::Message::pause));
 			eEPGCache::getInstance()->messages.send(eEPGCache::Message(eEPGCache::Message::flush));
 			eString fs = getPartFS(dev,"/hdd"),
