@@ -24,13 +24,27 @@
 #ifndef __sectionsd__dmxapi_h__
 #define __sectionsd__dmxapi_h__
 
+#ifdef HAVE_CONFIG_H
+#include <config.h>
+#endif
+
 #include <stdint.h>
 
-#include <ost/dmx.h>
 
+#ifdef HAVE_OST_DMX_H
+
+#include <ost/dmx.h>
 #define dmx_sct_filter_params dmxSctFilterParams
 #define dmx_filter            dmxFilter
 const char DEMUX_DEVICE[] = "/dev/dvb/card0/demux0";
+
+#else /* HAVE_OST_DMX_H */
+
+#include <linux/dvb/dmx.h>
+const char DEMUX_DEVICE[] = "/dev/dvb/adapter0/demux0";
+
+#endif /* HAVE_OST_DMX_H */
+
 
 bool setfilter(const int fd, const uint16_t pid, const uint8_t filter, const uint8_t mask, const uint32_t flags);
 
