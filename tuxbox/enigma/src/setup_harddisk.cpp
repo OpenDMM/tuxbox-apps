@@ -451,8 +451,8 @@ eHarddiskMenu::eHarddiskMenu(int dev): dev(dev)
 
 	sbar = new eStatusBar(this); sbar->setName("statusbar");
 
-	new eListBoxEntryText( *fs, ("reiserfs"), (void*) 0 );
 	new eListBoxEntryText( *fs, ("ext3"), (void*) 1 );
+	new eListBoxEntryText( *fs, ("reiserfs"), (void*) 0 );
 	fs->setCurrent((void*)1);
   
 	if (eSkin::getActive()->build(this, "eHarddiskMenu"))

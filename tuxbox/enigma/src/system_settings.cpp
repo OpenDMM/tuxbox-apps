@@ -41,7 +41,8 @@ eSystemSettings::eSystemSettings()
 	new eListBoxEntrySeparator( (eListBox<eListBoxEntry>*)&list, eSkin::getActive()->queryImage("listbox.separator"), 0, true );
 	CONNECT((new eListBoxEntryMenu(&list, _("A/V Settings"), eString().sprintf("(%d) %s", ++entry, _("open A/V settings")) ))->selected, eSystemSettings::av_settings);
 #ifdef ENABLE_RFMOD
-	CONNECT((new eListBoxEntryMenu(&list, _("UHF Modulator"), eString().sprintf("(%d) %s", ++entry, _("open UHF-Modulator setup")) ))->selected, eSystemSettings::uhf_modulator);
+	if ( eSystemInfo::getInstance()->hasRFMod() )
+		CONNECT((new eListBoxEntryMenu(&list, _("UHF Modulator"), eString().sprintf("(%d) %s", ++entry, _("open UHF-Modulator setup")) ))->selected, eSystemSettings::uhf_modulator);
 #endif
 #ifndef DISABLE_FILE
 	if ( eSystemInfo::getInstance()->hasHDD() )
