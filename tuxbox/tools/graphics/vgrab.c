@@ -1,5 +1,5 @@
 /******************************************************************************
- *	Videocapture - vcapture.c
+ *	Vgrab - vgrab.c
  *                                                                            
  *	Small test application to test the tuxbox Video4Linux-driver
  *

@@ -116,7 +116,7 @@ int main (int argc, char **argv){
 	linelength = temp<<8;
 	read(ifd,&temp,1);
 	linelength |= temp&0xff;
-	lseek (ifd, 2, SEEK_CUR);
+	lseek (ifd, 4, SEEK_CUR);
 	
 	if ((linelength<0)||(linelength>720)){
 		printf ("invalid linelength %d",linelength);
