@@ -1076,39 +1076,14 @@ void CNeutrinoApp::InitServiceSettings(CMenuWidget &service, CMenuWidget &scanSe
 		updateSettings->addItem( new CMenuForwarder("flashupdate.expertfunctions", true, "", mtdexpert ) );
 		updateSettings->addItem( new CMenuSeparator(CMenuSeparator::LINE) );
 		
-
 		//get current flash-version
 		FILE* fd = fopen("/.version", "r");
 		strcpy(g_settings.softupdate_currentversion, "1.0.0");
-
-		if(!fd)
-		{
-			fd = fopen("/var/etc/version", "r");
-			if(!fd)
-			{
-				dperror("cannot read flash-versioninfo");
-			}
-			else
-			{
-				if(fgets(g_settings.softupdate_currentversion,90,fd)==NULL)
-					fclose(fd);
-			//printf("versiondata: ->%s<-\n", g_settings.softupdate_currentversion);
-			for (unsigned int x=0;x<strlen(g_settings.softupdate_currentversion);x++)
-			{
-				if( (g_settings.softupdate_currentversion[x]!='.') && ((g_settings.softupdate_currentversion[x]>'9') || (g_settings.softupdate_currentversion[x]<'0') ) )
-				{
-					g_settings.softupdate_currentversion[x]=0;
-				}
-			}
-
-			}
-		}
-		else
+		if(fd)
 		{
 			if(fgets(g_settings.softupdate_currentversion,90,fd)==NULL)
 				fclose(fd);
 		}
-
 
 		dprintf(DEBUG_INFO, "current flash-version: %s\n", g_settings.softupdate_currentversion);
 		updateSettings->addItem( new CMenuForwarder("flashupdate.currentversion", false, (char*) &g_settings.softupdate_currentversion, NULL ));
