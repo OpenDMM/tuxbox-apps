@@ -1236,8 +1236,8 @@ bool parse_command(CBasicMessage::Header &rmsg, int connfd)
 		CBasicServer::receive_data(connfd, &requested_channel_id, sizeof(requested_channel_id));
 		tallchans_iterator it = allchans.find(requested_channel_id);
 		if (it == allchans.end())
-			/* if in doubt (i.e. unknown channel) answer no */
-			response.status = false;
+			/* if in doubt (i.e. unknown channel) answer yes for possible subservices  */
+			response.status = true; //true == tv mode
 		else
 			/* FIXME: the following check is no even remotely accurate */
 			response.status = (it->second.getServiceType() != ST_DIGITAL_RADIO_SOUND_SERVICE);
