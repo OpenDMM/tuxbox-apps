@@ -138,6 +138,8 @@ public:
 		
 		const char *magic="";
 		
+		setHelpID(43);
+		
 		eString translation_info=gettext(magic);
 		unsigned int i;
 		i=translation_info.find("Language-Team:");

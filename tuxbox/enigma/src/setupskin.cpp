@@ -134,6 +134,8 @@ eSkinSetup::eSkinSetup()
 		eFatal("skin load of \"setup.skins\" failed");
 
 	loadSkins();
+	
+	setHelpID(88);
 }
 
 eSkinSetup::~eSkinSetup()
