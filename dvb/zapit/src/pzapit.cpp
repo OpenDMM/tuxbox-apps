@@ -425,7 +425,7 @@ int main (int argc, char** argv)
 		unsigned int transponder;
 		unsigned int services;
 		
-		zapit.startScan();
+		zapit.startScan(1);
 
 		while (zapit.isScanReady(satellite, processed_transponder, transponder, services) == false)
 		{

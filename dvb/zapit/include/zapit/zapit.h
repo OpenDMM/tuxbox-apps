@@ -11,7 +11,7 @@
 
 void save_settings (bool write);
 void *start_scanthread(void *);
-int start_scan();
+int start_scan(bool scan_mode);
 
 /**************************************************************/
 /*  functions for new command handling via CZapitClient       */

@@ -121,7 +121,8 @@ class CZapitMessages
 			CMD_GET_CHANNEL_NAME               = 69,
 			CMD_IS_TV_CHANNEL                  = 70,
 
-			CMD_GET_FE_SIGNAL                  = 71
+			CMD_GET_FE_SIGNAL                  = 71,
+			CMD_SCANSTOP					= 72
 		};
 
 	struct commandBoolean
