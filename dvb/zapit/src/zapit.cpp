@@ -303,7 +303,7 @@ channel_msg load_settings()
 	{
 		output_msg.mode = 't';
 	}
-	valueName = Radiomode_on ? "lastChannelRadio" : "lastChannelTV";
+	valueName = (currentMode & RADIO_MODE) ? "lastChannelRadio" : "lastChannelTV";
 	output_msg.chan_nr = config->getInt( valueName, 1);
 
 	return output_msg;
