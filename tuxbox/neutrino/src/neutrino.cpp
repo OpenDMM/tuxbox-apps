@@ -64,7 +64,7 @@
 #include "gui/epgview.h"
 #include "gui/update.h"
 #include "gui/scan.h"
-//#include "gui/favorites.h"
+#include "gui/favorites.h"
 #include "gui/sleeptimer.h"
 #include "gui/dboxinfo.h"
 #include "gui/timerlist.h"
@@ -1842,8 +1842,8 @@ void CNeutrinoApp::ShowStreamFeatures()
 	sprintf(id, "%d", -1);
 
 	// -- Add Channel to favorites
-//	StreamFeatureSelector.addItem( new CMenuForwarder("favorites.menueadd", true, "",
-//		new CFavorites, id, true, CRCInput::RC_yellow, "gelb.raw"), false );
+	StreamFeatureSelector.addItem( new CMenuForwarder("favorites.menueadd", true, "",
+		new CFavorites, id, true, CRCInput::RC_green, "gruen.raw"), false );
 	
 	// start/stop streaming
 	if(g_settings.network_streaming_use)
