@@ -1661,8 +1661,8 @@ void CNeutrinoApp::ShowStreamFeatures()
 	sprintf(id, "%d", -1);
 
 	// -- Add Channel to favorites
-	StreamFeatureSelector.addItem( new CMenuForwarder("favorites.menueadd", true, "",
-		new CFavorites, id, true, CRCInput::RC_yellow, "gelb.raw"), false );
+//	StreamFeatureSelector.addItem( new CMenuForwarder("favorites.menueadd", true, "",
+//		new CFavorites, id, true, CRCInput::RC_yellow, "gelb.raw"), false );
 
 	// -- Stream Info
 	StreamFeatureSelector.addItem( new CMenuForwarder("streamfeatures.info", true, "",
