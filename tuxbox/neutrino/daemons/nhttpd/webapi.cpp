@@ -109,6 +109,8 @@ bool CWebAPI::Timer(CWebserverRequest* request)
 	{
 		if(request->ParameterList.size() > 0)
 		{
+			if(!request->Authenticate())
+				return false;
 			if(request->ParameterList["action"] == "remove")
 			{
 				unsigned removeId = atoi(request->ParameterList["id"].c_str());
@@ -234,18 +236,17 @@ int mode;
 
 	if (request->ParameterList.size() > 0)							// parse the parameters first
 	{
+		if(!request->Authenticate())
+				return false;
+
 		if( request->ParameterList["1"] == "volumemute")
 		{
-			if(!request->Authenticate())
-				return false;
 			bool mute = Parent->Controld->getMute();
 			Parent->Controld->setMute( !mute );
 			dprintf("mute\n");
 		}
 		else if( request->ParameterList["1"] == "volumeplus")
 		{
-			if(!request->Authenticate())
-				return false;
 			char vol = Parent->Controld->getVolume();
 			vol+=5;
 			if (vol>100)
@@ -255,8 +256,6 @@ int mode;
 		}
 		else if( request->ParameterList["1"] == "volumeminus")
 		{
-			if(!request->Authenticate())
-				return false;
 			char vol = Parent->Controld->getVolume();
 			if (vol>0)
 				vol-=5;
@@ -269,8 +268,6 @@ int mode;
 		}
 		else if(request->ParameterList["1"] == "tvmode")				// switch to tv mode
 		{
-			if(!request->Authenticate())
-				return false;
 			mode = NeutrinoMessages::mode_tv;
 			Parent->EventServer->sendEvent(NeutrinoMessages::CHANGEMODE, CEventServer::INITID_HTTPD, (void *)&mode,sizeof(int));
 			sleep(1);
@@ -289,7 +286,6 @@ int mode;
 			request->Send302("channellist.dbox2#akt");
 			return true;
 		}
-
 	}
 
 	ShowControlpanel(request);									// show the controlpanel
@@ -565,11 +561,15 @@ char volbuf[5];
 		{
 			params["MUTE0"] = "01";
 			params["MUTE1"] = "00";
+			params["MUTE_ICON0"] = "<img src=\"/images/if_lsmuted.jpg\" height=\"27\" width=\"100\"><br> <!--\n";
+			params["MUTE_ICON1"] = "-->";
 		}
 		else
 		{
 			params["MUTE0"] = "00";
 			params["MUTE1"] = "01";
+			params["MUTE_ICON0"] = " ";
+			params["MUTE_ICON1"] = " ";
 		}
 		
 		request->ParseFile(Parent->Parent->PrivateDocumentRoot + "/controlpanel.html",params);
