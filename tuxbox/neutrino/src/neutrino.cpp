@@ -547,12 +547,11 @@ int CNeutrinoApp::loadSetup()
 		erg = 2;
 	}
 
-	if(!scanSettings.loadSettings(scanSettingsFile))
+	if (!scanSettings.loadSettings(scanSettingsFile, (g_info.delivery_system = g_Zapit->getDeliverySystem())))
 	{
-		dprintf(DEBUG_NORMAL,"error while loading scan-settings, using defaults!\n");
-		scanSettings.useDefaults();
+		dprintf(DEBUG_NORMAL, "Loading of scan settings failed. Using defaults.\n");
 	}
-
+	
 	return erg;
 }
 
@@ -1071,7 +1070,7 @@ void CNeutrinoApp::InitScanSettings(CMenuWidget &settings)
 	ojBouquets->addOption( CZapitClient::BM_DONTTOUCHBOUQUETS, "scants.bouquet_leave");
 
 	//kabel-lnb-settings
-	if(g_info.fe==1)
+	if(g_info.delivery_system == DVB_C)
 	{
 		settings.addItem( new CMenuSeparator() );
 		settings.addItem( new CMenuForwarder("menu.back") );
@@ -2116,19 +2115,6 @@ int CNeutrinoApp::run(int argc, char **argv)
 	g_RCInput = new CRCInput;
 	g_Zapit = new CZapitClient;
 
-	switch(g_Zapit->getDeliverySystem()) {
-	
-		case DVB_S:
-			g_info.fe=1;
-			break;
-		case DVB_C:
-		case DVB_T:
-		default:
-			g_info.fe=0;
-			break;
-			
-	}
-	
 	g_Sectionsd = new CSectionsdClient;
 	g_Timerd = new CTimerdClient;
 
