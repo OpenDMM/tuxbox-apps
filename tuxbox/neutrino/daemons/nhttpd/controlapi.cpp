@@ -1044,14 +1044,15 @@ void CControlAPI::SendTimers(CWebserverRequest* request)
 			break;
 		}
 
-		request->printf("%d %d %d %d %d %d %s\n",
-			timer->eventID,
-			(int)timer->eventType,
-			(int)timer->eventRepeat,
-			(int)timer->announceTime,
-			(int)timer->alarmTime,
-			(int)timer->stopTime,
-			zAddData);
+		request->printf("%d %d %d %d %d %d %d %s\n",
+				timer->eventID,
+				(int)timer->eventType,
+				(int)timer->eventRepeat,
+				(int)timer->repeatCount,
+				(int)timer->announceTime,
+				(int)timer->alarmTime,
+				(int)timer->stopTime,
+				zAddData);
 	}
 }
 

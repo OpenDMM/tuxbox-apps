@@ -125,6 +125,7 @@ class CTimerd
 			CTimerEventTypes  eventType;
 			CTimerEventStates eventState;
 			CTimerEventRepeat eventRepeat;
+			uint              repeatCount;
 			time_t            alarmTime;
 			time_t            announceTime;
 			time_t            stopTime;

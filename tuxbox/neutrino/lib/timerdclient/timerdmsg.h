@@ -68,6 +68,7 @@ class CTimerdMsg : public CBasicMessage
 		time_t                     alarmTime;
 		time_t                     announceTime;
 		time_t                     stopTime;			
+		uint                       repeatCount;
 	};
 
 	struct commandGetTimer
@@ -82,6 +83,7 @@ class CTimerdMsg : public CBasicMessage
 		time_t                     alarmTime;
 		time_t                     stopTime;
 		CTimerd::CTimerEventRepeat eventRepeat;
+		uint                       repeatCount;
 	};
 
 	struct commandRemind
