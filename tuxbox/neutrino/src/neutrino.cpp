@@ -32,6 +32,9 @@
 	Foundation, Inc., 675 Mass Ave, Cambridge, MA 02139, USA.
 
   $Log$
+  Revision 1.108  2001/12/20 00:25:38  McClean
+  use libnet
+
   Revision 1.107  2001/12/19 21:38:08  McClean
   new background
 
@@ -2012,7 +2015,7 @@ void CNeutrinoApp::scartMode()
 	printf("scartmode-loopended\n");
 	g_lcdd->setMode(LCDM_TV);
 	g_Controld->setScartMode( 0 );
-
+	g_FrameBuffer->paintBackground();
 	/*
 	if(mode==mode_scart)
 	{
