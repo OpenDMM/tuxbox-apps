@@ -72,7 +72,11 @@ namespace ZapitTools {
 	
 		while ((*s) != 0)
 		{
-			/* cf. http://www.w3.org/TR/xhtml1/dtds.html */
+			/* cf.
+			 * http://www.w3.org/TR/2004/REC-xml-20040204/#syntax
+			 * and
+			 * http://www.w3.org/TR/2004/REC-xml-20040204/#sec-predefined-ent
+			 */
 			switch (*s)
 			{
 			case '<':           
