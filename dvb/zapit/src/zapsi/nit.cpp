@@ -36,8 +36,6 @@
 #include "descriptors.h"
 #include "nit.h"
 
-#define DEMUX_DEV "/dev/ost/demux0"
-
 extern std::map <unsigned int, transponder> transponders;
 
 int parse_nit (unsigned char DiSEqC)
