@@ -55,9 +55,13 @@ bool CCam::setCaPmt(CCaPmt * caPmt)
 
 	unsigned int size = caPmt->getLength();
 
-	char buffer[3 + get_length_field_size(size) + size];
+	char *buffer = new char[3 + get_length_field_size(size) + size];
 
 	size_t pos = caPmt->writeToBuffer((unsigned char*)buffer);
 
-	return sendMessage(buffer, pos);
+	bool ret = sendMessage(buffer, pos);
+
+	delete[] buffer;
+
+	return ret;
 }
