@@ -76,12 +76,9 @@ static inline void matrix(unsigned char y, unsigned char cb, unsigned char cr,
 		if (_R<0) _R=0;		// clipping is necessary to compensate for 
 		if (_G<0) _G=0;		//	rounding/quantization errors
 		if (_B<0) _B=0;
-		if (_R>255.0) *r = 255;
-		else *r = _R;
-		if (_G>255.0) *g = 255;
-		else *g = _G;
-		if (_B>255.0) *b = 255;
-		else *b = _B;
+		*r = (_R>255.0)? 255 : _R;
+		*g = (_G>255.0)? 255 : _G;
+		*b = (_B>255.0)? 255 : _B;
 }
 
 // length in bytes
