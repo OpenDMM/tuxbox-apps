@@ -2047,7 +2047,7 @@ int CNeutrinoApp::run(int argc, char **argv)
 	CMenuWidget colorSettings("colormenu.head", "colors.raw");
 	CMenuWidget fontSettings("fontmenu.head", "colors.raw");
 	CMenuWidget lcdSettings("lcdmenu.head", "lcd.raw");
-	CMenuWidget keySettings("keybindingmenu.head", "keybinding.raw", 400, 460);
+	CMenuWidget keySettings("keybindingmenu.head", "keybinding.raw", 400);
 	CMenuWidget miscSettings("miscsettings.head", "settings.raw");
 	CMenuWidget scanSettings("servicemenu.scants", "settings.raw");
 	CMenuWidget service("servicemenu.head", "settings.raw");
