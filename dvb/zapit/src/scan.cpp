@@ -245,7 +245,7 @@ void write_transponder(FILE *fd, t_transport_stream_id transport_stream_id, t_or
 		return;
 	}
 
-	for (tallchans_iterator cI = allchans.begin(); cI != allchans.end(); cI++)
+	for (tallchans::const_iterator cI = allchans.begin(); cI != allchans.end(); cI++)
 		if ((cI->second.getTransportStreamId() == transport_stream_id) && (cI->second.getOriginalNetworkId() == original_network_id)) {
 			if (cI->second.getName().length() == 0)
 				fprintf(fd,

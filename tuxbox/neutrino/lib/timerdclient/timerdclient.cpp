@@ -29,7 +29,7 @@
 #include <timerdclient/timerdclient.h>
 
 
-bool CTimerdClient::send(const unsigned char command, char* data = NULL, const unsigned int size = 0)
+bool CTimerdClient::send(const unsigned char command, const char* data = NULL, const unsigned int size = 0)
 {
 	return CBasicClient::send(TIMERD_UDS_NAME, CTimerdMsg::ACTVERSION, command, data, size);
 }

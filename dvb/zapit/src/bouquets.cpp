@@ -305,7 +305,7 @@ void CBouquetManager::makeRemainingChannelsBouquet()
 	ChannelList unusedChannels;
 	set<t_channel_id> chans_processed;
 
-	for (vector<CBouquet*>::iterator it = Bouquets.begin(); it != Bouquets.end(); it++)
+	for (vector<CBouquet*>::const_iterator it = Bouquets.begin(); it != Bouquets.end(); it++)
 	{
 		for (vector<CZapitChannel*>::iterator jt = (*it)->tvChannels.begin(); jt != (*it)->tvChannels.end(); jt++)
 			chans_processed.insert((*jt)->getChannelID());
@@ -316,13 +316,13 @@ void CBouquetManager::makeRemainingChannelsBouquet()
 	// TODO: use locales
 	remainChannels = addBouquet((Bouquets.size() == 0) ? "Alle Kan\xC3\xA4le" : "Andere"); // UTF-8 encoded
 
-	for (tallchans_iterator it=allchans.begin(); it != allchans.end(); it++)
+	for (tallchans::iterator it = allchans.begin(); it != allchans.end(); it++)
 		if (chans_processed.find(it->first) == chans_processed.end())
 			unusedChannels.push_back(&(it->second));
 
 	sort(unusedChannels.begin(), unusedChannels.end(), CmpChannelByChName());
 
-	for (ChannelList::iterator it = unusedChannels.begin(); it != unusedChannels.end(); it++)
+	for (ChannelList::const_iterator it = unusedChannels.begin(); it != unusedChannels.end(); it++)
 		remainChannels->addService(findChannelByChannelID((*it)->getChannelID()));
 
 	if ((remainChannels->tvChannels.size() == 0) && (remainChannels->radioChannels.size() == 0))

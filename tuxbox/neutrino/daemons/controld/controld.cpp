@@ -200,7 +200,7 @@ void setvideooutput(int format, bool bSaveSettings = true)
 void setVideoFormat(int format, bool bSaveFormat = true )
 {
 	int fd;
-	int videoDisplayFormat;
+	video_display_format_t videoDisplayFormat;
 	int avsiosfncFormat;
 	int wss;
 
@@ -274,15 +274,15 @@ void setVideoFormat(int format, bool bSaveFormat = true )
 	{
 		//	?	case AVS_FNCOUT_INTTV	: videoDisplayFormat = VIDEO_PAN_SCAN;
 	case AVS_FNCOUT_EXT169	:
-		videoDisplayFormat = 2; // FIXME: define VIDEO_CENTER_CUT_OUT in zapit clientlib
+		videoDisplayFormat = ZAPIT_VIDEO_CENTER_CUT_OUT;
 		wss = SAA_WSS_169F;
 		break;
 	case AVS_FNCOUT_EXT43	:
-		videoDisplayFormat = 1; // FIXME: define VIDEO_LETTER_BOX in zapit clientlib
+		videoDisplayFormat = ZAPIT_VIDEO_LETTER_BOX;
 		wss = SAA_WSS_43F;
 		break;
 	default:
-		videoDisplayFormat = 1; // FIXME: define VIDEO_LETTER_BOX in zapit clientlib
+		videoDisplayFormat = ZAPIT_VIDEO_LETTER_BOX;
 		wss = SAA_WSS_43F;
 		break;
 		//	?	case AVS_FNCOUT_EXT43_1	: videoDisplayFormat = VIDEO_PAN_SCAN;

@@ -36,7 +36,7 @@
 class CTimerdClient:private CBasicClient
 {
 	private:
-		bool send(const unsigned char command, char* data, const unsigned int size);
+		bool send(const unsigned char command, const char* data, const unsigned int size);
 
 	public:
 		enum events
