@@ -53,7 +53,7 @@
 #include <netdb.h>
 #include <arpa/inet.h>
 
-#include <tuxbox/tuxbox.h>
+#include <tuxbox.h>
 
 #include <iostream>
 #include <fstream>

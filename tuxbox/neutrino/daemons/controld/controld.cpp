@@ -36,17 +36,17 @@
 #include <sys/types.h>
 #include <sys/un.h>
 
-#include <tuxbox/tuxbox.h>
-
 #include <dbox/avs_core.h>
 #include <dbox/fp.h>
 #include <dbox/saa7126_core.h>
 
-#include <connection/basicserver.h>
 #include <zapit/client/zapitclient.h>
-#include <eventserver.h>
 
+#include <basicserver.h>
 #include <configfile.h>
+#include <eventserver.h>
+#include <tuxbox.h>
+
 #include <controldclient/controldclient.h>
 #include <controldclient/controldMsg.h>
 //#include <lcddclient/lcddclient.h>
