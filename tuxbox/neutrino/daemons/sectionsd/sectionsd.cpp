@@ -23,6 +23,9 @@
 //    Foundation, Inc., 675 Mass Ave, Cambridge, MA 02139, USA.
 //
 //  $Log$
+//  Revision 1.135  2002/10/04 16:31:25  thegoodguy
+//  Bugfix: In the event of a timeout with part of the section read, the eitthread should use the correct commands to restart the dmx, too
+//
 //  Revision 1.134  2002/10/02 21:00:15  thegoodguy
 //  Only read 3 bytes of eit table first, fixed memory leak & locking problem
 //
@@ -470,7 +473,7 @@ CEventServer *eventServer;
 //bool            timerd = false;
 
 #define dprintf(fmt, args...) { if (debug) { printf(fmt, ## args); fflush(stdout); } }
-#define dputs(str) {if (debug) { puts(str); fflush(stdout); }}
+#define dputs(str) { if (debug) { puts(str); fflush(stdout); } }
 
 static pthread_mutex_t eventsLock = PTHREAD_MUTEX_INITIALIZER; // Unsere (fast-)mutex, damit nicht gleichzeitig in die Menge events geschrieben und gelesen wird
 static pthread_mutex_t servicesLock = PTHREAD_MUTEX_INITIALIZER; // Unsere (fast-)mutex, damit nicht gleichzeitig in die Menge services geschrieben und gelesen wird
@@ -4228,20 +4231,16 @@ static void *eitThread(void *)
 
 			dmxEIT.unlock();
 
-			if (!rc)
+			if (rc <= 0)
 			{
 				delete[] buf;
-				dputs("[eitThread] dmxEIT.read timeout after header");
+				if (rc == 0)
+				{
+					dputs("[eitThread] dmxEIT.read timeout after header");
+				}
+				else
+					dputs("[eitThread] dmxEIT.read rc < 0 after header");
 				// DMX neu starten, noetig, da bereits der Header gelesen wurde
-				dmxEIT.pause(); // -> lock
-				dmxEIT.unpause(); // -> unlock
-				continue; // timeout -> kein EPG
-			}
-			else if (rc < 0)
-			{
-				dputs("[eitThread] dmxEIT.read rc<0 after header");
-				delete[] buf;
-				// DMX neu starten
 				dmxEIT.real_pause(); // -> lock
 				dmxEIT.real_unpause(); // -> unlock
 				continue;
