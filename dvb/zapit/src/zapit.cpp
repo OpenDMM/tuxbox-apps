@@ -69,6 +69,9 @@
   Foundation, Inc., 675 Mass Ave, Cambridge, MA 02139, USA.
   
   $Log$
+  Revision 1.6  2001/10/04 14:49:07  faralla
+  fixed streaming-error
+
   Revision 1.5  2001/10/03 14:07:45  faralla
   nvod-switch-hack
 
@@ -823,7 +826,7 @@ int zapit (uint onid_sid,boolean in_nvod) {
     }
   
   ioctl(video,DMX_STOP,0);
-  
+
   if ( video>= 0 )
     {
       ioctl(vid, VIDEO_STOP, false);
@@ -1229,7 +1232,7 @@ void endzap()
   if ( video>= 0 )
     {
       close(video);
-      audio = -1;
+      video = -1;
     }
   if ( audio>= 0 )
     {
@@ -1346,6 +1349,7 @@ void parse_command()
     printf("  Param2: %d\n", rmsg.param2);
     printf("  Param3: %s\n", rmsg.param3);
   */
+
   if(rmsg.version!=1)
     {
       perror("unknown version\n");
