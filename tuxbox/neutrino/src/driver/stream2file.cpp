@@ -379,7 +379,18 @@ stream2file_error_msg_t start_recording(const char * const filename,
 	char buf[FILENAMEBUFFERSIZE];
 
 	if (busy_count != 0)
-		return STREAM2FILE_BUSY; // other thread is running
+	{
+		if (exit_flag == STREAM2FILE_STATUS_RUNNING)
+			return STREAM2FILE_BUSY;
+
+		/* give threads a second to exit */
+		sleep(1);
+
+		puts("[stream2file] recording attempt 2");
+
+		if (busy_count != 0)
+			return STREAM2FILE_BUSY;
+	}
 
 	busy_count++;
 
