@@ -23,6 +23,9 @@
 //    Foundation, Inc., 675 Mass Ave, Cambridge, MA 02139, USA.
 //
 //  $Log$
+//  Revision 1.118  2002/04/17 15:58:24  field
+//  Anpassungen
+//
 //  Revision 1.117  2002/04/17 13:07:06  field
 //  Bugfix (current-event)
 //
@@ -1232,7 +1235,7 @@ static const SIevent& findNextSIeventForServiceUniqueKey(const unsigned serviceU
         if(SIservice::makeUniqueKey(e->first->originalNetworkID, e->first->serviceID)==serviceUniqueKey)
         {
             for(SItimes::iterator t=e->first->times.begin(); t!=e->first->times.end(); t++)
-                if ((long)(azeit)<=(long)(t->startzeit+t->dauer))
+                if ((long)(azeit)<(long)(t->startzeit+t->dauer))
                 {
                     zeit=*t;
                     return *(e->first);
@@ -2029,7 +2032,9 @@ static void commandCurrentNextInfoChannelID(struct connectionData *client, char 
 		sizeof(unsigned long long)+       	// Unique-Key
 		sizeof(sectionsd::sectionsdTime)+ 	// zeit
 		strlen(nextEvt.name.c_str())+1+   	// name + 0
-		sizeof(unsigned);
+		sizeof(unsigned)+					// flags
+		1									// CurrentFSK
+		;
 
 	pResultData = new char[nResultDataSize];
 	if(!pResultData)
@@ -2060,6 +2065,9 @@ static void commandCurrentNextInfoChannelID(struct connectionData *client, char 
 	p+=strlen(nextEvt.name.c_str())+1;
 	*((unsigned*)p)= flag;
 	p+=sizeof(unsigned);
+	*p = evt.getFSK();
+	int x= evt.getFSK();
+	p++;
 
     unlockEvents();
     dmxEIT.unpause(); // -> unlock

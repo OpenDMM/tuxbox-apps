@@ -20,6 +20,9 @@
   Foundation, Inc., 675 Mass Ave, Cambridge, MA 02139, USA.
 
   $Log$
+  Revision 1.14  2002/04/17 15:58:24  field
+  Anpassungen
+
   Revision 1.13  2002/04/15 12:33:44  field
   Wesentlich verbessertes Paket-Handling (CPU-Last sollte viel besser sein
   *g*)
@@ -410,6 +413,8 @@ bool CSectionsdClient::getCurrentNextServiceKey( unsigned serviceKey, sectionsd:
 
 		current_next.flags = *(unsigned*) dp;
 		dp+= sizeof(unsigned);
+
+		current_next.current_fsk = *(char*) dp;
 
 		sectionsd_close();
 		return true;

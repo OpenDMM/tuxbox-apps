@@ -25,6 +25,9 @@
 //    Foundation, Inc., 675 Mass Ave, Cambridge, MA 02139, USA.
 //
 //  $Log$
+//  Revision 1.34  2002/04/17 15:58:24  field
+//  Anpassungen
+//
 //  Revision 1.33  2002/04/15 12:33:44  field
 //  Wesentlich verbessertes Paket-Handling (CPU-Last sollte viel besser sein
 //  *g*)
@@ -230,6 +233,7 @@ struct sectionsd
 		unsigned long long 			current_uniqueKey;
 		sectionsd::sectionsdTime 	current_zeit;
 		std::string					current_name;
+		char						current_fsk;
 		unsigned long long 			next_uniqueKey;
 		sectionsd::sectionsdTime 	next_zeit;
 		std::string					next_name;
