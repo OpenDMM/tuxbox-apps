@@ -32,8 +32,8 @@
 	Foundation, Inc., 675 Mass Ave, Cambridge, MA 02139, USA.
 
   $Log$
-  Revision 1.167  2002/02/24 20:17:23  field
-  Kleinigkeiten
+  Revision 1.168  2002/02/24 21:41:58  field
+  User-Interface verbessert
 
   Revision 1.166  2002/02/23 20:19:51  field
   version-filename angepasst
@@ -1776,7 +1776,7 @@ void CNeutrinoApp::SelectNVOD()
 			}
 			else
 			{
-				NVODSelector.addItem( new CMenuForwarder(subChannels.list[count].subservice_name, true, "", NVODChanger, nvod_id, false), (count == subChannels.selected) );
+				NVODSelector.addItem( new CMenuForwarder(subChannels.list[count].subservice_name, true, "", NVODChanger, nvod_id, false, (count<9)?(count+1):-1), (count == subChannels.selected) );
 			}
 		}
 		NVODSelector.exec(NULL, "");
@@ -1803,7 +1803,7 @@ void CNeutrinoApp::SelectAPID()
 			char apid[5];
 			sprintf(apid, "%d", count);
 			APIDSelector.addItem( new CMenuForwarder(g_RemoteControl->audio_chans.apids[count].name, true,
-								  "", APIDChanger, apid, false), (count == g_RemoteControl->audio_chans.selected) );
+								  "", APIDChanger, apid, false, (count<9)?(count+1):-1), (count == g_RemoteControl->audio_chans.selected) );
 		}
 		APIDSelector.exec(NULL, "");
 	}
@@ -1846,7 +1846,7 @@ void CNeutrinoApp::ShowStreamFeatures()
 
 	sprintf(id, "%d", -1);
 	StreamFeatureSelector.addItem( new CMenuForwarder("streamfeatures.info", true, "",
-									   StreamFeaturesChanger, id, true, CRCInput::RC_help, "help_small.raw"), (enabled_count!=0) );
+									   StreamFeaturesChanger, id, true, CRCInput::RC_help, "help_small.raw"), (enabled_count==0) );
 	StreamFeatureSelector.exec(NULL, "");
 }
 
