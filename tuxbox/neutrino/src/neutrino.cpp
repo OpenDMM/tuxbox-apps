@@ -1892,7 +1892,8 @@ void CNeutrinoApp::RealRun(CMenuWidget &mainMenu)
 
 		if ( msg == NeutrinoMessages::ZAPTO)
 		{
-			channelList->zapToOnidSid(data);
+			CTimerEvent::EventInfo * eventinfo = (CTimerEvent::EventInfo *) data;
+			channelList->zapToOnidSid(eventinfo->onidSid);
 		}
 
 		if ( msg == NeutrinoMessages::ANNOUNCE_ZAPTO)
