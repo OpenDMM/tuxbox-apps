@@ -151,6 +151,9 @@ uint16_t parse_ES_info(uint8_t *buffer, pids *ret_pids, uint16_t ca_system_id)
 				}
 				break;
 
+			case 0xB1: /* unknown, Astra 19.2E */
+				break;
+
 			case 0xC0: /* unknown, Astra 19.2E */
 				break;
 

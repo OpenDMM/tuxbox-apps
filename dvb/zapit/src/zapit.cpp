@@ -654,18 +654,7 @@ int changeapid (uint8_t pid_nr)
 	/* update current channel */
 	channel->setAudioChannel(pid_nr);
 
-#ifdef USE_EXTERNAL_CAMD
-	if ((channel->getEcmPid() != NONE) && (channel->getEcmPid() != INVALID))
-	{
-		cam->setEcm(channel);
-	}
-#endif
-
 	return 8;
-}
-
-void endzap ()
-{
 }
 
 void shutdownBox ()
