@@ -69,6 +69,8 @@
   		cam-type F == 64
   		other cam-type == 128
   		so valid are : 33, 18 and 68
+  
+  cmd = 'u' get current vtxt-pid
 
 
   Bei Fehlschlagen eines Kommandos wird der negative Wert des kommandos zurückgegeben.
@@ -90,6 +92,9 @@
   Foundation, Inc., 675 Mass Ave, Cambridge, MA 02139, USA.
 
   $Log$
+  Revision 1.50  2001/12/20 00:47:46  faralla
+  command to get vtxt-pid added
+
   Revision 1.49  2001/12/19 18:42:57  faralla
   added switch for vtxtd
 
@@ -316,6 +321,7 @@ extern int found_channels;
 extern short curr_sat;
 extern short scan_runs;
 boolean use_vtxtd = false;
+int vtxt_pid; 
 
 void start_scan();
 volatile sig_atomic_t keep_going = 1; /* controls program termination */
@@ -364,6 +370,8 @@ int set_vtxt(uint vpid)
     char vtxtbuf[255];
     char hexpid[20];
 
+    vtxt_pid = vpid;
+    
     if (use_vtxtd)
     {    
     memset(&hexpid,0, sizeof(hexpid));
@@ -1164,6 +1172,7 @@ else
 //  if (parse_pmt_pids.vtxtpid != 0)
     dprintf("[zapit] setting vtxt\n");
     set_vtxt(parse_pmt_pids.vtxtpid);
+    
 
       //printf("Saving settings\n");
       curr_onid_sid = onid_sid;
@@ -2101,6 +2110,17 @@ void parse_command()
 			return;
 		}
 		if (send(connfd, &caid_ver, sizeof(int),0) == -1) {
+			perror("[zapit] could not send any return\n");
+			return;
+		}
+		break;
+	case 'u':
+		status = "00u";
+		if (send(connfd, status, strlen(status),0) == -1) {
+			perror("[zapit] could not send any return\n");
+			return;
+		}
+		if (send(connfd, &vtxt_pid, sizeof(int),0) == -1) {
 			perror("[zapit] could not send any return\n");
 			return;
 		}
