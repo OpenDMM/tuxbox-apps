@@ -50,9 +50,9 @@
 Signal1<void,eZapSetup*> eZapSetup::setupHook;
 
 eZapSetup::eZapSetup()
-	:eListBoxWindow<eListBoxEntryMenu>(_("Setup"), 9, 450, true)
+	:eListBoxWindow<eListBoxEntryMenu>(_("Setup"), 9, 500, true)
 {
-	move(ePoint(135, 120));
+	move(ePoint(115, 120));
 	int havenetwork, haveci, haveharddisk, havelcd, haverfmod;
 	switch (eDVB::getInstance()->getmID())
 	{
