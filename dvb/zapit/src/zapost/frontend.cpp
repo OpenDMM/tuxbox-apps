@@ -299,7 +299,7 @@ struct dvb_frontend_event CFrontend::getEvent ()
 				break;
 			}
 
-			else if (event.status & FE_TIMEDOUT) {
+			else if ((TIMEOUT_MAX_MS - msec > 1000) && (event.status & FE_TIMEDOUT)) {
 				WARN("FE_TIMEDOUT");
 				break;
 			}
