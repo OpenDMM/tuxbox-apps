@@ -103,6 +103,13 @@ class CTimerdMsg : public CBasicMessage
 	};
 
 
+
+	struct generalInteger
+	{
+		int number;
+	};
+
+
 	struct responseAddTimer
 	{
 		int   eventID;

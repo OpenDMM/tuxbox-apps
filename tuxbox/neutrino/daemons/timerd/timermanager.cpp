@@ -213,16 +213,13 @@ bool CTimerManager::listEvents(CTimerEventMap &Events)
 {
 	if(!&Events)
 		return false;
+
 	Events.clear();
-	if(getInstance()->events.size() > 0)
-	{
-		CTimerEventMap::iterator pos = getInstance()->events.begin();
-		for(int i = 0;pos != getInstance()->events.end();pos++,i++)
-			Events[pos->second->eventID] = pos->second;
-		return true;
-	}
-	else
-		return false;
+
+	for (CTimerEventMap::iterator pos = events.begin(); pos != events.end(); pos++)
+		Events[pos->second->eventID] = pos->second;
+
+	return true;
 }
 
 int CTimerManager::modifyEvent(int eventID, time_t announceTime, time_t alarmTime, time_t stopTime, CTimerd::CTimerEventRepeat evrepeat)

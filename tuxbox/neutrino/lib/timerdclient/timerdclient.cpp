@@ -119,16 +119,25 @@ int CTimerdClient::getSleepTimerRemaining()
 }
 //-------------------------------------------------------------------------
 
-void CTimerdClient::getTimerList( CTimerd::TimerList &timerlist)
+void CTimerdClient::getTimerList(CTimerd::TimerList &timerlist)
 {
+        CTimerdMsg::generalInteger responseInteger;
+	CTimerd::responseGetTimer  response;
+
 	send(CTimerdMsg::CMD_GETTIMERLIST);
+
 	timerlist.clear();
-	CTimerd::responseGetTimer response;
-	while( receive_data((char*)&response, sizeof(CTimerd::responseGetTimer)))
-	{
-		if(response.eventState != CTimerd::TIMERSTATE_TERMINATED)
-			timerlist.insert( timerlist.end(), response);
-	}
+
+        if (CBasicClient::receive_data((char* )&responseInteger, sizeof(responseInteger)))
+        {
+                while (responseInteger.number-- > 0)
+                {
+                        if (CBasicClient::receive_data((char*)&response, sizeof(response)))
+				if (response.eventState != CTimerd::TIMERSTATE_TERMINATED)
+					timerlist.push_back(response);
+                };
+        }
+
 	close_connection();
 }
 //-------------------------------------------------------------------------
