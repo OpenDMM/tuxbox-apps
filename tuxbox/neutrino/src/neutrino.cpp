@@ -32,6 +32,9 @@
 	Foundation, Inc., 675 Mass Ave, Cambridge, MA 02139, USA.
 
   $Log$
+  Revision 1.82  2001/11/23 17:09:22  McClean
+  dont know
+
   Revision 1.81  2001/11/23 16:58:41  McClean
   update-functions
 
@@ -624,6 +627,7 @@ void CNeutrinoApp::firstChannel()
 
 void CNeutrinoApp::isCamValid()
 {
+
 	int sock_fd;
 	SAI servaddr;
 	char rip[]="127.0.0.1";
@@ -678,7 +682,7 @@ void CNeutrinoApp::isCamValid()
 	{
 		printf("\n!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!\n!!\t\t\t\t\t\t\t!!\n!!\tATTENTION, YOUR CARD DOES NOT MATCH CAMALPHA.BIN!!\n!!\t\t\t\t\t\t\t!!\n!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!\n");
 	}
-	 
+
 }
 
 		
