@@ -2347,6 +2347,11 @@ int stopPlayBack()
 
 	if (video_fd != -1)
 	{
+		if (ioctl(video_fd, VIDEO_STOP, 1) < 0)
+		{
+			perror("[zapit] VIDEO_STOP");
+		}
+
 		close(video_fd);
 		video_fd = -1;
 	}
