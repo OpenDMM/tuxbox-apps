@@ -29,7 +29,7 @@
 
 #include <vector>
 
-#include <zapit/zapittypes.h>
+#include <zapit/client/zapittypes.h>
 
 
 #define REMINDER_MESSAGE_MAXLEN 31
