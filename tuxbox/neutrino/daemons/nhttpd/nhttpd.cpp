@@ -91,7 +91,6 @@ static void usage(FILE *dest)
 
 int main(int argc, char **argv)
 {
-	bool debug = false;
 	bool do_fork = true;
 
 	for (int i = 1; i < argc; i++)
@@ -148,7 +147,7 @@ int main(int argc, char **argv)
 		}
 	}
 
-	if ((webserver = new CWebserver(debug)))
+	if ((webserver = new CWebserver(CDEBUG::getInstance()->Debug)))
 	{
 		if (webserver->Start())
 		{
