@@ -55,7 +55,7 @@
 #define IPACKS		2048
 
 /* demux buffer size */
-#define DMX_BUFFER_SIZE (1024 * 1024)
+#define DMX_BUFFER_SIZE (256 * 1024)
 
 /* maximum number of pes pids */
 #define MAXPIDS		8

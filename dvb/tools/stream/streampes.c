@@ -71,7 +71,7 @@ int main(int argc, char **argv)
 		return -fd;
 	}
 
-	ioctl(fd, DMX_SET_BUFFER_SIZE, 1024*1024);
+	ioctl(fd, DMX_SET_BUFFER_SIZE, 256 * 1024);
 	sscanf(bp, "%hx", &pid);
 
 	flt.pid = pid;
