@@ -23,6 +23,9 @@
 //    Foundation, Inc., 675 Mass Ave, Cambridge, MA 02139, USA.
 //
 //  $Log$
+//  Revision 1.91  2002/01/30 13:35:02  field
+//  Verbesserungen
+//
 //  Revision 1.90  2002/01/29 23:23:57  field
 //  Mehr Details in ListAll
 //
@@ -2094,20 +2097,19 @@ static void sendEventList(struct connectionData *client, const unsigned char ser
                         *((unsigned *)liste)=t->dauer;
                         liste+=4;
                         strcpy(liste, e->first->name.c_str());
-                        liste+=strlen(e->first->name.c_str());
-                        *liste=0;
+                        liste+=strlen(liste);
+                        //*liste=0;
                         liste++;
                         if (e->first->text== "" )
                         {
-                        	strcpy(liste, e->first->extendedText.c_str());
-                        	liste+=strlen(e->first->extendedText.c_str());
+                        	strcpy(liste, e->first->extendedText.substr(0, 40).c_str());
+                        	liste+=strlen(liste);
                         }
                         else
                         {
                         	strcpy(liste, e->first->text.c_str());
-                        	liste+=strlen(e->first->text.c_str());
+                        	liste+=strlen(liste);
                         }
-                        *liste=0;
                         liste++;
                     } // else !sendServiceName
 
