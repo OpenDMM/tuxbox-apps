@@ -2372,6 +2372,38 @@ int stopPlayBack()
 	return 0;
 }
 
+/*
+ * get current playback state
+ *
+ * -1: failure
+ *  0: stopped
+ *  1: playing
+ */
+int getPlaybackStatus ()
+{
+	videoStatus status;
+
+	if (video_fd == -1)
+	{
+		return 0;
+	}
+
+	if (ioctl(video_fd, VIDEO_GET_STATUS, &status) < 0)
+	{
+		perror("[zapit] VIDEO_GET_STATUS");
+		return -1;
+	}
+
+	if (status.playState == VIDEO_PLAYING)
+	{
+		return 1;
+	}
+	else
+	{
+		return 0;
+	}
+}
+
 unsigned zapTo (unsigned int bouquet, unsigned int channel)
 {
 	if ((bouquet < 1) || (bouquet > g_BouquetMan->Bouquets.size()))
