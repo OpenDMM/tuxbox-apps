@@ -25,7 +25,7 @@
 #include <channel.h>
 #include <zapost/frontend.h>
 
-int parse_pat (int demux_fd, CZapitChannel * channel);
+int parse_pat (int demux_fd, CZapitChannel * channel, unsigned short original_network_id = 0x0000);
 int fake_pat (uint32_t TsidOnid, FrontendParameters feparams, uint8_t polarity, uint8_t DiSEqC);
 
 #endif /* __pat_h__ */

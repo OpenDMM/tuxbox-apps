@@ -638,7 +638,6 @@ void parse_command (CZapitClient::commandHead &rmsg)
 	debug("  Version: %d\n", rmsg.version);
 	debug("  Command: %d\n", rmsg.cmd);
 #endif
-	printf("[zapit] Command %d received (Version: %d).\n", rmsg.cmd, rmsg.version);
 
 	if (rmsg.version == CZapitClient::ACTVERSION)
 	{
@@ -1082,7 +1081,6 @@ void parse_command (CZapitClient::commandHead &rmsg)
 #ifdef DEBUG
 	debug("[zapit] Command %d processed.\n", rmsg.cmd);
 #endif
-	printf("[zapit] Command %d processed.\n", rmsg.cmd);
 }
 
 int main (int argc, char **argv)

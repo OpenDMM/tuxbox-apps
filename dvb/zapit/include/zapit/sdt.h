@@ -44,6 +44,6 @@ enum service_type_e
 };
 
 int parse_sdt ();
-uint32_t get_sdt_TsidOnid ();
+unsigned int get_sdt_TsidOnid ();
 
 #endif /* __sdt_h__ */

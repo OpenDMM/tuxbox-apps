@@ -147,7 +147,7 @@ int setDmxSctFilter (int fd, unsigned short pid, unsigned char * filter, unsigne
 		return -1;
 
 	case 0x4A: /* bouquet_association_section */
-		sctFilterParams.timeout = 10000;
+		sctFilterParams.timeout = 11000;
 		break;
 
 	case 0x4B ... 0x4D: /* reserved for future use */

@@ -53,7 +53,7 @@ uint8_t FmxBufferSize_descriptor (uint8_t *buffer);
 uint8_t MultiplexBuffer_descriptor (uint8_t *buffer);
 uint8_t FlexMuxTiming_descriptor (uint8_t *buffer);
 uint8_t network_name_descriptor (uint8_t *buffer);
-uint8_t service_list_descriptor (uint8_t *buffer);
+uint8_t service_list_descriptor (uint8_t *buffer, unsigned short transport_stream_id);
 uint8_t stuffing_descriptor (uint8_t *buffer);
 uint8_t satellite_delivery_system_descriptor (uint8_t *buffer, uint16_t transport_stream_id, uint16_t original_network_id, uint8_t DiSEqC);
 uint8_t cable_delivery_system_descriptor (uint8_t *buffer, uint16_t transport_stream_id, uint16_t original_network_id);
