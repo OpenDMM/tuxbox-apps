@@ -31,12 +31,14 @@
 
 
 #define ZAPIT_UDS_NAME "/tmp/zapit.sock"
+#define RESPONSE_GET_BOUQUETS_END_MARKER 0xFFFFFFFF
+#define SATNAMES_END_MARKER 0xFFFFFFFF
 
 
 class CZapitMessages
 {
  public:
-	static const char ACTVERSION = 5;
+	static const char ACTVERSION = 6;
 
 	enum commands
 		{

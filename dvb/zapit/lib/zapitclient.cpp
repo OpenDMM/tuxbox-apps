@@ -309,7 +309,7 @@ void CZapitClient::getBouquets(BouquetList& bouquets, const bool emptyBouquetsTo
 	responseGetBouquets response;
 	while (CBasicClient::receive_data((char*)&response, sizeof(responseGetBouquets)))
 	{
-		if (response.bouquet_nr == 0xFFFF) /* <- end marker */
+		if (response.bouquet_nr == RESPONSE_GET_BOUQUETS_END_MARKER)
 			break;
 
 		if (!utf_encoded)
@@ -490,13 +490,28 @@ bool CZapitClient::isScanReady(unsigned int &satellite, unsigned int &transponde
 }
 
 /* query possible satellits*/
-void CZapitClient::getScanSatelliteList( SatelliteList& satelliteList )
+void CZapitClient::getScanSatelliteList(SatelliteList& satelliteList)
 {
+	uint32_t   satnamelength;
+	
 	send(CZapitMessages::CMD_SCANGETSATLIST);
-
+	
 	responseGetSatelliteList response;
-	while ( CBasicClient::receive_data((char*)&response, sizeof(responseGetSatelliteList)))
+	while (CBasicClient::receive_data((char*)&satnamelength, sizeof(satnamelength)))
+	{
+		if (satnamelength == SATNAMES_END_MARKER)
+			break;
+		
+		if (satnamelength >= sizeof(response.satName)) /* name exceeds specification in zapitclient.h */
+			break;
+
+		if (!CBasicClient::receive_data((char*)&(response.satName), satnamelength))
+			break;
+		
+		response.satName[satnamelength] = 0;
+		
 		satelliteList.push_back(response);
+	}
 
 	close_connection();
 
