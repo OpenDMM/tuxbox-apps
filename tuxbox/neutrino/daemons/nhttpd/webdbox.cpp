@@ -221,7 +221,7 @@ bool CWebDbox::GetBouquets(void)
 bool CWebDbox::GetBouquet(unsigned int BouquetNr)
 {
 	BouquetsList[BouquetNr].clear();
-	Zapit->getBouquetChannels(BouquetNr,BouquetsList[BouquetNr]);
+	Zapit->getBouquetChannels(BouquetNr - 1, BouquetsList[BouquetNr]);
 	return true;
 }
 //-------------------------------------------------------------------------

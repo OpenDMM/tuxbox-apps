@@ -1332,15 +1332,13 @@ void sendAPIDs()
 }
 
 
-void sendBouquetChannels(unsigned int bouquet, CZapitClient::channelsMode mode)
+void sendBouquetChannels(const unsigned int bouquet, CZapitClient::channelsMode mode)
 {
-	if ((bouquet < 1) || (bouquet > bouquetManager->Bouquets.size()))
+	if (bouquet >= bouquetManager->Bouquets.size())
 	{
 		printf("[zapit] invalid bouquet number: %d", bouquet);
 		return;
 	}
-
-	bouquet--;
 
 	if (((currentMode & RADIO_MODE) && (mode == CZapitClient::MODE_CURRENT)) || (mode == CZapitClient::MODE_RADIO))
 		internalSendChannels(&(bouquetManager->Bouquets[bouquet]->radioChannels), bouquetManager->radioChannelsBegin().getNrofFirstChannelofBouquet(bouquet));

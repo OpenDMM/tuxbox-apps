@@ -620,7 +620,7 @@ char *buffer = new char[500];
 
 	for(unsigned int i = 0; i < Parent->BouquetList.size();i++)
 	{
-		sprintf(buffer,"%u %s\n",Parent->BouquetList[i].bouquet_nr,Parent->BouquetList[i].name);
+		sprintf(buffer,"%u %s\n", (Parent->BouquetList[i].bouquet_nr) + 1, Parent->BouquetList[i].name);
 		request->SocketWrite(buffer);
 	}
 	delete[] buffer;
