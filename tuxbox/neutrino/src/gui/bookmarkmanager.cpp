@@ -398,8 +398,8 @@ void CBookmarkManager::paintItem(int pos)
 	if(liststart+pos<bookmarks.size())
 	{
 		CBookmark theBookmark = bookmarks[liststart+pos];
-		g_Font[SNeutrinoSettings::FONT_TYPE_MENU]->RenderString(x+10,ypos+fheight, real_width, theBookmark.getName(), color, fheight, true); // UTF-8
-		g_Font[SNeutrinoSettings::FONT_TYPE_MENU]->RenderString(x+10,ypos+2*fheight, real_width, theBookmark.getUrl(), color, fheight, true); // UTF-8
+		g_Font[SNeutrinoSettings::FONT_TYPE_MENU]->RenderString(x+10,ypos+fheight, real_width-10, theBookmark.getName(), color, fheight, true); // UTF-8
+		g_Font[SNeutrinoSettings::FONT_TYPE_MENU]->RenderString(x+10,ypos+2*fheight, real_width-10, theBookmark.getUrl(), color, fheight, true); // UTF-8
 
 		// LCD Display
 		if(liststart+pos==selected)
