@@ -32,6 +32,8 @@ int usage (std::string basename)
 	std::cout << "channel list: " << basename << " [-ra] <bouquet-number>" << std::endl;
 	std::cout << "zap by number: " << basename << " [-ra] <bouquet-number> <channel-number>" << std::endl;
 	std::cout << "zap by name: " << basename << " [-ra] <channel-name>" << std::endl;
+	std::cout << "set diseqc type: " << basename << " -dt <type>" << std::endl;
+	std::cout << "set diseqc repeats: " << basename << " -dr <count>" << std::endl;
 	std::cout << "(-ra toggles radio mode)" << std::endl;
 	std::cout << "switch record mode on/off: " << basename << " -re" << std::endl;
 	std::cout << "start/stop playback: " << basename << " -p" << std::endl;
@@ -55,6 +57,8 @@ int main (int argc, char** argv)
 	unsigned int bouquet = 0;
 	unsigned int channel = 0;
 	unsigned int count = 0;
+	int diseqcRepeats = -1;
+	int diseqcType = -1;
 	int satmask = 0;
 	int audio = 0;
 	char* channelName = NULL;
@@ -80,6 +84,30 @@ int main (int argc, char** argv)
 			if (i < argc - 1)
 			{
 				sscanf(argv[++i], "%d", &audio);
+			}
+			else
+			{
+				return usage(argv[0]);
+			}
+		}
+		else if (!strncmp(argv[i], "-dr", 3))
+		{
+			if (i < argc - 1)
+			{
+				sscanf(argv[++i], "%d", &diseqcRepeats);
+				continue;
+			}
+			else
+			{
+				return usage(argv[0]);
+			}
+		}
+		else if (!strncmp(argv[i], "-dt", 3))
+		{
+			if (i < argc - 1)
+			{
+				sscanf(argv[++i], "%d", &diseqcType);
+				continue;
 			}
 			else
 			{
@@ -182,6 +210,24 @@ int main (int argc, char** argv)
 	{
 		std::cout << "reloading channels" << std::endl;
 		zapit->reinitChannels();
+		delete zapit;
+		return 0;
+	}
+
+	if (diseqcType != -1)
+	{
+		zapit->setDiseqcType((diseqc_t) diseqcType);
+
+		if (diseqcRepeats == -1)
+		{
+			delete zapit;
+			return 0;
+		}
+	}
+
+	if (diseqcRepeats != -1)
+	{
+		zapit->setDiseqcRepeat(diseqcRepeats);
 		delete zapit;
 		return 0;
 	}
