@@ -92,6 +92,9 @@
   Foundation, Inc., 675 Mass Ave, Cambridge, MA 02139, USA.
 
   $Log$
+  Revision 1.60  2002/01/09 13:24:33  faralla
+  cosmetics
+
   Revision 1.59  2002/01/07 21:13:46  Simplex
   functions for start and stop videoplayback
 
@@ -1496,8 +1499,8 @@ int prepare_channels()
 	allchans_radio.clear();
 	numchans_radio.clear();
 	namechans_radio.clear();
-	found_transponders = 0;
-	found_channels = 0;
+	//found_transponders = 0;
+	//found_channels = 0;
 
 	g_BouquetMan->clearAll();
 
