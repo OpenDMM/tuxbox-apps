@@ -902,7 +902,7 @@ PlayStreamThread (void *mrl)
 				done = 0;
 				while (len > 0)
 				{
-					wr = write (dvr, &buf[done], len);
+					wr = write(dvr, &buf[done], len);
 					if (wr < 0)
 					{
 						if (errno != EAGAIN)
@@ -913,7 +913,10 @@ PlayStreamThread (void *mrl)
 							break;
 						}
 						else
+						{
 							usleep(1000);
+							continue;
+						}
 					}
 					//printf ("[movieplayer.cpp] [%d bytes written]\n", wr);
 					len -= wr;
