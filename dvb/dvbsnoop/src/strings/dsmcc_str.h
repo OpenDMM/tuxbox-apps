@@ -16,6 +16,9 @@ $Id$
 
 
 $Log$
+Revision 1.18  2004/01/15 21:27:22  rasc
+DSM-CC stream descriptors
+
 Revision 1.17  2004/01/12 22:49:53  rasc
 get rid of stream descriptor module
 
@@ -114,6 +117,7 @@ char *dsmccStr_TimeUnits (u_int id);
 char *dsmccStr_GroupModuleLinkPosition (u_int id);
 char *dsmccStr_compression_method (u_int id);
 
+char *dsmccStr_streamMode (u_int id);
 
 
 #endif
