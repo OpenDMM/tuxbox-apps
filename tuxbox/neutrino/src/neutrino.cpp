@@ -844,10 +844,6 @@ void CNeutrinoApp::CmdParser(int argc, char **argv)
 			dprintf(DEBUG_NORMAL, "Software update enabled\n");
 			softupdate = true;
 		}
-		else if( !strcmp(argv[x], "-z"))
-		{
-			dprintf(DEBUG_NORMAL, "zapitmode is default..\n");
-		}
 		else if( !strcmp(argv[x], "-flash"))
 		{
 			dprintf(DEBUG_NORMAL, "enable flash\n");
