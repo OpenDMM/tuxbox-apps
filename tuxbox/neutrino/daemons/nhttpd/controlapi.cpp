@@ -966,13 +966,21 @@ void CControlAPI::SendAllCurrentVAPid(CWebserverRequest* request)
 	Parent->Zapit->getPIDS(pids);
 
 	request->printf("%u\n", pids.PIDs.vpid);
-        
-	for (CZapitClient::APIDList::iterator it = pids.APIDs.begin() ; 
-		  it!=pids.APIDs.end(); it++)
-		request->printf("%u\n", it->pid);
+	int i = 0;
+	for (CZapitClient::APIDList::iterator it = pids.APIDs.begin(); 
+		 it!=pids.APIDs.end(); it++)
+	{
+		request->printf("%u %s %s\n",it->pid,pids.APIDs[i].desc,pids.APIDs[i].is_ac3 ? " (AC3)": " ");
+		i++;
+	}
+
 	if(pids.APIDs.empty())
 		request->printf("0\n"); // shouldnt happen, but print at least one apid
-
+	if(pids.PIDs.vtxtpid)
+		request->printf("%u vtxt\n",pids.PIDs.vtxtpid);
+	
+	if(pids.APIDs.empty())
+		request->printf("0\n"); // shouldnt happen, but print at least one apid 
 }
 
 //-------------------------------------------------------------------------
