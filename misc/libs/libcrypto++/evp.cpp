@@ -311,7 +311,7 @@ std::string Crypto::evp::digest::final ()
 
   libcrypto::EVP_DigestFinal ( &ctx, buf, &s );
 
-  return std::string ( reinterpret_cast < char * > ( buf ) );
+  return std::string ( reinterpret_cast < char * > ( buf ), s );
 }
 
 std::string Crypto::evp::sign::final ( Crypto::evp::key::privatekey & key )

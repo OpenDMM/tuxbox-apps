@@ -25,7 +25,7 @@
 
 #include <stdexcept>
 
-#include <lib.hpp>
+#include <libcrypto++/lib.hpp>
 
 namespace Crypto
 {

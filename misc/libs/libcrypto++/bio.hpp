@@ -114,6 +114,14 @@ namespace Crypto
     {
       public:
         base64 ();
+        base64 ( bio & );
+    };
+
+    class base64NoNewline : public base64
+    {
+      public:
+        base64NoNewline ();
+        base64NoNewline ( bio & );
     };
   };
 };

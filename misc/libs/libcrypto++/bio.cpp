@@ -248,6 +248,26 @@ Crypto::bio::base64::base64 ()
   _bio = libcrypto::BIO_new ( libcrypto::BIO_f_base64 () );
 }
 
+Crypto::bio::base64::base64 ( bio & bio )
+{
+  TRACE_FUNCTION;
+  _bio = libcrypto::BIO_new ( libcrypto::BIO_f_base64 () );
+  push ( bio );
+}
+
+Crypto::bio::base64NoNewline::base64NoNewline ()
+{
+  TRACE_FUNCTION;
+  BIO_set_flags ( _bio, BIO_FLAGS_BASE64_NO_NL );
+}
+
+Crypto::bio::base64NoNewline::base64NoNewline ( bio & bio )
+: base64 ( bio )
+{
+  TRACE_FUNCTION;
+  BIO_set_flags ( _bio, BIO_FLAGS_BASE64_NO_NL );
+}
+
 std::istream & operator >> ( std::istream & stream, Crypto::bio::bio & bio )
 {
   TRACE_FUNCTION;

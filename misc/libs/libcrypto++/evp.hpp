@@ -25,7 +25,7 @@
 
 #include <string>
 
-#include <rsa.hpp>
+#include <libcrypto++/rsa.hpp>
 
 namespace libcrypto
 {

@@ -25,8 +25,8 @@
 
 #include <iostream>
 
-#include <evp.hpp>
-#include <exception.hpp>
+#include <libcrypto++/evp.hpp>
+#include <libcrypto++/exception.hpp>
 
 namespace libcrypto
 {
@@ -82,7 +82,7 @@ namespace Crypto
         void add_extension ( extension & ) throw ( Crypto::exception::no_item );
 
         void sign ( Crypto::evp::key::privatekey &, Crypto::evp::md::md & ) throw ( Crypto::exception::no_item );
-        int verify ( store & ) throw ( std::bad_alloc, Crypto::exception::no_item );
+        int verify ( store &, int (*) ( int, libcrypto::X509_STORE_CTX * ) = verify_callback ) throw ( std::bad_alloc, Crypto::exception::no_item );
 
       protected:
         operator libcrypto::X509 * () throw ( Crypto::exception::no_item );
