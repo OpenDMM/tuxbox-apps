@@ -340,8 +340,8 @@ void CTimerManager::shutdownOnWakeup()
 		//teste auf wakeup
 		int wakeup;
 		int fd = open("/dev/dbox/fp0", O_RDWR);
-		ioctl(fd, FP_IOCTL_IS_WAKEUP, &wakeup);
-		if(wakeup)
+		int ret=ioctl(fd, FP_IOCTL_IS_WAKEUP, &wakeup);
+		if(wakeup && !ret<0)
 		{
 			CTimerEvent_Shutdown* event = new CTimerEvent_Shutdown(now+120, now+180);
 			addEvent(event);
