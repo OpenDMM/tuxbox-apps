@@ -5,6 +5,9 @@ $Id$
 
 
 $Log$
+Revision 1.8  2002/08/17 20:36:12  obi
+no more compiler warnings
+
 Revision 1.7  2001/12/07 22:17:20  rasc
 no message
 
@@ -1291,7 +1294,7 @@ char *dvbstrAC3Component_TYPE (u_int i)
   char *s = "ERROR:  TODO $$$  - AC3 Component type";
 
 
-
+  return s;
 }
 
 
@@ -1308,7 +1311,7 @@ char *dvbstrAncillaryData_ID (u_int i)
  // $$$ coded in descriptor
 
 
-
+  return NULL;
 }
 
 

@@ -10,6 +10,9 @@ $Id$
 
 
 $Log$
+Revision 1.3  2002/08/17 20:36:12  obi
+no more compiler warnings
+
 Revision 1.2  2001/10/06 18:19:18  Toerli
 Steuerzeichen entfernt. rasc wuerdest du mal bitte nen gescheiten unix-konformen Editor verwenden... windows editoren sind ungeeignet
 
@@ -154,7 +157,7 @@ int  doReadSECT (OPTION *opt)
 
 
   close(fd);
-  return;
+  return 0;
 }
 
 

@@ -6,6 +6,9 @@ $Id$
    (c) rasc
 
 $Log$
+Revision 1.3  2002/08/17 20:36:12  obi
+no more compiler warnings
+
 Revision 1.2  2001/10/06 18:19:18  Toerli
 Steuerzeichen entfernt. rasc wuerdest du mal bitte nen gescheiten unix-konformen Editor verwenden... windows editoren sind ungeeignet
 
@@ -18,6 +21,7 @@ dvbsnoop v0.7  -- Commit to CVS
 
 #include "dvbsnoop.h"
 #include "cat.h"
+#include "descriptor.h"
 
 
 void decode_CAT (u_char *b, int len)
