@@ -200,8 +200,8 @@ int LoadMotorPositions(void)
 		}
 		fclose(fd);
 		
-		for (mpos_it = motorPositions.begin(); mpos_it != motorPositions.end(); mpos_it++)
-			printf("satellitePosition = %d, motorPosition = %d\n", mpos_it->first, mpos_it->second);
+//		for (mpos_it = motorPositions.begin(); mpos_it != motorPositions.end(); mpos_it++)
+//			printf("satellitePosition = %d, motorPosition = %d\n", mpos_it->first, mpos_it->second);
 	}
 	else
 		printf("[getservices] motor.conf not found.\n");
@@ -244,14 +244,17 @@ int LoadSatellitePositions(void)
 	
 	xmlFreeDoc(parser);
 	
-	for (spos_it = satellitePositions.begin(); spos_it != satellitePositions.end(); spos_it++)
-		printf("satelliteName = %s, satellitePosition = %d\n", spos_it->first.c_str(), spos_it->second);
+//	for (spos_it = satellitePositions.begin(); spos_it != satellitePositions.end(); spos_it++)
+//		printf("satelliteName = %s, satellitePosition = %d\n", spos_it->first.c_str(), spos_it->second);
 		
 	return 0;
 }
 
-int LoadServices(FrontendType frontendType, diseqc_t diseqcType)
+int LoadServices(diseqc_t diseqcType)
 {
+	FrontendType frontendType = FE_QPSK;
+	
+	printf("[getservices] start...\n");
 	if (frontendType == FE_QPSK)
 	{
 		//satellite only
