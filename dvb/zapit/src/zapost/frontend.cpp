@@ -316,7 +316,7 @@ const bool CFrontend::getEvent ()
 
 	failed = true;
 
-	switch (poll(pfd, 1, 2000))
+	switch (poll(pfd, 1, 1000))
 	{
 	case -1:
 		perror("[CFrontend::getEvent] poll");
@@ -324,8 +324,11 @@ const bool CFrontend::getEvent ()
 
 	case 0:
 		std::cerr << "[CFrontend::getEvent] timeout" << std::endl;
-		failed = false;
-		tuned = true;
+		/*
+		 * users with broken drivers might want to enable this:
+		 */
+		//failed = false;
+		//tuned = true;
 		break;
 
 	default:
