@@ -23,7 +23,6 @@
 #include "transponder.h"
 
 
-
 CTransponder::CTransponder()
 {
 	frequency = 0;

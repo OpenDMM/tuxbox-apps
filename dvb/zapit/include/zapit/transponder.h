@@ -72,4 +72,4 @@ class CTransponder
 		unsigned int getTsidOnid();
 };
 
-#endif
+#endif /* __transponder_h__ */
