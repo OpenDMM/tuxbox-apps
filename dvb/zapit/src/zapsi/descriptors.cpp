@@ -515,7 +515,7 @@ uint8_t service_descriptor (uint8_t *buffer, uint16_t service_id, uint16_t trans
 		else
 			bouquet = scanBouquetManager->Bouquets[bouquetId];
 
-		bouquet->addService(new CZapitChannel(serviceName, service_id, 0, original_network_id, service_type, 0));
+		bouquet->addService(new CZapitChannel(serviceName, service_id, transport_stream_id, original_network_id, service_type, 0));
 		break;
 
 	default:
