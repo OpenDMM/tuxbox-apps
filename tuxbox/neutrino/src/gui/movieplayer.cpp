@@ -117,6 +117,9 @@ extern CPlugins       * g_PluginList;
 static CMoviePlayerGui::state g_playstate;
 static bool isTS, isPES, isBookmark;
 int g_speed = 1;
+#ifndef __USE_FILE_OFFSET64
+#error not using 64 bit file offsets
+#endif /* __USE_FILE__OFFSET64 */
 static off_t g_fileposition;
 ringbuffer_t *ringbuf;
 bool bufferfilled;
