@@ -317,7 +317,7 @@ main (int argc, char ** argv) {
 
 	written = ringbuffer_write(ringbuf, buf + offset, r - offset);
 	// TODO: Retry
-	if (written != todo) {
+	if (written != r - offset) {
 		dprintf("PANIC: wrote less than requested to ringbuffer, written %d, requested %d\n", written, r - offset);
 		exit_flag = 1;
 	}
