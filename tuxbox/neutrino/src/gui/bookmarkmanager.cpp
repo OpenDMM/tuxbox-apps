@@ -127,11 +127,9 @@ int CBookmarkManager::createBookmark (std::string url, std::string time) {
 //------------------------------------------------------------------------
 
 void CBookmarkManager::removeBookmark (unsigned int index) {
-    printf ("remove bookmark\n");
     std::vector<CBookmark>::iterator p = bookmarks.begin()+index;
 	bookmarks.erase(p);
 	bookmarksmodified=true;
-
 }
 
 //------------------------------------------------------------------------
@@ -176,6 +174,7 @@ void CBookmarkManager::readBookmarkFile() {
             printf("CBookmarkManager: read bookmarktime: %s\n",bookmarks[i].getTime().c_str());
         }
     }
+    else bookmarkfile.clear();
 }
 
 //------------------------------------------------------------------------
