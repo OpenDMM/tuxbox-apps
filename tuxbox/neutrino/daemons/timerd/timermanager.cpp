@@ -338,14 +338,16 @@ void CTimerManager::shutdownOnWakeup()
 	if((nextAnnounceTime-now) > 600 || nextAnnounceTime==0)
 	{ // in den naechsten 10 min steht nix an
 		//teste auf wakeup
-		int wakeup;
+		char wakeup;
 		int fd = open("/dev/dbox/fp0", O_RDWR);
 		int ret=ioctl(fd, FP_IOCTL_IS_WAKEUP, &wakeup);
-		if(wakeup && !ret<0)
+		if(wakeup!=0 && !(ret<0))
 		{
+			dprintf("Programming shutdown event\n");
 			CTimerEvent_Shutdown* event = new CTimerEvent_Shutdown(now+120, now+180);
 			addEvent(event);
 		}
+		close(fd);
 	}
 }
 //------------------------------------------------------------
