@@ -159,7 +159,7 @@ public:
 		
 		dreamlogo->hide();
 		
-		vendor->setText(tuxbox_get_manufacturer_str());
+		vendor->setText(tuxbox_get_vendor_str());
 		
 		switch (tuxbox_get_model())
 		{
