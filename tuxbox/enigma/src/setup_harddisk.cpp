@@ -24,6 +24,8 @@
 #include <lib/gui/emessage.h>
 #include <sys/vfs.h> // for statfs
 
+// #define EXT3
+
 static int getCapacity(int dev)
 {
 	int c='a'+dev;
