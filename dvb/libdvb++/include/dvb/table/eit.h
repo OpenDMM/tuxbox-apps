@@ -71,7 +71,7 @@ class EventInformationTable : public LongCrcTable
 
 		uint16_t getTransportStreamId(void) const;
 		uint16_t getOriginalNetworkId(void) const;
-		uint8_t getLastSectionNumber(void) const;
+		uint8_t getSegmentLastSectionNumber(void) const;
 		uint8_t getLastTableId(void) const;
 		const EventVector *getEvents(void) const;
 };

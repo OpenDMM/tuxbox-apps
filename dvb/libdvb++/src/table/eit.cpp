@@ -93,9 +93,9 @@ uint16_t EventInformationTable::getOriginalNetworkId(void) const
 	return originalNetworkId;
 }
 
-uint8_t EventInformationTable::getLastSectionNumber(void) const
+uint8_t EventInformationTable::getSegmentLastSectionNumber(void) const
 {
-	return lastSectionNumber;
+	return segmentLastSectionNumber;
 }
 
 uint8_t EventInformationTable::getLastTableId(void) const
