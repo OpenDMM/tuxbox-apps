@@ -32,6 +32,9 @@
 	Foundation, Inc., 675 Mass Ave, Cambridge, MA 02139, USA.
 
   $Log$
+  Revision 1.54  2001/10/04 23:16:20  McClean
+  get volume from controld
+
   Revision 1.53  2001/10/04 19:28:43  fnbrd
   Eventlist benutzt ID bei zapit und laesst sich per rot wieder schliessen.
 
@@ -1410,6 +1413,8 @@ void CNeutrinoApp::setVolume(int key)
 	int y = g_settings.screen_EndY- 100;
 
 	g_FrameBuffer->paintIcon("volume.raw",x,y, COL_INFOBAR);
+
+	char volume = g_Controld->getVolume();
 
     do
 	{
