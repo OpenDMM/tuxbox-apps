@@ -32,6 +32,9 @@
 	Foundation, Inc., 675 Mass Ave, Cambridge, MA 02139, USA.
  
   $Log$
+  Revision 1.125  2002/01/10 01:23:22  McClean
+  optimize rc-routines
+
   Revision 1.124  2002/01/08 12:34:28  McClean
   better rc-handling - add flat-standby
 
@@ -2114,11 +2117,9 @@ void CNeutrinoApp::scartMode()
 {
 	memset(g_FrameBuffer->lfb, 255, g_FrameBuffer->Stride()*576);
 	g_Controld->setScartMode( 1 );
-	while(g_RCInput->getKey(1)!= CRCInput::RC_timeout)
-	{}
+	g_RCInput->clear();
 	printf("scartmode-loop\n");
-	while (g_RCInput->getKey(100)!=CRCInput::RC_home)
-	{}
+	while (g_RCInput->getKey(100)!=CRCInput::RC_home);
 	printf("scartmode-loopended\n");
 	g_Controld->setScartMode( 0 );
 	g_FrameBuffer->paintBackground();
@@ -2202,10 +2203,8 @@ int CNeutrinoApp::exec( CMenuTarget* parent, string actionKey )
 			g_lcdd->setMode(CLcddClient::MODE_STANDBY);
 			g_Controld->videoPowerDown(true);
 			printf("standby-loop\n");
-			while(g_RCInput->getKey(1)!= CRCInput::RC_timeout)
-			{}
-			while (g_RCInput->getKey(100)!=CRCInput::RC_standby)
-			{}
+			g_RCInput->clear();
+			while (g_RCInput->getKey(100)!=CRCInput::RC_standby);
 			printf("standby-loopended\n");
 			g_lcdd->setMode(CLcddClient::MODE_TVRADIO);
 			g_Controld->videoPowerDown(false);
