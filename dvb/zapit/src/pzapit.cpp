@@ -398,7 +398,7 @@ int main (int argc, char** argv)
 		/* display bouquet list */
 		else
 		{
-			zapit.getBouquets(bouquets, true);
+			zapit.getBouquets(bouquets, false);
 
 			std::vector<CZapitClient::responseGetBouquets>::iterator b_resp;
 			for (b_resp = bouquets.begin(); b_resp < bouquets.end(); b_resp++)
