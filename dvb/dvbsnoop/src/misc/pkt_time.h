@@ -14,6 +14,9 @@ $Id$
 
 
 $Log$
+Revision 1.5  2003/12/14 23:38:46  rasc
+- bandwidth reporting for a PID
+
 Revision 1.4  2003/11/26 19:55:33  rasc
 no message
 
@@ -39,6 +42,7 @@ dvbsnoop v0.7  -- Commit to CVS
 
 void  out_receive_time (int verbose, OPTION *opt);
 void  init_receive_time (void);
+long delta_time_ms (struct timeval *tv, struct timeval *tv_last);
 
 
 #endif

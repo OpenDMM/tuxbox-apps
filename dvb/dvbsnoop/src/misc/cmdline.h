@@ -26,7 +26,7 @@ $Id$
  -- defs...
 */
 
-enum PACKET_MODE  {SECT, TS, PES, PIDSCAN};
+enum PACKET_MODE  {SECT, TS, PES, PIDSCAN, PIDBANDWIDTH};
 enum TIME_MODE    {NO_TIME, FULL_TIME, DELTA_TIME};
 
 typedef struct _OPTIONS {
