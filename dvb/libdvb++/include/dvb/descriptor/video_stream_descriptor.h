@@ -35,7 +35,6 @@ class VideoStreamDescriptor : public Descriptor
 		unsigned profileAndLevelIndication		: 8;
 		unsigned chromaFormat				: 2;
 		unsigned frameRateExtensionFlag			: 1;
-		unsigned reserved				: 5;
 
 	public:
 		VideoStreamDescriptor(const uint8_t * const buffer);

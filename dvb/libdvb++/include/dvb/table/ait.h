@@ -43,7 +43,6 @@ class ApplicationInformation : public DescriptorContainer
 	protected:
 		ApplicationIdentifier *applicationIdentifier;
 		unsigned applicationControlCode			: 8;
-		unsigned reserved				: 4;
 		unsigned applicationDescriptorsLoopLength	: 12;
 
 	public:
@@ -63,9 +62,7 @@ typedef ApplicationInformationVector::const_iterator ApplicationInformationConst
 class ApplicationInformationTable : public LongCrcTable, public DescriptorContainer
 {
 	protected:
-		unsigned reserved4				: 4;
 		unsigned commonDescriptorsLength		: 12;
-		unsigned reserved5				: 4;
 		unsigned applicationLoopLength			: 12;
 		ApplicationInformationVector applicationInformation;
 

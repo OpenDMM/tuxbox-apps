@@ -19,14 +19,12 @@
  *
  */
 
+#include <dvb/byte_stream.h>
 #include <dvb/table/short_crc_table.h>
 
 ShortCrcTable::ShortCrcTable(const uint8_t * const buffer) : ShortTable(buffer)
 {
-	crc32 = (buffer[sectionLength - 1] << 24) |
-		(buffer[sectionLength + 0] << 16) |
-		(buffer[sectionLength + 1] << 8) |
-		(buffer[sectionLength + 2]);
+	crc32 = UINT32(&buffer[sectionLength - 1]);
 }
 
 uint32_t ShortCrcTable::getCrc32(void) const

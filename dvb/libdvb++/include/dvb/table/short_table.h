@@ -32,8 +32,6 @@ class ShortTable
 	protected:
 		unsigned tableId				: 8;
 		unsigned sectionSyntaxIndicator			: 1;
-		unsigned reserved1				: 1;
-		unsigned reserved2				: 2;
 		unsigned sectionLength				: 12;
 
 	public:

@@ -26,6 +26,7 @@
 #include <sys/time.h>
 #include <unistd.h>
 
+#include <dvb/byte_stream.h>
 #include <dvb/debug/debug.h>
 #include <dvb/pool/section_pool.h>
 
@@ -117,9 +118,9 @@ void *SectionPool::select(void *)
 					if ((size = DVB_FOP(read, buffer, sizeof(buffer))) == -1) {
 						continue;
 					}
-					else if ((size < 8) || (size != (((buffer[1] & 0x0f) << 8) | buffer[2]) + 3)) {
+					else if ((size < 8) || (size != DVB_LENGTH(&buffer[1]) + 3)) {
 						DVB_INFO("incomplete section (size == %d, section_length + 3 == %d)",
-							size, (size < 3) ? -1 : (((buffer[1] & 0x0f) << 8) | buffer[2]) + 3);
+							size, (size < 3) ? -1 : DVB_LENGTH(&buffer[1]) + 3);
 					}
 					else if (i->second->section(buffer, size) == true) {
 							pool.erase(i); // remove finished table fd

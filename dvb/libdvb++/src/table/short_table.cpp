@@ -19,15 +19,14 @@
  *
  */
 
+#include <dvb/byte_stream.h>
 #include <dvb/table/short_table.h>
 
 ShortTable::ShortTable(const uint8_t * const buffer)
 {
 	tableId = buffer[0];
 	sectionSyntaxIndicator = (buffer[1] >> 7) & 0x01;
-	reserved1 = (buffer[1] >> 6) & 0x01;
-	reserved2 = (buffer[1] >> 4) & 0x03;
-	sectionLength = ((buffer[1] & 0x0F) << 8) | buffer[2];
+	sectionLength = DVB_LENGTH(&buffer[1]);
 }
 
 uint8_t ShortTable::getTableId(void) const

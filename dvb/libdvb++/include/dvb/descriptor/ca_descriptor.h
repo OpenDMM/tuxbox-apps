@@ -32,7 +32,6 @@ class CaDescriptor : public Descriptor
 {
 	protected:
 		unsigned caSystemId				: 16;
-		unsigned reserved				: 3;
 		unsigned caPid					: 13;
 		PrivateDataByteVector privateDataBytes;
 

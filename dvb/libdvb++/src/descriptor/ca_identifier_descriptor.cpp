@@ -19,12 +19,13 @@
  *
  */
 
+#include <dvb/byte_stream.h>
 #include <dvb/descriptor/ca_identifier_descriptor.h>
 
 CaIdentifierDescriptor::CaIdentifierDescriptor(const uint8_t * const buffer) : Descriptor(buffer)
 {
 	for (uint16_t i = 0; i < descriptorLength; i += 2)
-		caSystemIds.push_back((buffer[i + 2] << 8) | buffer[i + 3]);
+		caSystemIds.push_back(UINT16(&buffer[i + 2]));
 }
 
 const CaSystemIdVector *CaIdentifierDescriptor::getCaSystemIds(void) const

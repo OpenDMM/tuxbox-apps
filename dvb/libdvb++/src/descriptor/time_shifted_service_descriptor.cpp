@@ -19,11 +19,12 @@
  *
  */
 
+#include <dvb/byte_stream.h>
 #include <dvb/descriptor/time_shifted_service_descriptor.h>
 
 TimeShiftedServiceDescriptor::TimeShiftedServiceDescriptor(const uint8_t * const buffer) : Descriptor(buffer)
 {
-	referenceServiceId = (buffer[2] << 8) | buffer[3];
+	referenceServiceId = UINT16(&buffer[2]);
 }
 
 uint16_t TimeShiftedServiceDescriptor::getReferenceServiceId(void) const

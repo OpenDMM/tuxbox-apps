@@ -19,6 +19,7 @@
  *
  */
 
+#include <dvb/byte_stream.h>
 #include <dvb/descriptor/satellite_delivery_system_descriptor.h>
 
 SatelliteDeliverySystemDescriptor::SatelliteDeliverySystemDescriptor(const uint8_t * const buffer) : Descriptor(buffer)
@@ -35,7 +36,7 @@ SatelliteDeliverySystemDescriptor::SatelliteDeliverySystemDescriptor(const uint8
 		((buffer[5] & 0x0F)	* 1)
 	);
 
-	orbitalPosition = (buffer[6] << 8) | buffer[7];
+	orbitalPosition = UINT16(&buffer[6]);
 	westEastFlag = (buffer[8] >> 7) & 0x01;
 	polarization = (buffer[8] >> 5) & 0x03;
 	modulation = buffer[8] & 0x1F;

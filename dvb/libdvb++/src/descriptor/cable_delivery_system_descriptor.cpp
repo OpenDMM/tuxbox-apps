@@ -35,7 +35,6 @@ CableDeliverySystemDescriptor::CableDeliverySystemDescriptor(const uint8_t * con
 		((buffer[5] & 0x0F)	* 1)
 	);
 
-	reserved = (buffer[6] << 4) | ((buffer[7] >> 4) & 0x0F);
 	fecOuter = buffer[7] & 0x0F;
 	modulation = buffer[8];
 

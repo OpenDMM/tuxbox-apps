@@ -31,7 +31,6 @@ typedef CentreFrequencyVector::const_iterator CentreFrequencyConstIterator;
 class FrequencyListDescriptor : public Descriptor
 {
 	protected:
-		unsigned reserved				: 6;
 		unsigned codingType				: 2;
 		CentreFrequencyVector centreFrequencies;
 

@@ -27,7 +27,6 @@ AudioStreamDescriptor::AudioStreamDescriptor(const uint8_t * const buffer) : Des
 	id = (buffer[2] >> 6) & 0x01;
 	layer = (buffer[2] >> 4) & 0x03;
 	variableRateAudioIndicator = (buffer[2] >> 3) & 0x01;
-	reserved = buffer[2] & 0x07;
 }
 
 uint8_t AudioStreamDescriptor::getFreeFormatFlag(void) const

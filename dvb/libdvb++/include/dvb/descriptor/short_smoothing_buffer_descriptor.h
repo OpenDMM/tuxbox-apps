@@ -29,7 +29,6 @@ class ShortSmoothingBufferDescriptor : public Descriptor
 	protected:
 		unsigned sbSize					: 2;
 		unsigned sbLeakRate				: 6;
-		std::vector<uint8_t> reserved;
 
 	public:
 		ShortSmoothingBufferDescriptor(const uint8_t * const buffer);

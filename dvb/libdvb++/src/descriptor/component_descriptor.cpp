@@ -23,7 +23,6 @@
 
 ComponentDescriptor::ComponentDescriptor(const uint8_t * const buffer) : Descriptor(buffer)
 {
-	reserved = (buffer[2] >> 4) & 0x0f;
 	streamContent = buffer[2] & 0x0f;
 	componentType = buffer[3];
 	componentTag = buffer[4];

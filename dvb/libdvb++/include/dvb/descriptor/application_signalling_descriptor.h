@@ -28,7 +28,6 @@ class ApplicationSignalling
 {
 	protected:
 		unsigned applicationType			: 16;
-		unsigned reserved				: 3;
 		unsigned aitVersionNumber			: 5;
 
 	public:

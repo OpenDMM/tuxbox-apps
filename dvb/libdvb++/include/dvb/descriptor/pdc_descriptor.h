@@ -27,7 +27,6 @@
 class PdcDescriptor : public Descriptor
 {
 	protected:
-		unsigned reserved				: 4;
 		unsigned programmeIdentificationLabel		: 20;
 
 	public:

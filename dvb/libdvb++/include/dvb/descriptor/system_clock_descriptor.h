@@ -28,10 +28,8 @@ class SystemClockDescriptor : public Descriptor
 {
 	protected:
 		unsigned externalClockReferenceIndicator	: 1;
-		unsigned reserved				: 1;
 		unsigned clockAccuracyInteger			: 6;
 		unsigned clockAccuracyExponent			: 3;
-		unsigned reserved2				: 5;
 
 	public:
 		SystemClockDescriptor(const uint8_t * const buffer);

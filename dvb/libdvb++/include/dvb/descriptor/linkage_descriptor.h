@@ -37,7 +37,6 @@ class LinkageDescriptor : public Descriptor
 		unsigned linkageType				: 8;
 		PrivateDataByteVector privateDataBytes;
 		unsigned handOverType				: 4;
-		unsigned reserved				: 3;
 		unsigned originType				: 1;
 		unsigned networkId				: 16;
 		unsigned initialServiceId			: 16;

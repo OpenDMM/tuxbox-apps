@@ -19,12 +19,12 @@
  *
  */
 
+#include <dvb/byte_stream.h>
 #include <dvb/descriptor/application_signalling_descriptor.h>
 
 ApplicationSignalling::ApplicationSignalling(const uint8_t * const buffer)
 {
-	applicationType = (buffer[0] << 8) | buffer[1];
-	reserved = (buffer[2] >> 5) & 0x07;
+	applicationType = UINT16(&buffer[0]);
 	aitVersionNumber = buffer[2] & 0x1f;
 }
 

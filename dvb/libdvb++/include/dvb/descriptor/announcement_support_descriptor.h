@@ -28,7 +28,6 @@ class Announcement
 {
 	protected:
 		unsigned announcementType			: 4;
-		unsigned reserved				: 1;
 		unsigned referenceType				: 3;
 		unsigned originalNetworkId			: 16;
 		unsigned transportStreamId			: 16;

@@ -27,7 +27,6 @@
 class MaximumBitrateDescriptor : public Descriptor
 {
 	protected:
-		unsigned reserved				: 2;
 		unsigned maximumBitrate				: 22;
 
 	public:

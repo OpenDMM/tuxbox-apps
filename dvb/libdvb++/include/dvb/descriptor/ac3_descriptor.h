@@ -35,7 +35,6 @@ class Ac3Descriptor : public Descriptor
 		unsigned bsidFlag				: 1;
 		unsigned mainidFlag				: 1;
 		unsigned asvcFlag				: 1;
-		unsigned reserved				: 4;
 		unsigned ac3Type				: 8;
 		unsigned bsid					: 8;
 		unsigned mainid					: 8;

@@ -27,7 +27,6 @@
 class StdDescriptor : public Descriptor
 {
 	protected:
-		unsigned reserved				: 7;
 		unsigned leakValidFlag				: 1;
 
 	public:

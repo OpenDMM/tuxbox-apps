@@ -27,9 +27,7 @@
 class SmoothingBufferDescriptor : public Descriptor
 {
 	protected:
-		unsigned reserved				: 2;
 		unsigned sbLeakRate				: 22;
-		unsigned reserved2				: 2;
 		unsigned sbSize					: 22;
 
 	public:

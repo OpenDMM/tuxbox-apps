@@ -19,17 +19,18 @@
  *
  */
 
+#include <dvb/byte_stream.h>
 #include <dvb/table/eit.h>
 
 Event::Event(const uint8_t * const buffer)
 {
-	eventId = (buffer[0] << 8) | buffer[1];
-	startTimeMjd = (buffer[2] << 8) | buffer[3];
-	startTimeBcd = (buffer[4] << 16) | (buffer[5] << 8) | buffer[6];
-	duration = (buffer[7] << 16) | (buffer[8] << 8) | buffer[9];
+	eventId = UINT16(&buffer[0]);
+	startTimeMjd = UINT16(&buffer[2]);
+	startTimeBcd = (buffer[4] << 16) | UINT16(&buffer[5]);
+	duration = (buffer[7] << 16) | UINT16(&buffer[8]);
 	runningStatus = (buffer[10] >> 5) & 0x07;
 	freeCaMode = (buffer[10] >> 4) & 0x01;
-	descriptorsLoopLength = ((buffer[10] & 0x0f) << 8) | buffer[11];
+	descriptorsLoopLength = DVB_LENGTH(&buffer[10]);
 
 	for (uint16_t i = 12; i < descriptorsLoopLength + 12; i += buffer[i + 1] + 2)
 		descriptor(&buffer[i]);
@@ -67,12 +68,12 @@ uint8_t Event::getFreeCaMode(void) const
 
 EventInformationTable::EventInformationTable(const uint8_t * const buffer) : LongCrcTable(buffer)
 {
-	transportStreamId = (buffer[8] << 8) | buffer[9];
-	originalNetworkId = (buffer[10] << 8) | buffer[11];
+	transportStreamId = UINT16(&buffer[8]);
+	originalNetworkId = UINT16(&buffer[10]);
 	segmentLastSectionNumber = buffer[12];
 	lastTableId = buffer[13];
 
-	for (uint16_t i = 14; i < sectionLength - 1; i += (((buffer[i + 10] & 0x0f) << 8) | buffer[i + 11]) + 12)
+	for (uint16_t i = 14; i < sectionLength - 1; i += DVB_LENGTH(&buffer[i + 10]) + 12)
 		events.push_back(new Event(&buffer[i]));
 }
 

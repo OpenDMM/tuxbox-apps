@@ -28,7 +28,6 @@ class CableDeliverySystemDescriptor : public Descriptor
 {
 	protected:
 		unsigned frequency				: 32;
-		unsigned reserved				: 12;
 		unsigned fecOuter				: 4;
 		unsigned modulation				: 8;
 		unsigned symbolRate				: 28;

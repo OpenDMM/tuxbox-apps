@@ -19,11 +19,12 @@
  *
  */
 
+#include <dvb/byte_stream.h>
 #include <dvb/descriptor/private_data_specifier_descriptor.h>
 
 PrivateDataSpecifierDescriptor::PrivateDataSpecifierDescriptor(const uint8_t * const buffer) : Descriptor(buffer)
 {
-	privateDataSpecifier = (buffer[2] << 24) | (buffer[3] << 16) | (buffer[4] << 8) | buffer[5];
+	privateDataSpecifier = UINT32(&buffer[2]);
 }
 
 uint32_t PrivateDataSpecifierDescriptor::getPrivateDataSpecifier(void) const

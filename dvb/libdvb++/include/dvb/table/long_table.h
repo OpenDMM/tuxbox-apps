@@ -28,7 +28,6 @@ class LongTable : public ShortTable
 {
 	protected:
 		unsigned tableIdExtension			: 16;
-		unsigned reserved3				: 2;
 		unsigned versionNumber				: 5;
 		unsigned currentNextIndicator			: 1;
 		unsigned sectionNumber				: 8;

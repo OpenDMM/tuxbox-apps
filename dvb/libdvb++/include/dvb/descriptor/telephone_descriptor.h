@@ -27,14 +27,11 @@
 class TelephoneDescriptor : public Descriptor
 {
 	protected:
-		unsigned reserved				: 2;
 		unsigned foreignAvailability			: 1;
 		unsigned connectionType				: 5;
-		unsigned reserved2				: 1;
 		unsigned countryPrefixLength			: 2;
 		unsigned internationalAreaCodeLength		: 3;
 		unsigned operatorCodeLength			: 2;
-		unsigned reserved3				: 1;
 		unsigned nationalAreaCodeLength			: 3;
 		unsigned coreNumberLength			: 4;
 		std::string countryPrefix;

@@ -19,12 +19,12 @@
  *
  */
 
+#include <dvb/byte_stream.h>
 #include <dvb/descriptor/pdc_descriptor.h>
 
 PdcDescriptor::PdcDescriptor(const uint8_t * const buffer) : Descriptor(buffer)
 {
-	reserved = (buffer[2] >> 4) & 0x0f;
-	programmeIdentificationLabel = ((buffer[2] & 0x0f) << 16) | buffer[3] | buffer[4];
+	programmeIdentificationLabel = ((buffer[2] & 0x0f) << 16) | UINT16(&buffer[3]);
 }
 
 uint32_t PdcDescriptor::getProgrammeIdentificationLabel(void) const

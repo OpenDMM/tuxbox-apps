@@ -19,14 +19,15 @@
  *
  */
 
+#include <dvb/byte_stream.h>
 #include <dvb/descriptor/subtitling_descriptor.h>
 
 Subtitling::Subtitling(const uint8_t * const buffer)
 {
 	iso639LanguageCode.assign((char *)&buffer[0], 3);
 	subtitlingType = buffer[3];
-	compositionPageId = (buffer[4] << 8) | buffer[5];
-	ancillaryPageId = (buffer[6] << 8) | buffer[7];
+	compositionPageId = UINT16(&buffer[4]);
+	ancillaryPageId = UINT16(&buffer[6]);
 }
 
 std::string Subtitling::getIso639LanguageCode(void) const

@@ -27,11 +27,8 @@
 class PartialTransportStreamDescriptor : public Descriptor
 {
 	protected:
-		unsigned reserved				: 2;
 		unsigned peakRate				: 22;
-		unsigned reserved2				: 2;
 		unsigned minimumOverallSmootingRate		: 22;
-		unsigned reserved3				: 2;
 		unsigned maximumOverallSmoothingBuffer		: 14;
 
 	public:

@@ -27,7 +27,6 @@
 class ElementaryCellField
 {
 	protected:
-		unsigned reserved				: 2;
 		unsigned elementaryCellId			: 6;
 
 	public:
@@ -44,7 +43,6 @@ class MosaicCell
 {
 	protected:
 		unsigned logicalCellId				: 6;
-		unsigned reserved				: 7;
 		unsigned logicalCellPresentationInfo		: 3;
 		unsigned elementaryCellFieldLength		: 8;
 		ElementaryCellFieldVector elementaryCellFields;
@@ -79,7 +77,6 @@ class MosaicDescriptor : public Descriptor
 	protected:
 		unsigned mosaicEntryPoint			: 1;
 		unsigned numberOfHorizontalElementaryCells	: 3;
-		unsigned reserved				: 1;
 		unsigned numberOfVerticalElementaryCells	: 3;
 		MosaicCellVector mosaicCells;
 

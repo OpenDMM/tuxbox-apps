@@ -29,9 +29,7 @@ class ElementaryStreamInfo : public DescriptorContainer
 {
 	protected:
 		unsigned streamType				: 8;
-		unsigned reserved1				: 3;
 		unsigned elementaryPid				: 13;
-		unsigned reserved2				: 4;
 		unsigned esInfoLength				: 12;
 
 	public:
@@ -51,9 +49,7 @@ typedef ElementaryStreamInfoVector::const_iterator ElementaryStreamInfoConstIter
 class ProgramMapTable : public LongCrcTable, public DescriptorContainer
 {
 	protected:
-		unsigned reserved4				: 3;
 		unsigned pcrPid					: 13;
-		unsigned reserved5				: 4;
 		unsigned programInfoLength			: 12;
 		ElementaryStreamInfoVector esInfo;
 

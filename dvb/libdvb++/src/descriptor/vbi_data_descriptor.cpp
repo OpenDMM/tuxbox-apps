@@ -23,7 +23,6 @@
 
 VbiDataLine::VbiDataLine(const uint8_t * const buffer)
 {
-	reserved = (buffer[0] >> 6) & 0x03;
 	fieldParity = (buffer[0] >> 5) & 0x01;
 	lineOffset = buffer[0] & 0x1F;
 }
@@ -57,8 +56,6 @@ VbiDataService::VbiDataService(const uint8_t * const buffer)
 		break;
 
 	default:
-		for (i = 0; i < dataServiceDescriptorLength; ++i)
-			reserved.push_back(buffer[i + 2]);
 		break;
 	}
 }

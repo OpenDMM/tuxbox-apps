@@ -29,7 +29,6 @@ class LocalTimeOffset
 	protected:
 		std::string countryCode;
 		unsigned countryRegionId			: 6;
-		unsigned reserved				: 1;
 		unsigned localTimeOffsetPolarity		: 1;
 		unsigned localTimeOffset			: 16;
 		unsigned timeOfChangeMjd			: 16;

@@ -27,7 +27,6 @@
 class VbiDataLine
 {
 	protected:
-		unsigned reserved				: 2;
 		unsigned fieldParity				: 1;
 		unsigned lineOffset				: 5;
 
@@ -48,7 +47,6 @@ class VbiDataService
 		unsigned dataServiceId				: 8;
 		unsigned dataServiceDescriptorLength		: 8;
 		VbiDataLineVector vbiDataLines;
-		std::vector<uint8_t> reserved;
 
 	public:
 		VbiDataService(const uint8_t * const buffer);

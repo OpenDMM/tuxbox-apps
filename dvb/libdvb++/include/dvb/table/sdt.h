@@ -29,7 +29,6 @@ class ServiceDescription : public DescriptorContainer
 {
 	protected:
 		unsigned serviceId				: 16;
-		unsigned reserved1				: 6;
 		unsigned eitScheduleFlag			: 1;
 		unsigned eitPresentFollowingFlag		: 1;
 		unsigned runningStatus				: 3;
@@ -54,7 +53,6 @@ class ServiceDescriptionTable : public LongCrcTable
 {
 	protected:
 		unsigned originalNetworkId			: 16;
-		unsigned reserved4				: 8;
 		ServiceDescriptionVector description;
 
 	public:

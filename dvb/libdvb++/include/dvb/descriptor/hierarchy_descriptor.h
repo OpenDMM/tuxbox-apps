@@ -27,13 +27,9 @@
 class HierarchyDescriptor : public Descriptor
 {
 	protected:
-		unsigned reserved				: 4;
 		unsigned hierarchyType				: 4;
-		unsigned reserved2				: 2;
 		unsigned hierarchyLayerIndex			: 6;
-		unsigned reserved3				: 2;
 		unsigned hierarchyEmbeddedLayerIndex		: 6;
-		unsigned reserved4				: 2;
 		unsigned hierarchyChannel			: 6;
 
 	private:

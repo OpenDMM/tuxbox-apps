@@ -19,13 +19,14 @@
  *
  */
 
+#include <dvb/byte_stream.h>
 #include <dvb/descriptor/service_move_descriptor.h>
 
 ServiceMoveDescriptor::ServiceMoveDescriptor(const uint8_t * const buffer) : Descriptor(buffer)
 {
-	newOriginalNetworkId = (buffer[2] << 8) | buffer[3];
-	newTransportStreamId = (buffer[4] << 8) | buffer[5];
-	newServiceId = (buffer[6] << 8) | buffer[7];
+	newOriginalNetworkId = UINT16(&buffer[2]);
+	newTransportStreamId = UINT16(&buffer[4]);
+	newServiceId = UINT16(&buffer[6]);
 }
 
 uint16_t ServiceMoveDescriptor::getNewOriginalNetworkId(void) const

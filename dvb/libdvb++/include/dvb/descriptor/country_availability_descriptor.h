@@ -32,7 +32,6 @@ class CountryAvailabilityDescriptor : public Descriptor
 {
 	protected:
 		unsigned countryAvailabilityFlag		: 1;
-		unsigned reserved				: 7;
 		CountryCodeVector countryCodes;
 
 	public:

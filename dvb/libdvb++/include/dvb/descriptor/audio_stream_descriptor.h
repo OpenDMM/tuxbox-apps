@@ -31,7 +31,6 @@ class AudioStreamDescriptor : public Descriptor
 		unsigned id					: 1;
 		unsigned layer					: 2;
 		unsigned variableRateAudioIndicator		: 1;
-		unsigned reserved				: 3;
 
 	public:
 		AudioStreamDescriptor(const uint8_t * const buffer);

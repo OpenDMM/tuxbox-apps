@@ -34,16 +34,14 @@ class CaLengthField
 		std::vector<uint8_t> lengthValueByte;
 
 	public:
-		CaLengthField(const uint64_t length);
+		CaLengthField(const uint32_t length);
 };
 
 class CaElementaryStreamInfo
 {
 	protected:
 		unsigned streamType				: 8;
-		unsigned reserved1				: 3;
 		unsigned elementaryPid				: 13;
-		unsigned reserved2				: 4;
 		unsigned esInfoLength				: 12;
 		unsigned caPmtCmdId				: 8;
 		CaDescriptorVector descriptors;
@@ -66,10 +64,8 @@ class CaProgramMapTable
 		CaLengthField *lengthField;
 		unsigned caPmtListManagement			: 8;
 		unsigned programNumber				: 16;
-		unsigned reserved1				: 2;
 		unsigned versionNumber				: 5;
 		unsigned currentNextIndicator			: 1;
-		unsigned reserved2				: 4;
 		unsigned programInfoLength			: 12;
 		unsigned caPmtCmdId				: 8;
 		CaDescriptorVector descriptors;

@@ -32,7 +32,6 @@ VideoStreamDescriptor::VideoStreamDescriptor(const uint8_t * const buffer) : Des
 		profileAndLevelIndication = buffer[3];
 		chromaFormat = (buffer[4] >> 6) & 0x03;
 		frameRateExtensionFlag = (buffer[4] >> 5) & 0x01;
-		reserved = buffer[4] & 0x1F;
 	}
 }
 

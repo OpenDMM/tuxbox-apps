@@ -19,11 +19,12 @@
  *
  */
 
+#include <dvb/byte_stream.h>
 #include <dvb/descriptor/service_list_descriptor.h>
 
 ServiceListItem::ServiceListItem(const uint8_t * const buffer)
 {
-	serviceId = (buffer[0] << 8) | buffer[1];
+	serviceId = UINT16(&buffer[0]);
 	serviceType = buffer[2];
 }
 

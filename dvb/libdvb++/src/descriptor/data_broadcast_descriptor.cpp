@@ -19,11 +19,12 @@
  *
  */
 
+#include <dvb/byte_stream.h>
 #include <dvb/descriptor/data_broadcast_descriptor.h>
 
 DataBroadcastDescriptor::DataBroadcastDescriptor(const uint8_t * const buffer) : Descriptor(buffer)
 {
-	dataBroadcastId = (buffer[2] << 8) | buffer[3];
+	dataBroadcastId = UINT16(&buffer[2]);
 	componentTag = buffer[3];
 	selectorLength = buffer[4];
 

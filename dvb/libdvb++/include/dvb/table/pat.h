@@ -28,7 +28,6 @@ class NetworkAssociation
 {
 	protected:
 		unsigned programNumber				: 16;
-		unsigned reserved				: 3;
 		unsigned networkPid				: 13;
 
 	public:
@@ -45,7 +44,6 @@ class ProgramAssociation
 {
 	protected:
 		unsigned programNumber				: 16;
-		unsigned reserved				: 3;
 		unsigned programMapPid				: 13;
 
 	public:

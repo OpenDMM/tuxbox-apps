@@ -19,12 +19,13 @@
  *
  */
 
+#include <dvb/byte_stream.h>
 #include <dvb/table/tdt.h>
 
 TimeAndDateTable::TimeAndDateTable(const uint8_t * const buffer) : ShortTable(buffer)
 {
-	utcTimeMjd = (buffer[3] << 8) | buffer[4];
-	utcTimeBcd = (buffer[5] << 16) | (buffer[6] << 8) | buffer[7];
+	utcTimeMjd = UINT16(&buffer[3]);
+	utcTimeBcd = (buffer[5] << 16) | UINT16(&buffer[6]);
 }
 
 uint16_t TimeAndDateTable::getUtcTimeMjd(void) const

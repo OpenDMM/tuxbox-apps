@@ -29,7 +29,6 @@ class TerrestrialDeliverySystemDescriptor : public Descriptor
 	protected:
 		unsigned centreFrequency			: 32;
 		unsigned bandwidth				: 3;
-		unsigned reserved				: 5;
 		unsigned constellation				: 2;
 		unsigned hierarchyInformation			: 3;
 		unsigned codeRateHpStream			: 3;
@@ -37,7 +36,6 @@ class TerrestrialDeliverySystemDescriptor : public Descriptor
 		unsigned guardInterval				: 2;
 		unsigned transmissionMode			: 2;
 		unsigned otherFrequencyFlag			: 1;
-		unsigned reserved2				: 32;
 
 	public:
 		TerrestrialDeliverySystemDescriptor(const uint8_t * const buffer);

@@ -30,7 +30,6 @@ class TimeOffsetTable : public ShortCrcTable, public DescriptorContainer
 	protected:
 		unsigned utcTimeMjd				: 16;
 		unsigned utcTimeBcd				: 24;
-		unsigned reserved				: 4;
 		unsigned descriptorsLoopLength			: 12;
 
 	public:

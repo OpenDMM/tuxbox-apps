@@ -27,7 +27,6 @@
 class ComponentDescriptor : public Descriptor
 {
 	protected:
-		unsigned reserved				: 4;
 		unsigned streamContent				: 4;
 		unsigned componentType				: 8;
 		unsigned componentTag				: 8;
