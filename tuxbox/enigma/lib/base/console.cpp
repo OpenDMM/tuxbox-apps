@@ -53,6 +53,9 @@ int bidirpipe(int pfd[], char *cmd , char *argv[])
 				close(pfderr[0]) == -1 || close(pfderr[1]) == -1 )
 			_exit(0);
 
+		for (unsigned int i=3; i < 90; ++i )
+			close(i);
+
 		execv(cmd,argv);
 		_exit(0);
 	}

@@ -71,36 +71,36 @@ void eZapScan::sel_satfind()
 void eZapScan::sel_autoScan()
 {
 #ifndef DISABLE_LCD
-	TransponderScan setup(LCDTitle, LCDElement);
+	TransponderScan setup(LCDTitle, LCDElement, TransponderScan::stateAutomatic);
 #else
-	TransponderScan setup;
+	TransponderScan setup(0,0,TransponderScan::stateAutomatic);
 #endif
 	hide();
-	setup.exec(TransponderScan::stateAutomatic);
+	setup.exec();
 	show();
 }
 
 void eZapScan::sel_multiScan()
 {
 #ifndef DISABLE_LCD
-	TransponderScan setup(LCDTitle, LCDElement);
+	TransponderScan setup(LCDTitle, LCDElement, TransponderScan::stateMulti);
 #else
-	TransponderScan setup;
+	TransponderScan setup(0,0,TransponderScan::stateMulti);
 #endif
 	hide();
-	setup.exec(TransponderScan::stateMulti);
+	setup.exec();
 	show();
 }
 
 void eZapScan::sel_manualScan()
 {
 #ifndef DISABLE_LCD
-	TransponderScan setup(LCDTitle, LCDElement);
+	TransponderScan setup(LCDTitle, LCDElement, TransponderScan::stateManual);
 #else
-	TransponderScan setup;
+	TransponderScan setup(0,0,TransponderScan::stateManual);
 #endif
 	hide();
-	setup.exec(TransponderScan::stateManual);
+	setup.exec();
 	show();
 }
 
