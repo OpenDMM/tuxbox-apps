@@ -199,7 +199,7 @@ bool CWebDbox::GetChannelEvents(void)
 		return false;
 	
 	for (eventIterator = eList.begin(); eventIterator != eList.end(); eventIterator++)
-		ChannelListEvents[(*eventIterator).serviceID()] = &(*eventIterator);
+		ChannelListEvents[(*eventIterator).get_channel_id()] = &(*eventIterator);
 
 	return true;
 }
