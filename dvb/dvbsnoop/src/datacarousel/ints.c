@@ -9,6 +9,9 @@ $Id$
 
 
 $Log$
+Revision 1.9  2003/11/26 23:54:46  rasc
+-- bugfixes on Linkage descriptor
+
 Revision 1.8  2003/10/29 20:54:56  rasc
 more PES stuff, DSM descriptors, testdata
 
@@ -28,7 +31,7 @@ more PES stuff, DSM descriptors, testdata
 
 
 
-void decode_INT_DSMCC (u_char *b, int len)
+void decode_DSMCC_INT (u_char *b, int len)
 {
  /* EN 301 192 7.x */
 

@@ -19,7 +19,7 @@ $Id$
 #define __INTS_H 1
 
 
-void  decode_INT_DSMCC (u_char *b, int len);
+void  decode_DSMCC_INT (u_char *b, int len);
 int   pto_descriptor_loop (u_char *name, u_char *b);
 
 
