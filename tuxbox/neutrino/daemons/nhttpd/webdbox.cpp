@@ -39,7 +39,6 @@
 #include "webserver.h"
 #include "request.h"
 #include "helper.h"
-#include "avcontrol.h"
 
 #define SA struct sockaddr
 #define SAI struct sockaddr_in
