@@ -34,7 +34,7 @@ typedef uint16_t t_transport_stream_id;
 /* unique channel identification */
 typedef uint32_t t_channel_id;
 #define CREATE_CHANNEL_ID ((original_network_id << 16) | service_id)
-
+#define PRINTF_CHANNEL_ID_TYPE "%08x"
 
 /* diseqc types */
 enum diseqc_t
