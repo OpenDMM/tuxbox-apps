@@ -32,6 +32,8 @@
 CVideo::CVideo ()
 {
 	initialized = false;
+	status.playState = VIDEO_STOPPED;
+	status.streamSource = VIDEO_SOURCE_DEMUX;
 
 	if ((fd = open(VIDEO_DEVICE, O_RDWR)) < 0)
 	{

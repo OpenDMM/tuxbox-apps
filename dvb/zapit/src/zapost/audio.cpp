@@ -36,6 +36,9 @@ CAudio::CAudio()
 
 	mixer.volume_left = 0;
 	mixer.volume_right = 0;
+	status.bypassMode = false;
+	status.playState = AUDIO_STOPPED;
+	status.streamSource = AUDIO_SOURCE_MEMORY;
 
 	if ((fd = open(AUDIO_DEVICE, O_RDWR)) < 0)
 	{
