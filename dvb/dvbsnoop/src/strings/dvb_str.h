@@ -15,6 +15,9 @@ $Id$
 
 
 $Log$
+Revision 1.24  2004/07/26 20:58:03  rasc
+RNT completed..  (TS 102 323)
+
 Revision 1.23  2004/07/25 20:12:59  rasc
  - New: content_identifier_descriptor (TS 102 323)
  - New: TVA_id_descriptor (TS 102 323)
@@ -201,6 +204,8 @@ char *dvbstrMPE_FEC_table_frame_boundary (u_int i);
 char *dvbstrTVA_RunningStatus(u_int i);
 char *dvbstrTVA_crid_type (u_int i);
 char *dvbstrTVA_crid_location (u_int i);
+
+char *dvbstrTVA_content_id_type (u_int i);
 
 
 
