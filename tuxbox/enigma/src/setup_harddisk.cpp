@@ -362,7 +362,7 @@ void eHarddiskMenu::s_format()
 		{
 			if ((system("sync") >> 8)
 				||(system( eString().sprintf(
-					"/sbin/mkfs.ext3 /dev/ide/host%d/bus%d/target%d/lun0/part1", host, bus, target).c_str())>>8 )
+					"/sbin/mkfs.ext3 -T largefile4 /dev/ide/host%d/bus%d/target%d/lun0/part1", host, bus, target).c_str())>>8 )
 				||(system("sync") >> 8)
 				||(system(eString().sprintf(
 				"/bin/mount -t ext3 /dev/ide/host%d/bus%d/target%d/lun0/part1 /hdd", host, bus, target).c_str())>>8 )
