@@ -24,6 +24,9 @@
 //    Foundation, Inc., 675 Mass Ave, Cambridge, MA 02139, USA.
 //
 // $Log$
+// Revision 1.11  2001/09/19 15:59:03  fnbrd
+// virtual Destructor
+//
 // Revision 1.10  2001/07/26 21:36:59  fnbrd
 // Ein paar Absicherungen gegen defekte EIT-Packete.
 //
@@ -218,7 +221,7 @@ class SIsection {
       }
     }
     // Destruktor
-    ~SIsection() {
+    virtual ~SIsection() {
       if (buffer) {
         delete [] buffer;
 	buffer=0;
