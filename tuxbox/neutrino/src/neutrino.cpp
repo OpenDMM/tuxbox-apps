@@ -435,6 +435,7 @@ void CNeutrinoApp::setupDefaults()
 **************************************************************************************/
 bool CNeutrinoApp::loadSetup(SNeutrinoSettings* load2)
 {
+	char tmp[0xFFFF];
 	bool loadSuccessfull = true;
 	if(!load2)
 	{
@@ -442,19 +443,22 @@ bool CNeutrinoApp::loadSetup(SNeutrinoSettings* load2)
 	}
 
 	int fd = open(settingsFile.c_str(), O_RDONLY );
-	if (fd>0)
-	{
-		if(read(fd, load2, sizeof(SNeutrinoSettings))!=sizeof(SNeutrinoSettings))
-		{
-			printf("error while loading settings: %s - config from old version?\n", settingsFile.c_str() );
-			loadSuccessfull = false;
-		}
-		close(fd);
-	}
-	else
+
+	if (fd==-1)
 	{
 		printf("error while loading settings: %s\n", settingsFile.c_str() );
 		loadSuccessfull = false;
+	}
+	else if(read(fd, tmp, sizeof(tmp))!=sizeof(SNeutrinoSettings))
+	{
+		printf("error while loading settings: %s - config from old version?\n", settingsFile.c_str() );
+		loadSuccessfull = false;
+	}
+	else
+	{
+		memcpy(load2, &tmp, sizeof(SNeutrinoSettings));
+
+		close(fd);
 	}
 
 	ifstream is( scanSettingsFile.c_str());
