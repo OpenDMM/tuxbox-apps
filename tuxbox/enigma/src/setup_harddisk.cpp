@@ -270,7 +270,7 @@ void eHarddiskMenu::s_format()
 		{
 			eMessageBox msg(
 				 _("There's data on this harddisk.\n"
-				 "You will loose that data. Proceed?"),
+				 "You will lose that data. Proceed?"),
 				 _("formatting harddisk..."),
 				 eMessageBox::btYes|eMessageBox::btNo, eMessageBox::btNo);
 			msg.show();
@@ -350,7 +350,7 @@ void eHarddiskMenu::s_format()
 		msg.hide();
 		{
 			eMessageBox msg(
-				_("successfully formated your disk!"),
+				_("successfully formatted your disk!"),
 				_("formatting harddisk..."),
 				 eMessageBox::btOK|eMessageBox::iconInfo);
 			msg.show();
@@ -486,7 +486,7 @@ int ePartitionCheck::eventHandler( const eWidgetEvent &e )
 			else
 			{
 				eMessageBox msg(
-					_("not supportet filesystem for check."),
+					_("not supported filesystem for check."),
 					_("check filesystem..."),
 					eMessageBox::btOK|eMessageBox::iconError);
 				msg.show();

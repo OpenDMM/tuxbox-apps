@@ -40,7 +40,7 @@ eZapInfo::eZapInfo()
 	:eListBoxWindow<eListBoxEntryMenu>(_("Infos"), 8, 220)
 {
 	move(ePoint(150, 136));
-	CONNECT((new eListBoxEntryMenu(&list, _("[back]"), _("go back to mainmenu")))->selected, eZapInfo::sel_close);
+	CONNECT((new eListBoxEntryMenu(&list, _("[back]"), _("back to mainmenu")))->selected, eZapInfo::sel_close);
 	CONNECT((new eListBoxEntryMenu(&list, _("Streaminfo"), _("open the Streaminfo")))->selected, eZapInfo::sel_streaminfo);
 	if ( atoi( eDVB::getInstance()->getInfo("mID").c_str() ) < 5 )
 		CONNECT((new eListBoxEntryMenu(&list, _("Show BN version"),_("show the Current Version of the Betanova FW")))->selected, eZapInfo::sel_bnversion);
@@ -230,7 +230,7 @@ public:
 			frontend->setText(_("Frontend: Cable"));
 			break;
 		case 3:
-			frontend->setText(_("Frontend: Terrestric"));
+			frontend->setText(_("Frontend: Terrestrial"));
 			break;
 		case 4:
 			frontend->setText(_("Frontend: Simulator"));
