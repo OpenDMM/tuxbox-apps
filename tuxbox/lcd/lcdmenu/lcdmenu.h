@@ -92,6 +92,7 @@ class CLCDMenu : public CLCDDisplay
 		fontRenderClass *fontRenderer;
 		Font *menuFont;
 
+		int upperRow;
 		int fontSize;
 		int lineSpacing;
 		int textAlign;
@@ -101,6 +102,7 @@ class CLCDMenu : public CLCDDisplay
 		int selectedEntry;
 		int entryCount;
 		int defaultEntry;
+		int visibleEntries;
 
 		std::vector <std::string> entries;
 		std::vector <int> pinEntries;
