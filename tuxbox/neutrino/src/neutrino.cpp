@@ -51,8 +51,6 @@ using namespace std;
 
 static void initGlobals(void)
 {
-	neutrino = NULL;
-
 	g_fontRenderer = NULL;
 	g_Fonts = NULL;
 
@@ -106,6 +104,23 @@ CNeutrinoApp::~CNeutrinoApp()
 	if (channelList)
 		delete channelList;
 }
+
+CNeutrinoApp* CNeutrinoApp::getInstance()
+{
+	static CNeutrinoApp* neutrinoApp = NULL;
+
+	if(!neutrinoApp)
+	{
+		neutrinoApp = new CNeutrinoApp();
+		printf("[neutrino] main Instance created\n");
+	}
+	else
+	{
+		//printf("[neutrino] frameBuffer Instace requested\n");
+	}
+	return neutrinoApp;
+}
+
 
 void CNeutrinoApp::setupNetwork(bool force)
 {
@@ -2110,7 +2125,7 @@ void CNeutrinoApp::setVolume(int key, bool bDoPaint)
 		{
 			if ( (msg!=CRCInput::RC_ok) || (msg!=CRCInput::RC_home) )
 			{
-				if ( neutrino->handleMsg( msg, data ) & messages_return::unhandled )
+				if ( handleMsg( msg, data ) & messages_return::unhandled )
 				{
 					g_RCInput->postMsg( msg, data );
 
@@ -2396,7 +2411,6 @@ int main(int argc, char **argv)
 	tzset();
 	initGlobals();
 
-	neutrino = new CNeutrinoApp;
-	return neutrino->run(argc, argv);
+	return CNeutrinoApp::getInstance()->run(argc, argv);
 }
 
