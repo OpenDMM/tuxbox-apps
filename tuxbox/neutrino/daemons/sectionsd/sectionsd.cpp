@@ -3124,7 +3124,7 @@ bool parse_command(CBasicMessage::Header &rmsg, int connfd)
 		memcpy(&header, &rmsg, sizeof(CBasicMessage::Header));
 		memset((&header) + sizeof(CBasicMessage::Header), 0, sizeof(header) - sizeof(CBasicMessage::Header));
 
-		int readbytes = readNbytes(connfd, (char *) ((&header) + sizeof(CBasicMessage::Header)), sizeof(header) - sizeof(CBasicMessage::Header), TIMEOUT_CONNECTIONS);
+		int readbytes = readNbytes(connfd, ((char *)&header) + sizeof(CBasicMessage::Header), sizeof(header) - sizeof(CBasicMessage::Header), TIMEOUT_CONNECTIONS);
 
 		if (readbytes > 0)
 		{
