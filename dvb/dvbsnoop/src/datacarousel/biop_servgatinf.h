@@ -13,11 +13,11 @@ $Id$
 */
 
 
-#ifndef _BIOP_MODINFO
-#define _BIOP_MODINFO
+#ifndef _BIOP_SERVGATINF
+#define _BIOP_SERVGATINF
 
 
-int BIOP_ModuleInfo (int v, u_char *b, u_int len);
+int BIOP_ServiceGatewayInfo (int v, u_char *b, u_int len);
 
 
 #endif

@@ -13,11 +13,11 @@ $Id$
 */
 
 
-#ifndef _BIOP_MODINFO
-#define _BIOP_MODINFO
+#ifndef _IOP_IOR
+#define _IOP_IOR
 
 
-int BIOP_ModuleInfo (int v, u_char *b, u_int len);
+int IOP_IOR (int v, u_char *b);
 
 
 #endif
