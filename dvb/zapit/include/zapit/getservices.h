@@ -135,7 +135,16 @@ class CZapitChannel
 		void setPmtPid(dvb_pid_t pPmtPid)		{ chanpids.pmtpid = pPmtPid; }
 		void setTeletextPid(dvb_pid_t pTeletextPid)	{ chanpids.vtxtpid = pTeletextPid; }
 		void setVideoPid(dvb_pid_t pVideoPid)		{ chanpids.vpid = pVideoPid; }
-		void setPids(pids pPids)			{ int _emmpid=chanpids.emmpid; chanpids = pPids; chanpids.emmpid=_emmpid; knowsPidsFlag = true; }
+		void setPids(pids pPids)
+		{
+			int _emmpid=chanpids.emmpid; 
+			if (pPids.count_vpids > 0 || pPids.count_apids > 0)
+			{
+				chanpids = pPids; 
+				chanpids.emmpid=_emmpid; 
+				knowsPidsFlag = true;
+			}
+		}
 		void setChannelNumber(uint16_t pChannelNumber)	{ channelNumber = pChannelNumber; }
 
 		/* cleanup methods */
