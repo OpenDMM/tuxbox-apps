@@ -2504,7 +2504,7 @@ bool CNeutrinoApp::changeNotify(string OptionName)
 
 	return false;
 }
-
+#include "system/flashtool.h"
 
 /**************************************************************************************
 *                                                                                     *
@@ -2516,6 +2516,8 @@ int main(int argc, char **argv)
 	printf("NeutrinoNG $Id$\n\n");
 	tzset();
 	initGlobals();
+
+	CMTDInfo* mi = CMTDInfo::getInstance();
 
 	return CNeutrinoApp::getInstance()->run(argc, argv);
 }
