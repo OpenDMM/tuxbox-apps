@@ -43,6 +43,11 @@ Crypto::evp::key::key::item::~item ()
     libcrypto::EVP_PKEY_free ( key );
 }
 
+Crypto::evp::key::key::key ()
+{
+  _item = new item ( libcrypto::EVP_PKEY_new () );
+}
+
 Crypto::evp::key::key::key ( libcrypto::EVP_PKEY * _key )
 : _item ( new item ( _key ) )
 { }
@@ -99,18 +104,12 @@ Crypto::rsa Crypto::evp::key::key::get ()
 {
   TRACE_FUNCTION;
 
-  if ( ! _item -> key )
-    throw Crypto::exception::no_item ( "Crypto::evp::key::key" );
-
   return Crypto::rsa ( libcrypto::EVP_PKEY_get1_RSA ( _item -> key ) );
 }
 
 Crypto::evp::key::key::operator libcrypto::EVP_PKEY * ()
 {
   TRACE_FUNCTION;
-
-  if ( ! _item -> key )
-    throw Crypto::exception::no_item ( "Crypto::evp::key::key" );
 
   return _item -> key;
 }
@@ -143,7 +142,8 @@ void Crypto::evp::key::privatekey::read ( std::istream & stream, const std::stri
   Crypto::bio::istream bio ( stream );
   passphrase = _passphrase;
   libcrypto::EVP_PKEY * temp = libcrypto::PEM_read_bio_PrivateKey ( bio, NULL, &callback, reinterpret_cast < void * > ( this ) );
-  passphrase.clear ();
+  //passphrase.clear ();
+  passphrase = "";
 
   if ( ! temp )
     throw Crypto::exception::evp::bad_decrypt ( Crypto::lib::get_error () );
@@ -155,9 +155,6 @@ void Crypto::evp::key::privatekey::write ( std::ostream & stream )
 {
   TRACE_FUNCTION;
 
-  if ( ! _item -> key )
-    throw Crypto::exception::no_item ( "Crypto::evp::key::key" );
-
   Crypto::bio::ostream bio ( stream );
   libcrypto::PEM_write_bio_PrivateKey ( bio, _item -> key, NULL, NULL, 0, NULL, NULL );
 }
@@ -166,13 +163,11 @@ void Crypto::evp::key::privatekey::write ( std::ostream & stream, Crypto::evp::c
 {
   TRACE_FUNCTION;
 
-  if ( ! _item -> key )
-    throw Crypto::exception::no_item ( "Crypto::evp::key::key" );
-
   Crypto::bio::ostream bio ( stream );
   passphrase = _passphrase;
   libcrypto::PEM_write_bio_PrivateKey ( bio, _item -> key, cipher, NULL, 0, &callback, reinterpret_cast < void * > ( this ) );
-  passphrase.clear ();
+  //passphrase.clear ();
+  passphrase = "";
 }
 
 int Crypto::evp::key::privatekey::callback ( char * buf, int num, int, void * _thiz )

@@ -107,7 +107,8 @@ namespace Crypto
           };
 
         public:
-          key ( libcrypto::EVP_PKEY * = NULL );
+          key ();
+          key ( libcrypto::EVP_PKEY * );
           key ( const key & );
           virtual ~key ();
           key & operator = ( const key & );

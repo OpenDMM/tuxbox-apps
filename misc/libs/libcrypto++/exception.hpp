@@ -31,14 +31,6 @@ namespace Crypto
 {
   namespace exception
   {
-    class no_item : public std::domain_error
-    {
-      public:
-        no_item ( const std::string & what )
-        : domain_error ( what )
-        { }
-    };
-
     namespace evp
     {
       class bad_decrypt : public std::runtime_error
