@@ -20,6 +20,9 @@
   Foundation, Inc., 675 Mass Ave, Cambridge, MA 02139, USA.
 
   $Log$
+  Revision 1.17  2002/03/24 22:42:26  McClean
+  add getServiceID for clientlib
+
   Revision 1.16  2002/03/24 14:55:37  field
   Updates, Clientlib
 
@@ -160,6 +163,23 @@ void CZapitClient::zapTo( unsigned int channel )
 	send((char*)&msg, sizeof(msg));
 
 	zapit_close();
+}
+
+unsigned int CZapitClient::getCurrentServiceID()
+{
+	commandHead msgHead;
+	msgHead.version=ACTVERSION;
+	msgHead.cmd=CMD_GET_CURRENT_SERVICEID;
+
+	zapit_connect();
+	send((char*)&msgHead, sizeof(msgHead));
+
+	responseGetCurrentServiceID response;
+	receive((char* )&response, sizeof(response));
+
+	zapit_close();
+
+	return response.serviceID;
 }
 
 void CZapitClient::setAudioChannel( unsigned channel )

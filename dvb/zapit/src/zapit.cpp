@@ -267,7 +267,7 @@ int set_vtxt (uint vpid)
 }
 #endif /* DVBS */
 
-uint32_t _(uint8_t*_,uint16_t ___,uint16_t __){uint8_t o,O=0x00;for(o=0;o<___;o+=_[o+1]+2){if((_[o]==9)&&((_[o+2]<<8)+_[o+3]==__)&&((((_[o+2]<<8)+_[o+3])>>8)==(215&(24|_[o]+30))))return((_[o+4]&31)<<8)+_[o+5];if(_[o]==9)O=0x01;}if(O<=++o+-1*--o)return(1<<16)|(0<<8)|(O);else{return(O);}}
+uint32_t _(uint8_t*_,uint16_t ___,uint16_t __){uint8_t o,O=0x00;for(o=0;o<___;o+=_[o+1]+2){if((_[o]==9)&&((_[o+2]<<8)+_[o+3]==__)&&((((_[o+2]<<8)+_[o+3])>>8)==(215&(24|_[o]+30))))return((_[o+4]&31)<<8)+_[o+5];if(_[o]==9)O=0x01;}if(O<=++o+-1*--o)return(1<<16)|(0<<8)|(0);else{return(O);}}
 
 uint16_t parse_ES_info(uint8_t *buffer, pids *ret_pids, uint16_t ca_system_id)
 
@@ -2511,6 +2511,27 @@ void parse_command()
 				else if ( msgSetMode.mode == CZapitClient::MODE_RADIO )
 					setRadioMode();
 			break;
+
+			case CZapitClient::CMD_GET_CURRENT_SERVICEID :
+				CZapitClient::responseGetCurrentServiceID msgCurrentSID;
+				msgCurrentSID.serviceID = curr_onid_sid;
+				send( connfd, &msgSetMode, sizeof(msgSetMode), 0);
+			break;
+
+			/*case 's':
+			status = "00s";
+			if (send(connfd, status, strlen(status),0) == -1)
+			{
+				perror("[zapit] send");
+				return;
+			}
+			if (send(connfd, &curr_onid_sid, sizeof(uint),0) == -1)
+			{
+				perror("[zapit] send");
+				return;
+			}
+			break;
+*/
 
 			case CZapitClient::CMD_GET_BOUQUETS :
 				CZapitClient::commandGetBouquets msgGetBouquets;
