@@ -32,7 +32,7 @@ int usage (std::string basename)
 	std::cout << "bouquet list: " << basename << " [-ra]" << std::endl;
 	std::cout << "channel list: " << basename << " [-ra] <bouquet-number>" << std::endl;
 	std::cout << "zap by number: " << basename << " [-ra] <bouquet-number> <channel-number>" << std::endl;
-	std::cout << "zap by name: " << basename << " [-ra] <channel-name>" << std::endl;
+	std::cout << "zap by name: " << basename << " [-ra] -n <channel-name>" << std::endl;
 	std::cout << "set diseqc type: " << basename << " -dt <type>" << std::endl;
 	std::cout << "set diseqc repeats: " << basename << " -dr <count>" << std::endl;
 	std::cout << "(-ra toggles radio mode)" << std::endl;
