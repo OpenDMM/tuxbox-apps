@@ -200,7 +200,7 @@ bool CControlAPI::StandbyCGI(CWebserverRequest *request)
 }
 //-------------------------------------------------------------------------
 
-bool CControlAPI::GetTimeCGI(CWebserverRequest *request)
+bool CControlAPI::GetDateCGI(CWebserverRequest *request)
 {
 	request->SendPlainHeader("text/plain");          // Standard httpd header senden
 	if (request->ParameterList.size()==0)
@@ -221,7 +221,7 @@ bool CControlAPI::GetTimeCGI(CWebserverRequest *request)
 }
 //-------------------------------------------------------------------------
 
-bool CControlAPI::GetDateCGI(CWebserverRequest *request)
+bool CControlAPI::GetTimeCGI(CWebserverRequest *request)
 {
 	request->SendPlainHeader("text/plain");          // Standard httpd header senden
 	if (request->ParameterList.size()==0)
