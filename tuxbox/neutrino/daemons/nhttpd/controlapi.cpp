@@ -986,6 +986,8 @@ void CControlAPI::SendAllCurrentVAPid(CWebserverRequest* request)
 	
 	if(pids.APIDs.empty())
 		request->printf("0\n"); // shouldnt happen, but print at least one apid 
+	if (pids.PIDs.pmtpid)
+		request->printf("%u pmt\n",pids.PIDs.pmtpid);
 }
 
 //-------------------------------------------------------------------------

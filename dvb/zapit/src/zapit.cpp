@@ -656,6 +656,7 @@ bool parse_command(CBasicMessage::Header &rmsg, int connfd)
 		msgCurrentServiceInfo.vpid = channel->getVideoPid();
 		msgCurrentServiceInfo.apid = channel->getAudioPid();
 		msgCurrentServiceInfo.vtxtpid = channel->getTeletextPid();
+		msgCurrentServiceInfo.pmtpid = channel->getPmtPid();
 		msgCurrentServiceInfo.pcrpid = channel->getPcrPid();
 		msgCurrentServiceInfo.tsfrequency = frontend->getFrequency();
 		if (frontend->getInfo()->type == FE_QPSK)
@@ -1109,6 +1110,7 @@ bool parse_command(CBasicMessage::Header &rmsg, int connfd)
 			responseGetOtherPIDs.ecmpid = NONE; // TODO: remove
 			responseGetOtherPIDs.vtxtpid = channel->getTeletextPid();
 			responseGetOtherPIDs.pcrpid = channel->getPcrPid();
+			responseGetOtherPIDs.pmtpid = channel->getPmtPid();
 			responseGetOtherPIDs.selected_apid = channel->getAudioChannelIndex();
 			CBasicServer::send_data(connfd, &responseGetOtherPIDs, sizeof(responseGetOtherPIDs));
 			sendAPIDs(connfd);
