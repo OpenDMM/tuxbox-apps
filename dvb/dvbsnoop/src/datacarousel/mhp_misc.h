@@ -18,6 +18,7 @@ $Id$
 
 
 int  mhp_application_identifier (int  v, u_char *b);
+int  mhp_application_profile_version (int  v, u_char *b);
 
 
 #endif

@@ -17,6 +17,10 @@ $Id$
 
 
 $Log$
+Revision 1.11  2004/02/12 21:21:21  rasc
+MHP AIT descriptors
+some smaller changes
+
 Revision 1.10  2004/02/07 01:28:04  rasc
 MHP Application  Information Table
 some AIT descriptors
@@ -125,6 +129,7 @@ void decode_TSDT (u_char *b, int len)
    len1 -= x;
  }
  indent (-1);
+ out_NL (3);
 
 
  t.crc		 = getBits (b, 0, 0, 32);

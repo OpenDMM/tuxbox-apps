@@ -15,6 +15,10 @@ $Id$
 
 
 $Log$
+Revision 1.8  2004/02/12 21:21:21  rasc
+MHP AIT descriptors
+some smaller changes
+
 Revision 1.7  2004/02/07 01:28:04  rasc
 MHP Application  Information Table
 some AIT descriptors
@@ -160,6 +164,7 @@ void decode_PMT (u_char *b, int len)
    len1 -= x;
  }
  indent (-1);
+ out_NL (3);
 
 
  indent (+1);
@@ -193,6 +198,7 @@ void decode_PMT (u_char *b, int len)
       len1 -= x;
    }
    indent (-1);
+   out_NL (3);
 
 
  } // while len1
