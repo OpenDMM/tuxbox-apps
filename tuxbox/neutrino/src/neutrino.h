@@ -31,6 +31,10 @@
 	Foundation, Inc., 675 Mass Ave, Cambridge, MA 02139, USA.
 
 //  $Log$
+//  Revision 1.16  2001/09/18 20:20:26  field
+//  Eventlist in den Infov. verschoben (gelber Knopf), Infov.-Anzeige auf Knoepfe
+//  vorbereitet
+//
 //  Revision 1.15  2001/09/18 10:49:49  fnbrd
 //  Eventlist, quick'n dirty
 //
@@ -99,7 +103,7 @@ class CNeutrinoApp : public CMenuTarget
 		mode_radio = 2
 	};
 
-    EventList *eventlist;
+//    EventList *eventlist;
 	string				settingsFile;
 
 	bool				nRun;
