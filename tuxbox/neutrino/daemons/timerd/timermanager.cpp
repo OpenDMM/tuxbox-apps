@@ -149,8 +149,8 @@ void* CTimerManager::timerThread(void *arg)
 			// save events if requested
 			if(timerManager->m_saveEvents)
 			{
-				timerManager->m_saveEvents=false;
 				timerManager->saveEventsToConfig();
+				timerManager->m_saveEvents=false;
 			}
 /*			int wait = sleeptime-(((int)time(NULL)) % sleeptime);
 			if(wait==0) wait=sleeptime;
