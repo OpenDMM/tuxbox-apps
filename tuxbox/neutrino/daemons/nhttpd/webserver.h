@@ -41,7 +41,7 @@ using namespace std;
 #define SA struct sockaddr
 #define SAI struct sockaddr_in
 #define PRIVATEDOCUMENTROOT "/share/tuxbox/neutrino/httpd"
-#define PUBLICDOCUMENTROOT "/var/tmp/httpd"
+#define PUBLICDOCUMENTROOT "/var/httpd"
 
 class CWebDbox;
 class TWebserverRequest;
