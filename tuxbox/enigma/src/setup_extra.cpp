@@ -34,6 +34,10 @@ eExpertSetup::eExpertSetup()
 {
 	cmove(ePoint(170, 115));
 
+	int lockWebIf=1;
+	if ( eConfig::getInstance()->getKey("/ezap/webif/lockWebIf", lockWebIf) )
+		eConfig::getInstance()->setKey("/ezap/webif/lockWebIf", lockWebIf);
+
 	int entry=0;
 #ifndef DISABLE_NETWORK
 	if (eSystemInfo::getInstance()->hasNetwork())
@@ -52,7 +56,8 @@ eExpertSetup::eExpertSetup()
 	new eListBoxEntryCheck( (eListBox<eListBoxEntry>*)&list, _("Hide error windows"), "/elitedvb/extra/hideerror", _("don't show zap error messages"));
 	new eListBoxEntryCheck( (eListBox<eListBoxEntry>*)&list, _("Auto show Infobar"), "/ezap/osd/showOSDOnEITUpdate", _("always show infobar when new event info is avail"));
 	new eListBoxEntryCheck( (eListBox<eListBoxEntry>*)&list, _("Show remaining Time"), "/ezap/osd/showCurrentRemaining", _("show event remaining time in the infobar"));
-	CONNECT((new eListBoxEntryCheck( (eListBox<eListBoxEntry>*)&list, _("Don't open serial port"), "/ezap/extra/disableSerialOutput", _("don't write debug messages to /dev/tts/0")))->selected, eExpertSetup::serialDebugChanged );
+	CONNECT((new eListBoxEntryCheck( (eListBox<eListBoxEntry>*)&list, _("Use http authentification"), "/ezap/webif/lockWebIf", _("enables the http (user/password) authentification")))->selected, eExpertSetup::reinitializeHTTPServer );
+	CONNECT((new eListBoxEntryCheck( (eListBox<eListBoxEntry>*)&list, _("Don't open serial port"), "/ezap/extra/disableSerialOutput", _("don't write debug messages to /dev/tts/0")))->selected, eExpertSetup::reinitializeHTTPServer );
 	new eListBoxEntryCheck( (eListBox<eListBoxEntry>*)&list, _("Auto bouquet change"), "/elitedvb/extra/autobouquetchange", _("change into next bouquet when end of current bouquet is reached"));
 	if ( eSystemInfo::getInstance()->getHwType() == eSystemInfo::DM7000 ||
 		eSystemInfo::getInstance()->getHwType() == eSystemInfo::DM7020 )
@@ -66,7 +71,7 @@ void eExpertSetup::colorbuttonsChanged(bool b)
 	sel->setStyle( sel->getStyle(), true );
 }
 
-void eExpertSetup::serialDebugChanged(bool b)
+void eExpertSetup::reinitializeHTTPServer(bool)
 {
 	eZap::getInstance()->reconfigureHTTPServer();
 }
@@ -133,6 +138,7 @@ void eExpertSetup::rc_setup()
 
 void eExpertSetup::factory_reset()
 {
+	hide();
 	eMessageBox mb(
 		_("When you do a factory reset, you will lost ALL your configuration data\n"
 			"(including bouquets, services, satellite data ...)\n\n"
@@ -157,4 +163,5 @@ void eExpertSetup::factory_reset()
 			eZap::getInstance()->quit(2);
 		msg.hide();
 	}
+	show();
 }
