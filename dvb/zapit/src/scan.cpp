@@ -49,6 +49,9 @@ extern tallchans allchans;   //  defined in zapit.cpp
 extern int found_transponders;
 extern int found_channels;
 extern std::map <t_channel_id, uint8_t> service_types;
+extern uint32_t found_tv_chans;
+extern uint32_t found_radio_chans;
+extern uint32_t found_data_chans;
 
 /* zapit.cpp */
 extern CFrontend *frontend;
