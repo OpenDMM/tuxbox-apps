@@ -145,7 +145,7 @@ class CTimerEvent_Zapto : public CTimerEvent_Record
 		{eventType = getEventType();};
 	CTimerEvent_Zapto(CConfigFile *config, int iId):
 		CTimerEvent_Record(config, iId)
-		{};
+		{eventType = getEventType();};
 	virtual CTimerd::CTimerEventTypes getEventType(void) const { return CTimerd::TIMER_ZAPTO; };
 	virtual void fireEvent();
 	virtual void announceEvent();
