@@ -66,7 +66,7 @@ char * CBasicServer::receive_string(int fd)
 	if (receive_data(fd, &length, sizeof(length)))
 	{
 		char * data = (char *)malloc(((size_t)length) + 1);
-		if (receive_data(fd, &data, length))
+		if (receive_data(fd, data, length))
 		{
 			data[length] = 0; /* add terminating 0 */
 			return data;
