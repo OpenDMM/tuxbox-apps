@@ -191,7 +191,9 @@ int setmode(int fbd, const struct pixelformat *pixf,const struct vidsize *vids){
 	if (stat<0) return -2;
 	
 	var.xres= vids->width;
+	var.xres_virtual = vids->width;
 	var.yres= vids->height;
+	var.yres_virtual = vids->height;
 	
 	var.bits_per_pixel = pixf->bpp;
 	var.red = pixf->red;
