@@ -29,7 +29,6 @@
 #include                "config.h"
 #else
 #define CONFIGDIR       "/var/tuxbox/config"
-#define DATADIR		"/share/tuxbox" //for compatibiliy with rel_alexW
 #endif
 
 #define ZAPITCONFIGDIR  CONFIGDIR "/zapit"
@@ -39,6 +38,7 @@
 #define SERVICES_XML    ZAPITCONFIGDIR "/services.xml"
 #define SERVICES_TMP    "/tmp/services.tmp"
 #define BOUQUETS_XML    ZAPITCONFIGDIR "/bouquets.xml"
+#define BOUQUETS_TMP    "/tmp/bouquets.tmp"
 
 #define CABLES_XML      DATADIR "/cables.xml"
 #define SATELLITES_XML  DATADIR "/satellites.xml"
@@ -48,8 +48,6 @@
 #define DEMUX_DEVICE    "/dev/dvb/adapter0/demux0"
 #define FRONTEND_DEVICE "/dev/dvb/adapter0/frontend0"
 #define VIDEO_DEVICE    "/dev/dvb/adapter0/video0"
-
-#define SEC_DEVICE      "/dev/dvb/card0/sec0" //for compatibility with rel_alexW
 
 #define CAMD_UDS_NAME  "/tmp/camd.socket"
 
