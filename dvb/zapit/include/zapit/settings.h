@@ -31,10 +31,11 @@
 #define CONFIGDIR       "/var/tuxbox/config"
 #endif
 
+#define ZAPITCONFIGDIR  CONFIGDIR "/zapit"
 
-#define CONFIGFILE      CONFIGDIR "/zapit/zapit.conf"
-#define SERVICES_XML    CONFIGDIR "/zapit/services.xml"
-#define BOUQUETS_XML    CONFIGDIR "/zapit/bouquets.xml"
+#define CONFIGFILE      ZAPITCONFIGDIR "/zapit.conf"
+#define SERVICES_XML    ZAPITCONFIGDIR "/services.xml"
+#define BOUQUETS_XML    ZAPITCONFIGDIR "/bouquets.xml"
 
 #define CABLES_XML      DATADIR "/cables.xml"
 #define SATELLITES_XML  DATADIR "/satellites.xml"
