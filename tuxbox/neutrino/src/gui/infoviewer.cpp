@@ -2,6 +2,9 @@
 // $Id$
 //
 // $Log$
+// Revision 1.24  2001/09/20 14:10:10  field
+// neues EPG-Handling abschaltbar
+//
 // Revision 1.23  2001/09/20 11:56:00  field
 // Final fix for new structure
 //
@@ -448,7 +451,7 @@ bool CInfoViewer::getEPGData( string channelName, unsigned int onid_tsid )
 			return false;
 		}
 
-        if ( onid_tsid != 0 )
+        if ( ( onid_tsid != 0 ) && ( g_settings.epg_byname == 0 ) )
         {
             // query mit onid_tsid...
 
