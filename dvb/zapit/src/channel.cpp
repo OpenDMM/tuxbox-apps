@@ -22,7 +22,7 @@
 
 #include "channel.h"
 
-CZapitChannel::CZapitChannel (std::string p_name, unsigned short p_sid, unsigned short p_tsid, unsigned short p_onid, unsigned char p_service_type, unsigned short p_chan_nr, unsigned char p_DiSEqC)
+CZapitChannel::CZapitChannel (std::string p_name, unsigned short p_sid, unsigned short p_tsid, unsigned short p_onid, unsigned char p_service_type, unsigned char p_DiSEqC)
 {
 	iscopy = false;
 	name = p_name;
@@ -30,7 +30,6 @@ CZapitChannel::CZapitChannel (std::string p_name, unsigned short p_sid, unsigned
 	transportStreamId = p_tsid;
 	originalNetworkId = p_onid;
 	serviceType = p_service_type;
-	channelNumber = p_chan_nr;
 	DiSEqC = p_DiSEqC;
 
 	caPmt = NULL;

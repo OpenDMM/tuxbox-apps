@@ -95,7 +95,8 @@ class CBouquetManager
 				ChannelIterator operator ++(int);
 				CZapitChannel* operator *();
 				ChannelIterator FindChannelNr(const unsigned int channel);
-				int getLowestChannelNumberWithOnidSid(const unsigned int onid_sid);
+				int getLowestChannelNumberWithOnidSid(const uint32_t onid_sid);
+				int getNrofFirstChannelofBouquet(const unsigned int bouquet_nr);
 				bool EndOfChannels() { return (c == -2); };
 		};
 

@@ -84,14 +84,12 @@ void ParseChannels (XMLTreeNode *node, uint16_t transport_stream_id, uint16_t or
 	uint16_t service_id;
 	std::string name;
 	uint8_t service_type;
-	uint16_t channel_number;
 
 	while ((node != NULL) && (!strcmp(node->GetType(), "channel")))
 	{
 		sscanf(node->GetAttributeValue("service_id"), "%hx", &service_id);
 		name = node->GetAttributeValue("name");
 		sscanf(node->GetAttributeValue("service_type"), "%hhx", &service_type);
-		sscanf(node->GetAttributeValue("channel_nr"), "%hd", &channel_number);
 
 		switch (service_type)
 		{
@@ -110,7 +108,6 @@ void ParseChannels (XMLTreeNode *node, uint16_t transport_stream_id, uint16_t or
 						transport_stream_id,
 						original_network_id,
 						service_type,
-						channel_number,
 						DiSEqC
 					)
 				)
@@ -131,7 +128,6 @@ void ParseChannels (XMLTreeNode *node, uint16_t transport_stream_id, uint16_t or
 						transport_stream_id,
 						original_network_id,
 						service_type,
-						channel_number,
 						DiSEqC
 					)
 				)
