@@ -703,11 +703,13 @@ string tmpfilename;
 		tmpfilename = path + "/" + filename;
 	else
 		tmpfilename = path + filename;
-
+	
 	if( access(string(Parent->PublicDocumentRoot + tmpfilename).c_str(),4) == 0)
 			tmpfilename = Parent->PublicDocumentRoot + tmpfilename;
-	else if(access(string(Parent->PrivateDocumentRoot + tmpfilename).c_str(),4) == 0)		
+	else if(access(string(Parent->PrivateDocumentRoot + tmpfilename).c_str(),4) == 0)
 			tmpfilename = Parent->PrivateDocumentRoot + tmpfilename;
+	else if(access(tmpfilename.c_str(),4) == 0)
+			;
 	else
 	{
 		return "";
