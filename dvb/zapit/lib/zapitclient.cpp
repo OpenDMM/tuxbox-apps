@@ -273,6 +273,17 @@ void CZapitClient::getPIDS( responseGetPIDs& pids )
 	close_connection();
 }
 
+void CZapitClient::zaptoNvodSubService(int num)
+{
+	CZapitMessages::commandInt msg;
+
+	msg.val = num;
+
+	send(CZapitMessages::CMD_NVOD_SUBSERVICE_NUM, (char*)&msg, sizeof(msg));
+
+	close_connection();
+}
+
 /* gets all bouquets */
 /* bouquets are numbered starting at 0 */
 void CZapitClient::getBouquets(BouquetList& bouquets, const bool emptyBouquetsToo, const bool utf_encoded)

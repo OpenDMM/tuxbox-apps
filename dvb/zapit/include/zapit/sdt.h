@@ -44,12 +44,8 @@ enum service_type_e {
 	DVB_MHP_SERVICE
 };
 
-struct sdt_generic_descriptor {
-        unsigned descriptor_tag		: 8;
-        unsigned descriptor_length	: 8;
-};
-
-int parse_sdt(const t_transport_stream_id, const t_original_network_id, const uint8_t DiSEqC);
-unsigned int get_sdt_TsidOnid(void);
+unsigned long get_sdt_TsidOnid(void);
+int nvod_service_ids(const t_transport_stream_id, const t_original_network_id, const t_service_id, const unsigned int num, t_transport_stream_id * const, t_original_network_id * const, t_service_id * const);
+int parse_sdt(const t_transport_stream_id, const t_original_network_id, const unsigned char diseqc);
 
 #endif /* __zapit_sdt_h__ */

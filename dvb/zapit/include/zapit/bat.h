@@ -1,7 +1,7 @@
 /*
  * $Id$
  *
- * (C) 2002 by Andreas Oberritter <obi@tuxbox.org>
+ * (C) 2002-2003 Andreas Oberritter <obi@tuxbox.org>
  *
  * This program is free software; you can redistribute it and/or modify
  * it under the terms of the GNU General Public License as published by
@@ -19,9 +19,9 @@
  *
  */
 
-#ifndef __bat_h__
-#define __bat_h__
+#ifndef __zapit_bat_h__
+#define __zapit_bat_h__
 
-int parse_bat (int demux_fd);
+int parse_bat(void);
 
-#endif /* __bat_h__ */
+#endif /* __zapit_bat_h__ */
