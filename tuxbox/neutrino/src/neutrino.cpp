@@ -32,6 +32,9 @@
 	Foundation, Inc., 675 Mass Ave, Cambridge, MA 02139, USA.
 
   $Log$
+  Revision 1.153  2002/02/10 14:17:34  McClean
+  simplify usage (part 2)
+
   Revision 1.152  2002/02/09 01:39:58  Simplex
   dont zap to 0 after editing bouquets
 
@@ -1868,6 +1871,11 @@ int CNeutrinoApp::run(int argc, char **argv)
 	//keySettings
 	InitKeySettings(keySettings);
 
+
+	//show messages (cam usw)
+	//CMessageBox messageBox( "bouqueteditor.name", "bouqueteditor.savechanges?", NULL );
+	//messageBox.exec( NULL, "");
+	
 	//init programm
 	InitZapper();
 
