@@ -2618,6 +2618,8 @@ int CNeutrinoApp::handleMsg(uint msg, uint data)
 			// noch nicht im Scart-Mode...
 			scartMode( true );
 		}
+		else // sonst nur lcd akt.
+			g_lcdd->setMode(CLcddTypes::MODE_SCART);
 	}
 
 	else if( msg == NeutrinoMessages::VCR_OFF )
