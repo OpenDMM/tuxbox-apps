@@ -177,6 +177,9 @@ void SIsectionEIT::parseShortEventDescriptor(const char *buf, SIevent &e, unsign
     else
       e.text=std::string(++buf, textlength);
   }
+	while( e.text.length() && e.text[0] == '\x0A' )
+			e.text.erase(0,1);
+
 //  printf("Name: %s\n", e.name.c_str());
 //  printf("Text: %s\n", e.text.c_str());
 
