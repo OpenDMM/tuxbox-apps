@@ -23,6 +23,12 @@
 //    Foundation, Inc., 675 Mass Ave, Cambridge, MA 02139, USA.
 //
 //  $Log$
+//  Revision 1.139  2002/10/15 20:39:47  woglinde
+//
+//
+//  mostly coding styles, adding license to some files,
+//  using dos2unix on one file
+//
 //  Revision 1.138  2002/10/13 21:21:49  thegoodguy
 //  Cleanup includes
 //
@@ -439,8 +445,9 @@
 // Daher nehmen wir SmartPointers aus der Boost-Lib (www.boost.org)
 #include <boost/smart_ptr.hpp>
 
-#include <eventserver.h>
+#include <sectionsdclient/sectionsdMsg.h>
 #include <sectionsdclient/sectionsdclient.h>
+#include <eventserver.h>
 
 #include "SIutils.hpp"
 #include "SIservices.hpp"

@@ -24,6 +24,12 @@
 //    Foundation, Inc., 675 Mass Ave, Cambridge, MA 02139, USA.
 //
 // $Log$
+// Revision 1.8  2002/10/15 20:39:47  woglinde
+//
+//
+// mostly coding styles, adding license to some files,
+// using dos2unix on one file
+//
 // Revision 1.7  2002/09/24 22:29:06  thegoodguy
 // Code cleanup (kick out onid_sid)
 //
@@ -48,7 +54,7 @@
 //
 
 
-#include "sectionsdMsg.h"
+#include <sectionsdclient/sectionsdMsg.h>
 
 
 // forward references

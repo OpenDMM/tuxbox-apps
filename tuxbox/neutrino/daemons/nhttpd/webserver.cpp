@@ -23,6 +23,8 @@
 
 
 */
+
+
 #include <netinet/in.h> 
 #include <netinet/tcp.h>
 #include <arpa/inet.h>
@@ -35,11 +37,13 @@
 #include "debug.h"
 
 #define NHTTPD_CONFIGFILE CONFIGDIR "/nhttpd.conf"
+
+
 struct Cmyconn
 {
 	socklen_t			clilen;
 	string				Client_Addr;
-	int					Socket;
+	int				Socket;
 	CWebserver			*Parent;	
 };
 

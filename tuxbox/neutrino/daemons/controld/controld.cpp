@@ -47,11 +47,12 @@
 #include <ost/video.h>
 
 #include <zapit/zapitclient.h>
+#include <eventserver.h>
+
 #include <controldclient/controldclient.h>
 #include <controldclient/controldMsg.h>
 #include <lcddclient/lcddclient.h>
 #include <timerdclient/timerdclient.h>
-#include <eventserver.h>
 
 #include "eventwatchdog.h"
 #include "driver/audio.h"

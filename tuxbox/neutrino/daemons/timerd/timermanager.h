@@ -29,10 +29,11 @@
 #include <stdio.h>
 #include <map>
 
-#include "timerdclient/timerdtypes.h"
-#include "eventserver.h"
-#include "configfile.h"
-#include "config.h"
+#include <configfile.h>
+#include <config.h>
+
+#include <eventserver.h>
+#include <timerdclient/timerdtypes.h>
 
 #define CONFIGFILE CONFIGDIR "/timerd.conf"
 
