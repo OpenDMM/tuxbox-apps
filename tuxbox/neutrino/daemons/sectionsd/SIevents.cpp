@@ -22,6 +22,9 @@
 //    Foundation, Inc., 675 Mass Ave, Cambridge, MA 02139, USA.
 //
 // $Log$
+// Revision 1.16  2002/02/28 01:52:21  field
+// Verbessertes Umschalt-Handling
+//
 // Revision 1.15  2002/02/23 20:52:41  field
 // Bugfix
 //
@@ -134,7 +137,7 @@ int SIevent::saveXML(FILE *file, const char *serviceName) const
   return saveXML2(file);
 }
 
-char SIevent::getFSK()
+char SIevent::getFSK() const
 {
   char fsk = 0;
   for (SIparentalRatings::iterator it = ratings.begin(); it != ratings.end(); it++)
