@@ -1342,6 +1342,11 @@ void leaveStandby(void)
 	}
 	if (!frontend) {
 		frontend = new CFrontend();
+		if (!frontend->isInitialized())
+		{
+			printf("[zapit] unable to open frontend devices. bye.\n");
+			return -1;
+		}
 	}
 	if (!videoDecoder) {
 		videoDecoder = new CVideo();
@@ -1493,32 +1498,6 @@ int main(int argc, char **argv)
 		WARN("error parsing services");
 	else
 		INFO("channels have been loaded succesfully");
-
-	/* initialize frontend */
-	frontend = new CFrontend();
-
-	if (!frontend->isInitialized())
-	{
-		printf("[zapit] unable to open frontend devices. bye.\n");
-		return -1;
-	}
-	else
-	{
-		char tmp[16];
-
-		frontend->setDiseqcType((diseqc_t) config.getInt32("diseqcType", NO_DISEQC));
-		frontend->setDiseqcRepeats(config.getInt32("diseqcRepeats", 0));
-
-		for (int i = 0; i < MAX_LNBS; i++)
-		{
-			/* low offset */
-			sprintf(tmp, "lnb%d_OffsetLow", i);
-			frontend->setLnbOffset(false, i, config.getInt32(tmp, 9750000));
-			/* high offset */
-			sprintf(tmp, "lnb%d_OffsetHigh", i);
-			frontend->setLnbOffset(true, i, config.getInt32(tmp, 10600000));
-		}
-	}
 
 	audioDecoder = new CAudio();
 
