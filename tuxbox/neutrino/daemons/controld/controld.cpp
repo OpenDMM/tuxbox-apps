@@ -289,7 +289,7 @@ void setVideoFormat(int format, bool bSaveFormat = true )
 				avsiosfncFormat=2;
 				break;
 			case 2 :
-				avsiosfncFormat=1;
+				avsiosfncFormat=3;
 				break;
 		}
 	}
