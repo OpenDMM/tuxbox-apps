@@ -37,10 +37,10 @@ eExpertSetup::eExpertSetup()
 	int entry=0;
 #ifndef DISABLE_NETWORK
 	CONNECT((new eListBoxEntryMenu(&list, _("Communication Setup"), eString().sprintf("(%d) %s", ++entry, _("open on screen display settings")) ))->selected, eExpertSetup::communication_setup);
-	CONNECT((new eListBoxEntryMenu(&list, _("Ngrab Streaming Setup"), eString().sprintf("(%d) %s", ++entry, _("open on screen display settings")) ))->selected, eExpertSetup::ngrab_setup);
-	CONNECT((new eListBoxEntryMenu(&list, _("Software Update"), eString().sprintf("(%d) %s", ++entry, _("open on software update")) ))->selected, eExpertSetup::software_update);
+	CONNECT((new eListBoxEntryMenu(&list, _("Ngrab Streaming Setup"), eString().sprintf("(%d) %s", ++entry, _("open ngrab server setup")) ))->selected, eExpertSetup::ngrab_setup);
+	CONNECT((new eListBoxEntryMenu(&list, _("Software Update"), eString().sprintf("(%d) %s", ++entry, _("open software update")) ))->selected, eExpertSetup::software_update);
 #endif
-	CONNECT((new eListBoxEntryMenu(&list, _("Remote Control"), eString().sprintf("(%d) %s", ++entry, _("open on audio/video settings")) ))->selected, eExpertSetup::rc_setup);
+	CONNECT((new eListBoxEntryMenu(&list, _("Remote Control"), eString().sprintf("(%d) %s", ++entry, _("open remote control setup")) ))->selected, eExpertSetup::rc_setup);
 	CONNECT((new eListBoxEntryMenu(&list, _("Skin Setup"), eString().sprintf("(%d) %s", ++entry, _("open skin setup")) ))->selected, eExpertSetup::skin_setup);
 	new eListBoxEntrySeparator( (eListBox<eListBoxEntry>*)&list, eSkin::getActive()->queryImage("listbox.separator"), 0, true );
 	new eListBoxEntryCheck( (eListBox<eListBoxEntry>*)&list, _("Skip confirmations"), "/elitedvb/extra/profimode", _("enable/disable confirmations"));
