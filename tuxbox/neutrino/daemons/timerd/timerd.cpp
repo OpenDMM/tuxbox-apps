@@ -45,7 +45,8 @@
 #include "timerdMsg.h"
 #include "debug.h"
 #include "config.h"
-#include <configfile.h>
+#include "configfile.h"
+#include "sectionsdclient.h"
 
 bool doLoop;
 
@@ -555,7 +556,10 @@ int main(int argc, char **argv)
 
 	if(!no_wait)
 	{
-		sleep(30); // wait for correct date to be set...
+		// wait for correct date to be set...
+		CSectionsdClient* sectionsd = new CSectionsdClient;
+		while(!sectionsd->getIsTimeSet())
+			sleep(1);
 	}
    loadTimersFromConfig();
    
