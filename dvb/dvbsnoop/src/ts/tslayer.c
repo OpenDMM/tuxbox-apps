@@ -13,6 +13,10 @@ $Id$
 
 
 $Log$
+Revision 1.6  2003/11/26 16:27:48  rasc
+- mpeg4 descriptors
+- simplified bit decoding and output function
+
 Revision 1.5  2003/11/24 23:52:18  rasc
 -sync option, some TS and PES stuff;
 dsm_addr inactive, may be wrong - due to missing ISO 13818-6
@@ -75,8 +79,8 @@ void decodeTS_buf (u_char *b, int len, int pid)
  t.sync_byte 			 = b[0];
 
  if (t.sync_byte != 0x47) {
-     out_nl (3," SyncByte is wrong (= no TS)!!!\n");
-     return;
+     out_nl (3,"!!! SyncByte is wrong (= no TS)!!!\n");
+     // $$$ return;
  }
  if (len != 188) {
    out_nl (3,"Fixed packet length is wrong (not 188)!!!\n");
