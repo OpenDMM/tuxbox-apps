@@ -19,6 +19,7 @@
  *
  */
 
+#include <errno.h>
 #include <fcntl.h>
 #include <linux/dvb/dmx.h>
 #include <stdio.h>
@@ -129,7 +130,13 @@ int main(int argc, char **argv)
 			if (dmxfd[i] == -1) {
 				dmxfd[i] = open("/dev/dvb/adapter0/demux0", O_RDWR);
 				if (dmxfd[i] == -1) {
-					perror("/dev/dvb/adapter0/demux0");
+					if (errno == EMFILE) {
+						printf("note: reducing number of filters from %d to %d\n", flt_cnt, i);
+						flt_cnt = i;
+					}
+					else {
+						perror("/dev/dvb/adapter0/demux0");
+					}
 					break;
 				}
 			}
