@@ -330,10 +330,19 @@ void CTimerdClient::getRecordingSafety(int &pre, int &post)
 	send(CTimerdMsg::CMD_GETRECSAFETY);
 	CTimerdMsg::commandRecordingSafety data;
 
-	receive_data((char*)&data, sizeof(data));
+	bool success = receive_data((char*)&data, sizeof(data));
 	close_connection();
-	pre = data.pre;
-	post = data.post;
+	if (success)
+	{
+		pre = data.pre;
+		post = data.post;
+	}
+	else
+	{
+		/* fill with default values (cf. timermanager.cpp) */
+		pre  = 0;
+		post = 0;
+	}
 }
 
 //-------------------------------------------------------------------------
