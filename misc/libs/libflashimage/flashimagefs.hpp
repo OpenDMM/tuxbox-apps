@@ -20,14 +20,12 @@
  * $Id$
  */
 
-#ifndef __LIBFLASHIMAGE_LIBFLASHIMAGEFS_HPP
-#define __LIBFLASHIMAGE_LIBFLASHIMAGEFS_HPP
+#ifndef __LIBFLASHIMAGE__LIBFLASHIMAGEFS_HPP
+#define __LIBFLASHIMAGE__LIBFLASHIMAGEFS_HPP
 
 #include <iostream>
 #include <stdexcept>
 #include <string>
-
-#include <libcrypto++/evp.hpp>
 
 namespace FlashImage
 {

@@ -20,8 +20,8 @@
  * $Id$
  */
 
-#ifndef __LIBFLASHIMAGE_LIBFLASHIMAGECRAMFS_HPP
-#define __LIBFLASHIMAGE_LIBFLASHIMAGECRAMFS_HPP
+#ifndef __LIBFLASHIMAGE__LIBFLASHIMAGECRAMFS_HPP
+#define __LIBFLASHIMAGE__LIBFLASHIMAGECRAMFS_HPP
 
 #include <libflashimage/flashimagefs.hpp>
 
@@ -29,8 +29,6 @@
 #include <map>
 #include <memory>
 #include <string>
-
-#include <libcrypto++/evp.hpp>
 
 namespace FlashImage
 {
@@ -47,11 +45,11 @@ namespace FlashImage
 
     public:
       FlashImageCramFS ( std::iostream & );
-      virtual ~FlashImageCramFS ();
+      virtual ~FlashImageCramFS () throw ();
 
       void get_file ( const std::string &, std::ostream & );
-      int get_size ();
-      int get_size_block ();
+      int get_size () throw ();
+      int get_size_block () throw ();
       void get_signature ( std::ostream & );
       void set_signature ( std::istream & );
       void get_block ( unsigned int, char * );

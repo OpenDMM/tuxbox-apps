@@ -38,6 +38,8 @@ namespace FlashImage
   class FlashImageSign;
   class FlashImageVerify;
 
+  class NoExceptionFlashImage;
+
   class FlashImage
   {
     public:
@@ -57,6 +59,8 @@ namespace FlashImage
       FlashImageFS & fs;
       std::map < std::string, std::string > control;
       static std::map < int, std::string > errors;
+
+      friend class NoExceptionFlashImage;
   };
 
   class FlashImageSignature
