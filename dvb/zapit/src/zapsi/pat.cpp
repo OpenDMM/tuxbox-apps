@@ -27,7 +27,7 @@
 /* libevent */
 #include <eventserver.h>
 
-#include <clientlib/zapitclient.h>
+#include <zapitclient.h>
 #include <scan.h>
 #include <zapost/dmx.h>
 

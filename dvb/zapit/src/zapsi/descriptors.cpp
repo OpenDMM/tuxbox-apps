@@ -26,7 +26,7 @@
 /* libevent */
 #include <eventserver.h>
 
-#include <clientlib/zapitclient.h>
+#include <zapitclient.h>
 #include <zapost/frontend.h>
 
 #include <bouquets.h>

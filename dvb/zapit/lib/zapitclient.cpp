@@ -29,7 +29,7 @@
 #include <eventserver.h>
 
 
-#include "zapitclient.h"
+#include "include/zapitclient.h"
 
 
 inline bool CZapitClient::zapit_connect()

@@ -30,7 +30,7 @@
 #include <sys/socket.h>
 #include <sys/un.h>
 
-#include "basicclient.h"
+#include "include/basicclient.h"
 
 CBasicClient::CBasicClient()
 {
