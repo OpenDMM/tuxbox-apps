@@ -22,6 +22,9 @@ $Id$
 	Foundation, Inc., 675 Mass Ave, Cambridge, MA 02139, USA.
 
 $Log$
+Revision 1.2  2002/04/05 01:14:43  rasc
+-- Favorites Bouquet handling (Easy Add Channels)
+
 Revision 1.1  2002/04/04 22:29:32  rasc
 -- Favorites Bouquet handling (Easy Add Channels)
 
@@ -48,14 +51,15 @@ using namespace std;
 
 
 
-	class CFavorites 
+	class CFavorites : public CMenuTarget
 	{
 
 
 	public:
 
 		int  addChannelToFavorites ();
-		void UserAddChannelToFavorites();
+
+		int  exec( CMenuTarget* parent, string actionKey );
 	};
 
 #endif
