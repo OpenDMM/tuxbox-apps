@@ -1801,6 +1801,8 @@ void start_scan(unsigned short do_diseqc)
 
 	if (video_fd != -1)
 	{
+		/* blank screen */
+		ioctl(video_fd, VIDEO_STOP, 1);
 		close(video_fd);
 		video_fd = -1;
 	}
