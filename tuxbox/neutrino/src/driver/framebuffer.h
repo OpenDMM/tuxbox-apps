@@ -34,6 +34,9 @@ $Id$
 
 
 $Log$
+Revision 1.9  2001/12/17 01:28:26  McClean
+accelerate radiomode-logo-paint
+
 Revision 1.8  2001/11/26 02:34:03  McClean
 include (.../../stuff) changed - correct unix-formated files now
 
@@ -138,6 +141,7 @@ class CFrameBuffer
 
 		void paintBackgroundBox(int xa, int ya, int xb, int yb);
 		void paintBackgroundBoxRel(int x, int y, int dx, int dy);
+		void paintBackground();
 };
 
 
