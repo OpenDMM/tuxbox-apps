@@ -24,6 +24,9 @@
 //    Foundation, Inc., 675 Mass Ave, Cambridge, MA 02139, USA.
 //
 // $Log$
+// Revision 1.10  2001/07/26 21:36:59  fnbrd
+// Ein paar Absicherungen gegen defekte EIT-Packete.
+//
 // Revision 1.9  2001/07/25 11:39:17  fnbrd
 // Added unique keys to Events and Services
 //
@@ -388,11 +391,11 @@ class SIsectionEIT : public SIsection
     int parsed;
     void parse(void);
     void parseDescriptors(const char *desc, unsigned len, SIevent &e);
-    void parseShortEventDescriptor(const char *buf, SIevent &e);
-    void parseExtendedEventDescriptor(const char *buf, SIevent &e);
-    void parseContentDescriptor(const char *buf, SIevent &e);
-    void parseComponentDescriptor(const char *buf, SIevent &e);
-    void parseParentalRatingDescriptor(const char *buf, SIevent &e);
+    void parseShortEventDescriptor(const char *buf, SIevent &e, unsigned maxlen);
+    void parseExtendedEventDescriptor(const char *buf, SIevent &e, unsigned maxlen);
+    void parseContentDescriptor(const char *buf, SIevent &e, unsigned maxlen);
+    void parseComponentDescriptor(const char *buf, SIevent &e, unsigned maxlen);
+    void parseParentalRatingDescriptor(const char *buf, SIevent &e, unsigned maxlen);
 };
 
 // Fuer for_each
