@@ -60,7 +60,8 @@ namespace ZapitTools {
 					return r;
 				r += (c | ((*s) & 0x3f));
 			}
-			else r += *s++;
+			else r += *s;
+			s++;
 		}
 		return r;
 	}
