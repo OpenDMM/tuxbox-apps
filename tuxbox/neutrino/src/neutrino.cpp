@@ -1118,7 +1118,7 @@ void CNeutrinoApp::InitScanSettings(CMenuWidget &settings)
 		extMotorSettings->addItem( new CMenuSeparator() );
 		extMotorSettings->addItem( new CMenuForwarder("menu.back") );
 		extMotorSettings->addItem( new CMenuForwarder("satsetup.savesettingsnow", true, "", this, "savesettings") );
-		extMotorSettings->addItem( new CMenuForwarder("satsetup.motorcontrol", (scanSettings.diseqcMode == DISEQC_1_2), "", new CMotorControl()) );
+		extMotorSettings->addItem( new CMenuForwarder("satsetup.motorcontrol", true, "", new CMotorControl()) );
 		extMotorSettings->addItem( new CMenuSeparator(CMenuSeparator::LINE) );
 		
 		CMenuForwarder* ojExtMotorSettings = new CMenuForwarder("satsetup.extended_motor", (scanSettings.diseqcMode == DISEQC_1_2), "", extMotorSettings);
