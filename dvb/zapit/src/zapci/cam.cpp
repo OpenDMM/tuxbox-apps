@@ -162,7 +162,7 @@ int CCam::setCaPmt (CCaPmt * caPmt)
 		}
 	}
 
-	for (pos = caPmt->program_info_length + 10, i = 0; pos < caPmt->length_field + 5; pos += caPmt->es_info[i]->ES_info_length + 5, i++)
+	for (pos = caPmt->program_info_length + 10, i = 0; pos < caPmt->length_field + 4; pos += caPmt->es_info[i]->ES_info_length + 5, i++)
 	{
 		buffer[pos] = caPmt->es_info[i]->stream_type;
 		buffer[pos + 1] = (caPmt->es_info[i]->reserved1 << 5) | (caPmt->es_info[i]->elementary_PID >> 8);
