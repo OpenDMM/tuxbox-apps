@@ -148,6 +148,24 @@ void CSectionsdClient::setPauseScanning(const bool doPause)
 	close_connection();
 }
 
+bool CSectionsdClient::getIsScanningActive()
+{
+	int scanning;
+
+	if (send(sectionsd::getIsScanningActive))
+	{
+		readResponse((char*)&scanning, sizeof(scanning));
+		close_connection();
+
+		return scanning;
+	}
+	else
+	{
+		close_connection();
+		return false;
+	}
+}
+
 void CSectionsdClient::setServiceChanged(const t_channel_id channel_id, const bool requestEvent)
 {
 	sectionsd::commandSetServiceChanged msg;

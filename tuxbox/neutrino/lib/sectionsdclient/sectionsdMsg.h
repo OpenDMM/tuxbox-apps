@@ -64,6 +64,7 @@ struct sectionsd
 		getNextEPG,
 		getNextShort,
 		pauseScanning, // for the grabbers ;)
+		getIsScanningActive,
 		actualEPGchannelID,
 		actualEventListTVshortIDs,
 		actualEventListRadioShortIDs,

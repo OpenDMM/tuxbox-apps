@@ -153,6 +153,8 @@ class CSectionsdClient : private CBasicClient
 	
 	void setPauseScanning(const bool doPause);
 
+	bool getIsScanningActive();
+
 	void setPauseSorting(const bool doPause);
 
 	void setServiceChanged(const t_channel_id channel_id, const bool requestEvent);

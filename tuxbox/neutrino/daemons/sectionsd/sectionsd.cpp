@@ -762,6 +762,20 @@ static void commandPauseScanning(int connfd, char *data, const unsigned dataLeng
 	return ;
 }
 
+static void commandGetIsScanningActive(int connfd, char* /*data*/, const unsigned /*dataLength*/)
+{
+	struct sectionsd::msgResponseHeader responseHeader;
+
+	responseHeader.dataLength = sizeof(scanning);
+
+	if (writeNbytes(connfd, (const char *)&responseHeader, sizeof(responseHeader), WRITE_TIMEOUT_IN_SECONDS) == true)
+	{
+		writeNbytes(connfd, (const char *)&scanning, responseHeader.dataLength, WRITE_TIMEOUT_IN_SECONDS);
+	}
+	else
+		dputs("[sectionsd] Fehler/Timeout bei write");
+}
+
 static void commandPauseSorting(int connfd, char *data, const unsigned dataLength)
 {
 	if (dataLength != 4)
@@ -2466,6 +2480,7 @@ static void (*connectionCommands[sectionsd::numberOfCommands]) (int connfd, char
         commandGetNextEPG,
         commandGetNextShort,
         commandPauseScanning,
+        commandGetIsScanningActive,
         commandActualEPGchannelID,
         commandEventListTVids,
         commandEventListRadioIDs,
