@@ -33,6 +33,7 @@ typedef struct _OPTIONS {
   int         crc;
   long        packet_count;
   int         time_mode;
+  int         hide_copyright;  // suppress message at prog start
 } OPTION;
 
 
