@@ -24,7 +24,7 @@
 
 #include <crypt.h>
 
-#include "config.h"
+#include "configManager.h"
 #include "fontrenderer.h"
 #include "lcddisplay.h"
 
