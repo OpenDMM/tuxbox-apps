@@ -1470,9 +1470,9 @@ void parse_command ()
 
 			case CZapitClient::CMD_GET_CURRENT_SERVICEINFO :
 				CZapitClient::responseCurrentServiceInfo msgCurrentServiceInfo;
-				msgCurrentServiceInfo.onid = channel->getOnidSid() >> 16;
-				msgCurrentServiceInfo.sid = channel->getOnidSid() & 0xffff;
-				msgCurrentServiceInfo.tsid = frontend->getTsidOnid() >> 16;
+				msgCurrentServiceInfo.onid = channel->getOriginalNetworkId();
+				msgCurrentServiceInfo.sid = channel->getServiceId();
+				msgCurrentServiceInfo.tsid = channel->getTransportStreamId();
 				msgCurrentServiceInfo.vdid = channel->getVideoPid();
 				msgCurrentServiceInfo.apid = channel->getAudioPid();
 				msgCurrentServiceInfo.vtxtpid = channel->getTeletextPid();
