@@ -518,7 +518,7 @@ CTimerEvent(TIMER_STANDBY, config, iId)
    stringstream ostr;
    ostr << iId;
    string id=ostr.str();
-   standby_on = config->getInt64("STANDBY_ON_"+id);
+   standby_on = config->getBool("STANDBY_ON_"+id);
 }
 //------------------------------------------------------------
 
