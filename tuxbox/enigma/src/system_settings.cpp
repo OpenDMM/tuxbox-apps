@@ -50,8 +50,6 @@ eSystemSettings::eSystemSettings()
 #ifndef DISABLE_LCD
 	CONNECT((new eListBoxEntryMenu(&list, _("LCD Settings"), eString().sprintf("(%d) %s", ++entry, _("open LCD settings")) ))->selected, eSystemSettings::lcd_settings);
 #endif
-	new eListBoxEntrySeparator( (eListBox<eListBoxEntry>*)&list, eSkin::getActive()->queryImage("listbox.separator"), 0, true );
-	new eListBoxEntryCheck( (eListBox<eListBoxEntry>*)&list, _("Expert Mode"), "/ezap/extra/expertmode", _("enable/disable expert setup") );
 }
 
 void eSystemSettings::osd_settings()

@@ -50,13 +50,8 @@ eZapSetup::eZapSetup()
 		CONNECT((new eListBoxEntryMenu(&list, _("Harddisc Setup"), eString().sprintf("(%d) %s", ++entry, _("open harddisc setup")) ))->selected, eZapSetup::harddisc_setup);
 #endif
 	CONNECT((new eListBoxEntryMenu(&list, _("Parental Lock"), eString().sprintf("(%d) %s", ++entry, _("open parental setup")) ))->selected, eZapSetup::parental_lock );
-	int expert=0;
-	eConfig::getInstance()->getKey("/ezap/extra/expertmode", expert );
-	if ( expert )
-	{
-		new eListBoxEntrySeparator( (eListBox<eListBoxEntry>*)&list, eSkin::getActive()->queryImage("listbox.separator"), 0, true );
-		CONNECT((new eListBoxEntryMenu(&list, _("Expert Setup"), eString().sprintf("(%d) %s", ++entry, _("open extra setup")) ))->selected, eZapSetup::expert_setup);
-	}
+	new eListBoxEntrySeparator( (eListBox<eListBoxEntry>*)&list, eSkin::getActive()->queryImage("listbox.separator"), 0, true );
+	CONNECT((new eListBoxEntryMenu(&list, _("Expert Setup"), eString().sprintf("(%d) %s", ++entry, _("open extra setup")) ))->selected, eZapSetup::expert_setup);
 }
 
 void eZapSetup::system_settings()

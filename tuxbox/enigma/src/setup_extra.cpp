@@ -45,8 +45,14 @@ eExpertSetup::eExpertSetup()
 	new eListBoxEntrySeparator( (eListBox<eListBoxEntry>*)&list, eSkin::getActive()->queryImage("listbox.separator"), 0, true );
 	new eListBoxEntryCheck( (eListBox<eListBoxEntry>*)&list, _("Skip confirmations"), "/elitedvb/extra/profimode", _("enable/disable confirmations"));
 	new eListBoxEntryCheck( (eListBox<eListBoxEntry>*)&list, _("Hide error windows"), "/elitedvb/extra/hideerror", _("enable/disable showing the zap error messages"));
-	new eListBoxEntryCheck( (eListBox<eListBoxEntry>*)&list, _("Serviceselector help buttons"), "/ezap/serviceselector/showButtons", _("show/hide service selector (color) help buttons"));
+	CONNECT((new eListBoxEntryCheck((eListBox<eListBoxEntry>*)&list,_("Serviceselector help buttons"),"/ezap/serviceselector/showButtons",	_("show/hide service selector (color) help buttons")))->selected, eExpertSetup::colorbuttonsChanged );
 	setHelpID(92);
+}
+
+void eExpertSetup::colorbuttonsChanged(bool b)
+{
+	eServiceSelector *sel = eZap::getInstance()->getServiceSelector();
+	sel->setStyle( sel->getStyle(), true );
 }
 
 #ifndef DISABLE_NETWORK
