@@ -1544,7 +1544,7 @@ CMoviePlayerGui::paint ()
 {
 	CLCD * lcd = CLCD::getInstance();
 	lcd->setMode(CLCD::MODE_TVRADIO);
-	lcd->showServicename("Movieplayer");
+	lcd->showServicename(g_Locale->getText("mainmenu.movieplayer"));
 
 	frameBuffer->loadPal ("radiomode.pal", 18, COL_MAXFREE);
 	frameBuffer->loadBackground ("radiomode.raw");
