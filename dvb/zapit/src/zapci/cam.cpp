@@ -121,7 +121,7 @@ int CCam::sendMessage (uint8_t *data, uint16_t length)
 	return 0;
 }
 
-int CCam::setEcm (uint32_t tsidOnid, pids *decodePids)
+int CCam::setEcm (uint32_t tsidOnid, const pids *decodePids)
 {
 	uint8_t i;
 	uint8_t buffer[12 + (4 * (decodePids->count_vpids + decodePids->count_apids))];

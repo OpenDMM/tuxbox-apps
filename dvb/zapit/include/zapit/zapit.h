@@ -28,11 +28,8 @@
 #define FRONT_DEV "/dev/ost/frontend0"
 #define VIDEO_DEV "/dev/ost/video0"
 
-typedef struct decode_struct
-{
-	uint32_t tsid_onid;
+typedef struct decode_struct {
 	bool new_tp;
-	pids *chanpids;
 } decode_vals;
 
 int prepare_channels();

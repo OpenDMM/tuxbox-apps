@@ -55,7 +55,7 @@ class CCam
 		bool isInitialized() { return initialized; }
 
 		int reset ();
-		int setEcm (uint32_t tsidOnid, pids *decodePids);
+		int setEcm (uint32_t tsidOnid, const pids *decodePids);
 		int setEmm (dvb_pid_t emmPid);
 };
 
