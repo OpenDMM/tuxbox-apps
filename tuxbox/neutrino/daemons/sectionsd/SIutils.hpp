@@ -1,7 +1,9 @@
+#ifndef SIUTILS_HPP
+#define SIUTILS_HPP
 //
 // $Id$
 //
-// Beispiel zur Benutzung der SI class lib (dbox-II-project)
+// utility functions for the SI-classes (dbox-II-project)
 //
 //    Homepage: http://dbox2.elxsi.de
 //
@@ -22,38 +24,14 @@
 //    Foundation, Inc., 675 Mass Ave, Cambridge, MA 02139, USA.
 //
 // $Log$
-// Revision 1.2  2001/05/16 15:23:47  fnbrd
+// Revision 1.1  2001/05/16 15:23:47  fnbrd
 // Alles neu macht der Mai.
 //
-// Revision 1.1  2001/05/14 13:45:32  fnbrd
-// Erweitert.
-//
 //
 
-#include <stdio.h>
-#include <time.h>
+time_t changeUTCtoCtime(const unsigned char *buffer);
 
-#include <set>
-#include <algorithm>
-#include <string>
+// returns the descriptor type as readable text
+const char *decode_descr (unsigned char tag_value);
 
-#include "SIutils.hpp"
-#include "SIservices.hpp"
-#include "SIevents.hpp"
-#include "SIsections.hpp"
-
-int main(int argc, char **argv)
-{
-  time_t starttime, endtime;
-  SIsectionsSDT sdtset;
-
-  starttime=time(NULL);
-  sdtset.readSections();
-  endtime=time(NULL);
-  printf("Sections read: %d\n", sdtset.size());
-  printf("Time needed: %ds\n", (int)difftime(endtime, starttime));
-//  for_each(sdtset.begin(), sdtset.end(), printSmallSectionHeader());
-//  for_each(sdtset.begin(), sdtset.end(), printSIsection());
-  for_each(sdtset.begin(), sdtset.end(), printSIsectionSDT());
-  return 0;
-}
+#endif // SIUTILS_HPP
