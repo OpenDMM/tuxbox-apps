@@ -6,8 +6,6 @@ $Id$
  DVBSNOOP
 
  a dvb sniffer  and mpeg2 stream analyzer tool
- mainly for me to learn about dvb streams, mpeg2, mhp, dsm-cc, ...
-
  http://dvbsnoop.sourceforge.net/
 
  (c) 2001-2003   Rainer.Scherg@gmx.de
@@ -19,6 +17,10 @@ $Id$
 
 
 $Log$
+Revision 1.15  2003/12/27 14:35:01  rasc
+dvb-t descriptors
+DSM-CC: SSU Linkage/DataBroadcast descriptors
+
 Revision 1.14  2003/12/17 23:15:04  rasc
 PES DSM-CC  ack and control commands  according ITU H.222.0 Annex B
 
@@ -295,7 +297,7 @@ void  PES_decode2 (u_char *b, int len, int pid)
    indent (+1);
 
    trick_mode_control = outBit_S2x_NL  (3,"trick_mode_control: ", b,0,3,
-		   (char *(*)(u_int)) dvbstrPESTrickModeControl);
+		   (char *(*)(u_long)) dvbstrPESTrickModeControl);
 
    if ( (trick_mode_control == 0x0) ||			/* fast forward */
         (trick_mode_control == 0x3) ) {			/* fast reverse */
