@@ -32,7 +32,7 @@
 #include <sys/un.h>
 #include <unistd.h>
 
-#define TIMEOUT_SEC  2
+#define TIMEOUT_SEC  7
 #define TIMEOUT_USEC 0
 
 CBasicClient::CBasicClient()
