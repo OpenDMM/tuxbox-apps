@@ -1070,7 +1070,7 @@ void CNeutrinoApp::InitScanSettings(CMenuWidget &settings)
 	ojBouquets->addOption( CZapitClient::BM_DONTTOUCHBOUQUETS, "scants.bouquet_leave");
 
 	//kabel-lnb-settings
-	if(g_info.delivery_system == DVB_C)
+	if(g_info.delivery_system == DVB_S)
 	{
 		settings.addItem( new CMenuSeparator() );
 		settings.addItem( new CMenuForwarder("menu.back") );
