@@ -90,6 +90,9 @@
   Foundation, Inc., 675 Mass Ave, Cambridge, MA 02139, USA.
 
   $Log$
+  Revision 1.47  2001/12/17 21:45:06  faralla
+  removed byteorder-conversion
+
   Revision 1.46  2001/12/17 19:17:09  faralla
   small fix
 
@@ -1545,7 +1548,7 @@ void parse_command()
   //printf ("parse_command\n");
 
   //byteorder!!!!!!
-  rmsg.param2 = ((rmsg.param2 & 0x00ff) << 8) | ((rmsg.param2 & 0xff00) >> 8);
+  //rmsg.param2 = ((rmsg.param2 & 0x00ff) << 8) | ((rmsg.param2 & 0xff00) >> 8);
 
   /*
     printf("Command received\n");
