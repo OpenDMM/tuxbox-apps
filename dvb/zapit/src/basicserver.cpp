@@ -32,14 +32,10 @@
 
 #include <zapit/basicserver.h>
 
-bool CBasicServer::run(const char* socketname, bool (parse_command)(CBasicMessage::Header &rmsg, int connfd))
+bool CBasicServer::prepare(const char* socketname)
 {
-	int  sock_fd, conn_fd;
-
 	struct sockaddr_un servaddr;
 	int clilen;
-
-	bool parse_another_command;
 
 	memset(&servaddr, 0, sizeof(struct sockaddr_un));
 	servaddr.sun_family = AF_UNIX;
@@ -70,6 +66,18 @@ bool CBasicServer::run(const char* socketname, bool (parse_command)(CBasicMessag
 		return false;
 	}
 
+	return true;
+}
+
+void CBasicServer::run(bool (parse_command)(CBasicMessage::Header &rmsg, int connfd))
+{
+	int conn_fd;
+
+	struct sockaddr_un servaddr;
+	int clilen = sizeof(servaddr);
+
+	bool parse_another_command;
+
 	do
 	{
 		CBasicMessage::Header rmsg;
@@ -81,7 +89,5 @@ bool CBasicServer::run(const char* socketname, bool (parse_command)(CBasicMessag
 	}
 	while (parse_another_command);
 
-	// close sock_fd ???
-
-	return true;
+	close(sock_fd);
 }

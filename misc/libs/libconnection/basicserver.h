@@ -30,8 +30,11 @@
 
 class CBasicServer
 {
+    int sock_fd;
+
  public:
-	bool run(const char* socketname, bool (parse_command)(CBasicMessage::Header &rmsg, int connfd));
+	bool prepare(const char* socketname);
+	void run(bool (parse_command)(CBasicMessage::Header &rmsg, int connfd));
 };
 
 #endif

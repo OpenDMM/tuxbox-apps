@@ -683,7 +683,7 @@ bool parse_command(CBasicMessage::Header &rmsg, int connfd)
 				sendChannels(connfd, msgGetChannels.mode, msgGetChannels.order); // bouquet & channel number are already starting at 0!
 				break;
 			}
-			case CZapitMessages::CMD_RESTORE_BOUQUETS:
+			case CZapitMessages::CMD_BQ_RESTORE:
 			{
 				CZapitMessages::responseCmd response;
 				bouquetManager->restoreBouquets();
@@ -700,7 +700,7 @@ bool parse_command(CBasicMessage::Header &rmsg, int connfd)
 				eventServer->sendEvent(CZapitClient::EVT_BOUQUETS_CHANGED, CEventServer::INITID_ZAPIT);
 				break;
 			}
-			case CZapitMessages::CMD_COMMIT_BOUQUET_CHANGE:
+			case CZapitMessages::CMD_BQ_COMMIT_CHANGE:
 			{
 				CZapitMessages::responseCmd response;
 				bouquetManager->renumServices();
@@ -1145,6 +1145,9 @@ int main (int argc, char **argv)
 	signal(SIGTERM, signal_handler);
 	signal(SIGUSR1, signal_handler);
 
+	CBasicServer zapit_server;
+	zapit_server.prepare(ZAPIT_UDS_NAME);
+
 	if (debug == false)
 	{
 		switch (fork())
@@ -1169,8 +1172,7 @@ int main (int argc, char **argv)
 	// create eventServer
 	eventServer = new CEventServer;
 
-	CBasicServer zapit_server;
-	zapit_server.run(ZAPIT_UDS_NAME, parse_command);
+	zapit_server.run(parse_command);
 
 	CZapitDestructor(); // <- should not return
 
