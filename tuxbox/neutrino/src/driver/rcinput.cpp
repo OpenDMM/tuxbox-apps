@@ -36,6 +36,9 @@
  
 History:
  $Log$
+ Revision 1.18  2002/01/06 03:04:04  McClean
+ busybox 0.60 workarround
+
  Revision 1.17  2002/01/03 20:03:20  McClean
  cleanup
 
@@ -77,6 +80,17 @@ History:
 
 #include "rcinput.h"
 #include "../global.h"
+
+
+void printbin( int a)
+{
+	for(int pos = 15;pos>=0;pos--)
+	{
+		printf("%d", a&(1<<pos)?1:0);
+	}
+	printf("\n");
+}
+
 
 
 /**************************************************************************
@@ -259,8 +273,8 @@ int CRCInput::getKeyInt()
 			td = ( tv.tv_usec - tv_prev.tv_usec );
 			td+= ( tv.tv_sec - tv_prev.tv_sec )* 1000000;
 
-			//printf("got key native key: %04x %04x\n", rccode, rccode&0x1f );
-
+			//printf("got key native key: %04x %04x ", rccode, rccode&0x1f );
+			//printbin( rccode );
 
 			if ( ( ( prevrccode&0x1F ) != ( rccode&0x1F ) ) ||
 			        ( td > repeat_block ) )
