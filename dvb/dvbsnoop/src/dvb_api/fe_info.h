@@ -11,13 +11,13 @@ $Id$
 
 */
 
-#ifndef __FE_SIGNAL_H
-#define __FE_SIGNAL_H 
+#ifndef __FE_INFO_H
+#define __FE_INFO_H
 
 
 #include "misc/cmdline.h"
 
-int  do_SignalStrength (OPTION *opt);
+int  do_FE_Info (OPTION *opt);
 
 
 #endif
