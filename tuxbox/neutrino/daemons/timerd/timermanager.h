@@ -187,6 +187,7 @@ class CTimerManager
 		CEventServer		*eventServer;
 		CTimerEventMap		events;
 		pthread_t			thrTimer;
+      bool              m_saveEvents;
 
 		CTimerManager();
 		static void* timerThread(void *arg);
