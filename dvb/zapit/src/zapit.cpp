@@ -1690,7 +1690,7 @@ int startPlayBack()
 int stopPlayBack()
 {
 
-#ifndef DBOX2
+#ifdef DBOX2
 	stopVbi();
 #endif /* DBOX2 */
 
