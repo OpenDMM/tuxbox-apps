@@ -28,7 +28,7 @@
 
 int usage (std::string basename)
 {
-	std::cout << "bouquet list: " << basename << std::endl;
+	std::cout << "bouquet list: " << basename << " [-ra]" << std::endl;
 	std::cout << "channel list: " << basename << " [-ra] <bouquet-number>" << std::endl;
 	std::cout << "zap by number: " << basename << " [-ra] <bouquet-number> <channel-number>" << std::endl;
 	std::cout << "zap by name: " << basename << " [-ra] <channel-name>" << std::endl;
@@ -111,15 +111,8 @@ int main (int argc, char** argv)
 		}
 		else if (!strncmp(argv[i], "-ra", 3))
 		{
-			if (i < argc - 1)
-			{
-				radio = true;
-				continue;
-			}
-			else
-			{
-				return usage(argv[0]);
-			}
+			radio = true;
+			continue;
 		}
 		else if (!strncmp(argv[i], "-re", 3))
 		{
