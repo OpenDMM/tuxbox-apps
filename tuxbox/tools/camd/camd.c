@@ -435,6 +435,7 @@ int parse_ca_pmt(const unsigned char *buffer, const unsigned int length)
 	if ((pmt->program_number & 0xff00) != 0x3200) {
 		printf("[camd] program number %04x unsupported due to missing parental control\n",
 				pmt->program_number);
+		free(pmt);
 		return -1;
 	}
 
