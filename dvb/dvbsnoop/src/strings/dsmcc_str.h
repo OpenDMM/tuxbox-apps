@@ -16,6 +16,9 @@ $Id$
 
 
 $Log$
+Revision 1.11  2003/12/27 18:17:18  rasc
+dsmcc PES dsmcc_program_stream_descriptorlist
+
 Revision 1.10  2003/12/26 23:27:40  rasc
 DSM-CC  UNT section
 
@@ -59,7 +62,7 @@ some updates to dvbsnoop...
 
 
 
-char *dsmccStrDSMCC_DataCarousel_DescriptorTAG (u_int i);
+char *dsmccStrDSMCC_DescriptorTAG (u_int i);
 char *dsmccStrDSMCC_INT_UNT_DescriptorTAG (u_int i);
 
 char *dsmccStrMHPOrg (u_int id);
