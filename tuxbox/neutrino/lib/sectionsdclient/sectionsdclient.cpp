@@ -311,6 +311,7 @@ bool CSectionsdClient::getCurrentNextServiceKey(const t_channel_id channel_id, C
 	}
 	else
 	{
+		current_next.flags = 0;
 		close_connection();
 		return false;
 	}
