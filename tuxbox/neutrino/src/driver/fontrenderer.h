@@ -3,6 +3,9 @@ $Id$
 
 
 $Log$
+Revision 1.14  2001/10/16 19:11:16  rasc
+-- CR LF --> LF in einigen Modulen
+
 Revision 1.13  2001/10/14 14:30:47  rasc
 -- EventList Darstellung ueberarbeitet
 -- kleiner Aenderungen und kleinere Bugfixes

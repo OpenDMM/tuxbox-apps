@@ -1,3 +1,17 @@
+/*
+$Id$
+
+
+$Log$
+Revision 1.6  2001/10/16 19:11:16  rasc
+-- CR LF --> LF in einigen Modulen
+
+
+
+
+*/
+
+
 #ifndef __framebuffer__
 #define __framebuffer__
 

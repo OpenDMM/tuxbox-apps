@@ -22,6 +22,9 @@ nicht gespeichert werden.
 
 
 $Log$
+Revision 1.2  2001/10/16 19:11:16  rasc
+-- CR LF --> LF in einigen Modulen
+
 Revision 1.1  2001/10/16 18:34:13  rasc
 -- QuickZap to last channel verbessert.
 -- Standard Kanal muss ca. 2-3 Sekunden aktiv sein fuer LastZap Speicherung.
