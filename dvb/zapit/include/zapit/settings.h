@@ -34,7 +34,9 @@
 #define ZAPITCONFIGDIR  CONFIGDIR "/zapit"
 
 #define CONFIGFILE      ZAPITCONFIGDIR "/zapit.conf"
+#define MOTORCONFIGFILE ZAPITCONFIGDIR "/motor.conf"
 #define SERVICES_XML    ZAPITCONFIGDIR "/services.xml"
+#define SERVICES_TMP    "/tmp/services.tmp"
 #define BOUQUETS_XML    ZAPITCONFIGDIR "/bouquets.xml"
 
 #define CABLES_XML      DATADIR "/cables.xml"

@@ -533,6 +533,18 @@ void CZapitClient::setScanSatelliteList( ScanSatelliteList& satelliteList )
 	close_connection();
 }
 
+/* tell zapit stored satellite positions in diseqc 1.2 motor */
+void CZapitClient::setScanMotorPosList( ScanMotorPosList& motorPosList )
+{
+	send(CZapitMessages::CMD_SCANSETSCANMOTORPOSLIST);
+
+	for (uint i = 0; i < motorPosList.size(); i++)
+	{
+		send_data((char*)&motorPosList[i], sizeof(motorPosList[i]));
+	}
+	close_connection();
+}
+
 /* set diseqcType*/
 void CZapitClient::setDiseqcType( diseqc_t diseqc)
 {
