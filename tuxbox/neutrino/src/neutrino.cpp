@@ -285,6 +285,7 @@ void CNeutrinoApp::setupDefaults()
         g_settings.scan_digituerk = 0;
 	g_settings.scan_sirius = 0;
 	g_settings.scan_thor = 0;
+	g_settings.scan_tuerksat = 0;
 	g_settings.scan_bouquet = 256; // keep bouquets (because of favorites, and sort)
 
 
@@ -777,6 +778,10 @@ void CNeutrinoApp::InitServiceSettings(CMenuWidget &service)
 		oj = new CMenuOptionChooser("scants.thor", &g_settings.scan_thor, true );
 		oj->addOption(0, "options.off");
 		oj->addOption(32, "options.on");
+		TSScan->addItem( oj );
+		oj = new CMenuOptionChooser("scants.tuerksat", &g_settings.scan_tuerksat, true );
+		oj->addOption(0, "options.off");
+		oj->addOption(64, "options.on");
 		TSScan->addItem( oj );
 	}
 	TSScan->addItem( new CMenuSeparator(CMenuSeparator::LINE) );
