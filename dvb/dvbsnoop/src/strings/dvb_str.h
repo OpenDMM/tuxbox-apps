@@ -8,6 +8,9 @@ $Id$
 
 
 $Log$
+Revision 1.13  2003/11/09 20:48:35  rasc
+pes data packet (DSM-CC)
+
 Revision 1.12  2003/10/29 20:54:57  rasc
 more PES stuff, DSM descriptors, testdata
 
@@ -94,6 +97,8 @@ char *dvbstrTS_ScramblingCtrl_TYPE (u_int id);
 char *dvbstrPESstream_ID(u_int id);
 char *dvbstrPESscrambling_ctrl_TYPE(u_int id);
 char *dvbstrPESTrickModeControl (u_int i);
+char *dvbstrPESDataIdentifier (u_int i);
+
 
 
 
