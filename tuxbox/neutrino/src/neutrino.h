@@ -141,10 +141,12 @@ struct messages {
 			EVT_SCAN_COMPLETE	=		CRCInput::RC_Events + 16,
 			EVT_SCAN_NUM_TRANSPONDERS =	CRCInput::RC_Events + 17,
 			EVT_SCAN_NUM_CHANNELS =		CRCInput::RC_Events + 18,
+			EVT_SHUTDOWN =				CRCInput::RC_Events + 19,
 
 			EVT_CURRENTEPG 		=		CRCInput::RC_WithData + 1,
 			EVT_SCAN_SATELLITE	=		CRCInput::RC_WithData + 2,
-			EVT_SCAN_PROVIDER	=	 	CRCInput::RC_WithData + 3
+			EVT_SCAN_PROVIDER	=		CRCInput::RC_WithData + 3,
+			EVT_NEXTPROGRAM		=		CRCInput::RC_WithData + 4
 		};
 };
 
