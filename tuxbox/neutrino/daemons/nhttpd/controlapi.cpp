@@ -632,7 +632,7 @@ bool CControlAPI::EpgCGI(CWebserverRequest *request)
 				CEPGData longepg;
 				if(Parent->Sectionsd->getEPGid(epgid, starttime, &longepg))
 				{
-					request->printf("%c\n", longepg.fsk);
+					request->printf("%u\n", longepg.fsk);
 					return true;
 				}
 			}
