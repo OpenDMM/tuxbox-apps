@@ -139,10 +139,10 @@ CMoviePlayerGui::CMoviePlayerGui ()
   videofilefilter.addFilter ("ps");
   videofilefilter.addFilter ("mpg");
   filebrowser->Filter = &videofilefilter;
-  if (strlen (g_settings.network_nfs_local_dir[0]) != 0)
-    Path = g_settings.network_nfs_local_dir[0];
+  if(strlen(g_settings.network_nfs_moviedir)!=0)
+	  Path = g_settings.network_nfs_moviedir;
   else
-    Path = "/";
+	  Path = "/";
 }
 
 //------------------------------------------------------------------------
