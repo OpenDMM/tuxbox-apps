@@ -19,7 +19,7 @@
  *
  */
 
-#define MAX_PIDS	4
+#define MAX_PIDS	8
 
 typedef struct descrambleservice_t
 {
