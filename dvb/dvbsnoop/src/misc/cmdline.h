@@ -44,6 +44,7 @@ typedef struct _OPTIONS {
   int         crc;			// section CRC check?
   long        timeout_ms;		// read timeout in ms
   long        packet_count;		// read n packets
+  int         spider_pid;		// Section PID spider mode
   int         time_mode;		// time print mode
   int         hide_copyright;  		// suppress message at prog start
   int         help;
