@@ -1421,17 +1421,45 @@ CMoviePlayerGui::PlayStream (int streamtype)
 			}
 		}
 		*/
-		else if (msg == CRCInput::RC_right)
+		else if (msg == CRCInput::RC_1)
+		{
+			skipBox.paint();
+			skipvalue = "-00:01:00";
+			skipping=true;
+			playstate = CMoviePlayerGui::SKIP;
+		}
+		else if (msg == CRCInput::RC_3)
 		{
 			skipBox.paint();
 			skipvalue = "+00:01:00";
 			skipping=true;
 			playstate = CMoviePlayerGui::SKIP;
 		}
-		else if (msg == CRCInput::RC_left)
+		else if (msg == CRCInput::RC_4)
 		{
 			skipBox.paint();
-			skipvalue = "-00:01:00";
+			skipvalue = "-00:05:00";
+			skipping=true;
+			playstate = CMoviePlayerGui::SKIP;
+		}
+		else if (msg == CRCInput::RC_6)
+		{
+			skipBox.paint();
+			skipvalue = "+00:05:00";
+			skipping=true;
+			playstate = CMoviePlayerGui::SKIP;
+		}
+		else if (msg == CRCInput::RC_7)
+		{
+			skipBox.paint();
+			skipvalue = "-00:10:00";
+			skipping=true;
+			playstate = CMoviePlayerGui::SKIP;
+		}
+		else if (msg == CRCInput::RC_9)
+		{
+			skipBox.paint();
+			skipvalue = "+00:10:00";
 			skipping=true;
 			playstate = CMoviePlayerGui::SKIP;
 		}
