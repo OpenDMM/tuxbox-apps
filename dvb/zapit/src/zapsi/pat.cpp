@@ -40,7 +40,7 @@ extern unsigned int found_channels;
 extern unsigned int found_transponders;
 static int status = 0;
 
-int fake_pat (uint32_t TsidOnid, FrontendParameters feparams, uint8_t polarity, uint8_t DiSEqC)
+int fake_pat (uint32_t TsidOnid, dvb_frontend_parameters feparams, uint8_t polarity, uint8_t DiSEqC)
 {
 	if (scantransponders.find(TsidOnid) == scantransponders.end())
 	{

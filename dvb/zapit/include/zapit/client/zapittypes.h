@@ -37,14 +37,17 @@ typedef uint32_t t_channel_id;
 #define PRINTF_CHANNEL_ID_TYPE "%08x"
 
 /* diseqc types */
-enum diseqc_t
-{
+typedef enum {
 	NO_DISEQC,
 	MINI_DISEQC,
+	SMATV_REMOTE_TUNING,
 	DISEQC_1_0,
 	DISEQC_1_1,
-	SMATV_REMOTE_TUNING
-};
+	DISEQC_1_2,
+	DISEQC_2_0,
+	DISEQC_2_1,
+	DISEQC_2_2
+} diseqc_t;
 
 
 #endif /* __zapittypes_h__ */

@@ -24,7 +24,7 @@
 #define __audio_h__
 
 /* nokia api */
-#include <ost/audio.h>
+#include <linux/dvb/audio.h>
 
 class CAudio
 {
@@ -33,8 +33,8 @@ class CAudio
 		int fd;
 
 		/* current audio settings */
-		struct audioStatus status;
-		struct audioMixer mixer;
+		struct audio_status status;
+		struct audio_mixer mixer;
 
 		/* internal methods */
 		int setMute (bool mute);
@@ -67,12 +67,12 @@ class CAudio
 		int stop ();
 
 		/* stream source */
-		audioStreamSource_t getSource () { return status.streamSource; }
-		int setSource (audioStreamSource_t source);
+		audio_stream_source_t getSource () { return status.stream_source; }
+		int setSource (audio_stream_source_t source);
 
 		/* select channels */
-		int selectChannel (audioChannelSelect_t sel);
-		audioChannelSelect_t getSelectedChannel ();
+		int selectChannel (audio_channel_select_t sel);
+		audio_channel_select_t getSelectedChannel ();
 };
 
 #endif /* __audio_h__ */

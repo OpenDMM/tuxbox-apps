@@ -27,10 +27,10 @@
 #include <time.h>
 
 /* nokia api */
-#include <ost/dmx.h>
+#include <linux/dvb/dmx.h>
 
 int setDmxSctFilter (int fd, unsigned short pid, unsigned char * filter, unsigned char * mask);
-int setDmxPesFilter (int fd, dmxOutput_t output, dmxPesType_t pesType, unsigned short pid);
+int setDmxPesFilter (int fd, dmx_output_t output, dmx_pes_type_t pes_type, unsigned short pid);
 int startDmxFilter (int fd);
 int stopDmxFilter (int fd);
 

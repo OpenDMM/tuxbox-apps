@@ -932,7 +932,7 @@ bool parse_command(CBasicMessage::Header &rmsg, int connfd)
 			{
 				CZapitMessages::commandInt msg;
 				read(connfd, &msg, sizeof(msg));
-				video->setCroppingMode((videoDisplayFormat_t) msg.val);
+				video->setCroppingMode((video_displayformat_t) msg.val);
 				break;
 			}
 
@@ -940,7 +940,7 @@ bool parse_command(CBasicMessage::Header &rmsg, int connfd)
 			{
 				CZapitMessages::commandInt msg;
 				read(connfd, &msg, sizeof(msg));
-				audio->selectChannel((audioChannelSelect_t) msg.val);
+				audio->selectChannel((audio_channel_select_t) msg.val);
 				break;
 			}
 
@@ -1118,11 +1118,11 @@ int main (int argc, char **argv)
 	if (!audio->isInitialized())
 	{
 		printf("[zapit] unable to initialize audio device\n");
-		CZapitDestructor();
+		//CZapitDestructor();
 	}
 	else
 	{
-		audio->setVolume(255, 255);
+		audio->setVolume(222, 222);
 	}
 
 	video = new CVideo();
@@ -1130,7 +1130,7 @@ int main (int argc, char **argv)
 	if (!video->isInitialized())
 	{
 		printf("[zapit] unable to initialize video device\n");
-		CZapitDestructor();
+		//CZapitDestructor();
 	}
 	else
 	{

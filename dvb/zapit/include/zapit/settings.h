@@ -39,11 +39,10 @@
 #define CABLES_XML      "/etc/cables.xml"
 #define SATELLITES_XML  "/etc/satellites.xml"
 
-#define AUDIO_DEVICE    "/dev/dvb/card0/audio0"
-#define DEMUX_DEVICE    "/dev/dvb/card0/demux0"
-#define FRONTEND_DEVICE "/dev/dvb/card0/frontend0"
-#define SEC_DEVICE      "/dev/dvb/card0/sec0"
-#define VIDEO_DEVICE    "/dev/dvb/card0/video0"
+#define AUDIO_DEVICE    "/dev/dvb/adapter0/audio0"
+#define DEMUX_DEVICE    "/dev/dvb/adapter0/demux0"
+#define FRONTEND_DEVICE "/dev/dvb/adapter0/frontend0"
+#define VIDEO_DEVICE    "/dev/dvb/adapter0/video0"
 
 
 #define CAMD_UDS_NAME  "/tmp/camd.socket"
