@@ -45,7 +45,7 @@ int CDemux::sectionFilter(const unsigned short pid, const unsigned char * const 
 {
 	struct dmx_sct_filter_params sctFilterParams;
 
-	memset(&sctFilterParams.filter, 0, sizeof(struct dmx_filter));
+	memset(&sctFilterParams, 0, sizeof(struct dmx_sct_filter_params));
 	memcpy(&sctFilterParams.filter.filter, filter, DMX_FILTER_SIZE);
 	memcpy(&sctFilterParams.filter.mask, mask, DMX_FILTER_SIZE);
 
@@ -152,7 +152,7 @@ int CDemux::sectionFilter(const unsigned short pid, const unsigned char * const 
 
 int CDemux::pesFilter(const unsigned short pid, const dmx_output_t output, const dmx_pes_type_t pes_type)
 {
-	dmx_pes_filter_params pesFilterParams;
+	struct dmx_pes_filter_params pesFilterParams;
 
 	if ((pid <= 0x0001) && (pes_type != DMX_PES_PCR))
 		return -1;
@@ -160,11 +160,12 @@ int CDemux::pesFilter(const unsigned short pid, const dmx_output_t output, const
 	if (((pid >= 0x0002) && (pid <= 0x0000F)) || (pid >= 0x1FFF))
 		return -1;
 
+	memset(&pesFilterParams, 0, sizeof(struct dmx_pes_filter_params));
+	
 	pesFilterParams.pid = pid;
 	pesFilterParams.input = DMX_IN_FRONTEND;
 	pesFilterParams.output = output;
 	pesFilterParams.pes_type = pes_type;
-	pesFilterParams.flags = 0;
 
 	return fop(ioctl, DMX_SET_PES_FILTER, &pesFilterParams);
 }
