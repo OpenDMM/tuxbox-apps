@@ -15,10 +15,11 @@ $Id$
 */
 
 #ifndef __HEXPRINT_H
-#define __HEXPRINT_H 1
+#define __HEXPRINT_H 
 
 void setHexPrintMode (int i);
 void printhex_buf (int verbose, u_char *buf, int len);
+void printhexline_buf (int verbose, u_char *buf, int len);
 void printasciiline_buf (int verbose, u_char *buf, int n);
 
 #endif
