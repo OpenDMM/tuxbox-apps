@@ -30,15 +30,17 @@
 #include <string>
 #include <vector>
 
-#include "configfile.h"
-#include "liblcddisplay.h"
-#include "rcinput.h"
-
 #ifdef HAVE_CONFIG_H
-#include "config.h"
+#include <config.h>
 #else
 #define CONFIGDIR "/var/tuxbox/config"
 #endif
+
+#include <configfile.h>
+#include <lcddisplay/fontrenderer.h>
+#include <lcddisplay/lcddisplay.h>
+
+#include "rcinput.h"
 
 #define LEFTALIGNED	0
 #define CENTERED	1
