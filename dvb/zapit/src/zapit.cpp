@@ -823,6 +823,7 @@ bool parse_command(CBasicMessage::Header &rmsg, int connfd)
 				fprintf(fd, "%d %d\n", mpos_it->first, mpos_it->second);
 			}
 			fclose(fd);
+			chmod(MOTORCONFIGFILE, S_IRUSR | S_IWUSR | S_IRGRP | S_IROTH);
 		}
 		break;
 	}

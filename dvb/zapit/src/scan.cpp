@@ -611,6 +611,8 @@ void *start_scanthread(void *)
 	if  (!strcmp(frontendType, "cable"))
 		write_xml_footer(fd);
 
+	chmod(SERVICES_XML, S_IRUSR | S_IWUSR | S_IRGRP | S_IROTH);
+
 	/* clean up - should this be done before every xmlNextNode ? */
 	delete transponder;
 	delete search;

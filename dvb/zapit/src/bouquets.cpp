@@ -26,6 +26,7 @@
 #include <map>
 #include <set>
 
+#include <sys/stat.h>
 #include <unistd.h>
 
 /* tuxbox headers */
@@ -262,6 +263,8 @@ void CBouquetManager::saveBouquets(void)
 	
 	fprintf(bouq_fd, "</zapit>\n");
 	fclose(bouq_fd);
+
+	chmod(BOUQUETS_XML, S_IRUSR | S_IWUSR | S_IRGRP | S_IROTH);
 }
 
 void CBouquetManager::saveBouquets(const CZapitClient::bouquetMode bouquetMode, const char * const providerName)
