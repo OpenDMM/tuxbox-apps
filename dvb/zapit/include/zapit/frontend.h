@@ -99,7 +99,8 @@ class CFrontend
 		void setFrontend (dvb_frontend_parameters *feparams);
 		const dvb_frontend_parameters * getFrontend ();
 		void discardEvents ();
-		const bool getEvent ();
+		struct dvb_frontend_event getEvent ();
+		struct dvb_frontend_event blockingTune (dvb_frontend_parameters *feparams);
 
 		unsigned int getFrequency ();
 		unsigned char getPolarization ();
