@@ -32,6 +32,9 @@
 	Foundation, Inc., 675 Mass Ave, Cambridge, MA 02139, USA.
 
   $Log$
+  Revision 1.91  2001/12/07 00:20:36  McClean
+  make softupdate work...
+
   Revision 1.90  2001/12/05 21:38:09  rasc
   gamelist: eigener Fontdef fuer 2-zeiliges Menue
 
@@ -1088,6 +1091,7 @@ void CNeutrinoApp::InitMainMenu(CMenuWidget &mainMenu, CMenuWidget &mainSettings
 		{
 			if(fgets(g_settings.softupdate_currentversion,90,fd)==NULL)
 			fclose(fd);
+			//printf("versiondata: ->%s<-\n", g_settings.softupdate_currentversion);
 			for (unsigned int x=0;x<strlen(g_settings.softupdate_currentversion);x++)
 			{
 				if( (g_settings.softupdate_currentversion[x]!='.') && ((g_settings.softupdate_currentversion[x]>'9') || (g_settings.softupdate_currentversion[x]<'0') ) )
