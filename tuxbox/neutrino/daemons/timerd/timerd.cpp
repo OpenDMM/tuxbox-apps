@@ -321,9 +321,9 @@ bool parse_command(CBasicMessage::Header &rmsg, int connfd)
 					CTimerdMsg::commandRemind remind;
 					CBasicServer::receive_data(connfd, &remind, sizeof(CTimerdMsg::commandRemind));
 					event = new CTimerEvent_Remind(msgAddTimer.announceTime,
-															 msgAddTimer.alarmTime,
-															 remind.message,
-															 msgAddTimer.eventRepeat);
+								       msgAddTimer.alarmTime,
+								       remind.message,
+								       msgAddTimer.eventRepeat);
 					rspAddTimer.eventID = CTimerManager::getInstance()->addEvent(event);
 					break;
 
