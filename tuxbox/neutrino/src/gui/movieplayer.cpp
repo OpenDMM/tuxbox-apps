@@ -2196,11 +2196,12 @@ void CMoviePlayerGui::PlayFile (int parental)
 
 			for( unsigned int count=0; count<numpida; count++ )
 			{
-				char apidnumber[3];
+				char apidnumber[3],show_pid_number[4];
 				sprintf(apidnumber, "%d", count+1);
+				sprintf(show_pid_number, "%u", apids[count]);
 
 				std::string apidtitle = "Stream ";
-				apidtitle.append(apidnumber);
+				apidtitle.append(show_pid_number);
 
 				if(ac3flags[count] == 2) 
 				{
