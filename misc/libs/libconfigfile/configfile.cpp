@@ -99,7 +99,7 @@ const bool CConfigFile::saveConfig(const std::string filename)
 	}
 	else
 	{
-		std::cerr << "ConfigFile] Unable to open file " << filename << "for writing." << std::endl;
+		std::cerr << "[ConfigFile] Unable to open file " << filename << "for writing." << std::endl;
 		return false;
 	}
 }
