@@ -1070,26 +1070,7 @@ void CNeutrinoApp::InitScanSettings(CMenuWidget &settings)
 		{
 			CMenuOptionChooser* oj = new CMenuOptionChooser( satList[i].satName, scanSettings.diseqscOfSat( satList[i].satName), true/*, new CSatelliteNotifier*/);
 			oj->addOption( -1, "options.off");
-			for( int j=0; j<=63; j++)
-			{
-				char jj[2 + 1];
-				sprintf( jj, "%d", j + 1);
-				oj->addOption( j, jj);
-			}
-			extSatSettings->addItem( oj);
-		}
-		
-		CMenuWidget* extLnbSettings = new CMenuWidget("satsetup.extended_lnb", "settings.raw");
-		extLnbSettings->addItem( new CMenuSeparator() );
-		extLnbSettings->addItem( new CMenuForwarder("menu.back") );
-		extLnbSettings->addItem( new CMenuSeparator(CMenuSeparator::LINE) );
-
-		CMenuForwarder* ojExtLnbSettings = new CMenuForwarder("satsetup.extended_lnb", (scanSettings.diseqcMode == DISEQC_1_2), "", extLnbSettings);
-		for( uint i=0; i < satList.size(); i++)
-		{
-			CMenuOptionChooser* oj = new CMenuOptionChooser( satList[i].satName, scanSettings.diseqscOfSat( satList[i].satName), true/*, new CSatelliteNotifier*/);
-			oj->addOption( -1, "options.off");
-			for( int j=0; j<=63; j++)
+			for( int j=0; j<scanSettings.satCount; j++)
 			{
 				char jj[2 + 1];
 				sprintf( jj, "%d", j + 1);
@@ -1108,7 +1089,7 @@ void CNeutrinoApp::InitScanSettings(CMenuWidget &settings)
 		{
 			CMenuOptionChooser* oj = new CMenuOptionChooser( satList[i].satName, scanSettings.motorPosOfSat( satList[i].satName), true/*, new CSatelliteNotifier*/);
 			oj->addOption( -1, "options.off");
-			for( int j=0; j<=63; j++)
+			for( int j=0; j<scanSettings.satCount; j++)
 			{
 				char jj[2 + 1];
 				sprintf( jj, "%d", j + 1);
@@ -1117,7 +1098,7 @@ void CNeutrinoApp::InitScanSettings(CMenuWidget &settings)
 			extMotorSettings->addItem( oj);
 		}
 
-		CMenuOptionChooser* ojDiseqc = new CMenuOptionChooser("satsetup.disqeqc", &((int)(scanSettings.diseqcMode)), true, new CSatDiseqcNotifier( ojSat, ojExtSatSettings, ojExtLnbSettings, ojExtMotorSettings, ojDiseqcRepeats));
+		CMenuOptionChooser* ojDiseqc = new CMenuOptionChooser("satsetup.disqeqc", &((int)(scanSettings.diseqcMode)), true, new CSatDiseqcNotifier( ojSat, ojExtSatSettings, ojExtMotorSettings, ojDiseqcRepeats));
 		ojDiseqc->addOption( NO_DISEQC,   "satsetup.nodiseqc");
 		ojDiseqc->addOption( MINI_DISEQC, "satsetup.minidiseqc");
 		ojDiseqc->addOption( DISEQC_1_0,  "satsetup.diseqc10");
