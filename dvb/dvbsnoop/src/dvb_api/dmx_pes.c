@@ -10,6 +10,9 @@ $Id$
 
 
 $Log$
+Revision 1.4  2002/11/01 20:38:40  Jolt
+Changes for the new API
+
 Revision 1.3  2002/08/17 20:36:12  obi
 no more compiler warnings
 
@@ -62,15 +65,15 @@ int  doReadPES (OPTION *opt)
   */
 
 {
-  struct dmxPesFilterParams flt;
+  struct dmx_pes_filter_params flt;
 
   ioctl (fd,DMX_SET_BUFFER_SIZE, PES_BUF_SIZE);
-  memset (&flt, 0, sizeof (struct dmxPesFilterParams));
+  memset (&flt, 0, sizeof (struct dmx_pes_filter_params));
 
   flt.pid = opt->pid;
   flt.input  = DMX_IN_FRONTEND;
   flt.output = DMX_OUT_TAP;
-  flt.pesType = DMX_PES_OTHER;
+  flt.pes_type = DMX_PES_OTHER;
   flt.flags = 0;
 
   if ((i=ioctl(fd,DMX_SET_PES_FILTER,&flt)) < 0) {

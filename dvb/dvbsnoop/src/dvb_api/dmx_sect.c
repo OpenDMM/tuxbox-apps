@@ -10,6 +10,9 @@ $Id$
 
 
 $Log$
+Revision 1.4  2002/11/01 20:38:40  Jolt
+Changes for the new API
+
 Revision 1.3  2002/08/17 20:36:12  obi
 no more compiler warnings
 
@@ -59,8 +62,8 @@ int  doReadSECT (OPTION *opt)
   */
 
 {
-  struct dmxSctFilterParams flt;
-  memset (&flt, 0, sizeof (struct dmxSctFilterParams));
+  struct dmx_sct_filter_params flt;
+  memset (&flt, 0, sizeof (struct dmx_sct_filter_params));
   flt.pid = opt->pid;
   flt.filter.filter[0] = opt->filter;
   flt.filter.mask[0] = opt->mask;
