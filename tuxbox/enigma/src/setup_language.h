@@ -35,9 +35,8 @@
 
 class eZapLanguageSetup: public eWindow
 {
-private:
 	void okPressed();
-	void abortPressed();
+	int eventHandler( const eWidgetEvent & );
 
 	eButton *ok, *abort;
 	eListBox<eListBoxEntryText> *language;
