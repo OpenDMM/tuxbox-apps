@@ -42,7 +42,8 @@ const          char * CSectionsdClient::getSocketName() const
 int CSectionsdClient::readResponse(char* data, int size)
 {
 	struct sectionsd::msgResponseHeader responseHeader;
-    receive_data((char*)&responseHeader, sizeof(responseHeader));
+	if (!receive_data((char*)&responseHeader, sizeof(responseHeader)))
+		return 0;
 
 	if ( data != NULL )
 	{
@@ -483,6 +484,7 @@ bool CSectionsdClient::getEPGid(const event_id_t eventid, const time_t starttime
 	if (send(sectionsd::epgEPGid, (char *)&msg, sizeof(msg)))
 	{
 		int nBufSize = readResponse();
+		printf("Bufsize %d\n",nBufSize);
 		if (nBufSize > 0)
 		{
 			char* pData = new char[nBufSize];
