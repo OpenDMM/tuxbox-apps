@@ -250,11 +250,8 @@ int LoadSatellitePositions(void)
 	return 0;
 }
 
-int LoadServices(diseqc_t diseqcType)
+int LoadServices(fe_type_t frontendType, diseqc_t diseqcType)
 {
-	FrontendType frontendType = FE_QPSK;
-	
-	printf("[getservices] start...\n");
 	if (frontendType == FE_QPSK)
 	{
 		//satellite only
