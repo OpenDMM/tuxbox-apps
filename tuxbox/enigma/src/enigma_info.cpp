@@ -24,7 +24,6 @@
 #include <unistd.h>
 
 #include <streaminfo.h>
-#include <showbnversion.h>
 
 #include <lib/base/i18n.h>
 #include <lib/dvb/service.h>
@@ -41,14 +40,6 @@ eZapInfo::eZapInfo()
 {
 	move(ePoint(150, 166));
 	CONNECT((new eListBoxEntryMenu(&list, _("Streaminfo"), _("open the Streaminfo")))->selected, eZapInfo::sel_streaminfo);
-	switch ( eSystemInfo::getInstance()->getHwType() )
-	{
-		case eSystemInfo::dbox2Nokia:
-		case eSystemInfo::dbox2Philips:
-		case eSystemInfo::dbox2Sagem:
-			CONNECT((new eListBoxEntryMenu(&list, _("Show BN version"),_("show the Current Version of the Betanova FW")))->selected, eZapInfo::sel_bnversion);
-			break;
-	}
 	CONNECT((new eListBoxEntryMenu(&list, _("About..."), _("open the about dialog")))->selected, eZapInfo::sel_about);
 }
 
@@ -66,19 +57,6 @@ void eZapInfo::sel_streaminfo()
 	si.show();
 	si.exec();
 	si.hide();
-	show();
-}
-
-void eZapInfo::sel_bnversion()
-{
-	hide();	
-	ShowBNVersion bn;
-#ifndef DISABLE_LCD
-	bn.setLCD(LCDTitle, LCDElement);
-#endif
-	bn.show();
-	bn.exec();
-	bn.hide();
 	show();
 }
 
