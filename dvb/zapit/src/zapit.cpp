@@ -43,6 +43,7 @@
 
   cmd = 'd'  wie cmd 1, nut mit onid_sid
   param = (onid<<16)|sid
+  response[1] liefert status-infos...
 
   cmd = 'e' change nvod (Es muss vorher auf den Basiskanal geschaltet worden sein)
   param = (onid<<16)|sid
@@ -69,6 +70,9 @@
   Foundation, Inc., 675 Mass Ave, Cambridge, MA 02139, USA.
   
   $Log$
+  Revision 1.10  2001/10/10 17:09:24  field
+  cmd 0d angepasst
+
   Revision 1.9  2001/10/10 14:08:29  faralla
   preparations for included scan
 
@@ -1500,20 +1504,35 @@ void parse_command()
 	}
        break;
     case 'd':
-      printf("[zapit] zapping by number\n");
-      number = 0;
-      sscanf((const char*) &rmsg.param3, "%x", &number);
+        printf("[zapit] zapping by number\n");
+        number = 0;
+        sscanf((const char*) &rmsg.param3, "%x", &number);
+        char m_status[4];
 
-      if (zapit(number,false) > 0)
-      	status = "00d";
-      else
-      	status = "-0d";
-      //printf("zapit is sending back a status-msg %s\n", status);
-      if (send(connfd, status, strlen(status),0) <0) {
-	perror("Could not send any retun\n");
-	return;
-      }
-      break;
+        if (zapit(number,false) > 0)
+        {
+            strcpy(m_status, "00d");
+            m_status[1]= pids_desc.count_apids & 0x0f;
+            if ( current_is_nvod )
+                m_status[1]|= 0x80;
+            if ( pids_desc.ecmpid != 0)
+                m_status[1]|= 0x40;
+        }
+        else
+            strcpy(m_status, "-0d");
+
+        //printf("zapit is sending back a status-msg %s\n", status);
+        if (send(connfd, m_status, 3, 0) <0)
+        {
+            perror("Could not send any retun\n");
+            return;
+        }
+        if (send(connfd, &pids_desc , sizeof(pids),0) == -1)
+        {
+            perror("Could not send any retun\n");
+            return;
+        }
+        break;
     case 'e':
       printf("[zapit] changing nvod");
       number = 0;
