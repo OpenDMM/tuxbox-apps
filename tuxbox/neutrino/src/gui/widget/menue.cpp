@@ -35,6 +35,9 @@ $Id$
 
 History:
  $Log$
+ Revision 1.46  2002/03/06 11:18:39  field
+ Fixes & Updates
+
  Revision 1.45  2002/03/03 17:18:18  Simplex
  menu and helper classes for youth protection
 
@@ -298,7 +301,7 @@ int CMenuWidget::exec(CMenuTarget* parent, string)
 					break;
 */
 				default:
-					if ( neutrino->handleMsg( msg, data ) == messages_return::cancel_all )
+					if ( neutrino->handleMsg( msg, data ) & messages_return::cancel_all )
 					{
 						retval = menu_return::RETURN_EXIT_ALL;
 						msg = CRCInput::RC_timeout;
