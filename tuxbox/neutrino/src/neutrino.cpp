@@ -2499,12 +2499,22 @@ int CNeutrinoApp::handleMsg(uint msg, uint data)
 			return messages_return::cancel_all | messages_return::handled;
 		}
 	}
-	else if( ( msg == CRCInput::RC_plus ) ||
-				( msg == CRCInput::RC_minus ) )
+	else if( msg == CRCInput::RC_plus )
+   {
+		//volume
+		setVolume( msg, ( mode != mode_scart ) );
+		//additinal volume setting via lirc
+		CIRSend irs("volplus");
+		irs.Send();
+		return messages_return::handled;
+	}
+	else if( msg == CRCInput::RC_minus ) 
 	{
 		//volume
 		setVolume( msg, ( mode != mode_scart ) );
-		return messages_return::handled;
+		//additinal volume setting via lirc
+		CIRSend irs("volminus");
+		irs.Send();
 	}
 	else if( msg == CRCInput::RC_spkr )
 	{
