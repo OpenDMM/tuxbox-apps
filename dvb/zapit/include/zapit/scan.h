@@ -95,12 +95,14 @@ struct bouquet_mulmap
 	}
 };
 
-typedef std::map <uint32_t, scanchannel>::iterator sciterator;
-typedef std::map <uint32_t, transpondermap>::iterator stiterator;
-typedef std::multimap <std::string, bouquet_mulmap>::iterator sbiterator;
+extern std::map <t_channel_id, scanchannel> scanchannels;
+typedef std::map <t_channel_id, scanchannel>::iterator sciterator;
 
 extern std::map <uint32_t, transpondermap> scantransponders;
-extern std::map <uint32_t, scanchannel> scanchannels;
+typedef std::map <uint32_t, transpondermap>::iterator stiterator;
+
+typedef std::multimap <std::string, bouquet_mulmap>::iterator sbiterator;
+
 extern CBouquetManager* scanBouquetManager;
 
 #endif /* __scan_h__ */

@@ -647,16 +647,16 @@ void parse_command (CZapitClient::commandHead &rmsg)
 				CZapitClient::commandZaptoServiceID msgZaptoServiceID;
 				CZapitClient::responseZapComplete msgResponseZapComplete;
 				read(connfd, &msgZaptoServiceID, sizeof(msgZaptoServiceID));
-				msgResponseZapComplete.zapStatus = zapTo_ChannelID(msgZaptoServiceID.serviceID, (rmsg.cmd == CZapitClient::CMD_ZAPTO_SUBSERVICEID));
+				msgResponseZapComplete.zapStatus = zapTo_ChannelID(msgZaptoServiceID.channel_id, (rmsg.cmd == CZapitClient::CMD_ZAPTO_SUBSERVICEID));
 				send(connfd, &msgResponseZapComplete, sizeof(msgResponseZapComplete), 0);
 				break;
 			}
 			case CZapitClient::CMD_ZAPTO_SERVICEID_NOWAIT:
 			case CZapitClient::CMD_ZAPTO_SUBSERVICEID_NOWAIT:
 			{
-				CZapitClient::commandZaptoServiceID msgZaptoServiceID2;
-				read(connfd, &msgZaptoServiceID2, sizeof(msgZaptoServiceID2));
-				zapTo_ChannelID(msgZaptoServiceID2.serviceID, (rmsg.cmd == CZapitClient::CMD_ZAPTO_SUBSERVICEID_NOWAIT));
+				CZapitClient::commandZaptoServiceID msgZaptoServiceID;
+				read(connfd, &msgZaptoServiceID, sizeof(msgZaptoServiceID));
+				zapTo_ChannelID(msgZaptoServiceID.channel_id, (rmsg.cmd == CZapitClient::CMD_ZAPTO_SUBSERVICEID_NOWAIT));
 				break;
 			}
 			case CZapitClient::CMD_GET_LAST_CHANNEL:

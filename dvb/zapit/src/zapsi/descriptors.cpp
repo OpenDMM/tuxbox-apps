@@ -33,7 +33,7 @@
 #include "sdt.h"
 
 std::map <uint32_t, transpondermap> scantransponders;
-std::map <uint32_t, scanchannel> scanchannels;
+std::map <t_channel_id, scanchannel> scanchannels;
 multimap <std::string, bouquet_mulmap> scanbouquets;
 std::string curr_chan_name;
 uint32_t found_transponders;
@@ -452,7 +452,7 @@ uint8_t service_descriptor (uint8_t *buffer, uint16_t service_id, uint16_t trans
 
 	std::string providerName;
 	std::string serviceName;
-	sciterator I = scanchannels.find((original_network_id << 16) | service_id);
+	sciterator I = scanchannels.find(CREATE_CHANNEL_ID);
 
 	if (I != scanchannels.end())
 		return buffer[1];
@@ -475,9 +475,9 @@ uint8_t service_descriptor (uint8_t *buffer, uint16_t service_id, uint16_t trans
 
 	scanchannels.insert
 	(
-		std::pair <uint32_t, scanchannel>
+		std::pair <t_channel_id, scanchannel>
 		(
-			(original_network_id << 16) | service_id,
+			CREATE_CHANNEL_ID,
 			scanchannel
 			(
 				serviceName,
