@@ -234,6 +234,7 @@ int zapit(const t_channel_id channel_id, bool in_nvod)
 		
 			waitForMotor = abs(channel->getSatellitePosition() - frontend->getCurrentSatellitePosition()) / motorRotationSpeed; //assuming 1.8 degrees/second motor rotation speed for the time being...
 			printf("[zapit] waiting %d seconds for motor to turn satellite dish.\n", waitForMotor);
+			eventServer->sendEvent(CZapitClient::EVT_ZAP_MOTOR, CEventServer::INITID_ZAPIT, &waitForMotor, sizeof(waitForMotor));
 			sleep(waitForMotor);
 		
 			frontend->setCurrentSatellitePosition(channel->getSatellitePosition());

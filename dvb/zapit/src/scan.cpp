@@ -88,6 +88,7 @@ t_satellite_position driveMotorToSatellitePosition(char * providerName)
 		frontend->positionMotor(motorPositions[satellitePosition]);
 		waitForMotor = abs(satellitePosition - currentSatellitePosition) / motorRotationSpeed;
 		printf("[zapit] waiting %d seconds for motor to turn satellite dish.\n", waitForMotor);
+		eventServer->sendEvent(CZapitClient::EVT_ZAP_MOTOR, CEventServer::INITID_ZAPIT, &waitForMotor, sizeof(waitForMotor));
 		sleep(waitForMotor);
 		frontend->setCurrentSatellitePosition(satellitePosition);
 	}
