@@ -1175,7 +1175,7 @@ void internalSendChannels(int connfd, ChannelList* channels, const unsigned int 
 			continue;
 
 		CZapitClient::responseGetBouquetChannels response;
-		strncpy(response.name, Utf8_to_Latin1((*channels)[i]->getName()).c_str(),30);
+		strncpy(response.name, ((*channels)[i]->getName()).c_str(), 30);
 		response.channel_id = (*channels)[i]->getChannelID();
 		response.nr = first_channel_nr + i;
 
