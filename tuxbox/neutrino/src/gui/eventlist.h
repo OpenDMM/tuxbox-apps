@@ -4,6 +4,9 @@
 // $Id$
 //
 // $Log$
+// Revision 1.6  2001/09/20 17:02:16  field
+// event-liste zeigt jetzt auch epgs an...
+//
 // Revision 1.5  2001/09/20 11:55:58  fnbrd
 // removed warning.
 //
@@ -40,12 +43,12 @@ class EventList
 {
   private:
     struct event {
-//      long long id;
-      string datetimeduration;
-      string name;
-//      time_t starttime;
-//      unsigned lengthInSeconds;
+      unsigned long long id;
+      time_t    startzeit;
+      string    datetimeduration;
+      string    name;
     };
+
     void removeAllEvents(void);
     void readEvents(const std::string& channelname); // I really don't like handling names
     unsigned int		selected;

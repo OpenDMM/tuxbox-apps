@@ -32,6 +32,9 @@
 	Foundation, Inc., 675 Mass Ave, Cambridge, MA 02139, USA.
 
   $Log$
+  Revision 1.42  2001/09/20 17:02:16  field
+  event-liste zeigt jetzt auch epgs an...
+
   Revision 1.41  2001/09/20 14:10:10  field
   neues EPG-Handling abschaltbar
 
@@ -1024,7 +1027,8 @@ void CNeutrinoApp::RealRun(CMenuWidget &mainSettings)
 				if ( g_InfoViewer->is_visible )
 				{
                     g_InfoViewer->killTitle();
-					g_EpgData->show( channelList->getActiveChannelName() );
+					g_EpgData->show( channelList->getActiveChannelName(),
+                                     channelList->getActiveChannelOnid_tsid() );
 				}
 				else
 				{
