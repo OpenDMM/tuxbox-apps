@@ -83,18 +83,29 @@ static const struct key keyname[] = {
 };
 
 void usage(char *n){
-	printf ("Usage: %s <keyname> [<time>] [<repeat>]\n"
+	unsigned int keynum = sizeof(keyname)/sizeof(struct key);
+	unsigned int i;
+	printf ("rcsim v1.1\nUsage: %s <keyname> [<time>] [<repeat>]\n"
 		"       <keyname> is an excerpt of the 'KEY_FOO'-names in <linux/input.h>,\n"
 		"             only the keys on the dbox2-remote control are supported\n"
 		"       <time> is how long a code is repeatedly sent,\n"
 		"              unit is seconds, default is 0 = sent only once\n"
 		"       <repeat> what time is waited until a new code is sent\n"
 		"                (if <time> is greater than 0), unit is milliseconds,\n"
-		"		 default is 500\n"
-		"       Examples: %s KEY_1\n"
+		"		 default is 500\n\n"
+		"       Example:\n"
+		"                 %s KEY_1\n"
 		"                        ; KEY_1 sent once\n"
 		"                 %s KEY_OK 2 250\n"
-		"                        ; KEY_OK sent every 250ms for 2 seconds\n",n,n,n);
+		"                        ; KEY_OK sent every 250ms for 2 seconds\n\n"
+		"       Keys:\n",n,n,n);
+	for (i=0;i<keynum;){
+		printf ("                 %-20s",keyname[i++].name);
+		if (i<keynum)
+			printf ("%s\n",keyname[i++].name);
+		else
+			printf ("\n");
+	}
 }
 
 int send (int ev, unsigned int code, unsigned int value){
