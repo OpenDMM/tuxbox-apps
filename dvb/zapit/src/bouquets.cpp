@@ -195,24 +195,17 @@ string CBouquetManager::convertForXML( string s)
 			r += "&quot;";
 		  break;
 		  default:
-			r += s[i];
-			break;
-#if 0
-			// comparison is always true due to limited range of data type
 			if ((s[i]>=32) && (s[i]<128))
 				r += s[i];
-
-			// comparison is always false due to limited range of data type
 			else if (s[i] > 128)
 			{
 				char val[5];
 				sprintf(val, "%d", s[i]);
 				r = r + "&#" + val + ";";
 			}
-#endif
 		}
 	}
-	return(r);
+	return r;
 }
 
 void CBouquetManager::saveBouquets()
