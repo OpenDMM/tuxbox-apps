@@ -19,6 +19,9 @@ $Id$
 
 
 $Log$
+Revision 1.3  2004/03/10 21:05:53  rasc
+WSS (Wide Screen Signalling)  data decoding
+
 Revision 1.2  2004/03/09 21:57:58  rasc
 VPS decoding (fix NPP)
 
@@ -74,7 +77,7 @@ VPS decoding (someone check the NPP & PTY code output please...)
 
 
 // -- print VPS codes
-// -- !!! BUFFER BYTES HAVE TO BE ALREADY INVERTED! (lsb->msb)
+// -- !!! BUFFER BYTES HAVE TO BE ALREADY INVERTED! (if needed)
 // -- return: len of decoded bytes
 
 int  print_vps_decode (int v, u_char *b, int len)
