@@ -30,7 +30,7 @@ CLCDMenu::CLCDMenu (std::string configFilename)
 	rc = new CRCInput();
 
 	fontRenderer = new fontRenderClass(this);
-	fontRenderer->AddFont(FONTDIR "/Arial_Bold.ttf");
+	fontRenderer->AddFont(FONTDIR "/micron_bold.ttf");
 	fontRenderer->InitFontCache();
 
 	entryCount = 0;
@@ -71,7 +71,7 @@ CLCDMenu::CLCDMenu (std::string configFilename)
 		addNumberPrefix();
 
 	newSalt = getNewSalt();
-	menuFont = fontRenderer->getFont("Arial", "Bold", fontSize);
+	menuFont = fontRenderer->getFont("Micron", "Bold", fontSize);
 	pinFailures = 0;
 }
 
