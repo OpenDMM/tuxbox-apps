@@ -92,6 +92,9 @@
   Foundation, Inc., 675 Mass Ave, Cambridge, MA 02139, USA.
 
   $Log$
+  Revision 1.76  2002/02/09 17:09:42  Simplex
+  alphasorted channellist
+
   Revision 1.75  2002/02/09 16:12:38  Simplex
   extended the getchannels functions, bug fix
 
@@ -2667,42 +2670,49 @@ void sendBouquetChannels(unsigned int bouquet, CZapitClient::channelsMode mode =
 	else //if ((tvmode_on && mode == CZapitClient::MODE_CURRENT ) || (mode==CZapitClient::MODE_TV))
 		channels = g_BouquetMan->Bouquets[bouquet]->tvChannels;
 
-		internalSendChannels( &channels);
+	internalSendChannels( &channels);
 }
 
 void sendChannels( CZapitClient::channelsMode mode = CZapitClient::MODE_CURRENT, CZapitClient::channelsOrder order = CZapitClient::SORT_BOUQUET)
 {
 	ChannelList channels;
-	if ((Radiomode_on && mode == CZapitClient::MODE_CURRENT ) || (mode==CZapitClient::MODE_RADIO))
+	if (order == CZapitClient::SORT_BOUQUET)
 	{
-		for ( CBouquetManager::radioChannelIterator radiocit = g_BouquetMan->radioChannelsBegin(); radiocit != g_BouquetMan->radioChannelsEnd(); radiocit++)
+		if ((Radiomode_on && mode == CZapitClient::MODE_CURRENT ) || (mode==CZapitClient::MODE_RADIO))
 		{
-			CZapitClient::responseGetBouquetChannels response;
-			strncpy(response.name, (*radiocit)->name.c_str(),30);
-			response.onid_sid = (*radiocit)->OnidSid();
-			response.nr = (*radiocit)->chan_nr;
-			if (send(connfd, &response, sizeof(response),0) == -1)
+			for ( CBouquetManager::radioChannelIterator radiocit = g_BouquetMan->radioChannelsBegin(); radiocit != g_BouquetMan->radioChannelsEnd(); radiocit++)
 			{
-				perror("[zapit] could not send any return\n");
-				return;
+				channels.insert( channels.end(), (*radiocit));
+			}
+		}
+		else
+		{
+			for ( CBouquetManager::tvChannelIterator tvcit = g_BouquetMan->tvChannelsBegin(); tvcit != g_BouquetMan->tvChannelsEnd(); tvcit++)
+			{
+				channels.insert( channels.end(), (*tvcit));
 			}
 		}
 	}
-	else
+	else if (order == CZapitClient::SORT_ALPHA)
 	{
-		for ( CBouquetManager::tvChannelIterator tvcit = g_BouquetMan->tvChannelsBegin(); tvcit != g_BouquetMan->tvChannelsEnd(); tvcit++)
+		if ((Radiomode_on && mode == CZapitClient::MODE_CURRENT ) || (mode==CZapitClient::MODE_RADIO))
 		{
-			CZapitClient::responseGetBouquetChannels response;
-			strncpy(response.name, (*tvcit)->name.c_str(),30);
-			response.onid_sid = (*tvcit)->OnidSid();
-			response.nr = (*tvcit)->chan_nr;
-			if (send(connfd, &response, sizeof(response),0) == -1)
+			for ( map<uint, channel>::iterator it=allchans_radio.begin(); it!=allchans_radio.end(); it++)
 			{
-				perror("[zapit] could not send any return\n");
-				return;
+				channels.insert( channels.end(), &(it->second));
 			}
 		}
+		else
+		{
+			for ( map<uint, channel>::iterator it=allchans_tv.begin(); it!=allchans_tv.end(); it++)
+			{
+				channels.insert( channels.end(), &(it->second));
+			}
+		}
+		sort(channels.begin(), channels.end(), CmpChannelByChName());
 	}
+
+	internalSendChannels( &channels);
 }
 
 void startPlayBack()
