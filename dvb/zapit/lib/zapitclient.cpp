@@ -518,7 +518,7 @@ bool CZapitClient::isScanReady(unsigned int &satellite,  unsigned int &processed
 	CBasicClient::receive_data((char* )&response, sizeof(response));
 
 	satellite = response.satellite;
-	processed_transponder = response.processed_transponder+1;
+	processed_transponder = response.processed_transponder;
 	transponder = response.transponder;
 	services = response.services;
 
