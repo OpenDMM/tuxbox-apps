@@ -17,6 +17,9 @@ $Id$
 
 
 $Log$
+Revision 1.10  2004/05/24 20:18:17  rasc
+bugfix: AIT descriptor transport_protocol_label (reported by Stéphane Esté-Gracias)
+
 Revision 1.9  2004/04/15 03:38:50  rasc
 new: TransportStream sub-decoding (ts2PES, ts2SEC)  [-tssubdecode]
 checks for continuity errors, etc. and decode in TS enclosed sections/pes packets
@@ -199,7 +202,7 @@ void descriptorMHP_AIT_application (u_char *b)
  len -= 2;
 
  while (len > 0) {
- 	outBit_Sx_NL (4,"transport_protocol_label: ",	b,   0, 16);
+ 	outBit_Sx_NL (4,"transport_protocol_label: ",	b,   0, 8);
 	b++;
 	len--;
  }
