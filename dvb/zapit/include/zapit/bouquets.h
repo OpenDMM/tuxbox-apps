@@ -130,6 +130,7 @@ class CBouquetManager
 		void saveBouquets();
 		void loadBouquets( bool ignoreBouquetFile = false);
 		void restoreBouquets();
+		void cleanUp();
 		void renumServices();
 
 		CBouquet* addBouquet( string name);

@@ -444,6 +444,21 @@ void CBouquetManager::restoreBouquets()
 	}
 }
 
+void CBouquetManager::cleanUp()
+{
+	BouquetList::iterator it = Bouquets.end();
+	it--;
+	for( int i=Bouquets.size()-1; i>=0; i--, it--)
+	{
+		if ((Bouquets[i]->tvChannels.size() < 4) &&
+		    (Bouquets[i]->radioChannels.size() < 4))
+		{
+			delete Bouquets[i];
+			Bouquets.erase(it);
+		}
+	}
+}
+
 void CBouquetManager::makeRemainingChannelsBouquet( unsigned int tvChanNr, unsigned int radioChanNr, string strTitle )
 {
 	ChannelList allChannels;

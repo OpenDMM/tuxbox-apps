@@ -11,6 +11,8 @@
 #include <map>
 #include <string>
 
+#include "bouquets.h"
+
 struct scanchannel
 {
 	std::string name;
@@ -94,6 +96,6 @@ struct bouquet_mulmap
 
 extern std::map <uint32_t, transpondermap> scantransponders;
 extern std::map <uint32_t, scanchannel> scanchannels;
-extern std::multimap <std::string, bouquet_mulmap> scanbouquets;
+extern CBouquetManager* scanBouquetManager;
 
 #endif /* __scan_h__ */
