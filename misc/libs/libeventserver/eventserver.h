@@ -42,7 +42,7 @@ class CEventServer
 			INITID_SECTIONSD,
 			INITID_ZAPIT,
 			INITID_TIMERD,
-			INITID_THTTPD
+			INITID_HTTPD
 		};
 
 

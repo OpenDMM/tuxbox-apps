@@ -51,6 +51,7 @@
 #include "controldclient.h"
 #include "lcddclient.h"
 #include "zapitclient.h"
+#include "timerdclient.h"
 #include "eventserver.h"
 
 #define CONF_FILE CONFIGDIR "/controld.conf"
@@ -58,6 +59,7 @@
 
 CLcddClient		lcdd;
 CZapitClient	zapit;
+CTimerdClient	timerd;
 CEventServer    *eventServer;
 
 struct Ssettings
@@ -154,7 +156,11 @@ void saveSettings()
 void shutdownBox()
 {
 	lcdd.shutdown();
+
 	zapit.shutdown();
+
+	timerd.shutdown();
+
 	saveSettings();
 
 	if (execlp("/sbin/halt", "/sbin/halt", 0)<0)
