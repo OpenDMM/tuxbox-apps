@@ -15,6 +15,9 @@ $Id$
 
 
 $Log$
+Revision 1.17  2003/10/21 19:54:43  rasc
+no message
+
 Revision 1.16  2003/10/19 22:22:57  rasc
 - some datacarousell stuff started
 
@@ -139,7 +142,7 @@ char *dvbstrTableID (u_int id)
      {  0x41, 0x41,  "network_information_section - other network" },
      {  0x42, 0x42,  "service_description_section - actual transport stream" },
      {  0x43, 0x45,  "reserved" },
-     {  0x46, 0x46,  "service_description_section - actual transport stream" },
+     {  0x46, 0x46,  "service_description_section - other transport stream" },
      {  0x47, 0x49,  "reserved" },
      {  0x4A, 0x4A,  "bouquet_association_section" },
 //     {  0x4B, 0x4D,  "reserved" },
