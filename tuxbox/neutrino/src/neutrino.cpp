@@ -293,7 +293,7 @@ void CNeutrinoApp::setupDefaults()
 	strcpy(g_settings.network_defaultgateway, "");
 	strcpy(g_settings.network_nameserver, "");
 
-	FILE* fd = fopen("/var/ip", "r");
+	FILE* fd = fopen("/var/tuxbox/config/ip", "r");
 	if(fd)
 	{
 		char _ip[4];
@@ -2048,7 +2048,7 @@ void CNeutrinoApp::scartMode( bool bOnOff )
 		}
 		else if ( lastMode == mode_standby )
 		{
-			usleep(10000);
+			usleep(100000);
 			standbyMode( true );
 		}
 	}
