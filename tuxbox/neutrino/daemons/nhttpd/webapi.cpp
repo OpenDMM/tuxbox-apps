@@ -578,9 +578,9 @@ char volbuf[5];
 	{
 		request->SendPlainHeader("text/html");
 		if(	Parent->Controld->getMute())
-			params["MUTE"] == "mute";
+			params["MUTE"] = "mute";
 		else
-			params["MUTE"] == "muted";
+			params["MUTE"] = "muted";
 		request->ParseFile(Parent->Parent->PrivateDocumentRoot + "/controlpanel_old.html", params);
 	}
 	return true;
