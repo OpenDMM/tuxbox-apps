@@ -971,7 +971,7 @@ CMoviePlayerGui::PlayStream (int streamtype)
 	}
       else
 	if (CNeutrinoApp::getInstance ()->
-	    handleMsg (msg, data) == messages_return::cancel_all)
+	    handleMsg (msg, data) & messages_return::cancel_all)
 	{
 	  exit = true;
 	}
@@ -1156,7 +1156,7 @@ CMoviePlayerGui::PlayFile (void)
 	}
       else
 	if (CNeutrinoApp::getInstance ()->
-	    handleMsg (msg, data) == messages_return::cancel_all)
+	    handleMsg (msg, data) & messages_return::cancel_all)
 	{
 	  isTS = true;		// also exit in PES Mode
 	  exit = true;
@@ -1255,7 +1255,7 @@ CMoviePlayerGui::show ()
       else
 	{
 	  if (CNeutrinoApp::getInstance ()->
-	      handleMsg (msg, data) == messages_return::cancel_all)
+	      handleMsg (msg, data) & messages_return::cancel_all)
 	    {
 	      loop = false;
 	    }
