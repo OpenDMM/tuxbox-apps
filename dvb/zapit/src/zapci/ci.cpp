@@ -33,7 +33,7 @@ void CCaTable::addCaDescriptor (unsigned char * buffer)
 
 	descriptor->descriptor_tag = buffer[0];
 	descriptor->descriptor_length = buffer[1];
-	descriptor->CA_system_ID = (buffer[2] << 8) | buffer[3];
+	descriptor->CA_system_ID = *(unsigned*)(&(buffer[2]));
 	descriptor->reserved1 = buffer[4] >> 5;
 	descriptor->CA_PID = ((buffer[4] & 0x1F) << 8) | buffer[5];
 
