@@ -25,5 +25,6 @@
 #include "getservices.h"
 
 int parse_pat (int demux_fd, CZapitChannel * channel);
+void fake_pat(uint16_t onid, FrontendParameters feparams);
 
 #endif /* __pat_h__ */
