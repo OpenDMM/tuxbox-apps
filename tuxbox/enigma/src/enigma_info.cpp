@@ -35,7 +35,7 @@
 #include <lib/gui/emessage.h>
 #include <lib/gui/ebutton.h>
 #include <lib/base/i18n.h>
-#include <tuxbox/tuxbox.h>
+#include <libtuxbox.h>
 
 eZapInfo::eZapInfo()
 	:eListBoxWindow<eListBoxEntryMenu>(_("Infos"), 8, 220)
