@@ -37,6 +37,9 @@
 //
 //
 // $Log$
+// Revision 1.40  2002/02/28 15:03:55  field
+// Weiter Updates :)
+//
 // Revision 1.39  2002/02/27 22:51:13  field
 // Tasten kaputt gefixt - sollte wieder gehen :)
 //
@@ -158,7 +161,6 @@
 //
 
 #include "eventlist.hpp"
-#include "../include/debug.h"
 #include "../global.h"
 
 static char* copyStringto(const char* from, char* to, int len, char delim)
