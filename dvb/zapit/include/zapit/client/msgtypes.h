@@ -25,8 +25,8 @@
 #define __msgtypes_h__
 
 
-#include "include/zapittypes.h"
-#include "include/zapitclient.h"
+#include "zapittypes.h"
+#include "zapitclient.h"
 
 
 #define ZAPIT_UDS_NAME "/tmp/zapit.sock"
