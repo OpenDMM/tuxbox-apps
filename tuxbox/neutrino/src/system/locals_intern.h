@@ -761,6 +761,8 @@ const char * locale_real_names[] =
 	"scants.transponders",
 	"screensetup.lowerright",
 	"screensetup.upperleft",
+	"servicemenu.getplugins",
+	"servicemenu.getplugins_hint",
 	"servicemenu.head",
 	"servicemenu.reload",
 	"servicemenu.reload_hint",
