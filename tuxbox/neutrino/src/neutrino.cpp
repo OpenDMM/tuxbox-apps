@@ -2642,6 +2642,8 @@ void CNeutrinoApp::ExitRun()
 	dprintf(DEBUG_INFO, "exit\n");
 	//shutdown screen
 	g_lcdd->shutdown();
+	// timerd beenden und wakeup programmieren
+	g_Timerd->shutdown();
 
 	for(int x=0;x<256;x++)
 		frameBuffer->paletteSetColor(x, 0x000000, 0xffff);
