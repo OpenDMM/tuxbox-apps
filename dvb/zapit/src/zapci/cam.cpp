@@ -30,7 +30,11 @@ bool CCam::sendMessage(char* data, const unsigned short length)
 	if (!open_connection(CAMD_UDS_NAME))
 		return false;
 
-	return send_data(data, length);
+	bool return_value = send_data(data, length);
+
+	close_connection();
+
+	return return_value;
 }
 
 bool CCam::setCaPmt(CCaPmt * caPmt)
