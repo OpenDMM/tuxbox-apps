@@ -106,7 +106,7 @@ int main(int argc, char * argv[])
 	servaddr.sin_port = htons(Port);
 
 	i = 0;
-	while ((rc = bind(ListenSocket, (struct sockaddr_in *)&servaddr, sizeof(struct sockaddr_in))))
+	while ((rc = bind(ListenSocket, (struct sockaddr *)&servaddr, sizeof(struct sockaddr_in))))
 	{
 		fprintf(stderr, "[fserver.c] bind to port %d failed, RC=%d...\n",Port, rc);
 		if (i == 10) {
@@ -231,7 +231,7 @@ int main(int argc, char * argv[])
 						fprintf(stderr, "[fserver.c] VCR_RESUME NOT HANDLED\n");
 						break;
 					case CMD_VCR_AVAILABLE:
-						fprintf(stderr, "[fserver.c] VCR_AVAIABLE NOT HANDLED\n");
+						fprintf(stderr, "[fserver.c] VCR_AVAILABLE NOT HANDLED\n");
 						break;
 					default:
 						fprintf(stderr, "[fserver.c] unknown VCR command\n");
