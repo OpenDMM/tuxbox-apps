@@ -1765,8 +1765,8 @@ int CNeutrinoApp::run(int argc, char **argv)
 		sscanf(g_settings.network_streamingserverport, "%d", &port);
 		info->ServerAddress = g_settings.network_streamingserver;
 		info->ServerPort = port;
-		info->StopPlayBack = false;
-		info->StopSectionsd = true;
+		info->StopPlayBack = (g_settings.network_streaming_stopplayback == 1);
+		info->StopSectionsd = (g_settings.network_streaming_stopsectionsd == 1);
 		info->Name = "ngrab";
 		vcrControl->registerDevice(CVCRControl::DEVICE_SERVER,info);
 		delete info;
@@ -1907,6 +1907,8 @@ void CNeutrinoApp::RealRun(CMenuWidget &mainMenu)
 		{
 			if(CVCRControl::getInstance()->registeredDevices() > 0)
 			{
+					((CVCRControl::CServerDevice *) CVCRControl::getInstance())->StopPlayBack = (g_settings.network_streaming_stopplayback == 1);
+					((CVCRControl::CServerDevice *) CVCRControl::getInstance())->StopSectionsd = (g_settings.network_streaming_stopsectionsd == 1);
 					CVCRControl::getInstance()->Record((CTimerEvent::EventInfo *) data);
 					streamstatus = 1;
 			}
@@ -2657,6 +2659,8 @@ bool CNeutrinoApp::changeNotify(string OptionName, void *Data)
 		{
 			eventinfo.onidSid = g_RemoteControl->current_onid_sid;
 			eventinfo.epgID = g_RemoteControl->current_EPGid;
+			((CVCRControl::CServerDevice *) CVCRControl::getInstance())->StopPlayBack = (g_settings.network_streaming_stopplayback == 1);
+			((CVCRControl::CServerDevice *) CVCRControl::getInstance())->StopSectionsd = (g_settings.network_streaming_stopsectionsd == 1);
 			CVCRControl::getInstance()->Record(&eventinfo);
 		}
 		else
