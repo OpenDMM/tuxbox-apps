@@ -194,3 +194,21 @@ int CAudio::stop ()
 	return 0;
 }
 
+int CAudio::selectChannel (audioChannelSelect_t sel)
+{
+	if (ioctl(fd, AUDIO_CHANNEL_SELECT, &sel) < 0)
+	{
+		perror("AUDIO_CHANNEL_SELECT");
+		return -1;
+	}
+
+	status.channelSelect = sel;
+
+	return 0;
+}
+
+audioChannelSelect_t CAudio::getSelectedChannel ()
+{
+	return status.channelSelect;
+}
+

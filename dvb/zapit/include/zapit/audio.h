@@ -66,6 +66,10 @@ class CAudio
 		/* start and stop audio */
 		int start ();
 		int stop ();
+
+		/* select channels */
+		int selectChannel (audioChannelSelect_t sel);
+		audioChannelSelect_t getSelectedChannel ();
 };
 
 #endif /* __audio_h__ */

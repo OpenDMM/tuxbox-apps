@@ -994,6 +994,22 @@ void parse_command (CZapitClient::commandHead &rmsg)
 				playbackStopForced = true;
 				break;
 
+			case CZapitClient::CMD_SET_DISPLAY_FORMAT:
+			{
+				CZapitClient::commandInt msg;
+				read(connfd, &msg, sizeof(msg));
+				video->setCroppingMode((videoDisplayFormat_t) msg.val);
+				break;
+			}
+
+			case CZapitClient::CMD_SET_AUDIO_MODE:
+			{
+				CZapitClient::commandInt msg;
+				read(connfd, &msg, sizeof(msg));
+				audio->selectChannel((audioChannelSelect_t) msg.val);
+				break;
+			}
+
 			case CZapitClient::CMD_GETPIDS:
 			{
 				CZapitClient::responseGetOtherPIDs responseGetOtherPIDs;
