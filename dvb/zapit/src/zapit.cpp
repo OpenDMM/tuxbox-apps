@@ -1594,7 +1594,8 @@ void setDemuxMode(int demux_mode)
 	else
                 aviaExtDriver->playbackSPTS();
 
-	if (videoDecoder->getPlayState() == VIDEO_PLAYING) {
+	if ((videoDecoder->getPlayState() == VIDEO_PLAYING)  && (channel)) {
+		//printf("[zapit] restarting playback after changing demux mode\n");
 		stopPlayBack();
 		playbackStopForced = true;
 		sleep(1);
