@@ -403,7 +403,7 @@ int prepare_channels(void)
 	transponders.clear();
 	bouquetManager->clearAll();
 	allchans.clear();  // <- this invalidates all bouquets, too!
-	if (LoadServices() < 0)
+	if (LoadServices(config.getInt32("diseqcType", NO_DISEQC)) < 0)
 		return -1;
 
 	INFO("LoadServices: success");
