@@ -36,6 +36,9 @@ $Id$
  
 History:
  $Log$
+ Revision 1.13  2002/01/08 12:34:28  McClean
+ better rc-handling - add flat-standby
+
  Revision 1.12  2002/01/08 03:08:20  McClean
  improve input-handling
 
@@ -125,6 +128,7 @@ class CRCInput
 		void restartInput();
 
 		int repeat_block;
+		int repeat_block_generic;
 		CRCInput();      //constructor - opens rc-device and starts needed threads
 		~CRCInput();     //destructor - closes rc-device
 
