@@ -32,6 +32,9 @@
 	Foundation, Inc., 675 Mass Ave, Cambridge, MA 02139, USA.
 
   $Log$
+  Revision 1.98  2001/12/13 00:51:52  McClean
+  fix infobar - showepg-bug
+
   Revision 1.97  2001/12/12 19:11:32  McClean
   prepare timing setup...
 
@@ -379,8 +382,8 @@ void CNeutrinoApp::setupNetwork(bool force)
 		printf("doing network setup...\n");
 		//setup network
 		setNetworkAddress(g_settings.network_ip, g_settings.network_netmask, g_settings.network_broadcast);
-		setDefaultGateway(g_settings.network_defaultgateway);
         setNameServer(g_settings.network_nameserver);
+		setDefaultGateway(g_settings.network_defaultgateway);
 	}
 }
 
@@ -1688,6 +1691,7 @@ void CNeutrinoApp::RealRun(CMenuWidget &mainMenu)
 
 		if (key==CRCInput::RC_setup)
 		{
+			g_InfoViewer->killTitle();
 			mainMenu.exec(NULL, "");
 		}
 		else if (key==CRCInput::RC_standby)
@@ -1699,6 +1703,7 @@ void CNeutrinoApp::RealRun(CMenuWidget &mainMenu)
 		{
 			if (key==CRCInput::RC_ok)
 			{
+				g_InfoViewer->killTitle();
 				int bouqMode = g_settings.bouquetlist_mode;//bsmChannels;
 
 				if ((bouquetList!=NULL) && (bouquetList->Bouquets.size() == 0 ))
