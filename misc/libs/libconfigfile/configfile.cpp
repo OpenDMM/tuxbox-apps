@@ -61,11 +61,7 @@ const bool CConfigFile::loadConfig(const std::string filename)
 				break;
 
 			std::string::size_type i = s.find('=');
-			if (i == std::string::npos)
-			{
-				std::cerr << filename << ": skipping line " << linenr << ": " << s << std::endl;
-			}
-			else
+			if (i != std::string::npos)
 			{
 				std::string::size_type j = s.find('#');
 				if (j == std::string::npos)
