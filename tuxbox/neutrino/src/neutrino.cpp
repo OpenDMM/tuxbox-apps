@@ -2530,9 +2530,17 @@ int CNeutrinoApp::handleMsg(uint msg, uint data)
 	{
 		if( mode == mode_standby )
 		{
-			//turn off lcd
-			g_lcdd->setPower( !(g_lcdd->getPower()?1:0) );
-			g_lcdd->update();
+			//switch lcd off/on
+			if ( g_lcdd->getPower() == 1 )
+			{
+				g_lcdd->setPower(0);
+				g_lcdd->update();
+			}
+			else
+			{
+				g_lcdd->setPower(1);
+				g_lcdd->setMode(CLcddTypes::MODE_STANDBY);
+			}
 		}
 		else
 		{
@@ -3081,7 +3089,7 @@ void CNeutrinoApp::standbyMode( bool bOnOff )
 	{
 		// STANDBY AUS
 
-		g_lcdd->setPower(&lcdpower);
+		g_lcdd->setPower(lcdpower);
 		g_lcdd->setMode(CLcddTypes::MODE_TVRADIO);
 		g_Controld->videoPowerDown(false);
 
