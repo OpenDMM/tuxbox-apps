@@ -1580,6 +1580,15 @@ void parse_command ()
 				read( connfd, &bouquetMode, sizeof(bouquetMode));
 			break;
 
+			case CZapitClient::CMD_SET_RECORD_MODE :
+				CZapitClient::commandSetRecordMode msgSetRecordMode;
+				read( connfd, &msgSetRecordMode, sizeof(msgSetRecordMode));
+				if(msgSetRecordMode.activate)
+					setRecordMode();
+				else
+					unsetRecordMode();
+			break;
+
 			case CZapitClient::CMD_BQ_ADD_BOUQUET :
 				CZapitClient::commandAddBouquet msgAddBouquet;
 				read( connfd, &msgAddBouquet, sizeof(msgAddBouquet));
