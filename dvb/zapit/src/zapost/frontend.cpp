@@ -319,6 +319,39 @@ void CFrontend::sendToneBurst(fe_sec_mini_cmd_t burst, uint32_t ms)
 
 void CFrontend::setDiseqcType(diseqc_t newDiseqcType)
 {
+	switch (newDiseqcType) {
+	case NO_DISEQC:
+		INFO("NO_DISEQC");
+		break;
+	case MINI_DISEQC:
+		INFO("MINI_DISEQC");
+		break;
+	case SMATV_REMOTE_TUNING:
+		INFO("SMATV_REMOTE_TUNING");
+		break;
+	case DISEQC_1_0:
+		INFO("DISEQC_1_0");
+		break;
+	case DISEQC_1_1:
+		INFO("DISEQC_1_1");
+		break;
+	case DISEQC_1_2:
+		INFO("DISEQC_1_2");
+		break;
+	case DISEQC_2_0:
+		INFO("DISEQC_2_0");
+		break;
+	case DISEQC_2_1:
+		INFO("DISEQC_2_1");
+		break;
+	case DISEQC_2_2:
+		INFO("DISEQC_2_2");
+		break;
+	default:
+		WARN("Invalid DiSEqC type");
+		return;
+	}
+
 	if ((diseqcType <= MINI_DISEQC) && (newDiseqcType > MINI_DISEQC)) {
 		sendDiseqcPowerOn();
 		sendDiseqcReset();
