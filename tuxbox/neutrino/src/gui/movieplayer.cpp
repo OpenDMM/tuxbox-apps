@@ -1610,7 +1610,7 @@ CMoviePlayerGui::PlayStream (int streamtype)
 			open_filebrowser = false;
 			filename = NULL;
 			filebrowser->Filter = &vlcfilefilter;
-			if (filebrowser->exec (Path_vlc))
+			if (filebrowser->exec(Path_vlc.c_str()))
 			{
 				Path_vlc = filebrowser->getCurrentDir ();
 				CFile * file;
@@ -1874,7 +1874,7 @@ CMoviePlayerGui::PlayFile (void)
         			filebrowser->Filter = &pesfilefilter;
     			}
 			}
-			if (filebrowser->exec(Path_local))
+			if (filebrowser->exec(Path_local.c_str()))
 			{
 				Path_local = filebrowser->getCurrentDir();
 				CFile * file;
