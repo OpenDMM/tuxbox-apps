@@ -120,10 +120,6 @@ static pthread_mutex_t eventsLock = PTHREAD_MUTEX_INITIALIZER; // Unsere (fast-)
 static pthread_mutex_t servicesLock = PTHREAD_MUTEX_INITIALIZER; // Unsere (fast-)mutex, damit nicht gleichzeitig in die Menge services geschrieben und gelesen wird
 static pthread_mutex_t messagingLock = PTHREAD_MUTEX_INITIALIZER;
 
-extern short networkid;
-extern short streamid;
-extern short eit_networkid;
-
 inline void lockServices(void)
 {
 	pthread_mutex_lock(&servicesLock);
@@ -3185,20 +3181,6 @@ static void *eitThread(void *)
 
 			if ((header.current_next_indicator) && (!dmxEIT.pauseCounter ))
 			{
-				// Wenn SDT-NID und EIT-NID ungleich dann Paket patchen mit SDT NID und TID
-						if(networkid != eit_networkid)
-						{
-						        dmxEIT.pause();
-							short val = networkid;
-							short val2 = streamid;
-							char *ptr = (char*) &val;
-							char *ptr2 = (char*) &val2;
-							buf[10] = *ptr++;
-							buf[11] = *ptr;
-							buf[8] = *ptr2++;
-							buf[9] = *ptr2;
-							dmxEIT.unpause();
-						}
 				// Wir wollen nur aktuelle sections
 
 				/*                // Zum debuggen
