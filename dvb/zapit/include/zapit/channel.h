@@ -65,7 +65,7 @@ class CZapitChannel
 		t_original_network_id		original_network_id;
 		t_network_id			network_id;
 		unsigned char			DiSEqC;
-		int32_t 			satellitePosition;
+		t_satellite_position		satellitePosition;
 
 		/* read/write properties (write possibility needed by scan) */
 		unsigned char			serviceType;
