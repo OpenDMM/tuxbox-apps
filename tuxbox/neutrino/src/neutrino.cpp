@@ -607,7 +607,7 @@ void CNeutrinoApp::channelsInit()
 	}
 	printf("All channels received\n");
 	close(sock_fd);
-
+/*
 	bouquet_msg   zapitbouquet;
 	//deleting old bouquetList for mode-switching.
 	delete bouquetList;
@@ -661,8 +661,20 @@ void CNeutrinoApp::channelsInit()
 		bouquet = bouquetList->addBouquet( zapitbouquet.name, zapitbouquet.bouquet_nr );
 		//			printf("%s\n", zapitbouquet.name);
 	}
+
 	printf("All bouquets received (%d). Receiving channels... \n", nBouquetCount);
 	close(sock_fd);
+*/
+
+	delete bouquetList;
+	bouquetList = new CBouquetList( "bouquetlist.head" );
+	bouquetList->orgChannelList = channelList;
+	CZapitClient::BouquetList zapitBouquets;
+	g_Zapit->getBouquets(zapitBouquets, false);
+	for (uint i=0; i<zapitBouquets.size(); i++)
+	{
+		bouquetList->addBouquet( zapitBouquets[i].name, zapitBouquets[i].bouquet_nr);
+	}
 
 	printf("receiving channels for bouquets");
 	for ( uint i=0; i< bouquetList->Bouquets.size(); i++ )
