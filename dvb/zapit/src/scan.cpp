@@ -184,7 +184,8 @@ int write_xml_footer(FILE *fd)
 
 void write_bouquets(void)
 {
-	if (bouquetMode == CZapitClient::BM_DELETEBOUQUETS) {
+	if (bouquetMode == CZapitClient::BM_DELETEBOUQUETS) 
+	{
 		INFO("removing existing bouquets");
 		unlink(BOUQUETS_XML);
 	}
