@@ -25,6 +25,9 @@
 //    Foundation, Inc., 675 Mass Ave, Cambridge, MA 02139, USA.
 //
 //  $Log$
+//  Revision 1.36  2002/04/18 13:09:53  field
+//  Sectionsd auf clientlib umgestellt :)
+//
 //  Revision 1.35  2002/04/18 10:43:56  field
 //  Clientlib
 //
@@ -123,10 +126,10 @@
 
 using namespace std;
 
+#define SECTIONSD_UDS_NAME "/tmp/sectionsd.sock"
+
 struct sectionsd
 {
-	static const unsigned short portNumber=1600;
-
 	struct epgflags {
 		enum
 		{
