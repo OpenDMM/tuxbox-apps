@@ -557,9 +557,8 @@ void disableVideoOutput(bool disable)
 	}
 }
 
-void setBoxType(char type)
+void setBoxType()
 {
-	// settings.boxtype = type;
 	FILE* fd = fopen("/proc/bus/dbox", "rt");
 	if (fd==NULL)
 	{
@@ -854,7 +853,7 @@ int main(int argc, char **argv)
 		settings.boxtype = 1; //nokia
 	}
 
-	setBoxType( 0 ); // dummy set - liest den aktuellen Wert aus!
+	setBoxType(); // dummy set - liest den aktuellen Wert aus!
 
 	watchDog = new CEventWatchDog();
 	aspectRatioNotifier = new CControldAspectRatioNotifier();
