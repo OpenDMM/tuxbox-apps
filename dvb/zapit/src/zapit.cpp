@@ -113,6 +113,7 @@ extern short scan_runs;
 CZapitClient::bouquetMode bouquetMode = CZapitClient::BM_CREATEBOUQUETS;
 
 extern std::map <string, uint8_t> motorPositions;
+extern std::map <string, int32_t> satellitePositions;
 
 bool standby = true;
 
