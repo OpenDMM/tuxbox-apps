@@ -134,9 +134,18 @@ int main(int argc, char **argv)
 					usleep(10000); //wait for 10 ms = max. 10 kb 
 				}
 			}
+			tr = BSIZE;
+			pr = 0;
 
-			if (write(STDOUT_FILENO, buffer, r) != r)
-				break;
+			while (tr) {
+				r = write(STDOUT_FILENO, buffer+pr, tr);
+				
+				if (r <= 0) {
+					continue;
+				}
+				pr += r;
+				tr -= r;
+			}
 		}
 	}
 
