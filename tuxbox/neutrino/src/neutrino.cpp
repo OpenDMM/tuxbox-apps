@@ -32,6 +32,9 @@
 	Foundation, Inc., 675 Mass Ave, Cambridge, MA 02139, USA.
 
   $Log$
+  Revision 1.26  2001/09/15 17:16:23  McClean
+  i18n-module added
+
   Revision 1.25  2001/09/14 16:18:46  field
   Umstellung auf globale Variablen...
 
@@ -99,7 +102,7 @@ SNeutrinoSettings   g_settings;
 
 FontsDef        *g_Fonts = NULL;
 CFrameBuffer    *g_FrameBuffer = NULL;
-
+CLocaleManager	*g_Locale = NULL;
 CRCInput        *g_RCInput = NULL;
 CLCDD           *g_lcdd = NULL;
 CControld       *g_Controld = NULL;
@@ -1045,6 +1048,7 @@ int CNeutrinoApp::run(int argc, char **argv)
 		setupDefaults();
 		printf("using defaults...\n\n");
 	}
+	g_Locale = new CLocaleManager;
     g_RCInput = new CRCInput;
     g_lcdd = new CLCDD;
     g_Controld = new CControld;
@@ -1055,6 +1059,7 @@ int CNeutrinoApp::run(int argc, char **argv)
     g_ScreenSetup = new CScreenSetup;
 
     printf("\nCNeutrinoApp::run - objects initialized...\n\n");
+	g_Locale->loadLocale("deutsch");
 
 	colorSetupNotifier = new CColorSetupNotifier();
 
