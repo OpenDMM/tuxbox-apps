@@ -32,6 +32,9 @@
 	Foundation, Inc., 675 Mass Ave, Cambridge, MA 02139, USA.
 
   $Log$
+  Revision 1.146  2002/01/30 20:58:55  field
+  DD-Symbol
+
   Revision 1.145  2002/01/30 18:10:19  McClean
   dont use home-key for modeswitch by default (dont worxx) :(
 
@@ -2344,7 +2347,7 @@ void CNeutrinoApp::radioMode()
 		g_ActionLog->println("mode: radio");
 	#endif
 
-	g_FrameBuffer->loadPal("radiomode.pal", 18, 199);
+	g_FrameBuffer->loadPal("radiomode.pal", 18, COL_MAXFREE);
 	g_FrameBuffer->loadBackground("radiomode.raw");
 	g_FrameBuffer->useBackground(true);
 	g_FrameBuffer->paintBackground();
