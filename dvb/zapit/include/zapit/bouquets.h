@@ -70,6 +70,8 @@ class CBouquet
 //		void moveService (uint onidSid, uint newPosition);
 		void moveService (uint oldPosition, uint newPosition, uint8_t serviceType);
 
+		int recModeRadioSize( uint32_t);
+		int recModeTVSize( uint32_t);
 		CZapitChannel* getChannelByOnidSid(uint32_t onidSid, uint8_t serviceType = 0);
 };
 

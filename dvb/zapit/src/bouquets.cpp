@@ -196,6 +196,28 @@ void CBouquet::moveService (uint oldPosition, uint newPosition, uint8_t serviceT
 	}
 }
 
+int CBouquet::recModeRadioSize( uint32_t tsid)
+{
+	int size = 0;
+	for ( uint i=0; i< tvChannels.size(); i++)
+	{
+		if ( tsid == tvChannels[i]->getTsidOnid())
+			size++;
+	}
+	return(size);
+}
+
+int CBouquet::recModeTVSize( uint32_t tsid)
+{
+	int size = 0;
+	for ( uint i=0; i< radioChannels.size(); i++)
+	{
+		if ( tsid == radioChannels[i]->getTsidOnid())
+			size++;
+	}
+	return(size);
+}
+
 
 /**** class CBouquetManager *************************************************/
 
