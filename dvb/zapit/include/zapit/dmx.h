@@ -31,7 +31,8 @@
 
 int setDmxSctFilter (int fd, unsigned short pid, unsigned char * filter, unsigned char * mask);
 int setDmxPesFilter (int fd, dmx_output_t output, dmx_pes_type_t pes_type, unsigned short pid);
-int startDmxFilter (int fd);
-int stopDmxFilter (int fd);
+int startDmxFilter  (int fd);
+int stopDmxFilter   (int fd);
+int readDmx         (int fd, unsigned char * buf, const size_t n);
 
 #endif /* __dmx_h__ */

@@ -22,8 +22,6 @@
 /* system c */
 #include <fcntl.h>
 #include <stdio.h>
-#include <sys/stat.h>
-#include <sys/types.h>
 #include <unistd.h>
 
 /* system c++ */
@@ -78,15 +76,9 @@ int parse_nit (unsigned char DiSEqC)
 
 	do
 	{
-		if (setDmxSctFilter(demux_fd, 0x0010, filter, mask) < 0)
+		if ((setDmxSctFilter(demux_fd, 0x0010, filter, mask) < 0) ||
+		    (readDmx(demux_fd, buffer, NIT_SIZE) < 0))
 		{
-			close(demux_fd);
-			return -1;
-		}
-
-		if (read(demux_fd, buffer, NIT_SIZE) < 0)
-		{
-			ERROR("read");
 			close(demux_fd);
 			return -1;
 		}

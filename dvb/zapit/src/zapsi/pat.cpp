@@ -19,11 +19,6 @@
  *
  */
 
-#include <sys/types.h>
-#include <sys/stat.h>
-#include <fcntl.h>
-#include <unistd.h>
-
 #include <zapit/dmx.h>
 #include <zapit/debug.h>
 #include <zapit/pat.h>
@@ -53,15 +48,10 @@ int parse_pat (const int demux_fd, CZapitChannel * channel)
 	do
 	{
 		/* set filter for program association section */
-		if (setDmxSctFilter(demux_fd, 0x0000, filter, mask) < 0)
-			return -1;
-
 		/* read section */
-		if (read(demux_fd, buffer, PAT_SIZE) < 0)
-		{
-			ERROR("read");
+		if ((setDmxSctFilter(demux_fd, 0x0000, filter, mask) < 0) ||
+		    (readDmx(demux_fd, buffer, PAT_SIZE) < 0))
 			return -1;
-		}
 
 		/* loop over service id / program map table pid pairs */
 		for (i = 8; i < (((buffer[1] & 0x0F) << 8) | buffer[2]) + 3; i += 4)

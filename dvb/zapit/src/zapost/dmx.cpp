@@ -22,6 +22,7 @@
 #include <stdio.h>
 #include <string.h>
 #include <sys/ioctl.h>
+#include <unistd.h>
 
 #include <zapit/dmx.h>
 #include <zapit/debug.h>
@@ -280,3 +281,12 @@ int stopDmxFilter (int fd)
 	return 0;
 }
 
+int readDmx(int fd, unsigned char * buf, const size_t n)
+{
+	int return_value = read(fd, buf, n);
+	if (return_value < 0)
+	{
+		ERROR("DMX_READ");
+	}
+	return return_value;
+}

@@ -22,7 +22,6 @@
 
 /* system c */
 #include <stdio.h>
-#include <unistd.h>
 
 /* system c++ */
 #include <string>
@@ -280,16 +279,9 @@ int parse_pmt (int demux_fd, CZapitChannel * channel)
 		return -1;
 	}
 
-	if (setDmxSctFilter(demux_fd, channel->getPmtPid(), filter, mask) < 0)
-	{
+	if ((setDmxSctFilter(demux_fd, channel->getPmtPid(), filter, mask) < 0) ||
+	    (readDmx(demux_fd, buffer, PMT_SIZE) < 0))
 		return -1;
-	}
-
-	if (read(demux_fd, buffer, PMT_SIZE) < 0)
-	{
-		ERROR("read");
-		return -1;
-	}
 
 	CCaPmt * caPmt = new CCaPmt();
 

@@ -19,14 +19,6 @@
  *
  */
 
-#include <fcntl.h>
-#include <stdio.h>
-#include <string.h>
-#include <sys/ioctl.h>
-#include <sys/stat.h>
-#include <sys/types.h>
-#include <unistd.h>
-
 /* debug */
 #include <stdlib.h>
 
@@ -68,14 +60,9 @@ int parse_bat (int demux_fd)
 
 	do
 	{
-		if (setDmxSctFilter(demux_fd, 0x0011, filter, mask) < 0)
+		if ((setDmxSctFilter(demux_fd, 0x0011, filter, mask) < 0) ||
+		    (readDmx(demux_fd, buffer, BAT_SIZE) < 0))
 			return -1;
-
-		if (read(demux_fd, buffer, BAT_SIZE) < 0)
-		{
-			ERROR("read");
-			return -1;
-		}
 
 		section_length = ((buffer[1] & 0x0F) << 8) | buffer[2];
 		bouquet_id = (buffer[3] << 8) | buffer[4];
