@@ -1554,6 +1554,7 @@ void parse_command ()
 			}
 			case CZapitClient::CMD_SCANSETSCANSATLIST:
 				CZapitClient::commandSetScanSatelliteList sat;
+				scanProviders.clear();
 				while (read(connfd, &sat, sizeof(sat)))
 				{
 					printf("[zapit] adding %s (diseqc %d)\n", sat.satName, sat.diseqc);
