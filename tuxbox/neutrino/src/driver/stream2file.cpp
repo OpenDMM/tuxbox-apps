@@ -57,7 +57,7 @@
 #include <signal.h>
 
 extern "C" {
-#include <gui/ringbuffer.h>
+#include <driver/ringbuffer.h>
 }           	
 
 /* conversion buffer sizes */
