@@ -196,6 +196,7 @@ public:
 		
 		machine->setText(tuxbox_get_model_str());
 		
+#if 0
 		int fe=atoi(eDVB::getInstance()->getInfo("fe").c_str());
 		switch (fe)
 		{
@@ -212,6 +213,7 @@ public:
 			frontend->setText(_("Frontend: Simulator"));
 			break;
 		}
+#endif
 		
 		eString sharddisks;
 		

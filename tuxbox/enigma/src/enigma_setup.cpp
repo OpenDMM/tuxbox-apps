@@ -41,8 +41,9 @@
 #include <lib/dvb/edvb.h>
 #include <lib/gui/eskin.h>
 #include <lib/gui/elabel.h>
-#include <tuxbox.h>
 #include "upgrade.h"
+
+#include <tuxbox.h>
 
 eZapSetup::eZapSetup()
 	:eListBoxWindow<eListBoxEntryMenu>(_("Setup"), 8, 450, true)
