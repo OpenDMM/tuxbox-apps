@@ -68,8 +68,7 @@ void CWebDbox::ZapTo(string target)
 		dprintf("Kanal ist aktuell\n");
 		return;
 	}
-	int status = Zapit->zapTo_serviceID(channel_id);
-	dprintf("Zapto Status: %d\n",status);
+	Zapit->zapTo_serviceID(channel_id);
 	Sectionsd->setServiceChanged(channel_id,false);
 
 }
@@ -114,6 +113,7 @@ CWebDbox::CWebDbox(CWebserver *server)
 	EventServer->registerEvent2( NeutrinoMessages::SHUTDOWN, CEventServer::INITID_HTTPD, "/tmp/neutrino.sock");
 	EventServer->registerEvent2( NeutrinoMessages::STANDBY_ON, CEventServer::INITID_HTTPD, "/tmp/neutrino.sock");
 	EventServer->registerEvent2( NeutrinoMessages::STANDBY_OFF, CEventServer::INITID_HTTPD, "/tmp/neutrino.sock");
+	EventServer->registerEvent2( NeutrinoMessages::STANDBY_TOGGLE, CEventServer::INITID_HTTPD, "/tmp/neutrino.sock");
 	EventServer->registerEvent2( NeutrinoMessages::EVT_POPUP, CEventServer::INITID_HTTPD, "/tmp/neutrino.sock");
 	EventServer->registerEvent2( NeutrinoMessages::EVT_EXTMSG, CEventServer::INITID_HTTPD, "/tmp/neutrino.sock");
 	EventServer->registerEvent2( NeutrinoMessages::CHANGEMODE, CEventServer::INITID_HTTPD, "/tmp/neutrino.sock");
