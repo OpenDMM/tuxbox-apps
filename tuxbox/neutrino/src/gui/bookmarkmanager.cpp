@@ -256,7 +256,7 @@ const CBookmark * CBookmarkManager::getBookmark(CMenuTarget* parent)
 
 	int res = -1;
 
-	unsigned long long timeoutEnd = CRCInput::calcTimeoutEnd( g_settings.timing_menu );
+	unsigned long long timeoutEnd = CRCInput::calcTimeoutEnd(g_settings.timing[SNeutrinoSettings::TIMING_MENU]);
 	uint msg; uint data;
 
 	bool loop=true;
@@ -272,7 +272,7 @@ const CBookmark * CBookmarkManager::getBookmark(CMenuTarget* parent)
 		g_RCInput->getMsgAbsoluteTimeout( &msg, &data, &timeoutEnd );
 
 		if( msg <= CRCInput::RC_MaxRC )
-			timeoutEnd = CRCInput::calcTimeoutEnd( g_settings.timing_menu );
+			timeoutEnd = CRCInput::calcTimeoutEnd(g_settings.timing[SNeutrinoSettings::TIMING_MENU]);
 
 		if( ( msg == CRCInput::RC_timeout ) ||
 			 ( msg == CRCInput::RC_home) )
