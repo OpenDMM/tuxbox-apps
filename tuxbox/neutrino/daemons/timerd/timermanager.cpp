@@ -555,8 +555,7 @@ void CTimerEvent_Zapto::fireEvent()
 	CTimerManager::getInstance()->getEventServer()->sendEvent(
 		CTimerdClient::EVT_ZAPTO,
 		CEventServer::INITID_TIMERD,
-		&eventInfo.onidSid,
-		sizeof(eventInfo.onidSid));
+		&eventInfo, sizeof(CTimerEvent::EventInfo));
 }
 
 
