@@ -36,6 +36,9 @@ $Id$
 
 History:
  $Log$
+ Revision 1.26  2002/03/25 18:24:24  field
+ Scan gefixt ;)
+
  Revision 1.25  2002/03/22 17:34:04  field
  Massive Umstellungen - NVODs/SubChannels=KAPUTT!
  Infoviewer tw. kaputt! NON-STABLE!
@@ -190,6 +193,7 @@ class CRCInput
 
 		static string getKeyName(int);
 		long long calcTimeoutEnd( int Timeout );
+		long long calcTimeoutEnd_MS( int Timeout );
 
 		void getMsgAbsoluteTimeout(uint *msg, uint* data, long long TimeoutEnd, bool bAllowRepeatLR= false);
 		void getMsg(uint *msg, uint* data, int Timeout=-1, bool bAllowRepeatLR= false);     //get message :)
