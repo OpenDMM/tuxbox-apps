@@ -509,16 +509,6 @@ void CBouquetManager::makeRemainingChannelsBouquet( unsigned int tvChanNr, unsig
 		}
 	}
 
-	for ( map<unsigned int, CZapitChannel>::iterator it=allchans_radio.begin(); it!=allchans_radio.end(); it++)
-	{
-		if (radioChannelsFind( it->second.getOnidSid()).EndOfChannels())
-		{
-			CZapitChannel* chan = copyChannelByOnidSid( it->second.getOnidSid());
-			chan->setChannelNumber(radioChanNr++);
-			remainChannels->addService( chan);
-		}
-	}
-
 	if ((remainChannels->tvChannels.size() == 0) && (remainChannels->radioChannels.size() == 0))
 	{
 		deleteBouquet(remainChannels);
