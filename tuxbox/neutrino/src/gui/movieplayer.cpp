@@ -288,7 +288,7 @@ ReceiveStreamThread (void *mrl)
 	printf ("[movieplayer.cpp] HTTP Result (emptyurl): %d\n", httpres);
 	if (httpres != 0)
 	{
-		ShowMsg("messagebox.error", g_Locale->getText("movieplayer.nostreamingserver"), CMessageBox::mbrCancel, CMessageBox::mbCancel, "error.raw", 450, -1, true); // UTF-8
+		ShowMsgUTF("messagebox.error", g_Locale->getText("movieplayer.nostreamingserver"), CMessageBox::mbrCancel, CMessageBox::mbCancel, "error.raw"); // UTF-8
 		playstate = STOPPED;
 		pthread_exit (NULL);
 		// Assume safely that all succeeding HTTP requests are successful
