@@ -813,7 +813,7 @@ bool CWebAPI::ShowTimerList(CWebserverRequest* request)
 		request->printf("<TD CLASS=\"%ctimer\" align=center>%s</TD>", classname, zRep);
 		char zType[20+1];
 		Parent->timerEventType2Str(timer->eventType,zType,sizeof(zType)-1);
-		request->printf("<TD CLASS=\"%ctimer\" align=center>%s", classname, zType);
+		request->printf("<TD CLASS=\"%ctimer\" align=center>%s</TD>", classname, zType);
 
 		// Add Data
 		string sAddData="";

@@ -591,8 +591,8 @@ void CWebserverRequest::RewriteURL()
 bool CWebserverRequest::SendResponse()
 {
 	RewriteURL();		// Erst mal die URL umschreiben
-	if(Path.compare("/control/") == 0)						// api for external programs
-	{
+	if( (Path.compare("/control/") == 0) || (Path.compare("/cgi-bin/") == 0) )
+	{	// api for external programs
 		return Parent->WebDbox->ControlAPI->Execute(this);
 	}
 	else if(Path.compare("/bouquetedit/") == 0)				// bouquetedit api
