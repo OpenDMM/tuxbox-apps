@@ -255,7 +255,6 @@ void eHarddiskMenu::check()
 
 void eHarddiskMenu::extPressed()
 {
-	static int visible = 0;
 	if ( visible )
 	{
 		gPixmap *pm = eSkin::getActive()->queryImage("arrow_down");
@@ -431,6 +430,7 @@ void eHarddiskMenu::readStatus()
 
 eHarddiskMenu::eHarddiskMenu(int dev): dev(dev)
 {
+	visible=0;
 	status=new eLabel(this); status->setName("status");
 	model=new eLabel(this); model->setName("model");
 	capacity=new eLabel(this); capacity->setName("capacity");
