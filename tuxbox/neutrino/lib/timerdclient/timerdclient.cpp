@@ -230,6 +230,9 @@ bool CTimerdClient::modifyTimerEvent(int eventid, time_t announcetime, time_t al
 	send((char*)&msg, sizeof(msg));
 	send((char*) &msgModifyTimer, sizeof(msgModifyTimer));
 
+	CTimerd::responseStatus response;
+	receive((char*)&response, sizeof(response));
+
 	timerd_close();
 	return true;
 }
@@ -257,9 +260,12 @@ bool CTimerdClient::rescheduleTimerEvent(int eventid, time_t announcediff, time_
 	timerd_connect();
 	send((char*)&msg, sizeof(msg));
 	send((char*) &msgModifyTimer, sizeof(msgModifyTimer));
+	
+	CTimerd::responseStatus response;
+	receive((char*)&response, sizeof(response));
 
 	timerd_close();
-	return true;
+	return response.status;
 }
 //-------------------------------------------------------------------------
 

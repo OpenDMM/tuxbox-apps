@@ -203,8 +203,10 @@ int CTimerManager::modifyEvent(int eventID, time_t announceTime, time_t alarmTim
 		event->eventState = CTimerEvent::TIMERSTATE_SCHEDULED;
 		event->eventRepeat = evrepeat;
 		saveEventsToConfig();
+		return eventID;
 	}
-	return eventID;
+	else
+		return 0;
 }
 
 int CTimerManager::rescheduleEvent(int eventID, time_t announceTime, time_t alarmTime, time_t stopTime)
@@ -220,8 +222,10 @@ int CTimerManager::rescheduleEvent(int eventID, time_t announceTime, time_t alar
 			event->stopTime += stopTime;
 		event->eventState = CTimerEvent::TIMERSTATE_SCHEDULED;
 		saveEventsToConfig();
+		return eventID;
 	}
-	return eventID;
+	else
+		return 0;
 }
 
 void CTimerManager::saveEventsToConfig()

@@ -141,6 +141,10 @@ class CTimerd
 		typedef std::vector<responseGetTimer> TimerList;
 
 
+		struct responseStatus
+		{
+			bool status;
+		};
 };
 
 #endif
