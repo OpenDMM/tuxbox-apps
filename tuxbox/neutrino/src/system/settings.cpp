@@ -101,7 +101,7 @@ void CScanSettings::toSatList( CZapitClient::ScanSatelliteList& satList) const
 	else if  (diseqcMode == DISEQC_1_2)
 	{
 		strncpy( sat.satName, satNameNoDiseqc, 30);
-		sat.diseqc = 0;
+		sat.diseqc = -1;
 		for (int i = 0; i < MAX_SATELLITES; i++)
 		{
 			if (satName[i] == satNameNoDiseqc)
