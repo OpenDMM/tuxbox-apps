@@ -695,8 +695,10 @@ void CControlAPI::SendTimers(CWebserverRequest* request)
 	timerlist.clear();
 	Parent->Timerd->getTimerList(timerlist);
 
-	CZapitClient::BouquetChannelList channellist;
-	channellist.clear();
+	CZapitClient::BouquetChannelList channellist_tv;
+	CZapitClient::BouquetChannelList channellist_radio;
+	channellist_tv.clear();
+	channellist_radio.clear();
 
 	CTimerd::TimerList::iterator timer = timerlist.begin();
 	for(; timer != timerlist.end();timer++)
@@ -709,22 +711,44 @@ void CControlAPI::SendTimers(CWebserverRequest* request)
 			case CTimerd::TIMER_ZAPTO :
 			case CTimerd::TIMER_RECORD :
 	{
-				if(channellist.size()==0)
-				{
-					Parent->Zapit->getChannels(channellist);
-				}
-				CZapitClient::BouquetChannelList::iterator channel = channellist.begin();
-				for(; channel != channellist.end();channel++)
-				{
-					if(channel->channel_id==timer->channel_id)
+				if(timer->mode == CTimerd::MODE_RADIO)
+				{ // Radiokanal
+					if(channellist_radio.size()==0)
 					{
-						strncpy(zAddData, channel->name, 20);
-						zAddData[20]=0;
-						break;
+						Parent->Zapit->getChannels(channellist_radio,CZapitClient::MODE_RADIO);
 					}
+					CZapitClient::BouquetChannelList::iterator channel = channellist_radio.begin();
+					for(; channel != channellist_radio.end();channel++)
+					{
+						if (channel->channel_id == timer->channel_id)
+						{
+							strncpy(zAddData, channel->name, 20);
+							zAddData[20]=0;
+							break;
+						}
+					}
+					if(channel == channellist_radio.end())
+						strcpy(zAddData,"Unbekannter Radiokanal");
 				}
-				if(channel == channellist.end())
-					strcpy(zAddData,"Unknown");
+				else
+				{ //TV Kanal
+					if(channellist_tv.size()==0)
+					{
+						Parent->Zapit->getChannels(channellist_tv, CZapitClient::MODE_TV);
+					}
+					CZapitClient::BouquetChannelList::iterator channel = channellist_tv.begin();
+					for(; channel != channellist_tv.end();channel++)
+					{
+						if (channel->channel_id == timer->channel_id)
+						{
+							strncpy(zAddData, channel->name, 20);
+							zAddData[20]=0;
+							break;
+						}
+					}
+					if(channel == channellist_tv.end())
+						strcpy(zAddData,"Unbekannter TV-Kanal");
+				}
 			}
 			break;
 			
@@ -740,8 +764,8 @@ void CControlAPI::SendTimers(CWebserverRequest* request)
 			}
          default:{}
 		}
-		request->printf("%d %d %d %d %d %d %s\n",timer->eventID,(int)timer->eventType,
+		request->printf("%d %d %d %d %d %d %d %s\n",timer->eventID,(int)timer->eventType,
              (int)timer->eventRepeat,(int)timer->announceTime,
-             (int)timer->alarmTime,(int)timer->stopTime,zAddData);
+             (int)timer->alarmTime,(int)timer->stopTime, zAddData);
 	}
 }
