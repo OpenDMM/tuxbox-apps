@@ -259,7 +259,7 @@ CMoviePlayerGui::exec (CMenuTarget * parent, const std::string & actionKey)
 	 getLastMode () | NeutrinoMessages::norezap );
 
 	// Stop sectionsd
-	//g_Sectionsd->setPauseScanning (true);
+	g_Sectionsd->setPauseScanning (true);
 
 	isBookmark=false;
 	startfilename = "";
