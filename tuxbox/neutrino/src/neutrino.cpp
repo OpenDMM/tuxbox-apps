@@ -67,7 +67,7 @@
 #include "helpers/update.h"
 #include "helpers/scan.h"
 
-#include "favorites/favorites.h"
+#include "gui/favorites.h"
 
 #include <stdio.h>
 #include <unistd.h>
