@@ -613,7 +613,7 @@ int zapit (uint32_t onid_sid, bool in_nvod)
 		{
 			debug("[zapit] selected video source\n");
 		}
-#ifndef SELECT_VIDEO_SOURCE 
+#ifndef SELECT_VIDEO_SOURCE
 	}
 	else
 	{
@@ -1958,11 +1958,15 @@ void parse_command()
 			break;
 
 			case CZapitClient::CMD_SCANGETSATLIST :
-				CZapitClient::responseGetSatteliteList msgResponseGetSatteliteList;
-				strncpy( msgResponseGetSatteliteList.satName, "Dummy-Sat1", 30);
-				send( connfd, &msgResponseGetSatteliteList, sizeof(msgResponseGetSatteliteList),0);
-				strncpy( msgResponseGetSatteliteList.satName, "Dummy-Sat2", 30);
-				send( connfd, &msgResponseGetSatteliteList, sizeof(msgResponseGetSatteliteList),0);
+/*
+frontend->getInfo()->type == FE_QPSK //bei sat
+frontend->getInfo()->type == FE_QAM //bei kabel
+*/
+				CZapitClient::responseGetSatelliteList msgResponseGetSatelliteList;
+				strncpy( msgResponseGetSatelliteList.satName, "Astra 19.2E", 30);
+				send( connfd, &msgResponseGetSatelliteList, sizeof(msgResponseGetSatelliteList),0);
+				strncpy( msgResponseGetSatelliteList.satName, "Dummy-Sat2", 30);
+				send( connfd, &msgResponseGetSatelliteList, sizeof(msgResponseGetSatelliteList),0);
 			break;
 
 			case CZapitClient::CMD_BQ_ADD_BOUQUET :
