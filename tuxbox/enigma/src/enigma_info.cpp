@@ -253,21 +253,20 @@ public:
 			break;
 		}
 		
-		int fe=atoi(eDVB::getInstance()->getInfo("fe").c_str());
-		switch (fe)
+		switch (eFrontend::getInstance()->Type())
 		{
-		case 1:
+		case eFrontend::feSatellite:
 			frontend->setText(_("Frontend: Satellite"));
 			break;
-		case 2:
+		case eFrontend::feCable:
 			frontend->setText(_("Frontend: Cable"));
 			break;
-		case 3:
+		case eFrontend::feTerrestrial:
 			frontend->setText(_("Frontend: Terrestrial"));
 			break;
-		case 4:
+/*		case 4:
 			frontend->setText(_("Frontend: Simulator"));
-			break;
+			break;*/
 		}
 		
 		eString sharddisks;
