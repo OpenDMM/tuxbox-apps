@@ -512,9 +512,9 @@ void *start_scanthread(void *)
  	found_data_chans = 0;
  	t_satellite_position satellitePosition = 0;
 
-	printf("[scan] start...\n");
-	for (spI = scanProviders.begin(); spI != scanProviders.end(); spI++)
-		printf("[scan] scanProviders: %s\n", providerName);
+//	printf("[scan] start...\n");
+//	for (spI = scanProviders.begin(); spI != scanProviders.end(); spI++)
+//		printf("[scan] scanProviders: %s\n", providerName);
 
 	curr_sat = 0;
 
