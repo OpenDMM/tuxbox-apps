@@ -55,15 +55,17 @@ eZapLanguageSetup::eZapLanguageSetup(): eWindow(0), v_language(0)
 	CONNECT(language->selected, eZapLanguageSetup::toggleLanguage);
 
 	ok=new eButton(this);
-	ok->setText(_("[OK]"));
-	ok->move(ePoint(10, 90));
-	ok->resize(eSize(50, fd+4));
+	ok->setText(_("save"));
+	ok->move(ePoint(20, 80));
+	ok->resize(eSize(90, fd+4));
+
 	CONNECT(ok->selected, eZapLanguageSetup::okPressed);
 
 	abort=new eButton(this);
-	abort->setText(_("[ABORT]"));
-	abort->move(ePoint(80, 90));
+	abort->setText(_("abort"));
+	abort->move(ePoint(140, 80));
 	abort->resize(eSize(100, fd+4));
+
 	CONNECT(abort->selected, eZapLanguageSetup::abortPressed);
 
 	languages.insert(std::pair<std::string,std::string>("C","Englisch"));
