@@ -23,6 +23,9 @@
 //    Foundation, Inc., 675 Mass Ave, Cambridge, MA 02139, USA.
 //
 //  $Log$
+//  Revision 1.92  2002/01/31 17:02:35  field
+//  Buffergroesse
+//
 //  Revision 1.91  2002/01/30 13:35:02  field
 //  Verbesserungen
 //
@@ -2007,7 +2010,7 @@ static void commandActualEPGchannelName(struct connectionData *client, char *dat
 
 static void sendEventList(struct connectionData *client, const unsigned char serviceTyp1, const unsigned char serviceTyp2=0, int sendServiceName=1)
 {
-  char *evtList=new char[65*1024]; // 65kb should be enough and dataLength is unsigned short
+  char *evtList=new char[128* 1024]; // 256kb..? should be enough and dataLength is unsigned short
   if(!evtList) {
     fprintf(stderr, "low on memory!\n");
     return;
@@ -2130,6 +2133,7 @@ static void sendEventList(struct connectionData *client, const unsigned char ser
     dmxEIT.unpause();
   struct sectionsd::msgResponseHeader msgResponse;
   msgResponse.dataLength=liste-evtList;
+  dprintf("sectionsd: all channels - response-size: 0x%x\n", liste-evtList);
 //  msgResponse.dataLength=strlen(evtList)+1;
   if(msgResponse.dataLength==1)
     msgResponse.dataLength=0;
