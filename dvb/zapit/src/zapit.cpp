@@ -928,7 +928,8 @@ bool parse_command(CBasicMessage::Header &rmsg, int connfd)
 				    msgAddSubService.transport_stream_id,
 				    original_network_id,
 				    1,
-				    channel->getDiSEqC()
+				    channel->getDiSEqC(),
+				    channel->getSatelliteName()
 				)
 			    )
 			);
@@ -1076,6 +1077,7 @@ void internalSendChannels(int connfd, ChannelList* channels, const unsigned int 
 
 		CZapitClient::responseGetBouquetChannels response;
 		strncpy(response.name, ((*channels)[i]->getName()).c_str(), 30);
+		strncpy(response.satellite, ((*channels)[i]->getSatelliteName()).c_str(), 30);
 		response.channel_id = (*channels)[i]->getChannelID();
 		response.nr = first_channel_nr + i;
 
