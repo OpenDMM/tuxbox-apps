@@ -475,15 +475,15 @@ void parseScanInputXml(void)
 {
 	switch (frontend->getInfo()->type) {
 	case FE_QPSK:
-		scanInputParser = parseXmlFile(string(SATELLITES_XML));
+		scanInputParser = parseXmlFile(SATELLITES_XML);
 		break;
 
 	case FE_QAM:
-		scanInputParser = parseXmlFile(string(CABLES_XML));
+		scanInputParser = parseXmlFile(CABLES_XML);
 		break;
 
 	case FE_OFDM:
-		scanInputParser = parseXmlFile(string(TERRESTRIAL_XML));
+		scanInputParser = parseXmlFile(TERRESTRIAL_XML);
 		break;
 
 	default:

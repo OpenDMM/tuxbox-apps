@@ -75,7 +75,7 @@ class CZapitChannel
 
 	public:
 		/* constructor, desctructor */
-		CZapitChannel(std::string p_name, t_service_id p_sid, t_transport_stream_id p_tsid, t_original_network_id p_onid, unsigned char p_service_type, unsigned char p_DiSEqC, t_satellite_position p_satellite_position);
+		CZapitChannel(const std::string & p_name, t_service_id p_sid, t_transport_stream_id p_tsid, t_original_network_id p_onid, unsigned char p_service_type, unsigned char p_DiSEqC, t_satellite_position p_satellite_position);
 		~CZapitChannel(void);
 
 		/* get methods - read only variables */
@@ -103,11 +103,11 @@ class CZapitChannel
 		unsigned short 		getAudioPid(unsigned char index = 0xFF);
 		unsigned char  		getAudioChannelIndex(void)	{ return currentAudioChannel; }
 
-		int addAudioChannel(unsigned short pid, bool isAc3, std::string description, unsigned char componentTag);
+		int addAudioChannel(const unsigned short pid, const bool isAc3, const std::string & description, const unsigned char componentTag);
 
 		/* set methods */
 		void setServiceType(const unsigned char pserviceType)	{ serviceType = pserviceType; }
-		void setName(std::string pName)				{ name = pName; }
+		inline void setName(const std::string pName)            { name = pName; }
 		void setAudioChannel(unsigned char pAudioChannel)	{ if (pAudioChannel < audioChannels.size()) currentAudioChannel = pAudioChannel; }
 		void setPcrPid(unsigned short pPcrPid)			{ pcrPid = pPcrPid; }
 		void setPmtPid(unsigned short pPmtPid)			{ pmtPid = pPmtPid; }

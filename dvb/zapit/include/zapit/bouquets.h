@@ -50,26 +50,26 @@ struct CmpChannelByChName: public binary_function <const CZapitChannel * const, 
 
 class CBouquet
 {
-	public:
-		string Name;
-		bool   bHidden;
-		bool   bLocked;
+ public:
+	std::string Name;
+	bool        bHidden;
+	bool        bLocked;
 
-		ChannelList radioChannels;
-		ChannelList tvChannels;
+	ChannelList radioChannels;
+	ChannelList tvChannels;
 
-		CBouquet(const string name) { Name = name; bHidden = false; bLocked = false; }
+	inline CBouquet(const std::string name) { Name = name; bHidden = false; bLocked = false; }
 
-		void addService(CZapitChannel* newChannel);
+	void addService(CZapitChannel* newChannel);
 
-		void removeService(CZapitChannel* oldChannel);
-		void removeService(const t_channel_id channel_id, unsigned char serviceType = ST_RESERVED) { removeService(getChannelByChannelID(channel_id, serviceType)); }
-
-		void moveService (const unsigned int oldPosition, const unsigned int newPosition, const unsigned char serviceType);
-
-		int recModeRadioSize(unsigned int);
-		int recModeTVSize(unsigned int);
-		CZapitChannel* getChannelByChannelID(const t_channel_id channel_id, const unsigned char serviceType = ST_RESERVED);
+	void removeService(CZapitChannel* oldChannel);
+	void removeService(const t_channel_id channel_id, unsigned char serviceType = ST_RESERVED) { removeService(getChannelByChannelID(channel_id, serviceType)); }
+	
+	void moveService (const unsigned int oldPosition, const unsigned int newPosition, const unsigned char serviceType);
+	
+	int recModeRadioSize(unsigned int);
+	int recModeTVSize(unsigned int);
+	CZapitChannel* getChannelByChannelID(const t_channel_id channel_id, const unsigned char serviceType = ST_RESERVED);
 };
 
 typedef vector<CBouquet*> BouquetList;
@@ -116,10 +116,10 @@ class CBouquetManager
 		void restoreBouquets();
 		void renumServices();
 
-		CBouquet* addBouquet(string name);
+		CBouquet* addBouquet(const std::string & name);
 		void deleteBouquet(const unsigned int id);
 		void deleteBouquet(const CBouquet* bouquet);
-		int  existsBouquet(string name);
+		int  existsBouquet(const std::string & name);
 		void moveBouquet(const unsigned int oldId, const unsigned int newId);
 		bool existsChannelInBouquet(unsigned int bq_id, const t_channel_id channel_id);
 

@@ -231,7 +231,7 @@ int LoadSatellitePositions(void)
 	
 	satellitePositions.clear();
 	
-	xmlDocPtr parser = parseXmlFile(string(SATELLITES_XML));
+	xmlDocPtr parser = parseXmlFile(SATELLITES_XML);
 
 	if (parser == NULL)
 	{
@@ -272,7 +272,7 @@ int LoadServices(fe_type_t frontendType, diseqc_t diseqcType)
 			LoadMotorPositions();
 	}
 	
-	xmlDocPtr parser = parseXmlFile(string(SERVICES_XML));
+	xmlDocPtr parser = parseXmlFile(SERVICES_XML);
 
 	if (parser == NULL)
 		return -1;
