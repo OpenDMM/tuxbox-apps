@@ -358,7 +358,12 @@ bool start_recording(const char * const filename,
 	unlink(buf);
 
 	if (splitsize < TS_SIZE)
-		limit = 2147483648ULL;
+	{
+		if (splitsize == 0)
+			limit = 1099511627776ULL; // 1024GB, virtually no splitting
+		else
+			limit = 2147483648ULL; // 2GB
+	}
 	else
 		limit = splitsize;
 
