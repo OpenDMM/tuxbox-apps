@@ -1193,15 +1193,13 @@ void CNeutrinoApp::InitMiscSettings(CMenuWidget &miscSettings)
 			char buffer[200];
 			if(fgets(buffer,199,fd) != NULL)
 			{
-//				printf("buffer: '%s'\n",buffer);
-//				buffer[strlen(buffer)] = 0;
 				if(strncmp(buffer,"console=",8) == 0)
 				{
 					if(strncmp(&buffer[8],"null",4)==0)
 						fb_destination=0;
-					if(strncmp(&buffer[8],"ttyS0",5)==0)
+					else if(strncmp(&buffer[8],"ttyS0",5)==0)
 						fb_destination=1;
-					if(strncmp(&buffer[8],"tty",3)==0)
+					else if(strncmp(&buffer[8],"tty",3)==0)
 						fb_destination=2;
 				}
 				else
