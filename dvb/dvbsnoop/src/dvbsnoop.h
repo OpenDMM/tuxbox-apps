@@ -8,6 +8,10 @@ $Id$
    (c) rasc
 
 $Log$
+Revision 1.7  2003/07/06 05:28:52  obi
+compatibility stuff.. now there is only one version for old and new drivers
+which selects the api at configure time
+
 Revision 1.6  2003/06/24 23:51:03  rasc
 bugfixes and enhancements
 
@@ -29,9 +33,8 @@ dvbsnoop v0.7  -- Commit to CVS
 
 */
 
-#define VERSION  "0.9b"
+#define DVBSNOOP_VERSION  "0.9b"
 
-#define NEWSTRUCT
 
 #include <stdio.h>
 #include <stdlib.h>
@@ -42,7 +45,9 @@ dvbsnoop v0.7  -- Commit to CVS
 #include <fcntl.h>
 #include <unistd.h>
 
-#ifdef NEWSTRUCT
+#include <config.h>
+
+#ifndef HAVE_OST_DMX_H
 #include <linux/dvb/dmx.h>
 #define DEMUX_DEVICE "/dev/dvb/adapter0/demux0"
 #define DVR_DEVICE   "/dev/dvb/adapter0/dvr0"
@@ -50,6 +55,9 @@ dvbsnoop v0.7  -- Commit to CVS
 #include <ost/dmx.h>
 #define DEMUX_DEVICE "/dev/dvb/card0/demux0"
 #define DVR_DEVICE   "/dev/dvb/card0/dvr0"
+#define dmx_pes_filter_params dmxPesFilterParams
+#define dmx_sct_filter_params dmxSctFilterParams
+#define pes_type pesType
 #endif
 
 #include "helper.h"
