@@ -32,6 +32,9 @@
 	Foundation, Inc., 675 Mass Ave, Cambridge, MA 02139, USA.
  
   $Log$
+  Revision 1.127  2002/01/10 21:09:42  McClean
+  shutdown-time
+
   Revision 1.126  2002/01/10 12:45:09  McClean
   fix rc-timeout-prob
 
@@ -1995,6 +1998,7 @@ void CNeutrinoApp::ExitRun()
 {
 	printf("neutrino exit\n");
 	//shutdown screen
+	g_lcdd.shutdown();
 
 	//memset(frameBuffer.lfb, 255, frameBuffer.Stride()*576);
 	for(int x=0;x<256;x++)
@@ -2181,9 +2185,9 @@ int CNeutrinoApp::exec( CMenuTarget* parent, string actionKey )
 			int timeout1 = 5;
 	
 			sscanf(g_settings.repeat_blocker, "%d", &timeout);
-			timeout = int(timeout/100.0)+1;
+			timeout = int(timeout/100.0)+2;
 			sscanf(g_settings.repeat_genericblocker, "%d", &timeout1);
-			timeout1 = int(timeout1/100.0)+1;
+			timeout1 = int(timeout1/100.0)+2;
 			if(timeout1>timeout)
 			{
 				timeout=timeout1;
