@@ -33,7 +33,6 @@
 
 
 #define REMINDER_MESSAGE_MAXLEN 31
-#define TIMERD_UDS_NAME "/tmp/timerd.sock"
 
 class CTimerd
 {
@@ -73,85 +72,6 @@ class CTimerd
 		{
 			MODE_TV=1,
 			MODE_RADIO
-		};
-
-		static const char ACTVERSION = 1;
-
-		enum commands
-		{
-			CMD_ADDTIMER = 1,
-			CMD_REMOVETIMER,
-			CMD_GETTIMER,
-			CMD_GETTIMERLIST,
-			CMD_MODIFYTIMER,
-			CMD_GETSLEEPTIMER,
-			CMD_RESCHEDULETIMER,
-
-			CMD_REGISTEREVENT,
-			CMD_UNREGISTEREVENT,
-			CMD_TIMERDAVAILABLE,
-			CMD_SHUTDOWN,
-			CMD_SETAPID
-		};
-
-		struct commandAddTimer
-		{
-			CTimerEventTypes	eventType;
-			CTimerEventRepeat eventRepeat;
-			time_t							alarmTime;
-			time_t							announceTime;
-			time_t							stopTime;			
-		};
-
-
-		struct responseAddTimer
-		{
-			int   eventID;
-		};
-
-		struct commandRemoveTimer
-		{
-			int   eventID;
-		};
-
-		struct commandSetAPid
-		{
-			int   eventID;
-			uint  apid;
-		};
-
-		struct responseAvailable
-		{
-			bool available;
-		};
-		
-		struct commandGetTimer
-		{
-			int   eventID;
-		};
-
-		struct responseGetSleeptimer
-		{
-			int   eventID;
-		};
-
-		struct commandSetStandby
-		{
-			bool standby_on;
-		};
-
-		struct commandModifyTimer
-		{
-			int			eventID;
-			time_t		announceTime;
-			time_t		alarmTime;
-			time_t		stopTime;
-			CTimerEventRepeat	eventRepeat;
-		};
-
-		struct commandRemind
-		{
-			char message[REMINDER_MESSAGE_MAXLEN];
 		};
 
 		struct EventInfo
@@ -211,12 +131,5 @@ class CTimerd
 		};
 		
 		typedef std::vector<responseGetTimer> TimerList;
-
-		struct responseStatus
-		{
-			bool status;
-		};
-
-	
 };
 #endif
