@@ -17,12 +17,7 @@
 #include "bouquets.h"
 #include "scan.h"
 #include "zapit.h"
-
-#ifdef HAVE_CONFIG_H
-#include <config.h>
-#else
-#define CONFIGDIR "/var/tuxbox/config"
-#endif
+#include "xmlinterface.h"
 
 #define DEMUX_DEV "/dev/dvb/card0/demux0"
 
@@ -292,7 +287,7 @@ void write_transponder(FILE *fd, uint16_t transport_stream_id, uint16_t original
 				fprintf(fd,
 					"\t\t\t<channel service_id=\"%04x\" name=\"%s\" service_type=\"%02x\"/>\n",
 					cI->second.sid,
-					cI->second.name.c_str(),
+					convertForXML(cI->second.name).c_str(),
 					cI->second.service_type);
 			}
 		}

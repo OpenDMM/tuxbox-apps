@@ -71,7 +71,6 @@ class CBouquetManager
 		CBouquet* remainChannels;
 		void makeRemainingChannelsBouquet();
 		void parseBouquetsXml(const XMLTreeNode *root);
-		string convertForXML( string s);
 		void storeBouquets();
 	public:
 		CBouquetManager() { remainChannels = NULL; };
@@ -116,7 +115,5 @@ class CBouquetManager
 		CZapitChannel* findChannelByChannelID(const t_channel_id channel_id);
 
 };
-
-//extern CBouquetManager* BouquetManager;
 
 #endif /* __bouquets_h__ */
