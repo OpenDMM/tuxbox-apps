@@ -418,7 +418,7 @@ void *start_scanthread(void *param)
 			transponder = transponder->xmlNextNode;
 			/* msg to neutrino */
 			processed_transponders++;
-			eventServer->sendEvent(CZapitClient::EVT_SCAN_REPORT_NUM_SCANNED_TRANSPONDERS, CEventServer::INITID_ZAPIT, &processed_transponders,sizeof(processed_transponders));
+			eventServer->sendEvent(CZapitClient::EVT_SCAN_REPORT_NUM_SCANNED_TRANSPONDERS, CEventServer::INITID_ZAPIT, &processed_transponders, sizeof(processed_transponders));
 		}
 
 		/* 
