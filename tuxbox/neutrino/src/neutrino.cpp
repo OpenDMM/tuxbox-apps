@@ -36,6 +36,7 @@
 #include <config.h>
 
 #define NEUTRINO_CPP
+
 #include "global.h"
 #include "neutrino.h"
 
