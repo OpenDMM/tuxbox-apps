@@ -22,6 +22,7 @@
 #ifndef __LCDMENU_H_
 #define __LCDMENU_H_
 
+#include <config.h>
 #include <crypt.h>
 
 #include "configManager.h"

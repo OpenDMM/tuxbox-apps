@@ -20,6 +20,9 @@
  * Foundation, Inc., 59 Temple Place - Suite 330, Boston, MA  02111-1307, USA.
  *
  * $Log$
+ * Revision 1.9  2001/12/10 06:25:34  obi
+ * changed config path to tuxbox default
+ *
  * Revision 1.8  2001/12/05 21:49:31  obi
  * - fix for more than four menu entries
  *
@@ -60,7 +63,7 @@ CLCDMenu::CLCDMenu()
     entryCount = 0;
 
     config = new CConfigManager();
-    if (!config->loadConfig("/var/etc/lcdmenu.conf"))
+    if (!config->loadConfig(CONFIGDIR "/lcdmenu.conf"))
     {
 	/* defaults */
 	config->setInt("font_size", 12);
