@@ -5,7 +5,12 @@
 #ifndef __getservices_h__
 #define __getservices_h__
 
+#if (DVB_API_VERSION == 1)
 #include <ost/frontend.h>
+#else
+#include <linux/dvb/frontend.h>
+#endif
+
 #include <stdint.h>
 #include <string.h>
 

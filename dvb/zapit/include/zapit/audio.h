@@ -24,9 +24,13 @@
 #define __audio_h__
 
 /* nokia api */
+#if (DVB_API_VERSION == 1)
 #include <ost/audio.h>
-
-#define AUDIO_DEV "/dev/ost/audio0"
+#define AUDIO_DEV "/dev/dvb/card0/audio0"
+#else
+#include <linux/dvb/audio.h>
+#define AUDIO_DEV "/dev/dvb/adapter0/audio0"
+#endif
 
 class CAudio
 {

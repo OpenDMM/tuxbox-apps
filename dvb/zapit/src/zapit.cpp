@@ -25,8 +25,6 @@
 
 /* system headers */
 #include <fcntl.h>
-#include <ost/audio.h>
-#include <ost/video.h>
 #include <signal.h>
 #include <sys/ioctl.h>
 #include <sys/poll.h>
@@ -37,6 +35,16 @@
 /* d-box specific headers */
 #ifdef DBOX2
 #include <dbox/avia_gt_vbi.h>
+#define VBI_DEV "/dev/dbox/vbi0"
+#endif
+
+/* nokia api */
+#if (DVB_API_VERSION == 1)
+#include <ost/video.h>
+#define VIDEO_DEV "/dev/dvb/card0/video0"
+#else
+#include <linux/dvb/video.h>
+#define VIDEO_DEV "/dev/dvb/adapter0/video0"
 #endif
 
 /* tuxbox headers */
@@ -56,9 +64,6 @@
 #include "zapit.h"
 
 #define debug(fmt, args...) { if (debug) printf(fmt, ## args); }
-
-#define VBI_DEV   "/dev/dbox/vbi0"
-#define VIDEO_DEV "/dev/ost/video0"
 
 #define CONFIGFILE CONFIGDIR "/zapit/zapit.conf"
 
