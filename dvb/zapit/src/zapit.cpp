@@ -805,7 +805,7 @@ bool parse_command (CZapitMessages::commandHead &rmsg)
 			{
 				CZapitMessages::commandAddBouquet msgAddBouquet;
 				read(connfd, &msgAddBouquet, sizeof(msgAddBouquet));
-				bouquetManager->addBouquet(msgAddBouquet.name);
+				bouquetManager->addBouquet(convert_to_UTF8(std::string(msgAddBouquet.name)));
 				break;
 			}
 			case CZapitMessages::CMD_BQ_DELETE_BOUQUET:
@@ -828,7 +828,7 @@ bool parse_command (CZapitMessages::commandHead &rmsg)
 				CZapitMessages::commandExistsBouquet msgExistsBouquet;
 				CZapitMessages::responseGeneralInteger responseInteger;
 				read(connfd, &msgExistsBouquet, sizeof(msgExistsBouquet));
-				responseInteger.number = bouquetManager->existsBouquet(msgExistsBouquet.name);
+				responseInteger.number = bouquetManager->existsBouquet(convert_to_UTF8(std::string(msgExistsBouquet.name)));
 				send(connfd, &responseInteger, sizeof(responseInteger), 0); // bouquet & channel number are already starting at 0!
 				break;
 			}
