@@ -17,6 +17,11 @@ $Id$
 
 
 $Log$
+Revision 1.6  2004/02/15 01:01:03  rasc
+DSM-CC  DDB (DownloadDataBlock Message)
+DSM-CC  U-N-Message  started
+Carousel Descriptors completed
+
 Revision 1.5  2004/02/12 21:21:20  rasc
 MHP AIT descriptors
 some smaller changes
@@ -738,11 +743,6 @@ void descriptorMHP_AIT_ip_signalling (u_char *b)
 
 
 
-
-
-
-// $$$ TODO  B.2.2.4.1 Label descriptor
-// ... caching descr.
 
 
 

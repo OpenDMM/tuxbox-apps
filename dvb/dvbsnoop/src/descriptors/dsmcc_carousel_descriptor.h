@@ -16,6 +16,11 @@ $Id$
 
 
 $Log$
+Revision 1.13  2004/02/15 01:01:03  rasc
+DSM-CC  DDB (DownloadDataBlock Message)
+DSM-CC  U-N-Message  started
+Carousel Descriptors completed
+
 Revision 1.12  2004/02/07 01:28:01  rasc
 MHP Application  Information Table
 some AIT descriptors
@@ -79,6 +84,9 @@ void descriptorDSMCC_est_download_time (u_char *b);
 void descriptorDSMCC_group_link (u_char *b);
 void descriptorDSMCC_compressed_module (u_char *b);
 void descriptorDSMCC_subgroup_association (u_char *b);
+
+void descriptorDSMCC_MHP_label (u_char *b);
+void descriptorDSMCC_MHP_caching_priority (u_char *b);
 
 
 #endif

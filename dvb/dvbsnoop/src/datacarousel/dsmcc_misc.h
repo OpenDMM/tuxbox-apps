@@ -14,7 +14,18 @@ $Id$
 
 
 #ifndef __DSMCC_MISC_H
-#define __DSMCC_MISC_H 1
+#define __DSMCC_MISC_H 
+
+
+
+// U-N defines  (server messages only)
+
+#define DownloadInfoIndication		0x1002
+#define	DownloadDataBlock		0x1003
+#define DownloadCancel			0x1005
+#define	DownloadServerInitiate		0x1006
+
+
 
 
 int   dsmcc_pto_descriptor_loop (u_char *name, u_char *b);
