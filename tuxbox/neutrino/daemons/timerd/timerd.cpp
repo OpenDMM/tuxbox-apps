@@ -204,10 +204,10 @@ void loadTimersFromConfig()
       }
    }
    delete config;
-	char cmd[80];
+/*	char cmd[80];
 	sprintf(cmd,"cp /var/tuxbox/config/timerd.conf /var/tuxbox/config/timerd.conf.%d",
 			  (int) time(NULL));
-	system(cmd);
+	system(cmd);*/
    CTimerManager::getInstance()->saveEventsToConfig();
 }
 
@@ -555,7 +555,7 @@ int main(int argc, char **argv)
 
 	if(!no_wait)
 	{
-		sleep(60);
+		sleep(30); // wait for correct date to be set...
 	}
    loadTimersFromConfig();
    
