@@ -94,7 +94,7 @@ void CLCDD::loadConfig()
 	lcdPainter.setInverse( configfile.getInt32("lcd_inverse", 0x00) );
 }
 
-void CLCDD::parse_command(int connfd, CLcddMsg::commandHead rmsg)
+void CLCDD::parse_command(int connfd, CLcddMsg::Header rmsg)
 {
 	if(rmsg.version != CLcddMsg::ACTVERSION)
 	{
@@ -295,7 +295,7 @@ int CLCDD::main(int argc, char **argv)
 	while(!shall_exit)
 	{
 		connfd = accept(listenfd, (struct sockaddr*) &servaddr, (socklen_t*) &clilen);
-		CLcddMsg::commandHead rmsg;
+		CLcddMsg::Header rmsg;
 		read(connfd,&rmsg,sizeof(rmsg));
 		parse_command(connfd, rmsg);
 		close(connfd);
