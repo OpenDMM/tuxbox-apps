@@ -316,7 +316,7 @@ const bool CFrontend::getEvent ()
 
 	failed = true;
 
-	switch (poll(pfd, 1, 1000))
+	switch (poll(pfd, 1, 2000))
 	{
 	case -1:
 		perror("[CFrontend::getEvent] poll");
