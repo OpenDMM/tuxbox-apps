@@ -285,6 +285,7 @@ bool CControlAPI::GetChannel_IDCGI(CWebserverRequest *request) // sendet die akt
 
 bool CControlAPI::MessageCGI(CWebserverRequest *request)
 {
+	request->SendPlainHeader("text/plain");          // Standard httpd header senden
 	string message;
 	int event = 0;
 
