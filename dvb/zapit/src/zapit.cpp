@@ -128,8 +128,18 @@ extern short curr_sat;
 extern short scan_runs;
 CZapitClient::bouquetMode bouquetMode = CZapitClient::BM_CREATEBOUQUETS;
 
+bool shutdown_requested = false;
+
 void CZapitDestructor()
 {
+	if (shutdown_requested)
+	{
+		sleep(1);
+		return;
+	}
+
+	shutdown_requested = true;
+
 	save_settings(true);
 
 	if (connfd != -1)
