@@ -109,6 +109,7 @@ class CTimerd
 						channel_id = e.channel_id;
 						epgID = e.epgID;
 						epg_starttime = e.epg_starttime;
+						recordingSafety = e.recordingSafety;
 					};
 				RecordingInfo& operator = (EventInfo& e)
 					{
@@ -116,6 +117,7 @@ class CTimerd
 						channel_id = e.channel_id;
 						epgID = e.epgID;
 						epg_starttime = e.epg_starttime;
+						recordingSafety = e.recordingSafety;
 						return *this;
 					}
 				char apids[TIMERD_APIDS_MAXLEN];
