@@ -28,16 +28,15 @@
 #define FRONT_DEV "/dev/ost/frontend0"
 #define VIDEO_DEV "/dev/ost/video0"
 
-typedef struct decode_struct {
+typedef struct decode_struct
+{
 	uint16_t onid;
 	uint16_t tsid;
-	dvb_pid_t ecmpid;
-	pids *parse_pmt_pids;
-	bool do_search_emmpids;
-	bool do_cam_reset;
+	bool new_tsid;
+	pids *chanpids;
 } decode_vals;
 
-int LoadServices();
+int prepare_channels();
 void *start_scanthread(void *);
 void start_scan();
 void sendBouquetList();

@@ -8,6 +8,6 @@
 #include "getservices.h"
 #include "scan.h"
 
-int pat(uint oonid,std::map<uint, channel> *cmap);
+int parse_pat (uint16_t original_network_id, std::map <uint, CZapitChannel> *cmap);
 
 #endif /* __pat_h__ */
