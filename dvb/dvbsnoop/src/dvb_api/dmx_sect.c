@@ -10,6 +10,9 @@ $Id$
 
 
 $Log$
+Revision 1.8  2003/10/24 22:45:06  rasc
+code reorg...
+
 Revision 1.7  2003/10/24 22:17:18  rasc
 code reorg...
 
@@ -38,12 +41,13 @@ dvbsnoop v0.7  -- Commit to CVS
 
 
 #include "dvbsnoop.h"
-#include "dmx_sect.h"
 #include "misc/cmdline.h"
+#include "misc/output.h"
 #include "misc/hexprint.h"
 #include "misc/pkt_time.h"
-#include "sections/sectables.h"
 
+#include "sections/sectables.h"
+#include "dmx_sect.h"
 
 
 #define SECT_BUF_SIZE (64*1024)
