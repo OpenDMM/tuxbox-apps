@@ -157,6 +157,7 @@ CMoviePlayerGui::CMoviePlayerGui()
 		Path_local = "/";
 	Path_vlc  = "vlc://";
 	Path_vlc += g_settings.streaming_server_startdir;
+	Path_vlc_settings = g_settings.streaming_server_startdir;
 }
 
 //------------------------------------------------------------------------
@@ -176,6 +177,12 @@ CMoviePlayerGui::exec (CMenuTarget * parent, const std::string & actionKey)
 {
 	printf("[movieplayer.cpp] actionKey=%s\n",actionKey.c_str());
 	
+	if(Path_vlc_settings != g_settings.streaming_server_startdir)
+	{
+		Path_vlc  = "vlc://";
+		Path_vlc += g_settings.streaming_server_startdir;
+		Path_vlc_settings = g_settings.streaming_server_startdir;
+	}
 	bookmarkmanager = new CBookmarkManager ();
 
 	if (parent)
