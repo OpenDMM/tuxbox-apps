@@ -100,15 +100,13 @@ void eSkinSetup::accept()
 void eSkinSetup::skinSelected(eListBoxEntrySkin *skin)
 {
 	if (!skin)
-	{
 		close(1);
-		return;
+	else
+	{
+		eConfig::getInstance()->setKey("/ezap/ui/skin", skin->getESML().c_str());
+		eConfig::getInstance()->flush();
+		close(0);
 	}
-
-	eConfig::getInstance()->setKey("/ezap/ui/skin", skin->getESML().c_str());
-	eConfig::getInstance()->flush();
-
-	close(0);
 }
 
 eSkinSetup::eSkinSetup()
@@ -143,17 +141,16 @@ int eSkinSetup::eventHandler(const eWidgetEvent &event)
 {
 	switch (event.type)
 	{
-	case eWidgetEvent::evtAction:
-		if (event.action == &i_cursorActions->left)
-			focusNext(eWidget::focusDirW);
-		else if (event.action == &i_cursorActions->right)
-			focusNext(eWidget::focusDirE);
-		else
+		case eWidgetEvent::evtAction:
+			if (event.action == &i_cursorActions->left)
+				focusNext(eWidget::focusDirW);
+			else if (event.action == &i_cursorActions->right)
+				focusNext(eWidget::focusDirE);
+			else
+				break;
+			return 1;
+		default:
 			break;
-		return 1;
-
-	default:
-		break;
 	}
 	return eWindow::eventHandler(event);
 }
