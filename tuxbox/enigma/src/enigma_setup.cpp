@@ -39,6 +39,7 @@
 eZapSetup::eZapSetup()
 	:eListBoxWindow<eListBoxEntryMenu>(_("Setup"), 8, 220, true)
 {
+	eDebug("statusbar = %p", statusbar);
 	move(ePoint(150, 136));
 	CONNECT((new eListBoxEntryMenu(&list, _("[back]"), _("back to Mainmenu") ))->selected, eZapSetup::sel_close);
 	CONNECT((new eListBoxEntryMenu(&list, _("Channels..."), _("open channel setup") ))->selected, eZapSetup::sel_channels);
