@@ -128,8 +128,7 @@ int main (int argc, char **argv){
 		return 2;
 	}
 
-//	usleep (250000);
-	sleep (5);
+	sleep (atoi(argv[5]));
 		overlay=0;
 	stat = ioctl(vfd, VIDIOC_OVERLAY, &overlay);		// turn off overlay
 	if (stat<0){
