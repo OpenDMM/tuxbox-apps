@@ -187,7 +187,6 @@ int FlashImage::FlashImageCramFS::verify ( Crypto::evp::key::key & key, const Cr
 
     while ( i )
     {
-      std::cout << "read: " << std::string ( buf, 4096 ) << std::endl;
       stream.read ( buf, 4096 );
       verify.update ( buf, 4096 );
       i--;
