@@ -14,6 +14,9 @@ $Id$
 
 
 $Log$
+Revision 1.15  2003/11/07 16:33:32  rasc
+no message
+
 Revision 1.14  2003/11/01 21:40:27  rasc
 some broadcast/linkage descriptor stuff
 
@@ -796,6 +799,7 @@ void descriptorDVB_Linkage (u_char *b)
     } else if (d.linkage_type == 0x09) {	/* TR 102 006  DSM-CC */
 //        sub_descriptorDVB_Linkage0x09 (b, len);
 //        $$$ TODO 
+    	printhexdump_buf (4, b,len);
 
     } else if (d.linkage_type == 0x0A) {	/* TR 102 006  DSM-CC */
 
