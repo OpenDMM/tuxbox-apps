@@ -169,7 +169,7 @@ CMoviePlayerGui::~CMoviePlayerGui ()
 
 //------------------------------------------------------------------------
 int
-CMoviePlayerGui::exec (CMenuTarget * parent, std::string actionKey)
+CMoviePlayerGui::exec (CMenuTarget * parent, const std::string & actionKey)
 {
 	current = -1;
 	selected = 0;
@@ -244,7 +244,7 @@ CMoviePlayerGui::exec (CMenuTarget * parent, std::string actionKey)
 }
 
 //------------------------------------------------------------------------
-CURLcode sendGetRequest (std::string url) {
+CURLcode sendGetRequest (const std::string & url) {
 	CURL *curl;
 	CURLcode httpres;
 

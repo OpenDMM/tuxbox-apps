@@ -21,9 +21,9 @@
  *
  */
 
-#include "encoding.h"
+#include <driver/encoding.h>
 
-std::string Latin1_to_UTF8(const std::string s)
+std::string Latin1_to_UTF8(const std::string & s)
 {
 	std::string r;
 	
