@@ -66,6 +66,9 @@ class CLCDMenu : public CLCDDisplay
 	bool isPinProtected(int);
 	void addPinProtection(int);
 
+	const char *getCurrentSalt();
+	char *getNewSalt();
+
 	CConfigManager *getConfig() { return config; }
 
     private:
@@ -90,9 +93,7 @@ class CLCDMenu : public CLCDDisplay
 	vector<int> pinEntries;
 
 	string cryptedPin;
-	char newSalt[2];
-	char oldSalt[2];
-
+	char *newSalt;
 };
 
 #endif /* __LCDMENU_H_ */
