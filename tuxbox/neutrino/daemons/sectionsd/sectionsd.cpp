@@ -23,8 +23,8 @@
 //    Foundation, Inc., 675 Mass Ave, Cambridge, MA 02139, USA.
 //
 //  $Log$
-//  Revision 1.106  2002/03/22 14:33:53  field
-//  weitere Updates :)
+//  Revision 1.107  2002/03/22 17:12:06  field
+//  Weitere Updates, compiliert wieder
 //
 //  Revision 1.104  2002/03/18 16:55:16  field
 //  Bugfix
@@ -425,7 +425,7 @@ void showProfiling( string text )
 	long long now = (long long) tv.tv_usec + (long long)((long long) tv.tv_sec * (long long) 1000000);
 
 
-	printf("--> '%s' %f\n", text.c_str(), (now- last_profile_call)/ 1000.);
+	dprintf("--> '%s' %f\n", text.c_str(), (now- last_profile_call)/ 1000.);
 	last_profile_call = now;
 }
 
@@ -1809,7 +1809,7 @@ static void commandserviceChanged(struct connectionData *client, char *data, con
     bool doWakeUp = false;
 
     dprintf("[sectionsd] Service changed to 0x%x\n", *uniqueServiceKey);
-
+showProfiling("before lock");
 	time_t zeit=time(NULL);
     lockMessaging();
     if ( ( messaging_current_ServiceKey != *uniqueServiceKey ) ||
@@ -1822,7 +1822,7 @@ static void commandserviceChanged(struct connectionData *client, char *data, con
 	}
 	messaging_wants_current_next_Event = *requestCN_Event;
 	unlockMessaging();
-
+showProfiling("after unlock");
 	messaging_last_requested = zeit;
 
 	if ( doWakeUp )
@@ -1843,6 +1843,7 @@ static void commandserviceChanged(struct connectionData *client, char *data, con
     }
     else
     	dprintf("[sectionsd] ignoring wakeup request...\n");
+showProfiling("after doWakeup");
 
     struct sectionsd::msgResponseHeader msgResponse;
 	msgResponse.dataLength=0;

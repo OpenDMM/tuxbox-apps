@@ -25,8 +25,8 @@
 //    Foundation, Inc., 675 Mass Ave, Cambridge, MA 02139, USA.
 //
 //  $Log$
-//  Revision 1.31  2002/03/22 14:33:53  field
-//  weitere Updates :)
+//  Revision 1.32  2002/03/22 17:12:06  field
+//  Weitere Updates, compiliert wieder
 //
 //  Revision 1.30  2002/03/18 15:08:50  field
 //  Updates...
@@ -210,6 +210,15 @@ struct sectionsd
 	};
 
     typedef std::vector<responseGetLinkageDescriptors> LinkageDescriptorList;
+
+    struct responseGetNVODTimes
+	{
+		unsigned onid_sid;
+		unsigned short tsid;
+		sectionsd::sectionsdTime zeit;
+	};
+
+    typedef std::vector<responseGetNVODTimes> NVODTimesList;
 
     struct responseGetCurrentNextInfoChannelID
 	{
