@@ -55,9 +55,12 @@
 #define NEUTRINO_ICON_BUTTON_DOWN      "down.raw"
 #define NEUTRINO_ICON_BUTTON_LEFT      "left.raw"
 
-#define NEUTRINO_ICON_SETTINGS      "settings.raw"
-#define NEUTRINO_ICON_INFO          "info.raw"
+#define NEUTRINO_ICON_ERROR         "error.raw"
+#define NEUTRINO_ICON_FILE          "file.raw"
 #define NEUTRINO_ICON_GAMES         "games.raw"
+#define NEUTRINO_ICON_INFO          "info.raw"
+#define NEUTRINO_ICON_RECORDING     "recording.raw"
+#define NEUTRINO_ICON_SETTINGS      "settings.raw"
 #define NEUTRINO_ICON_SHELL         "shell.raw"
 
 /* icon widths */
