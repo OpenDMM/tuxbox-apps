@@ -275,12 +275,12 @@ uint8_t network_name_descriptor (uint8_t *buffer)
 }
 
 /* 0x41 */
-uint8_t service_list_descriptor (uint8_t *buffer, unsigned short transport_stream_id)
+uint8_t service_list_descriptor (uint8_t *buffer, uint16_t original_network_id)
 {
 	unsigned char i;
 
 	for (i = 0; i < buffer[1]; i += 3)
-		service_types[(transport_stream_id << 16) | (buffer[i+2] << 8) | buffer[i+3]] = buffer[i+4];
+		service_types[(original_network_id << 16) | (buffer[i+2] << 8) | buffer[i+3]] = buffer[i+4];
 
 	return buffer[1];
 }

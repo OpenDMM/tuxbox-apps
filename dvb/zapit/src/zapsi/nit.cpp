@@ -146,7 +146,7 @@ int parse_nit (unsigned char DiSEqC)
 					switch (buffer[pos2])
 					{
 					case 0x41:
-						service_list_descriptor(buffer + pos2, transport_stream_id);
+						service_list_descriptor(buffer + pos2, original_network_id);
 						break;
 
 					case 0x43:

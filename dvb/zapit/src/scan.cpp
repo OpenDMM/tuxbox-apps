@@ -486,7 +486,7 @@ void *start_scanthread(void *param)
 			{
 				if (scI->second.service_type != stI->second)
 				{
-					printf("[scan.cpp] setting service_type of tsid:sid %04x:%04x from %02x to %02x\n",
+					printf("[scan.cpp] setting service_type of onid:sid %04x:%04x from %02x to %02x\n",
 							(stI->first >> 16) & 0xFFFF,
 							stI->first & 0xFFFF,
 							scI->second.service_type,
