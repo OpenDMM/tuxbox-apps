@@ -363,7 +363,7 @@ void LoadScart_Settings()
 
 		if(fgets(buf,sizeof(buf),fd)!=NULL)
 		{
-			if(strlen(buf) > 25)
+			if(strlen(buf) > 26)
 				sscanf( buf, "nokia_scart: %d %d %d %d %d %d %d\n", &nokia_scart[0], &nokia_scart[1], &nokia_scart[2], &nokia_scart[3], &nokia_scart[4], &nokia_scart[5], &nokia_scart[6] );
 			else
 				sscanf( buf, "nokia_scart: %d %d %d %d %d %d\n", &nokia_scart[0], &nokia_scart[1], &nokia_scart[2], &nokia_scart[3], &nokia_scart[4], &nokia_scart[5] );
@@ -376,7 +376,7 @@ void LoadScart_Settings()
 		}
 		if(fgets(buf,sizeof(buf),fd)!=NULL)
 		{
-			if(strlen(buf) > 25)
+			if(strlen(buf) > 26)
 				sscanf( buf, "sagem_scart: %d %d %d %d %d %d %d\n", &sagem_scart[0], &sagem_scart[1], &sagem_scart[2], &sagem_scart[3], &sagem_scart[4], &sagem_scart[5], &sagem_scart[6] );
 			else
 				sscanf( buf, "sagem_scart: %d %d %d %d %d %d\n", &sagem_scart[0], &sagem_scart[1], &sagem_scart[2], &sagem_scart[3], &sagem_scart[4], &sagem_scart[5] );
@@ -389,7 +389,7 @@ void LoadScart_Settings()
 		}
 		if(fgets(buf,sizeof(buf),fd)!=NULL)
 		{
-			if(strlen(buf) > 25)
+			if(strlen(buf) > 26)
 				sscanf( buf, "philips_scart: %d %d %d %d %d %d %d\n", &philips_scart[0], &philips_scart[1], &philips_scart[2], &philips_scart[3], &philips_scart[4], &philips_scart[5], &philips_scart[6] );
 			else
 				sscanf( buf, "philips_scart: %d %d %d %d %d %d\n", &philips_scart[0], &philips_scart[1], &philips_scart[2], &philips_scart[3], &philips_scart[4], &philips_scart[5] );
