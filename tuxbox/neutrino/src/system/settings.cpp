@@ -110,7 +110,7 @@ void CScanSettings::useDefaults(const delivery_system_t _delivery_system)
 
 bool CScanSettings::loadSettings(const std::string fileName, const delivery_system_t _delivery_system)
 {
-	useDefaults(delivery_system);
+	useDefaults(_delivery_system);
 
 	if(!configfile.loadConfig(fileName))
 	{
