@@ -101,14 +101,13 @@ class CTimerdClient:private CBasicClient
 		// adds new record timer event
 		int addRecordTimerEvent(const t_channel_id channel_id, time_t alarmtime, time_t stoptime, 
 										unsigned long long epgID=0, time_t epg_starttime=0, time_t announcetime = 0, 
-										std::string apids="", CTimerd::CChannelMode mode=CTimerd::MODE_TV, bool safety=false) 
+										std::string apids="", bool safety=false) 
 			{
 				CTimerd::EventInfo eventInfo;
 				eventInfo.channel_id = channel_id;
 				eventInfo.epgID = epgID;
 				eventInfo.epg_starttime = epg_starttime;
-            eventInfo.apids = apids;
-				eventInfo.mode = mode;
+				eventInfo.apids = apids;
 				eventInfo.recordingSafety = safety;
 				return addTimerEvent(CTimerd::TIMER_RECORD, &eventInfo, announcetime, alarmtime, stoptime);
 			};
@@ -120,14 +119,13 @@ class CTimerdClient:private CBasicClient
 		// adds new zapto timer event
 		int addZaptoTimerEvent(const t_channel_id channel_id, time_t alarmtime, time_t announcetime = 0, 
 									  time_t stoptime = 0, unsigned long long epgID=0, time_t epg_starttime=0,
-									  std::string apids="", CTimerd::CChannelMode mode=CTimerd::MODE_TV) 
+									  std::string apids="") 
 		{
 			CTimerd::EventInfo eventInfo;
 			eventInfo.channel_id = channel_id;
 			eventInfo.epgID = epgID;
 			eventInfo.epg_starttime = epg_starttime;
 			eventInfo.apids = apids;
-			eventInfo.mode = mode;
 			return addTimerEvent(CTimerd::TIMER_ZAPTO, &eventInfo, announcetime, alarmtime, stoptime);
 		};
 

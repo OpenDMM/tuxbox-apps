@@ -923,10 +923,7 @@ void CControlAPI::SendTimers(CWebserverRequest* request)
 			zAddData[22]=0;
 
 			if (zAddData[0] == 0)
-				if (timer->mode == CTimerd::MODE_RADIO)
-					strcpy(zAddData, "Unbekannter Radiokanal");
-				else
-					strcpy(zAddData, "Unbekannter TV-Kanal");
+				strcpy(zAddData, Parent->Zapit->isChannelTVChannel(timer->channel_id) ? "Unbekannter TV-Kanal" : "Unbekannter Radiokanal");
 			break;
 			
 		case CTimerd::TIMER_STANDBY:

@@ -38,7 +38,7 @@ class CTimerdMsg : public CBasicMessage
 	
  public:
 
-	static const CBasicMessage::t_version ACTVERSION = 1;
+	static const CBasicMessage::t_version ACTVERSION = 2;
 
 	enum commands
 		{

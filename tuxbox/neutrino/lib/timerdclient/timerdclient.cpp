@@ -241,7 +241,6 @@ int CTimerdClient::addTimerEvent( CTimerd::CTimerEventTypes evType, void* data, 
 		tei.channel_id = ei->channel_id;
 		tei.epg_starttime	= ei->epg_starttime;
 		tei.epgID = ei->epgID;
-		tei.mode	= ei->mode;
 		tei.recordingSafety = ei->recordingSafety;
 		length = sizeof( CTimerd::TransferEventInfo);
 		data = &tei;

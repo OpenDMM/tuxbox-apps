@@ -118,7 +118,6 @@ class CTimerEvent_Record : public CTimerEvent
 			   event_id_t epgID = 0,
 			   time_t epg_starttime = 0, 
 			   std::string apids = "",
-			   CTimerd::CChannelMode mode = CTimerd::MODE_TV,
 			   CTimerd::CTimerEventRepeat evrepeat = CTimerd::TIMERREPEAT_ONCE);
 	CTimerEvent_Record(CConfigFile *config, int iId);
 	virtual ~CTimerEvent_Record(){};
@@ -139,9 +138,8 @@ class CTimerEvent_Zapto : public CTimerEvent_Record
 			  t_channel_id channel_id,
 			  event_id_t epgID = 0,
 			  time_t epg_starttime = 0, 
-			  CTimerd::CChannelMode mode = CTimerd::MODE_TV,
 			  CTimerd::CTimerEventRepeat evrepeat = CTimerd::TIMERREPEAT_ONCE):
-		CTimerEvent_Record(announceTime, alarmTime, (time_t) 0, channel_id, epgID, epg_starttime, "", mode, evrepeat)
+		CTimerEvent_Record(announceTime, alarmTime, (time_t) 0, channel_id, epgID, epg_starttime, "", evrepeat)
 		{eventType = getEventType();};
 	CTimerEvent_Zapto(CConfigFile *config, int iId):
 		CTimerEvent_Record(config, iId)
