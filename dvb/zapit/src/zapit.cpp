@@ -305,7 +305,7 @@ int setPesFilter (int fd, dmxOutput_t output, dmxPesType_t pesType, dvb_pid_t pi
 {
 	dmxPesFilterParams pesFilterParams;
 
-	if ((pid == NONE) || (pid == INVALID))
+	if ((pid == NONE) || (pid >= INVALID))
 	{
 		return fd;
 	}
