@@ -249,8 +249,8 @@ int LoadSatellitePositions(void)
 	}
 	
 	xmlFreeDoc(parser);
-	for (spos_it = satellitePositions.begin(); spos_it != satellitePositions.end(); spos_it++)
-		printf("satelliteName = %s, satellitePosition = %d\n", spos_it->first.c_str(), spos_it->second);
+//	for (spos_it = satellitePositions.begin(); spos_it != satellitePositions.end(); spos_it++)
+//		printf("satelliteName = %s, satellitePosition = %d\n", spos_it->first.c_str(), spos_it->second);
 
 	return 0;
 }
