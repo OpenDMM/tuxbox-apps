@@ -117,10 +117,8 @@ struct {
 } lastChannel;
 
 int connfd;
-
 int lofHigh = 10600;
 int lofLow = 9750;
-int offset = 0;
 uint16_t caid = 0;
 int caver = 0;
 
@@ -2846,9 +2844,13 @@ int main (int argc, char **argv)
 			{
 				debug = 1;
 			}
-			else if (!strcmp(argv[i], "-o"))
+			else if (!strcmp(argv[i], "-lofLow"))
 			{
-				offset = atoi(argv[++i]);
+				lofLow = atoi(argv[++i]);
+			}
+			else if (!strcmp(argv[i], "-lofHigh"))
+			{
+				lofHigh = atoi(argv[++i]);
 			}
 			else if (!strcmp(argv[i], "-q"))
 			{
@@ -2870,7 +2872,7 @@ int main (int argc, char **argv)
 			}
 			else
 			{
-				printf("Usage: zapit [-d] [-o offset in Hz] [-q] [-v]\n");
+				printf("Usage: zapit [-d] [-lofLow LOF in kHz] [-lofHigh LOF in kHz] [-q] [-v]\n");
 				exit(0);
 			}
 		}
