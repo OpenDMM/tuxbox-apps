@@ -33,7 +33,9 @@
 
 
 #define CONFIGFILE      CONFIGDIR "/zapit/zapit.conf"
+#define MOTORCONFIGFILE CONFIGDIR "/motor.conf"
 #define SERVICES_XML    CONFIGDIR "/zapit/services.xml"
+#define SERVICES_TMP    "/tmp/services.tmp"
 #define BOUQUETS_XML    CONFIGDIR "/zapit/bouquets.xml"
 
 #define CABLES_XML      "/share/tuxbox/cables.xml"

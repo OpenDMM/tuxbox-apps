@@ -83,6 +83,8 @@ CDemux *videoDemux = NULL;
 
 /* the map which stores the wanted cable/satellites */
 std::map<uint8_t, std::string> scanProviders;
+/* the map which stores the diseqc 1.2 motor positions */
+extern std::map <string, uint8_t> motorPositions;
 
 /* current zapit mode */
 enum {
@@ -700,6 +702,23 @@ bool parse_command(CBasicMessage::Header &rmsg, int connfd)
 			DBG("adding %s (diseqc %d)", sat.satName, sat.diseqc);
 			scanProviders[sat.diseqc] = sat.satName;
 		}
+		break;
+	}
+	
+	case CZapitMessages::CMD_SCANSETSCANMOTORPOSLIST:
+	{
+		CZapitClient::commandSetScanMotorPosList sat;
+		FILE * fd = NULL;
+		
+		fopen(MOTORCONFIGFILE, "w");
+		motorPositions.clear();
+		while (CBasicServer::receive_data(connfd, &sat, sizeof(sat))) 
+		{
+			DBG("adding %s (motorPos %d)", sat.satName, sat.motorPos);
+			motorPositions[sat.satName] = sat.motorPos;
+			fprintf(fd, "%s %d\n", sat.satName, sat.motorPos);
+		}
+		fclose(fd);
 		break;
 	}
 	
