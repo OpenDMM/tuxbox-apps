@@ -1869,6 +1869,7 @@ void CNeutrinoApp::InitLcdSettings(CMenuWidget &lcdSettings)
 	oj = new CMenuOptionChooser("lcdmenu.statusline", &g_settings.lcd_show_volume, true );
 	oj->addOption(0, "lcdmenu.statusline.playtime");
 	oj->addOption(1, "lcdmenu.statusline.volume");
+	oj->addOption(2, "lcdmenu.statusline.both");
 	lcdSettings.addItem( oj );
 }
 
