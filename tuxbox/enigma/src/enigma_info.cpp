@@ -189,6 +189,12 @@ public:
 				vendor->setText("Sagem");
 				processor->setText(_("Processor: XPC823, 66MHz"));
 				break;
+			case eSystemInfo::DM500:
+				machine->setText("DM500");
+				vendor->setText("Dream-Multimedia-TV");
+				dreamlogo->show();
+				processor->setText(_("Processor: STBx25xx, 252MHz"));
+				break;
 			case eSystemInfo::DM5600:
 				machine->setText("DM5600");
 				vendor->setText("Dream-Multimedia-TV");
@@ -282,6 +288,7 @@ public:
 				eString date=verid.mid(4, 8);
 //				eString time=verid.mid(12, 4);
 				if ( eSystemInfo::getInstance()->getHwType() == eSystemInfo::DM7000
+				|| eSystemInfo::getInstance()->getHwType() == eSystemInfo::DM500
 				|| eSystemInfo::getInstance()->getHwType() == eSystemInfo::DM5600
 				|| eSystemInfo::getInstance()->getHwType() == eSystemInfo::DM5620 )
 					version->setText(
