@@ -12,7 +12,7 @@ $Id$
 #define __VERSION_H 1
 
 
-#define DVBSNOOP_VERSION     "1.1.12"
+#define DVBSNOOP_VERSION     "1.1.14"
 
 #define DVBSNOOP_URL         "http://dvbsnoop.sourceforge.net/"
 #define DVBSNOOP_COPYRIGHT   "(c) 2001-2003  Rainer Scherg  (rasc)"
