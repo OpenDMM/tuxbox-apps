@@ -45,7 +45,7 @@
 
 #include <sys/socket.h>
 
-#include <tuxbox.h>
+#include <libtuxbox.h>
 
 #include <iostream>
 #include <fstream>
