@@ -128,9 +128,9 @@ bool CBouqueteditAPI::showBouquets(CWebserverRequest* request)
 
 		// hide/show
 		if (bouquet->hidden)
-			request->printf("<TD><CENTER><A HREF=\"set?selected=%i&action=show#akt\"><IMG src=\"../images/hidden.gif\" ALT=\"Bouquet entsperren\"></IMG></A></CENTER></TD>\n", bouquet->bouquet_nr + 1);
+			request->printf("<TD><CENTER><A HREF=\"set?selected=%i&action=show#akt\"><IMG src=\"../images/hidden.gif\" ALT=\"Bouquet verstecken\"></IMG></A></CENTER></TD>\n", bouquet->bouquet_nr + 1);
 		else
-			request->printf("<TD><CENTER><A HREF=\"set?selected=%i&action=hide#akt\"><IMG src=\"../images/visible.gif\" ALT=\"Bouquet entsperren\"></IMG></A></CENTER></TD>\n", bouquet->bouquet_nr + 1);
+			request->printf("<TD><CENTER><A HREF=\"set?selected=%i&action=hide#akt\"><IMG src=\"../images/visible.gif\" ALT=\"Bouquet anzeigen\"></IMG></A></CENTER></TD>\n", bouquet->bouquet_nr + 1);
 
 		request->printf("<TD><A HREF=\"edit?selected=%i&name=%s\">%s</A></TD>", bouquet->bouquet_nr + 1, bouquet->name, bouquet->name);
 		request->printf("<TD WIDTH=\"100\"><NOBR><A HREF=\"rename?selected=%i&name=%s\"><IMG SRC=\"../images/modify.gif\" ALT=\"Bouquet umbenennen\"></IMG></a>&nbsp;\n",bouquet->bouquet_nr + 1, bouquet->name);

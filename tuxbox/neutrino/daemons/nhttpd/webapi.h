@@ -59,7 +59,6 @@ class CWebAPI
 
 		bool Test(CWebserverRequest* request);
 		bool Timer(CWebserverRequest* request);
-		bool Info(CWebserverRequest* request);
 		bool Dbox(CWebserverRequest* request);
 		bool Channellist(CWebserverRequest* request);
 		bool Controlpanel(CWebserverRequest* request);
