@@ -3293,6 +3293,15 @@ int CNeutrinoApp::exec(CMenuTarget* parent, std::string actionKey)
 		networkConfig.automatic_start = (network_automatic_start == 1);
 		networkConfig.commitConfig();
 		saveSetup();
+		
+		/* send motor position list to zapit */
+		if (scanSettings.diseqcMode == DISEQC_1_2)
+		{
+			printf("[neutrino] sending motor positions list to zapit...\n");
+			CZapitClient::ScanMotorPosList motorPosList;
+			CNeutrinoApp::getInstance()->getScanSettings().toMotorPosList(motorPosList);
+			g_Zapit->setScanMotorPosList(motorPosList);
+		}
 	}
 	else if(actionKey=="recording")
 	{
