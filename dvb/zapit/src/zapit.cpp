@@ -1998,6 +1998,7 @@ frontend->getInfo()->type == FE_QAM //bei kabel
 				responseGetOtherPIDs.ecmpid = channel->getEcmPid();
 				responseGetOtherPIDs.vtxtpid = channel->getTeletextPid();
 				responseGetOtherPIDs.pcrpid = channel->getPcrPid();
+				responseGetOtherPIDs.selected_apid = channel->getAudioChannel();
 				send( connfd, &responseGetOtherPIDs, sizeof(responseGetOtherPIDs),0);
 				sendAPIDs();
 			break;
