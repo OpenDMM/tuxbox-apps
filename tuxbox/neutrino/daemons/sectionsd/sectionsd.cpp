@@ -23,6 +23,9 @@
 //    Foundation, Inc., 675 Mass Ave, Cambridge, MA 02139, USA.
 //
 //  $Log$
+//  Revision 1.43  2001/07/26 01:38:35  fnbrd
+//  All events shows now all nvod-times.
+//
 //  Revision 1.42  2001/07/26 01:12:46  fnbrd
 //  Removed a warning.
 //
@@ -880,16 +883,18 @@ static void commandAllEventsChannelName(struct connectionData *client, char *dat
     for(MySIeventsOrderServiceUniqueKeyFirstStartTimeEventUniqueKey::iterator e=mySIeventsOrderServiceUniqueKeyFirstStartTimeEventUniqueKey.begin(); e!=mySIeventsOrderServiceUniqueKeyFirstStartTimeEventUniqueKey.end(); e++) {
       if(SIservice::makeUniqueKey(e->first->originalNetworkID, e->first->serviceID)==serviceUniqueKey) {
         serviceIDfound=1;
-        char strZeit[50];
-        sprintf(strZeit, "%012llx ", e->first->uniqueKey());
-        strcat(evtList, strZeit);
-        struct tm *tmZeit;
-        tmZeit=localtime(&(e->first->times.begin()->startzeit));
-        sprintf(strZeit, "%02d.%02d %02d:%02d %u ",
-          tmZeit->tm_mday, tmZeit->tm_mon+1, tmZeit->tm_hour, tmZeit->tm_min, e->first->times.begin()->dauer/60);
-        strcat(evtList, strZeit);
-        strcat(evtList, e->first->name.c_str());
-        strcat(evtList, "\n");
+        for(SItimes::iterator t=e->first->times.begin(); t!=e->first->times.end(); t++) {
+          char strZeit[50];
+          sprintf(strZeit, "%012llx ", e->first->uniqueKey());
+          strcat(evtList, strZeit);
+          struct tm *tmZeit;
+          tmZeit=localtime(&(t->startzeit));
+          sprintf(strZeit, "%02d.%02d %02d:%02d %u ",
+            tmZeit->tm_mday, tmZeit->tm_mon+1, tmZeit->tm_hour, tmZeit->tm_min, e->first->times.begin()->dauer/60);
+          strcat(evtList, strZeit);
+          strcat(evtList, e->first->name.c_str());
+          strcat(evtList, "\n");
+        }
       } // if = serviceID
       else if(serviceIDfound)
         break; // sind nach serviceID und startzeit sortiert -> nicht weiter suchen
@@ -934,8 +939,8 @@ static void commandDumpStatusInformation(struct connectionData *client, char *da
   time_t zeit=time(NULL);
   char stati[2024];
   sprintf(stati,
-    "$Id$"
-    "Current time: %s"
+    "$Id$\n"
+    "Current time: %s\n"
     "Hours to cache: %ld\n"
     "Events are old %ldmin after their end time\n"
     "Number of cached services: %u\n"
