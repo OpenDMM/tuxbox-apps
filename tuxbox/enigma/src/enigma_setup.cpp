@@ -48,6 +48,8 @@
 #include <upgrade.h>
 #include <enigma.h>
 
+Signal1<void,eZapSetup*> eZapSetup::setupHook;
+
 eZapSetup::eZapSetup()
 	:eListBoxWindow<eListBoxEntryMenu>(_("Setup"), 9, 450, true)
 {
@@ -126,6 +128,7 @@ eZapSetup::eZapSetup()
 		CONNECT((new eListBoxEntryMenu(&list, _("RF-Modulator..."), eString().sprintf("(%d) %s", ++entry, _("setup modulator")) ))->selected, eZapSetup::sel_rfmod);
 #endif
 	CONNECT((new eListBoxEntryMenu(&list, _("Video calibration..."), eString().sprintf("(%d) %s", ++entry, _("show calibration picture")) ))->selected, eZapSetup::sel_test);
+	setupHook(this);
 }
 
 eZapSetup::~eZapSetup()
