@@ -84,12 +84,10 @@ namespace Crypto
         void add_extension ( extension & ) throw ();
 
         void sign ( Crypto::evp::key::privatekey &, Crypto::evp::md::md & ) throw ();
-        int verify ( store &, int (*) ( int, libcrypto::X509_STORE_CTX * ) = verify_callback ) throw ( std::bad_alloc );
+        int verify ( store &, int (*) ( int, libcrypto::X509_STORE_CTX * ) = NULL ) throw ( std::bad_alloc, Crypto::exception::undefined_libcrypto_error );
 
       protected:
         operator libcrypto::X509 * () throw ();
-
-        static int verify_callback ( int ok, libcrypto::X509_STORE_CTX * ctx ) throw ();
 
         libcrypto::X509 * _cert;
 
