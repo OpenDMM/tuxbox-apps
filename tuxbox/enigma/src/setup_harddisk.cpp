@@ -347,31 +347,35 @@ void eHarddiskMenu::s_format()
 
 		if ( !fs->getCurrent()->getKey() )  // reiserfs
 		{
-			if ((system("sync") >> 8)
-				||(system( eString().sprintf(
-					"/sbin/mkreiserfs -f -f /dev/ide/host%d/bus%d/target%d/lun0/part1", host, bus, target).c_str())>>8 )
-				||(system("sync") >> 8)
-				||(system(eString().sprintf(
-					"/bin/mount -t reiserfs /dev/ide/host%d/bus%d/target%d/lun0/part1 /hdd", host, bus, target).c_str())>>8 )
-				||(system("mkdir /hdd/movie")>>8 )
-				||(system("sync") >> 8))
+			::sync();
+			if ( system( eString().sprintf(
+					"/sbin/mkreiserfs -f -f /dev/ide/host%d/bus%d/target%d/lun0/part1", host, bus, target).c_str())>>8)
 				goto err;
-			else
-				goto noerr;
+			::sync();
+			if ( system( eString().sprintf(
+					"/bin/mount -t reiserfs /dev/ide/host%d/bus%d/target%d/lun0/part1 /hdd", host, bus, target).c_str())>>8)
+				goto err;
+			::sync();
+			if ( system("mkdir /hdd/movie")>>8 )
+				goto err;
+			::sync();
+			goto noerr;
 		}
 		else  // ext3
 		{
-			if ((system("sync") >> 8)
-				||(system( eString().sprintf(
-					"/sbin/mkfs.ext3 -T largefile4 /dev/ide/host%d/bus%d/target%d/lun0/part1", host, bus, target).c_str())>>8 )
-				||(system("sync") >> 8)
-				||(system(eString().sprintf(
-				"/bin/mount -t ext3 /dev/ide/host%d/bus%d/target%d/lun0/part1 /hdd", host, bus, target).c_str())>>8 )
-				||(system("mkdir /hdd/movie")>>8 )
-				||(system("sync") >> 8))
+			::sync();
+			if ( system( eString().sprintf(
+					"/sbin/mkfs.ext3 -T largefile4 /dev/ide/host%d/bus%d/target%d/lun0/part1", host, bus, target).c_str())>>8)
 				goto err;
-			else
-				goto noerr;
+			::sync();
+			if ( system(eString().sprintf(
+				"/bin/mount -t ext3 /dev/ide/host%d/bus%d/target%d/lun0/part1 /hdd", host, bus, target).c_str())>>8)
+				goto err;
+			::sync();
+			if ( system("mkdir /hdd/movie")>>8 )
+				goto err;
+			::sync();
+			goto noerr;
 		}
 err:
 		{

@@ -56,21 +56,22 @@ eZapInfo::~eZapInfo()
 
 void eZapInfo::sel_satfind()
 {
-    int pid;
-    eSatfind s(eFrontend::getInstance());
-    hide();
+	int pid;
+	eSatfind s(eFrontend::getInstance());
+	hide();
 
-    pid=fork();
-    if( pid==0 ){   // child process
-        system("satfind");
-	_exit(0);
-    }
-    s.show();
-    s.exec();
-    s.hide();
-    if(pid!=-1)
-	system("killall -9 satfind");
-    show();
+	pid=fork();
+	if( pid==0 )
+	{   // child process
+		system("satfind");
+		_exit(0);
+	}
+	s.show();
+	s.exec();
+	s.hide();
+	if(pid!=-1)
+		system("killall -9 satfind");
+	show();
 }
 
 void eZapInfo::sel_streaminfo()
