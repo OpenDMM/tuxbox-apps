@@ -18,7 +18,7 @@
 using namespace std;
 
 typedef map<t_channel_id, CZapitChannel> tallchans;
-typedef map<t_channel_id, CZapitChannel>::iterator tallchans_iterator;
+typedef tallchans::iterator tallchans_iterator;
 
 typedef vector<CZapitChannel*> ChannelList;
 

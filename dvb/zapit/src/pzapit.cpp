@@ -63,7 +63,7 @@ int main (int argc, char** argv)
 	uint32_t j;
 	uint32_t k;
 
-	unsigned int bouquet = -1;
+	int bouquet = -1;
 	unsigned int channel = 0;
 	unsigned int count = 0;
 	int diseqcRepeats = -1;
