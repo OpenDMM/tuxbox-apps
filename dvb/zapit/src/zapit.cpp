@@ -695,7 +695,7 @@ void parse_command (CZapitClient::commandHead &rmsg)
 			case CZapitClient::CMD_GET_CURRENT_SERVICEID:
 			{
 				CZapitClient::responseGetCurrentServiceID msgCurrentSID;
-				msgCurrentSID.serviceID = channel->getChannelID();
+				msgCurrentSID.channel_id = channel->getChannelID();
 				send(connfd, &msgCurrentSID, sizeof(msgCurrentSID), 0);
 				break;
 			}
