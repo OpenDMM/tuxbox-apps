@@ -2092,19 +2092,7 @@ int CNeutrinoApp::run(int argc, char **argv)
 	}
 	g_info.box_Type = atoi(mID);
 
-	g_info.gtx_ID = -1;
-	if (!getEnvironment("gtxID", &g_info.gtx_ID))
-		return 1;
-
-	g_info.enx_ID = -1;
-	if (!getEnvironment("enxID", &g_info.enx_ID))
-		return 1;
-
-	g_info.fe = 0;
-	if (!getEnvironment("fe", &g_info.fe))
-		return 1;
-
-	dprintf( DEBUG_DEBUG, "[neutrino] box_Type: %d, gtxID: %d, enxID: %d, fe: %d\n", g_info.box_Type, g_info.gtx_ID, g_info.enx_ID, g_info.fe);
+	dprintf( DEBUG_DEBUG, "[neutrino] box_Type: %d\n", g_info.box_Type);
 
 
 
