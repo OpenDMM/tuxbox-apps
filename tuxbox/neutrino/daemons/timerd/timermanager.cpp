@@ -213,7 +213,9 @@ bool CTimerManager::stopEvent(int eventID)
 {
 	if(events.find(eventID)!=events.end())							 // if i have a event with this id
 	{
-		events[eventID]->eventState = CTimerd::TIMERSTATE_HASFINISHED;		// set the state to terminated
+		if( (events[eventID]->eventState == CTimerd::TIMERSTATE_ISRUNNING) && (events[eventID]->stopTime > 0) )
+			events[eventID]->stopEvent();	// if event is running an has stopTime 
+		events[eventID]->eventState = CTimerd::TIMERSTATE_HASFINISHED;		// set the state to finished
 		return true;															// so timerthread will do the rest for us
 	}
 	else
