@@ -38,7 +38,7 @@
 #include "neutrino.h"
 
 #include "zapit/getservices.h"
-#include "daemonc/remotecontrol.h" 
+#include "daemonc/remotecontrol.h"
 
 #include "driver/framebuffer.h"
 #include "driver/fontrenderer.h"
@@ -1035,7 +1035,11 @@ void CNeutrinoApp::InitScanSettings(CMenuWidget &settings)
 				break;
 			}
 		}
-*/		CMenuOptionStringChooser* oj = new CMenuOptionStringChooser("cablesetup.provider", (char*)&scanSettings.satNameNoDiseqc, true/*, new CCableProviderNotifier*/);
+*/
+		CZapitClient::SatelliteList providerList;
+		g_Zapit->getScanSatelliteList(providerList);
+
+		CMenuOptionStringChooser* oj = new CMenuOptionStringChooser("cablesetup.provider", (char*)&scanSettings.satNameNoDiseqc, true/*, new CCableProviderNotifier*/);
 
 		for ( uint i=0; i< providerList.size(); i++)
 		{
@@ -1043,7 +1047,7 @@ void CNeutrinoApp::InitScanSettings(CMenuWidget &settings)
 			dprintf(DEBUG_DEBUG, "got scanprovider (cable): %s\n", providerList[i].satName );
 		}
 		settings.addItem( ojBouquets);
-		settings.addItem( ojInv );
+//		settings.addItem( ojInv );
 		settings.addItem( oj);
 	}
 
@@ -1181,7 +1185,7 @@ void CNeutrinoApp::InitMiscSettings(CMenuWidget &miscSettings)
 		oj->addOption(1, "options.on");
 		miscSettings.addItem( oj );
 
-	
+
 		static int fb_destination = 0;
 		FILE* fd = fopen("/var/tuxbox/boot/ppcboot.conf", "r");
 		if(fd)
