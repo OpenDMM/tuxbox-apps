@@ -606,6 +606,7 @@ CZapitChannel* CBouquetManager::copyChannelByOnidSid( unsigned int onid_sid)
 	if (itChannel != allchans_tv.end())
 	{
 		chan = new CZapitChannel(itChannel->second);
+		chan->setIsCopy(true);
 	}
 	else
 	{
@@ -613,6 +614,7 @@ CZapitChannel* CBouquetManager::copyChannelByOnidSid( unsigned int onid_sid)
 		if (itChannel != allchans_radio.end())
 		{
 			chan = new CZapitChannel(itChannel->second);
+			chan->setIsCopy(true);
 		}
 	}
 	return( chan);
