@@ -227,7 +227,7 @@ public:
 			processor->setText(_("Processor: STB04500, 252MHz"));
 			break;
 		case 6:
-			processor->setText(_("Processor: STB25xxx, 252MHz"));
+			processor->setText(_("Processor: STBx25xx, 252MHz"));
 			break;
 		}
 		
