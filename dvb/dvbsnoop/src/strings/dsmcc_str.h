@@ -8,6 +8,9 @@ $Id$
 
 
 $Log$
+Revision 1.2  2003/10/25 19:11:50  rasc
+no message
+
 Revision 1.1  2003/10/16 19:02:28  rasc
 some updates to dvbsnoop...
 - small bugfixes
@@ -19,6 +22,12 @@ some updates to dvbsnoop...
 
 
 char *dsmccStrMHPOrg (u_int id);
+char *dsmccStrAction_Type (u_int id);
+char *dsmccStrProcessing_order (u_int id);
+char *dsmccStrPayload_scrambling_control (u_int id);
+char *dsmccStrAddress_scrambling_control (u_int id);
+char *dsmccStrLinkage0CTable_TYPE (u_int i);
+char *dsmccStrMultiProtEncapsMACAddrRangeField (u_int i);
 
 
 

@@ -9,6 +9,9 @@ $Id$
 
 
 $Log$
+Revision 1.3  2003/10/25 19:11:49  rasc
+no message
+
 Revision 1.2  2003/10/19 21:05:53  rasc
 - some datacarousell stuff started
 
@@ -34,6 +37,7 @@ void  descriptorDVB_BouquetName (u_char *b);
 void  descriptorDVB_Service (u_char *b);
 void  descriptorDVB_CountryAvail (u_char *b);
 void  descriptorDVB_Linkage (u_char *b);
+  void sub_descriptorDVB_Linkage0x08 (u_char *b, int len);
   void sub_descriptorDVB_Linkage0x0B (u_char *b, int len);
   void sub_descriptorDVB_Linkage0x0C (u_char *b, int len);
 void  descriptorDVB_NVOD_Reference (u_char *b);
