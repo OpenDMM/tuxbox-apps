@@ -2,6 +2,9 @@
 // $Id$
 //
 // $Log$
+// Revision 1.8  2001/09/13 10:12:41  field
+// Major update! Beschleunigtes zappen & EPG uvm...
+//
 // Revision 1.7  2001/09/03 03:34:04  tw-74
 // cosmetic fixes, own "Mg" fontmetrics
 //
@@ -365,3 +368,4 @@ void CEpgData::GetEPGData( string channelName )
 	printf("exit epg-get\n\n");
 	close(sock_fd);
 }
+
