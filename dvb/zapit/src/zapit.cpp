@@ -425,7 +425,7 @@ void unsetRecordMode(void)
 	eventServer->sendEvent(CZapitClient::EVT_RECORDMODE_DEACTIVATED, CEventServer::INITID_ZAPIT );
 }
 
-int prepare_channels(fe_type_t frontendType, diseqc_t diseqcType)
+int prepare_channels(FrontendType frontendType, diseqc_t diseqcType)
 {
 	// for the case this function is NOT called for the first time (by main())
 	// we clear all cannel lists, they are refilled
