@@ -543,6 +543,7 @@ void CFrontend::positionMotor(uint8_t diseqc)
 const bool CFrontend::tuneChannel (CZapitChannel *channel)
 {
 	bool noNit = false;
+	int waitForMotor = 0;
 
 	if (transponders.find(channel->getTsidOnid()) == transponders.end())
 	{
@@ -558,11 +559,10 @@ const bool CFrontend::tuneChannel (CZapitChannel *channel)
 		}
 	}
 	
-	if ((diseqcType == DISEQC_1_2) && (currentDiseqc != channel->getDiSEqC()))
+	if ((diseqcType == DISEQC_1_2) && (currentSatellitePosition != channel->getSatellitePosition()))
 	{
 		printf("[frontend] ATTENTION: this function is not working yet!\n");
-		printf("[frontend] tuneChannel: currentDiseqc = %d <> diseqc = %d => we need to position rotor now.\n", currentDiseqc, channel->getDiSEqC());
-		printf("[frontend] moving satellite dish from satellite position %d to %d...\n", currentSatellitePosition, channel->getSatellitePosition());
+		printf("[frontend] tuneChannel: currentSatellitePosition = %d <> satellitePosition = %d => we need to position rotor now.\n", currentSatellitePosition, channel->getSatellitePosition());
 		positionMotor(channel->getDiSEqC());
 		
 		waitForMotor = abs(channel->getSatellitePosition() - currentSatellitePosition) / 18; //assuming 1.8 degrees/second motor rotation speed for the time being...
