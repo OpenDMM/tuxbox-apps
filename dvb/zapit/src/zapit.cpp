@@ -1555,6 +1555,21 @@ void setRadioMode()
 {
 	debug("[zapit] switching to radio-mode\n");
 	Radiomode_on = true;
+
+	if (video_fd >= 0)
+	{
+		ioctl(video_fd, VIDEO_STOP, (boolean)1);
+		close(video_fd);
+		video_fd = -1;
+	}
+
+	if (dmx_video_fd >= 0)
+	{
+		ioctl(dmx_video_fd, DMX_STOP, 0);
+		close(dmx_video_fd);
+		dmx_video_fd = -1;
+	}
+
 	return;
 }
 
