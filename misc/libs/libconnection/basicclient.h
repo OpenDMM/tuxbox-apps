@@ -32,9 +32,13 @@ class CBasicClient
 	int sock_fd;
 
  protected:
-	bool open_connection(const char* socketname);
-	bool send_data(char* data, const size_t size);
+	virtual const unsigned char   getVersion   () const = 0;
+	virtual const          char * getSocketName() const = 0;
+
+	bool open_connection();
+	bool send_data(const char* data, const size_t size);
 	bool receive_data(char* data, const size_t size);
+	bool send(const unsigned char command, const char* data = NULL, const unsigned int size = 0);
 	void close_connection();
 	
 	CBasicClient();

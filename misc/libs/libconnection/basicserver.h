@@ -28,7 +28,7 @@
 
 #include <string>
 
-#include <zapit/client/basicmessage.h>
+#include "basicmessage.h"
 
 class CBasicServer
 {
