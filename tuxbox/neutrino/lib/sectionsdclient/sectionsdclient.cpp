@@ -20,6 +20,9 @@
   Foundation, Inc., 675 Mass Ave, Cambridge, MA 02139, USA.
 
   $Log$
+  Revision 1.20  2002/09/25 22:15:09  thegoodguy
+  Small bugfix (thx to gcc: "comparison is always false due to limited range of data type")
+
   Revision 1.19  2002/09/24 22:29:06  thegoodguy
   Code cleanup (kick out onid_sid)
 
@@ -684,7 +687,7 @@ bool CSectionsdClient::getEPGidShort( unsigned long long eventid,CShortEPGData *
 			char* dp = pData;
 
 			for(int i = 0; i < nBufSize;i++)
-				if(pData[i] == 0xff)
+				if(((unsigned char)pData[i]) == 0xff)
 					pData[i] = 0;
 
 			epgdata->title = dp;
