@@ -102,6 +102,7 @@ tallchans allchans;             //  tallchans defined in "bouquets.h"
 std::map <uint32_t, transponder>transponders;
 pthread_t scan_thread;
 extern int found_transponders;
+extern int processed_transponders;
 extern int found_channels;
 extern short curr_sat;
 extern short scan_runs;
@@ -673,6 +674,7 @@ bool parse_command(CBasicMessage::Header &rmsg, int connfd)
 		CZapitMessages::responseIsScanReady msgResponseIsScanReady;
 		msgResponseIsScanReady.satellite = curr_sat;
 		msgResponseIsScanReady.transponder = found_transponders;
+		msgResponseIsScanReady.processed_transponder = processed_transponders;
 		msgResponseIsScanReady.services = found_channels;
 		if (scan_runs > 0)
 			msgResponseIsScanReady.scanReady = false;
