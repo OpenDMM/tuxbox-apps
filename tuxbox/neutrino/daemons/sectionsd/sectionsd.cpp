@@ -2642,6 +2642,9 @@ static void *sdtThread(void *)
 						dprintf("dmxSDT: waking up again - looking for new events :)\n");
 						pthread_mutex_unlock( &dmxSDT.start_stop_mutex );
 						dmxSDT.change( 0 ); // -> restart
+#ifdef PAUSE_EQUALS_STOP
+						dmxSDT.real_unpause();
+#endif
 					}
 					else if (rs == 0)
 					{
@@ -3130,6 +3133,9 @@ static void *eitThread(void *)
 						dprintf("dmxEIT: waking up again - looking for new events :)\n");
 						pthread_mutex_unlock( &dmxEIT.start_stop_mutex );
 						dmxEIT.change( 0 ); // -> restart
+#ifdef PAUSE_EQUALS_STOP
+						dmxEIT.real_unpause();
+#endif
 					}
 					else if (rs == 0)
 					{
