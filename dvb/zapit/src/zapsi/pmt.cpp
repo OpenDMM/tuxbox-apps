@@ -266,7 +266,10 @@ int parse_pmt (int demux_fd, CZapitChannel * channel)
 		return -1;
 	}
 
-	setDmxSctFilter(demux_fd, channel->getPmtPid(), 0x02, channel->getServiceId() >> 8, channel->getServiceId());
+	if (setDmxSctFilter(demux_fd, channel->getPmtPid(), 0x02, channel->getServiceId() >> 8, channel->getServiceId()) < 0)
+	{
+		return -1;
+	}
 
 	if (read(demux_fd, buffer, PMT_SIZE) < 0)
 	{
