@@ -23,6 +23,10 @@
 //    Foundation, Inc., 675 Mass Ave, Cambridge, MA 02139, USA.
 //
 //  $Log$
+//  Revision 1.108  2002/03/28 08:49:14  obi
+//  sigkill cannot be caught
+//  exit on all signals except sighup
+//
 //  Revision 1.107  2002/03/22 17:12:06  field
 //  Weitere Updates, compiliert wieder
 //
@@ -3516,14 +3520,16 @@ static int listenSocket=0;
 // Just to get our listen socket closed cleanly
 static void signalHandler(int signum)
 {
-  //only exit on sigkill
-  if(signum==SIGKILL)
-  {
-    if(listenSocket)
-      close(listenSocket);
-    listenSocket=0;
-    exit(0);
-  }
+	switch (signum)
+	{
+	case SIGHUP:
+		break;
+	default:
+		if(listenSocket)
+			close(listenSocket);
+		listenSocket=0;
+		exit(0);
+	}
 }
 
 int main(int argc, char **argv)
@@ -3564,7 +3570,6 @@ int main(int argc, char **argv)
 		//catch all signals... (busybox workaround)
 		signal(SIGHUP, signalHandler);
 		signal(SIGINT, signalHandler);
-		signal(SIGKILL, signalHandler);
 		signal(SIGQUIT, signalHandler);
 		signal(SIGTERM, signalHandler);
 

@@ -732,12 +732,18 @@ void parse_command(int connfd, CControld::commandHead* rmessage)
 }
 
 
-void sig_catch(int)
+void sig_catch(int signal)
 {
-	saveSettings();
+	switch (signal)
+	{
+	case SIGHUP:
+		saveSettings();
+		break;
+	default:
+		saveSettings();
+		exit(0);
+	}
 }
-
-
 
 int main(int argc, char **argv)
 {
