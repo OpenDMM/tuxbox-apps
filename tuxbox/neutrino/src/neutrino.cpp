@@ -2667,9 +2667,9 @@ int CNeutrinoApp::handleMsg(uint msg, uint data)
 		if( g_settings.recording_server_wakeup )
 		{
 			std::string command;
-			command = "ether-wake " + std::string(g_settings.recording_server_mac);
+			command = "etherwake " + std::string(g_settings.recording_server_mac);
 			if(system(command.c_str()) != 0)
-				perror("ether-wake failed");
+				perror("etherwake failed");
 		}
 		if( mode != mode_scart )
 			ShowHint ( "messagebox.info", g_Locale->getText("recordtimer.announce") );
