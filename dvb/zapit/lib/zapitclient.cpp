@@ -155,6 +155,17 @@ void CZapitClient::getLastChannel(unsigned int &channumber, char &mode)
 	close_connection();
 }
 
+int32_t CZapitClient::getCurrentSatellitePosition(void)
+{
+	send(CZapitMessages::CMD_GET_CURRENT_SATELLITE_POSITION);
+
+	int32_t response;
+	CBasicClient::receive_data((char *)&response, sizeof(response));
+
+	close_connection();
+	return response;
+}
+
 void CZapitClient::setAudioChannel(const unsigned int channel)
 {
 	CZapitMessages::commandSetAudioChannel msg;
