@@ -23,6 +23,9 @@
 //    Foundation, Inc., 675 Mass Ave, Cambridge, MA 02139, USA.
 //
 //  $Log$
+//  Revision 1.13  2001/07/15 15:09:27  fnbrd
+//  Informative Ausgabe.
+//
 //  Revision 1.12  2001/07/15 15:05:09  fnbrd
 //  Speichert jetzt alle Events die bis zu 24h in der Zukunft liegen.
 //
@@ -803,6 +806,7 @@ int listenSocket;
 struct sockaddr_in serverAddr;
 
   printf("$Id$\n");
+  printf("caching %d hours\n", HOURS_TO_CACHE);
 
   tzset(); // TZ auswerten
 
