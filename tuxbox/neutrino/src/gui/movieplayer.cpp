@@ -1946,8 +1946,7 @@ CMoviePlayerGui::PlayFile (void)
         			apidtitle.append(" (AC3)");
     			}
     			    
-    			APIDSelector.addItem(new CMenuForwarder(apidtitle.c_str(), true, NULL, APIDChanger, apidnumber, 
-    			    false, (uint)(CRCInput::convertDigitToKey(count+1))), (count == 0));
+    			APIDSelector.addItem(new CMenuForwarder(apidtitle.c_str(), true, NULL, APIDChanger, apidnumber, CRCInput::convertDigitToKey(count+1)), (count == 0));
 			}
 		    APIDSelector.exec(NULL, "");
             if (currentapid == 0) {
