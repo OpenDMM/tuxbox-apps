@@ -1981,13 +1981,13 @@ frontend->getInfo()->type == FE_QAM //bei kabel
 			case CZapitClient::CMD_SCANSETDISEQCTYPE :
 				diseqc_t diseqc;
 				read( connfd, &diseqc, sizeof(diseqc));
-				// todo
+				frontend->setDiseqcType(diseqc);
 			break;
 
 			case CZapitClient::CMD_SCANSETDISEQCREPEAT :
-				int repeat;
+				uint32_t repeat;
 				read( connfd, &repeat, sizeof(repeat));
-				// todo
+				frontend->setDiseqcRepeats(repeat);
 			break;
 
 			case CZapitClient::CMD_BQ_ADD_BOUQUET :

@@ -20,6 +20,9 @@
   Foundation, Inc., 675 Mass Ave, Cambridge, MA 02139, USA.
 
   $Log$
+  Revision 1.26  2002/04/14 10:55:25  obi
+  small fixes
+
   Revision 1.25  2002/04/14 10:16:05  Simplex
   new commands for scan configuration
 
@@ -547,7 +550,7 @@ void CZapitClient::setDiseqcType( diseqc_t diseqc)
 }
 
 /* set diseqcRepeat*/
-void CZapitClient::setDiseqcRepeat( int repeat)
+void CZapitClient::setDiseqcRepeat( uint32_t repeat)
 {
 	commandHead msgHead;
 	msgHead.version=ACTVERSION;
