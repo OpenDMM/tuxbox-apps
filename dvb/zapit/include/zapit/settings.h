@@ -48,6 +48,7 @@
 #define FRONTEND_DEVICE "/dev/dvb/adapter0/frontend0"
 #define VIDEO_DEVICE    "/dev/dvb/adapter0/video0"
 
+#define SEC_DEVICE      "/dev/dvb/card0/sec0" //for compatibility with rel_alexW
 
 #define CAMD_UDS_NAME  "/tmp/camd.socket"
 
