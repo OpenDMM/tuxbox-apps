@@ -34,7 +34,7 @@
 #define SDT_SIZE 1024
 
 
-unsigned long get_sdt_TsidOnid(void)
+uint32_t get_sdt_TsidOnid(void)
 {
 	CDemux dmx;
 	

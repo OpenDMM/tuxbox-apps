@@ -16,10 +16,7 @@
 
 #include "getservices.h"
 
-extern std::map <scantransponder_id_t, transponder> scantransponders;
-typedef std::map <scantransponder_id_t, transponder>::iterator stiterator;
-#define GET_ORIGINAL_NETWORK_ID_FROM_SCANTRANSPONDER_ID(transponder_id) ((t_original_network_id)(transponder_id      ))
-#define GET_TRANSPORT_STREAM_ID_FROM_SCANTRANSPONDER_ID(transponder_id) ((t_transport_stream_id)(transponder_id >> 16))
+typedef transponder_list_t::iterator stiterator;
 
 extern CBouquetManager* scanBouquetManager;
 

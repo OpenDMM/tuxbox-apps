@@ -790,8 +790,6 @@ bool parse_command(CBasicMessage::Header &rmsg, int connfd)
 			}
 			channel = 0;
 		TP.diseqc=transponder->second.DiSEqC;
-		if(transponders.size()>0)
-			transponders.clear();
 		bouquetManager->clearAll();
 		allchans.clear();  // <- this invalidates all bouquets, too!
 		stopPlayBack();
