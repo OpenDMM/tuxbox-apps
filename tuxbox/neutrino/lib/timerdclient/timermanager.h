@@ -33,7 +33,7 @@
 #include <string>
 
 #include "eventserver.h"
-#include "../../libconfigfile/configfile.h"
+#include "configfile.h"
 #include "config.h"
 
 
