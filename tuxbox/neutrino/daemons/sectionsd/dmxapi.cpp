@@ -81,6 +81,7 @@ bool getUTC(UTC_t * const UTC, const bool TDT)
 	int fd;
 	struct dmx_sct_filter_params flt;
 	struct SI_section_TDT_header tdt_tot_header;
+	char cUTC[5];
 
 	if ((fd = ::open(DEMUX_DEVICE, O_RDWR)) < 0)
 	{
@@ -107,6 +108,14 @@ bool getUTC(UTC_t * const UTC, const bool TDT)
 	{
 		perror("[sectionsd] getUTC: read");
 		::close(fd);
+		return false;
+	}
+
+	memcpy(cUTC, &tdt_tot_header.UTC_time, 5);
+	if ((cUTC[2] > 0x23) || (cUTC[3] > 0x59) || (cUTC[4] > 0x59)) // no valid time
+	{
+		printf("[sectionsd] getUTC: invalid %s section received: %02x %02x %02x %02x %02x\n", 
+			TDT ? "TDT" : "TOT", cUTC[0], cUTC[1], cUTC[2], cUTC[3], cUTC[4]);
 		return false;
 	}
 
