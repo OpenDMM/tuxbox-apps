@@ -92,6 +92,9 @@
   Foundation, Inc., 675 Mass Ave, Cambridge, MA 02139, USA.
 
   $Log$
+  Revision 1.77  2002/02/09 22:04:05  Simplex
+  speed up discarding BQ-Ed. changes
+
   Revision 1.76  2002/02/09 17:09:42  Simplex
   alphasorted channellist
 
@@ -2262,6 +2265,12 @@ void parse_command()
 				CZapitClient::commandGetChannels msgGetChannels;
 				read( connfd, &msgGetChannels, sizeof(msgGetChannels));
 				sendChannels( msgGetChannels.mode, msgGetChannels.order);
+			break;
+
+			case CZapitClient::CMD_RESTORE_BOUQUETS :
+				g_BouquetMan->restoreBouquets();
+				response.cmd = CZapitClient::CMD_READY;
+				send(connfd, &response, sizeof(response), 0);
 			break;
 
 			case CZapitClient::CMD_REINIT_CHANNELS :
