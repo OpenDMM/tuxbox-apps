@@ -23,7 +23,7 @@
 #ifndef __LIBFLASHIMAGE_LIBFLASHIMAGEFS_HPP
 #define __LIBFLASHIMAGE_LIBFLASHIMAGEFS_HPP
 
-#include <ostream>
+#include <iostream>
 #include <string>
 
 #include <libcrypto++/evp.hpp>

@@ -25,10 +25,11 @@
 
 #define INLINE
 
-#include <istream>
+#include <iostream>
 #include <map>
 #include <string>
 
+#include <libcrypto++/x509.hpp>
 #include <libflashimage/flashimagefs.hpp>
 
 namespace FlashImage
@@ -40,14 +41,17 @@ namespace FlashImage
 
       std::string get_control_field ( std::string );
 
-      int verify_cert ();
-      int verify_image ();
+      bool verify_cert ( const std::string & certchain );
+      bool verify_cert ( const std::string & certchain, std::map < int, std::string > & );
+      bool verify_image ();
 
     protected:
+      static int verify_cert_callback ( int ok, libcrypto::X509_STORE_CTX * ctx ) throw ();
       std::map < std::string, std::string > parse_control ( std::istream & stream );
 
       FlashImageFS & fs;
       std::map < std::string, std::string > control;
+      static std::map < int, std::string > errors;
   };
 }
 

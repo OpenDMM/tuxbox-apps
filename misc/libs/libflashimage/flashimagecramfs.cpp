@@ -91,6 +91,12 @@ void FlashImage::FlashImageCramFS::file ( const std::string & name, std::ostream
     decompress ( stream, out, offset );
   }
 
+  catch ( std::runtime_error & )
+  {
+    delete buf;
+    throw std::runtime_error ( std::string ( "cramfs: can't find file " ) + name );
+  }
+
   catch ( ... )
   {
     delete buf;
