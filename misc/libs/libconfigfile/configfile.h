@@ -39,6 +39,7 @@ class CConfigFile
 
 	ConfigDataMap configData;
 	char delimiter;
+	bool saveDefaults;
 	bool modifiedFlag;
 	bool unknownKeyQueryedFlag;
 
@@ -48,7 +49,7 @@ class CConfigFile
 	void storeString(const std::string key, const std::string val);
 
  public:
-	CConfigFile(const char p_delimiter);
+	CConfigFile(const char p_delimiter, const bool p_saveDefaults = true);
 
 	const bool loadConfig(const std::string filename);
 	const bool saveConfig(const std::string filename);
