@@ -23,23 +23,23 @@
 #include "enigma_info.h"
 #include "streaminfo.h"
 #include "showbnversion.h"
-#include "elistbox.h"
-#include "ewindow.h"
-#include "edvb.h"
-#include "eskin.h"
-#include "elabel.h"
-#include "emessage.h"
 
+#include <core/gui/elistbox.h>
+#include <core/gui/ewindow.h>
+#include <core/dvb/edvb.h>
+#include <core/gui/eskin.h>
+#include <core/gui/elabel.h>
+#include <core/gui/emessage.h>
 #include <core/base/i18n.h>
 
 eZapInfo::eZapInfo()
-	:eLBWindow(_("Infos"), eListbox::tBorder, 8, eSkin::getActive()->queryValue("fontsize", 20), 220)
+	:eLBWindow(_("Infos"), 8, eSkin::getActive()->queryValue("fontsize", 20), 220)
 {
 	move(ePoint(150, 136));
-	CONNECT((new eListboxEntryText(list, _("[back]")))->selected, eZapInfo::sel_close);
-	CONNECT((new eListboxEntryText(list, _("Streaminfo")))->selected, eZapInfo::sel_streaminfo);
-	CONNECT((new eListboxEntryText(list, _("Show BN version")))->selected, eZapInfo::sel_bnversion);
-	CONNECT((new eListboxEntryText(list, _("About...")))->selected, eZapInfo::sel_about);
+	CONNECT((new eListboxEntryText(&list, _("[back]")))->selected, eZapInfo::sel_close);
+	CONNECT((new eListboxEntryText(&list, _("Streaminfo")))->selected, eZapInfo::sel_streaminfo);
+	CONNECT((new eListboxEntryText(&list, _("Show BN version")))->selected, eZapInfo::sel_bnversion);
+	CONNECT((new eListboxEntryText(&list, _("About...")))->selected, eZapInfo::sel_about);
 	
 }
 

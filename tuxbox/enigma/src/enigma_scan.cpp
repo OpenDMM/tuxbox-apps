@@ -21,26 +21,24 @@
  */
 
 #include "enigma_scan.h"
-#include "elistbox.h"
-#include "ewindow.h"
-#include "edvb.h"
-#include "eskin.h"
-#include "elabel.h"
-#include "scan.h"
 #include "satconfig.h"
-#include "scan.h" 
+#include "scan.h"
 
-
+#include <core/gui/elistbox.h>
+#include <core/gui/ewindow.h>
+#include <core/dvb/edvb.h>
+#include <core/gui/eskin.h>
+#include <core/gui/elabel.h>
 #include <core/base/i18n.h>
 
 eZapScan::eZapScan()
-	:eLBWindow(_("Channels"), eListbox::tBorder, 8, eSkin::getActive()->queryValue("fontsize", 20), 220)
+	:eLBWindow(_("Channels"), 8, eSkin::getActive()->queryValue("fontsize", 20), 220)
 {
 	move(ePoint(150, 136));
-	CONNECT((new eListboxEntryText(list, _("[back]")))->selected, eZapScan::sel_close);
-	CONNECT((new eListboxEntryText(list, _("Transponder scan")))->selected, eZapScan::sel_scan);	
-	CONNECT((new eListboxEntryText(list, _("Satellites...")))->selected, eZapScan::sel_satconfig);	
-	CONNECT((new eListboxEntryText(list, _("Bouquets...")))->selected, eZapScan::sel_bouquet);	
+	CONNECT((new eListboxEntryText(&list, _("[back]")))->selected, eZapScan::sel_close);
+	CONNECT((new eListboxEntryText(&list, _("Transponder scan")))->selected, eZapScan::sel_scan);	
+	CONNECT((new eListboxEntryText(&list, _("Satellites...")))->selected, eZapScan::sel_satconfig);	
+	CONNECT((new eListboxEntryText(&list, _("Bouquets...")))->selected, eZapScan::sel_bouquet);	
 }
 
 eZapScan::~eZapScan()
