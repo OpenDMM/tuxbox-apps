@@ -123,14 +123,16 @@ void setvideooutput(int format, bool bSaveSettings = true)
 	{
 		format=0;
 	}
-	if (format > 3)
+	if (format > 5)
 	{
-		format=3;
+		format=5;
 	}
 
 	// 0 - COMPOSITE
 	// 1 - RGB
 	// 2 - SVIDEO
+	// 3 - YUV with VBS
+	// 4 - YUV with CVBS
 
 	if (bSaveSettings) // only set settings if we dont come from watchdog
 	{
@@ -150,6 +152,12 @@ void setvideooutput(int format, bool bSaveSettings = true)
 		break;
 	case 2:
 		arg = 0;
+		break;
+	case 3:
+		arg = 1;
+		break;
+	case 4:
+		arg = 1;
 		break;
 	}
 
@@ -172,6 +180,12 @@ void setvideooutput(int format, bool bSaveSettings = true)
 		break;
 	case 2:
 		arg = SAA_MODE_SVIDEO;
+		break;
+	case 3:
+		arg = SAA_MODE_YUV_V;
+		break;
+	case 4:
+		arg = SAA_MODE_YUV_C;
 		break;
 	}
 
