@@ -6,7 +6,7 @@ $Id$
  a dvb sniffer and mpeg2 stream analyzer tool
  http://dvbsnoop.sourceforge.net/
 
- (c) 2001-2004   Rainer.Scherg@gmx.de
+ (c) 2001-2005   Rainer.Scherg@gmx.de
 
 
 
@@ -14,6 +14,9 @@ $Id$
 
 
 $Log$
+Revision 1.28  2005/01/17 19:41:21  rasc
+Bugfix: data broadcast descriptor (tnx to Sergio SAGLIOCCO, SecureLAB)
+
 Revision 1.27  2004/04/03 12:05:22  rasc
 release 1.3.0
 

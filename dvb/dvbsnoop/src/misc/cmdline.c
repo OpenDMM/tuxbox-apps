@@ -7,7 +7,7 @@ $Id$
  a dvb sniffer  and mpeg2 stream analyzer tool
  http://dvbsnoop.sourceforge.net/
 
- (c) 2001-2004   Rainer.Scherg@gmx.de (rasc)
+ (c) 2001-2005   Rainer.Scherg@gmx.de (rasc)
 
 
 
@@ -15,6 +15,9 @@ $Id$
 
 
 $Log$
+Revision 1.41  2005/01/17 19:41:22  rasc
+Bugfix: data broadcast descriptor (tnx to Sergio SAGLIOCCO, SecureLAB)
+
 Revision 1.40  2004/12/07 21:01:42  rasc
 Large file support (> 2 GB) for -if cmd option. (tnx to K.Zheng,  Philips.com for reporting)
 
