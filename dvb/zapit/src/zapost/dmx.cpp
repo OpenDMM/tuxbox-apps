@@ -109,24 +109,30 @@ int CDemux::sectionFilter(const unsigned short pid, const unsigned char * const 
 	/* 0x60 - 0x6F: event_information_section - other_transport_stream, schedule */
 
 	case 0x70: /* time_date_section */
+		sctFilterParams.flags  &= (~DMX_CHECK_CRC); /* section has no CRC */
+		sctFilterParams.pid     = 0x0014;
 		sctFilterParams.timeout = 30000;
 		break;
 
 	case 0x71: /* running_status_section */
+		sctFilterParams.flags  &= (~DMX_CHECK_CRC); /* section has no CRC */
 		sctFilterParams.timeout = 0;
 		break;
 
 	case 0x72: /* stuffing_section */
+		sctFilterParams.flags  &= (~DMX_CHECK_CRC); /* section has no CRC */
 		sctFilterParams.timeout = 0;
 		break;
 
 	case 0x73: /* time_offset_section */
+		sctFilterParams.pid     = 0x0014;
 		sctFilterParams.timeout = 30000;
 		break;
 
 	/* 0x74 - 0x7D: reserved for future use */
 
 	case 0x7E: /* discontinuity_information_section */
+		sctFilterParams.flags  &= (~DMX_CHECK_CRC); /* section has no CRC */
 		sctFilterParams.timeout = 0;
 		break;
 
