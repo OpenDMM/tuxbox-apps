@@ -62,7 +62,7 @@ CZapitAudioChannel * CZapitChannel::getAudioChannel (unsigned char index)
 	return retval;
 }
 
-unsigned short CZapitChannel::getAudioPid (unsigned char index = 0xFF)
+unsigned short CZapitChannel::getAudioPid (unsigned char index)
 {
 	unsigned short retval = 0;
 

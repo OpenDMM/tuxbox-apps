@@ -1404,7 +1404,7 @@ void sendAPIDs()
 }
 
 
-void sendBouquetChannels(unsigned int bouquet, CZapitClient::channelsMode mode = CZapitClient::MODE_CURRENT)
+void sendBouquetChannels(unsigned int bouquet, CZapitClient::channelsMode mode)
 {
 	bouquet--;
 
@@ -1428,7 +1428,7 @@ void sendBouquetChannels(unsigned int bouquet, CZapitClient::channelsMode mode =
 	internalSendChannels( &channels);
 }
 
-void sendChannels( CZapitClient::channelsMode mode = CZapitClient::MODE_CURRENT, CZapitClient::channelsOrder order = CZapitClient::SORT_BOUQUET)
+void sendChannels( CZapitClient::channelsMode mode, CZapitClient::channelsOrder order)
 {
 	ChannelList channels;
 

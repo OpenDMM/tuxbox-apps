@@ -82,7 +82,7 @@ CZapitChannel* CBouquet::getChannelByName (char* serviceName, unsigned char serv
 // -- servicetype 0 queries TV and Radio Channels
 //
 
-CZapitChannel* CBouquet::getChannelByOnidSid (unsigned int onidSid, unsigned char serviceType = 0)
+CZapitChannel* CBouquet::getChannelByOnidSid (unsigned int onidSid, unsigned char serviceType)
 {
 	CZapitChannel* result = NULL;
 
@@ -376,7 +376,7 @@ void CBouquetManager::parseBouquetsXml(XMLTreeNode *root)
 
 }
 
-void CBouquetManager::loadBouquets(bool ignoreBouquetFile = false)
+void CBouquetManager::loadBouquets(bool ignoreBouquetFile)
 {
 	FILE* in;
 	XMLTreeParser* parser;
