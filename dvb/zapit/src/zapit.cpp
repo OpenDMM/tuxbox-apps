@@ -655,7 +655,7 @@ void parse_command (CZapitClient::commandHead &rmsg)
 			}
 			case CZapitClient::CMD_GET_CURRENT_SERVICEINFO:
 			{
-				CZapitClient::responseCurrentServiceInfo msgCurrentServiceInfo;
+				CZapitClient::CCurrentServiceInfo msgCurrentServiceInfo;
 				msgCurrentServiceInfo.onid = channel->getOriginalNetworkId();
 				msgCurrentServiceInfo.sid = channel->getServiceId();
 				msgCurrentServiceInfo.tsid = channel->getTransportStreamId();

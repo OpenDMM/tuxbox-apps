@@ -100,23 +100,11 @@ CZapitClient::CCurrentServiceInfo CZapitClient::getCurrentServiceInfo()
 {
 	send(CMD_GET_CURRENT_SERVICEINFO);
 
-	responseCurrentServiceInfo response;
+	CZapitClient::CCurrentServiceInfo response;
 	CBasicClient::receive_data((char* )&response, sizeof(response));
 
-	CZapitClient::CCurrentServiceInfo erg;
-
-	erg.onid = response.onid;
-	erg.sid  = response.sid;
-	erg.tsid = response.tsid;
-	erg.vdid = response.vdid;
-	erg.apid = response.apid;
-	erg.pcrpid = response.pcrpid;
-	erg.tsfrequency = response.tsfrequency;
-	erg.polarisation = response.polarisation;
-	erg.diseqc = response.diseqc;
-
 	zapit_close();
-	return erg;
+	return response;
 }
 
 void CZapitClient::getLastChannel(unsigned int &channumber, char &mode)
