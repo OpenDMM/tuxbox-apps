@@ -38,6 +38,7 @@
 
 #define CABLES_XML      "/etc/cables.xml"
 #define SATELLITES_XML  "/etc/satellites.xml"
+#define TERRESTRIAL_XML "/etc/terrestrial.xml"
 
 #define AUDIO_DEVICE    "/dev/dvb/adapter0/audio0"
 #define DEMUX_DEVICE    "/dev/dvb/adapter0/demux0"

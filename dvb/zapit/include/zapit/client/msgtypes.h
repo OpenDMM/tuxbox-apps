@@ -103,7 +103,8 @@ class CZapitMessages
 			CMD_SETSUBSERVICES,
 			CMD_SET_AUDIOCHAN,
 			CMD_MUTE,
-			CMD_SET_VOLUME
+			CMD_SET_VOLUME,
+			CMD_SET_STANDBY
 		};
 
 	struct commandBoolean

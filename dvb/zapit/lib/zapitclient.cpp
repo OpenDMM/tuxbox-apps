@@ -678,6 +678,13 @@ void CZapitClient::saveBouquets()
 	close_connection();
 }
 
+void CZapitClient::setStandby(const bool enable)
+{
+	CZapitMessages::commandBoolean msg;
+	msg.truefalse = enable;
+	send(CZapitMessages::CMD_SET_STANDBY, (char*)&msg, sizeof(msg));
+	close_connection();
+}
 
 void CZapitClient::startPlayBack()
 {

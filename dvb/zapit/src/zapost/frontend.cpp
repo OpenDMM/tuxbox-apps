@@ -158,6 +158,7 @@ unsigned int CFrontend::getFrequency ()
 			return currentFrequency + lnbOffsetsHigh[currentDiseqc];
 
 	case FE_QAM:
+	case FE_OFDM:
 	default:
 		return currentFrequency;
 	}
