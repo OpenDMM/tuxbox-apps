@@ -2,6 +2,9 @@
 // $Id$
 //
 // $Log$
+// Revision 1.35  2001/10/29 16:49:00  field
+// Kleinere Bug-Fixes (key-input usw.)
+//
 // Revision 1.34  2001/10/18 14:31:23  field
 // Scrollleisten :)
 //
@@ -373,6 +376,7 @@ void CChannelList::exec()
 			zapOnExit = true;
 			loop=false;
 		} else {
+            selected = oldselected;
 			g_RCInput->pushbackKey (key);
 			loop=false;
 		}
