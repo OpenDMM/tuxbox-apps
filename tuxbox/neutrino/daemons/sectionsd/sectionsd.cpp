@@ -23,6 +23,9 @@
 //    Foundation, Inc., 675 Mass Ave, Cambridge, MA 02139, USA.
 //
 //  $Log$
+//  Revision 1.95  2002/02/14 14:40:38  field
+//  Besseres Handling, wenn kein EPG gesendet
+//
 //  Revision 1.94  2002/02/08 17:50:05  field
 //  Updates - neues Format bei sendEPG
 //
@@ -1703,7 +1706,7 @@ static void commandCurrentNextInfoChannelID(struct connectionData *client, char 
         if(si!=mySIservicesOrderUniqueKey.end())
         {
             dprintf("[sectionsd] current service has%s scheduled events, and has%s present/following events\n", si->second->eitScheduleFlag()?"":" no", si->second->eitPresentFollowingFlag()?"":" no" );
-            if ( ( !si->second->eitScheduleFlag() ) &&
+            if ( ( !si->second->eitScheduleFlag() ) ||
                  ( !si->second->eitPresentFollowingFlag() ) )
             {
                 flag|= sectionsd::epg_not_broadcast;
@@ -2925,9 +2928,10 @@ char *buf;
 //---------------------------------------------------------------------
 static void *eitThread(void *)
 {
-struct SI_section_header header;
-char *buf;
+	struct SI_section_header header;
+	char *buf;
 	unsigned timeoutInSeconds=1;
+	bool sendToSleepNow= false;
 
     try
     {
@@ -2954,7 +2958,15 @@ char *buf;
                         ((!si->second->eitPresentFollowingFlag())&&(!dmxEIT.isScheduled)))
                     {
                         timeoutsDMX=0;
-                        dprintf("[eitThread] timeoutsDMX for 0x%x reset to 0\n", currentServiceKey);
+                        dprintf("[eitThread] timeoutsDMX for 0x%x reset to 0 (not broadcast)\n", currentServiceKey);
+
+                		if(!dmxEIT.isScheduled) // try with scheduled-epg
+                		{
+	                        dmxEIT.change( true );
+						}
+						else
+							sendToSleepNow= true;
+
                     }
                 }
                 unlockServices();
@@ -3007,8 +3019,9 @@ char *buf;
             { // Nur wenn ne richtige Uhrzeit da ist
                 if(dmxEIT.isScheduled)
                 {
-                    if(zeit>dmxEIT.lastChanged+TIME_EIT_SCHEDULED)
+                    if( (zeit>dmxEIT.lastChanged+TIME_EIT_SCHEDULED) || (sendToSleepNow) )
                     {
+                    	sendToSleepNow= false;
                     	struct timespec abs_wait;
         				struct timeval now;
 
