@@ -607,6 +607,24 @@ bool parse_command(CBasicMessage::Header &rmsg, int connfd)
 		break;
 	}
 
+	case CZapitMessages::CMD_GET_DELIVERY_SYSTEM:
+	{
+		CZapitMessages::responseDeliverySystem response;
+		switch (frontend->getInfo()->type) {
+		case FE_QAM:
+			response.system = DVB_C;
+			break;
+		case FE_QPSK:
+			response.system = DVB_S;
+			break;
+		case FE_OFDM:
+			response.system = DVB_T;
+			break;
+		}
+		send(connfd, &response, sizeof(response), 0);
+		break;
+	}
+
 	case CZapitMessages::CMD_GET_BOUQUETS:
 	{
 		CZapitMessages::commandGetBouquets msgGetBouquets;
