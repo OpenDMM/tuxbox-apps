@@ -30,7 +30,7 @@
 #include <string.h>
 #include "tuxbox.h"
 
-static unsigned int tuxbox_read_proc (char *type)
+static int tuxbox_read_proc (char *type)
 {
 	FILE *file;
 	char filename[64];
@@ -51,7 +51,7 @@ static unsigned int tuxbox_read_proc (char *type)
 	}
 
 	if (getline(&line, &len, file) != -1)
-		ret = strtoul (line, NULL, 0);
+		ret = strtol (line, NULL, 0);
 
 	fclose(file);
 
