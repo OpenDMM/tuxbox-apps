@@ -22,6 +22,21 @@
 	Foundation, Inc., 675 Mass Ave, Cambridge, MA 02139, USA.
 */
 
+#include <stdio.h>
+#include <unistd.h>
+
+#include <sys/types.h>
+#include <sys/socket.h>
+#include <sys/un.h>
+
+#include <sys/socket.h>
+//#include <netinet/in.h>
+//#include <netinet/in_systm.h>
+//#include <netinet/ip.h>
+//#include <netdb.h>
+//#include <arpa/inet.h>
+
+
 #include "timerdclient.h"
 #include "timerdMsg.h"
 #include "../timermanager.h"

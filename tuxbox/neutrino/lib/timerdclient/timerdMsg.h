@@ -26,16 +26,8 @@
 #ifndef __timerd__
 #define __timerd__
 
-#include <stdio.h>
-#include <unistd.h>
-
-#include <sys/types.h>
-#include <sys/socket.h>
-#include <sys/un.h>
-
 #include <string>
 #include <vector>
-#include <algorithm>
 
 using namespace std;
 #include "../timermanager.h"
