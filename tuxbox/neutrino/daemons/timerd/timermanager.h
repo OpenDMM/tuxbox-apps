@@ -64,6 +64,9 @@ class CTimerManager
 		bool removeEvent(int eventID);
 		CTimerEvent* getNextEvent();
 		bool listEvents(CTimerEventMap &Events);
+		int modifyEvent(int eventID, time_t announceTime, time_t alarmTime, time_t stopTime);
+		int rescheduleEvent(int eventID, time_t announceTime, time_t alarmTime, time_t stopTime);
+
 };
 
 
