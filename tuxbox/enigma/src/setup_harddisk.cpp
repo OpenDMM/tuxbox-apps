@@ -530,7 +530,7 @@ int ePartitionCheck::eventHandler( const eWidgetEvent &e )
 			if ( fs == "ext3" )
 			{
 				eWindow::globalCancel(eWindow::OFF);
-				fsck = new eConsoleAppContainer( eString().sprintf("/sbin/fsck.ext3 -f /dev/ide/host%d/bus%d/target%d/lun0/%s", host, bus, target, part.c_str()) );
+				fsck = new eConsoleAppContainer( eString().sprintf("/sbin/fsck.ext3 -f -y /dev/ide/host%d/bus%d/target%d/lun0/%s", host, bus, target, part.c_str()) );
 
 				if ( !fsck->running() )
 				{
@@ -553,7 +553,7 @@ int ePartitionCheck::eventHandler( const eWidgetEvent &e )
 			else if ( fs == "reiserfs" )
 			{
 				eWindow::globalCancel(eWindow::OFF);
-				fsck = new eConsoleAppContainer( eString().sprintf("/sbin/reiserfsck --fix-fixable /dev/ide/host%d/bus%d/target%d/lun0/%s", host, bus, target, part.c_str()) );
+				fsck = new eConsoleAppContainer( eString().sprintf("/sbin/reiserfsck -y --fix-fixable /dev/ide/host%d/bus%d/target%d/lun0/%s", host, bus, target, part.c_str()) );
 
 				if ( !fsck->running() )
 				{
