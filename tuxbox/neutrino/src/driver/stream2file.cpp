@@ -124,7 +124,6 @@ static int setPesFilter(const unsigned short pid, const dmx_output_t dmx_output)
 	flt.input = DMX_IN_FRONTEND;
 	flt.output = dmx_output;
 	flt.pes_type = DMX_PES_OTHER;
-	/* what about DMX_CHECK_CRC ? */
 	flt.flags = DMX_IMMEDIATE_START;
 
 	if (ioctl(fd, DMX_SET_PES_FILTER, &flt) < 0)
