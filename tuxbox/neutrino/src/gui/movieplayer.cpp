@@ -140,6 +140,7 @@ CurlDummyWrite (void *ptr, size_t size, size_t nmemb, void *data)
 
 CMoviePlayerGui::CMoviePlayerGui()
 {
+	frameBuffer = CFrameBuffer::getInstance();
 	filebrowser = new CFileBrowser ();
 	filebrowser->Multi_Select = false;
 	filebrowser->Dirs_Selectable = false;
@@ -190,6 +191,13 @@ CMoviePlayerGui::exec (CMenuTarget * parent, const std::string & actionKey)
 		parent->hide ();
 	}
 
+	bool usedBackground = frameBuffer->getuseBackground();
+	if (usedBackground)
+	{
+		frameBuffer->saveBackgroundImage();
+		frameBuffer->ClearFrameBuffer();
+	}
+
 	CBookmark * theBookmark=NULL;
     if (actionKey=="bookmarkplayback") {
         isBookmark = true;
@@ -200,8 +208,7 @@ CMoviePlayerGui::exec (CMenuTarget * parent, const std::string & actionKey)
         }
 	}
 	
-	
-    // set zapit in standby mode
+	// set zapit in standby mode
 	g_Zapit->setStandby (true);
 
 	// tell neutrino we're in ts_mode
@@ -210,7 +217,7 @@ CMoviePlayerGui::exec (CMenuTarget * parent, const std::string & actionKey)
 	// remember last mode
 	m_LastMode =
 		(CNeutrinoApp::getInstance ()->
-		 getLastMode () /*| NeutrinoMessages::norezap */ );
+		 getLastMode () | NeutrinoMessages::norezap );
 
 	// Stop sectionsd
 	//g_Sectionsd->setPauseScanning (true);
@@ -261,6 +268,15 @@ CMoviePlayerGui::exec (CMenuTarget * parent, const std::string & actionKey)
 
 	bookmarkmanager->flush();
 
+	// Restore previous background
+	if (usedBackground)
+	{
+		frameBuffer->restoreBackgroundImage();
+		frameBuffer->useBackground(true);
+		frameBuffer->paintBackground();
+	}
+
+	// Restore last mode
 	g_Zapit->setStandby (false);
 
 	// Start Sectionsd
@@ -269,6 +285,7 @@ CMoviePlayerGui::exec (CMenuTarget * parent, const std::string & actionKey)
 	// Restore last mode
 	CNeutrinoApp::getInstance ()->handleMsg (NeutrinoMessages::CHANGEMODE,
 						 m_LastMode);
+	g_RCInput->postMsg( NeutrinoMessages::SHOW_INFOBAR, 0 );
 
 	// always exit all
 	return menu_return::RETURN_REPAINT;
