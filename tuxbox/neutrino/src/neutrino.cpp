@@ -3067,9 +3067,8 @@ void CNeutrinoApp::tvMode( bool rezap )
 
 	//printf( "tv-mode\n" );
 
-	if(frameBuffer->getActive())
-		memset(frameBuffer->getFrameBufferPointer(), 255, frameBuffer->getStride()*576);
 	frameBuffer->useBackground(false);
+	frameBuffer->paintBackground();
 
 	g_RemoteControl->tvMode();
 	if( rezap )
@@ -3092,8 +3091,9 @@ void CNeutrinoApp::scartMode( bool bOnOff )
 	if( bOnOff )
 	{
 		// SCART AN
-		if(frameBuffer->getActive())
-			memset(frameBuffer->getFrameBufferPointer(), 255, frameBuffer->getStride()*576);
+		frameBuffer->useBackground(false);
+		frameBuffer->paintBackground();
+
 		g_Controld->setScartMode( 1 );
 		CLCD::getInstance()->setMode(CLCD::MODE_SCART);
 		lastMode = mode;
@@ -3143,8 +3143,8 @@ void CNeutrinoApp::standbyMode( bool bOnOff )
 			g_Controld->setScartMode( 0 );
 		}
 
-		if(frameBuffer->getActive())
-			memset(frameBuffer->getFrameBufferPointer(), 255, frameBuffer->getStride()*576);
+		frameBuffer->useBackground(false);
+		frameBuffer->paintBackground();
 
 		CLCD::getInstance()->setMode(CLCD::MODE_STANDBY);
 		g_Controld->videoPowerDown(true);
