@@ -23,6 +23,9 @@
 //    Foundation, Inc., 675 Mass Ave, Cambridge, MA 02139, USA.
 //
 //  $Log$
+//  Revision 1.51  2001/08/17 16:37:28  fnbrd
+//  Some mor informational output with -d and cache decrease
+//
 //  Revision 1.50  2001/08/17 16:21:06  fnbrd
 //  Intelligent cache decrease to prevent dmx buffer overflows.
 //
@@ -1947,16 +1950,19 @@ const unsigned timeoutInSeconds=2;
       timeoutsDMX=0;
       dmxEIT.stop(); // -> lock
       lockEvents();
-      if(secondsToCache>24*60L*60L && mySIeventsOrderUniqueKey.size()>2000) {
+      if(secondsToCache>24*60L*60L && mySIeventsOrderUniqueKey.size()>3000) {
         // kleiner als 1 Tag machen wir den Cache nicht,
 	// da die timeouts ja auch von einem Sender ohne EPG kommen können
-	// Die 2000 sind ne Annahme und beruhen auf (wenigen) Erfahrungswerten
+	// Die 3000 sind ne Annahme und beruhen auf (wenigen) Erfahrungswerten
         dmxSDT.pause();
         lockServices();
+        unsigned anzEventsAlt=mySIeventsOrderUniqueKey.size();
         secondsToCache-=5*60L*60L; // 5h weniger
         dprintf("decreasing cache 5h (now %ldh)\n", secondsToCache/(60*60L));
         removeNewEvents();
         removeOldEvents(oldEventsAre);
+	if(anzEventsAlt>mySIeventsOrderUniqueKey.size())
+	  dprintf("Removed %u Events (%u -> %u)\n", anzEventsAlt-mySIeventsOrderUniqueKey.size(), anzEventsAlt, mySIeventsOrderUniqueKey.size());
         unlockServices();
         dmxSDT.unpause();
       }
