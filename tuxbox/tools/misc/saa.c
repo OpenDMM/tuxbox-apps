@@ -39,8 +39,7 @@
 void help(char *prog_name) {
  	printf("Version %s\n",VERSION);
  	printf("Usage: %s <options>\n\n",prog_name);
- 	printf("       without options current status is printed\n"
-		"Switches:\n"
+ 	printf("Switches:\n"
 		"-h, --help            help\n"
 		"-o, --power-save <X>  power save mode\n"
 		"                      none get power save state\n"
