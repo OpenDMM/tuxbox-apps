@@ -298,7 +298,7 @@ void class_23 (unsigned char * buffer, unsigned int len)
 	switch ((buffer[4] & 0x3C) >> 2)
 	{
 	case 0x00:
-		caid_count = buffer[4];
+		caid_count = buffer[5];
 
 		for (i = 0; i < buffer[5]; i++)
 		{
