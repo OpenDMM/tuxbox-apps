@@ -441,7 +441,7 @@ void unsetRecordMode(void)
 	eventServer->sendEvent(CZapitClient::EVT_RECORDMODE_DEACTIVATED, CEventServer::INITID_ZAPIT );
 }
 
-int prepare_channels(diseqc_t diseqcType)
+int prepare_channels(fe_type_t frontendType, diseqc_t diseqcType)
 {
 	// for the case this function is NOT called for the first time (by main())
 	// we clear all cannel lists, they are refilled
@@ -449,7 +449,7 @@ int prepare_channels(diseqc_t diseqcType)
 	transponders.clear();
 	bouquetManager->clearAll();
 	allchans.clear();  // <- this invalidates all bouquets, too!
-	if (LoadServices(diseqcType) < 0)
+	if (LoadServices(frontendType, diseqcType) < 0)
 		return -1;
 
 	INFO("LoadServices: success");
@@ -686,7 +686,7 @@ bool parse_command(CBasicMessage::Header &rmsg, int connfd)
 	case CZapitMessages::CMD_REINIT_CHANNELS:
 	{
 		CZapitMessages::responseCmd response;
-		prepare_channels((diseqc_t)config.getInt32("diseqcType", NO_DISEQC));
+		prepare_channels(frontend->getInfo()->type, (diseqc_t)config.getInt32("diseqcType", NO_DISEQC));
 		response.cmd = CZapitMessages::CMD_READY;
 		CBasicServer::send_data(connfd, &response, sizeof(response));
 		eventServer->sendEvent(CZapitClient::EVT_BOUQUETS_CHANGED, CEventServer::INITID_ZAPIT);
@@ -1555,7 +1555,7 @@ int main(int argc, char **argv)
 	else
 		setTVMode();
 
-	if (prepare_channels((diseqc_t)config.getInt32("diseqcType", NO_DISEQC)) < 0)
+	if (prepare_channels(frontend->getInfo()->type, (diseqc_t)config.getInt32("diseqcType", NO_DISEQC)) < 0)
 		WARN("error parsing services");
 	else
 		INFO("channels have been loaded succesfully");

@@ -261,12 +261,16 @@ int LoadSatellitePositions(void)
 	return 0;
 }
 
-int LoadServices(diseqc_t diseqcType)
+int LoadServices(fe_type_t frontendType, diseqc_t diseqcType)
 {
-	LoadSatellitePositions();
+	if (frontendType == FE_QPSK)
+	{
+		//satellite only
+		LoadSatellitePositions();
 	
-	if (diseqcType == DISEQC_1_2)
-		LoadMotorPositions();
+		if (diseqcType == DISEQC_1_2)
+			LoadMotorPositions();
+	}
 	
 	xmlDocPtr parser = parseXmlFile(string(SERVICES_XML));
 
