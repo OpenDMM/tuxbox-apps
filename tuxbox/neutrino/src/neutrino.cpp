@@ -32,6 +32,9 @@
 	Foundation, Inc., 675 Mass Ave, Cambridge, MA 02139, USA.
 
   $Log$
+  Revision 1.105  2001/12/19 12:11:01  McClean
+  scan-bouquethandling added
+
   Revision 1.104  2001/12/18 21:14:21  McClean
   add proxy-support for updates
 
@@ -552,6 +555,7 @@ void CNeutrinoApp::setupDefaults()
 	g_settings.scan_eutel = 0;
 	g_settings.scan_kopernikus = 0;
 	g_settings.scan_digituerk = 0;
+	g_settings.scan_bouquet = 1024; //erase bouquets
 
 
 	//timing  (10 = 1 sec )
@@ -1086,9 +1090,15 @@ void CNeutrinoApp::InitMainMenu(CMenuWidget &mainMenu, CMenuWidget &mainSettings
 	CMenuWidget* TSScan = new CMenuWidget("mainsettings.scants", "mainmenue.raw");
 		TSScan->addItem( new CMenuForwarder("menu.back") );
 		TSScan->addItem( new CMenuSeparator(CMenuSeparator::LINE) );
+		CMenuOptionChooser* oj = new CMenuOptionChooser("scants.bouquet", &g_settings.scan_bouquet, true );
+			oj->addOption(256, "scants.bouquet_leave");
+			oj->addOption(512, "scants.bouquet_create");
+			oj->addOption(1024, "scants.bouquet_erase");
+		TSScan->addItem( oj );
+
 		if (atoi(getenv("fe"))==1)
 		{// only sat-params....
-			CMenuOptionChooser* oj = new CMenuOptionChooser("scants.astra", &g_settings.scan_astra, true );
+			oj = new CMenuOptionChooser("scants.astra", &g_settings.scan_astra, true );
 				oj->addOption(0, "options.off");
 				oj->addOption(1, "options.on");
 			TSScan->addItem( oj );
