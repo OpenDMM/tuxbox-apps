@@ -112,8 +112,6 @@ int dmx_video_fd = -1;
 int vbi_fd = -1;
 
 /* channellists */
-std::map <uint32_t, uint32_t> allnumchannels_tv;
-std::map <uint32_t, uint32_t> allnumchannels_radio;
 std::map <std::string, uint32_t> allnamechannels_tv;
 std::map <std::string, uint32_t> allnamechannels_radio;
 
@@ -552,8 +550,6 @@ int prepare_channels ()
 	// for the case this function is NOT called for the first time (by main())
 	// we clear all cannel lists, they are refilled
 	// by LoadServices() and LoadBouquets()
-	allnumchannels_tv.clear();
-	allnumchannels_radio.clear();
 	allnamechannels_tv.clear();
 	allnamechannels_radio.clear();
 	transponders.clear();
@@ -593,8 +589,6 @@ int start_scan ()
 	namechans_radio.clear();
 	allchans_tv.clear();
 	allchans_radio.clear();
-	allnumchannels_tv.clear();
-	allnumchannels_radio.clear();
 	allnamechannels_tv.clear();
 	allnamechannels_radio.clear();
 	found_transponders = 0;
