@@ -113,6 +113,7 @@ class CTimerEvent
 		int					eventID;			// event identifier
 		CTimerEventTypes	eventType;			// Type of event
 		CTimerEventStates	eventState;			// actual event state
+		CTimerEventStates	previousState;			// previous event state
 		CTimerEventRepeat	eventRepeat;
 
 	// time values
@@ -123,11 +124,10 @@ class CTimerEvent
 		CTimerEvent( CTimerEventTypes evtype, int mon = 0, int day = 0, int hour = 0, int min = 0, CTimerEventRepeat evrepeat = TIMERREPEAT_ONCE);
 		CTimerEvent( CTimerEventTypes evtype, time_t announcetime, time_t alarmtime, time_t stoptime, CTimerEventRepeat evrepeat = TIMERREPEAT_ONCE);
 		
+		void setState(CTimerEventStates newstate){previousState = eventState; eventState = newstate;};
+
 		int remain_min(time_t t){return (t - time(NULL)) / 60;};
-//		bool operator <= ( CTimerEvent&);
-//		bool operator >= ( CTimerEvent&);
 		void printEvent(void);
-//		static CTimerEvent now();
 		void Reschedule();
 
 		virtual void fireEvent(){};
