@@ -87,7 +87,7 @@ struct sectionsd
 	{
 		unsigned long long eventid;
 		time_t             starttime;
-	};
+	} __attribute__ ((packed)) ; 
 
 	struct commandSetServiceChanged
 	{
