@@ -82,6 +82,8 @@
 
 #include <poll.h>
 
+#include <linux/dvb/audio.h>
+
 #define ADAP	"/dev/dvb/adapter0"
 #define ADEC	ADAP "/audio0"
 #define VDEC	ADAP "/video0"
@@ -589,6 +591,13 @@ PlayStreamThread (void *mrl)
 	      p.pes_type = DMX_PES_VIDEO;
 	      if (ioctl (dmxv, DMX_SET_PES_FILTER, &p) < 0)
 		failed = true;
+	      if (g_settings.streaming_ac3_enabled == 1) {
+      		if (ioctl (adec, AUDIO_SET_BYPASS_MODE,1)<0)
+      		  {
+      		  	perror("AUDIO_SET_BYPASS_MODE");
+      		  	failed=true;
+      		  }
+       	      }
 	      if (ioctl (adec, AUDIO_PLAY) < 0)
 		{
 		  perror ("AUDIO_PLAY");
@@ -654,6 +663,9 @@ PlayStreamThread (void *mrl)
 	      ioctl (dmxv, DMX_STOP);
 	      ioctl (dmxa, DMX_STOP);
 	      ioctl (vdec, VIDEO_PLAY);
+	      if (g_settings.streaming_ac3_enabled == 1) {
+      		ioctl (adec, AUDIO_SET_BYPASS_MODE,1);
+      	      }
 	      ioctl (adec, AUDIO_PLAY);
 	      p.pid = pida;
 	      p.pes_type = DMX_PES_AUDIO;
@@ -781,6 +793,9 @@ PlayFileThread (void *filename)
 	      ioctl (dmxv, DMX_STOP);
 	      ioctl (dmxa, DMX_STOP);
 	      ioctl (vdec, VIDEO_PLAY);
+	      if (g_settings.streaming_ac3_enabled == 1) {
+      		ioctl (adec, AUDIO_SET_BYPASS_MODE,1);
+      	      }
 	      ioctl (adec, AUDIO_PLAY);
 	      p.pid = pida;
 	      p.pes_type = DMX_PES_AUDIO;
@@ -808,6 +823,9 @@ PlayFileThread (void *filename)
   else if (!failed)
     {
       ioctl (vdec, VIDEO_PLAY);
+      if (g_settings.streaming_ac3_enabled == 1) {
+      	ioctl (adec, AUDIO_SET_BYPASS_MODE,1);
+      }
       ioctl (adec, AUDIO_PLAY);
       ioctl (dmxv, DMX_START);
       ioctl (dmxa, DMX_START);
