@@ -13,6 +13,11 @@ $Id$
 
 
 $Log$
+Revision 1.29  2004/03/13 23:22:14  obi
+helper.c: In function `str_bit32':
+helper.c:784: warning: initialization from incompatible pointer type
+helper.c:797: warning: return from incompatible pointer type
+
 Revision 1.28  2004/03/09 20:59:23  rasc
 VPS decoding (someone check the NPP & PTY code output please...)
 
@@ -780,7 +785,7 @@ void displ_IPv6_addr (int v, struct IPv6ADDR *a)
 
 char *str_bit32 (u_long value, int bits)
 {
-   static char *bitstr[65];
+   static char bitstr[65];
    char *s = bitstr;
 
    if (bits > 64) bits = 64;
