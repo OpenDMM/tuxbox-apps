@@ -27,8 +27,9 @@
 
 int setDmxSctFilter (int fd, unsigned short pid, unsigned char * filter, unsigned char * mask)
 {
-	dmxSctFilterParams sctFilterParams;
+	struct dmxSctFilterParams sctFilterParams;
 
+	memset(&sctFilterParams, 0x00, sizeof(sctFilterParams));
 	memcpy(&sctFilterParams.filter.filter, filter, DMX_FILTER_SIZE);
 	memcpy(&sctFilterParams.filter.mask, mask, DMX_FILTER_SIZE);
 
