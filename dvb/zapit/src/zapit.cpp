@@ -1474,7 +1474,7 @@ void parse_command ()
 				msgCurrentServiceInfo.sid = channel->getOnidSid() & 0xffff;
 				msgCurrentServiceInfo.tsid = frontend->getTsidOnid() >> 16;
 				msgCurrentServiceInfo.vdid = channel->getVideoPid();
-				msgCurrentServiceInfo.apid = channel->getAudioChannel();
+				msgCurrentServiceInfo.apid = channel->getAudioPid();
 				msgCurrentServiceInfo.vtxtpid = channel->getTeletextPid();
 				msgCurrentServiceInfo.pcrpid = channel->getPcrPid();;
 
