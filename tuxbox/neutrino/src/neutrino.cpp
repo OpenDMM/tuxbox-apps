@@ -1342,8 +1342,9 @@ void CNeutrinoApp::InitMiscSettings(CMenuWidget &miscSettings)
  	miscSettings.addItem( new CMenuForwarder("keybindingmenu.repeatblockgeneric", true, "", keySettings_repeat_genericblocker ));
 	
 	oj = new CMenuOptionChooser("pictureviewer.scaling", &g_settings.picviewer_scaling, true );
-	oj->addOption((int)CPictureViewer::SIMPLE, "SIMPLE");
-	oj->addOption((int)CPictureViewer::COLOR, "COLOR AVERAGE");
+	oj->addOption((int)CPictureViewer::SIMPLE, "Simple");
+	oj->addOption((int)CPictureViewer::COLOR, "Color Average");
+	oj->addOption((int)CPictureViewer::NONE, "None");
 	CStringInput*  pic_timeout= new CStringInput("pictureviewer.slide_time", g_settings.picviewer_slide_time, 2, "", "", "0123456789 ");
 	miscSettings.addItem( new CMenuSeparator(CMenuSeparator::LINE | CMenuSeparator::STRING, "pictureviewer.head") );
 	miscSettings.addItem( oj );
