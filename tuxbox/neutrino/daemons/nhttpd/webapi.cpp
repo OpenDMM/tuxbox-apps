@@ -451,6 +451,7 @@ bool CWebAPI::ShowCurrentStreamInfo(CWebserverRequest* request)
 	params["vpid"] = itoh(serviceinfo.vpid);
 	params["apid"] = itoh(serviceinfo.apid);
 	params["vtxtpid"] = (serviceinfo.vtxtpid != 0)?itoh(serviceinfo.vtxtpid):"nicht verfügbar";
+	params["pmtpid"] = (serviceinfo.pmtpid != 0)?itoh(serviceinfo.pmtpid):"nicht verfügbar";
 	sprintf((char*) buf, "%d.%d MHz", serviceinfo.tsfrequency/1000, serviceinfo.tsfrequency%1000);
 	params["tsfrequency"] = buf;
 	params["polarisation"] = serviceinfo.polarisation==1?"h":"v";
@@ -871,10 +872,16 @@ bool CWebAPI::ShowTimerList(CWebserverRequest* request)
 		char zRep[20+1];
 		Parent->timerEventRepeat2Str(timer->eventRepeat,zRep,sizeof(zRep)-1);
 		request->printf("<TD CLASS=\"%ctimer\" align=center>%s</TD>", classname, zRep);
-		if (timer->repeatCount == 0)
-			request->printf("<TD CLASS=\"%ctimer\" align=\"center\">&#x221E;</TD>",classname);
-		else
-			request->printf("<TD CLASS=\"%ctimer\" align=\"center\">%dx</TD>",classname, timer->repeatCount);
+		if (timer->eventRepeat == CTimerd::TIMERREPEAT_ONCE)
+		{
+			request->printf("<TD CLASS=\"%ctimer\" align=\"center\">-</TD>",classname);
+		} else
+		{
+			if (timer->repeatCount == 0)
+				request->printf("<TD CLASS=\"%ctimer\" align=\"center\">&#x221E;</TD>",classname);
+			else
+				request->printf("<TD CLASS=\"%ctimer\" align=\"center\">%dx</TD>",classname, timer->repeatCount);
+		}
 		char zType[20+1];
 		Parent->timerEventType2Str(timer->eventType,zType,sizeof(zType)-1);
 		request->printf("<TD CLASS=\"%ctimer\" align=center>%s</TD>", classname, zType);
