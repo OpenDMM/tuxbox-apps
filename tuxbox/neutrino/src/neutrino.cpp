@@ -1086,6 +1086,7 @@ void CNeutrinoApp::InitScanSettings(CMenuWidget &settings)
 		extMotorSettings->addItem( new CMenuSeparator(CMenuSeparator::LINE) );
 		
 		CMenuForwarder* ojExtMotorSettings = new CMenuForwarder("satsetup.extended_motor", (scanSettings.diseqcMode == DISEQC_1_2), "", extMotorSettings);
+		CMenuForwarder* ojExtMotorControl = new CMenuForwarder("satsetup.motorcontrol", (scanSettings.diseqcMode == DISEQC_1_2), "", new CMotorControl() );
 		for( uint i=0; i < satList.size(); i++)
 		{
 			CMenuOptionChooser* oj = new CMenuOptionChooser( satList[i].satName, scanSettings.motorPosOfSat( satList[i].satName), true/*, new CSatelliteNotifier*/);
@@ -1099,7 +1100,7 @@ void CNeutrinoApp::InitScanSettings(CMenuWidget &settings)
 			extMotorSettings->addItem( oj);
 		}
 
-		CMenuOptionChooser* ojDiseqc = new CMenuOptionChooser("satsetup.disqeqc", &((int)(scanSettings.diseqcMode)), true, new CSatDiseqcNotifier( ojSat, ojExtSatSettings, ojExtMotorSettings, ojDiseqcRepeats));
+		CMenuOptionChooser* ojDiseqc = new CMenuOptionChooser("satsetup.disqeqc", &((int)(scanSettings.diseqcMode)), true, new CSatDiseqcNotifier( ojSat, ojExtSatSettings, ojExtMotorSettings, ojExtMotorControl, ojDiseqcRepeats));
 		ojDiseqc->addOption( NO_DISEQC,   "satsetup.nodiseqc");
 		ojDiseqc->addOption( MINI_DISEQC, "satsetup.minidiseqc");
 		ojDiseqc->addOption( DISEQC_1_0,  "satsetup.diseqc10");
@@ -1108,12 +1109,14 @@ void CNeutrinoApp::InitScanSettings(CMenuWidget &settings)
 		ojDiseqc->addOption( SMATV_REMOTE_TUNING,  "satsetup.smatvremote");
 
 		settings.addItem( ojDiseqc );
-		settings.addItem( ojBouquets);
-		settings.addItem( ojSat);
+		settings.addItem( ojBouquets );
+		settings.addItem( ojSat );
 		settings.addItem( ojDiseqcRepeats );
-		settings.addItem( ojExtSatSettings);
-		settings.addItem( ojExtMotorSettings);
-
+		settings.addItem( ojExtSatSettings );
+		settings.addItem( ojExtMotorSettings );
+		settings.addItem( new CMenuSeparator(CMenuSeparator::LINE) );
+		settings.addItem( ojExtMotorControl );
+		settings.addItem( new CMenuSeparator(CMenuSeparator::LINE) );
 	}
 	else
 	{//kabel
@@ -1135,9 +1138,6 @@ void CNeutrinoApp::InitScanSettings(CMenuWidget &settings)
 		settings.addItem( oj);
 	}
 
-	settings.addItem( new CMenuSeparator(CMenuSeparator::LINE) );
-	settings.addItem( new CMenuForwarder("scants.motorcontrol", (scanSettings.diseqcMode == DISEQC_1_2), "", new CMotorControl() ) );
-	settings.addItem( new CMenuSeparator(CMenuSeparator::LINE) );
 	settings.addItem( new CMenuForwarder("scants.startnow", true, "", new CScanTs() ) );
 
 }
