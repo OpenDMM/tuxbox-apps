@@ -50,7 +50,7 @@ class CEPGData;
 class CChannelEvent
 {
  public:
-	t_channel_id       get_channel_id(void) const { return eventID >> 16; }
+	t_channel_id       get_channel_id(void) const { return GET_CHANNEL_ID_FROM_EVENT_ID(eventID); }
 	event_id_t         eventID;
 	std::string        description;
 	std::string        text;
