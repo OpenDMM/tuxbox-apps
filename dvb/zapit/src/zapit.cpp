@@ -177,7 +177,7 @@ void termination_handler (int signum)
 #ifdef USE_EXTERNAL_CAMD
 	if (camdpid != -1)
 	{
-		kill(camdpid, SIGKILL);
+		kill(camdpid, SIGTERM);
 		waitpid(camdpid, 0, 0);
 	}
 #endif
@@ -1082,7 +1082,7 @@ int zapit (uint onid_sid, bool in_nvod)
 	caid = 0x1702;
 	if (camdpid != -1)
 	{
-		kill(camdpid, SIGKILL);
+		kill(camdpid, SIGTERM);
 		waitpid(camdpid, 0, 0);
 		camdpid = -1;
 	}
@@ -1795,6 +1795,13 @@ void start_scan(unsigned short do_diseqc)
 	set_vtxt(0);
 #endif /* DVBS */
 
+#ifdef USE_EXTERNAL_CAMD
+	if (camdpid != -1)
+	{
+		kill(camdpid, SIGTERM);
+		waitpid(camdpid, 0, 0);
+	}
+#endif
 	if (audio_fd != -1)
 	{
 		close(audio_fd);
