@@ -2043,11 +2043,7 @@ int CNeutrinoApp::run(int argc, char **argv)
 			g_info.box_Type = 3;
 	}
 	
-	g_info.fe = 0;
-	if (!getEnvironment("fe", &g_info.fe))
-		return 1;
-
-	dprintf( DEBUG_DEBUG, "[neutrino] box_Type: %d (%s %s), fe: %d\n", g_info.box_Type, tuxbox_get_manufacturer_str(), tuxbox_get_model_str(), g_info.fe);
+	dprintf( DEBUG_DEBUG, "[neutrino] box_Type: %d (%s %s)\n", g_info.box_Type, tuxbox_get_manufacturer_str(), tuxbox_get_model_str());
 
 
 
@@ -2069,6 +2065,20 @@ int CNeutrinoApp::run(int argc, char **argv)
 	g_Locale = new CLocaleManager;
 	g_RCInput = new CRCInput;
 	g_Zapit = new CZapitClient;
+
+	switch(g_Zapit->getDeliverySystem()) {
+	
+		case DVB_S:
+			g_info.fe=1;
+			break;
+		case DVB_C:
+		case DVB_T:
+		default:
+			g_info.fe=0;
+			break;
+			
+	}
+	
 	g_Sectionsd = new CSectionsdClient;
 	g_Timerd = new CTimerdClient;
 
