@@ -19,6 +19,9 @@ $Id$
 
 
 $Log$
+Revision 1.24  2004/01/25 22:36:52  rasc
+minor changes & enhancments
+
 Revision 1.23  2004/01/11 22:49:40  rasc
 PES restructured
 
@@ -211,8 +214,14 @@ int  doReadPES (OPTION *opt)
 
 
     // -- error or eof?
-    if (n == -1) IO_error("read");
-    if (n < 0)  continue;
+    if (n < 0) {
+	int err;
+	
+	err = IO_error("read");
+	// if (err == ETIMEDOUT) break;		// Timout, abort
+	continue;
+    }
+
     if (n == 0) {
 	if (dmxMode) continue;	// dmxmode = no eof!
 	else break;		// filemode eof 

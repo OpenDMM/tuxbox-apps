@@ -15,7 +15,7 @@ $Id$
 #define __DMX_ERROR_H 1
 
 
-void  IO_error (u_char *str);
+int  IO_error (u_char *str);
 
 
 #endif
