@@ -28,8 +28,6 @@
 
 eZapLanguageSetup::eZapLanguageSetup(): eWindow(0)
 {
-	int fd=eSkin::getActive()->queryValue("fontsize", 20);
-
 	setText(_("Language Setup"));
 	move(ePoint(150, 136));
 	resize(eSize(390, 230));
@@ -53,7 +51,7 @@ eZapLanguageSetup::eZapLanguageSetup(): eWindow(0)
 	if ( eConfig::getInstance()->getKey("/elitedvb/language", temp) )
 		temp=0;
 		
-	eListBoxEntryText *cur;
+	eListBoxEntryText *cur=0;
 
 	if (!f)
 	{

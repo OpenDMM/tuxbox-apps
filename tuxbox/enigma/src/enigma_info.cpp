@@ -39,9 +39,9 @@ eZapInfo::eZapInfo()
 	move(ePoint(150, 136));
 	CONNECT((new eListBoxEntryMenu(&list, _("[back]")))->selected, eZapInfo::sel_close);
 	CONNECT((new eListBoxEntryMenu(&list, _("Streaminfo")))->selected, eZapInfo::sel_streaminfo);
-#if 0
-	CONNECT((new eListBoxEntryMenu(&list, _("Show BN version")))->selected, eZapInfo::sel_bnversion);
-#endif
+	if ( eDVB::getInstance()->getInfo("mID") != "05" )
+		CONNECT((new eListBoxEntryMenu(&list, _("Show BN version")))->selected, eZapInfo::sel_bnversion);
+
 	CONNECT((new eListBoxEntryMenu(&list, _("About...")))->selected, eZapInfo::sel_about);
 	
 }
