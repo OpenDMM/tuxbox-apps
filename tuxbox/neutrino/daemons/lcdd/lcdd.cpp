@@ -186,6 +186,12 @@ void CLCDD::parse_command(int connfd, CLcddMsg::commandHead rmsg)
 		case CLcddMsg::CMD_UPDATE:
 			lcdPainter.update();
 			break;
+		case CLcddMsg::CMD_PAUSE:
+			lcdPainter.pause();
+			break;
+		case CLcddMsg::CMD_RESUME:
+			lcdPainter.resume();
+			break;
 
 		default:
 			printf("unknown command %i\n", rmsg.cmd);
