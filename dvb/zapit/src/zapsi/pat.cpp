@@ -29,7 +29,7 @@
 
 #include "pat.h"
 
-#define PAT_SIZE 1024 + 3
+#define PAT_SIZE 1024
 
 extern CEventServer * eventServer;
 extern unsigned int found_channels;

@@ -36,7 +36,7 @@
 #include "descriptors.h"
 #include "nit.h"
 
-#define NIT_SIZE 1024 + 3
+#define NIT_SIZE 1024
 
 extern std::map <unsigned int, transponder> transponders;
 

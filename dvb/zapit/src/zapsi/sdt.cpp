@@ -16,7 +16,7 @@
 #include "descriptors.h"
 #include "sdt.h"
 
-#define SDT_SIZE 1024 + 3
+#define SDT_SIZE 1024
 
 unsigned int get_sdt_TsidOnid ()
 {

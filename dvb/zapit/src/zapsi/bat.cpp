@@ -35,7 +35,7 @@
 #include "bat.h"
 #include "descriptors.h"
 
-#define BAT_SIZE 1024 + 3
+#define BAT_SIZE 1024
 
 int parse_bat (int demux_fd)
 {
