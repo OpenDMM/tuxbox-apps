@@ -35,9 +35,6 @@ std::map<std::string, t_satellite_position> satellitePositions; //satellite posi
 std::map<t_satellite_position, uint8_t> motorPositions; //stored satellitepositions in diseqc 1.2 motor
 std::map<t_satellite_position, uint8_t>::iterator mpos_it;
 
-std::map<string, int> satelliteDiseqcs; //diseqcs per satellite
-std::map<string, int>::iterator satdiseqc_it;
-
 void ParseTransponders(xmlNodePtr node, const uint8_t DiSEqC, t_satellite_position satellitePosition)
 {
 	t_transport_stream_id transport_stream_id;

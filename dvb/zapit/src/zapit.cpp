@@ -128,9 +128,6 @@ extern std::map<t_satellite_position, uint8_t>::iterator mpos_it;
 
 extern std::map<string, t_satellite_position> satellitePositions;
 
-extern std::map<string, int> satelliteDiseqcs; //diseqcs per satellite
-extern std::map<string, int>::iterator satdiseqc_it;
-
 bool standby = true;
 
 uint32_t lastChannelRadio;
@@ -838,7 +835,7 @@ bool parse_command(CBasicMessage::Header &rmsg, int connfd)
 				strncpy(sat.satName, satname, 29);
 				sat.satPosition = satellitePositions[satname];
 				sat.motorPosition = motorPositions[sat.satPosition];
-				sat.satDiseqc = satelliteDiseqcs[satname];
+				sat.satDiseqc = -1; /* FIXME */
 				satlength = sizeof(sat);
 				//printf("[zapit] sending %s, %d, %d\n", sat.satName, sat.satPosition, sat.motorPosition);
 				CBasicServer::send_data(connfd, &satlength, sizeof(satlength));
