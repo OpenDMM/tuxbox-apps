@@ -98,7 +98,7 @@ eZapSetup::eZapSetup()
 	CONNECT((new eListBoxEntryMenu(&list, _("A/V Setup..."), eString().sprintf("(%d) %s", ++entry, _("open audio/video setup")) ))->selected, eZapSetup::sel_setup_av);
 #ifndef DISABLE_NETWORK
 	if (havenetwork)
-		CONNECT((new eListBoxEntryMenu(&list, _("Network..."), eString().sprintf("(%d) %s", ++entry, _("open network setup")) ))->selected, eZapSetup::sel_network);
+		CONNECT((new eListBoxEntryMenu(&list, _("Communication..."), eString().sprintf("(%d) %s", ++entry, _("open communication setup")) ))->selected, eZapSetup::sel_network);
 #endif
 	CONNECT((new eListBoxEntryMenu(&list, _("OSD..."), eString().sprintf("(%d) %s", ++entry, _("open on screen display setup")) ))->selected, eZapSetup::sel_osd);
 #ifndef DISABLE_LCD

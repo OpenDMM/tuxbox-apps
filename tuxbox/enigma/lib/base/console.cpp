@@ -189,12 +189,16 @@ void eConsoleAppContainer::readyRead(int what)
 {
 	if (what & POLLPRI|POLLIN)
 	{
-		eDebug("what = %d");
+//		eDebug("what = %d");
 		char buf[2048];
 		int readed = read(fd[0], buf, 2048);
 		eDebug("%d bytes read", readed);
 		if ( readed != -1 && readed )
-			/*emit*/ dataAvail( eString( buf ) );
+		{
+/*			for ( int i = 0; i < readed; i++ )
+				eDebug("%d = %c (%02x)", i, buf[i], buf[i] );*/
+			/*emit*/ dataAvail( eString( buf, readed ) );
+		}
 		else if (readed == -1)
 			eDebug("readerror %d", errno);
 	}
@@ -210,12 +214,16 @@ void eConsoleAppContainer::readyErrRead(int what)
 {
 	if (what & POLLPRI|POLLIN)
 	{
-		eDebug("what = %d");
+//		eDebug("what = %d");
 		char buf[2048];
 		int readed = read(fd[2], buf, 2048);
 		eDebug("%d bytes read", readed);
 		if ( readed != -1 && readed )
-			/*emit*/ dataAvail( eString( buf ) );
+		{
+/*			for ( int i = 0; i < readed; i++ )
+				eDebug("%d = %c (%02x)", i, buf[i], buf[i] );*/
+			/*emit*/ dataAvail( eString( buf, readed ) );
+		}
 		else if (readed == -1)
 			eDebug("readerror %d", errno);
 	}
