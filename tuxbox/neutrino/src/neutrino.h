@@ -31,6 +31,9 @@
 	Foundation, Inc., 675 Mass Ave, Cambridge, MA 02139, USA.
 
 //  $Log$
+//  Revision 1.63  2002/03/07 18:32:34  field
+//  Bugfix, weitere Umstellungen ;)
+//
 //  Revision 1.62  2002/03/07 11:45:04  field
 //  Bugfix...
 //
@@ -275,7 +278,8 @@ struct messages {
 			EVT_VOLCHANGED 	= CRCInput::RC_Events + 1,
 			EVT_MUTECHANGED	= CRCInput::RC_Events + 2,
 			EVT_VCRCHANGED	= CRCInput::RC_Events + 3,
-			EVT_MODECHANGED = CRCInput::RC_Events + 4
+			EVT_MODECHANGED = CRCInput::RC_Events + 4,
+			EVT_TIMESET 	= CRCInput::RC_Events + 5
 		};
 };
 

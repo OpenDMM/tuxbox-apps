@@ -1504,6 +1504,7 @@ int CNeutrinoApp::run(int argc, char **argv)
 	g_RCInput = new CRCInput;
 	g_lcdd = new CLcddClient;
 	g_Zapit = new CZapitClient;
+	g_Sectionsd = new CSectionsdClient;
 
 	g_RemoteControl = new CRemoteControl;
 	g_EpgData = new CEpgData;
@@ -1611,6 +1612,8 @@ int CNeutrinoApp::run(int argc, char **argv)
 
 	g_Controld->registerEvent(CControldClient::EVT_MODECHANGED, 222, NEUTRINO_UDS_NAME);
 	g_Controld->registerEvent(CControldClient::EVT_VCRCHANGED, 222, NEUTRINO_UDS_NAME);
+
+	g_Sectionsd->registerEvent(CSectionsdClient::EVT_TIMESET, 222, NEUTRINO_UDS_NAME);
 
 	RealRun(mainMenu);
 
