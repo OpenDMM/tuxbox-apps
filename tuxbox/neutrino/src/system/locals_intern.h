@@ -536,6 +536,7 @@ const char * locale_real_names[] =
 	"movieplayer.bookmarkname_hint2",
 	"movieplayer.buffering",
 	"movieplayer.defdir",
+	"movieplayer.defplugin",
 	"movieplayer.dvdplayback",
 	"movieplayer.fileplayback",
 	"movieplayer.goto",
