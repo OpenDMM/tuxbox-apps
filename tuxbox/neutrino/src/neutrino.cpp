@@ -2881,6 +2881,7 @@ void CNeutrinoApp::ExitRun()
 		frameBuffer->loadPicture2FrameBuffer("shutdown.raw");
 	frameBuffer->loadPal("shutdown.pal");
 
+	networkConfig.automatic_start = (network_automatic_start == 1);
 	networkConfig.commitConfig();
 	saveSetup();
 	g_Controld->shutdown();
@@ -3278,6 +3279,7 @@ int CNeutrinoApp::exec(CMenuTarget* parent, std::string actionKey)
 	else if(actionKey=="savesettings")
 	{
 		g_Controld->saveSettings();
+		networkConfig.automatic_start = (network_automatic_start == 1);
 		networkConfig.commitConfig();
 		saveSetup();
 	}
