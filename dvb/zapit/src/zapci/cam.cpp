@@ -20,10 +20,9 @@
  *
  */
 
-#include "cam.h"
-
 /* zapit */
-#include <settings.h>   // CAMD_UDS_NAME
+#include <zapit/cam.h>
+#include <zapit/settings.h>   // CAMD_UDS_NAME
 
 bool CCam::sendMessage(char* data, const size_t length)
 {

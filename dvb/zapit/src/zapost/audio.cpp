@@ -27,8 +27,8 @@
 #include <sys/types.h>
 #include <unistd.h>
 
-#include "audio.h"
-#include "settings.h"
+#include <zapit/audio.h>
+#include <zapit/settings.h>
 
 CAudio::CAudio()
 {

@@ -24,7 +24,7 @@
 #define __cam_h__
 
 #include "ci.h"
-#include <basicclient.h>
+#include "client/basicclient.h"
 
 class CCam : public CBasicClient
 {

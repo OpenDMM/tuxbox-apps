@@ -5,7 +5,7 @@
 #ifndef __zapit_h__
 #define __zapit_h__
 
-#include <zapitclient.h>
+#include "client/zapitclient.h"
 
 #include "bouquets.h"
 

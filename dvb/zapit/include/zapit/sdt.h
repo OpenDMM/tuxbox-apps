@@ -22,7 +22,7 @@
 #ifndef __sdt_h__
 #define __sdt_h__
 
-#include <types.h>
+#include "types.h"
 
 enum service_type_e
 {

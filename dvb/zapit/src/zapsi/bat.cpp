@@ -30,10 +30,9 @@
 /* debug */
 #include <stdlib.h>
 
-#include <zapost/dmx.h>
-
-#include "bat.h"
-#include "descriptors.h"
+#include <zapit/bat.h>
+#include <zapit/descriptors.h>
+#include <zapit/dmx.h>
 
 #define BAT_SIZE 1024
 

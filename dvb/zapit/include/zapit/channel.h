@@ -28,7 +28,7 @@
 #include <stdint.h>
 
 /* zapit */
-#include <zapci/ci.h>
+#include "ci.h"
 #include "types.h"
 
 class CZapitAudioChannel

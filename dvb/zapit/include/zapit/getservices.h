@@ -15,11 +15,11 @@
 
 #include <eventserver.h>
 
+#include "ci.h"
+#include "descriptors.h"
+#include "sdt.h"
 #include "types.h"
 #include "xmlinterface.h"
-#include <zapci/ci.h>
-#include <zapsi/descriptors.h>
-#include <zapsi/sdt.h>
 
 #define zapped_chan_is_nvod 0x80
 

@@ -28,10 +28,9 @@
 #include <string>
 
 /* zapit */
-#include <zapost/dmx.h>
-
-#include "descriptors.h"
-#include "pmt.h"
+#include <zapit/descriptors.h>
+#include <zapit/dmx.h>
+#include <zapit/pmt.h>
 
 #define PMT_SIZE 1024
 

@@ -27,11 +27,10 @@
 /* libevent */
 #include <eventserver.h>
 
-#include <zapitclient.h>
-#include <scan.h>
-#include <zapost/dmx.h>
-
-#include "pat.h"
+#include <zapit/client/zapitclient.h>
+#include <zapit/dmx.h>
+#include <zapit/pat.h>
+#include <zapit/scan.h>
 
 #define PAT_SIZE 1024
 

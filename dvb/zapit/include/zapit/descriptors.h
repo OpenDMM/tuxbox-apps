@@ -22,7 +22,7 @@
 #ifndef __descriptors_h__
 #define __descriptors_h__
 
-#include <types.h>
+#include "types.h"
 
 uint8_t generic_descriptor (uint8_t *buffer);
 uint8_t video_stream_descriptor (uint8_t *buffer);

@@ -26,7 +26,7 @@
 #define __zapit__types_h__
 
 
-#include "clientlib/include/zapittypes.h"
+#include "client/zapittypes.h"
 
 
 #endif /* __zapit__types_h__ */

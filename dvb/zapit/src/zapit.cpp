@@ -39,21 +39,20 @@
 #include <configfile.h>
 #include <lcddclient.h>
 
-/* zapit library headers */
-#include <zapci/cam.h>
-#include <zapost/audio.h>
-#include <zapost/dmx.h>
-#include <zapost/frontend.h>
-#include <zapost/video.h>
-#include <zapsi/pat.h>
-#include <zapsi/pmt.h>
-
 /* zapit headers */
-#include "settings.h"
-#include "getservices.h"
-#include "xmlinterface.h"
-#include "zapit.h"
-#include <msgtypes.h>
+#include <zapit/audio.h>
+#include <zapit/cam.h>
+#include <zapit/client/msgtypes.h>
+#include <zapit/dmx.h>
+#include <zapit/frontend.h>
+#include <zapit/getservices.h>
+#include <zapit/pat.h>
+#include <zapit/pmt.h>
+#include <zapit/settings.h>
+#include <zapit/video.h>
+#include <zapit/xmlinterface.h>
+#include <zapit/zapit.h>
+
 
 #define debug(fmt, args...) { if (debug) { printf(fmt, ## args); fflush(stdout); } }
 

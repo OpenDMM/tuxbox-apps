@@ -26,8 +26,8 @@
 #include <sys/types.h>
 #include <unistd.h>
 
-#include "video.h"
-#include "settings.h"
+#include <zapit/settings.h>
+#include <zapit/video.h>
 
 CVideo::CVideo ()
 {

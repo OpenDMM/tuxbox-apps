@@ -26,7 +26,7 @@
 #include <string.h>
 #include <unistd.h>
 
-#include <zapitclient.h>
+#include <zapit/client/zapitclient.h>
 
 int usage (std::string basename)
 {

@@ -22,8 +22,8 @@
 #ifndef __pmt_h__
 #define __pmt_h__
 
-#include <channel.h>
-#include <zapci/ci.h>
+#include "channel.h"
+#include "ci.h"
 
 int parse_pmt (int demux_fd, CZapitChannel * channel);
 unsigned short parse_ES_info (unsigned char *buffer, CZapitChannel * channel, CCaPmt * caPmt);

@@ -30,7 +30,7 @@
 #include <ost/sec.h>
 
 /* zapit */
-#include <channel.h>
+#include "channel.h"
 
 #define MAX_LNBS	4
 

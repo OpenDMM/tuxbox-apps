@@ -30,12 +30,11 @@
 #include <map>
 
 /* zapit */
-#include <getservices.h>
-#include <zapost/dmx.h>
-#include <settings.h>  // DEMUX_DEVICE
-
-#include "descriptors.h"
-#include "nit.h"
+#include <zapit/descriptors.h>
+#include <zapit/dmx.h>
+#include <zapit/getservices.h>
+#include <zapit/nit.h>
+#include <zapit/settings.h>  // DEMUX_DEVICE
 
 #define NIT_SIZE 1024
 

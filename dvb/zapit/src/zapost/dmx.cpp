@@ -23,7 +23,7 @@
 #include <string.h>
 #include <sys/ioctl.h>
 
-#include "dmx.h"
+#include <zapit/dmx.h>
 
 int setDmxSctFilter (int fd, unsigned short pid, unsigned char * filter, unsigned char * mask)
 {

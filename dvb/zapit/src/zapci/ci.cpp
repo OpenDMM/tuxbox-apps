@@ -19,7 +19,7 @@
  *
  */
 
-#include "ci.h"
+#include <zapit/ci.h>
 
 unsigned int write_length_field (unsigned char * buffer, unsigned int length)
 {

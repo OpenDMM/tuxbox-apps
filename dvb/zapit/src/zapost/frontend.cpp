@@ -34,12 +34,11 @@
 #include <iostream>
 
 /* zapit */
-#include <getservices.h>
-#include <zapsi/nit.h>
-#include <zapsi/sdt.h>
-
-#include "frontend.h"
-#include "settings.h"
+#include <zapit/frontend.h>
+#include <zapit/getservices.h>
+#include <zapit/nit.h>
+#include <zapit/sdt.h>
+#include <zapit/settings.h>
 
 extern std::map <uint32_t, transponder> transponders;
 

@@ -11,12 +11,12 @@
 #include <unistd.h>
 
 /* zapit */
-#include <zapost/dmx.h>
-#include <types.h>
-#include <settings.h>  // DEMUX_DEVICE
+#include <zapit/descriptors.h>
+#include <zapit/dmx.h>
+#include <zapit/sdt.h>
+#include <zapit/settings.h>  // DEMUX_DEVICE
+#include <zapit/types.h>
 
-#include "descriptors.h"
-#include "sdt.h"
 
 #define SDT_SIZE 1024
 
