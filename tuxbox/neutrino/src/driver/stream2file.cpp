@@ -63,6 +63,7 @@
 
 #include <pthread.h>
 #include <signal.h>
+#include <libgen.h>
 
 extern "C" {
 #include <driver/ringbuffer.h>
@@ -394,7 +395,10 @@ void * DMXThread(void * v_arg)
 	{
 		CEventServer eventServer;
 		eventServer.registerEvent2(NeutrinoMessages::EVT_RECORDING_ENDED, CEventServer::INITID_NEUTRINO, "/tmp/neutrino.sock");
-		eventServer.sendEvent(NeutrinoMessages::EVT_RECORDING_ENDED, CEventServer::INITID_NEUTRINO, &exit_flag, sizeof(exit_flag));
+		stream2file_status2_t s;
+		s.status = exit_flag;
+		strncpy(s.dir,dirname(myfilename),100);
+		eventServer.sendEvent(NeutrinoMessages::EVT_RECORDING_ENDED, CEventServer::INITID_NEUTRINO, &s, sizeof(s));
 		printf("[stream2file] pthreads exit code: %u\n", exit_flag);
 	}
 

@@ -43,6 +43,12 @@ enum stream2file_status_t
 	STREAM2FILE_STATUS_READ_FAILURE = -4
 };
 
+struct stream2file_status2_t
+{
+	stream2file_status_t status;
+	char dir[100];
+};
+
 stream2file_error_msg_t start_recording(const char * const filename,
 					const char * const info,
 					const bool with_o_sync,
