@@ -164,7 +164,6 @@ int main (int argc, char** argv)
 			if (i < argc - 1)
 			{
 				sscanf(argv[++i], "%d", &nvod);
-				printf("nvod: %d\n", nvod);
 				continue;
 			}
 			else
