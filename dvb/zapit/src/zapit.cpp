@@ -1286,7 +1286,6 @@ void enterStandby(void)
 	}
 
 	if (audio) {
-		audio->mute();
 		delete audio;
 		audio = NULL;
 	}
