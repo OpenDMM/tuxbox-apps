@@ -484,7 +484,6 @@ bool CSectionsdClient::getEPGid(const event_id_t eventid, const time_t starttime
 	if (send(sectionsd::epgEPGid, (char *)&msg, sizeof(msg)))
 	{
 		int nBufSize = readResponse();
-		printf("Bufsize %d\n",nBufSize);
 		if (nBufSize > 0)
 		{
 			char* pData = new char[nBufSize];
