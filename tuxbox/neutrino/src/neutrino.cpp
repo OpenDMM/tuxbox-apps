@@ -1949,7 +1949,7 @@ void CNeutrinoApp::ShowStreamFeatures()
 
 	for(unsigned int count=0;count < (unsigned int) g_PluginList->getNumberOfPlugins();count++)
 	{
-		if( g_PluginList->getType(count)== 2 )
+		if (g_PluginList->getType(count)== PLUGIN_TYPE_TOOL)
 		{
 			// zB vtxt-plugins
 
