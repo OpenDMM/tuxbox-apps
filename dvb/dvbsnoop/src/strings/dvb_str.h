@@ -8,6 +8,9 @@ $Id$
 
 
 $Log$
+Revision 1.10  2003/10/19 21:05:53  rasc
+- some datacarousell stuff started
+
 Revision 1.9  2003/10/17 18:16:54  rasc
 - started more work on newer ISO 13818  descriptors
 - some reorg work started
@@ -91,6 +94,8 @@ char *dvbstrPESscrambling_ctrl_TYPE(u_int id);
 char *dvbstrCountryCode_ID (u_int i);
 char *dvbstrPrivateDataSpecifier_ID (u_int i);
 
+char *dvbstrLinkage0CTable_TYPE (u_int i);
+char *dvbstrMultiProtEncapsMACAddrRangeField (u_int i);
 
 
 
