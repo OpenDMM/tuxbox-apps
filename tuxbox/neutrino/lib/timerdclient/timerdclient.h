@@ -29,23 +29,17 @@
 
 #include <string>
 
+#include <zapit/basicclient.h>
 #include <timerdclient/timermanager.h>
 #include <timerdclient/timerdMsg.h>
 
 
 using namespace std;
 
-class CTimerdClient
+class CTimerdClient:private CBasicClient
 {
-
 	private:
-
-		int sock_fd;
-
-		bool timerd_connect();
-		bool timerd_close();
-		bool send(char* data, int size);
-		bool receive(char* data, int size);
+		bool send(const unsigned char command, char* data, const unsigned int size);
 
 	public:
 		enum events
@@ -66,8 +60,6 @@ class CTimerdClient
 			EVT_REMIND
 		};
 
-
-		CTimerdClient::CTimerdClient();
 
 		void registerEvent(unsigned int eventID, unsigned int clientID, string udsName);
 		void unRegisterEvent(unsigned int eventID, unsigned int clientID);

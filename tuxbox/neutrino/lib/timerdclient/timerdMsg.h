@@ -63,7 +63,6 @@ class CTimerd
 		//command structures
 		struct commandHead
 		{
-			unsigned char messageType;
 			unsigned char version;
 			unsigned char cmd;
 		};
