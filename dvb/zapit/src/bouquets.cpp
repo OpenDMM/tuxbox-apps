@@ -105,8 +105,7 @@ void CBouquet::removeService(CZapitChannel* oldChannel)
 				channels = &radioChannels;
 				break;
 		}
-
-		remove(channels->begin(), channels->end(), oldChannel);
+		(*channels).erase(remove(channels->begin(), channels->end(), oldChannel), channels->end());
 	}
 }
 
