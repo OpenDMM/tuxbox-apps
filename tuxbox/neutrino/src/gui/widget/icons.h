@@ -22,6 +22,8 @@
  *
  */
 
+/* icon files */
+
 #define NEUTRINO_ICON_BUTTON_BLUE   "blau.raw"
 #define NEUTRINO_ICON_BUTTON_GREEN  "gruen.raw"
 #define NEUTRINO_ICON_BUTTON_RED    "rot.raw"
@@ -34,6 +36,13 @@
 #define NEUTRINO_ICON_BUTTON_OKAY   "ok.raw"
 
 #define NEUTRINO_ICON_SETTINGS      "settings.raw"
+
+/* icon widths */
+
+#define NEUTRINO_ICON_BUTTON_BLUE_WIDTH   16
+#define NEUTRINO_ICON_BUTTON_GREEN_WIDTH  16
+#define NEUTRINO_ICON_BUTTON_RED_WIDTH    16
+#define NEUTRINO_ICON_BUTTON_YELLOW_WIDTH 16
 
 #endif /* __gui_widget_icons_h__ */
 
