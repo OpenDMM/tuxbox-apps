@@ -815,7 +815,7 @@ void CNeutrinoApp::channelsInit()
 	dprintf(DEBUG_DEBUG, "got channels\n");
 
 	delete bouquetList;
-	bouquetList = new CBouquetList( "bouquetlist.head" );
+	bouquetList = new CBouquetList();
 	bouquetList->orgChannelList = channelList;
 	CZapitClient::BouquetList zapitBouquets;
 	g_Zapit->getBouquets(zapitBouquets, false, true); // UTF-8
