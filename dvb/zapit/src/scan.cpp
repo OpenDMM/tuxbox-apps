@@ -40,7 +40,7 @@ short curr_sat;
 static int status = 0;
 uint processed_transponders;
 uint32_t actual_freq;
-uint8_t actual_polarisation;
+uint actual_polarisation;
 
 
 CBouquetManager* scanBouquetManager;
@@ -157,9 +157,8 @@ int get_sdts(void)
 
 			actual_freq = tI->second.feparams.frequency;
  			eventServer->sendEvent(CZapitClient::EVT_SCAN_REPORT_FREQUENCY,CEventServer::INITID_ZAPIT, &actual_freq,sizeof(actual_freq));
- 			actual_polarisation = tI->second.polarization;
+ 			actual_polarisation = (uint)tI->second.polarization;
  			eventServer->sendEvent(CZapitClient::EVT_SCAN_REPORT_FREQUENCYP,CEventServer::INITID_ZAPIT,&actual_polarisation,sizeof(actual_polarisation));
-
 		parse_sdt(tI->second.transport_stream_id, tI->second.original_network_id, tI->second.DiSEqC);
 	}
 
