@@ -33,6 +33,9 @@
 // $Id$
 //
 // $Log$
+// Revision 1.24  2001/11/23 17:25:45  McClean
+// dont hide epg automaticly
+//
 // Revision 1.23  2001/11/15 11:42:41  McClean
 // gpl-headers added
 //
@@ -328,7 +331,7 @@ void CEpgData::show( string channelName, unsigned int onid_tsid, unsigned long l
     	int scrollCount;
     	while(loop)
     	{
-    		int key = g_RCInput->getKey(150);
+    		int key = g_RCInput->getKey();
 
     		scrollCount = medlinecount;
 
