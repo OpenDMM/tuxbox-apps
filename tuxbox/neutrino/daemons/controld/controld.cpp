@@ -751,8 +751,22 @@ int main(int argc, char **argv)
 	printf("Controld  $Id$\n\n");
 
 	//printf("[controld] mainThread-pid: %d\n", getpid());
-	if (fork() != 0)
+	switch (fork())
+	{
+	case -1:
+		perror("[controld] fork");
+		return -1;
+	case 0:
+		break;
+	default:
 		return 0;
+	}
+
+	if (setsid() == -1)
+	{
+		perror("[controld] setsid");
+		return -1;
+	}
 
     //printf("[controld] forkedThread-pid: %d\n", getpid());
 	eventServer = new CEventServer;

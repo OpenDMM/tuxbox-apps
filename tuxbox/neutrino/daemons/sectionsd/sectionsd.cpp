@@ -23,6 +23,10 @@
 //    Foundation, Inc., 675 Mass Ave, Cambridge, MA 02139, USA.
 //
 //  $Log$
+//  Revision 1.109  2002/03/29 15:47:18  obi
+//  use setsid()
+//  field, mcclean: i guess that is what you wanted instead of catching signals ;)
+//
 //  Revision 1.108  2002/03/28 08:49:14  obi
 //  sigkill cannot be caught
 //  exit on all signals except sighup
@@ -3562,8 +3566,22 @@ int main(int argc, char **argv)
 		printf("events are old %ldmin after their end time\n", oldEventsAre/60);
 		tzset(); // TZ auswerten
 
-		if( fork()!= 0 ) // switching to background
+		switch (fork()) // switching to background
+		{
+		case -1:
+			perror("[sectionsd] fork");
+			return -1;
+		case 0:
+			break;
+		default:
 			return 0;
+		}
+
+		if (setsid() == -1)
+		{
+			perror("[sectionsd] setsid");
+			return -1;
+		}
 
 		// from here on forked
 
