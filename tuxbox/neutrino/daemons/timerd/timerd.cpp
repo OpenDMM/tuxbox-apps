@@ -36,6 +36,8 @@
 #include <connection/basicserver.h>
 #include <timerdclient/timerdmsg.h>
 
+int timerd_debug = 0;
+
 static void signalHandler(int signum)
 {
 	CTimerManager::getInstance()->shutdown();
@@ -378,10 +380,13 @@ int main(int argc, char **argv)
 	{
 		for(int i = 1; i < argc; i++)
 		{
-
 			if(strncmp(argv[i], "-f", 2) == 0)
 			{
 				do_fork = false;
+			}
+			if(strncmp(argv[i], "-d", 2) == 0)
+			{
+				timerd_debug = 1;
 			}
 		}
 	}
