@@ -75,7 +75,7 @@ int CDemux::sectionFilter(const unsigned short pid, const unsigned char * const 
 		break;
 
 	case 0x41: /* network_information_section - other_network */
-		sctFilterParams.timeout = 10000;
+		sctFilterParams.timeout = 15000;
 		break;
 
 	case 0x42: /* service_description_section - actual_transport_stream */
