@@ -40,8 +40,8 @@ struct sectionsd
 
 	struct msgRequestHeader
 	{
-		char version;
-		char command;
+		unsigned char version;
+		unsigned char command;
 		unsigned short dataLength;
 	} __attribute__ ((packed)) ;
 
