@@ -118,7 +118,7 @@ public:
 	bool ParseFirstLine(std::string zeile);
 	bool ParseHeader(std::string header);
 	bool ParseBoundaries(std::string bounds);
-	void URLDecode(std::string &encodedString);
+	static void URLDecode(std::string &encodedString);
 	bool HandleUpload(void);
 	bool HandleUpload(char *Name);
 	void PrintRequest(void);
