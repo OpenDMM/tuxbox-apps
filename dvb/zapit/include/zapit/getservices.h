@@ -15,7 +15,7 @@
 
 #include <eventserver.h>
 
-#include <xml/xmltree.h>
+#include "xmlinterface.h"
 #include <zapci/ci.h>
 #include <zapsi/descriptors.h>
 #include <zapsi/sdt.h>

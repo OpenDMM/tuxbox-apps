@@ -156,40 +156,12 @@ void FindTransponder (XMLTreeNode *search)
 
 int LoadServices(void)
 {
-	char buf[2048];
-	bool done;
-	size_t len;
+	XMLTreeParser *parser = parseXmlFile(string(CONFIGDIR "/zapit/services.xml"));
 
-	XMLTreeParser *parser = new XMLTreeParser("ISO-8859-1");
-	FILE *in = fopen(CONFIGDIR "/zapit/services.xml", "r");
-
-	if (!in)
-	{
-		perror("[getservices.cpp] " CONFIGDIR "/zapit/services.xml");
+	if (parser == NULL)
 		return -1;
-	}
 
-	do
-	{
-		len = fread(buf, 1, sizeof(buf), in);
-		done = len < sizeof(buf);
-
-		if (!parser->Parse(buf, len, done))
-		{
-			printf("[getservices.cpp] parse error: %s at line %d\n", parser->ErrorString(parser->GetErrorCode()), parser->GetCurrentLineNumber());
-			fclose(in);
-			delete parser;
-			return -1;
-		}
-	}
-	while (!done);
-
-	if (parser->RootNode())
-	{
-		FindTransponder(parser->RootNode()->GetChild());
-	}
-
-	fclose(in);
+	FindTransponder(parser->RootNode()->GetChild());
 	delete parser;
 	return 0;
 }

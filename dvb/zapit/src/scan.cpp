@@ -7,7 +7,6 @@
 #include <sys/types.h>
 
 #include <clientlib/zapitclient.h>
-#include <xml/xmltree.h>
 #include <zapost/frontend.h>
 #include <zapsi/bat.h>
 #include <zapsi/nit.h>

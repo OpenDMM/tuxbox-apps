@@ -14,7 +14,7 @@
 #include <stdio.h>
 
 #include "channel.h"
-#include "xml/xmltree.h"
+#include "xmlinterface.h"
 
 #ifdef HAVE_CONFIG_H
 #include "config.h"
