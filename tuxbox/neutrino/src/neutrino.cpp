@@ -253,8 +253,6 @@ void CNeutrinoApp::setupDefaults()
 	strcpy(g_settings.language, "deutsch");
 
 	//misc
-	//g_settings.box_Type = 1;
-	//g_settings.box_Type = g_Controld->getBoxType(); //passiert ohnehin immer...
 	g_settings.shutdown_real = 1;
 	g_settings.shutdown_showclock = 1;
 	g_settings.show_camwarning = 1;
@@ -833,7 +831,7 @@ void CNeutrinoApp::InitServiceSettings(CMenuWidget &service)
 	CMenuWidget* TSScan = new CMenuWidget("servicemenu.scants", "settings.raw");
 	TSScan->addItem( new CMenuForwarder("menu.back") );
 	TSScan->addItem( new CMenuSeparator(CMenuSeparator::LINE) );
-	service.addItem( new CMenuForwarder("bouqueteditor.name", true, "", new CBEBouquetWidget( new CNeutrinoBouquetEditorEvents(this))));
+	service.addItem( new CMenuForwarder("bouqueteditor.name", true, "", new CBEBouquetWidget()));
 	CMenuOptionChooser* oj = new CMenuOptionChooser("scants.bouquet", &g_settings.scan_bouquet, true );
 	oj->addOption(256, "scants.bouquet_leave");
 	oj->addOption(512, "scants.bouquet_create");
@@ -1580,6 +1578,7 @@ int CNeutrinoApp::run(int argc, char **argv)
 	g_Controld->registerEvent(CControldClient::EVT_VCRCHANGED, 222, NEUTRINO_UDS_NAME);
 
 	g_Sectionsd->registerEvent(CSectionsdClient::EVT_TIMESET, 222, NEUTRINO_UDS_NAME);
+	g_Sectionsd->registerEvent(CSectionsdClient::EVT_GOT_CN_EPG, 222, NEUTRINO_UDS_NAME);
 
 	RealRun(mainMenu);
 
@@ -1863,6 +1862,23 @@ int CNeutrinoApp::handleMsg(uint msg, uint data)
 	{
 		AudioMute( (bool)data, true );
 		return messages_return::handled;
+	}
+	else if ( ( msg == messages::EVT_BOUQUETSCHANGED ) ||
+			  ( msg == messages::EVT_SERVICESCHANGED ) )
+	{
+		channelsInit();
+
+		return messages_return::handled;
+	}
+	else if ( msg == messages::EVT_SERVICESCHANGED )
+	{
+		tvMode( true );
+
+		// auf der sicheren Seite...
+		channelList->zapTo( 0 );
+
+		return messages_return::handled;
+
 	}
 
 	return messages_return::unhandled;
@@ -2252,16 +2268,6 @@ bool CNeutrinoApp::changeNotify(string OptionName)
 	close(sock_fd);
 
 	return false;
-}
-
-	/* This class should be a temporarily work around             */
-	/* and should be replaced by standard neutrino event handlers */
-	/* (libevent) */
-void CNeutrinoBouquetEditorEvents::onBouquetsChanged()
-{
-//	neutrino->firstChannel();
-	neutrino->channelsInit();
-//	neutrino->channelList->zapTo( 0 );
 }
 
 
