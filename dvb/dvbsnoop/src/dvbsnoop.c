@@ -25,6 +25,9 @@ $Id$
 
 
 $Log$
+Revision 1.4  2003/02/09 22:59:33  rasc
+-- endian check (bug fix)
+
 Revision 1.3  2002/08/17 20:36:12  obi
 no more compiler warnings
 
@@ -69,7 +72,7 @@ int main(int argc, char **argv)
 
   if (! cmdline_options (argc,argv, &opt) ) return (-1);
 
-
+  setEndianArch ();
   setVerboseLevel (opt.printdecode);
   setHexPrintMode (opt.printhex);
 
