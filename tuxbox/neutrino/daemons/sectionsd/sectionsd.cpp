@@ -23,6 +23,9 @@
 //    Foundation, Inc., 675 Mass Ave, Cambridge, MA 02139, USA.
 //
 //  $Log$
+//  Revision 1.89  2002/01/06 18:23:44  McClean
+//  better busybox-handling
+//
 //  Revision 1.88  2002/01/06 03:03:13  McClean
 //  busybox 0.60 workarround
 //
@@ -3106,6 +3109,13 @@ struct sockaddr_in serverAddr;
   // from here on forked
 
   //catch all signals... (busybox workaround)
+  signal(SIGHUP, signalHandler);
+  signal(SIGINT, signalHandler);
+  signal(SIGKILL, signalHandler);
+  signal(SIGQUIT, signalHandler);
+  signal(SIGTERM, signalHandler);
+
+
   for(int x=0;x<32;x++)
      signal(x,signalHandler);
 
