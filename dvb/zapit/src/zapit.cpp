@@ -549,7 +549,7 @@ int start_scan ()
 	return 0;
 }
 
-bool parse_command (CZapitMessages::commandHead &rmsg)
+bool parse_command(CBasicMessage::Header &rmsg)
 {
 	debug("[zapit] cmd %d (version %d) received\n", rmsg.cmd, rmsg.version);
 
@@ -1191,7 +1191,7 @@ int main (int argc, char **argv)
 	
 	do
 	{
-		CZapitMessages::commandHead rmsg;
+		CBasicMessage::Header rmsg;
 		connfd = accept(listenfd, (struct sockaddr*) &servaddr, (socklen_t*) &clilen);
 		memset(&rmsg, 0, sizeof(rmsg));
 		read(connfd, &rmsg, sizeof(rmsg));

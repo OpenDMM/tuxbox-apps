@@ -60,7 +60,7 @@ inline bool CZapitClient::zapit_connect()
 //void CZapitClient::send(const CZapitMessages::commands command, char* data = NULL, const unsigned int size = 0)
 void CZapitClient::send(const unsigned char command, char* data = NULL, const unsigned int size = 0)
 {
-	CZapitMessages::commandHead msgHead;
+	CBasicMessage::Header msgHead;
 	msgHead.version = CZapitMessages::ACTVERSION;
 	msgHead.cmd     = command;
 	zapit_connect();
@@ -380,7 +380,7 @@ void CZapitClient::setVolume (unsigned int left, unsigned int right)
 /* start TS-Scan */
 bool CZapitClient::startScan()
 {
-	CZapitMessages::commandHead msgHead;
+	CBasicMessage::Header msgHead;
 	msgHead.version = CZapitMessages::ACTVERSION;
 	msgHead.cmd     = CZapitMessages::CMD_SCANSTART;
 

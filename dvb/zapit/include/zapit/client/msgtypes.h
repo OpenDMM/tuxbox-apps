@@ -26,6 +26,7 @@
 
 
 #include "zapittypes.h"
+#include "basicmessage.h"
 #include "zapitclient.h"
 
 
@@ -100,12 +101,6 @@ class CZapitMessages
 			CMD_SET_VOLUME,
 			CMD_COMMIT_BOUQUET_CHANGE
 		};
-
-	struct commandHead
-	{
-		unsigned char version;
-		unsigned char cmd;
-	};
 
 	struct commandBoolean
 	{
