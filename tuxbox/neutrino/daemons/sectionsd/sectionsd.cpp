@@ -23,6 +23,9 @@
 //    Foundation, Inc., 675 Mass Ave, Cambridge, MA 02139, USA.
 //
 //  $Log$
+//  Revision 1.129  2002/09/20 00:05:55  thegoodguy
+//  Fixed potential deadlock
+//
 //  Revision 1.128  2002/08/27 19:00:45  obi
 //  use devfs device names
 //
@@ -3499,6 +3502,7 @@ static void *sdtThread(void *)
 			}
 			else if (rc < 0)
 			{
+				dmxSDT.unlock();
 				// DMX neu starten
 				dmxSDT.real_pause();
 				dmxSDT.real_unpause(); // leaves unlocked
