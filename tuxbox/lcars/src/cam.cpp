@@ -14,10 +14,12 @@
  *                                                                         *
  ***************************************************************************/
 /*
-$LOG$
+$Log$
+Revision 1.4  2001/11/15 00:39:13  TheDOC
+log-retry
+
 */
 
-// bla
 #include <stdio.h>
 #include <fcntl.h>
 #include <unistd.h>
