@@ -171,14 +171,12 @@ void SIsectionEIT::parseShortEventDescriptor(const char *buf, SIevent &e, unsign
   }
   buf+=evt->event_name_length;
   unsigned char textlength=*((unsigned char *)buf);
-  if(textlength) {
+  if(textlength > 2) {
     if(*(buf+1) < 0x06) // other code table
       e.text=std::string((++buf)+1, textlength-1);
     else
       e.text=std::string(++buf, textlength);
   }
-	while( e.text.length() && e.text[0] == '\x0A' )
-			e.text.erase(0,1);
 
 //  printf("Name: %s\n", e.name.c_str());
 //  printf("Text: %s\n", e.text.c_str());
