@@ -185,7 +185,7 @@ CMoviePlayerGui::exec (CMenuTarget * parent, std::string actionKey)
 	height = 570;
 	if ((g_settings.screen_EndY - g_settings.screen_StartY) < height)
 		height = (g_settings.screen_EndY - g_settings.screen_StartY);
-	buttonHeight = min (25, g_Fonts->infobar_small->getHeight ());
+	buttonHeight = std::min(25, g_Fonts->infobar_small->getHeight ());
 	theight = g_Fonts->menu_title->getHeight ();
 	fheight = g_Fonts->menu->getHeight ();
 	sheight = g_Fonts->infobar_small->getHeight ();
@@ -886,7 +886,7 @@ void
 CMoviePlayerGui::PlayStream (int streamtype)
 {
 	uint msg, data;
-	string sel_filename;
+	std::string sel_filename;
 	bool update_info = true, start_play = false, exit =
 		false, open_filebrowser = true;
 	char mrl[200];
@@ -953,7 +953,7 @@ CMoviePlayerGui::PlayStream (int streamtype)
 					//printf ("[movieplayer.cpp] sel_filename: %s\n", filename);
 					int namepos =
 						filebrowser->getSelectedFile ()->Name.rfind ("vlc://");
-					string mrl_str =
+					std::string mrl_str =
 						filebrowser->getSelectedFile ()->Name.substr (namepos +
 											      6);
 					char *tmp = curl_escape (mrl_str.c_str (), 0);
@@ -978,7 +978,7 @@ CMoviePlayerGui::PlayStream (int streamtype)
 		{
 			update_info = false;
 			char tmp[20];
-			string lcd;
+			std::string lcd;
 			switch (playstate)
 			{
 			case CMoviePlayerGui::PAUSE:
@@ -1067,7 +1067,7 @@ void
 CMoviePlayerGui::PlayFile (void)
 {
 	uint msg, data;
-	string sel_filename;
+	std::string sel_filename;
 	bool update_lcd = true, open_filebrowser =
 		true, start_play = false, exit = false;
 	playstate = CMoviePlayerGui::STOPPED;
@@ -1120,7 +1120,7 @@ CMoviePlayerGui::PlayFile (void)
 		{
 			update_lcd = false;
 			char tmp[20];
-			string lcd;
+			std::string lcd;
 			switch (playstate)
 			{
 			case CMoviePlayerGui::PAUSE:
