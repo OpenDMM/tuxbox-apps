@@ -8,6 +8,9 @@ $Id$
 
 
 $Log$
+Revision 1.3  2003/10/27 22:43:49  rasc
+carousel info descriptor and more
+
 Revision 1.2  2003/10/17 18:16:54  rasc
 - started more work on newer ISO 13818  descriptors
 - some reorg work started
@@ -39,7 +42,13 @@ void  descriptorMPEG_PrivateDataIndicator (u_char *b);
 void  descriptorMPEG_SmoothingBuf (u_char *b);
 void  descriptorMPEG_STD (u_char *b);
 void  descriptorMPEG_IBP (u_char *b);
+	/* 13818-6 , TR 102 006 */
+void  descriptorMPEG_Carousel_Identifier (u_char *b);
+void  descriptorMPEG_Association_tag (u_char *b);
+void  descriptorMPEG_Deferred_Association_tags (u_char *b);
 
+
+	/* MPEG4 */
 void  descriptorMPEG_MPEG4_video (u_char *b);
 void  descriptorMPEG_MPEG4_audio (u_char *b);
 void  descriptorMPEG_IOD (u_char *b);
