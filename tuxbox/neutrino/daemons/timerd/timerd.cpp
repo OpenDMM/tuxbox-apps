@@ -529,12 +529,6 @@ int main(int argc, char **argv)
       }
    }
 
-	if(!no_wait)
-	{
-		sleep(60);
-	}
-   loadTimersFromConfig();
-
    memset(&servaddr, 0, sizeof(struct sockaddr_un));
    servaddr.sun_family = AF_UNIX;
    strcpy(servaddr.sun_path, TIMERD_UDS_NAME);
@@ -553,13 +547,19 @@ int main(int argc, char **argv)
       exit(-1);
    }
 
-   if(listen(listenfd, 5) !=0)
+   if(listen(listenfd, 15) !=0)
    {
       perror("listen failed...");
       exit( -1 );
    }
 
-   //startup Timer
+	if(!no_wait)
+	{
+		sleep(60);
+	}
+   loadTimersFromConfig();
+   
+	//startup Timer
    try
    {
       struct CTimerd::commandHead rmessage;
