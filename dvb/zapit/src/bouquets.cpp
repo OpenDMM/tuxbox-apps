@@ -277,6 +277,7 @@ void CBouquetManager::saveBouquets(void)
 	}
 	
 	fprintf(bouq_fd, "</zapit>\n");
+	fclose(bouq_fd);
 }
 
 void CBouquetManager::saveBouquets(CZapitClient::bouquetMode bouquetMode, char * providerName)
@@ -309,6 +310,7 @@ void CBouquetManager::saveBouquets(CZapitClient::bouquetMode bouquetMode, char *
 		}
 	
 		fprintf(bouq_fd, "</zapit>\n");
+		fclose(bouq_fd);
 	}
 	else
 	{
