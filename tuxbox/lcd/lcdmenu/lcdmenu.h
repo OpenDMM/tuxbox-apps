@@ -91,8 +91,8 @@ class CLCDMenu : public CLCDDisplay
 	
 		CConfigFile *config;
 		CRCInput *rc;
-		fontRenderClass *fontRenderer;
-		Font *menuFont;
+		LcdFontRenderClass *fontRenderer;
+		LcdFont *menuFont;
 
 		int upperRow;
 		int fontSize;
