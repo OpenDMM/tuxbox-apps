@@ -20,6 +20,9 @@ $Id$
 
 
 $Log$
+Revision 1.3  2003/11/26 20:31:51  rasc
+no message
+
 Revision 1.2  2003/11/26 16:27:48  rasc
 - mpeg4 descriptors
 - simplified bit decoding and output function
@@ -74,6 +77,7 @@ void decode_TESTDATA (u_char *b, int len)
 
 
  out_nl (3,"... $$$ TODO ....");
+ out_nl (3,"... Report!!! if you find a transponder with test data!!! ....");
  // $$$ TODO   ...
 
 }

@@ -8,6 +8,9 @@ $Id$
 
 
 $Log$
+Revision 1.11  2003/11/26 20:31:50  rasc
+no message
+
 Revision 1.10  2003/11/26 19:55:31  rasc
 no message
 
@@ -51,6 +54,7 @@ Revision 1.1  2003/10/19 22:22:58  rasc
 
 /*
  * $$$$ TODO  The following is complete GAGA! 
+ * $$$$ CHECK CHECK CHECK !!!
  *  ATSC says tableID 0x3F EN
  *  The following is a private_indicator == 0x01
  *    DATAGRAM (private Data) section!!! ????
@@ -190,9 +194,6 @@ void decode_DSMCC_DATAGRAM (u_char *b, int len)
  // $$$$ unknown 
  //    how do i distinguish between N1  datagram bytes and N2 stuffing bytes?
  //    is there an else clause in specs missing????
-
- //    also where to get ISO 8802-2  LLC - SubNetAccPoint  protocol ?????
-
 
 
 
