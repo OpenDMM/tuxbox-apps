@@ -57,6 +57,9 @@ class CVideo
 		/* change video play state */
 		int start(void);
 		int stop(void);
+
+		/* set video_system */
+		int setVideoSystem(int video_system);
 };
 
 #endif /* __zapit_video_h__ */

@@ -106,3 +106,8 @@ video_play_state_t CVideo::getPlayState(void)
 	return status.play_state;
 }
 
+int CVideo::setVideoSystem(int video_system)
+{
+        return fop(ioctl, VIDEO_SET_SYSTEM, video_system);
+}
+

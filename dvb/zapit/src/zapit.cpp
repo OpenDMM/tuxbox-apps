@@ -1012,6 +1012,18 @@ bool parse_command(CBasicMessage::Header &rmsg, int connfd)
 		break;
 	}
 
+	case CZapitMessages::CMD_SET_PAL:
+	{
+		setVideoSystem_t(0);
+		break;
+	}
+	
+	case CZapitMessages::CMD_SET_NTSC:
+	{
+		setVideoSystem_t(1);
+		break;
+	}
+
 	case CZapitMessages::CMD_SB_START_PLAYBACK:
 		playbackStopForced = false;
 		/* FIXME: nvod */
@@ -1409,6 +1421,14 @@ int stopPlayBack(void)
 		videoDecoder->stop();
 
 	return 0;
+}
+
+void setVideoSystem_t(int video_system)
+{
+	if (video_system == 0) 
+		videoDecoder->setVideoSystem(PAL);
+	else
+		videoDecoder->setVideoSystem(NTSC);
 }
 
 void enterStandby(void)

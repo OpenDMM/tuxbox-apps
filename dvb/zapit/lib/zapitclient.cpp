@@ -813,6 +813,16 @@ void CZapitClient::setStandby(const bool enable)
 	close_connection();
 }
 
+void CZapitClient::setVideoSystem_a(int video_system)
+{
+	if (video_system == 0)
+		send(CZapitMessages::CMD_SET_PAL);
+	else
+		send(CZapitMessages::CMD_SET_NTSC);
+	close_connection();
+}
+
+
 void CZapitClient::startPlayBack()
 {
 	send(CZapitMessages::CMD_SB_START_PLAYBACK);
