@@ -70,6 +70,9 @@
   Foundation, Inc., 675 Mass Ave, Cambridge, MA 02139, USA.
   
   $Log$
+  Revision 1.12  2001/10/11 11:35:55  faralla
+  getting nvodchannels from neutrino
+
   Revision 1.11  2001/10/10 23:48:17  faralla
   scanning added
 
@@ -732,21 +735,22 @@ else
   if (cit->second.service_type == 4)
     {
       nvodname = cit->second.name;
-      printf("Getting sdt for NVOD\n");
-      sdt(cit->second.sid,false);
-      printf("Got sdt\n");
-      if (!nvodchannels.empty())
-	{
-	  curr_onid_sid = onid_sid;
-	  save_settings();
-	  printf("Trying to zap to %08x\n", nvodchannels.begin()->first);
-	  if (zapit(nvodchannels.begin()->first, true) > 0)
-	    return 3;
-	  else
-	    return -3;
-	}
-      else
-	return -3;
+      current_is_nvod = true;
+      //printf("Getting sdt for NVOD\n");
+      //sdt(cit->second.sid,false);
+      //printf("Got sdt\n");
+      //if (!nvodchannels.empty())
+	//{
+	  //curr_onid_sid = onid_sid;
+	  //save_settings();
+	  //printf("Trying to zap to %08x\n", nvodchannels.begin()->first);
+	  //if (zapit(nvodchannels.begin()->first, true) > 0)
+	    //return 3;
+	  //else
+	    //return -3;
+	//}
+      //else
+       return -3;
     }
 
   if (cit->second.pmt == 0 && cit->second.service_type != 4)
@@ -1596,6 +1600,38 @@ void parse_command()
 	return;
 	}
       break;
+       uint nvod_tsid, nvod_onidsid;
+       struct pollfd recv_fd;
+       case 'i':
+       	if (current_is_nvod)
+       		status = "00i";
+       	else
+       		status = "-0i";
+       	if (send(connfd, &status, strlen(status),0) == -1) 
+		{
+		  perror("Could not send any retun\n");
+		  return;
+		}
+	recv_fd.fd = connfd;
+  	recv_fd.events = POLLIN;
+  	recv_fd.revents = 0;
+  	
+	while (poll(&recv_fd,1,500))
+	{
+		if (recv(connfd, &nvod_onidsid, 4,0)==-1)
+			{
+				perror("receiving nvod_channels");
+				return;
+			}
+		if (recv(connfd, &nvod_tsid, 2,0) == -1)
+			{
+				perror("receiving nvod_channels");
+				return;
+			}
+		printf("Received onid_sid %x. tsid: %x, sid: %x, onid: %x\n", nvod_onidsid, nvod_tsid, (nvod_onidsid&0x10000), (nvod_onidsid>>16));
+		nvodchannels.insert(std::pair<int,channel>(nvod_onidsid,channel("NVOD",0,0,0,0,0,(nvod_onidsid&0x10000),nvod_tsid,(nvod_onidsid>>16),1)));
+	}
+	break;
 	default:  
       status = "000";
       //printf("zapit is sending back a status-msg %s\n", status);
