@@ -69,6 +69,7 @@ class CControlAPI
 		bool ZaptoCGI(CWebserverRequest *request);
 		bool StartPluginCGI(CWebserverRequest *request);
 		bool ExecCGI(CWebserverRequest *request);
+		bool SystemCGI(CWebserverRequest *request);
 	public:
 		CControlAPI(CWebDbox *parent) { Parent = parent; };
 		bool Execute(CWebserverRequest *request);
