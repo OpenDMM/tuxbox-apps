@@ -4,9 +4,9 @@
 /*
  * $Header$
  *
- * Basic Server Class (Neutrino) - DBoxII-Project
+ * Basic Server Class Class - The Tuxbox Project
  *
- * (C) 2002 by thegoodguy <thegoodguy@berlios.de>
+ * (C) 2002 - 2003 by thegoodguy <thegoodguy@berlios.de>
  *
  * License: GPL
  *
@@ -37,6 +37,8 @@ class CBasicServer
 	std::string name;
 
  public:
+	static bool receive_data(int fd, void * data, const size_t size);
+	static bool send_data(int fd, const void * data, const size_t size);
 	bool prepare(const char* socketname);
 	void run(bool (parse_command)(CBasicMessage::Header &rmsg, int connfd), const CBasicMessage::t_version version);
 };
