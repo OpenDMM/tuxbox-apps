@@ -69,6 +69,9 @@
   Foundation, Inc., 675 Mass Ave, Cambridge, MA 02139, USA.
   
   $Log$
+  Revision 1.8  2001/10/10 12:17:59  fnbrd
+  Singalhandler auskommentiert.
+
   Revision 1.7  2001/10/10 12:09:20  field
   Bei CMDs d,e den Parameter auf param3 geaendert (wg. Groesse)
 
@@ -1799,10 +1802,10 @@ int main(int argc, char **argv) {
     }
   
   /* Establish signal handler to clean up before termination: */
-  if (signal (SIGTERM, termination_handler) == SIG_IGN)
-    signal (SIGTERM, SIG_IGN);
-  signal (SIGINT, SIG_IGN);
-  signal (SIGHUP, SIG_IGN);
+//  if (signal (SIGTERM, termination_handler) == SIG_IGN)
+//    signal (SIGTERM, SIG_IGN);
+//  signal (SIGINT, SIG_IGN);
+//  signal (SIGHUP, SIG_IGN);
   
   /* Main program loop */
   descramble(0xffff,0xffff,0xffff,0xffff,0xffff,0xffff,0xffff);
