@@ -177,6 +177,21 @@ string CBouquetManager::convertForXML( string s)
 		  case '<':
 			r += "&lt;";
 		  break;
+		  case 'Ä':
+			r += "&#196;";
+		  break;
+		  case 'É':
+			r += "&#201;";
+		  break;
+		  case 'Í':
+			r += "&#205;";
+		  break;
+		  case 'Ü':
+			r += "&#220;";
+		  break;
+		  case 'é':
+			r += "&#233;";
+		  break;
 		  case '\"':
 			r += "&quot;";
 		  break;
