@@ -92,6 +92,9 @@
   Foundation, Inc., 675 Mass Ave, Cambridge, MA 02139, USA.
 
   $Log$
+  Revision 1.59  2002/01/07 21:13:46  Simplex
+  functions for start and stop videoplayback
+
   Revision 1.58  2002/01/06 19:12:20  Simplex
   use clientlib for zapit
 
@@ -2225,6 +2228,14 @@ void parse_command()
 				g_BouquetMan->renumServices();
 			break;
 
+			case CZapitClient::CMD_SB_START_PLAYBACK :
+				startPlayBack();
+			break;
+
+			case CZapitClient::CMD_SB_STOP_PLAYBACK :
+				stopPlayBack();
+			break;
+
 			default:
 				printf("[zapit] unknown command (version %d)\n", CZapitClient::ACTVERSION);
 		}
@@ -2524,3 +2535,14 @@ void sendBouquets(bool emptyBouquetsToo)
 		}
 	}
 }
+
+void startPlayBack()
+{
+	zapit( curr_onid_sid, current_is_nvod);
+}
+
+void stopPlayBack()
+{
+	endzap();
+}
+
