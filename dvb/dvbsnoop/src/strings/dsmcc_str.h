@@ -8,6 +8,9 @@ $Id$
 
 
 $Log$
+Revision 1.4  2003/10/29 20:54:57  rasc
+more PES stuff, DSM descriptors, testdata
+
 Revision 1.3  2003/10/26 21:36:20  rasc
 private DSM-CC descriptor Tags started,
 INT-Section completed..
@@ -24,7 +27,10 @@ some updates to dvbsnoop...
 
 */
 
-char *dsmccStrDSMCCPrivateDescriptorTAG (u_int id);
+
+char *dsmccStrDSMCC_Private_DescriptorTAG (u_int i);
+char *dsmccStrDSMCC_INT_UNT_DescriptorTAG (u_int i);
+
 char *dsmccStrMHPOrg (u_int id);
 char *dsmccStrAction_Type (u_int id);
 char *dsmccStrProcessing_order (u_int id);
