@@ -70,6 +70,9 @@
   Foundation, Inc., 675 Mass Ave, Cambridge, MA 02139, USA.
   
   $Log$
+  Revision 1.24  2001/10/30 23:38:15  faralla
+  no scan on its own
+
   Revision 1.23  2001/10/30 19:49:59  field
   caid wird neu gelesen, wenn noch nicht vorhanden
 
@@ -1307,7 +1310,7 @@ int prepare_channels()
 	}
       namechans_radio.clear();
     }
-else
+/*else
   {
     if (ls == -23)
     {
@@ -1322,7 +1325,7 @@ else
     	}
     	else
     		return -1;
-  }
+  }*/
   return 23;
 }
 
