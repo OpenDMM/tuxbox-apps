@@ -355,7 +355,7 @@ const bool CFrontend::getEvent ()
 
 	failed = true;
 
-	switch (poll(pfd, 1, 500))
+	switch (poll(pfd, 1, 750))
 	{
 	case -1:
 		perror("[CFrontend::getEvent] poll");
@@ -608,6 +608,7 @@ const bool CFrontend::tuneFrequency (FrontendParameters feparams, uint8_t polari
 		{
 			// unknown state
 			currentFrequency = 0;
+			currentTsidOnid = 0;
 		}
 	}
 
