@@ -40,6 +40,7 @@
 #include <sectionsdclient/sectionsdMsg.h>
 #include <sectionsdclient/sectionsdclient.h>
 
+#include <zapit/basicmessage.h>
 
 bool doLoop;
 
@@ -222,7 +223,7 @@ void loadTimersFromConfig()
 	CTimerManager::getInstance()->saveEventsToConfig();
 }
 
-void parse_command(int connfd, CTimerd::commandHead* rmessage)
+void parse_command(int connfd, CBasicMessage::Header * rmessage)
 {
 
 	if(rmessage->version!=CTimerd::ACTVERSION)
@@ -602,7 +603,7 @@ int main(int argc, char **argv)
 	//startup Timer
 	try
 	{
-		struct CTimerd::commandHead rmessage;
+		CBasicMessage::Header rmessage;
 		while(doLoop)							  // wait for incomming messages
 		{
 			connfd = accept(listenfd, (struct sockaddr*) &servaddr, (socklen_t*) &clilen);

@@ -26,11 +26,12 @@
 
 #include <eventserver.h>
 #include <timerdclient/timerdclient.h>
+#include <zapit/basicmessage.h>
 
 
 bool CTimerdClient::send(const unsigned char command, char* data = NULL, const unsigned int size = 0)
 {
-	CTimerd::commandHead msgHead;
+	CBasicMessage::Header msgHead;
 	msgHead.version = CTimerd::ACTVERSION;
 	msgHead.cmd     = command;
 

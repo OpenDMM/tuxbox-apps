@@ -86,15 +86,6 @@ class CTimerd
 			CMD_SETAPID
 		};
 
-
-		//command structures
-		struct commandHead
-		{
-			unsigned char version;
-			unsigned char cmd;
-		};
-
-
 		struct commandAddTimer
 		{
 			CTimerEventTypes	eventType;
