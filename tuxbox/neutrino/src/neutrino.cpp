@@ -2854,6 +2854,11 @@ int CNeutrinoApp::handleMsg(uint msg, uint data)
 			lastMode=mode;
 			mode=mode_mp3;
 		}
+		if((data &mode_mask)== mode_pic)
+		{
+			lastMode=mode;
+			mode=mode_pic;
+		}
 	}
 	else if( msg == NeutrinoMessages::VCR_ON )
 	{
@@ -2936,7 +2941,7 @@ void CNeutrinoApp::AudioMute( bool newValue, bool isEvent )
 		}
 	}
 
-	if( isEvent && ( mode != mode_scart ) && ( mode != mode_mp3))
+	if( isEvent && ( mode != mode_scart ) && ( mode != mode_mp3) && ( mode != mode_pic))
 	{
 		// anzeigen NUR, wenn es vom Event kommt
 		if( current_muted )
