@@ -33,6 +33,9 @@
 // $Id$
 //
 // $Log$
+// Revision 1.22  2002/02/10 12:29:23  McClean
+// simplify (wortspiel *hrhr*) bouquet-edit
+//
 // Revision 1.21  2002/01/29 23:41:21  Simplex
 // need zapitclient for bouquet editor
 //
@@ -87,6 +90,8 @@
 // inserted id and log.
 //
 //
+
+//#define USEACTIONLOG
 
 #include "neutrino.h"
 #include "controldclient.h"
