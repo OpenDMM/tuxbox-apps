@@ -35,6 +35,9 @@ $Id$
 
 History:
  $Log$
+ Revision 1.29  2001/12/25 11:40:30  McClean
+ better pushback handling
+
  Revision 1.28  2001/12/25 03:28:42  McClean
  better pushback-handling
 
@@ -206,6 +209,7 @@ int CMenuWidget::exec(CMenuTarget* parent, string)
 		case (CRCInput::RC_green):
 		case (CRCInput::RC_yellow):
 		case (CRCInput::RC_blue):
+		case (CRCInput::RC_standby):
 			g_RCInput->pushbackKey (key);
 			key = CRCInput::RC_timeout;
 			break;

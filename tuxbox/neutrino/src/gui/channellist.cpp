@@ -33,6 +33,9 @@
 // $Id$
 //
 // $Log$
+// Revision 1.48  2001/12/25 11:40:30  McClean
+// better pushback handling
+//
 // Revision 1.47  2001/12/25 03:28:42  McClean
 // better pushback-handling
 //
@@ -491,6 +494,7 @@ int CChannelList::show()
 		} 
 		else if( (key==CRCInput::RC_spkr) || (key==CRCInput::RC_plus) || (key==CRCInput::RC_minus)
 			|| (key==CRCInput::RC_red) || (key==CRCInput::RC_green) || (key==CRCInput::RC_yellow) || (key==CRCInput::RC_blue)
+			|| (key==CRCInput::RC_standby)
 			|| (CRCInput::isNumeric(key)) )
 		{	//pushback key if...
 			selected = oldselected;
