@@ -62,18 +62,7 @@ void eTimeSettings::time_correction()
 		w.setLCD(LCDTitle, LCDElement);
 #endif
 		w.show();
-		if (!w.exec())
-		{
-			std::map<tsref, int> &map =
-				eTransponderList::getInstance()->TimeOffsetMap;
-			int tCorrection=0;
-			std::map<tsref, int>::iterator it = map.find(ref);
-			if ( it != map.end() )
-				tCorrection = it->second;
-			map.clear();
-			map[ref] = tCorrection;
-			eTimerManager::getInstance()->timeChanged();
-		}
+		w.exec();
 		w.hide();
 		show();
 	}
