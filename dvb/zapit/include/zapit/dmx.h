@@ -19,17 +19,19 @@
  *
  */
 
-/* system */
+#ifndef __dmx_h__
+#define __dmx_h__
+
+/* system c */
 #include <stdint.h>
 #include <time.h>
 
 /* nokia api */
 #include <ost/dmx.h>
 
-#ifndef __dmx_h__
-#define __dmx_h__
+#define DEMUX_DEV "/dev/ost/demux0"
 
-int setDmxSctFilter (int fd, dvb_pid_t pid, uint8_t filter0, uint8_t filter1 = 0x00, uint8_t filter2 = 0x00);
+int setDmxSctFilter (int fd, dvb_pid_t pid, unsigned char filter0, unsigned char filter1 = 0x00, unsigned char filter2 = 0x00);
 int setDmxPesFilter (int fd, dmxOutput_t output, dmxPesType_t pesType, dvb_pid_t pid);
 int unsetDmxFilter (int fd);
 

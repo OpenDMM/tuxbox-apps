@@ -23,7 +23,10 @@
 #ifndef __audio_h__
 #define __audio_h__
 
+/* nokia api */
 #include <ost/audio.h>
+
+#define AUDIO_DEV "/dev/ost/audio0"
 
 class CAudio
 {
@@ -52,7 +55,7 @@ class CAudio
 
 		/* shut up */
 		bool mute();
-		bool unMute();
+		bool unmute();
 
 		/* bypass audio to external decoder */
 		bool enableBypass();

@@ -22,7 +22,7 @@
 #ifndef __pmt_h__
 #define __pmt_h__
 
-#include <getservices.h>
+#include <channel.h>
 #include <zapci/ci.h>
 
 int parse_pmt (int demux_fd, CZapitChannel * channel);

@@ -23,9 +23,7 @@
 #define __cam_h__
 
 #include <ost/ca.h>
-#include <stdint.h>
 
-#include <getservices.h>
 #include "ci.h"
 
 class CCam

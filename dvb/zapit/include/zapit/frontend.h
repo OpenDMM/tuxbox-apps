@@ -30,9 +30,11 @@
 #include <ost/sec.h>
 
 /* zapit */
-#include <getservices.h>
+#include <channel.h>
 
-#define MAX_LNBS 4
+#define FRONTEND_DEVICE "/dev/ost/frontend0"
+#define SEC_DEVICE      "/dev/ost/sec0"
+#define MAX_LNBS	4
 
 enum diseqc_t
 {

@@ -29,9 +29,6 @@
 
 #include "audio.h"
 
-#define AUDIO_DEV "/dev/ost/audio0"
-
-
 CAudio::CAudio()
 {
 	initialized = false;
@@ -92,7 +89,7 @@ bool CAudio::mute()
 
 }
 
-bool CAudio::unMute()
+bool CAudio::unmute()
 {
 	if (status.muteState == true)
 		return setMute(false);

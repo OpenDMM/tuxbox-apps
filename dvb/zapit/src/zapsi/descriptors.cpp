@@ -140,10 +140,6 @@ uint8_t CA_descriptor (uint8_t *buffer, uint16_t ca_system_id, uint16_t* ca_pid)
 	{
 		*ca_pid = ((buffer[4] & 0x1F) << 8) | buffer[5];
 	}
-	else
-	{
-		*ca_pid = INVALID;
-	}
 
 	return buffer[1];
 }

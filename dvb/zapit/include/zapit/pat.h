@@ -22,7 +22,8 @@
 #ifndef __pat_h__
 #define __pat_h__
 
-#include "getservices.h"
+#include <channel.h>
+#include <zapost/frontend.h>
 
 int parse_pat (int demux_fd, CZapitChannel * channel);
 int fake_pat (unsigned short original_network_id, FrontendParameters feparams);
