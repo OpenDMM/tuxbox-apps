@@ -191,8 +191,9 @@ void show_time()
 
 		if(mode!=CLcddClient::MODE_STANDBY)
 		{
-			display.draw_fill_rect (81,50,120,64, CLCDDisplay::PIXEL_OFF);
-			fonts.time->RenderString(82,62, 50, timestr, CLCDDisplay::PIXEL_ON);
+			display.draw_fill_rect (77,50,120,64, CLCDDisplay::PIXEL_OFF);
+			int pos = 122 - fonts.time->getRenderWidth(timestr);
+			fonts.time->RenderString(pos,62, 50, timestr, CLCDDisplay::PIXEL_ON);
 		}
 		else
 		{
