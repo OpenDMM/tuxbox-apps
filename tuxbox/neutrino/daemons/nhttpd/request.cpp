@@ -493,7 +493,7 @@ void CWebserverRequest::Send500Error()
 	SocketWrite("HTTP/1.0 500 InternalError\r\n");		//500 - internal error
 	SocketWrite("Content-Type: text/plain\r\n\r\n");
 	if (Method != M_HEAD) {
-		SocketWrite("500 : InternalError\n\n\Perhaps some parameters missing ? ;)");
+		SocketWrite("500 : InternalError\n\nPerhaps some parameters missing ? ;)");
 	}
 	HttpStatus = 500;
 	if(Parent->DEBUG) printf("500 : InternalError\n");
