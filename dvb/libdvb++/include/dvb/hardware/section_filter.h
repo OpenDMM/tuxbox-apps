@@ -210,9 +210,9 @@ void SectionFilter<T>::clear(bool doRelease, bool doDelete, bool doSetup)
 template <class T>
 void SectionFilter<T>::setTableId(const uint8_t tableId, const uint8_t tableIdMask, const bool positive)
 {
-	dsfp.filter.filter[0] |= tableId;
-	dsfp.filter.mask[0] |= tableIdMask;
-	dsfp.filter.mode[0] |= positive ? 0x00 : tableIdMask;
+	dsfp.filter.filter[0] = tableId;
+	dsfp.filter.mask[0] = tableIdMask;
+	dsfp.filter.mode[0] = positive ? 0x00 : tableIdMask;
 }
 
 template <class T>
@@ -252,9 +252,9 @@ template <class T>
 void SectionFilter<T>::setSectionNumber(const uint8_t sectionNumber, const bool positive)
 {
 	if (T::SYNTAX == 1) {
-		dsfp.filter.filter[4] |= sectionNumber;
-		dsfp.filter.mask[4] |= 0xff;
-		dsfp.filter.mode[4] |= positive ? 0x00 : 0xff;
+		dsfp.filter.filter[4] = sectionNumber;
+		dsfp.filter.mask[4] = 0xff;
+		dsfp.filter.mode[4] = positive ? 0x00 : 0xff;
 	}
 }
 
@@ -264,9 +264,9 @@ void SectionFilter<T>::setFilter8(const uint8_t index, const uint8_t filter, con
 	if (index >= DMX_FILTER_SIZE)
 		DVB_FATAL("index >= DMX_FILTER_SIZE");
 
-	dsfp.filter.filter[index] |= filter;
-	dsfp.filter.mask[index] |= mask;
-	dsfp.filter.mode[index] |= positive ? 0x00 : mask;
+	dsfp.filter.filter[index] = filter;
+	dsfp.filter.mask[index] = mask;
+	dsfp.filter.mode[index] = positive ? 0x00 : mask;
 }
 
 template <class T>
