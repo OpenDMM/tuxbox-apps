@@ -34,7 +34,6 @@ class DMX
 	pthread_mutex_t pauselock;
 	unsigned char   pID;
 	unsigned short  dmxBufferSizeInKB;
-	bool            noCRC; // first filter always without CRC
 
 	int immediate_start(void); /* mutex must be locked before and unlocked after this method */
 	int immediate_stop(void);  /* mutex must be locked before and unlocked after this method */
@@ -56,7 +55,7 @@ class DMX
 	pthread_mutex_t        start_stop_mutex;
 
 
-	DMX(const unsigned char p, const unsigned short bufferSizeInKB, const bool nCRC = false);
+	DMX(const unsigned char p, const unsigned short bufferSizeInKB);
 	~DMX();
 
 	int start(void);
