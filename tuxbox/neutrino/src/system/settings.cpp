@@ -156,7 +156,7 @@ void CScanSettings::toMotorPosList(CZapitClient::ScanMotorPosList& motorPosList)
 void CScanSettings::useDefaults(const delivery_system_t _delivery_system)
 {
 	delivery_system = _delivery_system;
-	bouquetMode     = CZapitClient::BM_DONTTOUCHBOUQUETS;
+	bouquetMode     = CZapitClient::BM_UPDATEBOUQUETS;
 	diseqcMode      = NO_DISEQC;
 	diseqcRepeat    = 0;
 
