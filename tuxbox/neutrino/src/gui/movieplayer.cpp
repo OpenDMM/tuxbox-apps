@@ -717,7 +717,13 @@ PlayStreamThread (void *mrl)
 				ioctl (dmxa, DMX_START);
 				speed = 1;
 				playstate = CMoviePlayerGui::PLAY;
-
+				break;
+			case CMoviePlayerGui::STOPPED:
+			case CMoviePlayerGui::PREPARING:
+			case CMoviePlayerGui::STREAMERROR:
+			case CMoviePlayerGui::FF:
+			case CMoviePlayerGui::REW:
+				break;
 			}
 		}
 	}
@@ -851,6 +857,12 @@ PlayFileThread (void *filename)
 				ioctl (dmxa, DMX_START);
 				speed = 1;
 				playstate = CMoviePlayerGui::PLAY;
+				break;
+			case CMoviePlayerGui::STOPPED:
+			case CMoviePlayerGui::PREPARING:
+			case CMoviePlayerGui::STREAMERROR:
+			case CMoviePlayerGui::PLAY:
+				break;
 			}
 
 			do
