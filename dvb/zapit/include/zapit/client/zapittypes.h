@@ -28,7 +28,11 @@
 #include <stdint.h>
 
 typedef uint16_t t_service_id;
+#define SCANF_SERVICE_ID_TYPE "%hx"
+
 typedef uint16_t t_original_network_id;
+#define SCANF_ORIGINAL_NETWORK_ID_TYPE "%hx"
+
 typedef uint16_t t_transport_stream_id;
 typedef uint16_t t_network_id;
 
