@@ -2878,6 +2878,7 @@ void CNeutrinoApp::ExitRun()
 		frameBuffer->loadPicture2FrameBuffer("shutdown.raw");
 	frameBuffer->loadPal("shutdown.pal");
 
+	networkConfig.commitConfig();
 	saveSetup();
 	g_Controld->shutdown();
 
@@ -3274,6 +3275,7 @@ int CNeutrinoApp::exec(CMenuTarget* parent, std::string actionKey)
 	else if(actionKey=="savesettings")
 	{
 		g_Controld->saveSettings();
+		networkConfig.commitConfig();
 		saveSetup();
 	}
 	else if(actionKey=="recording")
