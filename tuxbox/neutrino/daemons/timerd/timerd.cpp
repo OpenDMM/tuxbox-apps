@@ -102,6 +102,20 @@ void parse_command(int connfd, CTimerd::commandHead* rmessage)
 					resp.announceTime = event->announceTime;
 					resp.alarmTime = event->alarmTime;
 					resp.stopTime = event->stopTime;
+					resp.data1 = 0;
+					resp.data2 = 0;
+					switch (event->eventType)
+					{
+						case CTimerEvent::TIMER_ZAPTO :
+								resp.data1 = ((CTimerEvent_Zapto *)event)->eventInfo.onidSid;
+								resp.data2 = ((CTimerEvent_Zapto *)event)->eventInfo.epgID;
+							break;
+						case CTimerEvent::TIMER_RECORD :
+								resp.data1 = ((CTimerEvent_Record *)event)->eventInfo.onidSid;
+								resp.data2 = ((CTimerEvent_Record *)event)->eventInfo.epgID;
+							break;
+						default:;
+					}
 				}
 			}
 			write( connfd, &resp, sizeof(CTimerd::responseGetTimer));
@@ -122,6 +136,20 @@ void parse_command(int connfd, CTimerd::commandHead* rmessage)
 					resp.announceTime = event->announceTime;
 					resp.alarmTime = event->alarmTime;
 					resp.stopTime = event->stopTime;
+					resp.data1 = 0;
+					resp.data2 = 0;
+					switch (event->eventType)
+					{
+						case CTimerEvent::TIMER_ZAPTO :
+								resp.data1 = ((CTimerEvent_Zapto *)event)->eventInfo.onidSid;
+								resp.data2 = ((CTimerEvent_Zapto *)event)->eventInfo.epgID;
+							break;
+						case CTimerEvent::TIMER_RECORD :
+								resp.data1 = ((CTimerEvent_Record *)event)->eventInfo.onidSid;
+								resp.data2 = ((CTimerEvent_Record *)event)->eventInfo.epgID;
+							break;
+						default:;
+					}
 					write( connfd, &resp, sizeof(CTimerd::responseGetTimer));
 				}
 			}
@@ -192,17 +220,14 @@ void parse_command(int connfd, CTimerd::commandHead* rmessage)
 
 				case CTimerEvent::TIMER_ZAPTO :
 					read( connfd, &evInfo, sizeof(CTimerEvent::EventInfo));
-					if(evInfo.onidSid > 0)
-					{
-						event = new CTimerEvent_Zapto(
+					event = new CTimerEvent_Zapto(
 							msgAddTimer.announceTime,
 							msgAddTimer.alarmTime,
 							msgAddTimer.stopTime,
 							msgAddTimer.eventRepeat);
-						static_cast<CTimerEvent_NextProgram*>(event)->eventInfo.onidSid = evInfo.onidSid;
-						static_cast<CTimerEvent_NextProgram*>(event)->eventInfo.epgID = evInfo.epgID;
+						static_cast<CTimerEvent_Zapto*>(event)->eventInfo.onidSid = evInfo.onidSid;
+						static_cast<CTimerEvent_Zapto*>(event)->eventInfo.epgID = evInfo.epgID;
 						rspAddTimer.eventID = CTimerManager::getInstance()->addEvent( event);
-					}
 				break;
 
 				case CTimerEvent::TIMER_NEXTPROGRAM :

@@ -199,7 +199,6 @@ class CTimerEvent_NextProgram : public CTimerEvent
 class CTimerEvent_Zapto : public CTimerEvent
 {
 	public:
-
 		CTimerEvent::EventInfo eventInfo;
 
 		CTimerEvent_Zapto( time_t announceTime, time_t alarmTime, time_t stopTime, CTimerEventRepeat evrepeat = TIMERREPEAT_ONCE) :

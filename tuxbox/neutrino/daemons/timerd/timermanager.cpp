@@ -410,23 +410,25 @@ void CTimerEvent_Record::fireEvent()
 // Zapto Event
 //=============================================================
 
-void CTimerEvent_Zapto::announceEvent(){}
+void CTimerEvent_Zapto::announceEvent()
+{
+	CTimerManager::getInstance()->getEventServer()->sendEvent(
+		CTimerdClient::EVT_ANNOUNCE_ZAPTO,
+		CEventServer::INITID_TIMERD);
+	dprintf("Zapto announcement\n"); 
+}
 //------------------------------------------------------------
 void CTimerEvent_Zapto::stopEvent(){}
 //------------------------------------------------------------
 
 void CTimerEvent_Zapto::fireEvent()
 {
-	dprintf("Zapto Timer fired, onidSid: %d\n",eventInfo.onidSid);
-
-//	CTimerManager::getInstance()->getZapitClient()->zapTo_serviceID(eventInfo.onidSid);
 	CTimerManager::getInstance()->getEventServer()->sendEvent(
 		CTimerdClient::EVT_ZAPTO,
 		CEventServer::INITID_TIMERD,
-		&eventInfo,
-		sizeof(CTimerEvent::EventInfo));
-	dprintf("gefeuert\n");
-}
+		&eventInfo, sizeof(CTimerEvent::EventInfo));
+	dprintf("Zapto Timer fired\n"); 
+ }
 
 //=============================================================
 // NextProgram Event
