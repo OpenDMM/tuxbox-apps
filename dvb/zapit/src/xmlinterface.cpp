@@ -35,12 +35,23 @@
 #endif /* USE_LIBXML */
 
 
+unsigned long xmlGetNumericAttribute(const xmlNodePtr node, char *name, const int base)
+{
+	char *ptr = xmlGetAttribute(node, name);
+
+	if (!ptr)
+		return 0;
+
+	return strtoul(ptr, 0, base);
+}
+
+
 xmlNodePtr xmlGetNextOccurence(xmlNodePtr cur, const char * s)
 {
 	while ((cur != NULL) && (strcmp(xmlGetName(cur), s) != 0))
 		cur = cur->xmlNextNode;
 	return cur;
-};
+}
 
 
 std::string Unicode_Character_to_UTF8(const int character)

@@ -50,6 +50,7 @@ inline char*      xmlGetName          (xmlNodePtr cur)                 { return 
 #endif /* USE_LIBXML */
 
 
+unsigned long xmlGetNumericAttribute  (const xmlNodePtr node, char *name, const int base);
 xmlNodePtr xmlGetNextOccurence        (xmlNodePtr cur, const char * s);
 
 std::string Unicode_Character_to_UTF8(const int character);
