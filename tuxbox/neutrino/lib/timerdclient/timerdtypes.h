@@ -69,6 +69,11 @@ class CTimerd
 			TIMERSTATE_HASFINISHED, 
 			TIMERSTATE_TERMINATED 
 		};
+		enum CChannelMode
+		{
+			MODE_TV=1,
+			MODE_RADIO
+		};
 
 		static const char ACTVERSION = 1;
 
@@ -154,6 +159,7 @@ class CTimerd
 			unsigned long long epgID;
 			t_channel_id       channel_id;
 			uint               apid;
+			CChannelMode       mode;
 		};
 
 		struct responseGetTimer
@@ -168,6 +174,7 @@ class CTimerd
 			t_channel_id channel_id; //only filled if applicable
 			unsigned long long epgID; //only filled if applicable
 			uint apid; //only filled if applicable
+			CChannelMode mode; //only filled if applicable
 			bool standby_on; //only filled if applicable
 			char message[REMINDER_MESSAGE_MAXLEN]; //only filled if applicable
 			bool operator< (const responseGetTimer& a) const

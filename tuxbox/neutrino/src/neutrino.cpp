@@ -68,6 +68,7 @@
 #include "driver/framebuffer.h"
 #include "driver/fontrenderer.h"
 #include "driver/rcinput.h"
+#include "driver/vcrcontrol.h"
 
 #include "gui/widget/menue.h"
 #include "gui/widget/messagebox.h"
@@ -142,7 +143,7 @@ CNeutrinoApp::CNeutrinoApp()
 	frameBuffer = CFrameBuffer::getInstance();
 	frameBuffer->setIconBasePath(DATADIR "/neutrino/icons/");
 
-	vcrControl = CVCRControl::getInstance();
+//	vcrControl = CVCRControl::getInstance();
 
 	g_fontRenderer = new fontRenderClass;
 	SetupFrameBuffer();
@@ -2007,20 +2008,20 @@ void CNeutrinoApp::setupRecordingDevice(void)
 		info->StopPlayBack = (g_settings.recording_stopplayback == 1);
 		info->StopSectionsd = (g_settings.recording_stopsectionsd == 1);
 		info->Name = "ngrab";
-		vcrControl->registerDevice(CVCRControl::DEVICE_SERVER,info);
+		CVCRControl::getInstance()->registerDevice(CVCRControl::DEVICE_SERVER,info);
 		delete info;
 	}
 	else if(g_settings.recording_type == 2)
 	{
 		CVCRControl::CVCRDeviceInfo * info = new CVCRControl::CVCRDeviceInfo;
 		info->Name = g_settings.recording_vcr_devicename;
-		vcrControl->registerDevice(CVCRControl::DEVICE_VCR,info);
+		CVCRControl::getInstance()->registerDevice(CVCRControl::DEVICE_VCR,info);
       delete info;
 	}
    else
    {
-      if(vcrControl->isDeviceRegistered())
-         vcrControl->unregisterDevice();
+      if(CVCRControl::getInstance()->isDeviceRegistered())
+         CVCRControl::getInstance()->unregisterDevice();
    }
 }
 
@@ -3119,6 +3120,10 @@ bool CNeutrinoApp::changeNotify(string OptionName, void *Data)
 				eventinfo.channel_id = g_RemoteControl->current_channel_id;
 				eventinfo.epgID = g_RemoteControl->current_EPGid;
 				eventinfo.apid = 0;
+				if(getMode()==mode_radio)
+					eventinfo.mode = CTimerd::MODE_RADIO;
+				else
+					eventinfo.mode = CTimerd::MODE_TV;
 
 				CVCRControl::CServerDeviceInfo serverinfo;
 				serverinfo.StopPlayBack = (g_settings.recording_stopplayback == 1);
