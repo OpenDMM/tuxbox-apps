@@ -23,6 +23,9 @@
 //    Foundation, Inc., 675 Mass Ave, Cambridge, MA 02139, USA.
 //
 //  $Log$
+//  Revision 1.138  2002/10/13 21:21:49  thegoodguy
+//  Cleanup includes
+//
 //  Revision 1.137  2002/10/13 11:35:03  woglinde
 //
 //
@@ -403,6 +406,7 @@
 //
 
 #include <sys/socket.h>
+#include <sys/un.h>
 #include <netinet/in.h>
 #include <netinet/in_systm.h>
 #include <netinet/ip.h>
