@@ -163,9 +163,10 @@ bool CWebDbox::GetStreamInfo(int bitInfo[10])
 	int value, pos=0;
 
 	FILE* fd = fopen("/proc/bus/bitstream", "rt");
+
 	if (fd==NULL)
 	{
-		aprintf("error while opening proc-bitstream\n" );
+		dprintf("error while opening proc-bitstream\n" );
 		return false;
 	}
 
