@@ -53,6 +53,7 @@ extern CRemoteControl * g_RemoteControl; /* neutrino.cpp */
 #include <gui/widget/icons.h>
 #include <gui/widget/messagebox.h>
 #include <gui/widget/hintbox.h>
+#include <gui/widget/helpbox.h>
 #include <gui/widget/stringinput.h>
 #include <gui/widget/stringinput_ext.h>
 
@@ -2336,9 +2337,7 @@ void CMoviePlayerGui::PlayFile (int parental)
 
 				//-- Help --
 			case CRCInput::RC_help:
-				hlpstr = g_Locale->getText(LOCALE_MOVIEPLAYER_TSHELP);
-				hlpstr += "\nVersion: $Revision$\n\nMovieplayer (c) 2003, 2004 by gagga";
-				ShowMsgUTF(LOCALE_MESSAGEBOX_INFO, hlpstr.c_str(), CMessageBox::mbrBack, CMessageBox::mbBack, "info.raw"); // UTF-8
+				showHelpTS();
 				break;
 
 				//-- filetime on/off --
@@ -2774,9 +2773,7 @@ CMoviePlayerGui::PlayStream (int streamtype)
 		}
 		else if(msg == CRCInput::RC_help)
 		{
-			std::string fullhelptext = g_Locale->getText(LOCALE_MOVIEPLAYER_VLCHELP);
-			fullhelptext += "\nVersion: $Revision$\n\nMovieplayer (c) 2003, 2004 by gagga";
-			ShowMsgUTF(LOCALE_MESSAGEBOX_INFO, fullhelptext.c_str(), CMessageBox::mbrBack, CMessageBox::mbBack, "info.raw"); // UTF-8
+			showHelpVLC();
 		}
 		else
 			if(msg == NeutrinoMessages::RECORD_START
@@ -2839,3 +2836,45 @@ void checkAspectRatio (int vdec, bool init)
 	}
 }
 #endif
+
+void CMoviePlayerGui::showHelpTS()
+{
+	Helpbox helpbox;
+	helpbox.addLine(NEUTRINO_ICON_BUTTON_RED, g_Locale->getText(LOCALE_MOVIEPLAYER_TSHELP1));
+	helpbox.addLine(NEUTRINO_ICON_BUTTON_GREEN, g_Locale->getText(LOCALE_MOVIEPLAYER_TSHELP2));
+	helpbox.addLine(NEUTRINO_ICON_BUTTON_YELLOW, g_Locale->getText(LOCALE_MOVIEPLAYER_TSHELP3));
+	helpbox.addLine(NEUTRINO_ICON_BUTTON_BLUE, g_Locale->getText(LOCALE_MOVIEPLAYER_TSHELP4));
+	helpbox.addLine(NEUTRINO_ICON_BUTTON_DBOX, g_Locale->getText(LOCALE_MOVIEPLAYER_TSHELP5));
+	helpbox.addLine(NEUTRINO_ICON_BUTTON_1, g_Locale->getText(LOCALE_MOVIEPLAYER_TSHELP6));
+	helpbox.addLine(NEUTRINO_ICON_BUTTON_3, g_Locale->getText(LOCALE_MOVIEPLAYER_TSHELP7));
+	helpbox.addLine(NEUTRINO_ICON_BUTTON_4, g_Locale->getText(LOCALE_MOVIEPLAYER_TSHELP8));
+	helpbox.addLine(NEUTRINO_ICON_BUTTON_6, g_Locale->getText(LOCALE_MOVIEPLAYER_TSHELP9));
+	helpbox.addLine(NEUTRINO_ICON_BUTTON_7, g_Locale->getText(LOCALE_MOVIEPLAYER_TSHELP10));
+	helpbox.addLine(NEUTRINO_ICON_BUTTON_9, g_Locale->getText(LOCALE_MOVIEPLAYER_TSHELP11));
+	helpbox.addLine(g_Locale->getText(LOCALE_MOVIEPLAYER_TSHELP12));
+	helpbox.addLine("Version: $Revision$");
+	helpbox.addLine("Movieplayer (c) 2003, 2004 by gagga");
+	hide();
+	helpbox.show(LOCALE_MESSAGEBOX_INFO);
+}
+
+void CMoviePlayerGui::showHelpVLC()
+{
+	Helpbox helpbox;
+	helpbox.addLine(NEUTRINO_ICON_BUTTON_RED, g_Locale->getText(LOCALE_MOVIEPLAYER_VLCHELP1));
+	helpbox.addLine(NEUTRINO_ICON_BUTTON_GREEN, g_Locale->getText(LOCALE_MOVIEPLAYER_VLCHELP2));
+	helpbox.addLine(NEUTRINO_ICON_BUTTON_YELLOW, g_Locale->getText(LOCALE_MOVIEPLAYER_VLCHELP3));
+	helpbox.addLine(NEUTRINO_ICON_BUTTON_BLUE, g_Locale->getText(LOCALE_MOVIEPLAYER_VLCHELP4));
+	helpbox.addLine(NEUTRINO_ICON_BUTTON_DBOX, g_Locale->getText(LOCALE_MOVIEPLAYER_VLCHELP5));
+	helpbox.addLine(NEUTRINO_ICON_BUTTON_1, g_Locale->getText(LOCALE_MOVIEPLAYER_VLCHELP6));
+	helpbox.addLine(NEUTRINO_ICON_BUTTON_3, g_Locale->getText(LOCALE_MOVIEPLAYER_VLCHELP7));
+	helpbox.addLine(NEUTRINO_ICON_BUTTON_4, g_Locale->getText(LOCALE_MOVIEPLAYER_VLCHELP8));
+	helpbox.addLine(NEUTRINO_ICON_BUTTON_6, g_Locale->getText(LOCALE_MOVIEPLAYER_VLCHELP9));
+	helpbox.addLine(NEUTRINO_ICON_BUTTON_7, g_Locale->getText(LOCALE_MOVIEPLAYER_VLCHELP10));
+	helpbox.addLine(NEUTRINO_ICON_BUTTON_9, g_Locale->getText(LOCALE_MOVIEPLAYER_VLCHELP11));
+	helpbox.addLine(g_Locale->getText(LOCALE_MOVIEPLAYER_VLCHELP12));
+	helpbox.addLine("Version: $Revision$");
+	helpbox.addLine("Movieplayer (c) 2003, 2004 by gagga");
+	hide();
+	helpbox.show(LOCALE_MESSAGEBOX_INFO);
+}
