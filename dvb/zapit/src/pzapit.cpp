@@ -103,7 +103,7 @@ int main (int argc, char** argv)
 
 	if (zap)
 	{
-		std::cout << "zapping to bouquet " << bouquets[bouquet].name << ", channel " << channels[channel].name << "." << endl;
+		std::cout << "zapping to bouquet " << bouquets[bouquet-1].name << ", channel " << channels[channel-1].name << "." << endl;
 		zapit->zapTo(bouquet, channel);
 	}
 
