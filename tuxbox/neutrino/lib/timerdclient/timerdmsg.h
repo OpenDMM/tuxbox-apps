@@ -89,6 +89,11 @@ class CTimerdMsg : public CBasicMessage
 		char message[REMINDER_MESSAGE_MAXLEN];
 	};
 
+	struct commandExecPlugin
+	{
+		char name[EXEC_PLUGIN_MESSAGE_MAXLEN];
+	};
+
 	struct commandSetAPid
 	{
 		int   eventID;
@@ -138,6 +143,7 @@ class CTimerdMsg : public CBasicMessage
 	{
 		bool status;
 	};
+
 };
 
 #endif /* __timerdmsg_h__ */

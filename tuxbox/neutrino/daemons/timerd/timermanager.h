@@ -183,6 +183,20 @@ class CTimerEvent_Remind : public CTimerEvent
 	virtual void saveToConfig(CConfigFile *config);
 };
 
+class CTimerEvent_ExecPlugin : public CTimerEvent
+{
+ public:
+	char name[EXEC_PLUGIN_MESSAGE_MAXLEN];
+
+	CTimerEvent_ExecPlugin(time_t announceTime,
+						   time_t alarmTime, 
+						   const char * const plugin,
+						   CTimerd::CTimerEventRepeat evrepeat = CTimerd::TIMERREPEAT_ONCE);
+	CTimerEvent_ExecPlugin(CConfigFile *config, int iId);
+	virtual void fireEvent();
+	virtual void saveToConfig(CConfigFile *config);
+};
+
 class CTimerManager
 {
 	//singleton

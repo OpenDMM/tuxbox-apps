@@ -298,6 +298,9 @@ void CWebDbox::timerEventType2Str(CTimerd::CTimerEventTypes type, char *str, int
 	case CTimerd::TIMER_REMIND:
 		strncpy(str, "Erinnerung", len);
 		break;
+	case CTimerd::TIMER_EXEC_PLUGIN:
+		strncpy(str, "Plugin ausführen", len);
+		break;
 	case CTimerd::TIMER_SLEEPTIMER:
 		strncpy(str, "Sleeptimer", len);
 		break;
