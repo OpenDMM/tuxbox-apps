@@ -67,7 +67,7 @@ private:
 	bool CheckAuth();
 	string GetContentType(string ext);
 	string GetFileName(string path, string filename);
-	void SplitParameter(string param_str);
+	void SplitParameter(char *param_str);
 	void RewriteURL();
 	int OpenFile(string path, string filename);
 
@@ -79,17 +79,17 @@ public:
 
 	void printf ( const char *fmt, ... );
 
-	bool SocketWrite( char* text);
-	bool SocketWriteLn( char* text);
-	bool SocketWriteData( char* data, long length );
-	bool SocketWrite(string text){return SocketWrite( (char *)text.c_str());}
-	bool SocketWriteLn(string text){return SocketWriteLn( (char *)text.c_str());}
+	bool SocketWrite( char const * text);
+	bool SocketWriteLn( char const * text);
+	bool SocketWriteData( char const * data, long length );
+	bool SocketWrite(string text){return SocketWrite( text.c_str());}
+	bool SocketWriteLn(string text){return SocketWriteLn( text.c_str());}
 	bool SendFile(string path,string filename);
 
 	void SendHTMLFooter();
 	void SendHTMLHeader(string Titel);
 	void SendPlainHeader(string contenttype = "text/plain");
-	void Send302(char *URI);
+	void Send302(char const *URI);
 	void Send404Error();
 	void Send500Error();
 
