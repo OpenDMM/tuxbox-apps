@@ -38,7 +38,7 @@ typedef struct decode_struct
 int prepare_channels();
 int save_settings (bool write);
 void *start_scanthread(void *);
-void start_scan();
+int start_scan();
 void sendBouquetList();
 void sendChannelListOfBouquet( uint nBouquet);
 
