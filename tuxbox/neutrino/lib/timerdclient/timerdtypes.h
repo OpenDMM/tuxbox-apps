@@ -161,6 +161,33 @@ class CTimerd
 			uint               apid;
 			CChannelMode       mode;
 		};
+		
+		class RecordingInfo : public EventInfo
+		{
+		   public:
+				RecordingInfo(EventInfo& e)
+				{
+					apid = e.apid;
+					channel_id = e.channel_id;
+					epgID = e.epgID;
+					mode = e.mode;
+				};
+				RecordingInfo& operator = (EventInfo& e)
+				{
+					apid = e.apid;
+					channel_id = e.channel_id;
+					epgID = e.epgID;
+					mode = e.mode;
+					return *this;
+				}
+
+			int eventID;
+		};
+
+		struct RecordingStopInfo
+		{
+			int eventID;
+		};
 
 		struct responseGetTimer
 		{		

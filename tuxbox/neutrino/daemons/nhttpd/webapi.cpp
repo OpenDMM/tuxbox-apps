@@ -1040,7 +1040,7 @@ void CWebAPI::newTimerForm(CWebserverRequest *request)
 	CZapitClient::BouquetChannelList::iterator channel = channellist.begin();
 	for(; channel != channellist.end();channel++)
 	{
-		request->printf("<option value=\"%d\"",channel->channel_id);
+		request->printf("<option value=\"%u\"",channel->channel_id);
 		if(channel->channel_id == current_channel)
 			request->SocketWrite(" selected");
 		request->printf(">%s\n",channel->name);
