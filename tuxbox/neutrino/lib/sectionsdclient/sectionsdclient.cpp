@@ -20,6 +20,9 @@
   Foundation, Inc., 675 Mass Ave, Cambridge, MA 02139, USA.
 
   $Log$
+  Revision 1.15  2002/04/18 10:43:56  field
+  Clientlib
+
   Revision 1.14  2002/04/17 15:58:24  field
   Anpassungen
 
@@ -452,8 +455,58 @@ CChannelEventList CSectionsdClient::getChannelEvents()
 			{
 				CChannelEvent aEvent;
 
-				aEvent.serviceID = *((unsigned *) dp);
-				dp+=sizeof(aEvent.serviceID);
+				aEvent.eventID = *((unsigned long long *) dp);
+				dp+=sizeof(aEvent.eventID);
+
+				aEvent.startTime = *((time_t *) dp);
+				dp+=sizeof(aEvent.startTime);
+
+				aEvent.duration = *((unsigned *) dp);
+				dp+=sizeof(aEvent.duration);
+
+				aEvent.description= dp;
+				dp+=strlen(dp)+1;
+
+				aEvent.text= dp;
+				dp+=strlen(dp)+1;
+
+				eList.insert(eList.end(), aEvent);
+			}
+			delete[] pData;
+		}
+	}
+	else
+		printf("no connection to sectionsd\n");
+	return eList;
+}
+
+CChannelEventList CSectionsdClient::getEventsServiceKey( unsigned serviceKey )
+{
+	CChannelEventList eList;
+
+	sectionsd::msgRequestHeader req;
+	req.version = 2;
+
+	req.command = sectionsd::allEventsChannelID_;
+	req.dataLength = sizeof(serviceKey);
+	if ( sectionsd_connect() )
+	{
+		send((char*)&req, sizeof(req));
+		send((char*)&serviceKey, sizeof(serviceKey));
+
+		int nBufSize = readResponse();
+
+		if( nBufSize > 0)
+		{
+			char* pData = new char[nBufSize];
+			receive(pData, nBufSize);
+			sectionsd_close();
+
+			char* dp = pData;
+
+			while(dp < pData + nBufSize)
+			{
+				CChannelEvent aEvent;
 
 				aEvent.eventID = *((unsigned long long *) dp);
 				dp+=sizeof(aEvent.eventID);

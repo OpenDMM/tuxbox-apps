@@ -25,6 +25,9 @@
 //    Foundation, Inc., 675 Mass Ave, Cambridge, MA 02139, USA.
 //
 //  $Log$
+//  Revision 1.35  2002/04/18 10:43:56  field
+//  Clientlib
+//
 //  Revision 1.34  2002/04/17 15:58:24  field
 //  Anpassungen
 //
@@ -177,7 +180,7 @@ struct sectionsd
 		epgEPGid,
 		epgEPGidShort,
 		ComponentTagsUniqueKey,
-		allEventsChannelID,
+		allEventsChannelID_,
 		timesNVODservice,
 		getEPGPrevNext,
 		getIsTimeSet,
