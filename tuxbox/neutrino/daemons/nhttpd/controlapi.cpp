@@ -621,6 +621,24 @@ bool CControlAPI::EpgCGI(CWebserverRequest *request)
 				return true;
 			}
 		}
+		else if (request->ParameterList["eventid2fsk"] != "")
+		{
+			if (request->ParameterList["starttime"] != "")
+			{
+				unsigned long long epgid;
+				time_t starttime;
+				sscanf( request->ParameterList["fskid"].c_str(), "%llu", &epgid);
+				sscanf( request->ParameterList["starttime"].c_str(), "%lu", &starttime);
+				CEPGData longepg;
+				if(Parent->Sectionsd->getEPGid(epgid, starttime, &longepg))
+				{
+					request->printf("%c\n", longepg.fsk);
+					return true;
+				}
+			}
+			request->SendError();
+			return false;
+		}
 		else if (!(request->ParameterList["id"].empty()))
 		{
 			t_channel_id channel_id;
