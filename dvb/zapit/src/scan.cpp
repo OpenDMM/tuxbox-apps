@@ -231,7 +231,7 @@ FILE *write_provider(FILE *fd, const char *type, const char *provider_name, cons
 		/* create new file if needed */
 		if (fd == NULL)
 		{
-			fd = write_xml_header(CONFIGDIR "/services.xml");
+			fd = write_xml_header(CONFIGDIR "/zapit/services.xml");
 		}
 
 		/* cable tag */
