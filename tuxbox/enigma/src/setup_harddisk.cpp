@@ -633,8 +633,20 @@ void ePartitionCheck::getData( eString str )
 		fsck->write("y",1);
 	else if ( str.find("[N/Yes]") != eString::npos )
 		fsck->write("Yes",3);
+	eString tmp = lState->getText();
+	tmp+=str;
 
-	lState->setText(str);
+	eSize size=lState->getSize();
+	int height = size.height();
+	size.setHeight(height*2);
+	eLabel l(this);
+	l.hide();
+	l.resize(size);
+	l.setText(tmp);
+	if ( l.getExtend().height() > height )
+		tmp=str;
+
+	lState->setText(tmp);
 }
 
 #endif // DISABLE_FILE
