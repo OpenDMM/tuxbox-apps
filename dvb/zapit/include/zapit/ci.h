@@ -24,8 +24,6 @@
 
 #include <vector>
 
-unsigned int write_length_field (unsigned char * buffer);
-
 class CCaDescriptor
 {
 	private:
