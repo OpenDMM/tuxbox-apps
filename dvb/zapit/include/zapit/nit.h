@@ -1,7 +1,7 @@
 /*
  * $Id$
  *
- * (C) 2002-2003 Andreas Oberritter <obi@tuxbox.org>
+ * (C) 2002 by Andreas Oberritter <obi@tuxbox.org>
  *
  * This program is free software; you can redistribute it and/or modify
  * it under the terms of the GNU General Public License as published by
@@ -19,9 +19,9 @@
  *
  */
 
-#ifndef __zapit_nit_h__
-#define __zapit_nit_h__
+#ifndef __nit_h__
+#define __nit_h__
 
-int parse_nit(const unsigned char diseqc);
+int parse_nit (unsigned char DiSEqC);
 
-#endif /* __zapit_nit_h__ */
+#endif /* __nit_h__ */

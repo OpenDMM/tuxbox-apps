@@ -1,7 +1,7 @@
 /*
  * $Id$
  *
- * (C) 2002, 2003 by Andreas Oberritter <obi@tuxbox.org>
+ * (C) 2002 by Andreas Oberritter <obi@tuxbox.org>
  *
  * This program is free software; you can redistribute it and/or modify
  * it under the terms of the GNU General Public License as published by
@@ -19,12 +19,13 @@
  *
  */
 
-#ifndef __zapit_sdt_h__
-#define __zapit_sdt_h__
+#ifndef __sdt_h__
+#define __sdt_h__
 
 #include "types.h"
 
-enum service_type_e {
+enum service_type_e
+{
 	RESERVED,
 	DIGITAL_TELEVISION_SERVICE,
 	DIGITAL_RADIO_SOUND_SERVICE,
@@ -44,8 +45,12 @@ enum service_type_e {
 	DVB_MHP_SERVICE
 };
 
-unsigned long get_sdt_TsidOnid(void);
-int nvod_service_ids(const t_transport_stream_id, const t_original_network_id, const t_service_id, const unsigned int num, t_transport_stream_id * const, t_original_network_id * const, t_service_id * const);
-int parse_sdt(const t_transport_stream_id, const t_original_network_id, const unsigned char diseqc);
+struct sdt_generic_descriptor {
+        u_char  descriptor_tag                  : 8;
+        u_char  descriptor_length               : 8;
+};
 
-#endif /* __zapit_sdt_h__ */
+int parse_sdt(const uint8_t DiSEqC);
+unsigned int get_sdt_TsidOnid ();
+
+#endif /* __sdt_h__ */
