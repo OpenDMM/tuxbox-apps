@@ -1388,6 +1388,7 @@ void CNeutrinoApp::InitVideoSettings(CMenuWidget &videoSettings, CVideoSetupNoti
 
 	oj = new CMenuOptionChooser("videomenu.videoformat", &g_settings.video_Format, true, videoSetupNotifier);
 	oj->addOption(2, "videomenu.videoformat_43");
+	oj->addOption(3, "videomenu.videoformat_431");
 	oj->addOption(1, "videomenu.videoformat_169");
 	oj->addOption(0, "videomenu.videoformat_autodetect");
 

@@ -282,11 +282,14 @@ void setVideoFormat(int format, bool bSaveFormat = true )
 		videoDisplayFormat = ZAPIT_VIDEO_LETTER_BOX;
 		wss = SAA_WSS_43F;
 		break;
+	case AVS_FNCOUT_EXT43_1	: 
+		videoDisplayFormat = ZAPIT_VIDEO_PAN_SCAN;
+		wss = SAA_WSS_43F;
+		break;
 	default:
 		videoDisplayFormat = ZAPIT_VIDEO_LETTER_BOX;
 		wss = SAA_WSS_43F;
 		break;
-		//	?	case AVS_FNCOUT_EXT43_1	: videoDisplayFormat = VIDEO_PAN_SCAN;
 	}
 
 	zapit.setDisplayFormat(videoDisplayFormat);
