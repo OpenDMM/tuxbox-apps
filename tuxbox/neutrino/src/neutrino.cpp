@@ -32,6 +32,9 @@
 	Foundation, Inc., 675 Mass Ave, Cambridge, MA 02139, USA.
 
   $Log$
+  Revision 1.114  2001/12/31 16:27:13  McClean
+  use lcddclient
+
   Revision 1.113  2001/12/30 23:15:47  Simplex
   bugfix in adjusting bouquet's channellist to current channel
 
@@ -1704,7 +1707,7 @@ int CNeutrinoApp::run(int argc, char **argv)
 
 	g_Locale = new CLocaleManager;
 	g_RCInput = new CRCInput;
-	g_lcdd = new CLCDD;
+	g_lcdd = new CLcddClient;
 	g_Controld = new CControldClient;
 	g_RemoteControl = new CRemoteControl;
 	g_EpgData = new CEpgData;
@@ -2033,13 +2036,11 @@ void CNeutrinoApp::tvMode()
 void CNeutrinoApp::scartMode()
 {
 	memset(g_FrameBuffer->lfb, 255, g_FrameBuffer->Stride()*576);
-	g_lcdd->setMode(LCDM_SCART);
 	g_Controld->setScartMode( 1 );
 	while(g_RCInput->getKey(1)!= CRCInput::RC_timeout){}
 	printf("scartmode-loop\n");
 	while (g_RCInput->getKey(100)!=CRCInput::RC_home){}
 	printf("scartmode-loopended\n");
-	g_lcdd->setMode(LCDM_TV);
 	g_Controld->setScartMode( 0 );
 	g_FrameBuffer->paintBackground();
 	/*
