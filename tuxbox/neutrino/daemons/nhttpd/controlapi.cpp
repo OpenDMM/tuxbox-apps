@@ -145,6 +145,11 @@ bool CControlAPI::TimerCGI(CWebserverRequest *request)
 				Parent->WebAPI->doNewTimer(request);
 				request->SendOk();
 			}
+			else if (request->ParameterList["action"] == "modify")
+			{
+				Parent->WebAPI->doModifyTimer(request);
+				request->SendOk();
+			}
 		}
 		else
 		{
