@@ -781,7 +781,10 @@ void CControlAPI::SendChannelList(CWebserverRequest *request)
 	CZapitClient::BouquetChannelList::iterator channel = channellist->begin();
 	
 	for(; channel != channellist->end();channel++)
-		request->printf("%u %s\n",channel->channel_id, channel->name);
+		request->printf(PRINTF_CHANNEL_ID_TYPE_NO_LEADING_ZEROS
+				" %s\n",
+				channel->channel_id,
+				channel->name);
 };
 
 //-------------------------------------------------------------------------
