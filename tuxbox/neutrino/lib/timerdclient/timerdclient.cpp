@@ -26,7 +26,7 @@
 #include "timerdclient.h"
 #include "timerdMsg.h"
 #include "../timermanager.h"
-#include "debug.h"
+#include "../debug.h"
 
 
 CTimerdClient::CTimerdClient()
