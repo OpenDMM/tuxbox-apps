@@ -171,6 +171,9 @@ void CFrontend::setFrontend(struct dvb_frontend_parameters *feparams)
 {
 	struct dvb_frontend_event event;
 
+	if (fd == -1)
+		return;
+
 	if (errno != 0)
 		errno = 0;
 
