@@ -62,7 +62,7 @@ eZapSetup::eZapSetup()
 		havelcd = 1;
 
 	tuxbox_submodel_t submodel = tuxbox_get_submodel ();
-	if (submodel == TUXBOX_SUBMODEL_DREAMBOX_DM7000)
+	if (submodel == TUXBOX_SUBMODEL_DREAMBOX_DM5600)
 		haverfmod=1;
 	
 	list.setColumns(2);
