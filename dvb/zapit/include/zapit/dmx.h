@@ -30,8 +30,8 @@
 #include <ost/dmx.h>
 #define DEMUX_DEV "/dev/dvb/card0/demux0"
 
-int setDmxSctFilter (int fd, dvb_pid_t pid, unsigned char filter0, unsigned char filter1 = 0x00, unsigned char filter2 = 0x00);
-int setDmxPesFilter (int fd, dmxOutput_t output, dmxPesType_t pesType, dvb_pid_t pid);
+int setDmxSctFilter (int fd, unsigned short pid, unsigned char * filter, unsigned char * mask);
+int setDmxPesFilter (int fd, dmxOutput_t output, dmxPesType_t pesType, unsigned short pid);
 int unsetDmxFilter (int fd);
 
 #endif /* __dmx_h__ */

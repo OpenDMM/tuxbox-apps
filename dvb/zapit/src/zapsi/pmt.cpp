@@ -278,12 +278,25 @@ int parse_pmt (int demux_fd, CZapitChannel * channel)
 	unsigned short section_length;
 	unsigned short program_info_length;
 
+	unsigned char filter[DMX_FILTER_SIZE];
+	unsigned char mask[DMX_FILTER_SIZE];
+
+	memset(filter, 0x00, DMX_FILTER_SIZE);
+	memset(mask, 0x00, DMX_FILTER_SIZE);
+
+	filter[0] = 0x02;
+	filter[1] = channel->getServiceId() >> 8;
+	filter[2] = channel->getServiceId();
+	mask[0] = 0xFF;
+	mask[1] = 0xFF;
+	mask[2] = 0xFF;
+
 	if (channel->getPmtPid() == 0)
 	{
 		return -1;
 	}
 
-	if (setDmxSctFilter(demux_fd, channel->getPmtPid(), 0x02, channel->getServiceId() >> 8, channel->getServiceId()) < 0)
+	if (setDmxSctFilter(demux_fd, channel->getPmtPid(), filter, mask) < 0)
 	{
 		return -1;
 	}

@@ -74,20 +74,28 @@ int parse_pat (int demux_fd, CZapitChannel * channel)
 	/* buffer for program association table */
 	unsigned char buffer[PAT_LENGTH];
 
-	/* number of read sections */
-	unsigned char section = 0;
-
 	/* current positon in buffer */
 	unsigned short i;
 
-	/* set filter for program association section */
-	if ((status = setDmxSctFilter(demux_fd, 0x0000, 0x00)) < 0)
-	{
-		return status;
-	}
+	unsigned char filter[DMX_FILTER_SIZE];
+	unsigned char mask[DMX_FILTER_SIZE];
+
+	memset(filter, 0x00, DMX_FILTER_SIZE);
+	memset(mask, 0x00, DMX_FILTER_SIZE);
+
+	filter[0] = 0x00;
+	filter[4] = 0x00;
+	mask[0] = 0xFF;
+	mask[4] = 0xFF;
 
 	do
 	{
+		/* set filter for program association section */
+		if ((status = setDmxSctFilter(demux_fd, 0x0000, filter, mask)) < 0)
+		{
+			return status;
+		}
+		
 		/* read section */
 		if ((status = read(demux_fd, buffer, PAT_LENGTH)) < 0)
 		{
@@ -107,7 +115,7 @@ int parse_pat (int demux_fd, CZapitChannel * channel)
 			}
 		}
 	}
-	while (section++ != buffer[7]);
+	while (filter[4]++ != buffer[7]);
 
 	return status;
 }
