@@ -22,6 +22,9 @@
 //    Foundation, Inc., 675 Mass Ave, Cambridge, MA 02139, USA.
 //
 // $Log$
+// Revision 1.8  2001/06/10 15:40:34  fnbrd
+// Kleine Aenderung die das einlesen von Sections mit nur einer Section beschleunigt (z.b. sdt).
+//
 // Revision 1.7  2001/06/10 14:55:51  fnbrd
 // Kleiner Aenderungen und Ergaenzungen (epgMini).
 //
@@ -332,6 +335,10 @@ int SIsections :: readSections(unsigned short pid, unsigned char filter, unsigne
       // Wir wollen nur aktuelle sections
       insert(SIsection(sizeof(header)+header.section_length-5, buf));
       firstKey=SIsection::key(&header);
+      // Sonderfall: Nur eine Section
+      // d.h. wir sind fertig
+      if(!header.section_number && !header.last_section_number)
+        return 0;
     }
     else
       delete[] buf;
