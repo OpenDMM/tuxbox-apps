@@ -711,7 +711,7 @@ bool CControlAPI::ZaptoCGI(CWebserverRequest *request)
 		}
 		else
 		{
-			Parent->ZapTo(request->ParameterList["1"]);
+			Parent->ZapTo(request->ParameterList["1"].c_str()); /* FIXME: CHANGE TO HEX */
 			request->SendOk();
 		}
 		

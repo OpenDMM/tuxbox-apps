@@ -49,9 +49,9 @@ void CWebDbox::UpdateBouquets(void)
 
 //-------------------------------------------------------------------------
 
-void CWebDbox::ZapTo(std::string target)
+void CWebDbox::ZapTo(const char * const target)
 {
-	t_channel_id channel_id = atoi(target.c_str());
+	t_channel_id channel_id = atoi(target);
 	
 	if (channel_id == Zapit->getCurrentServiceID())
 	{
@@ -69,16 +69,16 @@ void CWebDbox::ZapTo(std::string target)
 
 //-------------------------------------------------------------------------
 
-void CWebDbox::ZapToSubService(std::string target)
+void CWebDbox::ZapToSubService(const char * const target)
 {
-	t_channel_id channel_id = atoi(target.c_str());
+	t_channel_id channel_id;
 
-	unsigned int status = Zapit->zapTo_subServiceID(channel_id);
+	sscanf(target,
+	       SCANF_CHANNEL_ID_TYPE,
+	       &channel_id);
 
-	if (status != CZapitClient::ZAP_INVALID_PARAM)
-	{
+	if (Zapit->zapTo_subServiceID(channel_id) != CZapitClient::ZAP_INVALID_PARAM)
 		Sectionsd->setServiceChanged(channel_id, false);
-	}
 }
 
 //-------------------------------------------------------------------------
