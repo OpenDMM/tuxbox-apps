@@ -227,9 +227,12 @@ int zapit(const t_channel_id channel_id, bool in_nvod)
 			printf("[zapit] motorPosition = %d\n", motorPositions[channel->getSatelliteName()]);
 			frontend->positionMotor(motorPositions[channel->getSatelliteName()]);
 		
-			waitForMotor = abs(channel->getSatellitePosition() - frontend->getCurrentSatellitePosition()) / motorRotationSpeed; //assuming 1.8 degrees/second motor rotation speed for the time being...
-			printf("[zapit] waiting %d seconds for motor to turn satellite dish.\n", waitForMotor);
-			sleep(waitForMotor);
+			if (!firstZapAfterBoot)
+			{
+				waitForMotor = abs(channel->getSatellitePosition() - frontend->getCurrentSatellitePosition()) / motorRotationSpeed; //assuming 1.8 degrees/second motor rotation speed for the time being...
+				printf("[zapit] waiting %d seconds for motor to turn satellite dish.\n", waitForMotor);
+				sleep(waitForMotor);
+			}
 		
 			frontend->setCurrentSatellitePosition(channel->getSatellitePosition());
 		}
@@ -757,10 +760,9 @@ bool parse_command(CBasicMessage::Header &rmsg, int connfd)
 	
 	case CZapitMessages::CMD_SCANSETDISEQCTYPE:
 	{
-		diseqc_t diseqc;
-		CBasicServer::receive_data(connfd, &diseqc, sizeof(diseqc));
-		frontend->setDiseqcType(diseqc);
-		DBG("set diseqc type %d", diseqc);
+		CBasicServer::receive_data(connfd, &diseqcType, sizeof(diseqcType));
+		frontend->setDiseqcType(diseqcType);
+		DBG("set diseqc type %d", diseqcType);
 		break;
 	}
 	
