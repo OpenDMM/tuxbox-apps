@@ -2192,6 +2192,10 @@ void CNeutrinoApp::ExitRun()
 	frameBuffer->loadPal("shutdown.pal");
 
 	saveSetup();
+
+	// -- Set Wakeup of Box for next TimerEvent... (120 secs time for startup)
+	g_Timer->setBoxWakeupTime (g_Timer->getNextTimerEventStart() -120);
+
 	g_Controld->shutdown();
 	sleep(55555);
 }
