@@ -27,6 +27,7 @@
 #include <apps/enigma/setupvideo.h>
 #include <apps/enigma/setup_language.h>
 #include <apps/enigma/setup_osd.h>
+#include <apps/enigma/setup_lcd.h>
 #include <apps/enigma/enigma_scan.h>
 #include <apps/enigma/setupskin.h>
 #include <core/gui/emessage.h>
@@ -44,6 +45,7 @@ eZapSetup::eZapSetup()
 	CONNECT((new eListBoxEntryMenu(&list, _("Network...")))->selected, eZapSetup::sel_network);
 //	CONNECT((list, _("Audio...")))->selected, sel_sound);
 	CONNECT((new eListBoxEntryMenu(&list, _("OSD...")))->selected, eZapSetup::sel_osd);
+	CONNECT((new eListBoxEntryMenu(&list, _("LCD...")))->selected, eZapSetup::sel_lcd);
 	CONNECT((new eListBoxEntryMenu(&list, _("Video...")))->selected, eZapSetup::sel_video);
 	CONNECT((new eListBoxEntryMenu(&list, _("Skin...")))->selected, eZapSetup::sel_skin);
 	CONNECT((new eListBoxEntryMenu(&list, _("Language...")))->selected, eZapSetup::sel_language);
@@ -88,6 +90,17 @@ void eZapSetup::sel_osd()
 {
 	hide();
 	eZapOsdSetup setup;
+	setup.setLCD(LCDTitle, LCDElement);
+	setup.show();
+	setup.exec();
+	setup.hide();
+	show();
+}
+
+void eZapSetup::sel_lcd()
+{
+	hide();
+	eZapLCDSetup setup;
 	setup.setLCD(LCDTitle, LCDElement);
 	setup.show();
 	setup.exec();
