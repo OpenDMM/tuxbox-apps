@@ -61,7 +61,7 @@ CWebserver::CWebserver(bool debug)
 
 	if (!Config->loadConfig(NHTTPD_CONFIGFILE) )
 	{
-		Config->setBool("NewGui",true);
+		Config->setBool("NewGui",false);
 		Config->setInt("Port", 80);
 		Config->setBool("THREADS",true);
 		Config->setBool("VERBOSE",false);
