@@ -154,6 +154,7 @@ void saveSettings()
 void shutdownBox()
 {
 	lcdd.shutdown();
+	zapit.shutdown();
 	saveSettings();
 
 	if (execlp("/sbin/halt", "/sbin/halt", 0)<0)

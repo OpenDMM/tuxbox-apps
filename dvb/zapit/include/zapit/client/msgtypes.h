@@ -39,6 +39,7 @@ class CZapitMessages
 
 	enum commands
 		{
+			CMD_SHUTDOWN		 = 0,
 			CMD_ZAPTO		 = 1,
 			CMD_ZAPTO_CHANNELNR,
 			CMD_STOP_VIDEO,					// not supported yet

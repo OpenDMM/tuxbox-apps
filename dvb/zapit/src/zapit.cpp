@@ -594,7 +594,7 @@ int start_scan ()
 	return 0;
 }
 
-void parse_command (CZapitMessages::commandHead &rmsg)
+bool parse_command (CZapitMessages::commandHead &rmsg)
 {
 	debug("[zapit] cmd %d (version %d) received\n", rmsg.cmd, rmsg.version);
 
@@ -602,6 +602,10 @@ void parse_command (CZapitMessages::commandHead &rmsg)
 	{
 		switch (rmsg.cmd)
 		{
+			case CZapitMessages::CMD_SHUTDOWN:
+			{
+				return false;
+			}
 			case CZapitMessages::CMD_ZAPTO:
 			{
 				CZapitMessages::commandZapto msgZapto;
@@ -1045,13 +1049,12 @@ void parse_command (CZapitMessages::commandHead &rmsg)
 				printf("[zapit] unknown command %d (version %d)\n", rmsg.cmd, CZapitMessages::ACTVERSION);
 				break;
 		}
+		debug("[zapit] cmd %d processed\n", rmsg.cmd);
 	}
 	else
-	{
 		printf("[zapit] Command ignored: cmd version %d received - zapit cmd version is %d\n", rmsg.version, CZapitMessages::ACTVERSION);
-		return;
-	}
-	debug("[zapit] cmd %d processed\n", rmsg.cmd);
+
+	return true;
 }
 
 int main (int argc, char **argv)
@@ -1229,16 +1232,21 @@ int main (int argc, char **argv)
 	// create eventServer
 	eventServer = new CEventServer;
 
-	while (true)
+	bool parse_another_command;
+	
+	do
 	{
 		CZapitMessages::commandHead rmsg;
 		connfd = accept(listenfd, (struct sockaddr*) &servaddr, (socklen_t*) &clilen);
 		memset(&rmsg, 0, sizeof(rmsg));
 		read(connfd, &rmsg, sizeof(rmsg));
-		parse_command(rmsg);
+		parse_another_command = parse_command(rmsg);
 		close(connfd);
 		connfd = -1;
 	}
+	while (parse_another_command);
+
+	CZapitDestructor();
 
 	return 0;
 }

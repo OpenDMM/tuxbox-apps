@@ -55,7 +55,14 @@ void CZapitClient::send(const unsigned char command, char* data = NULL, const un
 	    send_data(data, size);
 }
 
-/***********************************************/
+
+void CZapitClient::shutdown()
+{
+	send(CZapitMessages::CMD_SHUTDOWN);
+	zapit_close();
+}
+
+//***********************************************/
 /*					     */
 /* general functions for zapping	       */
 /*					     */
