@@ -2260,7 +2260,11 @@ int startPlayBack()
 	}
 
 	/* select video source */
+#ifndef ALWAYS_DO_VIDEO_SELECT_SOURCE
 	if ((video_status.streamSource != VIDEO_SOURCE_DEMUX) && (video_status.playState == VIDEO_STOPPED))
+#else
+	if (video_status.playState == VIDEO_STOPPED)
+#endif
 	{
 		if (ioctl(video_fd, VIDEO_SELECT_SOURCE, VIDEO_SOURCE_DEMUX) < 0)
 		{
