@@ -23,7 +23,7 @@
 //    Foundation, Inc., 675 Mass Ave, Cambridge, MA 02139, USA.
 //
 //  $Log$
-//  Revision 1.60  2001/10/02 16:14:45  fnbrd
+//  Revision 1.61  2001/10/02 16:18:53  fnbrd
 //  Fehler behoben.
 //
 //  Revision 1.59  2001/09/26 09:54:50  field
@@ -2263,34 +2263,37 @@ const unsigned timeoutInSeconds=2;
       }
 */
       SIsectionEIT eit(SIsection(sizeof(header)+header.section_length-5, buf));
-      zeit=time(NULL);
-      // Nicht alle Events speichern
-      for(SIevents::iterator e=eit.events().begin(); e!=eit.events().end(); e++)
-        if(e->times.size()>0) {
-          if(e->times.begin()->startzeit < zeit+secondsToCache &&
-            e->times.begin()->startzeit+(long)e->times.begin()->dauer > zeit-oldEventsAre
-            ) {
-            lockEvents();
-            addEvent(*e);
-            unlockEvents();
+      if(eit.header()) { // == 0 -> kein event
+        zeit=time(NULL);
+        // Nicht alle Events speichern
+        for(SIevents::iterator e=eit.events().begin(); e!=eit.events().end(); e++) {
+          if(e->times.size()>0) {
+            if(e->times.begin()->startzeit < zeit+secondsToCache &&
+              e->times.begin()->startzeit+(long)e->times.begin()->dauer > zeit-oldEventsAre
+              ) {
+              lockEvents();
+              addEvent(*e);
+              unlockEvents();
+            }
           }
-        }
-        else {
-          // pruefen ob nvod event
-          lockServices();
-          MySIservicesNVODorderUniqueKey::iterator si=mySIservicesNVODorderUniqueKey.find(SIservice::makeUniqueKey(e->originalNetworkID, e->serviceID));
-          if(si!=mySIservicesNVODorderUniqueKey.end()) {
-            // Ist ein nvod-event
-            lockEvents();
-            for(SInvodReferences::iterator i=si->second->nvods.begin(); i!=si->second->nvods.end(); i++)
-              mySIeventUniqueKeysMetaOrderServiceUniqueKey.insert(std::make_pair(i->uniqueKey(), e->uniqueKey()));
-            unlockServices();
-            addNVODevent(*e);
-            unlockEvents();
+          else {
+            // pruefen ob nvod event
+            lockServices();
+            MySIservicesNVODorderUniqueKey::iterator si=mySIservicesNVODorderUniqueKey.find(SIservice::makeUniqueKey(e->originalNetworkID, e->serviceID));
+            if(si!=mySIservicesNVODorderUniqueKey.end()) {
+              // Ist ein nvod-event
+              lockEvents();
+              for(SInvodReferences::iterator i=si->second->nvods.begin(); i!=si->second->nvods.end(); i++)
+                mySIeventUniqueKeysMetaOrderServiceUniqueKey.insert(std::make_pair(i->uniqueKey(), e->uniqueKey()));
+              unlockServices();
+              addNVODevent(*e);
+              unlockEvents();
+            }
+            else
+              unlockServices();
           }
-          else
-            unlockServices();
-        }
+        } // for
+      } // if serviceID
     } // if
     else
       delete[] buf;
