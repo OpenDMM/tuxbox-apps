@@ -24,6 +24,7 @@
 
 */
 #include <netinet/in.h> 
+#include <netinet/tcp.h>
 #include <sys/socket.h> 
 #include <sys/wait.h> 
 
@@ -193,6 +194,7 @@ SAI					cliaddr;
 CWebserverRequest	*req;
 int sock_connect;
 int thread_num =0;
+int t = 1;
 pthread_t Threads[30];
 
 
@@ -210,6 +212,7 @@ pthread_t Threads[30];
                 perror("Error in accept");
                 continue;
         }
+	setsockopt(sock_connect,SOL_TCP,TCP_CORK,&t,sizeof(t));
         if(DEBUG) printf("nhttpd: got connection from %s\n", inet_ntoa(cliaddr.sin_addr));		// request from client arrives
 
 
