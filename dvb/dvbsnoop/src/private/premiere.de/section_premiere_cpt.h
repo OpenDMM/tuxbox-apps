@@ -13,8 +13,12 @@ $Id$
 */
 
 
+#ifndef _SECTION_PREMIERE_CPT_H
+#define _SECTION_PREMIERE_CPT_H
 
 
-void section_PRIVATE (u_char *b, int len);
+void section_PRIVATE_PremiereDE_CPT (u_char *b, int len);
 
+
+#endif
 
