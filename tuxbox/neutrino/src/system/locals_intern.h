@@ -635,6 +635,8 @@ const char * locale_real_names[] =
 	"parentallock.onsignal",
 	"parentallock.parentallock",
 	"parentallock.prompt",
+	"pictureviewer.decode_server_ip",
+	"pictureviewer.decode_server_port",
 	"pictureviewer.defdir",
 	"pictureviewer.head",
 	"pictureviewer.help1",
