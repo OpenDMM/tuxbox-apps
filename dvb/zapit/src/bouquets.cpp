@@ -20,6 +20,9 @@
   Foundation, Inc., 675 Mass Ave, Cambridge, MA 02139, USA.
 
   $Log$
+  Revision 1.2  2001/12/30 18:38:37  Simplex
+  intregration of CBouquetManager (part I)
+
   Revision 1.1  2001/12/27 16:49:28  Simplex
   BouquetManager initial revision (completely untested)
 
@@ -388,6 +391,15 @@ void CBouquetManager::getLast( uint* BouquetId, uint* channelNr)
 	fread( BouquetId, 1, sizeof(BouquetId), BMSettings);
 	fread( channelNr, 1, sizeof(channelNr), BMSettings);
 	fclose( BMSettings);
+}
+
+void CBouquetManager::clearAll()
+{
+	for (uint i=0; i<Bouquets.size(); i++)
+	{
+		delete Bouquets[i];
+	}
+	Bouquets.clear();
 }
 
 void CBouquetManager::onTermination()
