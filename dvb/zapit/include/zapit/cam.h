@@ -22,8 +22,6 @@
 #ifndef __cam_h__
 #define __cam_h__
 
-#include <ost/ca.h>
-
 #include "ci.h"
 
 class CCam
@@ -34,12 +32,10 @@ class CCam
 		bool camdConnect ();
 		void camdDisconnect ();
 
-		ca_msg_t CCam::getMessage (unsigned short length);
 		int sendMessage (unsigned char * data, unsigned short length);
 
 	public:
 		CCam();
-		~CCam();
 
 		int setCaPmt (CCaPmt * caPmt);
 };
