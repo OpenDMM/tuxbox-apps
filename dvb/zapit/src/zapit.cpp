@@ -21,7 +21,9 @@
  * Foundation, Inc., 675 Mass Ave, Cambridge, MA 02139, USA.
  *
  */
+
 #define UPDATE_PMT 1
+
 /* system headers */
 #include <csignal>
 #include <fcntl.h>
@@ -306,6 +308,8 @@ int zapit(const t_channel_id channel_id, bool in_nvod, uint32_t tsid_onid)
 #endif
 	{
 		bool failed = false;
+
+		thisChannel->resetPids();
 
 		DBG("looking up pids for channel_id " PRINTF_CHANNEL_ID_TYPE, thisChannel->getChannelID());
 
