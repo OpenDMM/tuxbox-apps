@@ -37,6 +37,7 @@ class CTransponder
 
 		unsigned short	originalNetworkId;
 		unsigned short	transportStreamId;
+		int32_t		satellitePosition;
 
 	public:
 
@@ -68,8 +69,12 @@ class CTransponder
 
 		unsigned short getTransportStreamId();
 		void setTransportStreamId(unsigned short);
+		
+		int32_t getSatellitePosition();
+		void setSatellitePosition(int32_t);
 
 		unsigned int getTsidOnid();
+		uint64_t getSposTsidOnid();
 };
 
 #endif /* __transponder_h__ */
