@@ -98,7 +98,8 @@ class CFrontend
 		int				setParameters(struct dvb_frontend_parameters *feparams, uint8_t polarization, uint8_t diseqc);
 		void 				setCurrentSatellitePosition(int32_t satellitePosition) {currentSatellitePosition = satellitePosition; }
 		
-		void 				positionMotor(uint8_t diseqc); 
+		void 				positionMotor(uint8_t motorPosition); 
+		void				sendMotorCommand(uint8_t cmdtype, uint8_t address, uint8_t command, uint8_t num_parameters, uint8_t parameter1, uint8_t parameter2);
 };
 
 #endif /* __zapit_frontend_h__ */
