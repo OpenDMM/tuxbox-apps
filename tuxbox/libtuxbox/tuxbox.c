@@ -28,9 +28,11 @@
 #include <stdio.h>
 #include <stdlib.h>
 #include <string.h>
+
+#define need_TUXBOX_GET
 #include "tuxbox.h"
 
-static int tuxbox_read_proc (char *type)
+int tuxbox_read_proc (char *type)
 {
 	FILE *file;
 	char filename[64];
@@ -61,25 +63,10 @@ static int tuxbox_read_proc (char *type)
 	return ret;
 }
 
-tuxbox_capabilities_t tuxbox_get_capabilities (void)
-{
-	return tuxbox_read_proc ("capabilities");
-}
-
-tuxbox_model_t tuxbox_get_model (void)
-{
-	return tuxbox_read_proc ("model");
-}
-
-tuxbox_submodel_t tuxbox_get_submodel (void)
-{
-	return tuxbox_read_proc ("submodel");
-}
-
-tuxbox_vendor_t tuxbox_get_vendor (void)
-{
-	return tuxbox_read_proc ("vendor");
-}
+TUXBOX_GET(capabilities);
+TUXBOX_GET(model);
+TUXBOX_GET(submodel);
+TUXBOX_GET(vendor);
 
 const char *tuxbox_get_model_str (void)
 {

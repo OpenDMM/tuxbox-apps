@@ -30,6 +30,8 @@
 extern "C" {
 #endif
 
+int tuxbox_read_proc (char *type);
+
 tuxbox_capabilities_t tuxbox_get_capabilities (void);
 tuxbox_model_t tuxbox_get_model (void);
 const char *tuxbox_get_model_str (void);
@@ -43,3 +45,15 @@ const char *tuxbox_get_vendor_str (void);
 #endif
 
 #endif /* TUXBOX_H */
+
+#if defined(need_TUXBOX_GET) && !defined(TUXBOX_GET)
+#define TUXBOX_GET(type) \
+tuxbox_##type##_t tuxbox_get_##type (void) \
+{ \
+	static tuxbox_##type##_t tuxbox_##type; \
+	if (!tuxbox_##type) \
+		tuxbox_##type = (tuxbox_##type##_t) tuxbox_read_proc (#type); \
+	return tuxbox_##type; \
+}
+#endif /* need_TUXBOX_GET && !TUXBOX_GET */
+
