@@ -607,7 +607,7 @@ bool CControlAPI::EpgCGI(CWebserverRequest *request)
 		}
 		else if (request->ParameterList["onidsid"] != "")
 		{
-			unsigned channel_id = atol( request->ParameterList["onidsid"].c_str());
+			t_channel_id channel_id = atol(request->ParameterList["onidsid"].c_str()); // FIXME: atol makes only sense for tsidonidsid
 			Parent->eList = Parent->Sectionsd->getEventsServiceKey(channel_id);
 			CChannelEventList::iterator eventIterator;
 

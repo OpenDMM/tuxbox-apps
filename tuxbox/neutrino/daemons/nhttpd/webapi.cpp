@@ -615,7 +615,7 @@ bool CWebAPI::ShowBouquet(CWebserverRequest* request, int BouquetNr)
 					cmd.service_id = ntohs(ni->service_id);
 					cmd.transport_stream_id = ntohs(ni->transport_stream_id);
 
-					t_channel_id channel_id = (cmd.original_network_id << 16) | cmd.service_id;
+					t_channel_id channel_id = CREATE_CHANNEL_ID_FROM_SERVICE_ORIGINALNETWORK_TRANSPORTSTREAM_ID(cmd.service_id, cmd.original_network_id, cmd.transport_stream_id);
 					
 					timeString(ni->zeit.startzeit, timestr); // FIXME: time is wrong (at least on little endian)!
 
