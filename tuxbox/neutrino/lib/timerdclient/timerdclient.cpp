@@ -372,4 +372,14 @@ void CTimerdClient::setWeekdaysToStr(CTimerd::CTimerEventRepeat rep, char* str)
 		strcpy(str,"-------");
 }
 //-------------------------------------------------------------------------
+void CTimerdClient::stopTimerEvent( int evId)
+{
+	CTimerdMsg::commandRemoveTimer msgRemoveTimer;
+
+	msgRemoveTimer.eventID  = evId;
+
+	send(CTimerdMsg::CMD_STOPTIMER, (char*) &msgRemoveTimer, sizeof(msgRemoveTimer));
+
+	close_connection();  
+}
 
