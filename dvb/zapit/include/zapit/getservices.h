@@ -32,6 +32,8 @@
 #include "types.h"
 #include "xmlinterface.h"
 
+#include <map>
+
 #define zapped_chan_is_nvod 0x80
 
 #define NONE 0x0000
@@ -69,5 +71,7 @@ struct transponder
 		original_network_id = p_original_network_id;
 	}
 };
+
+typedef std::map<transponder_id_t, transponder> transponder_list_t;
 
 #endif /* __getservices_h__ */
