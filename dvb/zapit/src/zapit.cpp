@@ -39,12 +39,17 @@
 CCam *cam = NULL;
 /* the configuration file */
 CConfigFile *config = NULL;
+/* the event server */
+CEventServer *eventServer = NULL;
 /* the dvb frontend */
 CFrontend *frontend = NULL;
 /* the current channel */
 CZapitChannel *channel = NULL;
 /* the transponder scan xml input */
 XMLTreeParser *scanInputParser = NULL;
+
+/* the map which stores the wanted cable/satellites */
+std::map <uint8_t, std::string> scanProviders;
 
 struct rmsg {
 	uint8_t version;
@@ -54,19 +59,11 @@ struct rmsg {
 	char param3[30];
 } rmsg;
 
-struct {
-	char mode;          // 't' TV, 'r' Radio
-	unsigned int tv;
-	unsigned int radio;
-} lastChannel;
-
 int connfd;
 
 #ifndef DVBS
 CLcddClient lcdd;
 #endif /* DVBS */
-
-CEventServer *eventServer;
 
 bool debug = false;
 
@@ -824,8 +821,14 @@ int prepare_channels ()
 	return 23;
 }
 
-int start_scan(unsigned short do_diseqc)
+int start_scan (unsigned short do_diseqc)
 {
+	if (scanInputParser == NULL)
+	{
+		printf("[zapit] scan not configured. won't scan.\n");
+		return -1;
+	}
+
 	transponders.clear();
 	namechans_tv.clear();
 	numchans_tv.clear();
@@ -880,9 +883,11 @@ int start_scan(unsigned short do_diseqc)
 		return -1;
 	}
 
+	debug("[zapit] waiting for scan to start\n");
+
 	while (scan_runs == 0)
 	{
-		debug("[zapit] waiting for scan to start\n");
+		// do nothing
 	}
 
 	return 0;
@@ -1665,14 +1670,14 @@ void parse_command ()
 				}
 				break;
 			}
-			case CZapitClient::CMD_SCANSETSCANSATLIST :
+			case CZapitClient::CMD_SCANSETSCANSATLIST:
 				CZapitClient::commandSetScanSatelliteList sat;
-				while( read( connfd, &sat, sizeof(sat)))
+				while (read(connfd, &sat, sizeof(sat)))
 				{
-					printf("[zapit] %s %d", sat.satName, sat.diseqc);
-					// todo
+					printf("[zapit] adding %s (diseqc %d)\n", sat.satName, sat.diseqc);
+					scanProviders[sat.diseqc] = sat.satName;
 				}
-			break;
+				break;
 
 			case CZapitClient::CMD_SCANSETDISEQCTYPE :
 				diseqc_t diseqc;
