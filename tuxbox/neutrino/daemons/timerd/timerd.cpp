@@ -40,7 +40,7 @@
 #include <sectionsdclient/sectionsdMsg.h>
 #include <sectionsdclient/sectionsdclient.h>
 
-#include <zapit/basicmessage.h>
+#include <zapit/client/basicmessage.h>
 
 bool doLoop;
 
