@@ -52,6 +52,7 @@
 #include <gui/widget/messagebox.h>
 #include <gui/widget/hintbox.h>
 #include <gui/widget/stringinput.h>
+#include <gui/widget/stringinput_ext.h>
 
 #include <linux/dvb/audio.h>
 #include <linux/dvb/dmx.h>
@@ -112,6 +113,8 @@ CHintBox *hintBox;
 CHintBox *bufferingBox;
 bool avpids_found;
 std::string startfilename;
+std::string skipvalue;
+
 long long startposition;
 int jumpminutes = 1;
 
@@ -632,6 +635,8 @@ PlayStreamThread (void *mrl)
 	bool driverready = false;
 	std::string pauseurl   = baseurl + "?control=pause";
 	std::string unpauseurl = baseurl + "?control=pause";
+	std::string skipurl;
+
 	while (playstate > CMoviePlayerGui::STOPPED)
 	{
 		readsize = ringbuffer_read_space (ringbuf);
@@ -646,12 +651,6 @@ PlayStreamThread (void *mrl)
 			{
 				driverready = true;
 				// pida and pidv should have been set by ReceiveStreamThread now
-				// WHY ???!!!!
-				// TODO replace this with a condition/mutex !
-				while(!avpids_found && playstate > CMoviePlayerGui::STOPPED)
-				{
-					usleep(100000);
-				}
 				printf ("[movieplayer.cpp] PlayStreamthread: while streaming found pida: 0x%04X ; pidv: 0x%04X ac3: %d\n",
 					pida, pidv, ac3);
 
@@ -717,12 +716,26 @@ PlayStreamThread (void *mrl)
 				httpres = sendGetRequest(unpauseurl);
 				speed = 1;
 				break;
+			case CMoviePlayerGui::SKIP:
+			{
+				//skipurl   = baseurl + "?control=seek&seek_value=%2B05%3A30";
+				char *tmp = curl_escape (skipvalue.c_str (), 0);
+			   skipurl   = baseurl + "?control=seek&seek_value=" + tmp;
+				curl_free(tmp);
+				printf("[movieplayer.cpp] skipping URL(enc) : %s\n",skipurl.c_str());
+				httpres = sendGetRequest(skipurl);
+				playstate = CMoviePlayerGui::PLAY;
+			}
+			break;
 			case CMoviePlayerGui::RESYNC:
 			    printf ("[movieplayer.cpp] Resyncing\n");
-				ioctl (dmxa, DMX_STOP);
-				ioctl (dmxa, DMX_START);
-				playstate = CMoviePlayerGui::PLAY;
-				break;
+			    ioctl (dmxa, DMX_STOP);
+				 printf ("[movieplayer.cpp] Buffering approx. 3 seconds\n");
+				 bufferfilled=false;
+				 bufferingBox->paint ();
+				 ioctl (dmxa, DMX_START);
+				 playstate = CMoviePlayerGui::PLAY;
+				 break;
 			case CMoviePlayerGui::PLAY:
 				if (len < MINREADSIZE)
 				{
@@ -777,6 +790,8 @@ PlayStreamThread (void *mrl)
 				break;
 			}
 		}
+		else
+			usleep(10000); // non busy wait
 	}
 
 	ioctl (vdec, VIDEO_STOP);
@@ -1246,8 +1261,10 @@ CMoviePlayerGui::PlayStream (int streamtype)
 	uint msg, data;
 	std::string sel_filename;
 	bool update_info = true, start_play = false, exit =
-		false, open_filebrowser = true;
+		false, open_filebrowser = true, skipping = false;
 	char mrl[200];
+	CHintBox skipBox("messagebox.info", g_Locale->getText("movieplayer.skipping"));
+
 	if (streamtype == STREAMTYPE_DVD)
 	{
 		strcpy (mrl, "dvdsimple:");
@@ -1360,7 +1377,14 @@ CMoviePlayerGui::PlayStream (int streamtype)
 		}
 
 		g_RCInput->getMsg (&msg, &data, 100);	// 10 secs..
-		if (msg == CRCInput::RC_home || msg == CRCInput::RC_red)
+		if(skipping)
+		{
+			skipBox.hide();
+			skipping=false;
+			// resync 10 sec after skip
+			playstate = CMoviePlayerGui::RESYNC;
+		}
+		else if (msg == CRCInput::RC_home || msg == CRCInput::RC_red)
 		{
 			//exit play
 			exit = true;
@@ -1388,6 +1412,37 @@ CMoviePlayerGui::PlayStream (int streamtype)
 			}
 		}
 		*/
+		else if (msg == CRCInput::RC_right)
+		{
+			skipBox.paint();
+			skipvalue = "+00:01:00";
+			skipping=true;
+			playstate = CMoviePlayerGui::SKIP;
+		}
+		else if (msg == CRCInput::RC_left)
+		{
+			skipBox.paint();
+			skipvalue = "-00:01:00";
+			skipping=true;
+			playstate = CMoviePlayerGui::SKIP;
+		}
+		else if (msg == CRCInput::RC_down)
+		{
+			char tmp[10+1];
+			bool cancel;
+
+			CTimeInput ti("movieplayer.goto", tmp, "movieplayer.goto.h1", "movieplayer.goto.h2", NULL, &cancel);
+			ti.exec(NULL, "");
+			if(!cancel) // no cancel
+			{
+				skipvalue = tmp;
+				if(skipvalue[0]== '=')
+					skipvalue = skipvalue.substr(1);
+				skipBox.paint();
+				skipping=true;
+				playstate = CMoviePlayerGui::SKIP;
+			}
+		}
 		else if (msg == CRCInput::RC_help)
  		{
      		std::string helptext = g_Locale->getText("movieplayer.vlchelp");
