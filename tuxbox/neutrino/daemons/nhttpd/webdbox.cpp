@@ -109,6 +109,7 @@ TWebDbox::TWebDbox(CWebserver *server)
 	TimerEventNames[CTimerEvent::TIMER_STANDBY] = "Standby";
 	TimerEventNames[CTimerEvent::TIMER_RECORD] = "Record";
 	TimerEventNames[CTimerEvent::TIMER_ZAPTO] = "Zapto";
+	TimerEventNames[CTimerEvent::TIMER_SLEEPTIMER] = "Sleeptimer";
 
 	TimerEventStateNames[CTimerEvent::TIMERSTATE_SCHEDULED]="wartet";
 	TimerEventStateNames[CTimerEvent::TIMERSTATE_PREANNOUNCE]="announced";
