@@ -42,9 +42,9 @@ CFBWindow::CFBWindow(const int _x, const int _y, const int _dx, const int _dy)
 
 	private_data = (void *) new CPrivateData;
 	((CPrivateData *)private_data)->frameBuffer = CFrameBuffer::getInstance();
-	((CPrivateData *)private_data)->Background = (void*) new unsigned char [_dx * _dy];
+	((CPrivateData *)private_data)->Background = (void *) new fb_pixel_t [_dx * _dy];
 	if (((CPrivateData *)private_data)->Background != NULL)
-		((CPrivateData *)private_data)->frameBuffer->SaveScreen(_x, _y, _dx, _dy, (unsigned char *)((CPrivateData *)private_data)->Background);
+		((CPrivateData *)private_data)->frameBuffer->SaveScreen(_x, _y, _dx, _dy, (fb_pixel_t *)((CPrivateData *)private_data)->Background);
 
 }
 
@@ -53,7 +53,7 @@ CFBWindow::~CFBWindow(void)
 	if (private_data != NULL)
 	{
 		if (((CPrivateData *)private_data)->Background != NULL)
-			((CPrivateData *)private_data)->frameBuffer->RestoreScreen(x, y, dx, dy, (unsigned char *)((CPrivateData *)private_data)->Background);
+			((CPrivateData *)private_data)->frameBuffer->RestoreScreen(x, y, dx, dy, (fb_pixel_t *)((CPrivateData *)private_data)->Background);
 		
 		delete ((CPrivateData *)private_data);
 		private_data = NULL;
