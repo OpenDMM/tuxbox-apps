@@ -37,6 +37,10 @@ eExpertSetup::eExpertSetup()
 	int lockWebIf=1;
 	if ( eConfig::getInstance()->getKey("/ezap/webif/lockWebIf", lockWebIf) )
 		eConfig::getInstance()->setKey("/ezap/webif/lockWebIf", lockWebIf);
+		
+	int showSatPos=1;
+	if ( eConfig::getInstance()->getKey("/extras/showSatPos", showSatPos) )
+		eConfig::getInstance()->setKey("/extras/showSatPos", showSatPos);
 
 	int entry=0;
 #ifndef DISABLE_NETWORK
