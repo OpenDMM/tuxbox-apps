@@ -293,6 +293,7 @@ bool CTimerManager::shutdown()
            return true;
         }
 */        
+return false;
 }
 
 //------------------------------------------------------------
