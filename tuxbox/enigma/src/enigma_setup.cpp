@@ -310,7 +310,9 @@ void eZapSetup::sel_harddisk()
 {
 	hide();
 	eHarddiskSetup setup;
-
+#ifndef DISABLE_LCD
+	setup.setLCD(LCDTitle, LCDElement);
+#endif
 	if (!setup.getNr())
 	{
 		eMessageBox msg(_("sorry, no harddisks found!"), _("Harddisk setup..."));
