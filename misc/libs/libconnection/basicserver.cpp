@@ -117,4 +117,5 @@ void CBasicServer::run(bool (parse_command)(CBasicMessage::Header &rmsg, int con
 	while (parse_another_command);
 
 	close(sock_fd);
+        unlink(name.c_str());
 }
