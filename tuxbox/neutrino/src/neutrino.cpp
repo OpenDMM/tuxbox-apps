@@ -32,6 +32,9 @@
 	Foundation, Inc., 675 Mass Ave, Cambridge, MA 02139, USA.
  
   $Log$
+  Revision 1.136  2002/01/23 14:03:12  McClean
+  save controld-settings on neutrino-savenow
+
   Revision 1.135  2002/01/18 02:12:58  McClean
   initial-setting fixed
 
@@ -2331,6 +2334,7 @@ int CNeutrinoApp::exec( CMenuTarget* parent, string actionKey )
 	}
 	else if(actionKey=="savesettings")
 	{
+		g_Controld->saveSettings();
 		saveSetup();
 	}
 
