@@ -194,6 +194,7 @@ const char * locale_real_names[] =
 	"audioplayer.playlist_name",
 	"audioplayer.playlist_name_hint1",
 	"audioplayer.playlist_name_hint2",
+	"audioplayer.repeat_on",
 	"audioplayer.rewind",
 	"audioplayer.save_playlist",
 	"audioplayer.screensaver_timeout",
