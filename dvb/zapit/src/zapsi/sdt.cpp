@@ -134,6 +134,9 @@ int parse_sdt ()
 				case 0x86: /* unknown, Eutelsat 13.0E */
 					break;
 
+				case 0x88: /* unknown, Astra 19.2E */
+					break;
+
 				case 0xB2: /* unknown, Eutelsat 13.0E */
 					break;
 
