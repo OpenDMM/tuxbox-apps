@@ -7,7 +7,6 @@
 
 #include <fcntl.h>
 #include <ost/dmx.h>
-#include <stdint.h>
 #include <stdio.h>
 #include <string.h>
 #include <sys/ioctl.h>
@@ -19,6 +18,8 @@
 #include "getservices.h"
 
 #define DEMUX_DEV "/dev/ost/demux0"
+
+#include <stdint.h>
 
 int parse_nit (uint8_t DiSEqC);
 

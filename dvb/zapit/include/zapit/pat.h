@@ -6,7 +6,6 @@
 #define __pat_h__
 
 #include "getservices.h"
-#include "scan.h"
 
 int parse_pat (uint16_t original_network_id, std::map <uint, CZapitChannel> *cmap);
 

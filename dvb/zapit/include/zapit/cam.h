@@ -22,19 +22,10 @@
 #ifndef __cam_h__
 #define __cam_h__
 
-#include <fcntl.h>
 #include <ost/ca.h>
-#include <ost/dmx.h>
 #include <stdint.h>
-#include <sys/ioctl.h>
-#include <sys/stat.h>
-#include <sys/types.h>
-
 
 #include "getservices.h"
-
-#define CAM_DEV "/dev/dbox/cam0"
-#define CA_DEV  "/dev/ost/ca0"
 
 class CCam
 {

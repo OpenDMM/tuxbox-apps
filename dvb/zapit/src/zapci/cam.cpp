@@ -19,7 +19,15 @@
  *
  */
 
+#include <fcntl.h>
+#include <ost/dmx.h>
+#include <sys/ioctl.h>
+#include <sys/stat.h>
+#include <sys/types.h>
+
 #include "cam.h"
+
+#define CA_DEV  "/dev/ost/ca0"
 
 CCam::CCam ()
 {

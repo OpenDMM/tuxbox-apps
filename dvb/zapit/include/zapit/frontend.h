@@ -25,10 +25,8 @@
 #include <ost/frontend.h>
 #include <ost/sec.h>
 #include <stdint.h>
-#include <stdio.h>
-#include <sys/ioctl.h>
 
-#include "nit.h"
+#include "getservices.h"
 
 #define MAX_LNBS 4
 
@@ -80,6 +78,9 @@ class CFrontend
 		~CFrontend ();
 
 		/* ost tuner api */
+		static CodeRate CFrontend::getFEC (uint8_t FEC_inner);
+		static Modulation CFrontend::getModulation (uint8_t modulation);
+
 		void selfTest ();
 		void setPowerState (FrontendPowerState state);
 		void setFrontend (FrontendParameters *feparams);
