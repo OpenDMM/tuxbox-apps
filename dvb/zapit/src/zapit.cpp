@@ -681,6 +681,8 @@ bool parse_command(CBasicMessage::Header &rmsg, int connfd)
 		case FE_OFDM:
 			response.system = DVB_T;
 			break;
+		default:
+			break;
 		}
 		CBasicServer::send_data(connfd, &response, sizeof(response));
 		break;
