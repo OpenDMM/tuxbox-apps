@@ -7,6 +7,9 @@ $Id$
 
 
 $Log$
+Revision 1.10  2003/10/26 23:00:43  rasc
+fix
+
 Revision 1.9  2003/10/24 22:17:21  rasc
 code reorg...
 
@@ -259,6 +262,7 @@ void  guess_table (u_char *buf, int len, u_int pid)
 
   if (t->func == NULL) {
    	out_SB_NL (2,"Unknown, reserved or not implemented - TableID: ",table_id);
+	out_nl    (2,"--> %s",dvbstrTableID (table_id));
 	return;
   }
 

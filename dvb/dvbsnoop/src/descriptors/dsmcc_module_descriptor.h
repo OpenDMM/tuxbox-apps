@@ -5,10 +5,15 @@ $Id$
   dvbsnoop
   (c) Rainer Scherg 2001-2003
 
-  DSM-CC Descriptors  ISO 13818-6
+  Private TAG Space  DSM-CC
+  DSM-CC Descriptors  ISO 13818-6  // TR 102 006
+
 
 
 $Log$
+Revision 1.3  2003/10/26 23:00:39  rasc
+fix
+
 Revision 1.2  2003/10/26 21:36:19  rasc
 private DSM-CC descriptor Tags started,
 INT-Section completed..
