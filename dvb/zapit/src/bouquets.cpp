@@ -52,31 +52,6 @@ CBouquet::~CBouquet()
 		delete radioChannels[i];
 }
 
-CZapitChannel* CBouquet::getChannelByName (char* serviceName, unsigned char serviceType)
-{
-	CZapitChannel* result = NULL;
-
-	ChannelList* channels = &tvChannels;
-	switch (serviceType)
-	{
-		case 0:
-		case 1:
-		case 4: channels = &tvChannels; break;
-		case 2: channels = &radioChannels; break;
-	}
-
-	unsigned int i;
-	for (i=0; i<channels->size(), (*channels)[i]->getName() != string(serviceName); i++);
-
-	if (i<channels->size())
-		result = (*channels)[i];
-
-	if ((serviceType==0) && (result==NULL))
-		result = getChannelByName(serviceName, 2);
-
-	return( result);
-}
-
 //
 // -- servicetype 0 queries TV and Radio Channels
 //

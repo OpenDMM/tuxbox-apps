@@ -44,9 +44,6 @@ struct CmpChannelByChName: public binary_function <CZapitChannel* , CZapitChanne
 
 class CBouquet
 {
-	private:
-		CZapitChannel* getChannelByName(char* serviceName, unsigned char serviceType = 0);
-
 	public:
 		string Name;
 		bool   bHidden;
@@ -63,7 +60,6 @@ class CBouquet
 		void addService (CZapitChannel* newChannel);
 
 		void removeService (CZapitChannel* oldChannel);
-		void removeService (char* serviceName, unsigned char serviceType = 0)	{removeService( getChannelByName( serviceName, serviceType));}
 		void removeService (unsigned int onidSid, unsigned char serviceType = 0)			{removeService( getChannelByOnidSid( onidSid, serviceType));}
 
 		void moveService (char* serviceName, unsigned int newPosition, unsigned char serviceType);
