@@ -15,6 +15,9 @@ $Id$
 
 
 $Log$
+Revision 1.22  2004/01/17 23:06:10  rasc
+minor stuff, some restructs in output
+
 Revision 1.21  2004/01/15 21:27:22  rasc
 DSM-CC stream descriptors
 
@@ -758,6 +761,31 @@ char *dsmccStr_streamMode (u_int id)
 
   return findTableID (TableIDs, id);
 }
+
+
+
+
+
+/*
+  -- DSM-CC  postDiscontinuityIndicator
+  --  ISO 13818-6  (stream desc. 8.5)
+  --  
+*/
+
+char *dsmccStr_postDiscontinuityIndicator (u_int id)
+{
+  STR_TABLE  TableIDs[] = {
+	{ 0x00, 0x00,   "now valid" },
+	{ 0x01, 0x01,   "valid at the next system time base discontinuity" },
+      	{  0,0, NULL }
+  };
+
+  return findTableID (TableIDs, id);
+}
+
+
+
+
 
 
 

@@ -16,6 +16,9 @@ $Id$
 
 
 $Log$
+Revision 1.19  2004/01/17 23:06:10  rasc
+minor stuff, some restructs in output
+
 Revision 1.18  2004/01/15 21:27:22  rasc
 DSM-CC stream descriptors
 
@@ -118,6 +121,7 @@ char *dsmccStr_GroupModuleLinkPosition (u_int id);
 char *dsmccStr_compression_method (u_int id);
 
 char *dsmccStr_streamMode (u_int id);
+char *dsmccStr_postDiscontinuityIndicator (u_int id);
 
 
 #endif
