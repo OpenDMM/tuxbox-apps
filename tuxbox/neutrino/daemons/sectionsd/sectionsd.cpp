@@ -60,7 +60,8 @@
 #include <connection/basicserver.h>
 
 // Daher nehmen wir SmartPointers aus der Boost-Lib (www.boost.org)
-#include <boost/shared_ptr.hpp>
+#include "boost/smart_ptr.hpp"
+//#include <boost/shared_ptr.hpp>
 
 #include <sectionsdclient/sectionsdMsg.h>
 #include <sectionsdclient/sectionsdclient.h>
@@ -2972,7 +2973,7 @@ static void *timeThread(void *)
 				dmxTOT.start(); // -> unlock
 			}
 
-			if (dmxTOT.change( true )) // von TOT nach TDT wechseln
+			if (dmxTOT.change(1)) // von TOT nach TDT wechseln
 
 				;
 
@@ -3046,9 +3047,10 @@ static void *timeThread(void *)
 
 		eventServer->sendEvent(CSectionsdClient::EVT_TIMESET, CEventServer::INITID_SECTIONSD, &tim, sizeof(tim) );
 
-		dmxTOT.closefd();
-
 		dprintf("dmxTOT: changing from TDT/TOT to TOT.\n");
+		dmxTOT.change(0);
+
+		dmxTOT.closefd();
 
 		// Jetzt wird die Uhrzeit nur noch per TOT gesetzt (CRC)
 		for (;;)

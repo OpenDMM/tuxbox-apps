@@ -419,7 +419,10 @@ int DMX::change(const int new_filter_index)
 		}
 
 		filter_index = new_filter_index;
-		if (!setfilter(fd, pID, filters[filter_index].filter, filters[filter_index].mask, ((new_filter_index != 0) && (!noCRC)) ? DMX_IMMEDIATE_START | DMX_CHECK_CRC : DMX_IMMEDIATE_START))
+		if (!setfilter(fd, pID, filters[filter_index].filter, filters[filter_index].mask, 
+			       ((new_filter_index != 0) &&  // 0x70, 0x71, 0x72 have no CRC
+				noCRC)                      // dmxTOT
+			       ? DMX_IMMEDIATE_START : DMX_IMMEDIATE_START | DMX_CHECK_CRC))
 		{
 			closefd();
 			pthread_mutex_unlock(&start_stop_mutex);
