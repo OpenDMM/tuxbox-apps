@@ -105,7 +105,8 @@
 //static long secondsToCache=4*24*60L*60L; // 4 Tage - weniger Prozessorlast?!
 static long secondsToCache = 21*24*60L*60L; // 21 Tage - Prozessorlast <3% (rasc)
 // Ab wann ein Event als alt gilt (in Sekunden)
-static long oldEventsAre = 60*60L; // 1h
+//static long oldEventsAre = 60*60L; // 1h
+static long oldEventsAre = 180*60L; // 3h  (sometimes want to now something about current/last movie)
 static int scanning = 1;
 
 
