@@ -90,6 +90,9 @@
   Foundation, Inc., 675 Mass Ave, Cambridge, MA 02139, USA.
 
   $Log$
+  Revision 1.46  2001/12/17 19:17:09  faralla
+  small fix
+
   Revision 1.45  2001/12/17 19:11:48  faralla
   diseqc-stuff
 
@@ -1924,8 +1927,7 @@ void parse_command()
 	}
       break;
       case 'g':
-        //start_scan(rmsg.param2);
-        start_scan(2);
+        start_scan(rmsg.param2);
 
       	status = "00g";
       	if (send(connfd, status, strlen(status),0) == -1) {
