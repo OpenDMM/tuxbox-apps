@@ -1918,7 +1918,7 @@ CMoviePlayerGui::PlayFile (void)
 		}
 
 		if (showaudioselectdialog) {
-            CMenuWidget APIDSelector("apidselector.head", "audio.raw", 300);
+            CMenuWidget APIDSelector(LOCALE_APIDSELECTOR_HEAD, "audio.raw", 300);
     		APIDSelector.addItem(GenericMenuSeparator);
     		apidchanged = 0;
     		CAPIDSelectExec *APIDChanger;
