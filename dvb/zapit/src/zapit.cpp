@@ -119,6 +119,7 @@ extern short abort_scan;
 
 
 CZapitClient::bouquetMode bouquetMode = CZapitClient::BM_CREATEBOUQUETS;
+CZapitClient::scanType scanType = CZapitClient::ST_ALL;
 
 /* the map which stores the wanted cable/satellites */
 std::map<uint8_t, std::string> scanProviders;
@@ -910,6 +911,10 @@ bool parse_command(CBasicMessage::Header &rmsg, int connfd)
 
 	case CZapitMessages::CMD_SCANSETBOUQUETMODE:
 		CBasicServer::receive_data(connfd, &bouquetMode, sizeof(bouquetMode));
+		break;
+
+	case CZapitMessages::CMD_SCANSETTYPE:
+		CBasicServer::receive_data(connfd, &scanType, sizeof(scanType));
 		break;
 
 	case CZapitMessages::CMD_SET_RECORD_MODE:

@@ -591,6 +591,13 @@ void CZapitClient::setScanBouquetMode(const bouquetMode mode)
 	close_connection();
 }
 
+/* set Scan-TYpe for channelsearch */
+void CZapitClient::setScanType(const scanType mode)
+{
+	send(CZapitMessages::CMD_SCANSETTYPE, (const char *) & mode, sizeof(mode));
+	close_connection();
+}
+
 //
 // -- query Frontend Signal parameters
 //

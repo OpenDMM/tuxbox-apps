@@ -129,7 +129,8 @@ class CZapitMessages
 			CMD_GET_AE_IEC_STATE               = 75,
 			CMD_SET_AE_PLAYBACK_SPTS           = 76,
 			CMD_SET_AE_PLAYBACK_PES            = 77,
-			CMD_GET_AE_PLAYBACK_STATE          = 78
+			CMD_GET_AE_PLAYBACK_STATE          = 78,
+			CMD_SCANSETTYPE                    = 79		
 		};
 
 	struct commandBoolean

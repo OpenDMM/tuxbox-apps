@@ -924,6 +924,11 @@ const char * locale_real_names[] =
 	"videomenu.videosignal_svideo",
 	"videomenu.videosignal_yuv_c",
 	"videomenu.videosignal_yuv_v",
-	"zaptotimer.announce",
+	"zapit.scantype",
+	"zapit.scantype.all",
+	"zapit.scantype.radio",
+	"zapit.scantype.tv",
+	"zapit.scantype.tvradio",
+ 	"zaptotimer.announce",
 };
 #endif
