@@ -438,7 +438,8 @@ void service_descriptor(const unsigned char * const buffer, const t_service_id s
 				original_network_id,
 				service_type,
 				DiSEqC, 
-				satelliteName
+				satelliteName, 
+				satellitePosition
 			)
 		)
 	);
