@@ -29,7 +29,7 @@
 
 #include <string>
 
-#include <zapit/basicclient.h>
+#include <zapit/client/basicclient.h>
 
 #include <timerdclient/timerdtypes.h>
 

@@ -41,7 +41,7 @@
 #include <dbox/saa7126_core.h>
 #include <ost/video.h>
 
-#include <zapit/zapitclient.h>
+#include <zapit/client/zapitclient.h>
 #include <eventserver.h>
 
 #include <configfile.h>

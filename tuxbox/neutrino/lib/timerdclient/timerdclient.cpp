@@ -26,7 +26,7 @@
 
 #include <eventserver.h>
 #include <timerdclient/timerdclient.h>
-#include <zapit/basicmessage.h>
+#include <zapit/client/basicmessage.h>
 
 
 bool CTimerdClient::send(const unsigned char command, char* data = NULL, const unsigned int size = 0)
