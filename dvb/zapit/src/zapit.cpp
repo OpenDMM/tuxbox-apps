@@ -877,7 +877,6 @@ bool parse_command(CBasicMessage::Header &rmsg, int connfd)
 		bouquetManager->renumServices();
 		break;
 
-	
 	case CZapitMessages::CMD_BQ_SAVE_BOUQUETS:
 	{
 		CZapitMessages::responseCmd response;
@@ -893,7 +892,6 @@ bool parse_command(CBasicMessage::Header &rmsg, int connfd)
 		startPlayBack(channel);
 		break;
 
-		
 	case CZapitMessages::CMD_SB_STOP_PLAYBACK:
 		stopPlayBack();
 		playbackStopForced = true;
@@ -965,7 +963,7 @@ bool parse_command(CBasicMessage::Header &rmsg, int connfd)
 		eventServer->registerEvent(connfd);
 		break;
 
-	case CZapitMessages::CMD_UNREGISTEREVENTS :
+	case CZapitMessages::CMD_UNREGISTEREVENTS:
 		eventServer->unRegisterEvent(connfd);
 		break;
 
@@ -1515,8 +1513,7 @@ int main(int argc, char **argv)
 	delete bouquetManager;
 	delete eventServer;
 
-        INFO("shutdown complete");
+	INFO("shutdown complete");
 
 	return 0;
 }
-
