@@ -1080,7 +1080,6 @@ bool parse_command(CBasicMessage::Header &rmsg, int connfd)
 		response_FEsig.ber = frontend->getBitErrorRate();
 
 		CBasicServer::send_data(connfd, &response_FEsig, sizeof(CZapitClient::responseFESignal));
-		sendAPIDs(connfd);
 		break;
 	}
 
