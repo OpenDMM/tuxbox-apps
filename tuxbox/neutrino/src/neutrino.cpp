@@ -95,6 +95,8 @@
 #include "system/debug.h"
 #include "system/flashtool.h"
 
+#include <string.h>
+
 
 // Globale Variablen - to use import global.h
 
