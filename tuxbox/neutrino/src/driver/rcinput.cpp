@@ -36,6 +36,9 @@
 
 History:
  $Log$
+ Revision 1.31  2002/02/27 16:08:27  field
+ Boeser Tasten-Bug behoben, sollte wieder normal laufen :)
+
  Revision 1.30  2002/02/25 19:32:26  field
  Events <-> Key-Handling umgestellt! SEHR BETA!
 
@@ -349,6 +352,7 @@ int CRCInput::_getKey(int Timeout, bool bAllowRepeatLR)
 
 int CRCInput::_pushbackKey (int key)
 {
+	//printf("-----!!  pushback key: %04x\n", key );
 	pb_keys.add( key );
 	return 0;
 }
