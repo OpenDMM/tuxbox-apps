@@ -37,7 +37,7 @@ typedef uint16_t t_original_network_id;
 typedef uint16_t t_transport_stream_id;
 #define SCANF_TRANSPORT_STREAM_ID_TYPE "%hx"
 
-typedef uint16_t t_satellite_position;
+typedef int16_t t_satellite_position;
 #define SCANF_SATELLITE_POSITION_TYPE "%hx"
 
 typedef uint16_t t_network_id;
