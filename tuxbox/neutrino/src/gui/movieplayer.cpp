@@ -1930,31 +1930,31 @@ CMoviePlayerGui::PlayFile (void)
 		}
 
 		if (showaudioselectdialog) {
-            CMenuWidget APIDSelector(LOCALE_APIDSELECTOR_HEAD, "audio.raw", 300);
-    		APIDSelector.addItem(GenericMenuSeparator);
-    		apidchanged = 0;
-    		CAPIDSelectExec *APIDChanger;
-    		APIDChanger = new CAPIDSelectExec;
-    		for( unsigned int count=0; count<numpida; count++ )
-    		{
-    			char apidnumber[3];
-    			sprintf(apidnumber, "%d", count+1);
-
-    			std::string apidtitle = "Stream ";
-    			apidtitle.append(apidnumber);
-    			if (ac3flags[count]) {
-        			apidtitle.append(" (AC3)");
-    			}
-    			    
-    			APIDSelector.addItem(new CMenuForwarder(apidtitle.c_str(), true, NULL, APIDChanger, apidnumber, CRCInput::convertDigitToKey(count+1)), (count == 0));
+			CMenuWidget APIDSelector(LOCALE_APIDSELECTOR_HEAD, "audio.raw", 300);
+			APIDSelector.addItem(GenericMenuSeparator);
+			apidchanged = 0;
+			CAPIDSelectExec *APIDChanger;
+			APIDChanger = new CAPIDSelectExec;
+			for( unsigned int count=0; count<numpida; count++ )
+			{
+				char apidnumber[3];
+				sprintf(apidnumber, "%d", count+1);
+				
+				std::string apidtitle = "Stream ";
+				apidtitle.append(apidnumber);
+				if (ac3flags[count]) {
+					apidtitle.append(" (AC3)");
+				}
+				
+				APIDSelector.addItem(new CMenuForwarderNonLocalized(apidtitle.c_str(), true, NULL, APIDChanger, apidnumber, CRCInput::convertDigitToKey(count+1)), (count == 0));
 			}
-		    APIDSelector.exec(NULL, "");
-            if (currentapid == 0) {
-                currentapid = apids[0];
-                currentac3 = ac3flags[0];
-            }
-            showaudioselectdialog = false;
-        }
+			APIDSelector.exec(NULL, "");
+			if (currentapid == 0) {
+				currentapid = apids[0];
+				currentac3 = ac3flags[0];
+			}
+			showaudioselectdialog = false;
+		}
         		
 		g_RCInput->getMsg (&msg, &data, 10);	// 1 secs..
 		if(FileTime.IsVisible())
