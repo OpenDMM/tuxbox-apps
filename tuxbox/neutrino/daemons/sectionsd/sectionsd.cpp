@@ -2647,7 +2647,7 @@ static void *sdtThread(void *)
 					{
 						dprintf("dmxSDT: waking up again - requested from .change()\n");
 						pthread_mutex_unlock( &dmxSDT.start_stop_mutex );
-#ifdef PAUSE_EQUALS_STOP 1
+#ifdef PAUSE_EQUALS_STOP
 						dmxSDT.real_unpause();
 #endif
 					}
@@ -3135,7 +3135,7 @@ static void *eitThread(void *)
 					{
 						dprintf("dmxEIT: waking up again - requested from .change()\n");
 						pthread_mutex_unlock( &dmxEIT.start_stop_mutex );
-#ifdef PAUSE_EQUALS_STOP 1
+#ifdef PAUSE_EQUALS_STOP
 						dmxEIT.real_unpause();
 #endif
 					}
