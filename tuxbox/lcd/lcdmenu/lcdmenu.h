@@ -24,10 +24,8 @@
 
 #include <config.h>
 #include <crypt.h>
-
+#include <liblcddisplay.h>
 #include "configManager.h"
-#include "fontrenderer.h"
-#include "lcddisplay.h"
 
 #ifndef X86_BUILD
 #include "rcinput.h"
