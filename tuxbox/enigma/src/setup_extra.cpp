@@ -159,7 +159,7 @@ void eExpertSetup::factory_reset()
 		switch( eSystemInfo::getInstance()->getHwType() )
 		{
 			case eSystemInfo::DM7020:
-				system("rm /etc/enigma/* && cp /etc/enigma_defaults/* /etc/enigma/ && killall -9 enigma");
+				system("rm -R /etc/enigma && killall -9 enigma");
 				break;
 			case eSystemInfo::DM7000:
 			case eSystemInfo::DM500:
