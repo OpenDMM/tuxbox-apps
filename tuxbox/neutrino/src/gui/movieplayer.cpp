@@ -278,7 +278,11 @@ ReceiveStreamThread (void *mrl)
 	sscanf (g_settings.streaming_server_port, "%d", &port);
 	
 	
-	std::string baseurl = "http://" + g_settings.streaming_server_ip + ':' + g_settings.streaming_server_port + '/';
+	std::string baseurl = "http://";
+	baseurl += g_settings.streaming_server_ip;
+	baseurl += ':';
+	baseurl += g_settings.streaming_server_port;
+	baseurl += '/';
 	
 	// empty playlist
 	std::string emptyurl = baseurl + "?control=empty";
@@ -312,21 +316,29 @@ ReceiveStreamThread (void *mrl)
 	   !strcasecmp(addurl.substr(addurl.length()-3).c_str(), "m2p"))
 	{
 		// no transcode
-		souturl = std::string("") + "#duplicate{dst=std{access=http,mux=ts,url=:" + g_settings.streaming_server_port + 
-			"/dboxstream}}";
+		souturl = "#duplicate{dst=std{access=http,mux=ts,url=:";
+		souturl += g_settings.streaming_server_port;
+		souturl += "/dboxstream}}";
 	}
 	else if(!memcmp((char*)mrl, "dvd", 3) && g_settings.streaming_ac3_enabled) 
 	{
 		// transcode video only
-		souturl = std::string("") + "#transcode{vcodec=mpgv,vb=" + g_settings.streaming_videorate + 
-			"}:duplicate{dst=std{access=http,mux=ts,url=:" + g_settings.streaming_server_port + "/dboxstream}}";
+		souturl = "#transcode{vcodec=mpgv,vb=";
+		souturl += g_settings.streaming_videorate;
+		souturl += "}:duplicate{dst=std{access=http,mux=ts,url=:";
+		souturl += g_settings.streaming_server_port;
+		souturl += "/dboxstream}}";
 	}
 	else
 	{
 		// transcode audio and video
-		souturl = std::string("") + "#transcode{vcodec=mpgv,vb=" + g_settings.streaming_videorate + ",acodec=mpga,ab=" + 
-			g_settings.streaming_audiorate + ",channels=2}:duplicate{dst=std{access=http,mux=ts,url=:" + 
-			g_settings.streaming_server_port + "/dboxstream}}";
+		souturl = "#transcode{vcodec=mpgv,vb=";
+		souturl += g_settings.streaming_videorate;
+		souturl += ",acodec=mpga,ab=";
+		souturl += g_settings.streaming_audiorate;
+		souturl + ",channels=2}:duplicate{dst=std{access=http,mux=ts,url=:";
+		souturl += g_settings.streaming_server_port;
+		souturl += "/dboxstream}}";
 	}
 	char *tmp = curl_escape (souturl.c_str (), 0);
 	printf("[movieplayer.cpp] URL      : %s?sout=%s\n",baseurl.c_str(), souturl.c_str());
@@ -549,7 +561,12 @@ PlayStreamThread (void *mrl)
 
 	CURLcode httpres;
 	httpres = (CURLcode) 1;
-	std::string baseurl = "http://" + g_settings.streaming_server_ip + ':' + g_settings.streaming_server_port + '/';
+
+	std::string baseurl = "http://";
+	baseurl += g_settings.streaming_server_ip;
+	baseurl += ':';
+	baseurl += g_settings.streaming_server_port;
+	baseurl += '/';
 
 	printf ("[movieplayer.cpp] mrl:%s\n", (char *) mrl);
 	pthread_t rcst;
