@@ -2359,8 +2359,8 @@ int CNeutrinoApp::handleMsg(uint msg, uint data)
 	{
 		unsigned int old_id = channelList->getActiveChannelOnid_sid();
 
-		channelsInit();
-		tvMode( true );
+		channelsInit();  // <- this is done by tvMode(true);, too - except for the case that we were in tvMode
+//		tvMode( true );  // ???? what is the sense of that action ???? (update in case of scart & standby mode?)
 
 		if ( ! channelList->zapToOnidSid ( old_id ) )
 			channelList->zapTo( 0 );
@@ -2670,7 +2670,6 @@ void CNeutrinoApp::radioMode( bool rezap)
 
 	if ( rezap )
 	{
-		firstChannel();
 		g_RemoteControl->radioMode();
 		firstChannel();
 		channelsInit();
