@@ -3541,17 +3541,7 @@ int main(int argc, char **argv)
 
 		// from here on forked
 
-		//catch all signals... (busybox workaround)
 		signal(SIGHUP, signalHandler);
-
-		signal(SIGINT, signalHandler);
-
-		signal(SIGQUIT, signalHandler);
-
-		signal(SIGTERM, signalHandler);
-
-		for (int x = 0;x < 32;x++)
-			signal(x, signalHandler);
 
 		eventServer = new CEventServer;
 		/*
