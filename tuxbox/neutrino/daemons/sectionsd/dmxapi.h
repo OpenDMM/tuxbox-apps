@@ -48,5 +48,12 @@ const char DEMUX_DEVICE[] = "/dev/dvb/adapter0/demux0";
 
 bool setfilter(const int fd, const uint16_t pid, const uint8_t filter, const uint8_t mask, const uint32_t flags);
 
+typedef struct UTC_time
+{
+	uint64_t time : 40;
+} __attribute__ ((packed)) UTC_t;
+
+bool getUTC(UTC_t * const UTC, const bool TDT = true);
+
 #endif /* __sectionsd__dmxapi_h__ */
 
