@@ -25,7 +25,7 @@
 
 /* system */
 #include <string>
-#include <stdint.h>
+#include <inttypes.h>
 
 /* zapit */
 #include "ci.h"

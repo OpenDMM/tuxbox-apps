@@ -7,7 +7,7 @@
 
 #include <linux/dvb/frontend.h>
 
-#include <stdint.h>
+#include <inttypes.h>
 
 #include <map>
 #include <string>

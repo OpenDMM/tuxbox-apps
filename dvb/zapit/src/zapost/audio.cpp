@@ -21,7 +21,6 @@
  */
 
 #include <fcntl.h>
-#include <stdio.h>
 #include <sys/ioctl.h>
 #include <unistd.h>
 
@@ -43,7 +42,7 @@ CAudio::~CAudio(void)
 
 int CAudio::setBypassMode(int disable)
 {
-	return fop(ioctl, AUDIO_SET_BYPASS_MODE, disable);
+	return quiet_fop(ioctl, AUDIO_SET_BYPASS_MODE, disable);
 }
 
 int CAudio::setMute(int enable)

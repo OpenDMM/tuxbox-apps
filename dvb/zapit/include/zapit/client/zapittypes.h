@@ -26,7 +26,7 @@
 #define __zapittypes_h__
 
 
-#include <stdint.h>
+#include <inttypes.h>
 
 typedef uint16_t t_service_id;
 #define SCANF_SERVICE_ID_TYPE "%hx"
@@ -68,5 +68,25 @@ typedef enum {
 	ZAPIT_VIDEO_LETTER_BOX,     /* use letterbox format */
 	ZAPIT_VIDEO_CENTER_CUT_OUT  /* use center cut out format */
 } video_display_format_t;
+
+typedef enum {
+	ST_RESERVED,
+	ST_DIGITAL_TELEVISION_SERVICE,
+	ST_DIGITAL_RADIO_SOUND_SERVICE,
+	ST_TELETEXT_SERVICE,
+	ST_NVOD_REFERENCE_SERVICE,
+	ST_NVOD_TIME_SHIFTED_SERVICE,
+	ST_MOSAIC_SERVICE,
+	ST_PAL_CODED_SIGNAL,
+	ST_SECAM_CODED_SIGNAL,
+	ST_D_D2_MAC,
+	ST_FM_RADIO,
+	ST_NTSC_CODED_SIGNAL,
+	ST_DATA_BROADCAST_SERVICE,
+	ST_COMMON_INTERFACE_RESERVED,
+	ST_RCS_MAP,
+	ST_RCS_FLS,
+	ST_DVB_MHP_SERVICE
+} service_type_t;
 
 #endif /* __zapittypes_h__ */

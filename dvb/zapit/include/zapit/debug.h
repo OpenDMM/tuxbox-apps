@@ -23,9 +23,9 @@
 #define __zapit_debug_h__
 
 
-#include <errno.h>
-#include <stdio.h>
-#include <string.h>
+#include <cerrno>
+#include <cstdio>
+#include <cstring>
 
 
 #ifdef HAVE_CONFIG_H

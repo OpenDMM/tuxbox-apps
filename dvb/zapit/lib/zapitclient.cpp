@@ -23,7 +23,7 @@
  *
  */
 
-#include <stdio.h>
+#include <cstdio>
 
 /* libevent */
 #include <eventserver.h>

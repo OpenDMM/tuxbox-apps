@@ -113,10 +113,10 @@ void ParseChannels(xmlNodePtr node, const t_transport_stream_id transport_stream
 		service_type = xmlGetNumericAttribute(node, "service_type", 16);
 
 		switch (service_type) {
-		case DIGITAL_TELEVISION_SERVICE:
-		case NVOD_REFERENCE_SERVICE:
-		case NVOD_TIME_SHIFTED_SERVICE:
-		case DIGITAL_RADIO_SOUND_SERVICE:
+		case ST_DIGITAL_TELEVISION_SERVICE:
+		case ST_NVOD_REFERENCE_SERVICE:
+		case ST_NVOD_TIME_SHIFTED_SERVICE:
+		case ST_DIGITAL_RADIO_SOUND_SERVICE:
 			allchans.insert
 			(
 				std::pair <t_channel_id, CZapitChannel>

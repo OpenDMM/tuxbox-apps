@@ -19,7 +19,7 @@
  *
  */
 
-#include <stdio.h>
+#include <cstdio>
 #include <map>
 #include <string>
 
@@ -453,10 +453,10 @@ void service_descriptor(const unsigned char * const buffer, const t_service_id s
 	}
 
 	switch (service_type) {
-	case DIGITAL_TELEVISION_SERVICE:
-	case DIGITAL_RADIO_SOUND_SERVICE:
-	case NVOD_REFERENCE_SERVICE:
-	case NVOD_TIME_SHIFTED_SERVICE:
+	case ST_DIGITAL_TELEVISION_SERVICE:
+	case ST_DIGITAL_RADIO_SOUND_SERVICE:
+	case ST_NVOD_REFERENCE_SERVICE:
+	case ST_NVOD_TIME_SHIFTED_SERVICE:
 	{
 		CBouquet* bouquet;
 		int bouquetId;

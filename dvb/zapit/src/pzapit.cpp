@@ -21,9 +21,9 @@
  *
  */
 
+#include <cstdio>
+#include <cstring>
 #include <iostream>
-#include <stdio.h>
-#include <string.h>
 #include <unistd.h>
 
 #include <zapit/client/zapitclient.h>

@@ -6,11 +6,12 @@
 #define __bouquets_h__
 
 #include <algorithm>
+#include <cstdio>
 #include <functional>
-#include <vector>
 #include <map>
-#include <stdint.h>
-#include <stdio.h>
+#include <vector>
+
+#include <inttypes.h>
 
 #include "channel.h"
 #include "xmlinterface.h"

@@ -21,7 +21,7 @@
  *
  */
 
-#include <stdio.h>
+#include <cstdio>
 
 #include <zapit/debug.h>
 #include <zapit/xmlinterface.h>
