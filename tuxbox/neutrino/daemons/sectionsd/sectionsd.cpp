@@ -23,6 +23,9 @@
 //    Foundation, Inc., 675 Mass Ave, Cambridge, MA 02139, USA.
 //
 //  $Log$
+//  Revision 1.79  2001/10/31 18:04:46  field
+//  dmxTOT wird bei scan nicht gestoppt
+//
 //  Revision 1.78  2001/10/31 12:38:30  field
 //  Timethread auch gepaust beim scanning
 //
@@ -1160,13 +1163,13 @@ static void commandPauseScanning(struct connectionData *client, char *data, cons
   if(scanning && pause) {
     dmxEIT.real_pause();
     dmxSDT.real_pause();
-    dmxTOT.real_pause();
+//    dmxTOT.real_pause();
     scanning=0;
   }
   else if(!pause && !scanning) {
     dmxSDT.real_unpause();
     dmxEIT.real_unpause();
-    dmxTOT.real_unpause();
+//    dmxTOT.real_unpause();
     scanning=1;
   }
   pthread_mutex_unlock(&scanningLock);
