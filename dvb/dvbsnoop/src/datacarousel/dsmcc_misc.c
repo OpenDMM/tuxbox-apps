@@ -13,6 +13,10 @@ $Id$
 
 
 $Log$
+Revision 1.16  2004/04/15 03:38:50  rasc
+new: TransportStream sub-decoding (ts2PES, ts2SEC)  [-tssubdecode]
+checks for continuity errors, etc. and decode in TS enclosed sections/pes packets
+
 Revision 1.15  2004/04/05 17:32:12  rasc
 mass typo fix adaption --> adaptation
 
@@ -491,7 +495,7 @@ int  dsmcc_carousel_NSAP_address_B20 (int v, const char *s, u_char *b)
 		outBit_S2x_NL (4,"Original_network_id: ",	b, 16, 16,
 				(char *(*)(u_long)) dvbstrOriginalNetwork_ID);
 		outBit_S2Tx_NL(4,"service_ID: ",		b, 32, 16,
-				  "--> refers to PMS program_number"); 
+				  "--> refers to PMT program_number"); 
 		outBit_Sx_NL  (4,"reserved: ",			b, 48, 32);
 
 	}

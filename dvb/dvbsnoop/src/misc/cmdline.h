@@ -45,6 +45,7 @@ typedef struct _OPTIONS {
   long        timeout_ms;		// read timeout in ms
   long        packet_count;		// read n packets
   int         spider_pid;		// Section PID spider mode
+  int         ts_subdecode;		// sub decode PES or SEC in TS stream
   int         time_mode;		// time print mode
   int         hide_copyright;  		// suppress message at prog start
   int         help;
