@@ -35,7 +35,7 @@
 eZapSetup::eZapSetup()
 	:eSetupWindow(_("Setup"), 10, 400)
 {
-	move(ePoint(140, 100));
+	move(ePoint(160, 100));
 	int entry=0;
 	CONNECT((new eListBoxEntryMenu(&list, _("Service Organising"), eString().sprintf("(%d) %s", ++entry, _("open service organising")) ))->selected, eZapSetup::service_organising);
 	CONNECT((new eListBoxEntryMenu(&list, _("Service Searching"), eString().sprintf("(%d) %s", ++entry, _("open service organising")) ))->selected, eZapSetup::service_searching);

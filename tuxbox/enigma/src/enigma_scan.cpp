@@ -38,7 +38,7 @@ eZapScan::eZapScan()
 	:eSetupWindow(_("Service Searching"), 7, 400)
 {
 	int entry=0;
-	move(ePoint(180, 100));
+	move(ePoint(160, 140));
 	if ( eFrontend::getInstance()->Type() == eFrontend::feSatellite )  // only when a sat box is avail we shows a satellite config
 	{
 		CONNECT((new eListBoxEntryMenu(&list, _("Satellite Configuration"), eString().sprintf("(%d) %s", ++entry, _("open satellite config"))))->selected, eZapScan::sel_satconfig);
