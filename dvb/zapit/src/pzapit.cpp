@@ -158,7 +158,7 @@ int main (int argc, char** argv)
 			leaveStandby = true;
 			continue;
 		}
-		else if (!strncmp(argv[i], "-m", 2))
+		else if (!strncmp(argv[i], "-motor", 6))
 		{
 			sendMotorCommand = true;
 			if (i < argc - 6)
