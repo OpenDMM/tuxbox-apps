@@ -571,8 +571,9 @@ void disableVideoOutput(bool disable)
 		setvideooutput(0, false);
 		setVideoFormat(-1, false);
 		//zapit.setStandby(true);
-		zapit.muteAudio(true);
-		audioControl::setMute(true);
+		// audio out in standby (kerlimann branch only - hopefully)
+		zapit.muteAudio(false);
+		audioControl::setMute(false);
 	}
 }
 
