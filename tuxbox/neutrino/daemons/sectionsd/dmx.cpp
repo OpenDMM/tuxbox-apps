@@ -232,7 +232,6 @@ int DMX::immediate_start(void)
 	if ((fd = open(DEMUX_DEVICE, O_RDWR)) == -1)
 	{
 		perror("[sectionsd] open dmx");
-		pthread_mutex_unlock(&start_stop_mutex);
 		return 2;
 	}
 
@@ -240,14 +239,12 @@ int DMX::immediate_start(void)
 	{
 		closefd();
 		perror("[sectionsd] DMX: DMX_SET_BUFFER_SIZE");
-		pthread_mutex_unlock(&start_stop_mutex);
 		return 3;
 	}
 
 	if (!setfilter(fd, pID, filters[filter_index].filter, filters[filter_index].mask, DMX_IMMEDIATE_START | DMX_CHECK_CRC))
 	{
 		closefd();
-		pthread_mutex_unlock(&start_stop_mutex);
 		return 4;
 	}
 	return 0;
