@@ -28,6 +28,10 @@ int main (int argc, char **argv)
     /* create menu instance */
     CLCDMenu *menu = CLCDMenu::getInstance();
 
+    /* don't continue if there is no lcd */
+    if (!menu->isAvailable())
+	    return 0;
+
     /* draw the menu */
     menu->drawMenu();
 
