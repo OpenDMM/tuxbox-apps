@@ -14,6 +14,9 @@ $Id$
 
 
 $Log$
+Revision 1.8  2004/01/11 21:01:32  rasc
+PES stream directory, PES restructured
+
 Revision 1.7  2004/01/02 16:40:37  rasc
 DSM-CC  INT/UNT descriptors complete
 minor changes and fixes
@@ -51,6 +54,8 @@ dvbsnoop v0.7  -- Commit to CVS
 
 
 #include "cmdline.h"
+#include "sys/time.h"
+
 
 
 void  out_receive_time (int verbose, OPTION *opt);

@@ -12,6 +12,9 @@ $Id$
 
 
 $Log$
+Revision 1.6  2004/01/11 21:01:31  rasc
+PES stream directory, PES restructured
+
 Revision 1.5  2004/01/02 00:00:37  rasc
 error output for buffer overflow
 
@@ -255,3 +258,10 @@ static int sync_ts (u_char *buf, int len)
 }
 
 
+
+
+/* 
+ * $$$ TODO
+ *  error/good packets  ratio display
+ *
+ */

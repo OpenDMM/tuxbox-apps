@@ -15,6 +15,9 @@ $Id$
 
 
 $Log$
+Revision 1.19  2004/01/11 21:01:33  rasc
+PES stream directory, PES restructured
+
 Revision 1.18  2004/01/05 02:12:20  rasc
 no message
 
@@ -148,13 +151,13 @@ char *dsmccStrDSMCC_STREAM_DescriptorTAG (u_int i)
 
 
 /*
-  -- DSM-CC MODULE Descriptors
+  -- DSM-CC CAROUSEL Descriptors
   -- Private Tag Space  (DII, DSI)
   -- see  EN 301 192 
   -- ATSC ref. shows this in DVB-descriptor lower ranges
  */
 
-char *dsmccStrDSMCC_MODULE_DescriptorTAG (u_int i)
+char *dsmccStrDSMCC_CAROUSEL_DescriptorTAG (u_int i)
 
 {
   STR_TABLE  Table[] = {

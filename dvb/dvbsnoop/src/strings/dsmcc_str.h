@@ -16,6 +16,9 @@ $Id$
 
 
 $Log$
+Revision 1.16  2004/01/11 21:01:33  rasc
+PES stream directory, PES restructured
+
 Revision 1.15  2004/01/02 22:25:39  rasc
 DSM-CC  MODULEs descriptors complete
 
@@ -78,7 +81,7 @@ some updates to dvbsnoop...
 
 
 char *dsmccStrDSMCC_STREAM_DescriptorTAG (u_int i);
-char *dsmccStrDSMCC_MODULE_DescriptorTAG (u_int i);
+char *dsmccStrDSMCC_CAROUSEL_DescriptorTAG (u_int i);
 char *dsmccStrDSMCC_INT_UNT_DescriptorTAG (u_int i);
 
 char *dsmccStrMHPOrg (u_int id);
