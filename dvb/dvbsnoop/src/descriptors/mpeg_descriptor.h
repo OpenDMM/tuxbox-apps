@@ -15,6 +15,9 @@ $Id$
 
 
 $Log$
+Revision 1.5  2003/11/26 19:55:32  rasc
+no message
+
 Revision 1.4  2003/11/26 16:27:45  rasc
 - mpeg4 descriptors
 - simplified bit decoding and output function
@@ -32,6 +35,10 @@ trying to include DSM-CC, Well someone a ISO13818-6 and latest version of ISO 18
 
 
 */
+
+#ifndef _MPEG_DESCRIPTOR_H
+#define _MPEG_DESCRIPTOR_H 1
+
 
 int   descriptorMPEG (u_char *b);
 void  descriptorMPEG_any (u_char *b);
@@ -70,5 +77,7 @@ void  descriptorMPEG_MuxCode (u_char *b);
 void  descriptorMPEG_FMXBufferSize (u_char *b);
 void  descriptorMPEG_MultiplexBuffer (u_char *b);
 void  descriptorMPEG_FlexMuxTiming (u_char *b);
-void  descriptorMPEG_UserPrivate (u_char *b);
+
+
+#endif
 

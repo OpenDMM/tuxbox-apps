@@ -1,4 +1,5 @@
 /*
+$Id$
 
 
  DVBSNOOP
@@ -11,12 +12,14 @@
  (c) 2001-2003   Rainer.Scherg@gmx.de
 
 
-$Id$
 
 
 */
 
 
+
+#ifndef __CMDLINE_H
+#define __CMDLINE_H 1
 
 
 /*
@@ -53,5 +56,7 @@ typedef struct _OPTIONS {
 int  cmdline_options (int argc, char **argv, OPTION *opt);
 
 
+
+#endif
 
 

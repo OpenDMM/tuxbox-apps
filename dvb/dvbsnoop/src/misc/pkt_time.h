@@ -14,6 +14,9 @@ $Id$
 
 
 $Log$
+Revision 1.4  2003/11/26 19:55:33  rasc
+no message
+
 Revision 1.3  2003/11/26 16:27:46  rasc
 - mpeg4 descriptors
 - simplified bit decoding and output function
@@ -30,5 +33,14 @@ dvbsnoop v0.7  -- Commit to CVS
 */
 
 
+#ifndef __PKT_TIME
+#define __PKT_TIME 1
+
+
 void  out_receive_time (int verbose, OPTION *opt);
 void  init_receive_time (void);
+
+
+#endif
+
+

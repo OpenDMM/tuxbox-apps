@@ -15,6 +15,9 @@ $Id$
 
 
 $Log$
+Revision 1.15  2003/11/26 19:55:31  rasc
+no message
+
 Revision 1.14  2003/11/07 16:33:31  rasc
 no message
 
@@ -61,7 +64,8 @@ dvbsnoop v0.7  -- Commit to CVS
 
 */
 
-
+#ifndef __DVBSNOOP_H
+#define __DVBSNOOP_H 1
 
 #include <stdio.h>
 #include <stdlib.h>
@@ -91,4 +95,8 @@ dvbsnoop v0.7  -- Commit to CVS
 #include "strings/dvb_str.h"
 #include "misc/helper.h"
 #include "misc/output.h"
+
+
+#endif
+
 
