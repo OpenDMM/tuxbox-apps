@@ -1661,7 +1661,7 @@ void CNeutrinoApp::RealRun(CMenuWidget &mainMenu)
 	while( true )
 	{
 		uint msg; uint data;
-		g_RCInput->getMsg( &msg, &data );
+		g_RCInput->getMsg( &msg, &data, 100 ); // 10 secs..
 
 		if ( msg == NeutrinoMessages::STANDBY_ON )
 		{
