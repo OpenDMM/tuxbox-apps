@@ -5,11 +5,9 @@ $Id$
  DVBSNOOP
 
  a dvb sniffer  and mpeg2 stream analyzer tool
- mainly for me to learn about dvb streams, mpeg2, mhp, dsm-cc, ...
-
  http://dvbsnoop.sourceforge.net/
 
- (c) 2001-2003   Rainer.Scherg@gmx.de
+ (c) 2001-2004   Rainer.Scherg@gmx.de
 
 
 
@@ -20,6 +18,12 @@ $Id$
 
 
 $Log$
+Revision 1.6  2004/01/01 20:09:42  rasc
+DSM-CC INT/UNT descriptors
+PES-sync changed, TS sync changed,
+descriptor scope
+other changes
+
 Revision 1.5  2003/12/28 00:01:15  rasc
 some minor changes/adds...
 
@@ -66,7 +70,6 @@ void decode_TESTDATA (u_char *b, int len)
 
 
  TESTDATA   t;
- int        len1,len2;
 
 
  
