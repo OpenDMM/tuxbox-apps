@@ -87,7 +87,7 @@ static int numPartitions(int dev)
 
 int freeDiskspace(int dev, eString mp="")
 {
-	FILE *f=fopen("/proc/mounts", "rb");
+/*	FILE *f=fopen("/proc/mounts", "rb");
 	if (!f)
 		return -1;
 	eString path;
@@ -108,19 +108,20 @@ int freeDiskspace(int dev, eString mp="")
 			mountpoint=mountpoint.left(mountpoint.find(' '));
 //			eDebug("mountpoint: %s", mountpoint.c_str());
 			if ( mp && mountpoint != mp )
-				return -1;
+				return -1;*/
 			struct statfs s;
 			int free;
-			if (statfs(mountpoint.c_str(), &s)<0)
+//			if (statfs(mountpoint.c_str(), &s)<0)
+			if (statfs(mp.c_str(), &s)<0)
 				free=-1;
 			else
 				free=s.f_bfree/1000*s.f_bsize/1000;
-			fclose(f);
+//			fclose(f);
 			return free;
-		}
+/*		}
 	}
 	fclose(f);
-	return -1;
+	return -1;*/
 }
 
 eString getPartFS(int dev, eString mp="")
@@ -210,7 +211,7 @@ eHarddiskSetup::eHarddiskSetup()
 					else
 						sharddisks+="slave";
 					if (capacity)
-						sharddisks+=eString().sprintf(", %d.%03d GB", capacity/1000, capacity%1000);
+						sharddisks+=eString().sprintf(", %d.%03d GB", capacity/1024, capacity%1024);
 					sharddisks+=")";
 					
 					nr++;
