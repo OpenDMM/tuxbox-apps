@@ -55,7 +55,7 @@ class Font
         public:
                 void RenderString(int x, int y, int width, const char *text, int color, int selected=0, const bool utf8_encoded = false);
 
-                int getRenderWidth(const char *text);
+                int getRenderWidth(const char *text, const bool utf8_encoded = false);
 
                 Font(CLCDDisplay *fb, fontRenderClass *render, FTC_FaceID faceid, int isize);
                 ~Font(){}
