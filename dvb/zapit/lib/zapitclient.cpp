@@ -29,8 +29,8 @@
 #include <eventserver.h>
 
 
-#include "include/zapitclient.h"
-#include "msgtypes.h"
+#include <zapit/client/zapitclient.h>
+#include <zapit/client/msgtypes.h>
 
 std::string Utf8_to_Latin1(const std::string s)
 {

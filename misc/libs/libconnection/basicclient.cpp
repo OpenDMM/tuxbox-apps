@@ -30,7 +30,7 @@
 #include <sys/socket.h>
 #include <sys/un.h>
 
-#include "include/basicclient.h"
+#include <zapit/client/basicclient.h>
 
 CBasicClient::CBasicClient()
 {
