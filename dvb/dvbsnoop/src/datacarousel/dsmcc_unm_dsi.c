@@ -15,6 +15,9 @@ $Id$
 
 
 $Log$
+Revision 1.6  2004/02/29 20:42:55  rasc
+no message
+
 Revision 1.5  2004/02/28 12:13:03  rasc
 minor stuff
 
@@ -84,7 +87,7 @@ int dsmcc_DownloadServerInitiate (int v, u_char *b, u_int len)
 	// DataCarousel: GroupInfoByte structure + dsmcc_CarouselDescriptors
 	// ObjectCarousel: BIOP::ServiceGatewayInformation
 	// because we do not know, if DC or OC, we make a check for BIOP
-	// U-U Objects type_id "src\0"  and "DSM:"
+	// U-U Objects type_id "srg\0"  and "DSM:"
 	// (normally we should remember a databroadcast_id for decision)
 
 	if (len2 >= 8) {
