@@ -29,6 +29,8 @@
 #include <sstream>
 #include <string>
 
+#include <sys/stat.h>
+
 CConfigFile::CConfigFile(const char p_delimiter, const bool p_saveDefaults)
 {
 	modifiedFlag = false;
@@ -97,6 +99,9 @@ const bool CConfigFile::saveConfig(const char * const filename)
 		}
 
 		configFile.close();
+
+		chmod(filename, S_IRUSR | S_IWUSR | S_IRGRP | S_IROTH);
+
 		return true;
 	}
 	else
