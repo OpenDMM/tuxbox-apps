@@ -113,11 +113,7 @@ class CBouquetManager
 		void moveBouquet(const unsigned int oldId, const unsigned int newId);
 		bool existsChannelInBouquet( unsigned int bq_id, unsigned int onid_sid);
 
-		void saveAsLast( unsigned int BouquetId, unsigned int channelNr);
-		void getLast( unsigned int* BouquetId, unsigned int* channelNr);
 		void clearAll();
-		void onTermination();
-		void onStart();
 
 		CZapitChannel* findChannelByOnidSid(const unsigned int onid_sid);
 

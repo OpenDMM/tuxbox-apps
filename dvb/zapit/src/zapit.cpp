@@ -1557,8 +1557,6 @@ unsigned zapTo (unsigned int bouquet, unsigned int channel)
 		return CZapitClient::ZAP_INVALID_PARAM;
 	}
 
-	bouquetManager->saveAsLast(bouquet - 1, channel - 1);
-
 	return zapTo_Onid_Sid((*channels)[channel - 1]->getOnidSid(), false);
 }
 
