@@ -346,7 +346,7 @@ bool CControlAPI::MessageCGI(CWebserverRequest *request)
 		request->SendOk();
 		return true;
 	}
-	
+
 	request->SendError();
 	return false;
 }
@@ -639,6 +639,11 @@ bool CControlAPI::ZaptoCGI(CWebserverRequest *request)
 			SendcurrentVAPid(request);
 			return true;
 		}
+		else if (request->ParameterList["1"] == "getallpids")		// getpids !
+		{
+			SendAllCurrentVAPid(request);
+			return true;
+		}
 		else if (request->ParameterList["1"] == "stopplayback")
 		{
 			Parent->Zapit->stopPlayBack();
@@ -766,6 +771,29 @@ void CControlAPI::SendcurrentVAPid(CWebserverRequest* request)
 	Parent->Zapit->getPIDS(pids);
 
 	request->printf("%u\n%u\n", pids.PIDs.vpid, pids.APIDs[0].pid);
+}
+
+//-------------------------------------------------------------------------
+
+void CControlAPI::SendAllCurrentVAPid(CWebserverRequest* request)
+{
+	CZapitClient::responseGetPIDs pids;
+	Parent->Zapit->getPIDS(pids);
+	for (unsigned int i=0; i<sizeof(pids.PIDs);i++) {
+	    pids.APIDs[i].pid=0;
+	}
+	for (unsigned int i=0; i<sizeof(pids.PIDs);i++) {
+	    pids.APIDs[i].pid=0;
+	}
+
+	Parent->Zapit->getPIDS(pids);
+
+	request->printf("%u\n", pids.PIDs.vpid);
+        for (unsigned int i=0; i<sizeof(pids.PIDs);i++) {
+	    if (pids.APIDs[i].pid > 0) {
+	        request->printf("%u\n", pids.APIDs[i].pid);
+	    }
+	}
 }
 
 //-------------------------------------------------------------------------
