@@ -86,6 +86,7 @@ class CBouquetManager
 		string convertForXML( string s);
 		void storeBouquets();
 	public:
+		CBouquetManager() { remainChannels = NULL; };
 		class ChannelIterator
 		{
 			private:
@@ -118,8 +119,8 @@ class CBouquetManager
 		void renumServices();
 
 		CBouquet* addBouquet( string name);
-		void deleteBouquet( unsigned int id);
-		void deleteBouquet( string name);
+		void deleteBouquet(const unsigned int id);
+		void deleteBouquet(const CBouquet* bouquet);
 		int  existsBouquet( string name);
 		void moveBouquet( unsigned int oldId, unsigned int newId);
 		bool existsChannelInBouquet( unsigned int bq_id, unsigned int onid_sid);
