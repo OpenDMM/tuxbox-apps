@@ -21,25 +21,25 @@
  */
 
 #include "enigma_info.h"
-#include "streaminfo.h"
-#include "showbnversion.h"
 
-#include <core/gui/elistbox.h>
-#include <core/gui/ewindow.h>
+#include <apps/enigma/streaminfo.h>
+#include <apps/enigma/showbnversion.h>
+
 #include <core/dvb/edvb.h>
+#include <core/gui/ewindow.h>
 #include <core/gui/eskin.h>
 #include <core/gui/elabel.h>
 #include <core/gui/emessage.h>
 #include <core/base/i18n.h>
 
 eZapInfo::eZapInfo()
-	:eLBWindow(_("Infos"), 8, eSkin::getActive()->queryValue("fontsize", 20), 220)
+	:eListBoxWindow<eListBoxEntryMenu>(_("Infos"), 8, eSkin::getActive()->queryValue("fontsize", 20), 220)
 {
 	move(ePoint(150, 136));
-	CONNECT((new eListboxEntryText(&list, _("[back]")))->selected, eZapInfo::sel_close);
-	CONNECT((new eListboxEntryText(&list, _("Streaminfo")))->selected, eZapInfo::sel_streaminfo);
-	CONNECT((new eListboxEntryText(&list, _("Show BN version")))->selected, eZapInfo::sel_bnversion);
-	CONNECT((new eListboxEntryText(&list, _("About...")))->selected, eZapInfo::sel_about);
+	CONNECT((new eListBoxEntryMenu(&list, _("[back]")))->selected, eZapInfo::sel_close);
+	CONNECT((new eListBoxEntryMenu(&list, _("Streaminfo")))->selected, eZapInfo::sel_streaminfo);
+	CONNECT((new eListBoxEntryMenu(&list, _("Show BN version")))->selected, eZapInfo::sel_bnversion);
+	CONNECT((new eListBoxEntryMenu(&list, _("About...")))->selected, eZapInfo::sel_about);
 	
 }
 
@@ -47,12 +47,12 @@ eZapInfo::~eZapInfo()
 {
 }
 
-void eZapInfo::sel_close(eListboxEntry *)
+void eZapInfo::sel_close()
 {
 	close(0);
 }
 
-void eZapInfo::sel_streaminfo(eListboxEntry *)
+void eZapInfo::sel_streaminfo()
 {
 	hide();	
 	eStreaminfo si;
@@ -63,7 +63,7 @@ void eZapInfo::sel_streaminfo(eListboxEntry *)
 	show();
 }
 
-void eZapInfo::sel_bnversion(eListboxEntry *)
+void eZapInfo::sel_bnversion()
 {
 	hide();	
 	ShowBNVersion bn;
@@ -74,7 +74,7 @@ void eZapInfo::sel_bnversion(eListboxEntry *)
 	show();
 }
 
-void eZapInfo::sel_about(eListboxEntry *)
+void eZapInfo::sel_about()
 {
 	hide();
 	eMessageBox msgbox("insert non-peinlichen ABOUT text here...","About enigma");

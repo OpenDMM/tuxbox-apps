@@ -26,8 +26,7 @@
 #include <map>
 #include <string>
 
-#include "ewindow.h"
-#include "eavswitch.h"
+#include <core/gui/ewindow.h>
 
 class eNumber;
 class eButton;

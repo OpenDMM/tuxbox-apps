@@ -22,19 +22,12 @@
 
 #include "setup_language.h"
 
-#include "elabel.h"
-#include "edvb.h"
-#include "enumber.h"
-#include "ebutton.h"
-#include "echeckbox.h"
-#include "rc.h"
-#include "enigma.h"
-#include "eskin.h"
-#include "eavswitch.h"
-#include "streamwd.h"
-
 #include <core/base/i18n.h>
-
+#include <core/gui/elabel.h>
+#include <core/gui/enumber.h>
+#include <core/gui/ebutton.h>
+#include <core/gui/echeckbox.h>
+#include <core/gui/eskin.h>
 #include <core/system/econfig.h>
 
 void eZapLanguageSetup::setLanguage(std::map<std::string, std::string>::iterator&it)
