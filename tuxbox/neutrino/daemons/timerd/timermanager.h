@@ -189,7 +189,6 @@ class CTimerManager
 		CTimerManager();
 		static void* timerThread(void *arg);
 		CTimerEvent			*nextEvent();
-
 	public:
 
 
@@ -205,6 +204,7 @@ class CTimerManager
 		int rescheduleEvent(int eventID, time_t announceTime, time_t alarmTime, time_t stopTime);
 		void saveEventsToConfig();
 		bool shutdown();
+		void shutdownOnWakeup();
 };
 
 #endif
