@@ -20,10 +20,11 @@ enum TIME_MODE    {NO_TIME, FULL_TIME, DELTA_TIME};
 
 typedef struct _OPTIONS {
   int         packet_mode;
+  int         packet_header_sync;	// Try to do a softsync of packet sync bytes
   int         printhex;
   int         printdecode;
   int         binary_out;
-  char        *inpPidFile;	// read from file instead of dmux if not NULL
+  char        *inpPidFile;		// read from file instead of dmux if not NULL
   int         help;
   char        *devDemux;
   char        *devDvr;
