@@ -30,6 +30,7 @@
 #include <setup_lcd.h>
 #include <setup_rc.h>
 #include <setup_harddisk.h>
+#include <setup_rfmod.h>
 #include <enigma_ci.h>
 #include <enigma_scan.h>
 #include <setupskin.h>
@@ -253,4 +254,11 @@ void eZapSetup::sel_upgrade()
 
 void eZapSetup::sel_rfmod()
 {
+	hide();
+	eZapRFmodSetup setup;
+	setup.setLCD(LCDTitle, LCDElement);
+	setup.show();
+	setup.exec();
+	setup.hide();
+	show();
 }
