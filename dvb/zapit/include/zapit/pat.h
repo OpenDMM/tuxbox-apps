@@ -1,3 +1,7 @@
+/*
+ * $Id$
+ */
+
 #ifndef __pat_h__
 #define __pat_h__
 
