@@ -1273,8 +1273,6 @@ int main (int argc, char **argv)
 
 	/* network setup */
 	std::string filename = ZAPIT_UDS_NAME;
-	filename += ".";
-	filename += CZapitClient::getSystemId();
 
 	memset(&servaddr, 0, sizeof(struct sockaddr_un));
 	servaddr.sun_family = AF_UNIX;

@@ -234,8 +234,6 @@ int CLCDD::main(int argc, char **argv)
 	int clilen;
 
 	std::string filename = LCDD_UDS_NAME;
-	filename += ".";
-	filename += CLcddClient::getSystemId();
 
 	memset(&servaddr, 0, sizeof(struct sockaddr_un));
 	servaddr.sun_family = AF_UNIX;
