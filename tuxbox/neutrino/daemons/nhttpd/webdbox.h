@@ -94,7 +94,6 @@ class CWebDbox
 	CZapitClient::BouquetChannelList *GetChannelList(int Mode);
 
 	// support functions
-	void ZapTo_decimal  (const char * const target);
 	void ZapTo          (const char * const target);
 	void ZapToSubService(const char * const target);
 

@@ -48,20 +48,6 @@ void CWebDbox::UpdateBouquets(void)
 }
 
 //-------------------------------------------------------------------------
-void CWebDbox::ZapTo_decimal(const char * const target)
-{
-	t_channel_id channel_id = atoi(target);
-	
-	if (channel_id == Zapit->getCurrentServiceID())
-	{
-		//printf("Kanal ist aktuell\n");
-		return;
-	}
-	
-	if (Zapit->zapTo_serviceID(channel_id) != CZapitClient::ZAP_INVALID_PARAM)
-		Sectionsd->setServiceChanged(channel_id, false);
-}
-
 void CWebDbox::ZapTo(const char * const target)
 {
 	t_channel_id channel_id;
