@@ -32,6 +32,9 @@
 	Foundation, Inc., 675 Mass Ave, Cambridge, MA 02139, USA.
 
   $Log$
+  Revision 1.49  2001/09/27 11:25:38  field
+  Numzap gefixt, kleinere Bugfixes
+
   Revision 1.48  2001/09/26 16:24:17  rasc
   - kleinere Aenderungen: Channel Num Zap fuer >999 Channels (Eutelsat/Astra) und eigener Font
 
