@@ -73,6 +73,11 @@
 #include "SIsections.hpp"
 
 
+/* please use the same define status as in dmx.cpp! */
+#define PAUSE_EQUALS_STOP 1
+
+
+
 //#include "timerdclient.h"
 //#include "../timermanager.h"
 
@@ -2642,6 +2647,9 @@ static void *sdtThread(void *)
 					{
 						dprintf("dmxSDT: waking up again - requested from .change()\n");
 						pthread_mutex_unlock( &dmxSDT.start_stop_mutex );
+#ifdef PAUSE_EQUALS_STOP 1
+						dmxSDT.real_unpause();
+#endif
 					}
 					else
 					{
@@ -3127,6 +3135,9 @@ static void *eitThread(void *)
 					{
 						dprintf("dmxEIT: waking up again - requested from .change()\n");
 						pthread_mutex_unlock( &dmxEIT.start_stop_mutex );
+#ifdef PAUSE_EQUALS_STOP 1
+						dmxEIT.real_unpause();
+#endif
 					}
 					else
 					{
