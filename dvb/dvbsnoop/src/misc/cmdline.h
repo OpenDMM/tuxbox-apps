@@ -23,7 +23,7 @@ $Id$
  -- defs...
 */
 
-enum PACKET_MODE  {SECT, TS, PES, PIDSCAN, PIDBANDWIDTH};
+enum PACKET_MODE  {SECT, TS, PES, PIDSCAN, PIDBANDWIDTH, SIGNALSCAN};
 enum TIME_MODE    {NO_TIME, FULL_TIME, DELTA_TIME};
 
 typedef struct _OPTIONS {
@@ -35,6 +35,7 @@ typedef struct _OPTIONS {
   char        *inpPidFile;		// read from file instead of dmux if not NULL
   char        *devDemux;
   char        *devDvr;
+  char        *devFE;
   u_int       pid;
   u_int       filter;
   u_int       mask;
