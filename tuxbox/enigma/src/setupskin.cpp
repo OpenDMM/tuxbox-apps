@@ -36,7 +36,7 @@ void eSkinSetup::loadSkins()
 	const char *skinPaths[] =
 	{
 		CONFIGDIR "/enigma/skins/",
-		DATADIR "/enigma/skins/",
+		TUXBOXDATADIR "/enigma/skins/",
 		0
 	};
 
