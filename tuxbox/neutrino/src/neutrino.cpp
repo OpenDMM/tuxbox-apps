@@ -1798,6 +1798,7 @@ int CNeutrinoApp::handleMsg(uint msg, uint data)
 	else if ( ( msg == messages::EVT_BOUQUETSCHANGED ) ||
 			  ( msg == messages::EVT_SERVICESCHANGED ) )
 	{
+		channelsInit();
 		tvMode( true );
 
 		// auf der sicheren Seite...
