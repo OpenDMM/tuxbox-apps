@@ -59,6 +59,8 @@ class CFrontend
 		secVoltage currentVoltage;
 		/* current diseqc position */
 		uint8_t currentDiseqc;
+		/* current satellite position */
+		uint32_t currentSatellitePosition;
 		/* how often to repeat DiSEqC 1.1 commands */
 		uint32_t diseqcRepeats;
 		/* DiSEqC type of attached hardware */
@@ -99,6 +101,7 @@ class CFrontend
 		void secSendSequence (secCmdSequence *sequence);
 		//void secResetOverload ();
 		const secStatus *secGetStatus ();
+		void positionMotor(uint8_t diseqc);
 
 		/* zapit tuner api */
 		const bool tuneChannel (CZapitChannel *channel);
