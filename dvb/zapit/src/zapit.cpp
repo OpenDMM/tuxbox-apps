@@ -1559,6 +1559,7 @@ int main(int argc, char **argv)
 	if (!frontend)
 		frontend = new CFrontend();
 
+	diseqcType = (diseqc_t)config.getInt32("diseqcType", NO_DISEQC);
 	if (prepare_channels(frontend->getInfo()->type, diseqcType) < 0)
 		WARN("error parsing services");
 	else
