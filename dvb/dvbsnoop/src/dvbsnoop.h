@@ -8,6 +8,9 @@ $Id$
    (c) rasc
 
 $Log$
+Revision 1.3  2002/08/27 19:00:45  obi
+use devfs device names
+
 Revision 1.2  2001/10/06 18:19:18  Toerli
 Steuerzeichen entfernt. rasc wuerdest du mal bitte nen gescheiten unix-konformen Editor verwenden... windows editoren sind ungeeignet
 
@@ -46,8 +49,8 @@ dvbsnoop v0.7  -- Commit to CVS
 
 
 
-#define DEMUX_DEVICE "/dev/ost/demux0"
-#define DVR_DEVICE   "/dev/ost/dvr0"
+#define DEMUX_DEVICE "/dev/dvb/card0/demux0"
+#define DVR_DEVICE   "/dev/dvb/card0/dvr0"
 
 
 

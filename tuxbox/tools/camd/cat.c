@@ -31,7 +31,7 @@
 #include "cat.h"
 
 #define CAT_SIZE 1024
-#define DEMUX_DEV "/dev/ost/demux0"
+#define DEMUX_DEV "/dev/dvb/card0/demux0"
 
 /*
  * parse conditional access table

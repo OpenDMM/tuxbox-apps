@@ -23,6 +23,9 @@
 //    Foundation, Inc., 675 Mass Ave, Cambridge, MA 02139, USA.
 //
 //  $Log$
+//  Revision 1.128  2002/08/27 19:00:45  obi
+//  use devfs device names
+//
 //  Revision 1.127  2002/08/17 06:27:25  obi
 //  - no more compiler warnings
 //  - formatted sourcecode, it's almost readable now...
@@ -1067,9 +1070,9 @@ int DMX::start(void)
 		return 0;
 	}
 
-	if ((fd = open("/dev/ost/demux0", O_RDWR)) == -1)
+	if ((fd = open("/dev/dvb/card0/demux0", O_RDWR)) == -1)
 	{
-		perror ("[sectionsd] DMX: /dev/ost/demux0");
+		perror ("[sectionsd] DMX: /dev/dvb/card0/demux0");
 		pthread_mutex_unlock( &start_stop_mutex );
 		return 2;
 	}

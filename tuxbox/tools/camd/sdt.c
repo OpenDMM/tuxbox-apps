@@ -33,7 +33,7 @@
 #include "sdt.h"
 
 #define SDT_SIZE 10
-#define DEMUX_DEV "/dev/ost/demux0"
+#define DEMUX_DEV "/dev/dvb/card0/demux0"
 
 /*
  * parse service description table

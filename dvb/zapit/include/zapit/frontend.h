@@ -32,8 +32,8 @@
 /* zapit */
 #include <channel.h>
 
-#define FRONTEND_DEVICE "/dev/ost/frontend0"
-#define SEC_DEVICE      "/dev/ost/sec0"
+#define FRONTEND_DEVICE "/dev/dvb/card0/frontend0"
+#define SEC_DEVICE      "/dev/dvb/card0/sec0"
 #define MAX_LNBS	4
 
 enum diseqc_t

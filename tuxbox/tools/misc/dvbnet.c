@@ -23,6 +23,9 @@
  *
  *
  *   $Log$
+ *   Revision 1.4  2002/08/27 19:00:46  obi
+ *   use devfs device names
+ *
  *   Revision 1.3  2002/08/21 08:25:47  obi
  *   no more compile warnings
  *
@@ -50,7 +53,7 @@ int main(int argc, char **argv)
 	net_if.pid    = 0;
 	net_if.if_num = 0;
 
-	if((fd = open("/dev/ost/net0",O_RDWR|O_NONBLOCK)) < 0)
+	if((fd = open("/dev/dvb/card0/net0",O_RDWR|O_NONBLOCK)) < 0)
 	{
 		perror("NET DEVICE: ");
 		return -1;

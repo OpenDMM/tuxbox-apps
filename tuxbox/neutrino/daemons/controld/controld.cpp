@@ -323,7 +323,7 @@ void setVideoFormat(int format, bool bSaveFormat = true )
 			//	?	case AVS_FNCOUT_EXT43_1	: videoDisplayFormat = VIDEO_PAN_SCAN;
 	}
 
-	if ((fd = open("/dev/ost/video0",O_RDWR)) < 0)
+	if ((fd = open("/dev/dvb/card0/video0",O_RDWR)) < 0)
 	{
 		perror("open");
 		return;

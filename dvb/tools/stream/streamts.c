@@ -51,8 +51,8 @@
 
 #define BSIZE	1024 * 16
 #define MAXPIDS	8
-#define DMXDEV	"/dev/ost/demux0"
-#define DVRDEV	"/dev/ost/dvr0"
+#define DMXDEV	"/dev/dvb/card0/demux0"
+#define DVRDEV	"/dev/dvb/card0/dvr0"
 
 #define IN_SIZE	TS_SIZE * 10
 
