@@ -83,6 +83,8 @@
 #include "helpers/locale.h"
 #include "widget/messagebox.h"
 
+#include "favorites/favorites.h"
+
 #include <string>
 #include <vector>
 #include <map>
