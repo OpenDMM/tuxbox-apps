@@ -204,11 +204,20 @@ bool CTimerManager::removeEvent(int eventID)
 
 		events[eventID]->eventState = CTimerd::TIMERSTATE_TERMINATED;		// set the state to terminated
 		return true;															// so timerthread will do the rest for us
-//		delete events[eventID];
 	}
 	else
 		return false;
-//	events.erase(eventID);
+}
+//------------------------------------------------------------
+bool CTimerManager::stopEvent(int eventID)
+{
+	if(events.find(eventID)!=events.end())							 // if i have a event with this id
+	{
+		events[eventID]->eventState = CTimerd::TIMERSTATE_HASFINISHED;		// set the state to terminated
+		return true;															// so timerthread will do the rest for us
+	}
+	else
+		return false;
 }
 
 //------------------------------------------------------------

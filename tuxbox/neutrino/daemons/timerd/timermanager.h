@@ -207,6 +207,7 @@ class CTimerManager
 		CEventServer* getEventServer() {return eventServer;};
 		int addEvent(CTimerEvent*,bool save = true);
 		bool removeEvent(int eventID);
+		bool stopEvent(int eventID);
 		CTimerEvent* getNextEvent();
 		bool listEvents(CTimerEventMap &Events);
 		int modifyEvent(int eventID, time_t announceTime, time_t alarmTime, time_t stopTime, CTimerd::CTimerEventRepeat evrepeat = CTimerd::TIMERREPEAT_ONCE);

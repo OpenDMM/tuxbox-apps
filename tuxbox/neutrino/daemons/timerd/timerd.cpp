@@ -349,6 +349,14 @@ bool parse_command(CBasicMessage::Header &rmsg, int connfd)
 			CTimerManager::getInstance()->removeEvent(msgRemoveTimer.eventID);
 			break;
 
+		case CTimerdMsg::CMD_STOPTIMER:						//	timer stoppen
+			dprintf("TIMERD: command stop\n");
+			CTimerdMsg::commandRemoveTimer msgStopTimer;
+			CBasicServer::receive_data(connfd,&msgStopTimer, sizeof(msgStopTimer));
+			dprintf("TIMERD: command stop %d\n",msgStopTimer.eventID);
+			CTimerManager::getInstance()->stopEvent(msgStopTimer.eventID);
+			break;
+
 		case CTimerdMsg::CMD_TIMERDAVAILABLE:					// testen ob server läuft ;)
 			{
 				CTimerdMsg::responseAvailable rspAvailable;
