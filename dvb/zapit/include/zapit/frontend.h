@@ -30,6 +30,8 @@
 
 #include "nit.h"
 
+#define MAX_LNBS 4
+
 enum diseqc_t
 {
 	NO_DISEQC,
@@ -68,6 +70,10 @@ class CFrontend
 		uint32_t diseqcRepeats;
 		/* DiSEqC type of attached hardware */
 		diseqc_t diseqcType;
+		/* low lnb offsets */
+		int32_t lnbOffsetsLow[MAX_LNBS];
+		/* high lnb offsets */
+		int32_t lnbOffsetsHigh[MAX_LNBS];
 
 	public:
 		CFrontend ();
@@ -107,9 +113,23 @@ class CFrontend
 		void setDiseqcType(diseqc_t type)	{ diseqcType = type; }
 		const uint32_t getDiseqcRepeats()	{ return diseqcRepeats; }
 		const diseqc_t getDiseqcType()		{ return diseqcType; }
-
 		const bool isInitialized()		{ return initialized; }
 		const uint32_t getTsidOnid()		{ return currentTsidOnid; }
+
+		void setLnbOffset(bool high, uint8_t index, int32_t offset)
+		{
+			if (index < MAX_LNBS)
+			{
+				if (high)
+				{
+					lnbOffsetsHigh[index] = offset;
+				}
+				else
+				{
+					lnbOffsetsLow[index] = offset;
+				}
+			}
+		}
 };
 
 #endif /* __frontend_h__ */

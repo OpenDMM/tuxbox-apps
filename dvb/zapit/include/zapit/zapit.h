@@ -36,6 +36,7 @@ typedef struct decode_struct
 } decode_vals;
 
 int prepare_channels();
+int save_settings (bool write);
 void *start_scanthread(void *);
 void start_scan();
 void sendBouquetList();
