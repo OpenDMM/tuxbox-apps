@@ -33,7 +33,9 @@ eSoftwareUpdate::eSoftwareUpdate()
 	int entry=0;
 	CONNECT((new eListBoxEntryMenu(&list, _("Internet Update"), eString().sprintf("(%d) %s", ++entry, _("open internet update")) ))->selected, eSoftwareUpdate::internet_update );
 	CONNECT((new eListBoxEntryMenu(&list, _("Manual Update"), eString().sprintf("(%d) %s", ++entry, _("open manual update")) ))->selected, eSoftwareUpdate::manual_update );
+#ifdef ENABLE_FLASHTOOL
 	CONNECT((new eListBoxEntryMenu(&list, _("Expert Flash Save/Restore"), eString().sprintf("(%d) %s", ++entry, _("open expert flash tool")) ))->selected, eSoftwareUpdate::flash_tool);
+#endif
 #endif
 }
 
@@ -74,6 +76,7 @@ void eSoftwareUpdate::manual_update()
 }
 #endif
 
+#ifdef ENABLE_FLASHTOOL
 void eSoftwareUpdate::flash_tool()
 {
 	hide();
@@ -86,4 +89,5 @@ void eSoftwareUpdate::flash_tool()
 	setup.hide();
 	show();
 }
+#endif
 

@@ -1,3 +1,4 @@
+#ifdef ENABLE_FLASHTOOL
 /**********************************************
 *
 *	$Revision$
@@ -67,5 +68,4 @@ public:
 
 
 #endif /* __flashtool_h__ */
-
-
+#endif // ENABLE_FLASHTOOL
