@@ -1714,8 +1714,7 @@ void CNeutrinoApp::RealRun(CMenuWidget &mainMenu)
 				{
 					// show EPG
 
-					g_EpgData->show( channelList->getActiveChannelName(),
-			        		         channelList->getActiveChannelOnid_sid() );
+					g_EpgData->show( channelList->getActiveChannelOnid_sid() );
 
 				}
 				else if ( msg == g_settings.key_tvradio_mode )
