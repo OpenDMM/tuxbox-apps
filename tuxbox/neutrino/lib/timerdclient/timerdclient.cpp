@@ -48,7 +48,7 @@ bool CTimerdClient::send(const unsigned char command, char* data = NULL, const u
 
 //-------------------------------------------------------------------------
 
-void CTimerdClient::registerEvent(unsigned int eventID, unsigned int clientID, string udsName)
+void CTimerdClient::registerEvent(unsigned int eventID, unsigned int clientID, std::string udsName)
 {
 	CEventServer::commandRegisterEvent msg2;
 

@@ -28,13 +28,10 @@
 #define __timerdclient__
 
 #include <string>
-#include <vector>
 
 #include <zapit/basicclient.h>
 
 #include <timerdclient/timerdtypes.h>
-
-using namespace std;
 
 class CTimerdClient:private CBasicClient
 {
@@ -60,7 +57,7 @@ class CTimerdClient:private CBasicClient
 			EVT_REMIND
 		};
 
-		void registerEvent(unsigned int eventID, unsigned int clientID, string udsName);
+		void registerEvent(unsigned int eventID, unsigned int clientID, std::string udsName);
 		void unRegisterEvent(unsigned int eventID, unsigned int clientID);
 
 		bool isTimerdAvailable();			// check if timerd is running
