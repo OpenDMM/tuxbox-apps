@@ -70,7 +70,7 @@ CEsInfo::~CEsInfo ()
 
 CCaPmt::CCaPmt ()
 {
-	ca_pmt_tag = 0x9F80C3;
+	ca_pmt_tag = 0x9F8032;
 	length_field = 0;
 	program_info_length = 0;
 }

@@ -33,7 +33,6 @@
 class CCam
 {
 	private:
-		unsigned char camdBuffer[1024];
 		int camdSocket;
 
 		bool camdConnect ();
@@ -46,7 +45,6 @@ class CCam
 		CCam();
 		~CCam();
 
-		int reset (unsigned short originalNetworkId);
 		int setCaPmt (CCaPmt * caPmt);
 };
 

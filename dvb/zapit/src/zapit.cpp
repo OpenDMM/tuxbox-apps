@@ -297,6 +297,7 @@ channel_msg load_settings()
  */
 int zapit (uint32_t onid_sid, bool in_nvod)
 {
+	bool transponder_change;
 	std::map <uint, CZapitChannel>::iterator cit;
 
 	if (in_nvod)
@@ -381,7 +382,11 @@ int zapit (uint32_t onid_sid, bool in_nvod)
 			}
 		}
 
-		cam->reset(channel->getOriginalNetworkId());
+		transponder_change = true;
+	}
+	else
+	{
+		transponder_change = false;
 	}
 
 	if (channel->getServiceType() == NVOD_REFERENCE_SERVICE)
@@ -439,6 +444,15 @@ int zapit (uint32_t onid_sid, bool in_nvod)
 			channel->resetPids();
 			return -1;
 		}
+	}
+
+	if (transponder_change == true)
+	{
+		channel->getCaPmt()->ca_pmt_list_management = 0x03;
+	}
+	else
+	{
+		channel->getCaPmt()->ca_pmt_list_management = 0x04;
 	}
 
 #ifdef DBOX2

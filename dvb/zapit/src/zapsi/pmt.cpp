@@ -285,9 +285,7 @@ int parse_pmt (int demux_fd, CZapitChannel * channel)
 	CCaPmt * caPmt = new CCaPmt();
 
 	/* ca pmt */
-	caPmt->ca_pmt_tag = 0x9F8032;
 	caPmt->length_field = 0x06;
-	caPmt->ca_pmt_list_management = 0x04; // add
 	caPmt->program_number = (buffer[3] << 8) + buffer[4];
 	caPmt->reserved1 = buffer[5] >> 6;
 	caPmt->version_number = (buffer[5] >> 1) & 0x1F;
