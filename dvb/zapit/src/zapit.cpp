@@ -2491,7 +2491,9 @@ void parse_command()
 
 	else if (rmsg.version == CZapitClient::ACTVERSION)
 	{
-		CZapitClient::responseCmd response;
+		CZapitClient::responseCmd              response;
+		CZapitClient::responseGeneralTrueFalse responseTrueFalse;	// 2002-04-03 rasc
+
 		switch( rmsg.cmd)
 		{
 			case CZapitClient::CMD_ZAPTO :
@@ -2621,8 +2623,22 @@ void parse_command()
 			case CZapitClient::CMD_BQ_RENAME_BOUQUET :
 				CZapitClient::commandRenameBouquet msgRenameBouquet;
 				read( connfd, &msgRenameBouquet, sizeof(msgRenameBouquet));
+				g_BouquetMan->addBouquet(msgAddBouquet.name);
 				g_BouquetMan->Bouquets[msgRenameBouquet.bouquet-1]->Name = msgRenameBouquet.name;
 			break;
+
+			case CZapitClient::CMD_BQ_EXISTS_BOUQUET :		// 2002-04-03 rasc
+				bool  status;
+				CZapitClient::commandExistsBouquet msgExistsBouquet;
+				read( connfd, &msgExistsBouquet, sizeof(msgExistsBouquet));
+				status = g_BouquetMan->existsBouquet(msgExistsBouquet.name);
+
+				// send back: found  true/false
+				responseTrueFalse.status = status;
+				send( connfd, &responseTrueFalse, sizeof(responseTrueFalse),0);
+#warning "Help needed here, someone check this please: simplex?? (rasc)"
+			break;
+
 
 			case CZapitClient::CMD_BQ_MOVE_BOUQUET :
 				CZapitClient::commandMoveBouquet msgMoveBouquet;
