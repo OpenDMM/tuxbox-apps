@@ -21,6 +21,8 @@
  *
  */
 
+#include <sys/reboot.h>
+
 #include "lcdmenu.h"
 
 #ifdef DEBUG
@@ -461,16 +463,7 @@ bool CLCDMenu::checkPin (std::string title)
 
 void CLCDMenu::poweroff ()
 {
-	int fd = open("/dev/dbox/fp0", O_RDWR);
-	if (fd < 0)
-	{
-		return;
-	}
-
-	if(ioctl(fd, FP_IOCTL_POWEROFF, 0) < 0)
-	{
-		close(fd);
-		return;
-	}
+	reboot(RB_POWER_OFF);
+	exit(0);
 }
 

@@ -23,7 +23,6 @@
 #define __LCDMENU_H__
 
 #include <crypt.h>
-#include <dbox/fp.h>
 #include <signal.h>
 #include <unistd.h>
 
