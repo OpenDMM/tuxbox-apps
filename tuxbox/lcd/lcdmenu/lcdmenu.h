@@ -29,7 +29,7 @@
 #include "configManager.h"
 
 #ifndef X86_BUILD
-#include <librcinput.h>
+#include "rcinput.h"
 #endif /* X86_BUILD */
 
 #include <string>
