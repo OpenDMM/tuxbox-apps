@@ -25,6 +25,10 @@
 //    Foundation, Inc., 675 Mass Ave, Cambridge, MA 02139, USA.
 //
 //  $Log$
+//  Revision 1.33  2002/04/15 12:33:44  field
+//  Wesentlich verbessertes Paket-Handling (CPU-Last sollte viel besser sein
+//  *g*)
+//
 //  Revision 1.32  2002/03/22 17:12:06  field
 //  Weitere Updates, compiliert wieder
 //
@@ -148,7 +152,7 @@ struct sectionsd
 		unsigned dauer;
 	} __attribute__ ((packed)) ;
 
-	static const int numberOfCommands=25;
+	static const int numberOfCommands=26;
 	enum commands
 	{
 		actualEPGchannelName=0,
@@ -175,7 +179,8 @@ struct sectionsd
 		getEPGPrevNext,
 		getIsTimeSet,
 		serviceChanged,
-		LinkageDescriptorsUniqueKey
+		LinkageDescriptorsUniqueKey,
+		pauseSorting
 	};
 
 	static const int numberOfCommands_v3=2;
