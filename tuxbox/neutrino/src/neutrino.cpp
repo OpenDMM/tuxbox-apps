@@ -32,6 +32,9 @@
 	Foundation, Inc., 675 Mass Ave, Cambridge, MA 02139, USA.
 
   $Log$
+  Revision 1.56  2001/10/07 12:17:22  McClean
+  video mode setup (pre)
+
   Revision 1.55  2001/10/04 23:21:13  McClean
   cleanup
 
@@ -878,14 +881,14 @@ void CNeutrinoApp::InitVideoSettings(CMenuWidget &videoSettings, CVideoSetupNoti
 	videoSettings.addItem( new CMenuSeparator(CMenuSeparator::LINE) );
 
 	CMenuOptionChooser* oj = new CMenuOptionChooser("videomenu.videosignal", &g_settings.video_Signal, true, videoSetupNotifier);
-		oj->addOption(0, "videomenu.videosignal_rgb");
-		oj->addOption(1, "videomenu.videosignal_svideo");
-		oj->addOption(2, "videomenu.videosignal_composite");
+		oj->addOption(1, "videomenu.videosignal_rgb");
+		oj->addOption(2, "videomenu.videosignal_svideo");
+		oj->addOption(0, "videomenu.videosignal_composite");
 
 	videoSettings.addItem( oj );
 
 	oj = new CMenuOptionChooser("videomenu.videoformat", &g_settings.video_Format, true, videoSetupNotifier);
-		oj->addOption(0, "videomenu.videoformat_43");
+		oj->addOption(2, "videomenu.videoformat_43");
 		oj->addOption(1, "videomenu.videoformat_169");
 
 	videoSettings.addItem( oj );
