@@ -214,7 +214,7 @@ int LoadSatellitePositions(void)
 	string satelliteName;
 	t_satellite_position satellitePosition;
 	
-	printf("[getservices] loading satellite positions...\n");
+//	printf("[getservices] loading satellite positions...\n");
 	
 	satellitePositions.clear();
 	
