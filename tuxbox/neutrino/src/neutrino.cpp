@@ -2456,7 +2456,7 @@ void CNeutrinoApp::RealRun(CMenuWidget &mainMenu)
 				// show Infoviewer
 				g_InfoViewer->showTitle(channelList->getActiveChannelNumber(), channelList->getActiveChannelName(), channelList->getActiveSatellitePosition(), channelList->getActiveChannel_ChannelID()); // UTF-8
 			}
-			else if( ( msg >= CRCInput::RC_0 ) && ( msg <= CRCInput::RC_9 ))
+			else if (CRCInput::isNumeric(msg))
 			{ //numeric zap
 				if( g_RemoteControl->director_mode )
 				{
