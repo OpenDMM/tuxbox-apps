@@ -6,6 +6,9 @@
  *
  * Changelog:
  * $Log$
+ * Revision 1.2  2003/03/14 05:13:04  obi
+ * compileable with -W -Werror
+ *
  * Revision 1.1  2002/01/18 20:22:39  tmbinc
  * initial checkin
  *
@@ -412,7 +415,7 @@ void XMLTreeParser::StartElementHandler(const XML_Char *name, const XML_Char **a
   }
 }
 
-void XMLTreeParser::EndElementHandler(const XML_Char *name)
+void XMLTreeParser::EndElementHandler(const XML_Char* /*name*/)
 {
   if (current)
   {
