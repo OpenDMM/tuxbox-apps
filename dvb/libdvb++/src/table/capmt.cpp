@@ -116,7 +116,7 @@ CaProgramMapTable::CaProgramMapTable(const ProgramMapTable * const pmt, const ui
 {
 	uint32_t length = 6;
 
-	caPmtTag = 0x9f80c3;
+	caPmtTag = 0x9f8032;
 	caPmtListManagement = listManagement;
 
 	programNumber = pmt->tableIdExtension;
