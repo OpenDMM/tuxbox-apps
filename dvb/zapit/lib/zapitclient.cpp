@@ -309,6 +309,9 @@ void CZapitClient::getBouquets(BouquetList& bouquets, const bool emptyBouquetsTo
 	responseGetBouquets response;
 	while (CBasicClient::receive_data((char*)&response, sizeof(responseGetBouquets)))
 	{
+		if (response.bouquet_nr == 0xFFFF) /* <- end marker */
+			break;
+
 		if (!utf_encoded)
 		{
 			buffer[30] = (char) 0x00;
