@@ -1907,10 +1907,12 @@ void CNeutrinoApp::RealRun(CMenuWidget &mainMenu)
 		{
 			if(CVCRControl::getInstance()->registeredDevices() > 0)
 			{
-					((CVCRControl::CServerDevice *) CVCRControl::getInstance())->StopPlayBack = (g_settings.network_streaming_stopplayback == 1);
-					((CVCRControl::CServerDevice *) CVCRControl::getInstance())->StopSectionsd = (g_settings.network_streaming_stopsectionsd == 1);
-					CVCRControl::getInstance()->Record((CTimerEvent::EventInfo *) data);
-					streamstatus = 1;
+				CVCRControl::CServerDeviceInfo serverinfo;
+				serverinfo.StopPlayBack = (g_settings.network_streaming_stopplayback == 1);
+				serverinfo.StopSectionsd = (g_settings.network_streaming_stopsectionsd == 1);
+				CVCRControl::getInstance()->setDeviceOptions(0,&serverinfo);
+				CVCRControl::getInstance()->Record((CTimerEvent::EventInfo *) data);
+				streamstatus = 1;
 			}
 			else
 				printf("Keine vcr Devices registriert\n");
@@ -2659,8 +2661,10 @@ bool CNeutrinoApp::changeNotify(string OptionName, void *Data)
 		{
 			eventinfo.onidSid = g_RemoteControl->current_onid_sid;
 			eventinfo.epgID = g_RemoteControl->current_EPGid;
-			((CVCRControl::CServerDevice *) CVCRControl::getInstance())->StopPlayBack = (g_settings.network_streaming_stopplayback == 1);
-			((CVCRControl::CServerDevice *) CVCRControl::getInstance())->StopSectionsd = (g_settings.network_streaming_stopsectionsd == 1);
+			CVCRControl::CServerDeviceInfo serverinfo;
+			serverinfo.StopPlayBack = (g_settings.network_streaming_stopplayback == 1);
+			serverinfo.StopSectionsd = (g_settings.network_streaming_stopsectionsd == 1);
+			CVCRControl::getInstance()->setDeviceOptions(0,&serverinfo);
 			CVCRControl::getInstance()->Record(&eventinfo);
 		}
 		else
