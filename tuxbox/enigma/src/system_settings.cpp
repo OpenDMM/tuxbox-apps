@@ -110,6 +110,7 @@ void eSystemSettings::av_settings()
 	show();
 }
 
+#ifndef DISABLE_HDD
 #ifndef DISABLE_FILE
 void eSystemSettings::harddisc_setup()
 {
@@ -133,6 +134,7 @@ void eSystemSettings::harddisc_setup()
 	show();
 }
 #endif
+#endif // DISABLE_HDD
 
 #ifdef ENABLE_KEYBOARD
 void eSystemSettings::keyboard_setup()

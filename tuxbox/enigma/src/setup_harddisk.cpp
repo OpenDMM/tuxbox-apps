@@ -1,3 +1,4 @@
+#ifndef DISABLE_HDD
 #ifndef DISABLE_FILE
 /*
  * setup_harddisk.cpp
@@ -637,3 +638,4 @@ void ePartitionCheck::getData( eString str )
 }
 
 #endif // DISABLE_FILE
+#endif // DISABLE_HDD
