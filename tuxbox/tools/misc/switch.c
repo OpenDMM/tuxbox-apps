@@ -21,6 +21,9 @@
  *
  *
  *   $Log$
+ *   Revision 1.6  2001/03/25 13:57:24  gillem
+ *   - update includes
+ *
  *   Revision 1.5  2001/03/14 17:04:53  gillem
  *   - fix mute/unmute
  *
@@ -46,7 +49,7 @@
 #include <stdlib.h>
 #include <fcntl.h>
 
-#include "avs_core.h"
+#include "dbox/avs_core.h"
 
 #define VERSION "0.1"
 
