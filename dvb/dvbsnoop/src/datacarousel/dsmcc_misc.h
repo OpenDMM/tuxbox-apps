@@ -20,7 +20,14 @@ $Id$
 int   dsmcc_pto_descriptor_loop (u_char *name, u_char *b);
 int   dsmcc_CompatibilityDescriptor(u_char *b);
 
-                                           
+int   dsmcc_MessageHeader (int v, u_char *b, int len, int *msg_len,
+		int *dsmccType, int *messageId);
+int   dsmcc_AdaptationHeader (int v, u_char *b, int len);
+int   dsmcc_ConditionalAccess (int v, u_char *b, int len);
+int   dsmcc_UserID (int v, u_char *b, int len);
+
+int   dsmcc_print_transactionID_32 (int v, u_char *b);
+
 
 
 #endif
