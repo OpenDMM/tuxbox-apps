@@ -50,7 +50,7 @@ eSystemSettings::eSystemSettings()
 		CONNECT((new eListBoxEntryMenu(&list, _("Harddisc Setup"), eString().sprintf("(%d) %s", ++entry, _("open harddisc setup")) ))->selected, eSystemSettings::harddisc_setup);
 #endif
 #ifdef ENABLE_KEYBOARD
-	if ( eSystemInfo::getInstance()->getHwType() == eSystemInfo::DM7000 )
+	if ( eSystemInfo::getInstance()->hasKeyboard() )
 		CONNECT((new eListBoxEntryMenu(&list, _("Keyboard Setup"), eString().sprintf("(%d) %s", ++entry, _("open keyboard setup")) ))->selected, eSystemSettings::keyboard_setup);
 #endif
 	new eListBoxEntrySeparator( (eListBox<eListBoxEntry>*)&list, eSkin::getActive()->queryImage("listbox.separator"), 0, true );

@@ -52,7 +52,8 @@ eExpertSetup::eExpertSetup()
 	new eListBoxEntryCheck( (eListBox<eListBoxEntry>*)&list, _("Show remaining Time"), "/ezap/osd/showCurrentRemaining", _("show event remaining time in the infobar"));
 	CONNECT((new eListBoxEntryCheck( (eListBox<eListBoxEntry>*)&list, _("Don't open serial port"), "/ezap/extra/disableSerialOutput", _("don't write debug messages to /dev/tts/0")))->selected, eExpertSetup::serialDebugChanged );
 	new eListBoxEntryCheck( (eListBox<eListBoxEntry>*)&list, _("Auto bouquet change"), "/elitedvb/extra/autobouquetchange", _("change into next bouquet when end of current bouquet is reached"));
-	if ( eSystemInfo::getInstance()->getHwType() == eSystemInfo::DM7000 )
+	if ( eSystemInfo::getInstance()->getHwType() == eSystemInfo::DM7000 ||
+		eSystemInfo::getInstance()->getHwType() == eSystemInfo::DM7020 )
 		CONNECT((new eListBoxEntryCheck((eListBox<eListBoxEntry>*)&list,_("Enable fast zapping"),"/elitedvb/extra/fastzapping",_("enables faster zapping.. but with visible sync")))->selected, eExpertSetup::fastZappingChanged );
 	setHelpID(92);
 }
