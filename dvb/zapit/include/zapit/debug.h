@@ -44,7 +44,7 @@ extern int debug;
 		if (debug)					\
 			fprintf(stdout, "[%s:%s:%d] " fmt "\n",	\
 				__FILE__, __FUNCTION__,		\
-				__LINE__, ## args);		\
+				__LINE__ , ## args);		\
 	} while (0)
 
 
@@ -63,7 +63,7 @@ extern int debug;
 	do {							\
 		fprintf(stdout, "[%s:%s:%d] " fmt "\n",		\
 			__FILE__, __FUNCTION__,			\
-			__LINE__, ## args);			\
+			__LINE__ , ## args);			\
 	} while (0)
 
 
@@ -71,7 +71,7 @@ extern int debug;
 	do {							\
 		fprintf(stderr, "[%s:%s:%d] " fmt "\n",		\
 			__FILE__, __FUNCTION__,			\
-			__LINE__, ## args);			\
+			__LINE__ , ## args);			\
 	} while (0)
 
 
