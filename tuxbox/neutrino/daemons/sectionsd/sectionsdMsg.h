@@ -23,6 +23,9 @@
 //    Foundation, Inc., 675 Mass Ave, Cambridge, MA 02139, USA.
 //
 //  $Log$
+//  Revision 1.3  2001/07/16 11:49:31  fnbrd
+//  Neuer Befehl, Zeichen fuer codetable aus den Texten entfernt
+//
 //  Revision 1.2  2001/07/15 11:58:20  fnbrd
 //  Vergangene Zeit in Prozent beim EPG
 //
@@ -41,11 +44,12 @@ struct msgSectionsdResponseHeader {
   unsigned short dataLength;
 };
 
-#define NUMBER_OF_SECTIONSD_COMMANDS 2
+#define NUMBER_OF_SECTIONSD_COMMANDS 3
 
 enum sectionsdCommands {
   actualEPGchannelName=0,
-  actualEventListTVshort
+  actualEventListTVshort,
+  currentNextInformation
 };
 
 //
