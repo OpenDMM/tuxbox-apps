@@ -484,7 +484,7 @@ void CWebserverRequest::RewriteURL()
 			if(Parent->DEBUG) printf("Kein Dateiname !\n");	
 	}
 	// Nur umschreiben wenn nicht mit /fb/ oder /control/ anfängt
-	if( (strncmp(Path.c_str(),"/fb",3) != 0) && (strncmp(Path.c_str(),"/control",8) != 0) )	
+	if( (strncmp(Path.c_str(),"/fb",3) != 0) && (strncmp(Path.c_str(),"/control",8) != 0) && (strncmp(Path.c_str(),"/bouquetedit",12) != 0))	
 	{
 		if(strncmp(Path.c_str(),"/public",7) == 0)							// mit /public gelangt man in den inhalt von PublicDocumentRoor
 			Path = Parent->PublicDocumentRoot + Path.substr(7,Path.length() - 7);	
@@ -494,7 +494,7 @@ void CWebserverRequest::RewriteURL()
 		if(Parent->DEBUG) printf("Umgeschrieben: '%s'\n",Path.c_str());
 	}
 	else
-		if(Parent->DEBUG) printf("FB oder control, URL nicht umgeschrieben\n",Path.c_str());
+		if(Parent->DEBUG) printf("fb, bouquetedit oder control, URL nicht umgeschrieben. Path: '%s'\n",Path.c_str());
 	
 
 	if(Parent->DEBUG) printf("Auf Sonderzeichen prüfen\n");
