@@ -129,6 +129,8 @@ long long startposition;
 int jumpminutes = 1;
 int buffer_time = 0;
 //------------------------------------------------------------------------
+void checkAspectRatio (int vdec, bool init);
+
 size_t
 CurlDummyWrite (void *ptr, size_t size, size_t nmemb, void *data)
 {
@@ -753,7 +755,9 @@ PlayStreamThread (void *mrl)
 	std::string unpauseurl = baseurl + "?control=pause";
 	std::string skipurl;
 	std::string response = "";
-
+	
+	checkAspectRatio(vdec, true);
+	
 	while (playstate > CMoviePlayerGui::STOPPED)
 	{
 		readsize = ringbuffer_read_space (ringbuf);
@@ -926,6 +930,8 @@ PlayStreamThread (void *mrl)
 		}
 		else
 			usleep(10000); // non busy wait
+		
+		checkAspectRatio(vdec, false);
 	}
 
 	ioctl (vdec, VIDEO_STOP);
@@ -1070,6 +1076,8 @@ PlayPESFileThread (void *filename)
 	pfd[1].fd = vfile;
 	pfd[1].events = POLLOUT;
 
+	checkAspectRatio(vdec, true);
+
 	while (playstate >= CMoviePlayerGui::PLAY) {
     		switch (playstate)
 			{
@@ -1144,6 +1152,7 @@ PlayPESFileThread (void *filename)
 				}
 			}
 		}
+		checkAspectRatio(vdec, false);
 	}
 
 	ioctl(vdec, VIDEO_STOP);
@@ -1227,6 +1236,8 @@ PlayFileThread (void *filename)
 	p.pes_type = DMX_PES_VIDEO;
 	if (ioctl (dmxv, DMX_SET_PES_FILTER, &p) < 0)
 		failed = true;
+	
+	checkAspectRatio(vdec, true);
 	
 	fileposition = startposition;
 	lseek (fd, fileposition, SEEK_SET);
@@ -1313,6 +1324,8 @@ PlayFileThread (void *filename)
     			while (r);
 			}
 			else skipwriting = false;
+			
+			checkAspectRatio(vdec, false);
 		}
 	}
 	else if (!failed)
@@ -1939,5 +1952,42 @@ CMoviePlayerGui::PlayFile (void)
 	pthread_join (rct, NULL);
 }
 
+// checks if AR has changed an sets cropping mode accordingly (only video mode auto)
+void checkAspectRatio (int vdec, bool init)
+{
 
+	static video_size_t size; 
+	static time_t last_check=0;
+	
+	// only necessary for auto mode, check each 5 sec. max
+	if(g_settings.video_Format != 0 || (!init && time(NULL) <= last_check+5)) 
+		return;
+
+	if(init)
+	{
+		if (ioctl(vdec, VIDEO_GET_SIZE, &size) < 0)
+			perror("[movieplayer.cpp] VIDEO_GET_SIZE");
+		last_check=0;
+		return;
+	}
+	else
+	{
+		video_size_t new_size; 
+		if (ioctl(vdec, VIDEO_GET_SIZE, &new_size) < 0)
+			perror("[movieplayer.cpp] VIDEO_GET_SIZE");
+		if(size.aspect_ratio != new_size.aspect_ratio)
+		{
+			printf("[movieplayer.cpp] AR change detected in auto mode, adjusting display format\n");
+			video_displayformat_t vdt;
+			if(new_size.aspect_ratio == VIDEO_FORMAT_4_3)
+				vdt = VIDEO_LETTER_BOX;
+			else
+				vdt = VIDEO_CENTER_CUT_OUT;
+			if (ioctl(vdec, VIDEO_SET_DISPLAY_FORMAT, vdt))
+				perror("[movieplayer.cpp] VIDEO_SET_DISPLAY_FORMAT");
+			memcpy(&size, &new_size, sizeof(size));
+		}
+		last_check=time(NULL);
+	}
+}
 #endif
