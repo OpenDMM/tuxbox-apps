@@ -315,6 +315,12 @@ int zapit(const t_channel_id channel_id, bool in_nvod)
  */
 int changeapid (uint8_t index)
 {
+	if (channel == NULL)
+	{
+		WARN("No current channel");
+		return -1;
+	}
+
 	/* stop demux filter */
 	if (stopDmxFilter(dmx_audio_fd) < 0)
 		return -1;
@@ -330,7 +336,7 @@ int changeapid (uint8_t index)
 	if (currentAudioChannel == NULL)
 		WARN("No current audio channel");
 	else
-		if (channel->getAudioChannel()->isAc3)
+		if (currentAudioChannel->isAc3)
 			audio->enableBypass();
 		else
 			audio->disableBypass();
