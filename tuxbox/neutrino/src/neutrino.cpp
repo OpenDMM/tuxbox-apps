@@ -1083,6 +1083,7 @@ void CNeutrinoApp::InitScanSettings(CMenuWidget &settings)
 		ojDiseqc->addOption( MINI_DISEQC, "satsetup.minidiseqc");
 		ojDiseqc->addOption( DISEQC_1_0,  "satsetup.diseqc10");
 		ojDiseqc->addOption( DISEQC_1_1,  "satsetup.diseqc11");
+		//ojDiseqc->addOption( DISEQC_1_2,  "satsetup.diseqc12");
 		ojDiseqc->addOption( SMATV_REMOTE_TUNING,  "satsetup.smatvremote");
 
 		settings.addItem( ojDiseqc );
