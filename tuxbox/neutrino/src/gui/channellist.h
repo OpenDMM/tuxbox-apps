@@ -35,6 +35,10 @@
 // $Id$
 //
 // $Log$
+// Revision 1.29  2002/03/17 19:59:08  rasc
+// -- channelselector, info details:
+// --    visible "connector line" between channel  and detail info at bottom
+//
 // Revision 1.28  2002/03/11 17:25:57  Simplex
 // locked bouquets work
 //
@@ -190,6 +194,8 @@ class CChannelList
 		int 			y;
 
 		void paintDetails(int index);
+		void clearItem2DetailsLine ();
+		void paintItem2DetailsLine (int pos, int ch_index);
 		void paintItem(int pos);
 		void paint();
 		void paintHead();
