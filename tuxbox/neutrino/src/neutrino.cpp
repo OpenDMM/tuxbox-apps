@@ -2089,7 +2089,7 @@ int CNeutrinoApp::run(int argc, char **argv)
 {
 	CmdParser(argc, argv);
 
-	CLCD::getInstance()->init((fontFile + ".ttf").c_str(), fontName.c_str());
+	CLCD::getInstance()->init((fontFile + ".ttf").c_str(), fontName.c_str(), false);
 
 	g_info.box_Type = g_Controld->getBoxType();
 	
@@ -2101,6 +2101,7 @@ int CNeutrinoApp::run(int argc, char **argv)
 	int loadSettingsErg = loadSetup();
 
 	//lcd aktualisieren
+	CLCD::getInstance()->setlcdparameter();
 	CLCD::getInstance()->showVolume(g_Controld->getVolume(g_settings.audio_avs_Control==1));
 	CLCD::getInstance()->setMuted(g_Controld->getMute(g_settings.audio_avs_Control==1));
 
