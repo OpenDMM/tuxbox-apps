@@ -32,7 +32,14 @@ class CCam
 	private:
 		bool initialized;
 		uint16_t caSystemId;
-		int ca_fd;
+
+#ifdef USE_EXTERNAL_CAMD
+		uint8_t camdBuffer[2 + 255];
+		int camdSocket;
+
+		bool camdConnect ();
+		void camdDisconnect ();
+#endif
 
 		uint16_t readCaSystemId ();
 		ca_msg_t CCam::getMessage (uint16_t length);
