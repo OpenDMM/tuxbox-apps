@@ -1289,7 +1289,9 @@ void updateLcd(const std::string & sel_filename)
 void
 CMoviePlayerGui::PlayStream (int streamtype)
 {
-	uint msg, data;
+	neutrino_msg_t      msg;
+	neutrino_msg_data_t data;
+
 	std::string sel_filename;
 	bool update_info = true, start_play = false, exit =
 		false, open_filebrowser = true, skipping = false;
@@ -1562,7 +1564,9 @@ CMoviePlayerGui::PlayStream (int streamtype)
 void
 CMoviePlayerGui::PlayFile (void)
 {
-	uint msg, data;
+	neutrino_msg_t      msg;
+	neutrino_msg_data_t data;
+
 	std::string sel_filename;
 	bool update_lcd = true, open_filebrowser =
 		true, start_play = false, exit = false;
