@@ -92,6 +92,9 @@
   Foundation, Inc., 675 Mass Ave, Cambridge, MA 02139, USA.
 
   $Log$
+  Revision 1.72  2002/02/05 21:24:04  Simplex
+  implemeted zapto by channelnumber (for clientlib)
+
   Revision 1.71  2002/02/05 18:59:54  gillem
   - add close vdi device
 
@@ -2226,6 +2229,12 @@ void parse_command()
 				zapTo(msgZapto.bouquet, msgZapto.channel);
 			break;
 
+			case CZapitClient::CMD_ZAPTO_CHANNELNR :
+				CZapitClient::commandZaptoChannelNr msgZaptoChannelNr;
+				read( connfd, &msgZaptoChannelNr, sizeof(msgZaptoChannelNr));
+				zapTo(msgZaptoChannelNr.channel);
+			break;
+
 			case CZapitClient::CMD_GET_BOUQUETS :
 				CZapitClient::commandGetBouquets msgGetBouquets;
 				read( connfd, &msgGetBouquets, sizeof(msgGetBouquets));
@@ -2657,14 +2666,53 @@ void stopPlayBack()
 
 void zapTo(unsigned int bouquet, unsigned int channel)
 {
-	g_BouquetMan->saveAsLast( bouquet-1, channel-1);
+	if ((bouquet < 1) || (bouquet > g_BouquetMan->Bouquets.size()))
+	{
+		printf( "[zapit] Invalid bouquet %d\n", bouquet);
+		return;
+	}
 
 	ChannelList channels;
 	if (Radiomode_on)
-		channels = g_BouquetMan->Bouquets[bouquet]->radioChannels;
+		channels = g_BouquetMan->Bouquets[bouquet-1]->radioChannels;
 	else
-		channels = g_BouquetMan->Bouquets[bouquet]->tvChannels;
+		channels = g_BouquetMan->Bouquets[bouquet-1]->tvChannels;
 
-	zapit( (channels[channel-1]->onid<<16)|channels[channel-1]->sid , false);
+	if ((channel < 1) || (channel > channels.size()))
+	{
+		printf( "[zapit] Invalid channel %d in bouquet %d\n", channel, bouquet);
+		return;
+	}
+
+	g_BouquetMan->saveAsLast( bouquet-1, channel-1);
+	zapit( channels[channel-1]->OnidSid() , false);
+}
+
+void zapTo(unsigned int channel)
+{
+	if (Radiomode_on)
+	{
+		CBouquetManager::radioChannelIterator radiocit = g_BouquetMan->radioChannelsBegin();
+		while ((radiocit != g_BouquetMan->radioChannelsEnd()) && (channel>1))
+		{
+			radiocit++;
+			channel--;
+		}
+	//	g_BouquetMan->saveAsLast( bouquet-1, channel-1);
+		if (radiocit != g_BouquetMan->radioChannelsEnd())
+			zapit( (*radiocit)->OnidSid() , false);
+	}
+	else
+	{
+		CBouquetManager::tvChannelIterator tvcit = g_BouquetMan->tvChannelsBegin();
+		while ((tvcit != g_BouquetMan->tvChannelsEnd()) && (channel>1))
+		{
+			tvcit++;
+			channel--;
+		}
+	//	g_BouquetMan->saveAsLast( bouquet-1, channel-1);
+		if (tvcit != g_BouquetMan->tvChannelsEnd())
+			zapit( (*tvcit)->OnidSid() , false);
+	}
 }
 
