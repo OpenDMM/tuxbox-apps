@@ -1950,6 +1950,16 @@ int CNeutrinoApp::handleMsg(uint msg, uint data)
 		AudioMute( (bool)data, true );
 		return messages_return::handled;
 	}
+	else if ( msg == NeutrinoMessages::EVT_RECORDMODE_ACTIVATED )
+	{
+		printf("neutino - recordmode on\n");
+		channelsInit();
+	}
+	else if ( msg == NeutrinoMessages::EVT_RECORDMODE_DEACTIVATED )
+	{
+		printf("neutino - recordmode off\n");
+		channelsInit();
+	}
 	else if ( ( msg == NeutrinoMessages::EVT_BOUQUETSCHANGED ) ||
 			  ( msg == NeutrinoMessages::EVT_SERVICESCHANGED ) )
 	{
