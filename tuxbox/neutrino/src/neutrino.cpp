@@ -39,6 +39,9 @@
 #include "global.h"
 #include "neutrino.h"
 
+#include "zapit/getservices.h"
+#include "daemonc/remotecontrol.h"
+
 #include "driver/framebuffer.h"
 #include "driver/fontrenderer.h"
 #include "driver/rcinput.h"
@@ -54,17 +57,15 @@
 #include "widget/screensetup.h"
 #include "widget/gamelist.h"
 #include "widget/bouqueteditor_bouquets.h"
-
-#include "zapit/getservices.h"
-#include "daemonc/remotecontrol.h"
-
+#include "widget/messagebox.h"
 
 #include "helpers/infoviewer.h"
 #include "helpers/epgdata.h"
 #include "helpers/setting_helpers.h"
 #include "helpers/settings.h"
 #include "helpers/locale.h"
-#include "widget/messagebox.h"
+#include "helpers/update.h"
+#include "helpers/scan.h"
 
 #include "favorites/favorites.h"
 
@@ -975,7 +976,7 @@ void CNeutrinoApp::InitServiceSettings(CMenuWidget &service)
 	}
 	TSScan->addItem( new CMenuSeparator(CMenuSeparator::LINE) );
 */
-	TSScan->addItem( new CMenuForwarder("scants.startnow", true, "", g_ScanTS) );
+	TSScan->addItem( new CMenuForwarder("scants.startnow", true, "", new CScanTs() ) );
 	service.addItem( new CMenuForwarder("servicemenu.scants", true, "", TSScan) );
 
 	//ucodecheck
@@ -1051,7 +1052,7 @@ void CNeutrinoApp::InitServiceSettings(CMenuWidget &service)
 		updateSettings->addItem( new CMenuForwarder("flashupdate.proxypassword", true, g_settings.softupdate_proxypassword, updateSettings_proxypass ) );
 
 		updateSettings->addItem( new CMenuSeparator(CMenuSeparator::LINE) );
-		updateSettings->addItem( new CMenuForwarder("flashupdate.checkupdate", true, "", g_Update ) );
+		updateSettings->addItem( new CMenuForwarder("flashupdate.checkupdate", true, "", new CFlashUpdate() ));
 
 		service.addItem( new CMenuForwarder("servicemenu.update", true, "", updateSettings ) );
 	}
@@ -1555,9 +1556,7 @@ int CNeutrinoApp::run(int argc, char **argv)
 	g_RemoteControl = new CRemoteControl;
 	g_EpgData = new CEpgData;
 	g_InfoViewer = new CInfoViewer;
-	g_ScanTS = new CScanTs;
 	g_EventList = new EventList;
-	g_Update = new CFlashUpdate;
 
 	g_PluginList = new CPlugins;
 	g_PluginList->setPluginDir(PLUGINDIR);
