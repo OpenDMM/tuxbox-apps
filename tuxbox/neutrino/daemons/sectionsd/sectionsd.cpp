@@ -2661,7 +2661,7 @@ static void *sdtThread(void *)
 				};
 			}
 
-			if (timeoutsDMX >= RESTART_DMX_AFTER_TIMEOUTS)
+			if (timeoutsDMX >= RESTART_DMX_AFTER_TIMEOUTS && scanning)
 			{
 				timeoutsDMX = 0;
 				dmxSDT.stop();
@@ -2899,7 +2899,7 @@ static void *timeThread(void *)
 
 		while(1)
 		{
-			if (getUTC(&UTC, !timeset)) /* initially: TDT (no CRC - but mandatory field), later: TOT (CRC - yet not mandatory)*/
+			if (scanning && getUTC(&UTC, !timeset)) /* initially: TDT (no CRC - but mandatory field), later: TOT (CRC - yet not mandatory)*/
 			{
 				tim = changeUTCtoCtime((const unsigned char *) &UTC);
 				
@@ -2926,6 +2926,9 @@ static void *timeThread(void *)
 				if (timeset) {
 					seconds = 60 * 30;
 					dprintf("dmxTOT: going to sleep for %d seconds.\n", seconds);
+				}
+				else if (!scanning){
+					seconds = 60;
 				}
 				else {
 					seconds = 1;
@@ -3051,7 +3054,7 @@ static void *eitThread(void *)
 				unlockServices();
 			}
 
-			if (timeoutsDMX >= CHECK_RESTART_DMX_AFTER_TIMEOUTS)
+			if (timeoutsDMX >= CHECK_RESTART_DMX_AFTER_TIMEOUTS && scanning)
 			{
 				if ( (zeit > lastRestarted + 3) || (dmxEIT.real_pauseCounter != 0) ) // letzter restart länger als 3secs her, daher cache NICHT verkleinern
 				{
