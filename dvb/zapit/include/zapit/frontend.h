@@ -31,7 +31,7 @@
 /* zapit */
 #include <zapit/types.h>
 
-#define MAX_LNBS	4
+#define MAX_LNBS	64	/* due to Diseqc 1.1  (2003-01-10 rasc) */
 
 class CFrontend
 {
