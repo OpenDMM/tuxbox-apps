@@ -236,7 +236,7 @@ int main (int argc, char** argv)
 		}
 		else if (i < argc - 1)
 		{
-			if ((sscanf(argv[i], "%d", &bouquet) > 0) && (sscanf(argv[++i], "%d", &channel) > 0))
+			if ((sscanf(argv[i], "%d", &bouquet) > 0) && (sscanf(argv[++i], "%u", &channel) > 0))
 			{
 				continue;
 			}
