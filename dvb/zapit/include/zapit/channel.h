@@ -97,6 +97,7 @@ class CZapitChannel
 
 		CZapitAudioChannel * getAudioChannel (unsigned char index = 0xFF);
 		unsigned short getAudioPid (unsigned char index = 0xFF);
+		unsigned char  getAudioChannelIndex()	{ return currentAudioChannel; }
 
 		int addAudioChannel(unsigned short pid, bool isAc3, std::string description, unsigned char componentTag);
 

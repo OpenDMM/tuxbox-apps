@@ -1039,7 +1039,7 @@ void parse_command (CZapitClient::commandHead &rmsg)
 				responseGetOtherPIDs.ecmpid = NONE; // TODO: remove
 				responseGetOtherPIDs.vtxtpid = channel->getTeletextPid();
 				responseGetOtherPIDs.pcrpid = channel->getPcrPid();
-				responseGetOtherPIDs.selected_apid = channel->getAudioPid();
+				responseGetOtherPIDs.selected_apid = channel->getAudioChannelIndex();
 				send(connfd, &responseGetOtherPIDs, sizeof(responseGetOtherPIDs), 0);
 				sendAPIDs();
 				break;
