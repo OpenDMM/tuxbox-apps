@@ -48,7 +48,6 @@
 #undef _FILE_OFFSET_BITS
 #include <global.h>
 #include <neutrino.h>
-#include <system/debug.h>
 
 #include <driver/fontrenderer.h>
 #include <driver/rcinput.h>
@@ -918,7 +917,7 @@ CMoviePlayerGui::PlayStream (int streamtype)
 	    "/var/tuxbox/config/movieplayer.bookmarks";
 	  bookmarkfile = fopen (bookmarkfilename, "a");
 	  fprintf (bookmarkfile, "%s\n", filename);
-	  fprintf (bookmarkfile, "%d\n", fileposition);
+	  fprintf (bookmarkfile, "%ld\n", fileposition);
 	  fclose (bookmarkfile);
 	}
       else if (msg == CRCInput::RC_left)
@@ -1103,7 +1102,7 @@ CMoviePlayerGui::PlayFile (void)
 	    "/var/tuxbox/config/movieplayer.bookmarks";
 	  bookmarkfile = fopen (bookmarkfilename, "a");
 	  fprintf (bookmarkfile, "%s\n", filename);
-	  fprintf (bookmarkfile, "%d\n", fileposition);
+	  fprintf (bookmarkfile, "%ld\n", fileposition);
 	  fclose (bookmarkfile);
 	}
       else if (msg == CRCInput::RC_left)
