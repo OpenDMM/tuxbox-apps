@@ -41,26 +41,29 @@
 #include <unistd.h>
 #include <signal.h>
 
-#include "driver/audio.h"
-#include "controldMsg.h"
-#include "dbox/avs_core.h"
-#include "dbox/fp.h"
-#include "dbox/saa7126_core.h"
-#include "ost/video.h"
+#include <dbox/avs_core.h>
+#include <dbox/fp.h>
+#include <dbox/saa7126_core.h>
+#include <ost/video.h>
+
+#include <zapit/zapitclient.h>
+#include <controldclient.h>
+#include <lcddclient.h>
+#include <timerdclient.h>
+#include <eventserver.h>
+
 #include "eventwatchdog.h"
-#include "controldclient.h"
-#include "lcddclient.h"
-#include "zapitclient.h"
-#include "timerdclient.h"
-#include "eventserver.h"
+#include "driver/audio.h"
+
 
 #define CONF_FILE CONFIGDIR "/controld.conf"
 #define SAA7126_DEVICE "/dev/dbox/saa0"
 
-CLcddClient		lcdd;
+
+CLcddClient	lcdd;
 CZapitClient	zapit;
 CTimerdClient	timerd;
-CEventServer    *eventServer;
+CEventServer	*eventServer;
 
 struct Ssettings
 {

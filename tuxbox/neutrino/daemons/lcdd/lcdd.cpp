@@ -22,8 +22,6 @@
 	Foundation, Inc., 675 Mass Ave, Cambridge, MA 02139, USA.
 */
 
-#include "lcdd.h"
-#include "newclock.h"
 
 #include <config.h>
 
@@ -31,6 +29,9 @@
 #include <sys/socket.h>
 #include <sys/un.h>
 #include <signal.h>
+
+#include "lcdd.h"
+#include "newclock.h"
 
 
 CLCDD::CLCDD()
