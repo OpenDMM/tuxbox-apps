@@ -1259,7 +1259,7 @@ void sendBouquets(int connfd, const bool emptyBouquetsToo)
 	}
 }
 
-bool send_data_count(int connfd, int data_count)
+bool send_data_count(const int connfd, const int data_count)
 {
 	CZapitMessages::responseGeneralInteger responseInteger;
 	responseInteger.number = data_count;
@@ -1273,7 +1273,15 @@ bool send_data_count(int connfd, int data_count)
 
 void internalSendChannels(int connfd, ChannelList* channels, const unsigned int first_channel_nr)
 {
-	if (!send_data_count(connfd, channels->size()))
+	int data_count = channels->size();
+	if (currentMode & RECORD_MODE)
+	{
+		for (uint32_t i = 0; i < channels->size(); i++)
+			if ((*channels)[i]->getTsidOnid() != channel->getTsidOnid())
+				data_count--;
+	}
+
+	if (!send_data_count(connfd, data_count))
 		return;
 
 	for (uint32_t i = 0; i < channels->size();i++)
