@@ -45,6 +45,15 @@ unsigned long xmlGetNumericAttribute(const xmlNodePtr node, char *name, const in
 	return strtoul(ptr, 0, base);
 }
 
+long xmlGetSignedNumericAttribute(const xmlNodePtr node, char *name, const int base)
+{
+	char *ptr = xmlGetAttribute(node, name);
+
+	if (!ptr)
+		return 0;
+
+	return strtol(ptr, 0, base);
+}
 
 xmlNodePtr xmlGetNextOccurence(xmlNodePtr cur, const char * s)
 {

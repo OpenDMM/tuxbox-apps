@@ -51,6 +51,7 @@ inline char*      xmlGetName          (xmlNodePtr cur)                 { return 
 
 
 unsigned long xmlGetNumericAttribute  (const xmlNodePtr node, char *name, const int base);
+long xmlGetSignedNumericAttribute     (const xmlNodePtr node, char *name, const int base);
 xmlNodePtr xmlGetNextOccurence        (xmlNodePtr cur, const char * s);
 
 std::string Unicode_Character_to_UTF8(const int character);
