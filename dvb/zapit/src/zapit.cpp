@@ -1345,7 +1345,7 @@ void leaveStandby(void)
 		if (!frontend->isInitialized())
 		{
 			printf("[zapit] unable to open frontend devices. bye.\n");
-			return -1;
+			exit(-1);
 		}
 	}
 	if (!videoDecoder) {
