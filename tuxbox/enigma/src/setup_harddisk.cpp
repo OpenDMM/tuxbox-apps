@@ -24,7 +24,7 @@
 #include <lib/gui/emessage.h>
 #include <sys/vfs.h> // for statfs
 
-#define EXT3
+// #define EXT3
 
 static int getCapacity(int dev)
 {
@@ -256,18 +256,28 @@ void eHarddiskMenu::s_format()
 		fclose(f);
 
 		
-		if ((system(
+		if ( (system("sync") >> 8)
+			||
+			( system(
 #ifdef EXT3
 				eString().sprintf(
 				"/sbin/mkfs.ext3 /dev/ide/host%d/bus%d/target%d/lun0/part1", host, bus, target).c_str())>>8 )
-#else // REISERFS
-				eString().sprintf(
-				"/sbin/mkreiserfs -f -f /dev/ide/host%d/bus%d/target%d/lun0/part1", host, bus, target).c_str())>>8 )
-#endif
+				||
+				(system("sync") >> 8)
 				||
 				(system(
 				eString().sprintf(
-				"/bin/mount /dev/ide/host%d/bus%d/target%d/lun0/part1 /hdd", host, bus, target).c_str())>>8 ) ||
+				"/bin/mount -t ext3 /dev/ide/host%d/bus%d/target%d/lun0/part1 /hdd", host, bus, target).c_str())>>8 ) ||
+#else // REISERFS
+				eString().sprintf(
+				"/sbin/mkreiserfs -f -f /dev/ide/host%d/bus%d/target%d/lun0/part1", host, bus, target).c_str())>>8 )
+				||
+				(system("sync") >> 8)
+				||
+				(system(
+				eString().sprintf(
+				"/bin/mount -t reiserfs /dev/ide/host%d/bus%d/target%d/lun0/part1 /hdd", host, bus, target).c_str())>>8 ) ||
+#endif
 				(system("mkdir /hdd/movie")>>8 )
 				)
 		{

@@ -43,7 +43,6 @@ eZapScan::eZapScan()
 	{
 		CONNECT((new eListBoxEntryMenu(&list, _("Satellites..."), _("goto satellite config")))->selected, eZapScan::sel_satconfig);
 		CONNECT((new eListBoxEntryMenu(&list, _("Rotor Setup..."), _("goto Rotor Setup")))->selected, eZapScan::sel_rotorConfig);
-//		CONNECT((new eListBoxEntryMenu(&list, _("Manual Rotor Menu"), _("set Limits, drive East, drive West, ...")))->selected, eZapScan::sel_rotorManual);
 	}
 //	CONNECT((new eListBoxEntryMenu(&list, _("Bouquets...")))->selected, eZapScan::sel_bouquet);	
 }
@@ -131,11 +130,6 @@ void eZapScan::sel_rotorConfig()
 		c.hide();
 		show();
 	}
-}
-
-void eZapScan::sel_rotorManual()
-{
-
 }
 
 eLNBSelector::eLNBSelector()
