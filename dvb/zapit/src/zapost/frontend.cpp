@@ -534,6 +534,12 @@ const bool CFrontend::tuneChannel (CZapitChannel *channel)
 	);
 }
 
+void positionMotor(uint8_t diseqc)
+{
+	// turn satellite dish to stored motor position indicated in diseqc
+	printf("[frontend] positionMotor: function not implemented yet.\n");
+}
+
 const bool CFrontend::tuneFrequency (FrontendParameters feparams, uint8_t polarization, uint8_t diseqc)
 {
 	bool secChanged = false;
@@ -606,6 +612,17 @@ const bool CFrontend::tuneFrequency (FrontendParameters feparams, uint8_t polari
 		case DISEQC_1_1:
 			if ((currentVoltage != voltage) || (currentToneMode != toneMode) || (currentDiseqc != diseqc))
 			{
+				sendDiseqcCommand(toneMode, voltage, diseqc, diseqcRepeats);
+				secChanged = true;
+			}
+			break;
+			
+		case DISEQC_1_2:
+			if ((currentVoltage != voltage) || (currentToneMode != toneMode) || (currentDiseqc != diseqc))
+			{
+				if (currentDiseqc != diseqc)
+					positionMotor(diseqc);
+
 				sendDiseqcCommand(toneMode, voltage, diseqc, diseqcRepeats);
 				secChanged = true;
 			}
