@@ -338,11 +338,11 @@ bool CSectionsdClient::getCurrentNextServiceKey(const t_channel_id channel_id, C
 
 
 
-CChannelEventList CSectionsdClient::getChannelEvents()
+CChannelEventList CSectionsdClient::getChannelEvents(const bool tv_mode)
 {
 	CChannelEventList eList;
 
-	if (send(sectionsd::actualEventListTVshortIDs))
+	if (send(tv_mode ? sectionsd::actualEventListTVshortIDs : sectionsd::actualEventListRadioShortIDs))
 	{
 		int nBufSize = readResponse();
 

@@ -159,7 +159,7 @@ class CSectionsdClient : private CBasicClient
 
 	void setServiceChanged(const t_channel_id channel_id, const bool requestEvent);
 
-	CChannelEventList getChannelEvents();
+	CChannelEventList getChannelEvents(const bool tv_mode = true);
 
 	CChannelEventList getEventsServiceKey(const t_channel_id channel_id);
 
