@@ -410,6 +410,19 @@ void CZapitClient::setVolume(const unsigned int left, const unsigned int right)
 }
 
 
+delivery_system_t CZapitClient::getDeliverySystem(void)
+{
+	send(CZapitMessages::CMD_GET_DELIVERY_SYSTEM, 0, 0);
+
+	CZapitMessages::responseDeliverySystem response;
+	CBasicClient::receive_data((char* )&response, sizeof(response));
+
+	close_connection();
+
+	return response.system;
+}
+
+
 /***********************************************/
 /*					     */
 /*  Scanning stuff			     */

@@ -61,6 +61,13 @@ typedef enum {
 	CA_STATUS_FTA
 } ca_status_t;
 
+/* dvb transmission types */
+typedef enum {
+	DVB_C,
+	DVB_S,
+	DVB_T
+} delivery_system_t;
+
 /* video display formats (cf. video_displayformat_t in driver/dvb/include/linux/dvb/video.h): */
 typedef enum {
 	ZAPIT_VIDEO_PAN_SCAN,       /* use pan and scan format */
