@@ -194,6 +194,7 @@ unsigned short parse_ES_info(const unsigned char * const buffer, CZapitChannel *
 	case 0x01:
 	case 0x02:
 		channel->setVideoPid(esInfo->elementary_PID);
+		descramble = true;
 		break;
 
 	case 0x03:
