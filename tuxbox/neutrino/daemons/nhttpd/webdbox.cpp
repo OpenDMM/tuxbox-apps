@@ -183,3 +183,26 @@ string TWebDbox::GetServiceName(int onid_sid)
 	return "";
 }
 
+//-------------------------------------------------------------------------
+bool TWebDbox::GetBouquets(void)
+{
+	BouquetList.clear();
+	zapit->getBouquets(BouquetList); 
+	return true;
+}
+
+//-------------------------------------------------------------------------
+bool TWebDbox::GetBouquet(unsigned int BouquetNr)
+{
+	BouquetsList[BouquetNr].clear();
+	zapit->getBouquetChannels(BouquetNr,BouquetsList[BouquetNr]);
+	return true;
+}
+//-------------------------------------------------------------------------
+
+bool TWebDbox::GetChannelList(void)
+{
+	ChannelList.clear();
+	zapit->getChannels(ChannelList);
+	return true;
+}
