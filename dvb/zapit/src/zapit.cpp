@@ -1476,7 +1476,6 @@ int main(int argc, char **argv)
 	}
 
 	scan_runs = 0;
-	found_transponders = 0;
 	found_channels = 0;
 	curr_sat = -1;
 
@@ -1498,18 +1497,6 @@ int main(int argc, char **argv)
 		WARN("error parsing services");
 	else
 		INFO("channels have been loaded succesfully");
-
-	audioDecoder = new CAudio();
-
-	if (!audioDecoder->isInitialized())
-	{
-		printf("[zapit] unable to initialize audio device\n");
-		return -1;
-	}
-	else
-	{
-		audioDecoder->setVolume(255, 255);
-	}
 
 	videoDecoder = new CVideo();
 
