@@ -17,7 +17,7 @@ $Id$
 #define __PES_DATA_H 1
 
 
-void PES_decodeDATA (u_char *b, int len);
+void PES_decodeDATA_private_stream_1 (u_char *b, int len);
 
 
 #endif

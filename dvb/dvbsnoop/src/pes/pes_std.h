@@ -16,7 +16,7 @@ $Id$
 #ifndef __PES_STD_H
 #define __PES_STD_H 1
 
-void  PES_decode_std (u_char *b, int len);
+void  PES_decode_std (u_char *b, int len, u_int PES_streamID);
 
 #endif
 
