@@ -687,6 +687,12 @@ PlayStreamThread (void *mrl)
   printf ("[movieplayer.cpp] Waiting for RCST to stop\n");
   pthread_join (rcst, NULL);
   printf ("[movieplayer.cpp] Seems that RCST was stopped succesfully\n");
+  
+  // Some memory clean up
+  ringbuffer_free(ringbuf);
+  delete bufferingBox;
+  delete hintBox;
+
   pthread_exit (NULL);
 }
 
