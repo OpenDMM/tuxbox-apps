@@ -25,9 +25,12 @@
 
 /* system */
 #include <string>
+#include <stdint.h>
 
 /* zapit */
 #include <zapci/ci.h>
+
+typedef uint32_t t_channel_id;             // channel_id: (original_network_id << 16) | service_id
 
 class CZapitAudioChannel
 {
@@ -78,7 +81,7 @@ class CZapitChannel
 		unsigned short getOriginalNetworkId()	{ return originalNetworkId; }
 		unsigned char getServiceType()		{ return serviceType; }
 		unsigned char getDiSEqC()		{ return DiSEqC; }
-		unsigned int getOnidSid()		{ return (originalNetworkId << 16) | serviceId; }
+		t_channel_id getChannelID()		{ return (originalNetworkId << 16) | serviceId; }
 		unsigned int getTsidOnid()		{ return (transportStreamId << 16) | originalNetworkId; }
 
 		/* get methods - read and write variables */

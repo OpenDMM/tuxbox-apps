@@ -24,8 +24,6 @@
 
 using namespace std;
 
-typedef uint32_t t_channel_id;             // channel_id: (original_network_id << 16) | service_id
-
 typedef __gnu_cxx::hash_map<t_channel_id, CZapitChannel> tallchans;
 typedef __gnu_cxx::hash_map<t_channel_id, CZapitChannel>::iterator tallchans_iterator;
 

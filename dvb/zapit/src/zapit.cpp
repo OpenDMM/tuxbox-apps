@@ -229,7 +229,7 @@ void save_settings (bool write)
 		config->setInt32("lastChannelMode", (currentMode & RADIO_MODE) ? 1 : 0);
 
 		// now save the lowest channel number with the current channel_id
-		int c = ((currentMode & RADIO_MODE) ? bouquetManager->radioChannelsBegin() : bouquetManager->tvChannelsBegin()).getLowestChannelNumberWithChannelID(channel->getOnidSid());
+		int c = ((currentMode & RADIO_MODE) ? bouquetManager->radioChannelsBegin() : bouquetManager->tvChannelsBegin()).getLowestChannelNumberWithChannelID(channel->getChannelID());
 		if (c >= 0)
 			config->setInt32((currentMode & RADIO_MODE) ? "lastChannelRadio" : "lastChannelTV", c + 1);
 	}
@@ -313,7 +313,7 @@ int zapit(const t_channel_id channel_id, bool in_nvod)
 	stopPlayBack();
 
 	/* store the new channel */
-	if ((channel == NULL) || (channel_id != channel->getOnidSid()))
+	if ((channel == NULL) || (channel_id != channel->getChannelID()))
 	{
 		channel = &(cit->second);
 	}
@@ -700,7 +700,7 @@ void parse_command (CZapitClient::commandHead &rmsg)
 			case CZapitClient::CMD_GET_CURRENT_SERVICEID:
 			{
 				CZapitClient::responseGetCurrentServiceID msgCurrentSID;
-				msgCurrentSID.serviceID = channel->getOnidSid();
+				msgCurrentSID.serviceID = channel->getChannelID();
 				send(connfd, &msgCurrentSID, sizeof(msgCurrentSID), 0);
 				break;
 			}
@@ -1326,7 +1326,7 @@ void internalSendChannels(ChannelList* channels, const unsigned int first_channe
 
 		CZapitClient::responseGetBouquetChannels response;
 		strncpy(response.name, (*channels)[i]->getName().c_str(),30);
-		response.onid_sid = (*channels)[i]->getOnidSid();
+		response.onid_sid = (*channels)[i]->getChannelID();
 		response.nr = first_channel_nr + i;
 
 		if (send(connfd, &response, sizeof(response),0) == -1)
@@ -1557,7 +1557,7 @@ unsigned zapTo (unsigned int bouquet, unsigned int channel)
 		return CZapitClient::ZAP_INVALID_PARAM;
 	}
 
-	return zapTo_ChannelID((*channels)[channel - 1]->getOnidSid(), false);
+	return zapTo_ChannelID((*channels)[channel - 1]->getChannelID(), false);
 }
 
 unsigned int zapTo_ChannelID(t_channel_id channel_id, bool isSubService)
@@ -1591,7 +1591,7 @@ unsigned zapTo(const unsigned int channel)
 {
 	CBouquetManager::ChannelIterator cit = ((currentMode & RADIO_MODE) ? bouquetManager->radioChannelsBegin() : bouquetManager->tvChannelsBegin()).FindChannelNr(channel - 1);
 	if (!(cit.EndOfChannels()))
-		return zapTo_ChannelID((*cit)->getOnidSid(), false);
+		return zapTo_ChannelID((*cit)->getChannelID(), false);
 	else
 		return 0;
 }
