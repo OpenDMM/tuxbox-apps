@@ -879,7 +879,7 @@ bool CWebAPI::ShowTimerList(CWebserverRequest* request)
 			case CTimerd::TIMER_ZAPTO :
 			case CTimerd::TIMER_RECORD :
 			{
-				sAddData = Parent->Zapit->getChannelName(timer->channel_id);
+				sAddData = CZapitClient::Utf8_to_Latin1(Parent->Zapit->getChannelName(timer->channel_id));
 				if (sAddData.empty())
 					sAddData = Parent->Zapit->isChannelTVChannel(timer->channel_id) ? "Unbekannter TV-Kanal" : "Unbekannter Radiokanal";
 
