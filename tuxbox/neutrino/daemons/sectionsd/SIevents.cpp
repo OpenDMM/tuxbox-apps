@@ -23,10 +23,7 @@
 //
 //
 
-#ifdef DEBUG
 #include <assert.h>
-#endif
-
 #include <stdio.h>
 #include <time.h>
 

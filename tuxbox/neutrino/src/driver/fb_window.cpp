@@ -68,6 +68,7 @@ void CFBWindow::paintBoxRel(const int _x, const int _y, const int _dx, const int
 bool CFBWindow::paintIcon(const std::string _filename, const int _x, const int _y, const color_t _offset)
 {
 	((CPrivateData *)private_data)->frameBuffer->paintIcon(_filename, x + _x, y + _y, _offset);
+	return 0;
 }
 
 void CFBWindow::RenderString(const font_t _font, const int _x, const int _y, const int _width, const std::string _text, const unsigned char _color, const int _boxheight, const bool _utf8_encoded)
