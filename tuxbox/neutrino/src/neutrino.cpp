@@ -2082,6 +2082,11 @@ int CNeutrinoApp::run(int argc, char **argv)
 
 	int loadSettingsErg = loadSetup();
 
+	//lcd aktualisieren
+	g_Controld = new CControldClient;
+	CLCD::getInstance()->showVolume(g_Controld->getVolume(g_settings.audio_avs_Control==1));
+	CLCD::getInstance()->setMuted(g_Controld->getMute(g_settings.audio_avs_Control==1));
+
 	SetupTiming();
 
 	g_Fonts = new FontsDef;
@@ -2089,7 +2094,6 @@ int CNeutrinoApp::run(int argc, char **argv)
 
 	ClearFrameBuffer();
 
-	g_Controld = new CControldClient;
 	g_Locale = new CLocaleManager;
 	g_RCInput = new CRCInput;
 	g_Zapit = new CZapitClient;
@@ -2927,7 +2931,6 @@ void CNeutrinoApp::setVolume(int key, bool bDoPaint)
 				current_volume += 5;
 			}
 			g_Controld->setVolume(current_volume,(g_settings.audio_avs_Control));
-			CLCD::getInstance()->showVolume(current_volume);
 			//additinal volume setting via lirc
 			CIRSend irs("volplus");
 			irs.Send();
@@ -2939,7 +2942,6 @@ void CNeutrinoApp::setVolume(int key, bool bDoPaint)
 				current_volume -= 5;
 			}
 			g_Controld->setVolume(current_volume,(g_settings.audio_avs_Control));
-			CLCD::getInstance()->showVolume(current_volume);
 			//additinal volume setting via lirc
 			CIRSend irs("volminus");
 			irs.Send();
@@ -2963,7 +2965,8 @@ void CNeutrinoApp::setVolume(int key, bool bDoPaint)
 			frameBuffer->paintBoxRel(x+40, y+12, 200, 15, COL_INFOBAR+1);
 			frameBuffer->paintBoxRel(x+40, y+12, vol, 15, COL_INFOBAR+3);
 		}
-
+		
+		CLCD::getInstance()->showVolume(current_volume);
 		if( msg != CRCInput::RC_timeout )
 		{
 			g_RCInput->getMsgAbsoluteTimeout( &msg, &data, &timeoutEnd );
@@ -3299,6 +3302,7 @@ int main(int argc, char **argv)
 	dprintf( DEBUG_NORMAL, "NeutrinoNG $Id$\n\n");
 	//LCD-Init
 	CLCD::getInstance()->init();
+
 
 	//dhcp-client beenden, da sonst neutrino beim hochfahren stehenbleibt
 	system("killall -9 udhcpc >/dev/null 2>/dev/null");
