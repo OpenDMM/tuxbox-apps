@@ -903,7 +903,7 @@ bool parse_command(CBasicMessage::Header &rmsg, int connfd)
 	{
 		CZapitMessages::commandAddBouquet msgAddBouquet;
 		CBasicServer::receive_data(connfd, &msgAddBouquet, sizeof(msgAddBouquet));
-		bouquetManager->addBouquet(convert_to_UTF8(std::string(msgAddBouquet.name)));
+		bouquetManager->addBouquet(msgAddBouquet.name);
 		break;
 	}
 
@@ -920,7 +920,7 @@ bool parse_command(CBasicMessage::Header &rmsg, int connfd)
 		CZapitMessages::commandRenameBouquet msgRenameBouquet;
 		CBasicServer::receive_data(connfd, &msgRenameBouquet, sizeof(msgRenameBouquet)); // bouquet & channel number are already starting at 0!
 		if (msgRenameBouquet.bouquet < bouquetManager->Bouquets.size())
-			bouquetManager->Bouquets[msgRenameBouquet.bouquet]->Name = convert_to_UTF8(std::string(msgRenameBouquet.name));
+			bouquetManager->Bouquets[msgRenameBouquet.bouquet]->Name = msgRenameBouquet.name;
 		break;
 	}
 

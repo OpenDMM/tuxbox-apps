@@ -76,16 +76,6 @@ std::string Unicode_Character_to_UTF8(const int character)
 #endif /* USE_LIBXML */
 }
 
-std::string convert_to_UTF8(const std::string s)
-{
-	std::string r;
-	
-	for (std::string::const_iterator it = s.begin(); it != s.end(); it++)
-		r += Unicode_Character_to_UTF8((const unsigned char)*it);
-		
-	return r;
-}
-
 #ifdef USE_LIBXML
 xmlDocPtr parseXmlFile(const char * filename)
 {

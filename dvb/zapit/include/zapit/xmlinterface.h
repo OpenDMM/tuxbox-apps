@@ -61,8 +61,6 @@ inline std::string convert_UTF8_To_UTF8_XML(const char * s)
 	return ZapitTools::UTF8_to_UTF8XML(s);
 }
 
-std::string convert_to_UTF8(const std::string s);
-
 xmlDocPtr parseXmlFile(const char * filename);
 
 #endif /* __xmlinterface_h__ */
