@@ -355,7 +355,7 @@ bool SectionFilter<T>::filter(const uint16_t pid)
 	}
 
 	dsfp.pid = pid;
-	dsfp.timeout = T::TIMEOUT;
+	dsfp.timeout = 0;
 
 	if (T::SYNTAX == 0)
 		dsfp.flags = DMX_ONESHOT | DMX_IMMEDIATE_START;
