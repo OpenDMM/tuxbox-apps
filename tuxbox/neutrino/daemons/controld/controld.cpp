@@ -128,12 +128,12 @@ void setvideooutput(int format, bool bSaveSettings = true)
 		format=5;
 	}
 
-	// 0 - COMPOSITE
-	// 1 - RGB
+	// 0 - CVBS only
+	// 1 - RGB with CVBS
 	// 2 - SVIDEO
 	// 3 - YUV with VBS
 	// 4 - YUV with CVBS
-
+	
 	if (bSaveSettings) // only set settings if we dont come from watchdog
 	{
 		settings.videooutput = format;
