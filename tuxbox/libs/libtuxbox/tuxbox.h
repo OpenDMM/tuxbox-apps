@@ -24,7 +24,7 @@
 #ifndef TUXBOX_H
 #define TUXBOX_H
 
-#include <tuxbox/tuxbox_info.h>
+#include <tuxbox/info.h>
 
 #ifdef __cplusplus
 extern "C" {
