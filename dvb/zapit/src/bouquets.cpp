@@ -124,14 +124,14 @@ void CBouquet::moveService (unsigned int oldPosition, unsigned int newPosition, 
 	}
 	if ((oldPosition < channels->size()) && (newPosition < channels->size()))
 	{
-		ChannelList::iterator itOld, itNew;
-		unsigned int i;
-		for (i=0, itOld = channels->begin(); i<oldPosition; i++, itOld++);
-		for (i=0, itNew = channels->begin(); i<newPosition; i++, itNew++);
+		ChannelList::iterator it = channels->begin();
 
-		CZapitChannel* tmp = (*channels)[oldPosition];
-		channels->erase( itOld);
-		channels->insert( itNew, tmp);
+		advance(it, oldPosition);
+		CZapitChannel* tmp = *it;
+		channels->erase(it);
+
+		advance(it, newPosition - oldPosition);
+		channels->insert(it, tmp);
 	}
 }
 
