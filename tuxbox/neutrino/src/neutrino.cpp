@@ -32,8 +32,8 @@
 	Foundation, Inc., 675 Mass Ave, Cambridge, MA 02139, USA.
 
   $Log$
-  Revision 1.38  2001/09/19 18:03:14  field
-  Infobar, Sprachauswahl
+  Revision 1.39  2001/09/19 20:48:26  field
+  Sprachauswahl funktioniert... (zapit updaten!)
 
   Revision 1.37  2001/09/18 20:20:26  field
   Eventlist in den Infov. verschoben (gelber Knopf), Infov.-Anzeige auf Knoepfe
@@ -917,21 +917,22 @@ void CNeutrinoApp::SelectAPID()
          ( g_RemoteControl->apid_info.count_apids> 1 ) )
     {
         // wir haben APIDs für diesen Kanal!
+
     	CMenuWidget APIDSelector("apidselector.head", "audio.raw");
 
         APIDSelector.addItem( new CMenuSeparator() );
-        APIDSelector.addItem( new CMenuSeparator(CMenuSeparator::STRING, "apidselector.hint") );
+
+//        APIDSelector.addItem( new CMenuSeparator(CMenuSeparator::STRING, "apidselector.hint") );
+//        APIDSelector.addItem( new CMenuSeparator(CMenuSeparator::LINE) );
 
         APIDSelector.addItem( new CMenuForwarder("menu.back") );
 	    APIDSelector.addItem( new CMenuSeparator(CMenuSeparator::LINE) );
 
         for(int count=0;count<g_RemoteControl->apid_info.count_apids;count++)
         {
-            char item_text[100];
             char apid[5];
             sprintf(apid, "%d", count);
-            sprintf(item_text, "Audio %d", count+ 1);
-            APIDSelector.addItem( new CMenuForwarder(item_text, true, "", APIDChanger, apid, false), (count == g_RemoteControl->apid_info.selected) );
+            APIDSelector.addItem( new CMenuForwarder(g_RemoteControl->apid_info.apid_names[count], true, "", APIDChanger, apid, false), (count == g_RemoteControl->apid_info.selected) );
         }
         APIDSelector.exec(NULL, "");
     }
