@@ -117,6 +117,7 @@ class CTimerdClient:private CBasicClient
 			CTimerd::EventInfo eventInfo;
 			eventInfo.channel_id = channel_id;
 			eventInfo.epgID = epgID;
+			eventInfo.apid = 0;
 			return addTimerEvent(CTimerd::TIMER_ZAPTO, &eventInfo, announcetime, alarmtime, stoptime);
 		};
 
