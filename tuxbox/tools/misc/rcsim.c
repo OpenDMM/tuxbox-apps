@@ -36,6 +36,24 @@
 
 #define EVENTDEV "/dev/input/event0"
 
+/* compatibility stuff */
+
+#ifndef KEY_TOPLEFT
+#define KEY_TOPLEFT	0x1a2
+#endif
+
+#ifndef KEY_TOPRIGHT
+#define KEY_TOPRIGHT	0x1a3
+#endif
+
+#ifndef KEY_BOTTOMLEFT
+#define KEY_BOTTOMLEFT	0x1a4
+#endif
+
+#ifndef KEY_BOTTOMRIGHT
+#define KEY_BOTTOMRIGHT	0x1a5
+#endif
+
 enum {	// not defined in input.h but used like that, at least in 2.4.22
 	KEY_RELEASED = 0,
 	KEY_PRESSED,
