@@ -4,6 +4,9 @@
 // $Id$
 //
 // $Log$
+// Revision 1.14  2001/09/21 14:33:39  field
+// Eventlist - ok/? vertauscht, epg-Breite flexibel
+//
 // Revision 1.13  2001/09/20 19:21:37  fnbrd
 // Channellist mit IDs.
 //
@@ -42,6 +45,7 @@
 #include "../daemonc/remotecontrol.h"
 #include "../helpers/infoviewer.h"
 #include "../helpers/settings.h"
+#include "eventlist.hpp"
 #include "menue.h"
 #include "color.h"
 
@@ -52,13 +56,13 @@ using namespace std;
 
 class CChannelList
 {
-  struct channel {
-    int key;
-    int number;
-    string name;
-    string currentEvent;
-    unsigned int onid_sid;
-  };
+    struct channel {
+        int         key;
+        int         number;
+        string      name;
+        unsigned int onid_sid;
+        epg_event   currentEvent;
+    };
 
 
 	unsigned int		selected;
