@@ -710,7 +710,7 @@ PlayStreamThread (void *mrl)
 				// pida and pidv should have been set by ReceiveStreamThread now
 				// WHY ???!!!!
 				// TODO replace this with a condition/mutex !
-				while(!avpids_found)
+				while(!avpids_found && playstate > CMoviePlayerGui::STOPPED)
 				{
 					usleep(100000);
 				}
