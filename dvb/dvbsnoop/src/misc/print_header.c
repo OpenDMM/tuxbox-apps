@@ -13,6 +13,11 @@ $Id$
 
 
 $Log$
+Revision 1.3  2004/10/12 20:37:48  rasc
+ - Changed: TS pid filtering from file, behavior changed
+ - New: new cmdline option -maxdmx <n>  (replaces -f using pidscan)
+ - misc. changes
+
 Revision 1.2  2004/01/01 20:09:26  rasc
 DSM-CC INT/UNT descriptors
 PES-sync changed, TS sync changed,
@@ -53,7 +58,7 @@ void  print_packet_header (OPTION *opt, char *packetTyp, int pid, int count, int
 	s = "(Unkown PID)";
    }
 
-   out_nl (1,"\n----------------------------------------------------------");
+   out_nl (1,"\n------------------------------------------------------------");
    out_nl (1,"%s-Packet: %08ld   PID: %s, Length: %d (0x%04x)",
 		packetTyp, count, s, length,length);
 
@@ -68,7 +73,7 @@ void  print_packet_header (OPTION *opt, char *packetTyp, int pid, int count, int
 		packetTyp,skipped_bytes);
    }
 
-   out_nl (1,"----------------------------------------------------------");
+   out_nl (1,"------------------------------------------------------------");
 
 
 }
