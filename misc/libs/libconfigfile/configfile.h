@@ -46,6 +46,8 @@ class CConfigFile
 		const bool loadConfig (const std::string p_filename);
 		const bool saveConfig (const std::string p_filename);
 
+		void clear();
+
 		std::string getString (const std::string p_keyName, const std::string defaultValue = "");
 		void setString (const std::string p_keyName, const std::string p_keyValue);
 		int getInt (const std::string p_keyName, const int defaultValue = 0);

@@ -33,6 +33,11 @@ CConfigFile::CConfigFile(const char p_delimiter)
 	delimiter = p_delimiter;
 }
 
+void CConfigFile::clear()
+{
+	configData.clear();
+}
+
 const bool CConfigFile::loadConfig(string p_filename)
 {
 	FILE* fd = fopen(p_filename.c_str(), "r");
@@ -43,7 +48,7 @@ const bool CConfigFile::loadConfig(string p_filename)
 		return false;
 	}
 
-	configData.clear();
+	clear();
 	modifiedFlag = false;
 
 	char buf[1000];
