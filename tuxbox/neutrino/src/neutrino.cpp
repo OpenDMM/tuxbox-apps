@@ -1024,7 +1024,7 @@ void CNeutrinoApp::InitMainMenu(CMenuWidget &mainMenu, CMenuWidget &mainSettings
 	mainMenu.addItem( new CMenuSeparator(CMenuSeparator::LINE) );
 
 	mainMenu.addItem( new CMenuForwarder("mainmenu.settings", true, "", &mainSettings) );
-	mainMenu.addItem( new CMenuForwarder("mainmenu.service", true, "", &service) );
+	mainMenu.addItem( new CLockedMenuForwarder("mainmenu.service", g_settings.parentallock_pincode, false, true, "", &service) );
 //	mainMenu.addItem( new CMenuSeparator(CMenuSeparator::LINE) );
 //	mainMenu.addItem( new CMenuForwarder("mainmenu.info", true, "", new CDBoxInfoWidget, "",true) );
 
@@ -1036,7 +1036,7 @@ void CNeutrinoApp::InitMainMenu(CMenuWidget &mainMenu, CMenuWidget &mainSettings
 	mainSettings.addItem( new CMenuSeparator(CMenuSeparator::LINE) );
 	mainSettings.addItem( new CMenuForwarder("mainsettings.video", true, "", &videoSettings) );
 	mainSettings.addItem( new CMenuForwarder("mainsettings.audio", true, "", &audioSettings) );
-	mainSettings.addItem( new CLockedMenuForwarder("parentallock.parentallock", g_settings.parentallock_pincode, true, "", &parentallockSettings) );
+	mainSettings.addItem( new CLockedMenuForwarder("parentallock.parentallock", g_settings.parentallock_pincode, true, true, "", &parentallockSettings) );
 	mainSettings.addItem( new CMenuForwarder("mainsettings.network", true, "", &networkSettings) );
 	mainSettings.addItem( new CMenuForwarder("mainsettings.recording", true, "", &recordingSettings) );
 	mainSettings.addItem( new CMenuForwarder("mainsettings.language", true, "", &languageSettings ) );
