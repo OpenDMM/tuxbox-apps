@@ -26,15 +26,17 @@
 
 class CCaDescriptor
 {
-	public:
+	private:
 		unsigned char	descriptor_tag		: 8;
 		unsigned char	descriptor_length	: 8;
 		unsigned short	CA_system_ID		: 16;
 		unsigned char	reserved1		: 3;
 		unsigned short	CA_PID			: 13;
-
-		/* for (i = 0; i < n; i++) */
 		std::vector <unsigned char> private_data_byte;
+
+	public:
+		CCaDescriptor (unsigned char * buffer);
+		unsigned int writeToBuffer (unsigned char * buffer); // returns number of bytes written
 };
 
 /*
