@@ -106,11 +106,7 @@ void CBouquet::removeService (CZapitChannel* oldChannel)
 				break;
 		}
 
-		ChannelList::iterator it = channels->begin();
-		while ((it<channels->end()) && !(*it == oldChannel))
-			it++;
-		if (it != channels->end())
-			channels->erase(it);
+		remove(channels->begin(), channels->end(), oldChannel);
 	}
 }
 
