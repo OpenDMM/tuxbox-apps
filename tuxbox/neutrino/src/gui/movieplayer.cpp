@@ -756,7 +756,7 @@ PlayStreamThread (void *mrl)
 	ringbuf = ringbuffer_create (RINGBUFFERSIZE);
 	printf ("[movieplayer.cpp] ringbuffer created\n");
 
-	bufferingBox = new CHintBox("messagebox.info", g_Locale->getText(LOCALE_MOVIEPLAYER_BUFFERING)); // UTF-8
+	bufferingBox = new CHintBox(LOCALE_MESSAGEBOX_INFO, g_Locale->getText(LOCALE_MOVIEPLAYER_BUFFERING)); // UTF-8
 
 	std::string baseurl = "http://";
 	baseurl += g_settings.streaming_server_ip;
@@ -1657,7 +1657,7 @@ CMoviePlayerGui::PlayStream (int streamtype)
 				pthread_join (rct, NULL);
 			}
 			//TODO: Add Dialog (Remove Dialog later)
-			hintBox = new CHintBox("messagebox.info", g_Locale->getText(LOCALE_MOVIEPLAYER_PLEASEWAIT)); // UTF-8
+			hintBox = new CHintBox(LOCALE_MESSAGEBOX_INFO, g_Locale->getText(LOCALE_MOVIEPLAYER_PLEASEWAIT)); // UTF-8
 			hintBox->paint();
 			buffer_time=0;
 			if (pthread_create (&rct, 0, PlayStreamThread, (void *) mrl) != 0)
@@ -1795,7 +1795,7 @@ CMoviePlayerGui::PlayStream (int streamtype)
  		{
 			std::string fullhelptext = g_Locale->getText(LOCALE_MOVIEPLAYER_VLCHELP);
 			fullhelptext += "\nVersion: $Revision$\n\nMovieplayer (c) 2003, 2004 by gagga";
-			ShowMsgUTF("messagebox.info", fullhelptext.c_str(), CMessageBox::mbrBack, CMessageBox::mbBack, "info.raw"); // UTF-8
+			ShowMsgUTF(LOCALE_MESSAGEBOX_INFO, fullhelptext.c_str(), CMessageBox::mbrBack, CMessageBox::mbBack, "info.raw"); // UTF-8
  		}
 		else
 			if (msg == NeutrinoMessages::RECORD_START
@@ -1999,7 +1999,7 @@ CMoviePlayerGui::PlayFile (void)
  		{
 			std::string fullhelptext = g_Locale->getText(LOCALE_MOVIEPLAYER_TSHELP);
 			fullhelptext += "\nVersion: $Revision$\n\nMovieplayer (c) 2003, 2004 by gagga";
-			ShowMsgUTF("messagebox.info", fullhelptext.c_str(), CMessageBox::mbrBack, CMessageBox::mbBack, "info.raw"); // UTF-8
+			ShowMsgUTF(LOCALE_MESSAGEBOX_INFO, fullhelptext.c_str(), CMessageBox::mbrBack, CMessageBox::mbBack, "info.raw"); // UTF-8
  		}
  		else if (msg == CRCInput::RC_setup)
  		{
