@@ -13,6 +13,11 @@ $Id$
 */
 
 
+#ifndef __TOT_H
+#define __TOT_H 
+
 
 void decode_TOT (u_char *b, int len);
+
+#endif
 

@@ -16,6 +16,9 @@ $Id$
 
 
 $Log$
+Revision 1.5  2004/02/16 22:45:37  rasc
+small bugfix: crc is 32 bit
+
 Revision 1.4  2004/01/02 16:40:40  rasc
 DSM-CC  INT/UNT descriptors complete
 minor changes and fixes
@@ -93,7 +96,7 @@ void decode_PRIVATE (u_char *b, int len)
  b += section_length;
 
  if (section_syntax_indicator != 0) {
- 	outBit_Sx_NL (5,"CRC: ",		b, 0, 4);
+ 	outBit_Sx_NL (5,"CRC: ",		b, 0, 32);
  }
 
 }
