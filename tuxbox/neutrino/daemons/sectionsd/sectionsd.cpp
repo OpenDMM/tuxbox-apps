@@ -3122,7 +3122,7 @@ bool parse_command(CBasicMessage::Header &rmsg, int connfd)
 		struct sectionsd::msgRequestHeader header;
 
 		memcpy(&header, &rmsg, sizeof(CBasicMessage::Header));
-		memset((&header) + sizeof(CBasicMessage::Header), 0, sizeof(header) - sizeof(CBasicMessage::Header));
+		memset(((char *)&header) + sizeof(CBasicMessage::Header), 0, sizeof(header) - sizeof(CBasicMessage::Header));
 
 		int readbytes = readNbytes(connfd, ((char *)&header) + sizeof(CBasicMessage::Header), sizeof(header) - sizeof(CBasicMessage::Header), TIMEOUT_CONNECTIONS);
 
