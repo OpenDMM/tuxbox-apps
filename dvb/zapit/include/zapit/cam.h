@@ -29,7 +29,7 @@
 class CCam : public CBasicClient
 {
 	private:
-		bool sendMessage (char* data, const unsigned short length);
+		bool sendMessage (char* data, const size_t length);
 	public:
 		bool setCaPmt (CCaPmt* caPmt);
 };

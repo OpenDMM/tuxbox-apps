@@ -75,7 +75,7 @@ void CBasicClient::close_connection()
 	}
 }
 
-bool CBasicClient::send_data(char* data, const unsigned int size)
+bool CBasicClient::send_data(char* data, const size_t size)
 {
 	if (sock_fd == -1)
 	    return false;
@@ -89,7 +89,7 @@ bool CBasicClient::send_data(char* data, const unsigned int size)
 	return true;
 }
 
-bool CBasicClient::receive_data(char* data, const unsigned int size)
+bool CBasicClient::receive_data(char* data, const size_t size)
 {
 	if (sock_fd == -1)
 		return false;
