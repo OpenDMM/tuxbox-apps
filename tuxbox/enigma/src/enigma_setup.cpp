@@ -197,7 +197,7 @@ void eZapSetup::sel_harddisk()
 
 	if (!setup.getNr())
 	{
-		eMessageBox msg(_("Harddisk setup..."), _("sorry, no harddisks found!"));
+		eMessageBox msg(_("sorry, no harddisks found!"), _("Harddisk setup..."));
 		msg.show();
 		msg.exec();
 		msg.hide();
