@@ -2835,7 +2835,7 @@ void CNeutrinoApp::tvMode( bool rezap )
 	}
 	else if( mode == mode_standby )
 	{
-		g_lcdd->setMode(CLcddClient::MODE_TVRADIO);
+		g_lcdd->setMode(CLcddTypes::MODE_TVRADIO);
 		g_Controld->videoPowerDown(false);
 	}
 
@@ -2920,7 +2920,7 @@ void CNeutrinoApp::standbyMode( bool bOnOff )
 		if (frameBuffer->getActive())
 			memset(frameBuffer->getFrameBufferPointer(), 255, frameBuffer->getStride()*576);
 
-		g_lcdd->setMode(CLcddClient::MODE_STANDBY);
+		g_lcdd->setMode(CLcddTypes::MODE_STANDBY);
 		g_Controld->videoPowerDown(true);
 
 		lastMode = mode;
@@ -2930,7 +2930,7 @@ void CNeutrinoApp::standbyMode( bool bOnOff )
 	{
 	    // STANDBY AUS
 
-		g_lcdd->setMode(CLcddClient::MODE_TVRADIO);
+		g_lcdd->setMode(CLcddTypes::MODE_TVRADIO);
 		g_Controld->videoPowerDown(false);
 
 		mode = mode_unknown;
@@ -2959,7 +2959,7 @@ void CNeutrinoApp::radioMode( bool rezap)
 	}
 	else if( mode == mode_standby )
 	{
-		g_lcdd->setMode(CLcddClient::MODE_TVRADIO);
+		g_lcdd->setMode(CLcddTypes::MODE_TVRADIO);
 		g_Controld->videoPowerDown(false);
 	}
 

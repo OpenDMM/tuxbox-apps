@@ -544,11 +544,11 @@ void setScartMode(bool onoff)
 {
 	if(onoff)
 	{
-		lcdd.setMode(CLcddClient::MODE_SCART);
+		lcdd.setMode(CLcddTypes::MODE_SCART);
 	}
 	else
 	{
-		lcdd.setMode(CLcddClient::MODE_TVRADIO);
+		lcdd.setMode(CLcddTypes::MODE_TVRADIO);
 	}
 	switch_vcr( onoff );
 }
