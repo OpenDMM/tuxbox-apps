@@ -120,30 +120,6 @@ void CBouquet::removeService (CZapitChannel* oldChannel)
 	}
 }
 
-void CBouquet::moveService (char* serviceName, unsigned int newPosition, unsigned char serviceType)
-{
-	ChannelList* channels = &tvChannels;
-	switch (serviceType)
-	{
-		case 1:
-		case 4: channels = &tvChannels; break;
-		case 2: channels = &radioChannels; break;
-	}
-
-	unsigned int i=0;
-	ChannelList::iterator it = channels->begin();
-	while ((it<=channels->end()) && ((*it)->getName() != string(serviceName)))
-	{
-		it++;
-		i++;
-	}
-	if (it<channels->end())
-	{
-		moveService( i, newPosition, serviceType);
-	}
-
-}
-
 /*
 void CBouquet::moveService(  unsigned int onidSid, unsigned int newPosition)
 {

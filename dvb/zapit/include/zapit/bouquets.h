@@ -62,7 +62,6 @@ class CBouquet
 		void removeService (CZapitChannel* oldChannel);
 		void removeService (unsigned int onidSid, unsigned char serviceType = 0)			{removeService( getChannelByOnidSid( onidSid, serviceType));}
 
-		void moveService (char* serviceName, unsigned int newPosition, unsigned char serviceType);
 //		void moveService (unsigned int onidSid, unsigned int newPosition);
 		void moveService (unsigned int oldPosition, unsigned int newPosition, unsigned char serviceType);
 
