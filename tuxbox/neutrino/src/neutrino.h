@@ -65,6 +65,7 @@
 #include "widget/colorchooser.h"
 #include "widget/keychooser.h"
 #include "widget/stringinput.h"
+#include "widget/stringinput_ext.h"
 #include "widget/screensetup.h"
 #include "widget/gamelist.h"
 #include "widget/bouqueteditor_bouquets.h"
