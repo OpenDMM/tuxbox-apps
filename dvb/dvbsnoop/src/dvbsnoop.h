@@ -8,6 +8,9 @@ $Id$
    (c) rasc
 
 $Log$
+Revision 1.6  2003/06/24 23:51:03  rasc
+bugfixes and enhancements
+
 Revision 1.5  2002/11/01 20:38:40  Jolt
 Changes for the new API
 
@@ -26,7 +29,7 @@ dvbsnoop v0.7  -- Commit to CVS
 
 */
 
-#define VERSION  "0.7b"
+#define VERSION  "0.9b"
 
 #define NEWSTRUCT
 
