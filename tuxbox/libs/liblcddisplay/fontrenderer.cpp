@@ -231,7 +231,7 @@ void Font::RenderString(int x, int y, int width, const char *text, int color, in
 			for (int i = 0; i < remaining_unicode_length; i++)
 			{
 				text++;
-				if ((*text) & 0xc0 != 0x80)
+				if (((*text) & 0xc0) != 0x80)
 				{
 					remaining_unicode_length = -1;
 					break;           // incomplete or corrupted character
