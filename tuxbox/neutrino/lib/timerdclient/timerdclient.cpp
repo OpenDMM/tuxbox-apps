@@ -31,19 +31,7 @@
 
 bool CTimerdClient::send(const unsigned char command, char* data = NULL, const unsigned int size = 0)
 {
-	CBasicMessage::Header msgHead;
-	msgHead.version = CTimerdMsg::ACTVERSION;
-	msgHead.cmd     = command;
-
-	open_connection(TIMERD_UDS_NAME);
-
-	if(!send_data((char*)&msgHead, sizeof(msgHead)))
-		return false;
-
-	if(size != 0)
-		return send_data(data, size);
-
-	return true;
+	return CBasicClient::send(TIMERD_UDS_NAME, CTimerdMsg::ACTVERSION, command, data, size);
 }
 
 //-------------------------------------------------------------------------
