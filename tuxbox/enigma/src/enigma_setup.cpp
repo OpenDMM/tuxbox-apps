@@ -38,6 +38,7 @@
 #include <lib/dvb/edvb.h>
 #include <lib/gui/eskin.h>
 #include <lib/gui/elabel.h>
+#include "upgrade.h"
 
 eZapSetup::eZapSetup()
 	:eListBoxWindow<eListBoxEntryMenu>(_("Setup"), 12, 220, true)
@@ -56,6 +57,7 @@ eZapSetup::eZapSetup()
 	{
 		CONNECT((new eListBoxEntryMenu(&list, _("Harddisk..."), _("initialize harddisc") ))->selected, eZapSetup::sel_harddisk);
 		CONNECT((new eListBoxEntryMenu(&list, _("Common Interface..."), _("initialize harddisc") ))->selected, eZapSetup::sel_ci);
+		CONNECT((new eListBoxEntryMenu(&list, _("Upgrade..."), _("upgrade firmware") ))->selected, eZapSetup::sel_upgrade);
 	}
 }
 
@@ -196,5 +198,17 @@ void eZapSetup::sel_ci()
 	ci.show();
 	ci.exec();
 	ci.hide();
+	show();
+}
+
+void eZapSetup::sel_upgrade()
+{
+	hide();
+	{
+		eUpgrade up;
+		up.show();
+		up.exec();
+		up.hide();
+	}
 	show();
 }

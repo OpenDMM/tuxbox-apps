@@ -101,7 +101,6 @@ static eString getVersionInfo(const char *info)
 	return result;
 }
 
-
 class eAboutScreen: public eWindow
 {
 	eLabel *machine, *processor, *frontend, *harddisks, *vendor, *dreamlogo, *version;
