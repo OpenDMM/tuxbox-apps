@@ -28,6 +28,7 @@
 
 #include <lib/dvb/edvb.h>
 #include <lib/dvb/frontend.h>
+#include <lib/dvb/service.h>
 #include <lib/gui/ewindow.h>
 #include <lib/gui/eskin.h>
 #include <lib/gui/elabel.h>
@@ -70,7 +71,7 @@ void eZapInfo::sel_satfind()
 void eZapInfo::sel_streaminfo()
 {
 	hide();	
-	eStreaminfo si;
+	eStreaminfo si(0, eServiceInterface::getInstance()->service);
 	si.setLCD(LCDTitle, LCDElement);
 	si.show();
 	si.exec();
