@@ -106,7 +106,7 @@ void CScanSettings::toSatList( CZapitClient::ScanSatelliteList& satList) const
 	{
 		strncpy(sat.satName, satNameNoDiseqc, 30);
 		sat.diseqc = 0;
-		satList.insert(satList.end(), sat);
+		satList.push_back(sat);
 	}
 	else if  (diseqcMode == DISEQC_1_2)
 	{
@@ -121,7 +121,7 @@ void CScanSettings::toSatList( CZapitClient::ScanSatelliteList& satList) const
 				break;
 			}
 		}
-		satList.insert(satList.end(), sat);
+		satList.push_back(sat);
 	}
 	else
 	{
@@ -131,7 +131,7 @@ void CScanSettings::toSatList( CZapitClient::ScanSatelliteList& satList) const
 			{
 				strncpy(sat.satName, satName[i], 30);
 				sat.diseqc = satDiseqc[i];
-				satList.insert( satList.end(), sat);
+				satList.push_back(sat);
 			}
 		}
 	}
@@ -148,7 +148,7 @@ void CScanSettings::toMotorPosList(CZapitClient::ScanMotorPosList& motorPosList)
 		{
 			sat.satPosition = satPosition[i];
 			sat.motorPos = satMotorPos[i];
-			motorPosList.insert(motorPosList.end(), sat);
+			motorPosList.push_back(sat);
 		}
 	}
 }
