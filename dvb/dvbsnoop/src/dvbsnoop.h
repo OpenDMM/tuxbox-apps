@@ -8,6 +8,11 @@ $Id$
    (c) rasc
 
 $Log$
+Revision 1.10  2003/10/16 19:02:29  rasc
+some updates to dvbsnoop...
+- small bugfixes
+- tables updates from ETR 162
+
 Revision 1.9  2003/10/13 23:35:35  rasc
 Bugfix, verbose < 4 segfaulted, tnx to 'mws'  for reporting.
 
@@ -40,7 +45,7 @@ dvbsnoop v0.7  -- Commit to CVS
 
 */
 
-#define DVBSNOOP_VERSION  "0.9d"
+#define DVBSNOOP_VERSION  "1.0a"
 
 
 #include <stdio.h>

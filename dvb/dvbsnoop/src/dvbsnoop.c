@@ -13,7 +13,7 @@ $Id$
 
  I also don't garantee, that data output is correct in any way.
 
- (c) 2001-2003   Rainer.Scherg@t-online.de
+ (c) 2001-2003   Rainer.Scherg@gmx.de
 
 
  -- Sorry for the bad coding, it's really quick and dirty. ;-)
@@ -24,6 +24,11 @@ $Id$
 
 
 $Log$
+Revision 1.8  2003/10/16 19:02:28  rasc
+some updates to dvbsnoop...
+- small bugfixes
+- tables updates from ETR 162
+
 Revision 1.7  2003/07/06 05:28:52  obi
 compatibility stuff.. now there is only one version for old and new drivers
 which selects the api at configure time
