@@ -432,6 +432,12 @@ int parse_ca_pmt(const unsigned char *buffer, const unsigned int length)
 	pmt->program_number = *(unsigned short *)&buffer[1];
 	pmt->program_info_length = *(unsigned short *)&buffer[4] & 0x0fff;
 
+	if ((pmt->program_number & 0xff00) != 0x3200) {
+		printf("[camd] program number %04x unsupported due to missing parental control\n",
+				pmt->program_number);
+		return -1;
+	}
+
 #if 0
 	printf("ca_pmt_list_management: %02x\n", pmt->ca_pmt_list_management);
 	printf("prugram number: %04x\n", pmt->program_number);
@@ -531,7 +537,7 @@ int parse_ca_pmt(const unsigned char *buffer, const unsigned int length)
 	free(pmt);
 
 	if ((service.numpids != 0) && (service.caID != 0)) {
-		service.onID = 0x0085;
+		service.onID = 0x0001;
 		return adddescrambleservicestruct(&service);
 	}
 
