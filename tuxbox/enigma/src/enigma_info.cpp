@@ -81,7 +81,9 @@ void eZapInfo::sel_streaminfo()
 {
 	hide();	
 	eStreaminfo si(0, eServiceInterface::getInstance()->service);
+#ifndef DISABLE_LCD
 	si.setLCD(LCDTitle, LCDElement);
+#endif
 	si.show();
 	si.exec();
 	si.hide();
@@ -92,7 +94,9 @@ void eZapInfo::sel_bnversion()
 {
 	hide();	
 	ShowBNVersion bn;
+#ifndef DISABLE_LCD
 	bn.setLCD(LCDTitle, LCDElement);
+#endif
 	bn.show();
 	bn.exec();
 	bn.hide();

@@ -60,7 +60,11 @@ void eZapScan::sel_close()
 
 void eZapScan::sel_scan()
 {
+#ifndef DISABLE_LCD
 	TransponderScan setup(LCDTitle, LCDElement);
+#else
+	TransponderScan setup;
+#endif
 	hide();
 	setup.exec();
 	show();
@@ -94,7 +98,9 @@ void eZapScan::sel_satconfig()
 {
 	hide();
 	eSatelliteConfigurationManager satconfig;
+#ifndef DISABLE_LCD
 	satconfig.setLCD(LCDTitle, LCDElement);
+#endif
 	satconfig.show();
 	satconfig.exec();
 	satconfig.hide();
@@ -105,7 +111,9 @@ void eZapScan::sel_tpeditdlg()
 {
 	hide();
 	eTransponderEditWindow wnd;
+#ifndef DISABLE_LCD
 	wnd.setLCD(LCDTitle, LCDElement);
+#endif
 	wnd.show();
 	wnd.exec();
 	wnd.hide();
@@ -160,7 +168,9 @@ void eZapScan::sel_rotorConfig()
 	if (lnb)
 	{
 		RotorConfig c(lnb);
+#ifndef DISABLE_LCD
 		c.setLCD( LCDTitle, LCDElement );
+#endif
 		c.show();
 		c.exec();
 		c.hide();
