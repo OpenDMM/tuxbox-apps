@@ -40,6 +40,13 @@
 #include <linux/mtd/mtd.h>
 #include "linux/jffs2.h"
 
+#ifndef cpu_to_je16
+#define cpu_to_je16(x) (x)
+#endif
+#ifndef cpu_to_je32
+#define cpu_to_je32(x) (x)
+#endif
+
 #define PROGRAM "eraseall"
 #define VERSION "0.1.2"
 
