@@ -22,6 +22,9 @@
 //    Foundation, Inc., 675 Mass Ave, Cambridge, MA 02139, USA.
 //
 // $Log$
+// Revision 1.13  2001/11/03 15:39:57  field
+// Deadlock behoben, Perspektiven
+//
 // Revision 1.12  2001/11/03 03:13:52  field
 // Auf Perspektiven vorbereitet
 //
@@ -108,6 +111,7 @@ SIevent::SIevent(const SIevent &e)
   userClassification=e.userClassification;
   components=e.components;
   ratings=e.ratings;
+  linkage_descs=e.linkage_descs;
 }
 
 int SIevent::saveXML(FILE *file, const char *serviceName) const
