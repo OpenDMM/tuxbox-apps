@@ -220,7 +220,7 @@ int DMX::start(void)
 
 	if ((fd = open(DEMUX_DEVICE, O_RDWR)) == -1)
 	{
-		perror("[sectionsd] open dmx: ");
+		perror("[sectionsd] open dmx");
 		pthread_mutex_unlock(&start_stop_mutex);
 		return 2;
 	}
