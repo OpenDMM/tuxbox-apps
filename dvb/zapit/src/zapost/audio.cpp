@@ -159,6 +159,24 @@ int CAudio::setVolume (unsigned char left, unsigned char right)
 	return -1;
 }
 
+int CAudio::setSource (audioStreamSource_t source)
+{
+	if (status.streamSource == source)
+		return 0;
+
+	if (status.playState != AUDIO_STOPPED)
+		return -1;
+
+	if (ioctl(fd, AUDIO_SELECT_SOURCE, source) < 0)
+	{
+		perror("AUDIO_SELECT_SOURCE");
+		return -1;
+	}
+
+	status.streamSource = source;
+	return 0;
+}
+
 int CAudio::start ()
 {
 	if (status.playState == AUDIO_PLAYING)

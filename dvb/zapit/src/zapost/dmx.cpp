@@ -227,7 +227,7 @@ int setDmxPesFilter (int fd, dmxOutput_t output, dmxPesType_t pesType, unsigned 
 	if (fd < 0)
 		return -1;
 
-	if ((pid < 0x0020) || (pid > 0x1FFB))
+	if ((pid < 0x0020) || ((pid > 0x1FFB) && (pid != 0xFFFF)))
 		return -1;
 
 	pesFilterParams.pid = pid;

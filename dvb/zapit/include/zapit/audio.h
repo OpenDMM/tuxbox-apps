@@ -66,6 +66,10 @@ class CAudio
 		int start ();
 		int stop ();
 
+		/* stream source */
+		audioStreamSource_t getSource () { return status.streamSource; }
+		int setSource (audioStreamSource_t source);
+
 		/* select channels */
 		int selectChannel (audioChannelSelect_t sel);
 		audioChannelSelect_t getSelectedChannel ();
