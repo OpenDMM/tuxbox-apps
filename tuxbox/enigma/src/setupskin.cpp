@@ -90,6 +90,8 @@ void eSkinSetup::loadSkins()
 		lskins->sort();
 	if (selection)
 		lskins->setCurrent(selection);
+	if ( current_skin )
+		free(current_skin);
 }
 
 void eSkinSetup::accept()

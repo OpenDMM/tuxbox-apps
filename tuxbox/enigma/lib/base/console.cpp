@@ -153,7 +153,6 @@ eConsoleAppContainer::eConsoleAppContainer( const eString &cmd )
 	CONNECT(in->activated, eConsoleAppContainer::readyRead);
 	CONNECT(out->activated, eConsoleAppContainer::readyWrite);
 	CONNECT(err->activated, eConsoleAppContainer::readyErrRead);
-	signal(SIGCHLD, SIG_IGN);   // no zombie when child killed
 }
 
 eConsoleAppContainer::~eConsoleAppContainer()
