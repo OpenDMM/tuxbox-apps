@@ -68,7 +68,7 @@ void LcdFontRenderClass::InitFontCache()
 {
 	printf("[LCDFONT] Intializing font cache...");
 	fflush(stdout);
-	if (FTC_Manager_New(library, 0, 0, 0, myFTC_Face_Requester, this, &cacheManager))
+	if (FTC_Manager_New(library, 3, 0, 0, myFTC_Face_Requester, this, &cacheManager))
 	{
 		printf(" manager failed!\n");
 		return;
@@ -224,9 +224,10 @@ int UTF8ToUnicode(const char * &text, const bool utf8_encoded) // returns -1 on 
 
 void LcdFont::RenderString(int x, int y, const int width, const char * text, const int color, const int selected, const bool utf8_encoded)
 {
-	if (FTC_Manager_Lookup_Size(renderer->cacheManager, &font.font, &face, &size)<0)
+	int err;
+	if ((err=FTC_Manager_Lookup_Size(renderer->cacheManager, &font.font, &face, &size))!=0)
 	{ 
-		printf("FTC_Manager_Lookup_Size failed!\n");
+		printf("FTC_Manager_Lookup_Size failed! (%d)\n",err);
 		return;
 	}
 	int left=x, step_y=(size->metrics.height >> 6 )*3/4 + 4;
