@@ -142,7 +142,7 @@ eLNBSelector::eLNBSelector()
 	:eListBoxWindow<eListBoxEntryText>(_("Select LNB"), 5, 300, true)
 {
 	move(ePoint(150, 136));
-	new eListBoxEntryText(&list, _("[back]"), _("go to prev menu"));
+	new eListBoxEntryText(&list, _("[back]"), 0, 0, _("go to prev menu") );
 	int cnt=0;
 	for ( std::list<eLNB>::iterator it( eTransponderList::getInstance()->getLNBs().begin()); it != eTransponderList::getInstance()->getLNBs().end(); it++, cnt++ )
 	{
@@ -154,5 +154,8 @@ eLNBSelector::eLNBSelector()
 
 void eLNBSelector::selected( eListBoxEntryText *e )
 {
-	close( e?(int)e->getKey():0 );
+	if ( e && e->getKey() )
+		close((int)e->getKey());
+	else
+		close(0);
 }
