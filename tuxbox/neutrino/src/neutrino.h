@@ -95,10 +95,8 @@ using namespace std;
 #define SA struct sockaddr
 #define SAI struct sockaddr_in
 
-/* class for handling when bouquets changed.                  */
-/* This class should be a temporarily work around             */
-/* and should be replaced by standard neutrino event handlers */
-/* (libevent) */
+#define widest_number "1"
+
 class CNeutrinoApp;
 
 struct messages_return {
