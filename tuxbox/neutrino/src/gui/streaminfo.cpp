@@ -36,6 +36,9 @@ Module StreamInfo
 
 History:
  $Log$
+ Revision 1.16  2002/02/25 01:27:33  field
+ Key-Handling umgestellt (moeglicherweise beta ;)
+
  Revision 1.15  2002/01/28 20:50:42  field
  Streaminfo besser
 
@@ -90,18 +93,7 @@ int CStreamInfo::exec(CMenuTarget* parent, string)
 	}
 	paint();
 
-	//	int key = g_RCInput->getKey(130);
-
-	// -- just eat key and return
-
-	g_RCInput->getKey(130);
-
-	//    if ( (key==CRCInput::RC_spkr) ||
-	//	     (key==CRCInput::RC_plus) ||
-	//         (key==CRCInput::RC_minus) )
-	//    {
-	//        g_RCInput->pushbackKey(key);
-	//    }
+	neutrino->HandleKeys( g_RCInput->getKey(130) );
 
 	hide();
 	return CMenuTarget::RETURN_REPAINT;
