@@ -11,11 +11,14 @@ $Id$
 
 
  -- UNT Section  (Update Notification Table)
- -- DSM-CC Data Carousel  TR 102 006
+ -- DSM-CC Data Carousel  ETSI TS 102 006
 
 
 
 $Log$
+Revision 1.2  2003/12/27 00:21:16  rasc
+dsmcc section tables
+
 Revision 1.1  2003/12/26 23:27:39  rasc
 DSM-CC  UNT section
 

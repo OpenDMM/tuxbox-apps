@@ -18,6 +18,9 @@ $Id$
 
 
 $Log$
+Revision 1.29  2003/12/27 00:21:17  rasc
+dsmcc section tables
+
 Revision 1.28  2003/11/26 19:55:34  rasc
 no message
 
@@ -948,6 +951,7 @@ char *dvbstrOriginalNetwork_ID (u_int i)
 char *dvbstrNetworkIdent_ID (u_int i)
 
 {
+	// $$$ TODO same as OriginalNetworkID??
   STR_TABLE  Table[] = {
      {  0x0000, 0x0000,  "reserved" },
      {  0x0001, 0x0001,  "Astra Satellite Network 19.2E / Satellite / SES" },
