@@ -581,7 +581,9 @@ bool CWebAPI::ShowBouquet(CWebserverRequest* request, int BouquetNr)
 		std::string bouquetstr = (BouquetNr >= 0) ? ("&amp;bouquet=" + itoa(BouquetNr)) : "";
 		
 		request->printf("<tr style=\"border-top: 2px solid #707070\"><td colspan=\"2\" class=\"%c\">",classname);
-		request->printf("%s<a class=\"clist\" href=\"switch.dbox2?zapto=%d%s\">%d. %s%s</a>&nbsp;<a href=\"epg.dbox2?eventlist=%u\">%s</a>",
+		request->printf("%s<a class=\"clist\" href=\"switch.dbox2?zapto="
+				PRINTF_CHANNEL_ID_TYPE_NO_LEADING_ZEROS
+				",%s\">%d. %s%s</a>&nbsp;<a href=\"epg.dbox2?eventlist=%u\">%s</a>",
 				((channel->channel_id == current_channel) ? "<a name=\"akt\"></a>" : " "),
 				channel->channel_id,
 				bouquetstr.c_str(),
