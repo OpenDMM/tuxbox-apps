@@ -2,7 +2,7 @@
  * $Id$
  *
  * (C) 2002 by Andreas Oberritter <obi@tuxbox.org>
- *
+ * 
  * This program is free software; you can redistribute it and/or modify
  * it under the terms of the GNU General Public License as published by
  * the Free Software Foundation; either version 2 of the License, or
@@ -19,33 +19,13 @@
  *
  */
 
-#ifndef __cam_h__
-#define __cam_h__
+#include <ost/dmx.h>
 
-#include <ost/ca.h>
-#include <stdint.h>
+#ifndef __dmx_h__
+#define __dmx_h__
 
-#include "ci.h"
-#include "getservices.h"
+int setDmxSctFilter (int fd, dvb_pid_t pid, uint8_t filter0, uint8_t filter1 = 0x00, uint8_t filter2 = 0x00);
+int setDmxPesFilter (int fd, dmxOutput_t output, dmxPesType_t pesType, dvb_pid_t pid);
+int unsetDmxFilter (int fd);
 
-class CCam
-{
-	private:
-		unsigned char camdBuffer[1024];
-		int camdSocket;
-
-		bool camdConnect ();
-		void camdDisconnect ();
-
-		ca_msg_t CCam::getMessage (unsigned short length);
-		int sendMessage (unsigned char * data, unsigned short length);
-
-	public:
-		CCam();
-		~CCam();
-
-		int reset (unsigned short originalNetworkId);
-		int setCaPmt (CCaPmt * caPmt);
-};
-
-#endif /* __cam_h__ */
+#endif /* __dmx_h__ */

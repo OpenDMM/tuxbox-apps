@@ -35,6 +35,8 @@ extern XMLTreeParser *scanInputParser;
 extern std::map <uint8_t, std::string> scanProviders;
 extern CZapitClient::bouquetMode bouquetMode;
 
+extern CEventServer *eventServer;
+
 int get_nits (uint32_t frequency, uint32_t symbol_rate, CodeRate FEC_inner, uint8_t polarity, uint8_t DiSEqC, Modulation modulation)
 {
 	FrontendParameters feparams;

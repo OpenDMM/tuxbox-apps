@@ -26,6 +26,9 @@
 #include <sys/stat.h>
 #include <sys/types.h>
 
+#include <sys/time.h>
+#include <time.h>
+
 #include <iostream>
 
 #include "frontend.h"
@@ -133,24 +136,21 @@ unsigned int CFrontend::getFrequency ()
 		}
 	}
 	else
+	{
 		return currentFrequency;
+	}
 }
 
 unsigned char CFrontend::getPolarization ()
 {
-	if (info->type == FE_QPSK)
+	if (currentVoltage == SEC_VOLTAGE_13)
 	{
-		if (currentVoltage == SEC_VOLTAGE_13)
-		{
-			return 1;
-		}
-		else
-		{
-			return 0;
-		}
+		return 1;
 	}
 	else
-		return 2;
+	{
+		return 0;
+	}
 }
 
 void CFrontend::selfTest ()
@@ -345,6 +345,7 @@ const bool CFrontend::getEvent ()
 	FrontendEvent *event = new FrontendEvent();
 
 	struct pollfd pfd[1];
+
 	pfd[0].fd = frontend_fd;
 	pfd[0].events = POLLIN | POLLPRI;
 
@@ -597,20 +598,7 @@ const bool CFrontend::tuneFrequency (FrontendParameters feparams, uint8_t polari
 		setFrontend(&feparams);
 
 		/* wait for completion */
-//stupid workaround for buggy drivers
-		static int mID = -1;
-		if ( mID==-1 )
-		{
-			char strmID[40];
-			strcpy( strmID, getenv("mID") );
-			mID = atoi(strmID);
-		}
-		
-		if ( mID==2 || mID==3 )		//philips || sagem
-			return true;
-		else
-			getEvent();
-//end
+		getEvent();
 	}
 
 	return tuned;

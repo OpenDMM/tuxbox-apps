@@ -38,6 +38,8 @@ uint32_t found_transponders;
 uint32_t found_channels;
 std::string lastProviderName;
 
+extern CEventServer *eventServer;
+
 std::string charToXML (uint8_t character)
 {
 	std::string returnString;

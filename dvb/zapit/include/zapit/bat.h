@@ -2,7 +2,7 @@
  * $Id$
  *
  * (C) 2002 by Andreas Oberritter <obi@tuxbox.org>
- *
+ * 
  * This program is free software; you can redistribute it and/or modify
  * it under the terms of the GNU General Public License as published by
  * the Free Software Foundation; either version 2 of the License, or
@@ -19,33 +19,9 @@
  *
  */
 
-#ifndef __cam_h__
-#define __cam_h__
+#ifndef __bat_h__
+#define __bat_h__
 
-#include <ost/ca.h>
-#include <stdint.h>
+int parse_bat ();
 
-#include "ci.h"
-#include "getservices.h"
-
-class CCam
-{
-	private:
-		unsigned char camdBuffer[1024];
-		int camdSocket;
-
-		bool camdConnect ();
-		void camdDisconnect ();
-
-		ca_msg_t CCam::getMessage (unsigned short length);
-		int sendMessage (unsigned char * data, unsigned short length);
-
-	public:
-		CCam();
-		~CCam();
-
-		int reset (unsigned short originalNetworkId);
-		int setCaPmt (CCaPmt * caPmt);
-};
-
-#endif /* __cam_h__ */
+#endif /* __bat_h__ */
