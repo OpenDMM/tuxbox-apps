@@ -26,13 +26,7 @@
 /* system headers */
 #include <fcntl.h>
 #include <signal.h>
-#include <sys/ioctl.h>
-#include <sys/poll.h>
 #include <sys/socket.h>
-#include <sys/stat.h>
-#include <sys/types.h>
-#include <sys/un.h>
-#include <sys/wait.h>
 #include <unistd.h>
 
 #ifdef HAVE_CONFIG_H
@@ -1162,7 +1156,7 @@ int main (int argc, char **argv)
 	CBasicServer zapit_server;
 	zapit_server.run(ZAPIT_UDS_NAME, parse_command);
 
-	CZapitDestructor();
+	CZapitDestructor(); // <- should not return
 
 	sleep(5);
 
