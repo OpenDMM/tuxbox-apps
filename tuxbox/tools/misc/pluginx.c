@@ -40,7 +40,13 @@
 #include <plugin.h>
 
 #define FB_DEVICE	"/dev/fb/0"
+
+#if HAVE_DVB_API_VERSION < 3
 #define RC_DEVICE	"/dev/dbox/rc0"
+#else
+#define RC_DEVICE	"/dev/input/event0"
+#endif
+
 #define LCD_DEVICE	"/dev/dbox/lcd0"
 
 struct handles_s

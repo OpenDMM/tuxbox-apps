@@ -81,7 +81,7 @@ static const struct key keyname[] = {
 };
 
 void usage(char *n){
-	printf ("Usage: %s <keyname> [<time>] [<repeat]\n"
+	printf ("Usage: %s <keyname> [<time>] [<repeat>]\n"
 		"       <keyname> is an excerpt from <linux/input.h> and corresponds\n"
 		"             to the keys on the dbox2-remote control\n"
 		"       <time> is how long a code is repeatedly sent,\n"
