@@ -30,7 +30,7 @@ eZapLanguageSetup::eZapLanguageSetup(): eWindow(0)
 {
 	setText(_("Language Setup"));
 	move(ePoint(150, 136));
-	resize(eSize(390, 230));
+	cresize(eSize(390, 160));
 
 	eLabel *l=new eLabel(this);
 	l->setText(_("Language:"));
