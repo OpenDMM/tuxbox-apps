@@ -57,7 +57,7 @@
 #include <sys/time.h>
 
 // Daher nehmen wir SmartPointers aus der Boost-Lib (www.boost.org)
-#include <boost/smart_ptr.hpp>
+#include <boost/shared_ptr.hpp>
 
 #include <sectionsdclient/sectionsdMsg.h>
 #include <sectionsdclient/sectionsdclient.h>
