@@ -92,6 +92,9 @@
   Foundation, Inc., 675 Mass Ave, Cambridge, MA 02139, USA.
 
   $Log$
+  Revision 1.62  2002/01/15 23:05:54  Simplex
+  changed method to return service list (not hot yet)
+
   Revision 1.61  2002/01/12 22:05:32  Simplex
   Command for zapping with bouquet and channel
 
@@ -1510,6 +1513,7 @@ int prepare_channels()
   int ls = LoadServices();
 	g_BouquetMan->loadBouquets();
 
+#ifndef USEBOUQUETMAN
   if (ls > 0)
     {
       int number = 1;
@@ -1551,6 +1555,7 @@ int prepare_channels()
 	}
       namechans_radio.clear();
     }
+#endif
 /*else
   {
     if (ls == -23)
@@ -1901,14 +1906,24 @@ void parse_command()
 		perror("[zapit] could not send any return\n");
 		return;
 	      }
+#ifndef USEBOUQUETMAN
 	    for (sit = allnumchannels_tv.begin(); sit != allnumchannels_tv.end(); sit++)
 		{
 		  cit = allchans_tv.find(sit->second);
+#else
+		for ( CBouquetManager::tvChannelIterator tvcit = g_BouquetMan->tvChannelsBegin(); tvcit != g_BouquetMan->tvChannelsEnd(); tvcit++)
+		{
+#endif
 		  channel_msg_2 chanmsg;
+#ifndef USEBOUQUETMAN
 		  strncpy(chanmsg.name, cit->second.name.c_str(),30);
 		  chanmsg.chan_nr = sit->first;
 		  chanmsg.onid_tsid = (cit->second.onid<<16)|cit->second.sid;
-
+#else
+		  strncpy(chanmsg.name, (*tvcit)->name.c_str(),30);
+		  chanmsg.chan_nr = (*tvcit)->chan_nr;
+		  chanmsg.onid_tsid = (*tvcit)->OnidSid();
+#endif
 		  if (send(connfd, &chanmsg, sizeof(chanmsg),0) == -1)
 		    {
 		      perror("[zapit] could not send any return\n");
