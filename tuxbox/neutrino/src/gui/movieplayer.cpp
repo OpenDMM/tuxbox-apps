@@ -168,7 +168,21 @@ int CAPIDSelectExec::exec(CMenuTarget* parent, const std::string & actionKey)
 CMoviePlayerGui::CMoviePlayerGui()
 {
 	frameBuffer = CFrameBuffer::getInstance();
-	filebrowser = new CFileBrowser ();
+
+	if (strlen (g_settings.network_nfs_moviedir) != 0)
+		Path_local = g_settings.network_nfs_moviedir;
+	else
+		Path_local = "/";
+	Path_vlc  = "vlc://";
+	Path_vlc += g_settings.streaming_server_startdir;
+	Path_vlc_settings = g_settings.streaming_server_startdir;
+
+	if (g_settings.filebrowser_denydirectoryleave == 1) {
+	    filebrowser = new CFileBrowser (Path_local);
+    }
+    else {
+        filebrowser = new CFileBrowser ();
+    }
 	filebrowser->Multi_Select = false;
 	filebrowser->Dirs_Selectable = false;
 	tsfilefilter.addFilter ("ts");
@@ -179,13 +193,6 @@ CMoviePlayerGui::CMoviePlayerGui()
 	vlcfilefilter.addFilter ("vob");
 	pesfilefilter.addFilter ("mpv");
 	filebrowser->Filter = &tsfilefilter;
-	if (strlen (g_settings.network_nfs_moviedir) != 0)
-		Path_local = g_settings.network_nfs_moviedir;
-	else
-		Path_local = "/";
-	Path_vlc  = "vlc://";
-	Path_vlc += g_settings.streaming_server_startdir;
-	Path_vlc_settings = g_settings.streaming_server_startdir;
 }
 
 //------------------------------------------------------------------------

@@ -814,5 +814,6 @@ const char * locale_real_names[] =
 	"videomenu.videosignal_yuv_c",
 	"videomenu.videosignal_yuv_v",
 	"zaptotimer.announce",
+	"filebrowser.denydirectoryleave"
 };
 #endif
