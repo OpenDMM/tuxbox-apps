@@ -3130,7 +3130,7 @@ bool parse_command(CBasicMessage::Header &rmsg, int connfd)
 		{
 			dprintf("version: %hhd, cmd: %hhd, numbytes: %d\n", header.version, header.command, readbytes);
 
-			if (header.version == sectionsd::ACTVERSION && header.command < sectionsd::numberOfCommands)
+			if (header.command < sectionsd::numberOfCommands)
 			{
 				dprintf("data length: %hd\n", header.dataLength);
 				char *data = new char[header.dataLength + 1];

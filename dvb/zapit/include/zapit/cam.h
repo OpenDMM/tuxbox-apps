@@ -28,10 +28,14 @@
 
 class CCam : public CBasicClient
 {
-	private:
-		bool sendMessage (char* data, const size_t length);
-	public:
-		bool setCaPmt (CCaPmt* caPmt);
+ private:
+	virtual const unsigned char   getVersion   () const;
+	virtual const          char * getSocketName() const;
+
+	bool sendMessage(const char* data, const size_t length);
+
+ public:
+	bool setCaPmt (CCaPmt* caPmt);
 };
 
 #endif /* __cam_h__ */

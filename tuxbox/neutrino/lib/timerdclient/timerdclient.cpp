@@ -29,9 +29,14 @@
 #include <timerdclient/timerdclient.h>
 
 
-bool CTimerdClient::send(const unsigned char command, const char* data = NULL, const unsigned int size = 0)
+const unsigned char   CTimerdClient::getVersion   () const
 {
-	return CBasicClient::send(TIMERD_UDS_NAME, CTimerdMsg::ACTVERSION, command, data, size);
+	return CTimerdMsg::ACTVERSION;
+}
+
+const          char * CTimerdClient::getSocketName() const
+{
+	return TIMERD_UDS_NAME;
 }
 
 //-------------------------------------------------------------------------

@@ -35,10 +35,11 @@
 
 class CTimerdClient:private CBasicClient
 {
-	private:
-		bool send(const unsigned char command, const char* data, const unsigned int size);
+ private:
+	virtual const unsigned char   getVersion   () const;
+	virtual const          char * getSocketName() const;
 
-	public:
+ public:
 		enum events
 		{
 			EVT_SHUTDOWN = 1,

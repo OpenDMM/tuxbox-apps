@@ -52,11 +52,15 @@ std::string Utf8_to_Latin1(const std::string s)
 	return r;
 }
 
-bool CZapitClient::send(const unsigned char command, const char* data, const unsigned int size)
+const unsigned char   CZapitClient::getVersion   () const
 {
-	return CBasicClient::send(ZAPIT_UDS_NAME, CZapitMessages::ACTVERSION, command, data, size);
+	return CZapitMessages::ACTVERSION;
 }
 
+const          char * CZapitClient::getSocketName() const
+{
+	return ZAPIT_UDS_NAME;
+}
 
 void CZapitClient::shutdown()
 {

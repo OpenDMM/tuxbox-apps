@@ -107,6 +107,12 @@ struct sectionsd
 		numberOfCommands        // <- no actual command, end of command marker
 	};
 
+	struct commandGetEPGid
+	{
+		unsigned long long eventid;
+		time_t             starttime;
+	};
+
 	struct commandSetServiceChanged
 	{
 		t_channel_id channel_id;
@@ -122,7 +128,7 @@ struct sectionsd
 	struct responseGetComponentTags
 	{
 		std::string component; 			// Text aus dem Component Descriptor
-    	unsigned char componentType; 	// Component Descriptor
+		unsigned char componentType; 	// Component Descriptor
 		unsigned char componentTag; 	// Component Descriptor
 		unsigned char streamContent; 	// Component Descriptor
 	};
