@@ -44,7 +44,7 @@ eZapScan::eZapScan()
 		CONNECT((new eListBoxEntryMenu(&list, _("Satellites..."), _("goto satellite config")))->selected, eZapScan::sel_satconfig);
 		CONNECT((new eListBoxEntryMenu(&list, _("Rotor Setup..."), _("goto Rotor Setup")))->selected, eZapScan::sel_rotorConfig);
 	}
-	CONNECT((new eListBoxEntryMenu(&list, _("SID...")))->selected, eZapScan::sel_bouquet);	
+	CONNECT((new eListBoxEntryMenu(&list, _("SID...")))->selected, eZapScan::sel_bouquet);
 }
 
 eZapScan::~eZapScan()
@@ -67,21 +67,25 @@ void eZapScan::sel_scan()
 void eZapScan::sel_bouquet()
 {
 	FILE *f=fopen("/scheissteil.sdx", "rt");
+
 	int parsed=0, error=0;
-	while (1)
+	if (f)
 	{
-		char line[129];
-		if (fread(line, 128, 1, f) != 1)
-			break;
-		line[128]=0;
-		int res=eDVB::getInstance()->settings->importSatcoDX(line);
-		if (!res)
-			parsed++;
-		else
-			error++;
+		while (1)
+		{
+			char line[129];
+			if (fread(line, 128, 1, f) != 1)
+				break;
+			line[128]=0;
+			int res=eDVB::getInstance()->settings->importSatcoDX(line);
+			if (!res)
+				parsed++;
+			else
+				error++;
+		}
+		eDebug("parsed %d lines ok, %d errornous.", parsed, error);
+		fclose(f);
 	}
-	eDebug("parsed %d lines ok, %d errornous.", parsed, error);
-	fclose(f);
 }
 
 void eZapScan::sel_satconfig()
