@@ -91,7 +91,7 @@ bool CBasicClient::send_data(const char* data, const size_t size)
 	
 	if (::send_data(sock_fd, data, size, timeout) == false)
 	{
-		printf("[CBasicClient] send failed.\n");
+		printf("[CBasicClient] send failed: %s\n", getSocketName());
 		return false;
 	}
 	return true;
