@@ -38,6 +38,7 @@ typedef struct _OPTIONS {
   char        *devDemux;		// input device DMX
   char        *devDvr;			// input device DVR
   char        *devFE;			// input device Frontend
+  long        rd_buffer_size;		// read buffer size in (0L = default)
   u_int       pid;			// decode PID
   u_int       filter;			// PID filter
   u_int       mask;			// PID mask
