@@ -39,7 +39,6 @@
 #include <pthread.h>
 
 #include <configfile.h>
-#include <neutrinoMessages.h>
 
 
 using namespace std;

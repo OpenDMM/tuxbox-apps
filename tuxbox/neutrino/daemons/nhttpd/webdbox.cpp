@@ -36,6 +36,8 @@
 #include <sys/types.h>
 #include <stdio.h>
 
+#include <neutrinoMessages.h>
+
 #include "webdbox.h"
 #include "webserver.h"
 #include "request.h"

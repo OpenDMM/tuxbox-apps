@@ -45,7 +45,6 @@
 
 #include "request.h"
 
-
 using namespace std;
 
 #define SA struct sockaddr

@@ -142,8 +142,6 @@ public:
 	bool EndRequest();
 	void SendOk();
 	void SendError();
-//	TUpload *Upload;
 	friend class TWebDbox;
-//	friend class TUpload;
 };
 #endif

@@ -23,6 +23,8 @@
 
 */
 
+#include <neutrinoMessages.h>
+
 
 #include "webdbox.h"
 #include "controlapi.h"
