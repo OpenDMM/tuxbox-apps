@@ -115,8 +115,6 @@ eSkinSetup::eSkinSetup()
 {
 	baccept=new eButton(this);
 	baccept->setName("accept");
-	breject=new eButton(this);
-	breject->setName("reject");
 	lskins=new eListBox<eListBoxEntrySkin>(this);
 	lskins->setName("skins");
 	lskins->setFlags(eListBoxBase::flagNoPageMovement);
@@ -124,7 +122,6 @@ eSkinSetup::eSkinSetup()
 	statusbar->setName("statusbar");
 
 	CONNECT(baccept->selected, eSkinSetup::accept);
-	CONNECT(breject->selected, eSkinSetup::reject);
 	CONNECT(lskins->selected, eSkinSetup::skinSelected);
 	
 	setFocus(lskins);

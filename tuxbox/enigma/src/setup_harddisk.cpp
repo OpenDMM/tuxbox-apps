@@ -472,11 +472,8 @@ ePartitionCheck::ePartitionCheck( int dev )
 {
 	lState = new eLabel(this);
 	lState->setName("state");
-	bCancel = new eButton(this);
-	bCancel->setName("cancel");
 	bClose = new eButton(this);
 	bClose->setName("close");
-	CONNECT( bCancel->selected, ePartitionCheck::onCancel );
 	CONNECT( bClose->selected, ePartitionCheck::accept );
 	if (eSkin::getActive()->build(this, "ePartitionCheck"))
 		eFatal("skin load of \"ePartitionCheck\" failed");
