@@ -107,6 +107,8 @@ extern int errno;
 CLcddClient lcdd;
 #endif /* DVBS */
 
+CEventServer *eventServer;
+
 static int debug = 0;
 
 extern uint16_t old_tsid;
@@ -2486,6 +2488,14 @@ void parse_command()
 				send(connfd, &msgResponseZapComplete, sizeof(msgResponseZapComplete), 0);
 			break;
 
+			case CZapitClient::CMD_ZAPTO_SERVICEID_NOWAIT :
+            case CZapitClient::CMD_ZAPTO_SUBSERVICEID_NOWAIT :
+            	CZapitClient::commandZaptoServiceID msgZaptoServiceID2;
+				read( connfd, &msgZaptoServiceID2, sizeof(msgZaptoServiceID2));
+               	zapTo_ServiceID( msgZaptoServiceID2.serviceID , ( rmsg.cmd == CZapitClient::CMD_ZAPTO_SUBSERVICEID_NOWAIT ) );
+			break;
+
+
 			case CZapitClient::CMD_SET_AUDIOCHAN :
 				CZapitClient::commandSetAudioChannel msgSetAudioChannel;
 				read( connfd, &msgSetAudioChannel, sizeof(msgSetAudioChannel));
@@ -2644,11 +2654,19 @@ void parse_command()
 
 				while ( read( connfd, &msgAddSubService, sizeof(msgAddSubService)))
 				{
-					printf("got subchan %x %x\n", msgAddSubService.onidsid, msgAddSubService.tsid);
+					//printf("got subchan %x %x\n", msgAddSubService.onidsid, msgAddSubService.tsid);
                 	nvodchannels.insert(std::pair<int,channel>(msgAddSubService.onidsid,channel("NVOD",0,0,0,0,0,(msgAddSubService.onidsid&0xFFFF),msgAddSubService.tsid,(msgAddSubService.onidsid>>16),1)));
 				}
 
 				current_is_nvod = true;
+			break;
+
+			case CZapitClient::CMD_REGISTEREVENTS :
+				eventServer->registerEvent( connfd );
+			break;
+
+			case CZapitClient::CMD_UNREGISTEREVENTS :
+				eventServer->unRegisterEvent( connfd );
 			break;
 
 			default:
@@ -2914,6 +2932,9 @@ int main (int argc, char **argv)
 	descramble(0xffff,0xffff,0xffff,0xffff,0xffff, &_pids);
 #endif /* USE_EXTERNAL_CAMD */
 
+	// create eventServer
+	eventServer = new CEventServer;
+
 	while (keep_going)
 	{
 		clilen = sizeof(cliaddr);
@@ -3126,6 +3147,24 @@ unsigned int zapTo_ServiceID(unsigned int serviceID, bool isSubService )
 		if (current_is_nvod)
 		 	result|= CZapitClient::ZAP_IS_NVOD;
 	}
+
+	if ( !( result & CZapitClient::ZAP_OK ) )
+		eventServer->sendEvent(CZapitClient::EVT_ZAP_FAILED, CEventServer::INITID_ZAPIT, &serviceID, sizeof(serviceID) );
+	else
+	{
+		if ( isSubService )
+		{
+			eventServer->sendEvent(CZapitClient::EVT_ZAP_SUB_COMPLETE, CEventServer::INITID_ZAPIT, &serviceID, sizeof(serviceID) );
+		}
+		else
+		{
+			if ( result & CZapitClient::ZAP_IS_NVOD )
+				eventServer->sendEvent(CZapitClient::EVT_ZAP_COMPLETE_IS_NVOD, CEventServer::INITID_ZAPIT, &serviceID, sizeof(serviceID) );
+			else
+				eventServer->sendEvent(CZapitClient::EVT_ZAP_COMPLETE, CEventServer::INITID_ZAPIT, &serviceID, sizeof(serviceID) );
+		}
+	}
+
     return ( result );
 }
 
