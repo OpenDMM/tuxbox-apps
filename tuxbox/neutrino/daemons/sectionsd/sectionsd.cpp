@@ -23,6 +23,9 @@
 //    Foundation, Inc., 675 Mass Ave, Cambridge, MA 02139, USA.
 //
 //  $Log$
+//  Revision 1.47  2001/08/16 10:55:41  fnbrd
+//  Actual event list only with channels with event.
+//
 //  Revision 1.46  2001/08/16 01:35:23  fnbrd
 //  internal changes.
 //
@@ -1294,15 +1297,16 @@ static void sendEventList(struct connectionData *client, const unsigned char ser
         char id[20];
         sprintf(id, "%012llx\n", evt.uniqueKey());
         strcat(evtList, id);
-      }
-      else
-        strcat(evtList, "0\n");
-      strcat(evtList, s->first->serviceName.c_str());
-      strcat(evtList, "\n");
-      if(evt.serviceID!=0)
+//      }
+//      else
+//        strcat(evtList, "0\n");
+        strcat(evtList, s->first->serviceName.c_str());
+        strcat(evtList, "\n");
+//      if(evt.serviceID!=0)
         //Found
         strcat(evtList, evt.name.c_str());
-      strcat(evtList, "\n");
+        strcat(evtList, "\n");
+      }
     } // if ==serviceTyp
   unlockEvents();
   unlockServices();
