@@ -41,7 +41,8 @@ typedef struct ca_descriptor_s
 	unsigned char descriptor_tag		: 8;
 	unsigned char descriptor_length		: 8;
 	unsigned short ca_system_id		: 16;
-	unsigned short ca_pid			: 16;
+	unsigned char reserved			: 3;
+	unsigned short ca_pid			: 13;
 	unsigned char * private_data_byte;
 } __attribute__ ((packed)) ca_descriptor;
 
