@@ -163,6 +163,7 @@ CMoviePlayerGui::CMoviePlayerGui()
 CMoviePlayerGui::~CMoviePlayerGui ()
 {
 	delete filebrowser;
+	delete bookmarkmanager;
 	g_Zapit->setStandby (false);
 	g_Sectionsd->setPauseScanning (false);
 
@@ -185,7 +186,10 @@ CMoviePlayerGui::exec (CMenuTarget * parent, const std::string & actionKey)
     if (actionKey=="bookmarkplayback") {
         isBookmark = true;
         theBookmark = bookmarkmanager->getBookmark(NULL);
-        if (theBookmark == NULL) return menu_return::RETURN_REPAINT;
+        if (theBookmark == NULL) {
+            bookmarkmanager->flush();
+            return menu_return::RETURN_REPAINT;
+        }
 	}
 	
 	
