@@ -2789,6 +2789,11 @@ int CNeutrinoApp::handleMsg(uint msg, uint data)
 			if(mode != mode_standby)
 				standbyMode( true );
 		}
+		if((data &mode_mask)== mode_mp3)
+		{
+			lastMode=mode;
+			mode=mode_mp3;
+		}
 	}
 	else if( msg == NeutrinoMessages::VCR_ON )
 	{
