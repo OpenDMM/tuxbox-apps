@@ -97,10 +97,10 @@ void ParseTransponders(xmlNodePtr node, const uint8_t DiSEqC, t_satellite_positi
 				transponder
 				(
 					transport_stream_id,
+					original_network_id,
 					feparams,
 					polarization,
-					DiSEqC,
-					original_network_id
+					DiSEqC
 				)
 			)
 		);

@@ -36,4 +36,6 @@ typedef uint64_t transponder_id_t;
 #define GET_TRANSPORT_STREAM_ID_FROM_TRANSPONDER_ID(transponder_id) ((t_transport_stream_id)(transponder_id >> 16))
 #define GET_SATELLITEPOSITION_FROM_TRANSPONDER_ID(transponder_id)   ((t_satellite_position )(transponder_id >> 32))
 
+typedef uint32_t scantransponder_id_t;
+
 #endif /* __zapit__types_h__ */
