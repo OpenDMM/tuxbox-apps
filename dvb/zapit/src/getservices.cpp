@@ -61,7 +61,7 @@ void nameinsert (std::string name, uint16_t original_network_id, uint16_t servic
 
 		allchans_radio.find((original_network_id << 16) | service_id)->second.setName(newname);
 		break;
-		
+
 	default:
 		break;
 	}
@@ -182,7 +182,7 @@ void ParseChannels (XMLTreeNode *node, uint16_t transport_stream_id, uint16_t or
 			}
 
 			break;
-			
+
 		case DIGITAL_RADIO_SOUND_SERVICE:
 			allchans_radio.insert
 			(
@@ -267,7 +267,7 @@ int LoadServices(void)
 	if (!in)
 	{
 		perror("[getservices.cpp] " CONFIGDIR "/zapit/services.xml");
-		return -23;
+		return -1;
 	}
 
 	do
@@ -292,7 +292,7 @@ int LoadServices(void)
 
 	fclose(in);
 	delete parser;
-	return 23;
+	return 0;
 }
 
 CZapitChannel::CZapitChannel (std::string p_name, uint16_t p_sid, uint16_t p_tsid, uint16_t p_onid, uint8_t p_service_type, uint16_t p_chan_nr, uint8_t p_DiSEqC)
