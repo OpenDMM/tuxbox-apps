@@ -55,6 +55,9 @@ typedef struct _OPTIONS {
 
 int  cmdline_options (int argc, char **argv, OPTION *opt);
 
+#define MAX_PID    0x1FFF
+#define DUMMY_PID  0xFFFF	/* special if no pid is needed */
+
 
 #endif
 
