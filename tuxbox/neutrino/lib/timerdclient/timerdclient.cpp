@@ -305,7 +305,7 @@ void CTimerdClient::modifyTimerAPid(int eventid, uint apid)
 }
 
 //-------------------------------------------------------------------------
-void CTimerdClient::getWeekdaysFromStr(int *rep, char* str)
+void CTimerdClient::getWeekdaysFromStr(int *rep, const char* str)
 {
 	if(*rep >= (int)CTimerd::TIMERREPEAT_WEEKDAYS)
 	{

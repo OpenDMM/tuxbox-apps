@@ -731,6 +731,11 @@ void CControlAPI::SendTimers(CWebserverRequest* request)
                sprintf(zAddData,"Standby: %s",(timer->standby_on ? "ON" : "OFF"));
             }
             break;
+			case CTimerd::TIMER_REMIND :
+			{
+				strncpy(zAddData, timer->message, 20);
+				zAddData[20]=0;
+			}
          default:{}
 		}
 		request->printf("%d %d %d %d %d %d %s\n",timer->eventID,(int)timer->eventType,
