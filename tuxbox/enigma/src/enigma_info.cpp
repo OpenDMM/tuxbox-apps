@@ -32,7 +32,6 @@
 #include <lib/gui/ewindow.h>
 #include <lib/gui/eskin.h>
 #include <lib/gui/elabel.h>
-#include <lib/gui/emessage.h>
 #include <lib/gui/ebutton.h>
 #include <lib/system/info.h>
 #include <lib/system/dmfp.h>
@@ -110,36 +109,8 @@ static eString getVersionInfo(const char *info)
 class eAboutScreen: public eWindow
 {
 	eLabel *machine, *processor, *frontend, *harddisks, *vendor, *logo, *version, *dreamlogo, *triaxlogo, *fpversion;
-	eButton *okButton, *upgradeFPButton;
-	
-	void doUpgradeFP()
-	{
-		hide();
-		eMessageBox msg(
-			"Do you really want to upgrade your frontprocessor?\n"
-			"If you do, you can't abort. DO NOT TURN OFF THE POWER.\n"
-			"\n"
-			"Really upgrade frontprocessor?",
-			"frontprocessor upgrade...",
-			eMessageBox::btYes|eMessageBox::btCancel, eMessageBox::btCancel);
-		msg.show();
-		int res=msg.exec();
-		msg.hide();
-		if (res == eMessageBox::btYes)
-		{
-			eMessageBox msg(
-				"Upgrading frontprocessor...\n"
-				"DO NOT TURN OFF THE POWER!\n"
-				"THE DREAMBOX WILL AUTOMATICALLY REBOOT!\n",
-				"Upgrade in process...", 0);
-			msg.show();
-				/* in this case, this is really required - doUpgrade does CLI */
-			sleep(1);
-			eDreamboxFP::doUpgrade(0xd15ea5e);
-		}
-		show();
-	}
-	
+	eButton *okButton;
+
 public:
 	eAboutScreen()
 	{
@@ -174,9 +145,6 @@ public:
 
 		fpversion=new eLabel(this);
 		fpversion->setName("fp_version");
-		
-		upgradeFPButton = new eButton(this);
-		upgradeFPButton->setName("upgradeFPButton");
 
 		if (eSkin::getActive()->build(this, "eAboutScreen"))
 			eFatal("skin load of \"eAboutScreen\" failed");
@@ -291,21 +259,17 @@ public:
 		else if ( !strcmp(eSystemInfo::getInstance()->getManufacturer(),"Dream-Multimedia-TV") )
 			dreamlogo->show();
 
-		upgradeFPButton->hide();
-
 		if ( eSystemInfo::getInstance()->getHwType() == eSystemInfo::DM7000 )
 		{
 			eString fp_version = fpversion->getText();
 			fp_version += eString().sprintf(" 1.%02d", eDreamboxFP::getFPVersion());
 			eDebug("%s", fp_version.c_str());
 			fpversion->setText(fp_version);
-			if (eDreamboxFP::isUpgradeAvailable())
-				upgradeFPButton->show();
-		} else
+		} 
+		else
 			fpversion->hide();
 
 		CONNECT(okButton->selected, eWidget::accept);
-		CONNECT(upgradeFPButton->selected, eAboutScreen::doUpgradeFP);
 	}
 };
 

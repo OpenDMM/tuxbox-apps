@@ -44,6 +44,8 @@ eExpertSetup::eExpertSetup()
 	}
 #endif
 	CONNECT((new eListBoxEntryMenu(&list, _("Remote Control"), eString().sprintf("(%d) %s", ++entry, _("open remote control setup")) ))->selected, eExpertSetup::rc_setup);
+	if ( eSystemInfo::getInstance()->getHwType() >= eSystemInfo::DM7000 )
+		CONNECT((new eListBoxEntryMenu(&list, _("Factory reset"), eString().sprintf("(%d) %s", ++entry, _("all settings will set to factory defaults")) ))->selected, eExpertSetup::factory_reset);
 	new eListBoxEntrySeparator( (eListBox<eListBoxEntry>*)&list, eSkin::getActive()->queryImage("listbox.separator"), 0, true );
 	CONNECT((new eListBoxEntryCheck((eListBox<eListBoxEntry>*)&list,_("Serviceselector help buttons"),"/ezap/serviceselector/showButtons",_("show colored help buttons in service selector")))->selected, eExpertSetup::colorbuttonsChanged );
 	new eListBoxEntryCheck( (eListBox<eListBoxEntry>*)&list, _("Skip confirmations"), "/elitedvb/extra/profimode", _("enable/disable confirmations"));
@@ -127,4 +129,32 @@ void eExpertSetup::rc_setup()
 	setup.exec();
 	setup.hide();
 	show();
+}
+
+void eExpertSetup::factory_reset()
+{
+	eMessageBox mb(
+		_("When you do a factory reset, you will lost ALL your configuration data\n"
+			"(including bouquets, services, satellite data ...)\n\n"
+			"Really do factory reset?"),
+		_("Factory reset"),
+		eMessageBox::btYes|eMessageBox::btNo|eMessageBox::iconQuestion,
+		eMessageBox::btNo );
+	mb.show();
+	int ret = mb.exec();
+	mb.hide();
+	if ( ret == eMessageBox::btYes ) 
+	{
+		::unlink("/var/.init");
+		eMessageBox msg(
+			_("To finalize the factory reset your receiver must be restarted. "
+				"All changes from now to next restart will going lost!\n\n"
+				"Restart now?"),
+			_("Factory reset"),
+			eMessageBox::btYes|eMessageBox::btNo|eMessageBox::iconQuestion, eMessageBox::btYes );
+		msg.show();
+		if ( msg.exec() == eMessageBox::btYes )
+			eZap::getInstance()->quit(2);
+		msg.hide();
+	}
 }
