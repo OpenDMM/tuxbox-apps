@@ -39,7 +39,7 @@ eSoftwareUpdate::eSoftwareUpdate()
 void eSoftwareUpdate::internet_update()
 {
 	hide();
-	eUpgrade up;
+	eUpgrade up(false);
 #ifndef DISABLE_LCD
 	up.setLCD(LCDTitle, LCDElement);
 #endif
@@ -60,7 +60,7 @@ void eSoftwareUpdate::manual_update()
 	box.hide();
 	if ( ret == eMessageBox::btOK )
 	{
-		eUpgrade up;
+		eUpgrade up(true);
 #ifndef DISABLE_LCD
 		up.setLCD(LCDTitle, LCDElement);
 #endif
