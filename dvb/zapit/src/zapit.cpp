@@ -93,9 +93,9 @@ int currentMode;
 
 int connfd;
 
-#ifndef DVBS
+#ifdef DBOX2
 CLcddClient lcdd;
-#endif /* DVBS */
+#endif /* DBOX2 */
 
 bool debug = false;
 

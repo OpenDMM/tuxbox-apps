@@ -27,13 +27,8 @@
 #include <time.h>
 
 /* nokia api */
-#if (DVB_API_VERSION == 1)
 #include <ost/dmx.h>
 #define DEMUX_DEV "/dev/dvb/card0/demux0"
-#else
-#include <linux/dvb/dmx.h>
-#define DEMUX_DEV "/dev/dvb/adapter0/demux0"
-#endif
 
 int setDmxSctFilter (int fd, dvb_pid_t pid, unsigned char filter0, unsigned char filter1 = 0x00, unsigned char filter2 = 0x00);
 int setDmxPesFilter (int fd, dmxOutput_t output, dmxPesType_t pesType, dvb_pid_t pid);

@@ -22,11 +22,7 @@
 #ifndef __cam_h__
 #define __cam_h__
 
-#if (DVB_API_VERSION == 1)
 #include <ost/ca.h>
-#else
-#include <linux/dvb/ca.h>
-#endif
 
 #include "ci.h"
 

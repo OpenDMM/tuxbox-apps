@@ -24,13 +24,8 @@
 
 #include <time.h>
 
-#if (DVB_API_VERSION == 1)
 #include <ost/video.h>
 #define VIDEO_DEVICE "/dev/dvb/card0/video0"
-#else
-#include <linux/dvb/video.h>
-#define VIDEO_DEVICE "/dev/dvb/adapter0/video0"
-#endif
 
 class CVideo
 {
