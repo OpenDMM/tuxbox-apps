@@ -44,7 +44,7 @@
 #include "controldMsg.h"
 #include "dbox/avs_core.h"
 #include "dbox/fp.h"
-#include "saa7126/saa7126_core.h"
+#include "dbox/saa7126_core.h"
 #include "ost/video.h"
 #include "eventwatchdog.h"
 #include "controldclient.h"
