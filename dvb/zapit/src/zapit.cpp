@@ -326,10 +326,14 @@ int changeapid (uint8_t index)
 	channel->setAudioChannel(index);
 
 	/* set bypass mode */
-	if (channel->getAudioChannel()->isAc3)
-		audio->enableBypass();
+	CZapitAudioChannel * currentAudioChannel = channel->getAudioChannel();
+	if (currentAudioChannel == NULL)
+		WARN("No current audio channel");
 	else
-		audio->disableBypass();
+		if (channel->getAudioChannel()->isAc3)
+			audio->enableBypass();
+		else
+			audio->disableBypass();
 
 	/* set demux filter */
 	if (setDmxPesFilter(dmx_audio_fd, DMX_OUT_DECODER, DMX_PES_AUDIO, channel->getAudioPid()) < 0)
