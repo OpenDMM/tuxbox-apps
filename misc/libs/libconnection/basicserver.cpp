@@ -30,7 +30,7 @@
 #include <sys/socket.h>
 #include <sys/un.h>
 
-#include <zapit/basicserver.h>
+#include "basicserver.h"
 
 bool CBasicServer::prepare(const char* socketname)
 {
