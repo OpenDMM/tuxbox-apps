@@ -67,6 +67,7 @@
 #include "gui/update.h"
 #include "gui/scan.h"
 #include "gui/favorites.h"
+#include "gui/sleeptimer.h"
 
 #include "system/setting_helpers.h"
 #include "system/settings.h"
@@ -115,6 +116,7 @@ static void initGlobals(void)
 	g_lcdd = NULL;
 	g_Controld = NULL;
 	g_Timerd = NULL;
+	g_Timer = NULL;  // internal Timer 
 	g_Zapit = NULL;
 	g_RemoteControl = NULL;
 
@@ -889,6 +891,9 @@ void CNeutrinoApp::InitMainMenu(CMenuWidget &mainMenu, CMenuWidget &mainSettings
 	mainMenu.addItem( new CMenuForwarder("mainmenu.radiomode", true, "", this, "radio", true, CRCInput::RC_green, "gruen.raw") );
 	mainMenu.addItem( new CMenuForwarder("mainmenu.scartmode", true, "", this, "scart", true, CRCInput::RC_yellow, "gelb.raw") );
 	mainMenu.addItem( new CMenuForwarder("mainmenu.games", true, "", new CGameList("mainmenu.games"), "", true, CRCInput::RC_blue, "blau.raw") );
+
+	mainMenu.addItem( new CMenuForwarder("mainmenu.SleepTimer", true, "", new CSleepTimerWidget, "",true) );
+
 	mainMenu.addItem( new CMenuForwarder("mainmenu.shutdown", true, "", this, "shutdown", true, CRCInput::RC_standby, "power.raw") );
 	mainMenu.addItem( new CMenuSeparator(CMenuSeparator::LINE) );
 	streamstatus = 0;
@@ -1676,6 +1681,7 @@ int CNeutrinoApp::run(int argc, char **argv)
 	g_Zapit = new CZapitClient;
 	g_Sectionsd = new CSectionsdClient;
 	g_Timerd = new CTimerdClient;
+	g_Timer = new CTimer;		// internal Timer
 
 	g_RemoteControl = new CRemoteControl;
 	g_EpgData = new CEpgData;
