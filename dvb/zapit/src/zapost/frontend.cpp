@@ -618,6 +618,9 @@ const bool CFrontend::tuneFrequency (FrontendParameters feparams, uint8_t polari
 				secChanged = true;
 			}
 			break;
+		default:
+			WARN("Invalid DiSEqC type");
+			break;
 		}
 	}
 

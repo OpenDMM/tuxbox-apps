@@ -1525,7 +1525,7 @@ int main(int argc, char **argv)
 		frontend->setDiseqcType((diseqc_t) config.getInt32("diseqcType", NO_DISEQC));
 		frontend->setDiseqcRepeats(config.getInt32("diseqcRepeats", 0));
 
-		for (i = 0; i < MAX_LNBS; i++)
+		for (int i = 0; i < MAX_LNBS; i++)
 		{
 			/* low offset */
 			sprintf(tmp, "lnb%d_OffsetLow", i);
