@@ -84,46 +84,6 @@ std::string convert_to_UTF8(const std::string s)
 	return r;
 }
 
-std::string Utf8_to_Latin1(const std::string s)
-{
-	std::string r;
-
-	for (std::string::const_iterator it = s.begin(); it != s.end(); it++)
-	{
-		if (((*it) & 0xf0) == 0xf0)      // skip (can't be encoded in Latin1)
-		{
-			it++;
-			if (it == s.end())
-				return r;
-			it++;
-			if (it == s.end())
-				return r;
-			it++;
-			if (it == s.end())
-				return r;
-		}
-		else if (((*it) & 0xe0) == 0xe0) // skip (can't be encoded in Latin1)
-		{
-			it++;
-			if (it == s.end())
-				return r;
-			it++;
-			if (it == s.end())
-				return r;
-		}
-		else if (((*it) & 0xc0) == 0xc0)
-		{
-			char c = (((*it) & 3) << 6);
-			it++;
-			if (it == s.end())
-				return r;
-			r += (c | ((*it) & 0x3f));
-		}
-		else r += *it;
-	}
-	return r;
-}
-
 XMLTreeParser* parseXmlFile(const std::string filename)
 {
 	char buffer[2048];
