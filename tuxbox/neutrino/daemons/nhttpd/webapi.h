@@ -73,6 +73,7 @@ class CWebAPI
 		void modifyTimerForm(CWebserverRequest *request, unsigned timerId);
 		void newTimerForm(CWebserverRequest *request);
 		void doNewTimer(CWebserverRequest *request);
+		void timeString(time_t time, char string[6]);
 
 
 	public:
