@@ -328,12 +328,13 @@ void *decode_thread(void *ptr)
 int zapit (uint32_t onid_sid, bool in_nvod)
 {
 	dmxPesFilterParams pes_filter;
+#ifndef SELECT_VIDEO_SOURCE
 	videoStatus video_status;
+#endif
 	std::map <uint, CZapitChannel>::iterator cit;
 	uint16_t transport_stream_id;
-#ifndef USE_EXTERNAL_CAMD
 	bool new_transport_stream_id;
-#else
+#ifdef USE_EXTERNAL_CAMD
 	char *vpidbuf;
 	char *apidbuf;
 	char *pmtpidbuf;
@@ -592,7 +593,7 @@ int zapit (uint32_t onid_sid, bool in_nvod)
 	{
 		debug("[zapit] video device already open\n");
 	}
-
+#ifndef SELECT_VIDEO_SOURCE
 	/* get video status */
 	if (ioctl(video_fd, VIDEO_GET_STATUS, &video_status) < 0)
 	{
@@ -602,6 +603,7 @@ int zapit (uint32_t onid_sid, bool in_nvod)
 	/* select video source */
 	if (video_status.streamSource != VIDEO_SOURCE_DEMUX)
 	{
+#endif
 		if (ioctl(video_fd, VIDEO_SELECT_SOURCE, VIDEO_SOURCE_DEMUX) < 0)
 		{
 			perror("[zapit] VIDEO_SELECT_SOURCE");
@@ -610,11 +612,13 @@ int zapit (uint32_t onid_sid, bool in_nvod)
 		{
 			debug("[zapit] selected video source\n");
 		}
+#ifndef SELECT_VIDEO_SOURCE 
 	}
 	else
 	{
 		debug("[zepit] video source already demux\n");
 	}
+#endif
 
 	/* start video play */
 	if (ioctl(video_fd, VIDEO_PLAY) < 0)
