@@ -89,6 +89,7 @@
 #include "gui/mp3player.h"
 #include "gui/nfs.h"
 #include "gui/pictureviewer.h"
+#include "gui/motorcontrol.h"
 
 #include "system/setting_helpers.h"
 #include "system/settings.h"
@@ -1066,12 +1067,12 @@ void CNeutrinoApp::InitScanSettings(CMenuWidget &settings)
 		extSatSettings->addItem( new CMenuForwarder("menu.back") );
 		extSatSettings->addItem( new CMenuSeparator(CMenuSeparator::LINE) );
 		
-		CMenuForwarder* ojExtSatSettings = new CMenuForwarder("satsetup.extended", ((scanSettings.diseqcMode != NO_DISEQC) && (scanSettings.diseqcMode < DISEQC_1_2)), "", extSatSettings);
+		CMenuForwarder* ojExtSatSettings = new CMenuForwarder("satsetup.extended", (scanSettings.diseqcMode != NO_DISEQC), "", extSatSettings);
 		for( uint i=0; i < satList.size(); i++)
 		{
 			CMenuOptionChooser* oj = new CMenuOptionChooser( satList[i].satName, scanSettings.diseqscOfSat( satList[i].satName), true/*, new CSatelliteNotifier*/);
 			oj->addOption( -1, "options.off");
-			for( int j=0; j<satList.size(); j++)
+			for(uint j=0; j<satList.size(); j++)
 			{
 				char jj[2 + 1];
 				sprintf( jj, "%d", j + 1);
@@ -1091,7 +1092,7 @@ void CNeutrinoApp::InitScanSettings(CMenuWidget &settings)
 		{
 			CMenuOptionChooser* oj = new CMenuOptionChooser( satList[i].satName, scanSettings.motorPosOfSat( satList[i].satName), true/*, new CSatelliteNotifier*/);
 			oj->addOption( -1, "options.off");
-			for( int j=0; j<satList.size(); j++)
+			for(uint j=0; j<satList.size(); j++)
 			{
 				char jj[2 + 1];
 				sprintf( jj, "%d", j + 1);
@@ -1160,6 +1161,8 @@ void CNeutrinoApp::InitScanSettings(CMenuWidget &settings)
 		settings.addItem( oj);
 	}
 
+	//settings.addItem( new CMenuSeparator(CMenuSeparator::LINE) );
+	//settings.addItem( new CMenuForwarder("scants.motorcontrol", (scanSettings.diseqcMode == DISEQC_1_2), "", new CMotorControl() ) );
 	settings.addItem( new CMenuSeparator(CMenuSeparator::LINE) );
 	settings.addItem( new CMenuForwarder("scants.startnow", true, "", new CScanTs() ) );
 
