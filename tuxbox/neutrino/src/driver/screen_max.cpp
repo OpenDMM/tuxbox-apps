@@ -22,8 +22,8 @@
 // -- so using this function will make menues to obey max. screen settings.
 // 
 // usage:  e.g.  try to paint menue h: 500 w, 400  (but screen is limited
-//         to (450 x 420) functions will return 450 and 400
-//         to _add factor is for boundary...
+//         to (450 x 420)), functions will return 450 and 400
+//         the _add factor is for boundary...
 //
 //  2004-03-17 rasc
 
