@@ -20,6 +20,9 @@ $Id$
 
 
 $Log$
+Revision 1.5  2003/12/28 00:01:15  rasc
+some minor changes/adds...
+
 Revision 1.4  2003/12/27 22:02:45  rasc
 dsmcc INT UNT descriptors started
 
@@ -44,6 +47,7 @@ more PES stuff, DSM descriptors, testdata
 #include "dvbsnoop.h"
 #include "test0x1d.h"
 #include "misc/output.h"
+#include "misc/hexprint.h"
 
 
 

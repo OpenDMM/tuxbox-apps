@@ -54,7 +54,6 @@ typedef struct _OPTIONS {
 */
 
 int  cmdline_options (int argc, char **argv, OPTION *opt);
-void usage (void);
 
 
 #endif
