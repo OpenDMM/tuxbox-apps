@@ -324,9 +324,11 @@ bool CControlAPI::ExecCGI(CWebserverRequest *request)
 	else
 	{
 		printf("No script given\n");
-		request->Send404Error();
 	}
-
+	if (!res)
+	{
+		request->Send404Error();		
+	}
 	return res;
 }
 
