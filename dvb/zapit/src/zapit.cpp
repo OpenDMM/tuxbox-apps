@@ -783,6 +783,7 @@ void parse_command (CZapitClient::commandHead &rmsg)
 				{
 					msgCurrentServiceInfo.polarisation = 2;
 				}
+				msgCurrentServiceInfo.diseqc = channel->getDiSEqC();
 				send(connfd, &msgCurrentServiceInfo, sizeof(msgCurrentServiceInfo), 0);
 				break;
 			}
