@@ -485,6 +485,7 @@ void setScartMode(bool onoff)
 {
 	if(onoff)
 	{
+		audioControl::setMute(settings.mute_avs); // unmute AVS
 		//lcdd.setMode(CLcddTypes::MODE_SCART);
 	}
 	else
