@@ -38,7 +38,7 @@ eZapSetup::eZapSetup()
 	move(ePoint(160, 100));
 	int entry=0;
 	CONNECT((new eListBoxEntryMenu(&list, _("Service Organising"), eString().sprintf("(%d) %s", ++entry, _("open service organising")) ))->selected, eZapSetup::service_organising);
-	CONNECT((new eListBoxEntryMenu(&list, _("Service Searching"), eString().sprintf("(%d) %s", ++entry, _("open service organising")) ))->selected, eZapSetup::service_searching);
+	CONNECT((new eListBoxEntryMenu(&list, _("Service Searching"), eString().sprintf("(%d) %s", ++entry, _("open service searching")) ))->selected, eZapSetup::service_searching);
 	new eListBoxEntrySeparator( (eListBox<eListBoxEntry>*)&list, eSkin::getActive()->queryImage("listbox.separator"), 0, true );
 	CONNECT((new eListBoxEntryMenu(&list, _("System Settings"), eString().sprintf("(%d) %s", ++entry, _("open system settings")) ))->selected, eZapSetup::system_settings);
 #ifndef DISABLE_CI
@@ -51,7 +51,7 @@ eZapSetup::eZapSetup()
 #endif
 	CONNECT((new eListBoxEntryMenu(&list, _("Parental Lock"), eString().sprintf("(%d) %s", ++entry, _("open parental setup")) ))->selected, eZapSetup::parental_lock );
 	new eListBoxEntrySeparator( (eListBox<eListBoxEntry>*)&list, eSkin::getActive()->queryImage("listbox.separator"), 0, true );
-	CONNECT((new eListBoxEntryMenu(&list, _("Expert Setup"), eString().sprintf("(%d) %s", ++entry, _("open extra setup")) ))->selected, eZapSetup::expert_setup);
+	CONNECT((new eListBoxEntryMenu(&list, _("Expert Setup"), eString().sprintf("(%d) %s", ++entry, _("open expert setup")) ))->selected, eZapSetup::expert_setup);
 	/* emit */ setupHook(this, &entry);
 }
 

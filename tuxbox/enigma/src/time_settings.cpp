@@ -28,9 +28,9 @@
 #include <lib/dvb/dvbservice.h>
 
 eTimeSettings::eTimeSettings()
-	:eSetupWindow(_("Time Settings"), 6, 350)
+	:eSetupWindow(_("Time Settings"), 5, 350)
 {
-	move(ePoint(130, 120));
+	move(ePoint(130, 135));
 	int entry=0;
 	CONNECT((new eListBoxEntryMenu(&list, _("Timezone Configuration"), eString().sprintf("(%d) %s", ++entry, _("open timezone selector")) ))->selected, eTimeSettings::time_zone);
 	CONNECT((new eListBoxEntryMenu(&list, _("Time Correction"), eString().sprintf("(%d) %s", ++entry, _("open time correction window")) ))->selected, eTimeSettings::time_correction);
