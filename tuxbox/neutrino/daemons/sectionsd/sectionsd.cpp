@@ -3508,7 +3508,7 @@ int main(int argc, char **argv)
 			case 0:
 				break;
 			default:
-				return EXIT_SUCCESS;
+				_exit(0); //return EXIT_SUCCESS;
 			}
 
 			if (setsid() == -1) {
