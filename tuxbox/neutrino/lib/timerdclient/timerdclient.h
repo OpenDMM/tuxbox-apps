@@ -126,6 +126,7 @@ class CTimerdClient
 				CTimerEvent::EventInfo eventInfo;
 				eventInfo.onidSid = onidSid;
 				eventInfo.epgID = epgID;
+				printf("[TIMERDCLIENTLIB] ONI-SID %d\n",eventInfo.onidSid );
 				return addTimerEvent(CTimerEvent::TIMER_RECORD, &eventInfo, announcetime, alarmtime, stoptime);
 			};
 
