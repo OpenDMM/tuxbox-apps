@@ -134,6 +134,11 @@ bool CWebserver::Start()
 {
 	SAI servaddr;
 
+	if ((Port < 1024) && (geteuid() != 0)) {
+		aprintf("cannot bind to port %d without superuser privilleges. aborting.\n", Port);
+		return false;
+	}
+	
 	//network-setup
 	ListenSocket = socket(AF_INET, SOCK_STREAM, 0);
 
@@ -149,8 +154,7 @@ bool CWebserver::Start()
 		int i = 1;
 			do
 			{
-				aprintf("bind to port %d failed...\n",Port);
-				aprintf("%d. Versuch, warte 5 Sekunden\n",i++);
+				aprintf("bind to port %d failed. retry %d in 5 seconds...\n",Port, i++);
 				sleep(5);
 			}while((bind(ListenSocket, (SA *) &servaddr, sizeof(servaddr)) !=0) && i <= 10);
 	}
@@ -160,7 +164,7 @@ bool CWebserver::Start()
 			perror("listen failed...");
 			return false;
 	}
-	dprintf("Server gestartet\n");
+	dprintf("Server started\n");
 				
 	return true;
 }
