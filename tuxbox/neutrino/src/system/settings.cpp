@@ -213,7 +213,6 @@ bool CScanSettings::saveSettings(const std::string fileName)
 	int satCount = 0;
 	char tmp[20] = "";
 	int i = 0;
-	FILE * fd = NULL;
 	
 	configfile.setInt32("delivery_system", delivery_system);
 	configfile.setInt32( "diseqcMode", diseqcMode );
