@@ -601,6 +601,8 @@ bool CWebserverRequest::SendResponse()
 					ContentType = "image/png";
 				else if( (FileExt.compare("jpg") == 0) || (FileExt.compare("JPG") == 0) )
 					ContentType = "image/jpeg";
+				else if( (FileExt.compare("css") == 0) || (FileExt.compare("CSS") == 0) )
+					ContentType = "text/css";
 				else if(FileExt.compare("xml") == 0)
 					ContentType = "text/xml";
 				else
@@ -660,11 +662,12 @@ bool CWebserverRequest::SendFile(string path,string filename)
 void CWebserverRequest::SendOpenFile(int file)
 {
 #define BUFSIZE 1024
+	if(Parent->DEBUG) printf("SendOpenFile\n");
 	tmplong  = lseek( file, 0, SEEK_END);
 	lseek( file, 0, SEEK_SET);
 
-	char *buf = new char[BUFSIZE] ;
-	while(tmplong>0)
+	char *buf = new char[BUFSIZE+1] ;
+	while(tmplong > 0)
 	{
 		long block = tmplong;
 		if(block>BUFSIZE)
