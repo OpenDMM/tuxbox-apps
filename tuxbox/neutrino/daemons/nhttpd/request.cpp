@@ -111,7 +111,7 @@ bool CWebserverRequest::CheckAuth()
 
 bool CWebserverRequest::GetRawRequest()
 {
-#define bufferlen 1024
+#define bufferlen 16384
 	char *buffer = new char[bufferlen+1];
 
 	if ((rawbuffer_len = read(Socket,buffer,bufferlen)) < 1)
