@@ -23,6 +23,9 @@
 //    Foundation, Inc., 675 Mass Ave, Cambridge, MA 02139, USA.
 //
 //  $Log$
+//  Revision 1.64  2001/10/05 02:37:00  fnbrd
+//  Removed forgotten comment.
+//
 //  Revision 1.63  2001/10/04 20:12:59  fnbrd
 //  Removed duplicate code.
 //
@@ -1113,57 +1116,6 @@ static void commandAllEventsChannelID(struct connectionData *client, char *data,
   dprintf("Request of all events for 0x%x\n", serviceUniqueKey);
   sendAllEvents(client, serviceUniqueKey);
   return;
-/*
-  char *evtList=new char[65*1024]; // 65kb should be enough and dataLength is unsigned short
-  if(!evtList) {
-    fprintf(stderr, "low on memory!\n");
-    return;
-  }
-  *evtList=0;
-  if(serviceUniqueKey!=0) {
-    // service Found
-    if(dmxEIT.pause()) {
-      delete[] evtList;
-      return;
-    }
-    lockEvents();
-    int serviceIDfound=0;
-    for(MySIeventsOrderServiceUniqueKeyFirstStartTimeEventUniqueKey::iterator e=mySIeventsOrderServiceUniqueKeyFirstStartTimeEventUniqueKey.begin(); e!=mySIeventsOrderServiceUniqueKeyFirstStartTimeEventUniqueKey.end(); e++) {
-      if(SIservice::makeUniqueKey(e->first->originalNetworkID, e->first->serviceID)==serviceUniqueKey) {
-        serviceIDfound=1;
-        for(SItimes::iterator t=e->first->times.begin(); t!=e->first->times.end(); t++) {
-          char strZeit[50];
-          sprintf(strZeit, "%012llx ", e->first->uniqueKey());
-          strcat(evtList, strZeit);
-          struct tm *tmZeit;
-          tmZeit=localtime(&(t->startzeit));
-          sprintf(strZeit, "%02d.%02d %02d:%02d %u ",
-            tmZeit->tm_mday, tmZeit->tm_mon+1, tmZeit->tm_hour, tmZeit->tm_min, e->first->times.begin()->dauer/60);
-          strcat(evtList, strZeit);
-          strcat(evtList, e->first->name.c_str());
-          strcat(evtList, "\n");
-        }
-      } // if = serviceID
-      else if(serviceIDfound)
-        break; // sind nach serviceID und startzeit sortiert -> nicht weiter suchen
-    }
-    unlockEvents();
-    if(dmxEIT.unpause()) {
-      delete[] evtList;
-      return;
-    }
-  }
-  struct sectionsd::msgResponseHeader responseHeader;
-  responseHeader.dataLength=strlen(evtList)+1;
-  if(writeNbytes(client->connectionSocket, (const char *)&responseHeader, sizeof(responseHeader), TIMEOUT_CONNECTIONS)>0) {
-    if(responseHeader.dataLength)
-      writeNbytes(client->connectionSocket, evtList, responseHeader.dataLength, TIMEOUT_CONNECTIONS);
-  }
-  else
-    dputs("[sectionsd] Fehler/Timeout bei write");
-  delete[] evtList;
-  return;
-*/
 }
 
 static void commandDumpStatusInformation(struct connectionData *client, char *data, const unsigned dataLength)
