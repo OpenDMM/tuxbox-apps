@@ -477,10 +477,10 @@ bool CWebAPI::ShowCurrentStreamInfo(CWebserverRequest* request)
 
 		long header = bitInfo[7];
 
-		char layer =	(header>>17)&3;
-		char sampfreq = (header>>10)&3;
-		char mode =	(header>> 6)&3;
-		char copy =	(header>> 3)&1;
+		unsigned char layer =	(header>>17)&3;
+		unsigned char sampfreq = (header>>10)&3;
+		unsigned char mode =	(header>> 6)&3;
+		unsigned char copy =	(header>> 3)&1;
 
 		sprintf((char*) buf, "%s (%s/%s) %s", modenames[mode],
 								sampfreqnames[sampfreq],
