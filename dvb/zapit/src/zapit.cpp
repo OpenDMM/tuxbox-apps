@@ -664,10 +664,10 @@ bool parse_command(CBasicMessage::Header &rmsg, int connfd)
 		}
 
 		CZapitClient::responseGetSatelliteList msgResponseGetSatelliteList;
-		xmlNodePtr search = scanInputParser->RootNode()->xmlChildrenNode;
+		xmlNodePtr search = xmlDocGetRootElement(scanInputParser)->xmlChildrenNode;
 
 		while (search) {
-			strncpy(msgResponseGetSatelliteList.satName, search->GetAttributeValue("name"), sizeof(msgResponseGetSatelliteList.satName));
+			strncpy(msgResponseGetSatelliteList.satName, xmlGetAttribute(search, "name"), sizeof(msgResponseGetSatelliteList.satName));
 			send(connfd, &msgResponseGetSatelliteList, sizeof(msgResponseGetSatelliteList), 0);
 			search = search->xmlNextNode;
 		}
@@ -1501,6 +1501,9 @@ int main (int argc, char **argv)
 	zapit_server.run(parse_command, CZapitMessages::ACTVERSION);
 
 	enterStandby();
+
+	if (scanInputParser != NULL)
+		xmlFreeDoc(scanInputParser);
 
 	delete bouquetManager;
 	delete eventServer;
