@@ -126,10 +126,7 @@ int nvod_service_ids(
 	return -1;
 }
 
-int parse_sdt(
-	const t_transport_stream_id p_transport_stream_id,
-	const t_original_network_id p_original_network_id,
-	const unsigned char DiSEqC)
+int parse_sdt(const t_satellite_position satellite_position, const t_transport_stream_id p_transport_stream_id, const t_original_network_id p_original_network_id, const unsigned char DiSEqC)
 {
 	CDemux dmx;
 
@@ -209,7 +206,7 @@ int parse_sdt(
 					break;
 
 				case 0x48:
-					service_descriptor(buffer + pos2, service_id, transport_stream_id, original_network_id, DiSEqC);
+					service_descriptor(buffer + pos2, service_id, transport_stream_id, original_network_id, satellite_position, DiSEqC);
 					break;
 
 				case 0x49:

@@ -164,23 +164,27 @@ void ParseChannels(xmlNodePtr node, const t_transport_stream_id transport_stream
 void FindTransponder(xmlNodePtr search)
 {
 	uint8_t DiSEqC;
-	t_satellite_position satellitePosition = 0;
+	t_satellite_position satellitePosition = SATELLITE_POSITION_OF_NON_SATELLITE_SOURCE;
 
 	while (search)
 	{
-		if (!(strcmp(xmlGetName(search), "cable")))
-			DiSEqC = 0xff;
+		const char * search_type = xmlGetName(search);
 
-		else if (!(strcmp(xmlGetName(search), "sat")))
-		     {	
+		if (!(strcmp(search_type, "cable")))
+		{
+			DiSEqC = 0xff;
+		}
+		else if (!(strcmp(search_type, "sat")))
+		{	
 			DiSEqC = xmlGetNumericAttribute(search, "diseqc", 0);
 			satellitePosition = satellitePositions[xmlGetAttribute(search, "name")];
-		     }
-
-		else if (!(strcmp(xmlGetName(search), "terrestrial")))
+		}
+		else if (!(strcmp(search_type, "terrestrial")))
+		{
 			DiSEqC = 0xfe;
-
-		else {
+		}
+		else
+		{
 			search = search->xmlNextNode;
 			continue;
 		}
