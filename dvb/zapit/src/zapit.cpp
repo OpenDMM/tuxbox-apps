@@ -55,7 +55,7 @@
 #include "getservices.h"
 #include "zapit.h"
 
-#define debug(fmt, args...) { if (debug) printf(fmt, ## args); }
+#define debug(fmt, args...) { if (debug) { printf(fmt, ## args); fflush(stdout); } }
 
 #define CONFIGFILE CONFIGDIR "/zapit/zapit.conf"
 
@@ -760,6 +760,15 @@ void parse_command (CZapitClient::commandHead &rmsg)
 			{
 				CZapitClient::responseCmd response;
 				prepare_channels();
+				response.cmd = CZapitClient::CMD_READY;
+				send(connfd, &response, sizeof(response), 0);
+				eventServer->sendEvent(CZapitClient::EVT_BOUQUETS_CHANGED, CEventServer::INITID_ZAPIT);
+				break;
+			}
+			case CZapitClient::CMD_COMMIT_BOUQUET_CHANGE:
+			{
+				CZapitClient::responseCmd response;
+				bouquetManager->renumServices();
 				response.cmd = CZapitClient::CMD_READY;
 				send(connfd, &response, sizeof(response), 0);
 				eventServer->sendEvent(CZapitClient::EVT_BOUQUETS_CHANGED, CEventServer::INITID_ZAPIT);
