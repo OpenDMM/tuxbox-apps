@@ -15,6 +15,13 @@ $Id$
 
 
 $Log$
+Revision 1.10  2004/07/24 11:44:44  rasc
+EN 301 192 update
+ - New: ECM_repetition_rate_descriptor (EN 301 192 v1.4.1)
+ - New: time_slice_fec_identifier_descriptor (EN 301 192 v1.4.1)
+ - New: Section MPE_FEC  EN 301 192 v1.4
+ - Bugfixes
+
 Revision 1.9  2004/04/05 17:32:13  rasc
 mass typo fix adaption --> adaptation
 
@@ -111,6 +118,13 @@ void  descriptorDVB_ApplicationSignalling(u_char *b);
 void  descriptorDVB_AdaptationFieldData(u_char *b);
 void  descriptorDVB_ServiceIdentifier(u_char *b);
 void  descriptorDVB_ServiceAvailability(u_char *b);
+void  descriptorDVB_DefaultAuthority (u_char *b);
+void  descriptorDVB_RelatedContent(u_char *b);
+void  descriptorDVB_TVA_ID(u_char *b);
+void  descriptorDVB_ContentIdentifier(u_char *b);
+void  descriptorDVB_TimesliceFecIdentifier(u_char *b);
+void  descriptorDVB_ECM_RepetitionRate(u_char *b);
+
 
 
 #endif
