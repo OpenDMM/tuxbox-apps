@@ -18,6 +18,10 @@ $Id$
 
 
 $Log$
+Revision 1.17  2004/01/22 22:26:35  rasc
+pes_pack_header
+section read timeout
+
 Revision 1.16  2004/01/02 22:25:37  rasc
 DSM-CC  MODULEs descriptors complete
 
@@ -135,7 +139,7 @@ int  doReadSECT (OPTION *opt)
     flt.pid = opt->pid;
     flt.filter.filter[0] = opt->filter;
     flt.filter.mask[0] = opt->mask;
-    flt.timeout = 0;
+    flt.timeout = opt->timeout_ms;
     flt.flags = DMX_IMMEDIATE_START;
     if (opt->crc) flt.flags |= DMX_CHECK_CRC;
 

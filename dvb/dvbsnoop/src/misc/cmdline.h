@@ -40,7 +40,7 @@ typedef struct _OPTIONS {
   u_int       filter;
   u_int       mask;
   int         crc;
-  // long        timeout_ms;		// read timeout in ms
+  long        timeout_ms;		// read timeout in ms
   long        packet_count;
   int         time_mode;
   int         hide_copyright;  		// suppress message at prog start
