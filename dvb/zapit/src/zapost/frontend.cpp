@@ -426,6 +426,11 @@ void CFrontend::setLnbOffset(const bool high, const uint8_t index, int offset)
 	}
 }
 
+void CFrontend::positionMotor(uint8_t diseqc)
+{
+	//not implemented yet
+}
+
 int CFrontend::setParameters(struct dvb_frontend_parameters *feparams, const uint8_t polarization, const uint8_t diseqc)
 {
 	int ret, freq_offset = 0;

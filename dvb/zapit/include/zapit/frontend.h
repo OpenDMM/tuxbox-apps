@@ -96,7 +96,9 @@ class CFrontend
 		void				setDiseqcType(const diseqc_t type);
 		void				setLnbOffset(const bool high, const uint8_t index, const int offset);
 		int				setParameters(struct dvb_frontend_parameters *feparams, uint8_t polarization, uint8_t diseqc);
-		void 				setCurrentSatellitePosition(int32_t satellitePosition) {currentSatellitePosition = satellitePosition; } 
+		void 				setCurrentSatellitePosition(int32_t satellitePosition) {currentSatellitePosition = satellitePosition; }
+		
+		void 				positionMotor(uint8_t diseqc); 
 };
 
 #endif /* __zapit_frontend_h__ */
