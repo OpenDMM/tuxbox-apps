@@ -23,6 +23,9 @@
 //    Foundation, Inc., 675 Mass Ave, Cambridge, MA 02139, USA.
 //
 //  $Log$
+//  Revision 1.90  2002/01/29 23:23:57  field
+//  Mehr Details in ListAll
+//
 //  Revision 1.89  2002/01/06 18:23:44  McClean
 //  better busybox-handling
 //
@@ -980,7 +983,7 @@ static unsigned short findServiceIDforServiceName(const char *serviceName)
       if(si!=mySIservicesOrderServiceName.end())
         return si->first->serviceID;
     }
-  }    
+  }
 #endif
   dputs("Service not found");
   return 0;
@@ -1009,7 +1012,7 @@ static unsigned findServiceUniqueKeyforServiceName(const char *serviceName)
         return si->first->uniqueKey();
       }
     }
-  }    
+  }
 #endif
   dputs("Service not found");
   return 0;
@@ -1757,7 +1760,7 @@ struct sectionsd::msgResponseHeader responseHeader;
       }
     responseHeader.dataLength+= wh+ 1; */
   }
-  else 
+  else
     responseHeader.dataLength=
      strlen(e.name.c_str())+1+		// Name + del
      strlen(e.text.c_str())+1+		// Text + del
@@ -2086,8 +2089,24 @@ static void sendEventList(struct connectionData *client, const unsigned char ser
                         liste+=4;
                         *((unsigned long long *)liste)=e->first->uniqueKey();
                         liste+=8;
+                        *((unsigned *)liste)=t->startzeit;
+                        liste+=4;
+                        *((unsigned *)liste)=t->dauer;
+                        liste+=4;
                         strcpy(liste, e->first->name.c_str());
                         liste+=strlen(e->first->name.c_str());
+                        *liste=0;
+                        liste++;
+                        if (e->first->text== "" )
+                        {
+                        	strcpy(liste, e->first->extendedText.c_str());
+                        	liste+=strlen(e->first->extendedText.c_str());
+                        }
+                        else
+                        {
+                        	strcpy(liste, e->first->text.c_str());
+                        	liste+=strlen(e->first->text.c_str());
+                        }
                         *liste=0;
                         liste++;
                     } // else !sendServiceName
