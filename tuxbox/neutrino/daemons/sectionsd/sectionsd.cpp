@@ -2709,7 +2709,7 @@ static void *sdtThread(void *)
 
 	try
 	{
-		dprintf("sdt-thread started.\n");
+		dprintf("[%sThread] pid %d start\n", "sdt", getpid());
 
 		int timeoutsDMX = 0;
 		dmxSDT.start(); // -> unlock
@@ -3068,7 +3068,7 @@ static void *timeThread(void *)
 
 	try
 	{
-		dprintf("time-thread started.\n");
+		dprintf("[%sThread] pid %d start\n", "time", getpid());
 
 		do
 		{
@@ -3282,7 +3282,7 @@ static void *eitThread(void *)
 
 	try
 	{
-		dputs("[eitThread] start");
+		dprintf("[%sThread] pid %d start\n", "eit", getpid());
 		int timeoutsDMX = 0;
 		time_t lastRestarted = time(NULL);
 		dmxEIT.start(); // -> unlock
