@@ -112,7 +112,7 @@ static void initGlobals(void)
 	g_RCInput       = NULL;
 	g_Controld      = NULL;
 	g_Timerd        = NULL;
-	g_Zapit         = NULL;
+	g_Zapit         = new CZapitClient;
 	g_RemoteControl = NULL;
 
 	g_EpgData       = NULL;
@@ -548,10 +548,10 @@ int CNeutrinoApp::loadSetup()
 		erg = 2;
 	}
 
-/*	if (!scanSettings.loadSettings(scanSettingsFile, (g_info.delivery_system = g_Zapit->getDeliverySystem())))
+	if (!scanSettings.loadSettings(scanSettingsFile, (g_info.delivery_system = g_Zapit->getDeliverySystem())))
 	{
 		dprintf(DEBUG_NORMAL, "Loading of scan settings failed. Using defaults.\n");
-	}*/
+	}
 
 	return erg;
 }
@@ -2119,7 +2119,6 @@ int CNeutrinoApp::run(int argc, char **argv)
 
 	g_Locale = new CLocaleManager;
 	g_RCInput = new CRCInput;
-	g_Zapit = new CZapitClient;
 
 	g_Sectionsd = new CSectionsdClient;
 	g_Timerd = new CTimerdClient;
