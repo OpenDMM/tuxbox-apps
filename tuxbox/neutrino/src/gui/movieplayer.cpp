@@ -922,7 +922,9 @@ CMoviePlayerGui::PlayStream (int streamtype)
 		  //strcpy (mrl, "c:\\TestMovies\\dolby.mpg");
 		  int namepos = filebrowser->getSelectedFile ()->Name.rfind("vlc://");
 	          string mrl_str = filebrowser->getSelectedFile ()->Name.substr(namepos + 6);
-	          strcpy (mrl,mrl_str.c_str());
+				 char* tmp=curl_escape(mrl_str.c_str(), 0);
+	          strncpy (mrl,tmp, sizeof(mrl)-1);
+				 curl_free(tmp);
       		  printf ("Generated FILE MRL: %s\n", mrl);
 		  
 		  update_info = true;
