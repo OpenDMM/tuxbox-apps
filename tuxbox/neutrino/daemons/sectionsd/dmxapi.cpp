@@ -34,7 +34,7 @@ bool setfilter(const int fd, const uint16_t pid, const uint8_t filter, const uin
 {
 	struct dmx_sct_filter_params flt;
 
-	memset(&flt.filter, 0, sizeof(struct dmx_filter));
+	memset(&flt, 0, sizeof(struct dmx_sct_filter_params));
 
 	flt.pid              = pid;
 	flt.filter.filter[0] = filter;
@@ -88,7 +88,7 @@ bool getUTC(UTC_t * const UTC, const bool TDT)
 		return false;
 	}
 
-	memset(&flt.filter, 0, sizeof(struct dmx_filter));
+	memset(&flt, 0, sizeof(struct dmx_sct_filter_params));
 
 	flt.pid              = 0x0014;
 	flt.filter.filter[0] = TDT ? 0x70 : 0x73;
