@@ -8,6 +8,9 @@ $Id$
 
 
 $Log$
+Revision 1.8  2003/11/09 22:54:16  rasc
+no message
+
 Revision 1.7  2003/11/09 22:50:32  rasc
 no message
 
@@ -38,7 +41,7 @@ Revision 1.1  2003/10/19 22:22:58  rasc
 
 
 
-void decode_DATAGRAM_DSMCC (u_char *b, int len)
+void decode_DSMCC_ADDR (u_char *b, int len)
 {
  /* EN 301 192 7.x */
 
