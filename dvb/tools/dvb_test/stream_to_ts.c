@@ -45,7 +45,6 @@
 int main(int argc, char **argv)
 {
 	unsigned short port;
-	unsigned short pida, pidv;
 	char *tsfilename;
 	int ts;
 

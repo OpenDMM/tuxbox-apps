@@ -102,7 +102,6 @@ main (int argc, char **argv)
   int dmxa, dmxv, dvr, adec, vdec, ts;
   struct dmx_pes_filter_params p;
   ssize_t wr;
-  size_t r;
 
   if ((dmxa = open (DMX, O_RDWR | O_NONBLOCK)) < 0)
     {
