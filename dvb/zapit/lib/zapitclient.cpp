@@ -115,7 +115,7 @@ void CZapitClient::getLastChannel(unsigned int &channumber, char &mode)
 
 	CZapitClient::responseGetLastChannel response;
 	CBasicClient::receive_data((char* )&response, sizeof(response));
-	channumber = response.channelNumber;
+	channumber = response.channelNumber + 1;
 	mode = response.mode;
 
 	zapit_close();

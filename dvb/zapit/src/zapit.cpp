@@ -234,7 +234,7 @@ void save_settings (bool write)
 		// now save the lowest channel number with the current channel_id
 		int c = ((currentMode & RADIO_MODE) ? bouquetManager->radioChannelsBegin() : bouquetManager->tvChannelsBegin()).getLowestChannelNumberWithChannelID(channel->getChannelID());
 		if (c >= 0)
-			config->setInt32((currentMode & RADIO_MODE) ? "lastChannelRadio" : "lastChannelTV", c + 1);
+			config->setInt32((currentMode & RADIO_MODE) ? "lastChannelRadio" : "lastChannelTV", c);
 	}
 
 	if (write)
@@ -254,7 +254,7 @@ CZapitClient::responseGetLastChannel load_settings()
 	else
 		lastchannel.mode = 't';
 
-	lastchannel.channelNumber = config->getInt32((currentMode & RADIO_MODE) ? "lastChannelRadio" : "lastChannelTV", 1);
+	lastchannel.channelNumber = config->getInt32((currentMode & RADIO_MODE) ? "lastChannelRadio" : "lastChannelTV", 0);
 
 	return lastchannel;
 }
@@ -631,7 +631,7 @@ void parse_command (CZapitMessages::commandHead &rmsg)
 			{
 				CZapitClient::responseGetLastChannel responseGetLastChannel;
 				responseGetLastChannel = load_settings();
-				send(connfd, &responseGetLastChannel, sizeof(responseGetLastChannel), 0);
+				send(connfd, &responseGetLastChannel, sizeof(responseGetLastChannel), 0); // bouquet & channel number are already starting at 0!
 				break;
 			}
 			case CZapitMessages::CMD_SET_AUDIOCHAN:
