@@ -32,6 +32,10 @@
 	Foundation, Inc., 675 Mass Ave, Cambridge, MA 02139, USA.
 
   $Log$
+  Revision 1.87  2001/12/02 11:59:26  waldi
+  - add config.h include
+  - change dir for icons
+
   Revision 1.86  2001/12/01 23:13:50  Simplex
   new video format option: autodetect 16:9
 
@@ -267,6 +271,9 @@
 
 
 */
+
+#include <config.h>
+
 #include "neutrino.h"
 #include "include/debug.h"
 
@@ -312,7 +319,7 @@ static void initGlobals(void)
 CNeutrinoApp::CNeutrinoApp()
 {
     g_FrameBuffer = new CFrameBuffer;
-	g_FrameBuffer->setIconBasePath("/usr/lib/icons/");
+	g_FrameBuffer->setIconBasePath(DATADIR "/neutrino/icons/");
 
 	g_fontRenderer = new fontRenderClass;
 	SetupFrameBuffer();
