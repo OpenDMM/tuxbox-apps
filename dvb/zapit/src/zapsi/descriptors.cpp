@@ -495,7 +495,7 @@ void service_descriptor(const unsigned char * const buffer, const t_service_id s
 		CBouquet* bouquet;
 		int bouquetId;
 
-		bouquetId = scanBouquetManager->existsBouquet(providerName);
+		bouquetId = scanBouquetManager->existsBouquet(providerName.c_str());
 
 		if (bouquetId == -1)
 			bouquet = scanBouquetManager->addBouquet(providerName);

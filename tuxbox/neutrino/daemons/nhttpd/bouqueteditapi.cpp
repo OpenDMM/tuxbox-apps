@@ -285,7 +285,6 @@ bool CBouqueteditAPI::saveBouquet(CWebserverRequest* request)
         if(!request->Authenticate())    
                 return false;   
 	Parent->Zapit->saveBouquets();
-	Parent->Zapit->commitBouquetChange();
 	Parent->UpdateBouquets();
 	request->Send302("/bouquetedit/main?saved=1");
 	return true;

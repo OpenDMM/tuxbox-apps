@@ -95,7 +95,7 @@ class CZapitMessages
 			CMD_BQ_REMOVE_CHANNEL_FROM_BOUQUET = 46,
 			CMD_BQ_RENUM_CHANNELLIST           = 47,
 			CMD_BQ_RESTORE                     = 48,
-			CMD_BQ_COMMIT_CHANGE               = 49,
+			/* unused:			CMD_BQ_COMMIT_CHANGE               = 49, */
 			CMD_BQ_SAVE_BOUQUETS               = 50,
 
 			CMD_SET_RECORD_MODE                = 51,

@@ -388,7 +388,7 @@ bool CZapitClient::isChannelTVChannel(const t_channel_id channel_id)
 
 
 
-/* restore bouquets so as if they where just loaded*/
+/* restore bouquets so as if they were just loaded */
 void CZapitClient::restoreBouquets()
 {
 	send(CZapitMessages::CMD_BQ_RESTORE);
@@ -408,16 +408,6 @@ void CZapitClient::reinitChannels()
 	close_connection();
 }
 
-
-/* commit bouquet change */
-void CZapitClient::commitBouquetChange()
-{
-	send(CZapitMessages::CMD_BQ_COMMIT_CHANGE);
-
-	CZapitMessages::responseCmd response;
-	CBasicClient::receive_data((char* )&response, sizeof(response));
-	close_connection();
-}
 
 void CZapitClient::muteAudio(const bool mute)
 {
