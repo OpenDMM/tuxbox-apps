@@ -17,6 +17,9 @@ $Id$
 
 
 $Log$
+Revision 1.7  2003/11/29 23:11:43  rasc
+no message
+
 Revision 1.6  2003/11/26 23:54:49  rasc
 -- bugfixes on Linkage descriptor
 
@@ -421,6 +424,22 @@ char *dsmccStrUpdateType_ID (u_int id)
 
   return findTableID (TableIDs, id);
 }
+
+
+
+
+/*
+  --  OUI  Table    LLC-SNAP  IEEE 802
+  --  real table is very large!!
+  --  see: http://standards.ieee.org/regauth/oui/index.shtml
+*/
+
+char *dsmccStrOUI  (u_int id)
+
+{
+	return (char *) "http://standards.ieee.org/regauth/oui/";
+}
+
 
 
 
