@@ -86,38 +86,37 @@ class CBouquetManager
 		string convertForXML( string s);
 		void storeBouquets();
 	public:
-		class tvChannelIterator
+		class ChannelIterator
 		{
-			private:
+			protected:
 				CBouquetManager* Owner;
 				int b;
 				int c;
 			public:
-				tvChannelIterator(CBouquetManager* owner, int B=0, int C=0) { Owner = owner; b=B;c=C;};
+				ChannelIterator(CBouquetManager* owner, int B=0, int C=0) { Owner = owner; b=B;c=C;};
+				bool operator != (const ChannelIterator& it) const;
+				bool operator == (const ChannelIterator& it) const;
+				virtual CZapitChannel* operator *() =0;         // abstract
+		};
+
+		class tvChannelIterator : public ChannelIterator
+		{
+			public:
+				tvChannelIterator(CBouquetManager* owner, int B=0, int C=0) : ChannelIterator(owner, B, C) {};
 				tvChannelIterator operator ++(int);
-				bool operator != (const tvChannelIterator& it) const;
-				bool operator == (const tvChannelIterator& it) const;
 				CZapitChannel* operator *();
-			friend class CBouquetManager;
 		};
 
 		tvChannelIterator tvChannelsBegin();
 		tvChannelIterator tvChannelsEnd(){ return tvChannelIterator(this, -1, -1);};
 		tvChannelIterator tvChannelsFind(unsigned int onid_sid);
 
-		class radioChannelIterator
+		class radioChannelIterator : public ChannelIterator
 		{
-			private:
-				CBouquetManager* Owner;
-				int b;
-				int c;
 			public:
-				radioChannelIterator(CBouquetManager* owner, int B=0, int C=0) { Owner = owner; b=B;c=C;};
+				radioChannelIterator(CBouquetManager* owner, int B=0, int C=0) : ChannelIterator(owner, B, C) {};
 				radioChannelIterator operator ++(int);
-				bool operator != (const radioChannelIterator& it) const;
-				bool operator == (const radioChannelIterator& it) const;
 				CZapitChannel* operator *();
-			friend class CBouquetManager;
 		};
 
 		radioChannelIterator radioChannelsBegin();
