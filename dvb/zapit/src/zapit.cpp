@@ -1070,8 +1070,23 @@ void sendBouquets(int connfd, const bool emptyBouquetsToo)
 	}
 }
 
+bool send_data_count(int connfd, int data_count)
+{
+	CZapitMessages::responseGeneralInteger responseInteger;
+	responseInteger.number = data_count;
+	if (CBasicServer::send_data(connfd, &responseInteger, sizeof(responseInteger)) == false)
+	{
+		ERROR("could not send any return");
+		return false;
+	}
+	return true;
+}
+
 void internalSendChannels(int connfd, ChannelList* channels, const unsigned int first_channel_nr)
 {
+	if (!send_data_count(connfd, channels->size()))
+		return;
+
 	for (uint32_t i = 0; i < channels->size();i++)
 	{
 		if ((currentMode & RECORD_MODE) && ((*channels)[i]->getTsidOnid() != frontend->getTsidOnid()))
@@ -1092,13 +1107,8 @@ void internalSendChannels(int connfd, ChannelList* channels, const unsigned int 
 
 void sendAPIDs(int connfd)
 {
-	CZapitMessages::responseGeneralInteger responseInteger;
-	responseInteger.number = channel->getAudioChannelCount();
-	if (CBasicServer::send_data(connfd, &responseInteger, sizeof(responseInteger)) == false)
-	{
-		ERROR("could not send any return");
+	if (!send_data_count(connfd, channel->getAudioChannelCount()))
 		return;
-	}
 
 	for (uint32_t i = 0; i < channel->getAudioChannelCount(); i++)
 	{
