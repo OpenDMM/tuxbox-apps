@@ -20,6 +20,6 @@
 
 #define DEMUX_DEV "/dev/ost/demux0"
 
-int nit (uint8_t DiSEqC);
+int parse_nit (uint8_t DiSEqC);
 
 #endif /* __nit_h__ */

@@ -24,6 +24,13 @@
 
 #include "bouquets.h"
 
+extern std::map <uint32_t, CZapitChannel> allchans_tv;
+extern std::map <uint32_t, uint32_t> numchans_tv;
+extern std::map <std::string, uint32_t> namechans_tv;
+extern std::map <uint32_t, CZapitChannel> allchans_radio;
+extern std::map <uint32_t, uint32_t> numchans_radio;
+extern std::map <std::string, uint32_t> namechans_radio;
+
 /**** class CBouquet ********************************************************/
 CBouquet::CBouquet (const CBouquet& bouquet)
 {

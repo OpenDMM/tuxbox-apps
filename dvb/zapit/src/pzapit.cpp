@@ -39,7 +39,7 @@ int usage (std::string basename)
 	std::cout << "to get your satmask, simply add your supported satellites:" << std::endl;
 	std::cout << "astra19 = 1, hotbird = 2, kopernikus = 4" << std::endl;
 	std::cout << "astra28 = 8, sirius = 16, thor = 32, tuerksat = 64" << std::endl;
-	std::cout << "leave bouquets untouched = 256" << std::cout;
+	std::cout << "leave bouquets untouched = 256" << std::endl;
 	return -1;
 }
 

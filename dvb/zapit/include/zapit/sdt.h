@@ -29,6 +29,6 @@ enum service_type_e {
 	DVB_MHP_SERVICE
 };
 
-int sdt (uint16_t osid, bool scan_mode);
+int parse_sdt (uint16_t osid, bool scan_mode);
 
 #endif /* __sdt_h__ */
