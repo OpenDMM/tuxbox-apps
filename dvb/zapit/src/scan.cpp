@@ -484,9 +484,9 @@ void *start_scanthread(void *)
  	found_data_chans = 0;
  	t_satellite_position satellitePosition = 0;
 
-	printf("[scan] start...\n");
-	for (spI = scanProviders.begin(); spI != scanProviders.end(); spI++)
-		printf("[scan] scanProviders: %s\n", providerName);
+//	printf("[scan] start...\n");
+//	for (spI = scanProviders.begin(); spI != scanProviders.end(); spI++)
+//		printf("[scan] scanProviders: %s\n", providerName);
 
 	curr_sat = 0;
 
@@ -550,7 +550,7 @@ void *start_scanthread(void *)
 			if (diseqc_pos == 255 /* = -1 */)
 				diseqc_pos = 0; 
 				
-			printf("[scan] frontendType = %s, diseqcType = %d\n", frontendType, frontend->getDiseqcType());
+//			printf("[scan] frontendType = %s, diseqcType = %d\n", frontendType, frontend->getDiseqcType());
 			if (!strcmp(frontendType, "sat") && (frontend->getDiseqcType() == DISEQC_1_2))
 				satellitePosition = driveMotorToSatellitePosition(providerName);
 				
