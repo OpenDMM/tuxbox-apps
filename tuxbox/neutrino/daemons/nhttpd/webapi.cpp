@@ -493,9 +493,9 @@ bool CWebAPI::ShowBouquet(CWebserverRequest* request, int BouquetNr)
 {
 	CZapitClient::BouquetChannelList *channellist;
 	if(BouquetNr > 0)
-		channellist = &(Parent->BouquetsList[BouquetNr]);
+		channellist = Parent->GetBouquet(BouquetNr,CZapitClient::MODE_CURRENT);
 	else
-		channellist = &Parent->ChannelList;
+		channellist = Parent->GetChannelList(CZapitClient::MODE_CURRENT);
 
 	Parent->GetChannelEvents();
 

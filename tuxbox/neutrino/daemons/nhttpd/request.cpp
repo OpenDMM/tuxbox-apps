@@ -710,7 +710,7 @@ bool CWebserverRequest::SocketWriteData( char* data, long length )
 		return false;
 	if((write(Socket, data, length) == -1) )
 	{
-		dprintf("request canceled\n");
+		perror("request canceled\n");
 		RequestCanceled = true;
 		return false;
 	}
