@@ -396,6 +396,7 @@ int main (int argc,char **argv){
 		for (i_size=0;i_size<VIDSIZENUM;i_size++){
 			if (smode!=-1 && i_size!=smode) continue;
 			printf ("%dx%d ",vidsizetable[i_size].width,vidsizetable[i_size].height);
+			fflush(stdout);
 			if ((i_size%4)==3) printf ("\n");
 			
 			// try to set mode
