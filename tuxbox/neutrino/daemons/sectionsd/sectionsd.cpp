@@ -23,6 +23,9 @@
 //    Foundation, Inc., 675 Mass Ave, Cambridge, MA 02139, USA.
 //
 //  $Log$
+//  Revision 1.130  2002/09/24 22:29:06  thegoodguy
+//  Code cleanup (kick out onid_sid)
+//
 //  Revision 1.129  2002/09/20 00:05:55  thegoodguy
 //  Fixed potential deadlock
 //
@@ -3174,7 +3177,7 @@ static void commandTimesNVODservice(struct connectionData *client, char *data, c
 
 		if (si->second->nvods.size())
 		{
-			responseHeader.dataLength = (4 + 2 + 4 + 4) * si->second->nvods.size();
+			responseHeader.dataLength = (sizeof(t_service_id) + sizeof(t_original_network_id) + sizeof(t_transport_stream_id) + 4 + 4) * si->second->nvods.size();
 			msgData = new char[responseHeader.dataLength];
 
 			if (!msgData)
@@ -3192,10 +3195,9 @@ static void commandTimesNVODservice(struct connectionData *client, char *data, c
 			for (SInvodReferences::iterator ni = si->second->nvods.begin(); ni != si->second->nvods.end(); ni++)
 			{
 				// Zeiten sind erstmal dummy, d.h. pro Service eine Zeit
-				*(unsigned *)p = ni->uniqueKey();
-				p += 4;
-				*(unsigned short *)p = ni->transportStreamID;
-				p += 2;
+				*(t_service_id          *)p = ni->serviceID;			p += sizeof(t_service_id);
+				*(t_original_network_id *)p = ni->originalNetworkID;		p += sizeof(t_original_network_id);
+				*(t_transport_stream_id *)p = ni->transportStreamID;		p += sizeof(t_transport_stream_id);
 
 				SItime zeitEvt1(0, 0);
 				//        const SIevent &evt=
