@@ -58,7 +58,7 @@
 #define DMX_BUFFER_SIZE (256 * 1024)
 
 /* maximum number of pes pids */
-#define MAXPIDS		8
+#define MAXPIDS		64
 
 /* tcp packet data size */
 #define PACKET_SIZE	1448
