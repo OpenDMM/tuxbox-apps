@@ -683,11 +683,6 @@ bool parse_command(CBasicMessage::Header &rmsg, int connfd)
 		eventServer->sendEvent(CControldClient::EVT_MUTECHANGED, CEventServer::INITID_CONTROLD, &settings.mute, sizeof(settings.mute));
 		break;
 		
-	case CControld::CMD_SETANALOGMODE:
-		CControld::commandAnalogMode msgmd;
-		CBasicServer::receive_data(connfd, &msgmd, sizeof(msgmd));
-		zapit.setAudioMode(msgmd.mode);
-		break;
 	case CControld::CMD_SETVIDEOFORMAT:
 		//printf("[controld] set videoformat\n");
 		CControld::commandVideoFormat msg2;
