@@ -846,6 +846,7 @@ const char * locale_real_names[] =
 	"timerlist.modify",
 	"timerlist.name",
 	"timerlist.new",
+	"timerlist.overlapping_timer",
 	"timerlist.plugin",
 	"timerlist.program.unknown",
 	"timerlist.recording_dir",
