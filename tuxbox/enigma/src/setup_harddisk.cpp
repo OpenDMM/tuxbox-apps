@@ -171,7 +171,7 @@ eString getPartFS(int dev, eString mp="")
 }
 
 eHarddiskSetup::eHarddiskSetup()
-: eListBoxWindow<eListBoxEntryText>(_("harddisk setup..."), 5, 420, true)
+: eListBoxWindow<eListBoxEntryText>(_("harddisk setup..."), 5, 420)
 {
 	nr=0;
 	
