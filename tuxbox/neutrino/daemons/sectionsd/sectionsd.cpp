@@ -54,8 +54,6 @@
 #include <algorithm>
 #include <string>
 
-#include <linux/dvb/dmx.h>
-
 #include <sys/wait.h>
 #include <sys/time.h>
 
