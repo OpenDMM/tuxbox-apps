@@ -438,7 +438,7 @@ void CFrontend::sendMotorCommand(uint8_t cmdtype, uint8_t address, uint8_t comma
 	cmd.msg[2] = command; //command
 	cmd.msg[3] = parameter1;
 	cmd.msg[4] = parameter2;
-	cmd.msg_len = 5;
+	cmd.msg_len = 3 + num_parameters;
 	
 	sendDiseqcCommand(&cmd, 15);
 	printf("[frontend] motor positioning command sent.\n");
