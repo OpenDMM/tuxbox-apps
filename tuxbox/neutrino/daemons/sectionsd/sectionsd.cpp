@@ -23,6 +23,9 @@
 //    Foundation, Inc., 675 Mass Ave, Cambridge, MA 02139, USA.
 //
 //  $Log$
+//  Revision 1.17  2001/07/16 13:08:34  fnbrd
+//  Noch ein Fehler beseitigt.
+//
 //  Revision 1.16  2001/07/16 12:56:50  fnbrd
 //  Noch ein Fehler behoben.
 //
@@ -998,11 +1001,15 @@ static void *houseKeepingThread(void *)
 //      return 0;
     pthread_mutex_lock(&eventsLock);
     unsigned anzEventsAlt=events.size();
+/*
+    pthread_mutex_lock(&servicesLock);
     events.mergeAndRemoveTimeShiftedEvents(services);
+    pthread_mutex_unlock(&servicesLock);
     if(events.size()!=anzEventsAlt)
       printf("Removed %d time-shifted events.\n", anzEventsAlt-events.size());
+*/
     anzEventsAlt=events.size();
-    events.removeOldEvents();
+    events.removeOldEvents(60*60); // alte Events = aelter als 1 h
     if(events.size()!=anzEventsAlt)
       printf("Removed %d old events.\n", anzEventsAlt-events.size());
     printf("Number of events: %u\n", events.size());
