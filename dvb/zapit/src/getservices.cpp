@@ -34,8 +34,10 @@ void ParseTransponders(xmlNodePtr node, const uint8_t DiSEqC)
 {
 	t_transport_stream_id transport_stream_id;
 	t_original_network_id original_network_id;
-	dvb_frontend_parameters feparams;
+	struct dvb_frontend_parameters feparams;
 	uint8_t polarization = 0;
+
+	memset(&feparams, 0, sizeof(struct dvb_frontend_parameters));
 
 	/* read all transponders */
 	while ((node = xmlGetNextOccurence(node, "transponder")) != NULL)
