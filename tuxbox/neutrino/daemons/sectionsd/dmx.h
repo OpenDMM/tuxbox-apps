@@ -36,6 +36,9 @@ class DMX
 	unsigned short  dmxBufferSizeInKB;
 	bool            noCRC; // first filter always without CRC
 
+	int immediate_start(void); /* mutex must be locked before and unlocked after this method */
+	int immediate_stop(void);  /* mutex must be locked before and unlocked after this method */
+
  public:
 	struct s_filters
 	{
