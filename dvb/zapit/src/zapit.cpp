@@ -2630,7 +2630,8 @@ void sendBouquets(bool emptyBouquetsToo)
 			// we'll send name and i+1 as bouquet number
 			strncpy(msgBouquet.name, g_BouquetMan->Bouquets[i]->Name.c_str(),30);
 			msgBouquet.bouquet_nr = i+1;
-
+			msgBouquet.locked = g_BouquetMan->Bouquets[i]->bLocked;
+			msgBouquet.hidden = g_BouquetMan->Bouquets[i]->bHidden;
 			if (send(connfd, &msgBouquet, sizeof(msgBouquet),0) == -1)
 			{
 				perror("[zapit] could not send any return\n");
