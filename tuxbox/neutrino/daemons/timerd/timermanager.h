@@ -188,6 +188,7 @@ class CTimerManager
 		CTimerEventMap		events;
 		pthread_t			thrTimer;
       bool              m_saveEvents;
+      bool       m_isTimeSet;
 
 		CTimerManager();
 		static void* timerThread(void *arg);
@@ -206,6 +207,7 @@ class CTimerManager
 		int modifyEvent(int eventID, uint apid);
 		int rescheduleEvent(int eventID, time_t announceTime, time_t alarmTime, time_t stopTime);
 		void saveEventsToConfig();
+		void loadEventsFromConfig();
 		bool shutdown();
 		void shutdownOnWakeup();
 };
