@@ -532,6 +532,7 @@ void disableVideoOutput(bool disable)
 	{
 		//zapit.setStandby(false);
 		zapit.muteAudio(false);
+		audioControl::setMute(settings.mute_avs);
 		setvideooutput(settings.videooutput, false);
 		setVideoFormat(settings.videoformat, false);
 	}
@@ -541,6 +542,7 @@ void disableVideoOutput(bool disable)
 		setVideoFormat(-1, false);
 		//zapit.setStandby(true);
 		zapit.muteAudio(true);
+		audioControl::setMute(true);
 	}
 }
 
