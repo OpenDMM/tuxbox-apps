@@ -422,8 +422,8 @@ uint8_t service_descriptor (uint8_t *buffer, const t_service_id service_id, cons
 	uint8_t service_type = buffer[2];
 	uint8_t service_provider_name_length = buffer[3];
 
-	std::string providerName = convertForXML(std::string((const char*)&(buffer[4]), service_provider_name_length));
-	std::string serviceName  = convertForXML(std::string((const char*)&(buffer[service_provider_name_length + 4]), (2 + buffer[1]) - (service_provider_name_length + 4)));
+	std::string providerName = std::string((const char*)&(buffer[4]), service_provider_name_length);
+	std::string serviceName  = std::string((const char*)&(buffer[service_provider_name_length + 4]), (2 + buffer[1]) - (service_provider_name_length + 4));
 
 	found_channels++;
 
