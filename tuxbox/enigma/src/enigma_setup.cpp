@@ -38,14 +38,15 @@
 #include <setupskin.h>
 #include <setupengrab.h>
 #include <parentallock.h>
+#include <upgrade.h>
+#include <enigma.h>
+#include <timer.h>
 #include <lib/base/i18n.h>
 #include <lib/dvb/edvb.h>
 #include <lib/dvb/dvbservice.h>
 #include <lib/gui/eskin.h>
 #include <lib/gui/elabel.h>
 #include <lib/gui/emessage.h>
-#include <upgrade.h>
-#include <enigma.h>
 
 Signal1<void,eZapSetup*> eZapSetup::setupHook;
 
@@ -366,6 +367,7 @@ void eZapSetup::sel_timeCorrection()
 				tCorrection = it->second;
 			map.clear();
 			map[ref] = tCorrection;
+			eTimerManager::getInstance()->timeChanged();
 		}
 		w.hide();
 		show();
