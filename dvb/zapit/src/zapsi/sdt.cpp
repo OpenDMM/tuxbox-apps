@@ -71,7 +71,7 @@ ca_status_t get_sdt_free_CA_mode(const t_service_id p_service_id)
 	int demux_fd;
 	unsigned char buffer[SDT_SIZE];
 
-	ca_status_t free_CA_mode = CA_STATUS_CLEAR;  // <- return false if something fails
+	ca_status_t free_CA_mode = CA_STATUS_CLEAR;  // <- return CA_STATUS_CLEAR if something fails
 	unsigned short section_length;
 	unsigned short service_id;
 	unsigned short descriptors_loop_length;
