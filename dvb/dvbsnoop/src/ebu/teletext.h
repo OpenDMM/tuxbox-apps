@@ -20,11 +20,7 @@ $Id$
 #define _TELETEXT_H_
 
 
-u_char unham84 (u_char lsb, u_char msb);
 void   unParityTeletextData (u_char *b, int len);
-
-u_char invertChar (u_char *b);
-void   invertBuffer (u_char *b, int len);
 
 int    print_teletext_control_decode (int v, u_char *b, int len);
 void   print_teletext_data_x0_x25 (int v, char *s, u_char *b, int len);
