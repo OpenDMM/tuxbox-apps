@@ -23,6 +23,9 @@
 //    Foundation, Inc., 675 Mass Ave, Cambridge, MA 02139, USA.
 //
 //  $Log$
+//  Revision 1.60  2001/10/02 16:14:45  fnbrd
+//  Fehler behoben.
+//
 //  Revision 1.59  2001/09/26 09:54:50  field
 //  Neues Kommando (fuer Tontraeger-Auswahl)
 //
@@ -2170,9 +2173,9 @@ const unsigned timeoutInSeconds=2;
       lockEvents();
       if(secondsToCache>24*60L*60L && mySIeventsOrderUniqueKey.size()>3000) {
         // kleiner als 1 Tag machen wir den Cache nicht,
-	// da die timeouts ja auch von einem Sender ohne EPG kommen k÷nnen
+	// da die timeouts ja auch von einem Sender ohne EPG kommen koennen
 	// Die 3000 sind ne Annahme und beruhen auf (wenigen) Erfahrungswerten
-	// Man koennte auch ab 3000 Events nur noch jedes 3 Event o.„. einsortieren
+	// Man koennte auch ab 3000 Events nur noch jedes 3 Event o.ae. einsortieren
         dmxSDT.pause();
         lockServices();
         unsigned anzEventsAlt=mySIeventsOrderUniqueKey.size();
@@ -2436,7 +2439,7 @@ struct sockaddr_in serverAddr;
   signal(SIGTERM, signalHandler); // killall
   signal(SIGINT, signalHandler); // CTRL-C
 
-  // den Port fr die Clients ÷ffnen
+  // den Port fuer die Clients oeffnen
   listenSocket = socket(AF_INET, SOCK_STREAM, 0);
   memset( &serverAddr, 0, sizeof(serverAddr) );
   serverAddr.sin_family = AF_INET;
