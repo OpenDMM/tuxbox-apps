@@ -10,12 +10,15 @@ $Id$
  (c) 2001-2004   Rainer.Scherg@gmx.de
 
 
- -- dsmcc decoder helper functions
+ -- dsmcc strings
 
 
 
 
 $Log$
+Revision 1.28  2004/08/06 22:21:38  rasc
+New: TV-Anytime (TS 102 323) RNT descriptors 0x40 - 0x42
+
 Revision 1.27  2004/07/24 11:44:45  rasc
 EN 301 192 update
  - New: ECM_repetition_rate_descriptor (EN 301 192 v1.4.1)
@@ -119,8 +122,8 @@ some updates to dvbsnoop...
 */
 
 
-#ifndef __DSMCC_H
-#define __DSMCC_H 
+#ifndef __DSMCC_STR_H
+#define __DSMCC_STR_H 
 
 
 char *dsmccStrDSMCC_CAROUSEL_DescriptorTAG (u_int i);
