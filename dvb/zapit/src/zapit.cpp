@@ -1082,6 +1082,14 @@ void internalSendChannels(int connfd, ChannelList* channels, const unsigned int 
 
 void sendAPIDs(int connfd)
 {
+	CZapitMessages::responseGeneralInteger responseInteger;
+	responseInteger.number = channel->getAudioChannelCount();
+	if (CBasicServer::send_data(connfd, &responseInteger, sizeof(responseInteger)) == false)
+	{
+		ERROR("could not send any return");
+		return;
+	}
+
 	for (uint32_t i = 0; i < channel->getAudioChannelCount(); i++)
 	{
 		CZapitClient::responseGetAPIDs response;
