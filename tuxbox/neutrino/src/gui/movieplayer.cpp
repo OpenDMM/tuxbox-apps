@@ -433,7 +433,7 @@ ReceiveStreamThread (void *mrl)
 	streamingrunning = 1;
 	int fd = open ("/tmp/tmpts", O_CREAT | O_WRONLY);
 
-	struct pollfd poller[0];
+	struct pollfd poller[1];
 	poller[0].fd = skt;
 	poller[0].events = POLLIN | POLLPRI;
 	int pollret;
