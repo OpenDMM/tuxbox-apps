@@ -903,6 +903,18 @@ PlayStreamThread (void *mrl)
 				while (len > 0)
 				{
 					wr = write (dvr, &buf[done], len);
+					if (wr < 0)
+					{
+						if (errno != EAGAIN)
+						{
+							perror("[movieplayer.cpp] PlayStreamThread: write failed");
+#warning I have no clue except what to do if writing fails so I just set playstate to CMoviePlayerGui::STOPPED
+							playstate = CMoviePlayerGui::STOPPED;
+							break;
+						}
+						else
+							usleep(1000);
+					}
 					//printf ("[movieplayer.cpp] [%d bytes written]\n", wr);
 					len -= wr;
 					done += wr;
