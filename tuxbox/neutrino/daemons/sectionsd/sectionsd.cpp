@@ -23,6 +23,9 @@
 //    Foundation, Inc., 675 Mass Ave, Cambridge, MA 02139, USA.
 //
 //  $Log$
+//  Revision 1.33  2001/07/24 15:05:31  fnbrd
+//  sectionsd benutzt voruebergehend smart pointers der Boost-Lib.
+//
 //  Revision 1.32  2001/07/23 20:59:48  fnbrd
 //  Fehler im Time-Thread behoben.
 //
@@ -139,9 +142,15 @@
 #include <algorithm>
 #include <string>
 
-#include <loki/SmartPtr.h>
-
 #include <ost/dmx.h>
+
+// Loki's SmartPointers benutzen SmallObject zwecks Speicherverwaltung kleiner Objekte,
+// den SmartPointers. Fuer eine Multithreaded Umgebung muss ich erst noch nachlesen
+// wie ich diese SmallObjects anpassen muss
+//#include <loki/SmartPtr.h>
+
+// Daher nehmen wir SmartPointers aus der Boost-Lib (www.boost.org)
+#include <boost/smart_ptr.hpp>
 
 #include "sectionsdMsg.h"
 #include "SIutils.hpp"
@@ -198,7 +207,9 @@ static const SIevent nullEvt; // Null-Event
 //------------------------------------------------------------
 
 // SmartPointer auf SIevent
-typedef Loki::SmartPtr<class SIevent, Loki::RefCounted, Loki::DisallowConversion, Loki::NoCheck>
+//typedef Loki::SmartPtr<class SIevent, Loki::RefCounted, Loki::DisallowConversion, Loki::NoCheck>
+//  SIeventPtr;
+typedef boost::shared_ptr<class SIevent>
   SIeventPtr;
 
 // Mengen mit SIeventPtr sortiert nach Event-ID
@@ -333,7 +344,9 @@ static void removeOldEvents(long seconds)
 }
 
 //typedef SmartPtr<class SIservice, RefCounted, DisallowConversion, AssertCheckStrict>
-typedef Loki::SmartPtr<class SIservice, Loki::RefCounted, Loki::DisallowConversion, Loki::NoCheck>
+//typedef Loki::SmartPtr<class SIservice, Loki::RefCounted, Loki::DisallowConversion, Loki::NoCheck>
+//  SIservicePtr;
+typedef boost::shared_ptr<class SIservice>
   SIservicePtr;
 
 // Key ist unsigned short (Sevice-ID), data ist ein SIservicePtr
