@@ -571,8 +571,10 @@ int prepare_channels ()
 	{
 		return -1;
 	}
+	printf("[zapit] services have been loaded successfully\n");
 
 	bouquetManager->loadBouquets();
+	printf("[zapit] bouquets have been loaded successfully\n");
 	bouquetManager->renumServices();
 
 	return 0;
