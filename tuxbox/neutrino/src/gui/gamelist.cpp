@@ -31,6 +31,9 @@
 $Id$
  
 $Log$
+Revision 1.24  2002/01/08 03:08:20  McClean
+improve input-handling
+
 Revision 1.23  2002/01/03 20:03:20  McClean
 cleanup
 
@@ -393,7 +396,6 @@ void CGameList::runGame(int selected )
 			//should unload libs!
 			break;
 		}
-		g_RCInput->stopInput();
 		printf("try exec...\n");
 		execPlugin(g_FrameBuffer->getFileHandle(),
 		           g_RCInput->getFileHandle(), -1,
