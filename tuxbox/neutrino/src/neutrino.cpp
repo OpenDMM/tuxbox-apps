@@ -1867,9 +1867,7 @@ void CNeutrinoApp::RealRun(CMenuWidget &mainMenu)
 			if(CVCRControl::getInstance()->registeredDevices() > 0)
 			{
 				if(CVCRControl::getInstance()->getDeviceState() == CVCRControl::CMD_VCR_STOP || CVCRControl::getInstance()->getDeviceState() == CVCRControl::CMD_VCR_UNKNOWN)
-				{
-					CVCRControl::getInstance()->Record((CTimerEvent::EventInfo *)data);
-				}
+					CVCRControl::getInstance()->Record((CTimerEvent::EventInfo *) data);
 				else
 					printf("falscher state\n");
 			}
