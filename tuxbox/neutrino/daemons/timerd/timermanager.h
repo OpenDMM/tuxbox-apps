@@ -33,7 +33,7 @@
 #include <string>
 
 #include "timerdclient.h"
-#include "clientlib/zapitclient.h"
+#include "../../zapit/clientlib/zapitclient.h"
 #include "eventserver.h"
 
 using namespace std;
@@ -64,10 +64,7 @@ class CTimerManager
 		int addEvent(CTimerEvent*);
 		void removeEvent(int eventID);
 		CTimerEvent* getNextEvent();
-		CTimerEventMap getEvents(){return events;};
 		void listEvents(CTimerEventMap &Events);
-
-
 };
 
 
