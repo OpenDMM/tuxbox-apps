@@ -103,7 +103,7 @@ class CZapitChannel
 
 		/* set methods */
 		void setName(std::string pName)				{ name = pName; }
-		void setAudioChannel(unsigned char pAudioChannel)	{ currentAudioChannel = pAudioChannel; }
+		void setAudioChannel(unsigned char pAudioChannel)	{ if (pAudioChannel < audioChannels.size()) currentAudioChannel = pAudioChannel; }
 		void setPcrPid(unsigned short pPcrPid)			{ pcrPid = pPcrPid; }
 		void setPmtPid(unsigned short pPmtPid)			{ pmtPid = pPmtPid; }
 		void setTeletextPid(unsigned short pTeletextPid)	{ teletextPid = pTeletextPid; }
