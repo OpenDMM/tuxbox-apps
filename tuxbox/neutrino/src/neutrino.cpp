@@ -32,6 +32,9 @@
 	Foundation, Inc., 675 Mass Ave, Cambridge, MA 02139, USA.
 
   $Log$
+  Revision 1.67  2001/10/21 13:06:17  field
+  nvod-zeiten funktionieren!
+
   Revision 1.66  2001/10/15 17:27:19  field
   nvods (fast) implementiert (umschalten funkt noch nicht)
 
