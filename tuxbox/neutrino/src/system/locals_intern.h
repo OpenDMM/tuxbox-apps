@@ -436,6 +436,7 @@ const char * locale_real_names[] =
 	"messagebox.no",
 	"messagebox.yes",
 	"miscsettings.bootinfo",
+	"miscsettings.bootmenu",
 //	"miscsettings.boxtype"                            /* FIXME: unused */
 	"miscsettings.driver_boot",
 	"miscsettings.fb_destination",

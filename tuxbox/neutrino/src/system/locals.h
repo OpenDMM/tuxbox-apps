@@ -436,6 +436,7 @@ typedef enum
 	LOCALE_MESSAGEBOX_NO                                  ,
 	LOCALE_MESSAGEBOX_YES                                 ,
 	LOCALE_MISCSETTINGS_BOOTINFO                          ,
+	LOCALE_MISCSETTINGS_BOOTMENU                          ,
 //	LOCALE_MISCSETTINGS_BOXTYPE                           , /* FIXME: unused */
 	LOCALE_MISCSETTINGS_DRIVER_BOOT                       ,
 	LOCALE_MISCSETTINGS_FB_DESTINATION                    ,
