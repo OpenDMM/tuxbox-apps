@@ -767,10 +767,11 @@ void CNeutrinoApp::doChecks()
 	if(fd)
 		fclose(fd);
 	ucodes_ok= ucodes_ok||(fd);
+/*	ucode.bin no longer needed, since buildin
 	fd = fopen(UCODEDIR "/ucode.bin", "r");
 	if(fd)
 		fclose(fd);
-	ucodes_ok= ucodes_ok&&(fd);
+	ucodes_ok= ucodes_ok&&(fd);*/
 	fd = fopen(UCODEDIR "/cam-alpha.bin", "r");
 	if(fd)
 		fclose(fd);
