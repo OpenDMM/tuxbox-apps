@@ -23,6 +23,9 @@
 //    Foundation, Inc., 675 Mass Ave, Cambridge, MA 02139, USA.
 //
 //  $Log$
+//  Revision 1.126  2002/05/15 10:00:55  dirch
+//  timerd removed
+//
 //  Revision 1.125  2002/05/04 00:14:51  rasc
 //  -- default cache 21 days, processor load should be no problem
 //
@@ -404,8 +407,8 @@
 #include "eventserver.h"
 #include "sectionsdclient.h"
 
-#include "timerdclient.h"
-#include "../timermanager.h"
+//#include "timerdclient.h"
+//#include "../timermanager.h"
 
 // 60 Minuten Zyklus...
 #define TIME_EIT_SCHEDULED_PAUSE 60* 60
@@ -438,8 +441,8 @@ static int scanning=1;
 // EVENTS...
 
 CEventServer    *eventServer;
-CTimerdClient   *timerdClient;
-bool            timerd = false;
+//CTimerdClient   *timerdClient;
+//bool            timerd = false;
 
 #define dprintf(fmt, args...) {if(debug) printf(fmt, ## args);}
 #define dputs(str) {if(debug) puts(str);}
@@ -4045,6 +4048,7 @@ int main(int argc, char **argv)
 
 
 		eventServer = new CEventServer;
+/*
 		timerdClient = new CTimerdClient;
 
 		printf("[sectionsd ] checking timerd\n");
@@ -4053,7 +4057,7 @@ int main(int argc, char **argv)
 			printf("[sectionsd ] timerd available\n");
 		else
 			printf("[sectionsd ] timerd NOT available\n");
-
+*/
 		// SDT-Thread starten
 		rc=pthread_create(&threadSDT, 0, sdtThread, 0);
 		if(rc)
