@@ -247,6 +247,7 @@ void eHarddiskMenu::check()
 	check.show();
 	check.exec();
 	check.hide();
+	show();
 }
 
 void eHarddiskMenu::s_format()
