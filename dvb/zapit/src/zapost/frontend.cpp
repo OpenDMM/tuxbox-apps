@@ -400,6 +400,11 @@ const bool CFrontend::getEvent ()
 		break;
 	}
 
+	if ((tuned == false) && (getStatus() & FE_HAS_LOCK))
+	{
+		tuned = true;
+	}
+
 	delete event;
 	return tuned;
 }
