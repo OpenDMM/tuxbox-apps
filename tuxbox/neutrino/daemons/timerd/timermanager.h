@@ -77,8 +77,6 @@ class CTimerEvent
 		{
 			unsigned long long epgID;
 			int      onidSid;
-			char     name[50];
-			int      fsk;
 		};
 		
 		enum CTimerEventRepeat 
