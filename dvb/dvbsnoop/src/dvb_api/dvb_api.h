@@ -25,7 +25,7 @@ $Id$
 #if defined(HAVE_LINUX_DVB_DMX_H)
 
 // API 3
-#define	DVB_API_3
+#define DVB_API_VERSION 3
 
 #include <linux/dvb/dmx.h>
 #define DEMUX_DEVICE    "/dev/dvb/adapter0/demux0"
@@ -36,7 +36,7 @@ $Id$
 #elif defined(HAVE_OST_DMX_H)
 
 // API 1
-#undef	DVB_API_3
+#define DVB_API_VERSION 1
 
 #include <ost/dmx.h>
 #define DEMUX_DEVICE   "/dev/dvb/card0/demux0"
