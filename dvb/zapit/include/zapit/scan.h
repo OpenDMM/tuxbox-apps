@@ -79,29 +79,11 @@ struct transpondermap
 	}
 };
 
-struct bouquet_mulmap
-{
-	std::string           provname;
-	std::string           servname;
-	t_service_id          service_id;
-	t_original_network_id original_network_id;
-
-	bouquet_mulmap(std::string Provname, std::string Servname, t_service_id Sid, t_original_network_id Onid)
-	{
-		provname = Provname;
-		servname = Servname;
-		service_id = Sid;
-		original_network_id = Onid;
-	}
-};
-
 extern std::map <t_channel_id, scanchannel> scanchannels;
 typedef std::map <t_channel_id, scanchannel>::iterator sciterator;
 
 extern std::map <uint32_t, transpondermap> scantransponders;
 typedef std::map <uint32_t, transpondermap>::iterator stiterator;
-
-typedef std::multimap <std::string, bouquet_mulmap>::iterator sbiterator;
 
 extern CBouquetManager* scanBouquetManager;
 

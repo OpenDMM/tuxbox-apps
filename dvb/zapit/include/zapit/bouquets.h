@@ -8,7 +8,6 @@
 #include <algorithm>
 #include <functional>
 #include <vector>
-#include <ext/hash_set>
 #include <ext/hash_map>
 #include <stdint.h>
 #include <stdio.h>

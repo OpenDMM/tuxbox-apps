@@ -37,7 +37,6 @@
 
 std::map <uint32_t, transpondermap> scantransponders;
 std::map <t_channel_id, scanchannel> scanchannels;
-multimap <std::string, bouquet_mulmap> scanbouquets;
 std::string curr_chan_name;
 uint32_t found_transponders;
 uint32_t found_channels;

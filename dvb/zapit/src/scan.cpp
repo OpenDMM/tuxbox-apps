@@ -227,7 +227,7 @@ void write_bouquets()
 		unlink(BOUQUETS_XML);
 	}
 
-	else if ((bouquetMode == CZapitClient::BM_DONTTOUCHBOUQUETS)/* || (scanbouquets.empty())*/)
+	else if ((bouquetMode == CZapitClient::BM_DONTTOUCHBOUQUETS))
 	{
 		printf("[zapit] leaving bouquets untouched.\n");
 	}
