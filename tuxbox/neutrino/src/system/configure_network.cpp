@@ -64,10 +64,12 @@ void CNetworkConfig::commitConfig(void)
 		if (inet_static)
 		{
 			netSetNameserver(nameserver.c_str());
+			addLoopbackDevice("eth0", true);
 			setStaticAttributes("eth0", automatic_start, address, netmask, broadcast, gateway);
 		}
 		else
 		{
+			addLoopbackDevice("eth0", true);
 			setDhcpAttributes("eth0", automatic_start);
 		}
 	}
