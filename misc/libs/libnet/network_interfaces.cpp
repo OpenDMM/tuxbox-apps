@@ -235,10 +235,10 @@ bool getInetAttributes(const std::string name, std::string &address, std::string
 	if (method != "static")
 		return false;
 
-	address   = "0.0.0.0";
-        netmask   = "0.0.0.0";
-	broadcast = "0.0.0.0";
-	gateway   = "0.0.0.0";
+	address   = "";
+	netmask   = "";
+	broadcast = "";
+	gateway   = "";
 
 	for (std::map<std::string, std::string>::const_iterator it = attribute.begin(); it != attribute.end(); it++)
 	{
@@ -261,10 +261,10 @@ bool setInetAttributes(const std::string name, const std::string address, const 
 	attribute["address"] = address;
 	attribute["netmask"] = netmask;
 
-	if ((!broadcast.empty()) && (broadcast != "0.0.0.0"))
+	if (!broadcast.empty())
 		attribute["broadcast"] = broadcast;
 
-	if ((!gateway.empty()) && (gateway != "0.0.0.0"))
+	if (!gateway.empty())
 		attribute["gateway"] = gateway;
 
 	return write_interface("/etc/network/interfaces", name, "inet", "static", attribute);
