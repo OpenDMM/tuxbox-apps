@@ -355,7 +355,7 @@ pids parse_pmt (dvb_pid_t pmt_pid, uint16_t ca_system_id, uint16_t program_numbe
 				break;
 			}
 
-			if ((ret_pids.ecmpid != 0x0000) && (ret_pids.ecmpid != 0x1FFFF))
+			if ((ret_pids.ecmpid != 0x0000) && (ret_pids.ecmpid != 0x1FFF))
 				break;
 		}
 	}
