@@ -22,13 +22,39 @@
 #ifndef __zapit_dmx_h__
 #define __zapit_dmx_h__
 
+#ifdef HAVE_CONFIG_H
+#include <config.h>
+#endif
+
+#ifdef HAVE_OST_DMX_H
+
+#include <ost/dmx.h>
+#define dmx_sct_filter_params dmxSctFilterParams
+#define dmx_filter            dmxFilter
+#define dmx_output_t          dmxOutput_t
+#define dmx_pes_type_t        dmxPesType_t
+struct dmx_pes_filter_params
+{
+        dvb_pid_t                    pid;
+        dmxInput_t                   input;
+        dmxOutput_t                  output;
+        dmxPesType_t                 pes_type;
+        uint32_t                     flags;
+        uint32_t                     ip;
+        uint16_t                     port;
+};
+
+#else /* HAVE_OST_DMX_H */
+
 #include <linux/dvb/dmx.h>
+
+#endif /* HAVE_OST_DMX_H */
 
 class CDemux
 {
 	private:
 		int fd;
-		struct dmx_caps dmx_caps;
+/*		struct dmx_caps dmx_caps; */ /* unused */
 
 	public:
 		CDemux(void);
