@@ -21,10 +21,10 @@
  *
  */
 
-#include "fb_window.h"
+#include <driver/fb_window.h>
 
-#include "fontrenderer.h"
-#include "framebuffer.h"
+#include <driver/fontrenderer.h>
+#include <driver/framebuffer.h>
 
 class CPrivateData
 {
@@ -65,13 +65,13 @@ void CFBWindow::paintBoxRel(const int _x, const int _y, const int _dx, const int
 	((CPrivateData *)private_data)->frameBuffer->paintBoxRel(x + _x, y + _y, _dx, _dy, _col);
 }
 
-bool CFBWindow::paintIcon(const std::string _filename, const int _x, const int _y, const color_t _offset)
+bool CFBWindow::paintIcon(const char * const _filename, const int _x, const int _y, const color_t _offset)
 {
 	((CPrivateData *)private_data)->frameBuffer->paintIcon(_filename, x + _x, y + _y, _offset);
 	return 0;
 }
 
-void CFBWindow::RenderString(const font_t _font, const int _x, const int _y, const int _width, const std::string _text, const unsigned char _color, const int _boxheight, const bool _utf8_encoded)
+void CFBWindow::RenderString(const font_t _font, const int _x, const int _y, const int _width, const char * const _text, const unsigned char _color, const int _boxheight, const bool _utf8_encoded)
 {
 	((Font *)_font)->RenderString(x + _x, y + _y, _width, _text, _color, _boxheight, _utf8_encoded);
 }
