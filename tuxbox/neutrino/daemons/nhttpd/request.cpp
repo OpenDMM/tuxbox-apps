@@ -384,12 +384,11 @@ void CWebserverRequest::PrintRequest()
 }
 
 //-------------------------------------------------------------------------
-void CWebserverRequest::SendHTMLHeader(char * Titel)
+void CWebserverRequest::SendHTMLHeader(string Titel)
 {
-	SocketWrite("<html>\n<head><title>");
-	SocketWrite(Titel);
-	SocketWrite("DBOX2-Neutrino Kanalliste</title><link rel=\"stylesheet\" type=\"text/css\" href=\"../channellist.css\">");
-	SocketWriteLn("<meta http-equiv=\"cache-control\" content=\"no-cache\">\n</head>\n<body>\n");
+	SocketWriteLn("<html>\n<head><title>" + Titel + "</title><link rel=\"stylesheet\" type=\"text/css\" href=\"../channellist.css\">");
+	SocketWriteLn("<meta http-equiv=\"cache-control\" content=\"no-cache\">");
+	SocketWriteLn("<meta http-equiv=\"expires\" content=\"0\"></head>\n<body>");
 }
 
 //-------------------------------------------------------------------------
