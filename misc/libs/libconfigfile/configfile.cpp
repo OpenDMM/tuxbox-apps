@@ -163,7 +163,6 @@ int32_t CConfigFile::getInt32(const std::string key, const int32_t defaultVal)
 			storeInt32(key, defaultVal);
 		}
 		else {
-			std::cout << "returning defaultVal " << defaultVal << std::endl;
 			return defaultVal;
 		}
 	}
