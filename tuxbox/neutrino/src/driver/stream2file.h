@@ -23,6 +23,7 @@
 #define __stream2file_h__
 
 bool start_recording(const char * const filename,
+		     const char * const info,
 		     const unsigned long long splitsize,
 		     const unsigned int numpids,
 		     const unsigned short * const pids);
