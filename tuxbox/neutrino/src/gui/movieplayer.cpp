@@ -39,6 +39,7 @@
 #include <driver/fontrenderer.h>
 #include <driver/rcinput.h>
 #include <daemonc/remotecontrol.h>
+extern CRemoteControl * g_RemoteControl; /* neutrino.cpp */
 #include <system/settings.h>
 
 #include <gui/eventlist.h>
@@ -287,6 +288,7 @@ CMoviePlayerGui::exec (CMenuTarget * parent, const std::string & actionKey)
 						 m_LastMode);
 	g_RCInput->postMsg( NeutrinoMessages::SHOW_INFOBAR, 0 );
 
+	CLCD::getInstance()->showServicename(g_RemoteControl->getCurrentChannelName());
 	// always exit all
 	return menu_return::RETURN_REPAINT;
 }
