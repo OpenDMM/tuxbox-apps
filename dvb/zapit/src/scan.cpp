@@ -564,7 +564,7 @@ void *start_scanthread(void *)
 				if (diseqc_pos == 255 /* = -1 */)
 					diseqc_pos = 0;
 				
-				if (strcmp(type, "sat") && (frontend->getDiseqcType() == DISEQC_1_2))
+				if (!strcmp(type, "sat") && (frontend->getDiseqcType() == DISEQC_1_2))
 					satellitePosition = driveMotorToSatellitePosition(providerName);
 						
 				scan_provider(search, providerName, satfeed, diseqc_pos);

@@ -1067,6 +1067,7 @@ void CNeutrinoApp::InitScanSettings(CMenuWidget &settings)
 			{
 				//printf("[neutrino] received %d: %s, %d\n", i, satList[i].satName, satList[i].satPosition);
 				scanSettings.satPosition[i] = satList[i].satPosition;
+				scanSettings.satMotorPos[i] = satList[i].motorPosition;
 				strcpy(scanSettings.satName[i], satList[i].satName);
 				//scanSettings.satDiseqc[i] = satList[i].satDiseqc;
 				if (satList[i].satPosition == currentSatellitePosition) 
