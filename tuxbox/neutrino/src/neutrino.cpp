@@ -32,6 +32,9 @@
 	Foundation, Inc., 675 Mass Ave, Cambridge, MA 02139, USA.
 
   $Log$
+  Revision 1.55  2001/10/04 23:21:13  McClean
+  cleanup
+
   Revision 1.54  2001/10/04 23:16:20  McClean
   get volume from controld
 
@@ -1164,7 +1167,6 @@ void CNeutrinoApp::SelectAPID()
 void CNeutrinoApp::InitZapper()
 {
 	g_RemoteControl->setZapper(zapit);
-	volume = 100;
 
 	if (!zapit)
 		channelsInit();
