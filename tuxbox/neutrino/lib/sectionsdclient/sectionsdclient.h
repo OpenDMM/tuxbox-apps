@@ -27,8 +27,8 @@
 #include <vector>
 
 #include <connection/basicclient.h>
-#include <zapit/client/zapittypes.h>  /* t_channel_id, t_service_id, t_original_network_id, t_transport_stream_id; */
 
+#include <sectionsdclient/sectionsdtypes.h>
 
 class CShortEPGData
 {
@@ -46,8 +46,6 @@ class CShortEPGData
 };
 
 class CEPGData;
-
-typedef unsigned long long event_id_t;
 
 class CChannelEvent
 {
