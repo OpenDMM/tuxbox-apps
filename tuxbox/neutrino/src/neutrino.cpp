@@ -32,6 +32,9 @@
 	Foundation, Inc., 675 Mass Ave, Cambridge, MA 02139, USA.
  
   $Log$
+  Revision 1.131  2002/01/15 20:39:39  McClean
+  better mode-switching
+
   Revision 1.130  2002/01/15 20:12:15  McClean
   cleanups
 
@@ -2193,6 +2196,7 @@ void CNeutrinoApp::tvMode()
 	g_FrameBuffer->useBackground(false);
 
 	g_RemoteControl->tvMode();
+	firstChannel();
 	channelsInit();
 	channelList->zapTo( firstchannel.chan_nr -1 );
 }
@@ -2245,9 +2249,9 @@ void CNeutrinoApp::radioMode()
 
 	firstChannel();
 	g_RemoteControl->radioMode();
+	firstChannel();
 	channelsInit();
-	//		bouquetList->activateBouquet(0,false);
-	channelList->zapTo( 0 );
+	channelList->zapTo( firstchannel.chan_nr -1 );
 }
 
 
