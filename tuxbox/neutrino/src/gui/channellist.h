@@ -35,6 +35,9 @@
 // $Id$
 //
 // $Log$
+// Revision 1.25  2002/02/25 19:32:26  field
+// Events <-> Key-Handling umgestellt! SEHR BETA!
+//
 // Revision 1.24  2002/01/29 23:23:06  field
 // Mehr Details in Channellist (sectionsd updaten)
 //
@@ -173,7 +176,7 @@ class CChannelList
 		void zapTo(int pos);
 		bool showInfo(int pos);
 		void updateEvents(void);
-		void numericZap(int key);
+		int numericZap(int key);
 		int  show();
 		void exec();
 		void quickZap(int key);
