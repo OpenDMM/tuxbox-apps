@@ -69,6 +69,7 @@
 #include "driver/fontrenderer.h"
 #include "driver/rcinput.h"
 #include "driver/vcrcontrol.h"
+#include "driver/irsend.h"
 
 #include "gui/widget/menue.h"
 #include "gui/widget/messagebox.h"
@@ -2662,6 +2663,9 @@ int CNeutrinoApp::handleMsg(uint msg, uint data)
 	}
 	else if( msg == NeutrinoMessages::SLEEPTIMER)
 	{
+		CIRSend irs("sleep");
+		irs.Send();
+
 		if(g_settings.shutdown_real)
 			ExitRun();
 		else
