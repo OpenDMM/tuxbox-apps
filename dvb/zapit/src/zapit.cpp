@@ -679,7 +679,8 @@ bool parse_command(CBasicMessage::Header &rmsg, int connfd)
 	}
 
 	case CZapitMessages::CMD_SCANSTART:
-		start_scan();
+		if (start_scan() == -1)
+			eventServer->sendEvent(CZapitClient::EVT_SCAN_FAILED, CEventServer::INITID_ZAPIT);
 		break;
 
 	case CZapitMessages::CMD_SCANREADY:
