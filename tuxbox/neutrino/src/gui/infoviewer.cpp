@@ -2,6 +2,10 @@
 // $Id$
 //
 // $Log$
+// Revision 1.12  2001/09/09 23:53:46  fnbrd
+// Fixed some bugs, only shown compiling with -Os.
+// Conclusion: use -Os ;)
+//
 // Revision 1.11  2001/09/05 21:21:16  McClean
 // design-fix
 //
@@ -28,6 +32,7 @@ CInfoViewer::CInfoViewer()
 	intShowDuration = 15; //7,5 sec
 	frameBuffer = NULL;
 	fonts = NULL;
+        BoxStartX=BoxStartY=BoxEndX=BoxEndY=0;
 
 	strcpy( running, "");
 	strcpy( next, "");
