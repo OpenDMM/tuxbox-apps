@@ -338,7 +338,7 @@ uint8_t cable_delivery_system_descriptor (uint8_t *buffer, uint16_t transport_st
 		((buffer[4] >> 4)	* 100000) +
 		((buffer[4] & 0x0F)	* 10000) +
 		((buffer[5] >> 4)	* 1000) +
-		((buffer[6] & 0x0F)	* 100)
+		((buffer[5] & 0x0F)	* 100)
 	);
 
 	feparams.inversion = INVERSION_AUTO;
