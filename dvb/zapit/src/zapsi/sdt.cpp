@@ -12,6 +12,7 @@
 
 /* zapit */
 #include <zapost/dmx.h>
+#include <types.h>
 #include <settings.h>  // DEMUX_DEVICE
 
 #include "descriptors.h"
@@ -19,14 +20,14 @@
 
 #define SDT_SIZE 1024
 
-unsigned int get_sdt_TsidOnid ()
+uint32_t get_sdt_TsidOnid ()
 {
 	int demux_fd;
 	unsigned char buffer[SDT_SIZE];
 
 	/* service_description_section elements */
-	uint16_t transport_stream_id;
-	uint16_t original_network_id;
+	t_transport_stream_id transport_stream_id;
+	t_original_network_id original_network_id;
 
 	unsigned char filter[DMX_FILTER_SIZE];
 	unsigned char mask[DMX_FILTER_SIZE];

@@ -3016,7 +3016,7 @@ bool CNeutrinoApp::changeNotify(string OptionName, void *Data)
 		{
 			if(streamstatus == 1)
 			{
-				eventinfo.onidSid = g_RemoteControl->current_onid_sid;
+				eventinfo.onidSid = g_RemoteControl->current_channel_id;
 				eventinfo.epgID = g_RemoteControl->current_EPGid;
 
 				CVCRControl::CServerDeviceInfo serverinfo;

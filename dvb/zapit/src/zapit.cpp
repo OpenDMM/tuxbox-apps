@@ -979,18 +979,19 @@ void parse_command (CZapitClient::commandHead &rmsg)
 
 				while (read(connfd, &msgAddSubService, sizeof(msgAddSubService)))
 				{
-					//printf("got subchan %x %x\n", msgAddSubService.onidsid, msgAddSubService.tsid);
+					t_original_network_id original_network_id = msgAddSubService.original_network_id;
+					t_service_id          service_id          = msgAddSubService.service_id;
 					nvodchannels.insert
 					(
 					    std::pair <t_channel_id, CZapitChannel>
 					    (
-						msgAddSubService.onidsid,
+						CREATE_CHANNEL_ID,
 						CZapitChannel
 						(
 						    "NVOD",
-						    (msgAddSubService.onidsid&0xFFFF),
-						    msgAddSubService.tsid,
-						    (msgAddSubService.onidsid>>16),
+						    service_id,
+						    msgAddSubService.transport_stream_id,
+						    original_network_id,
 						    1,
 						    channel->getDiSEqC()
 						)

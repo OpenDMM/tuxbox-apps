@@ -22,11 +22,11 @@
 
 #include "channel.h"
 
-CZapitChannel::CZapitChannel (std::string p_name, uint16_t p_sid, unsigned short p_tsid, uint16_t p_onid, unsigned char p_service_type, unsigned char p_DiSEqC)
+CZapitChannel::CZapitChannel (std::string p_name, t_service_id p_sid, t_transport_stream_id p_tsid, t_original_network_id p_onid, unsigned char p_service_type, unsigned char p_DiSEqC)
 {
 	name = p_name;
 	service_id = p_sid;
-	transportStreamId = p_tsid;
+	transport_stream_id = p_tsid;
 	original_network_id = p_onid;
 	serviceType = p_service_type;
 	DiSEqC = p_DiSEqC;
