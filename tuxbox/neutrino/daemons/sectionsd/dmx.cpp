@@ -36,6 +36,9 @@
 #include <string>
 
 
+//#define PAUSE_EQUALS_STOP
+
+
 int readNbytes(int fd, char *buf, const size_t n, unsigned timeoutInMSeconds);
 extern void showProfiling(std::string text);
 extern bool timeset;
@@ -262,9 +265,9 @@ int DMX::real_pause(void)
 
 	if (real_pauseCounter == 0)
 	{
+#ifdef PAUSE_EQUALS_STOP	       
 		stop();
-		
-		/*
+#else
 		if (ioctl(fd, DMX_STOP, 0) == -1)
 		{
 			closefd();
@@ -272,7 +275,7 @@ int DMX::real_pause(void)
 			pthread_mutex_unlock(&start_stop_mutex);
 			return 2;
 		}
-		*/
+#endif
 	}
 
 	//dprintf("real_pause: %d\n", real_pauseCounter);
@@ -290,8 +293,9 @@ int DMX::real_unpause(void)
 
 	if (real_pauseCounter == 0)
 	{
+#ifdef PAUSE_EQUALS_STOP	       
 		start();
-		/*
+#else
 		if (ioctl(fd, DMX_START, 0) == -1)
 		{
 			closefd();
@@ -299,8 +303,7 @@ int DMX::real_unpause(void)
 			pthread_mutex_unlock(&start_stop_mutex);
 			return 2;
 		}
-		*/
-
+#endif
 		//dprintf("real_unpause DONE: %d\n", real_pauseCounter);
 	}
 
@@ -486,13 +489,13 @@ int readNbytes(int fd, char *buf, const size_t n, unsigned timeoutInMSeconds)
 			//printf("errno: %d\n", errno);
 			return -1;
 		}
-
+#ifdef PAUSE_EQUALS_STOP
 		if ((ufds.revents & POLLERR) != 0) /* POLLERR means buffer error, i.e. buffer overflow */
 		{
 			puts("[sectionsd] readNbytes: received POLLERR");
 			return -1;
 		}
-
+#endif
 		if (!(ufds.revents&POLLIN))
 		{
 			// POLLHUP, beim dmx bedeutet das DMXDEV_STATE_TIMEDOUT
