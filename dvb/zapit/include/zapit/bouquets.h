@@ -26,17 +26,25 @@ typedef tallchans::iterator tallchans_iterator;
 
 typedef vector<CZapitChannel*> ChannelList;
 
-/* struct for comparing channels by channel name*/
-struct CmpChannelByChName: public binary_function <CZapitChannel* , CZapitChannel* , bool>
+/*
+ * Struct for channel comparison by channel names 
+ *
+ * TODO:
+ * Channel names are not US-ASCII, but UTF-8 encoded.
+ * Hence we need a compare function that considers the whole unicode charset.
+ * For instance all countless variants of the letter a have to be regarded as the same letter.
+ */
+struct CmpChannelByChName: public binary_function <const CZapitChannel * const, const CZapitChannel * const, bool>
 {
-	bool operator() (CZapitChannel*  c1, CZapitChannel*  c2)
-	{
-		std::string sa=c1->getName();
-		std::string sb=c2->getName();
-		std::transform(sa.begin(), sa.end(), sa.begin(), tolower);
-		std::transform(sb.begin(), sb.end(), sb.begin(), tolower);
-		return (sa < sb);
-	};
+	static bool comparetolower(const char a, const char b)
+		{
+			return tolower(a) < tolower(b);
+		};
+	
+	bool operator() (const CZapitChannel * const c1, const CZapitChannel * const c2)
+		{
+			return std::lexicographical_compare(c1->getName().begin(), c1->getName().end(), c2->getName().begin(), c2->getName().end(), comparetolower);
+		};
 };
 
 
