@@ -25,6 +25,9 @@
 //    Foundation, Inc., 675 Mass Ave, Cambridge, MA 02139, USA.
 //
 //  $Log$
+//  Revision 1.9  2001/07/20 00:02:47  fnbrd
+//  Kleiner Hack fuer besseres Zusammenspiel mit Neutrino.
+//
 //  Revision 1.8  2001/07/19 22:19:41  fnbrd
 //  Noch ne Beschreibung.
 //
@@ -134,7 +137,6 @@ enum sectionsdCommands {
 //              freeCAmode (bool), number of nvod services
 //     2. line: service name
 //     3. line: provider name
-//
 //
 // actualEventListRadioshort:
 //   data of request:
