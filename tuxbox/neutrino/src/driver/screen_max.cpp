@@ -25,6 +25,8 @@
 //         to (450 x 420)), functions will return 450 and 400
 //         the _add factor is for boundary...
 //
+//         16:9 Zoom-Mode on a Thomson TV set will e.g. be 625x415
+//
 //  2004-03-17 rasc
 
 
