@@ -29,6 +29,7 @@
 
 #include <zapit/client/zapitclient.h>
 #include <zapit/dmx.h>
+#include <zapit/debug.h>
 #include <zapit/pat.h>
 #include <zapit/scan.h>
 
@@ -104,7 +105,7 @@ int parse_pat (const int demux_fd, CZapitChannel * channel, const t_original_net
 		/* read section */
 		if ((status = read(demux_fd, buffer, PAT_SIZE)) < 0)
 		{
-			perror("[pat.cpp] read");
+			ERROR("read");
 			return status;
 		}
 

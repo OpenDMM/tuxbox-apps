@@ -24,6 +24,7 @@
 #include <stdio.h>
 #include <xmltok.h>
 
+#include <zapit/debug.h>
 #include <zapit/xmlinterface.h>
 
 std::string Unicode_Character_to_UTF8(const int character)
@@ -130,7 +131,7 @@ XMLTreeParser* parseXmlFile(const std::string filename)
 
 		if (!tree_parser->Parse(buffer, length, done))
 		{
-			printf("[xmlinterface.cpp] Error parsing \"%s\": %s at line %d\n",
+			WARN("Error parsing \"%s\": %s at line %d",
 			       filename.c_str(),
 			       tree_parser->ErrorString(tree_parser->GetErrorCode()),
 			       tree_parser->GetCurrentLineNumber());

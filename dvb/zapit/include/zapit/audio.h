@@ -34,7 +34,6 @@ class CAudio
 
 		/* current audio settings */
 		struct audio_status status;
-		struct audio_mixer mixer;
 
 		/* internal methods */
 		int setMute (bool mute);

@@ -47,15 +47,12 @@ extern CEventServer *eventServer;
 
 uint8_t generic_descriptor (uint8_t *buffer)
 {
-	int i;
-
-	printf("[descriptors.cpp] generic descriptor dump:\n");
-	for (i = 0; i < buffer[1] + 2; i++)
-	{
+#if 0
+	DBG("generic descriptor dump:");
+	for (unsigned short i = 0; i < buffer[1] + 2; i++)
 		printf(" %02x", buffer[i]);
-	}
 	printf("\n");
-
+#endif
 	return buffer[1];
 }
 
