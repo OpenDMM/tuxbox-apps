@@ -1442,8 +1442,8 @@ unsigned int zapTo_ChannelID(t_channel_id channel_id, bool isSubService)
 	else
 		eventServer->sendEvent(CZapitClient::EVT_ZAP_COMPLETE, CEventServer::INITID_ZAPIT, &channel_id, sizeof(channel_id));
 
-	channel->setCA_STATUS(get_sdt_free_CA_mode(channel_id & 0xFFFF)?CA_STATUS_FTA:CA_STATUS_LOCK);
-INFO("STATUS gesetzt");
+	channel->setCA_STATUS(get_sdt_free_CA_mode(channel->getServiceId()));
+	INFO("CA STATUS: %d", channel->getCA_STATUS());
 	return result;
 }
 
