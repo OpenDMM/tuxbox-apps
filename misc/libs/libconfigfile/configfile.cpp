@@ -153,38 +153,6 @@ void CConfigFile::setInt (string p_keyName, int p_keyValue)
 	unknownKeyQueryedFlag = tmpUnknownKeyQueryedFlag;
 }
 
-long CConfigFile::getLong (string p_keyName, const long int defaultValue)
-{
-	if (configData.find(p_keyName) == configData.end())
-	{
-		unknownKeyQueryedFlag = true;
-		char * configDataChar = (char *) malloc(sizeof(defaultValue));
-		sprintf(configDataChar, "%ld", defaultValue);
-		configData[p_keyName] = string(configDataChar);
-		free(configDataChar);
-	}
-
-	return atol(configData[p_keyName].c_str());
-}
-
-void CConfigFile::setLong (string p_keyName, const long p_keyValue)
-{
-	bool tmpUnknownKeyQueryedFlag = unknownKeyQueryedFlag;
-	unknownKeyQueryedFlag = false;
-	long oldValue = getLong(p_keyName);
-
-	if ((oldValue != p_keyValue) || (unknownKeyQueryedFlag))
-	{
-		modifiedFlag = true;
-		char * configDataChar = (char *) malloc(sizeof(p_keyValue));
-		sprintf(configDataChar, "%ld", p_keyValue);
-		configData[p_keyName] = string(configDataChar);
-		free(configDataChar);
-	}
-
-	unknownKeyQueryedFlag = tmpUnknownKeyQueryedFlag;
-}
-
 long long CConfigFile::getLongLong (string p_keyName, const long long defaultValue)
 {
 	if (configData.find(p_keyName) == configData.end())
