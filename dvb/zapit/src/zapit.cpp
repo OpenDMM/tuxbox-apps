@@ -218,7 +218,7 @@ int zapit(const t_channel_id channel_id, bool in_nvod)
 		channel = &(cit->second);
 	
 	/* have motor move satellite dish to satellite's position if necessary */
-	if (diseqcType == DISEQC_1_2)
+	if ((diseqcType == DISEQC_1_2) && (motorPositions[channel->getSatelliteName()] != 0))
 	{
 		if (firstZapAfterBoot || (frontend->getCurrentSatellitePosition() != channel->getSatellitePosition()))
 		{
