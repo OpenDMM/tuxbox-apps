@@ -78,7 +78,7 @@ void CBasicServer::run(bool (parse_command)(CBasicMessage::Header &rmsg, int con
 	struct sockaddr_un servaddr;
 	int clilen = sizeof(servaddr);
 
-	bool parse_another_command;
+	bool parse_another_command = true;
 
 	do
 	{
