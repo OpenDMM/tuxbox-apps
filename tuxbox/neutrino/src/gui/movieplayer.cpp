@@ -336,7 +336,7 @@ ReceiveStreamThread (void *mrl)
 		souturl += g_settings.streaming_videorate;
 		souturl += ",acodec=mpga,ab=";
 		souturl += g_settings.streaming_audiorate;
-		souturl + ",channels=2}:duplicate{dst=std{access=http,mux=ts,url=:";
+		souturl += ",channels=2}:duplicate{dst=std{access=http,mux=ts,url=:";
 		souturl += g_settings.streaming_server_port;
 		souturl += "/dboxstream}}";
 	}
