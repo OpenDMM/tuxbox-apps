@@ -70,6 +70,7 @@ class CControlAPI
 		bool StartPluginCGI(CWebserverRequest *request);
 		bool ExecCGI(CWebserverRequest *request);
 		bool SystemCGI(CWebserverRequest *request);
+		bool RCCGI(CWebserverRequest *request);
 	public:
 		CControlAPI(CWebDbox *parent) { Parent = parent; };
 		bool Execute(CWebserverRequest *request);

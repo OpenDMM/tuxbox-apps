@@ -46,7 +46,7 @@ class CWebAPI
 		bool ShowEventList(CWebserverRequest *request, t_channel_id channel_id);
 		bool ShowBouquet(CWebserverRequest *request, int BouquetNr = -1);
 		bool ShowBouquets(CWebserverRequest *request);
-		bool ShowControlpanel(CWebserverRequest *request);
+		bool ShowControlpanel(CWebserverRequest *request,CStringList &params);
 		bool ShowCurrentStreamInfo(CWebserverRequest *request);
 		bool ShowEpg(CWebserverRequest *request, std::string EpgID, std::string Startzeit = "");
 		bool ShowEPG(CWebserverRequest *request, std::string Title, std::string Info1, std::string Info2);
