@@ -691,6 +691,7 @@ const char * locale_real_names[] =
 	"recordingmenu.help",
 	"recordingmenu.no_scart",
 	"recordingmenu.off",
+	"recordingmenu.record_in_spts_mode",
 	"recordingmenu.recording_type",
 	"recordingmenu.ringbuffers",
 	"recordingmenu.server",
