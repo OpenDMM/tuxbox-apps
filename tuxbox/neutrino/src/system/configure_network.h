@@ -50,6 +50,9 @@ class CNetworkConfig
 	CNetworkConfig(void);
 
 	void commitConfig(void);
+
+	void startNetwork(void);
+	void stopNetwork(void);
 };
 
 #endif /* __configure_network_h__ */

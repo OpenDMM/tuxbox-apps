@@ -338,7 +338,7 @@ bool getInetAttributes(const std::string name, bool &automatic_start, std::strin
 	return true;
 }
 
-bool setInetAttributes(const std::string name, const bool automatic_start, const std::string address, const std::string netmask, const std::string broadcast, const std::string gateway)
+bool setStaticAttributes(const std::string name, const bool automatic_start, const std::string address, const std::string netmask, const std::string broadcast, const std::string gateway)
 {
 	std::map<std::string, std::string> attribute;
 
@@ -352,4 +352,11 @@ bool setInetAttributes(const std::string name, const bool automatic_start, const
 		attribute["gateway"] = gateway;
 
 	return write_interface("/etc/network/interfaces", name, automatic_start, "inet", "static", attribute);
+}
+
+bool setDhcpAttributes(const std::string name, const bool automatic_start)
+{
+	std::map<std::string, std::string> attribute;
+
+	return write_interface("/etc/network/interfaces", name, automatic_start, "inet", "dhcp", attribute);
 }

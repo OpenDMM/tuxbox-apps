@@ -25,6 +25,7 @@
 #include <string>
 
 bool getInetAttributes(const std::string name, bool &automatic_start, std::string &address, std::string &netmask, std::string &broadcast, std::string &gateway);
-bool setInetAttributes(const std::string name, const bool automatic_start, const std::string address, const std::string netmask, const std::string broadcast, const std::string gateway);
+bool setStaticAttributes(const std::string name, const bool automatic_start, const std::string address, const std::string netmask, const std::string broadcast, const std::string gateway);
+bool setDhcpAttributes(const std::string name, const bool automatic_start);
 
 #endif /* __network_interfaces_h__ */

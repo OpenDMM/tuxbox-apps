@@ -57,15 +57,28 @@ bool CNetworkConfig::modified_from_orig(void)
 
 void CNetworkConfig::commitConfig(void)
 {
-	if (inet_static)
+	if (modified_from_orig())
 	{
-		if (modified_from_orig())
+		copy_to_orig();
+
+		if (inet_static)
 		{
-			copy_to_orig();
 			netSetNameserver(nameserver.c_str());
-			setInetAttributes("eth0", automatic_start, address, netmask, broadcast, gateway);
-			system("ifdown eth0");
-			system("ifup eth0");
+			setStaticAttributes("eth0", automatic_start, address, netmask, broadcast, gateway);
+		}
+		else
+		{
+			setDhcpAttributes("eth0", automatic_start);
 		}
 	}
+}
+
+void CNetworkConfig::startNetwork(void)
+{
+	system("ifup eth0");
+}
+
+void CNetworkConfig::stopNetwork(void)
+{
+	system("ifdown eth0");
 }
