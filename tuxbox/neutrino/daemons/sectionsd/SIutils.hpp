@@ -24,6 +24,9 @@
 //    Foundation, Inc., 675 Mass Ave, Cambridge, MA 02139, USA.
 //
 // $Log$
+// Revision 1.4  2001/07/14 16:38:46  fnbrd
+// Mit workaround fuer defektes mktime der glibc
+//
 // Revision 1.3  2001/06/10 14:55:51  fnbrd
 // Kleiner Aenderungen und Ergaenzungen (epgMini).
 //
@@ -35,7 +38,7 @@
 //
 //
 
-time_t changeUTCtoCtime(const unsigned char *buffer);
+time_t changeUTCtoCtime(const unsigned char *buffer, int local_time=1);
 
 // returns the descriptor type as readable text
 const char *decode_descr (unsigned char tag_value);
