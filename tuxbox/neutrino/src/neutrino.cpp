@@ -1294,7 +1294,7 @@ void CNeutrinoApp::InitMiscSettings(CMenuWidget &miscSettings)
 
 
 #if HAVE_DVB_API_VERSION == 1
-		dummy2 = 0;
+		static int dummy2 = 0;
 		fd = fopen("/var/etc/.bh", "r");
 		if(fd)
 		{
