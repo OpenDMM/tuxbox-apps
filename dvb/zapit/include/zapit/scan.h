@@ -37,4 +37,6 @@ typedef std::map <uint32_t, transpondermap>::iterator stiterator;
 
 extern CBouquetManager* scanBouquetManager;
 
+char * getFrontendName();
+
 #endif /* __scan_h__ */

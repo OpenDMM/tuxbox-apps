@@ -47,6 +47,7 @@
 #include <zapit/getservices.h>
 #include <zapit/pat.h>
 #include <zapit/pmt.h>
+#include <zapit/scan.h>
 #include <zapit/settings.h>
 #include <zapit/video.h>
 #include <zapit/xmlinterface.h>
@@ -663,14 +664,18 @@ bool parse_command(CBasicMessage::Header &rmsg, int connfd)
 				break;
 		}
 
-		CZapitClient::responseGetSatelliteList msgResponseGetSatelliteList;
-		xmlNodePtr search = xmlDocGetRootElement(scanInputParser)->xmlChildrenNode;
+                CZapitClient::responseGetSatelliteList msgResponseGetSatelliteList;
 
-		while (search) {
-			strncpy(msgResponseGetSatelliteList.satName, xmlGetAttribute(search, "name"), sizeof(msgResponseGetSatelliteList.satName));
-			send(connfd, &msgResponseGetSatelliteList, sizeof(msgResponseGetSatelliteList), 0);
-			search = search->xmlNextNode;
-		}
+                xmlNodePtr search       = xmlDocGetRootElement(scanInputParser)->xmlChildrenNode;
+                char *     frontendname = getFrontendName();
+
+                if (frontendname != NULL)
+		    while ((search = xmlGetNextOccurence(search, frontendname)) != NULL)
+                        {
+                                strncpy(msgResponseGetSatelliteList.satName, xmlGetAttribute(search, "name"), sizeof(msgResponseGetSatelliteList.satName));
+                                send(connfd, &msgResponseGetSatelliteList, sizeof(msgResponseGetSatelliteList), 0);
+                                search = search->xmlNextNode;
+                        }
 		break;
 	}
 
@@ -1510,5 +1515,3 @@ int main (int argc, char **argv)
 
 	return 0;
 }
-
-
