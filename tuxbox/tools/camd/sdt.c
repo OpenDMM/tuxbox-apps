@@ -19,6 +19,8 @@
  *
  */
 
+#ifdef LOOKUP_ONID
+
 #include <fcntl.h>
 #include <ost/dmx.h>
 #include <stdio.h>
@@ -80,3 +82,4 @@ unsigned short parse_sdt ()
 	return ((buf[8] << 8) | buf[9]);
 }
 
+#endif /* LOOKUP_ONID */
