@@ -134,7 +134,7 @@ void *FileThread (void *v_arg)
 	size_t readsize, maxreadsize=0;
 	unsigned long long filesize = 0;
 	unsigned int filecount = 0;
-	const unsigned long long splitsize=(1024*1024*1024)-112 * limit; // 1GB%188
+	const unsigned long long splitsize=((1024*1024*1024)/TS_SIZE)*TS_SIZE * limit; // 1GB%188
 	unsigned long long remfile=0;
 	char filename[512];
 	time_t timer1 = 0;
