@@ -35,6 +35,10 @@
 // $Id$
 //
 // $Log$
+// Revision 1.22  2001/12/22 19:34:58  Simplex
+// - selected channel in bouquetlist is correct after numzap and quickzap
+// - dbox-key in channellist shows bouquetlist
+//
 // Revision 1.21  2001/11/26 02:34:04  McClean
 // include (.../../stuff) changed - correct unix-formated files now
 //
@@ -164,7 +168,8 @@ class CChannelList
 	int  show();
 	void exec();
 	void quickZap(int key);
-	bool hasChannel(int nChannelNr);
+	int  hasChannel(int nChannelNr);
+	void setSelected( int nChannelNr); // for adjusting bouquet's channel list after numzap or quickzap
 };
 
 
