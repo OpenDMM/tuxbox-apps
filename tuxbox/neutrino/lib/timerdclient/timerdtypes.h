@@ -27,8 +27,10 @@
 #ifndef __timerdtypes__
 #define __timerdtypes__
 
-#include <zapit/zapittypes.h>
 #include <vector>
+
+#include <zapit/zapittypes.h>
+
 
 #define REMINDER_MESSAGE_MAXLEN 31
 #define TIMERD_UDS_NAME "/tmp/timerd.sock"
