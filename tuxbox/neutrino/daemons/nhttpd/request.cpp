@@ -452,7 +452,7 @@ void CWebserverRequest::Send500Error()
 }
 //-------------------------------------------------------------------------
 
-void CWebserverRequest::SendPlainHeader(string contenttype = "text/plain")
+void CWebserverRequest::SendPlainHeader(string contenttype)
 {
 	SocketWrite("HTTP/1.0 200 OK\nContent-Type: " + contenttype + "\n\n");
 	HttpStatus = 200;

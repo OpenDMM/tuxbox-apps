@@ -2423,7 +2423,7 @@ void CNeutrinoApp::standbyMode( bool bOnOff )
 	}
 }
 
-void CNeutrinoApp::radioMode( bool rezap = true )
+void CNeutrinoApp::radioMode( bool rezap)
 {
 	if ( mode==mode_radio )
 	{

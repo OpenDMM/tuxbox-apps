@@ -144,7 +144,7 @@ void CTimerdClient::getTimer( CTimerd::responseGetTimer &timer, unsigned timerID
 }
 
 
-int CTimerdClient::addTimerEvent( timerTypes evType, void* data = 0, int min = 0, int hour = 0, int day = 0, int month = 0)
+int CTimerdClient::addTimerEvent( timerTypes evType, void* data, int min, int hour, int day, int month)
 {
 	CTimerd::commandHead msg;
 	msg.version=CTimerd::ACTVERSION;
