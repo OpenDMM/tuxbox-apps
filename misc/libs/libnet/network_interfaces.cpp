@@ -202,6 +202,10 @@ bool write_interface(const std::string filename, const std::string name, const b
 	if (!found)
 	{
 		std::ostringstream out;
+
+		if (automatic_start)
+			line.push_back("auto " + name);
+
 		out << "iface " << name << ' ' << family << ' ' << method;
 		line.push_back(out.str());
 		add_attributes(attribute, line, line.end());
