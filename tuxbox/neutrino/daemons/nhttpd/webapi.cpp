@@ -451,7 +451,8 @@ bool CWebAPI::ShowCurrentStreamInfo(CWebserverRequest* request)
 	params["vpid"] = itoh(serviceinfo.vpid);
 	params["apid"] = itoh(serviceinfo.apid);
 	params["vtxtpid"] = (serviceinfo.vtxtpid != 0)?itoh(serviceinfo.vtxtpid):"nicht verfügbar";
-	params["tsfrequency"] = itoa(serviceinfo.tsfrequency);
+	sprintf((char*) buf, "%d.%d MHz", serviceinfo.tsfrequency/1000, serviceinfo.tsfrequency%1000);
+	params["tsfrequency"] = buf;
 	params["polarisation"] = serviceinfo.polarisation==1?"h":"v";
 	params["ServiceName"] = Parent->GetServiceName(Parent->Zapit->getCurrentServiceID());
 	Parent->GetStreamInfo(bitInfo);
