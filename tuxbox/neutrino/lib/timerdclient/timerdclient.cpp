@@ -123,9 +123,15 @@ int timerID;
 		timerID = timerid;
 
 	if(timerID != 0)
+	{
+		dprintf("Modify Sleeptimer announce: %d alarm: %d\n",announcetime,alarmtime);
 		modifyTimerEvent(timerID, announcetime, alarmtime, 0);
+	}
 	else
+	{
+		dprintf("Set New Sleeptimerannounce: %d alarm: %d\n",announcetime,alarmtime);
 		timerID = addTimerEvent(CTimerEvent::TIMER_SLEEPTIMER,true,NULL,announcetime,alarmtime,0);
+	}
 
 	return timerID;	
 }
@@ -154,7 +160,7 @@ int CTimerdClient::getSleepTimerRemaining()
 		return (timer.alarmTime - time(NULL)) / 60;
 	}
 	else
-		return -1;
+		return 0;
 }
 
 void CTimerdClient::getTimerList( CTimerd::TimerList &timerlist)
