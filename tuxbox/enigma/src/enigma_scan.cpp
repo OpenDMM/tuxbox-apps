@@ -25,6 +25,7 @@
 #include <satconfig.h>
 #include <rotorconfig.h>
 #include <scan.h>
+#include <satfind.h>
 #include <tpeditwindow.h>
 #include <lib/base/i18n.h>
 #include <lib/dvb/edvb.h>
@@ -38,13 +39,14 @@
 eZapScan::eZapScan()
 	:eSetupWindow(_("Service Searching"),
 	eSystemInfo::getInstance()->getFEType()
-		== eSystemInfo::feSatellite ? 8 : 7, 400)
+		== eSystemInfo::feSatellite ? 9 : 7, 400)
 {
 	int entry=0;
-	move(ePoint(160, 140));
+	move(ePoint(160, 130));
 	if ( eSystemInfo::getInstance()->getFEType() == eSystemInfo::feSatellite )  // only when a sat box is avail we shows a satellite config
 	{
 		CONNECT((new eListBoxEntryMenu(&list, _("Satellite Configuration"), eString().sprintf("(%d) %s", ++entry, _("open satellite config"))))->selected, eZapScan::sel_satconfig);
+		CONNECT((new eListBoxEntryMenu(&list, _("Satfind"), eString().sprintf("(%d) %s", ++entry, _("shows the satfinder"))))->selected, eZapScan::sel_satfind);
 		CONNECT((new eListBoxEntryMenu(&list, _("Motor Setup"), eString().sprintf("(%d) %s", ++entry, _("goto Motor Setup"))))->selected, eZapScan::sel_rotorConfig);
 		CONNECT((new eListBoxEntryMenu(&list, _("Transponder Edit"), eString().sprintf("(%d) %s", ++entry, _("for automatic transponder scan"))))->selected, eZapScan::sel_transponderEdit);
 		new eListBoxEntrySeparator( (eListBox<eListBoxEntry>*)&list, eSkin::getActive()->queryImage("listbox.separator"), 0, true );
@@ -54,6 +56,16 @@ eZapScan::eZapScan()
 		CONNECT((new eListBoxEntryMenu(&list, _("Automatic Multisat Scan"), eString().sprintf("(%d) %s", ++entry, _("open automatic transponder scan"))))->selected, eZapScan::sel_multiScan);
 
 	CONNECT((new eListBoxEntryMenu(&list, _("Manual Transponder Scan"), eString().sprintf("(%d) %s", ++entry, _("open manual transponder scan"))))->selected, eZapScan::sel_manualScan);
+}
+
+void eZapScan::sel_satfind()
+{
+	hide();
+	eSatfind s(eFrontend::getInstance());
+	s.show();
+	s.exec();
+	s.hide();
+	show();
 }
 
 void eZapScan::sel_autoScan()
