@@ -23,8 +23,8 @@
 //    Foundation, Inc., 675 Mass Ave, Cambridge, MA 02139, USA.
 //
 //  $Log$
-//  Revision 1.74  2001/10/25 10:32:04  field
-//  kleiner Bug mit mehreren IP-Connections behoben (speed rocks :)
+//  Revision 1.75  2001/10/25 12:24:29  field
+//  verbeserte Behandlung von unvollstaendigen EPGs
 //
 //  Revision 1.72  2001/10/24 17:03:42  field
 //  Deadlock behoben, Geschwindigkeit gesteigert
@@ -1002,7 +1002,7 @@ static const SIevent& findActualSIeventForServiceUniqueKey(const unsigned servic
     for(MySIeventsOrderFirstEndTimeServiceIDEventUniqueKey::iterator e=mySIeventsOrderFirstEndTimeServiceIDEventUniqueKey.begin(); e!=mySIeventsOrderFirstEndTimeServiceIDEventUniqueKey.end(); e++)
         if(SIservice::makeUniqueKey(e->first->originalNetworkID, e->first->serviceID)==serviceUniqueKey)
         {
-            for(SItimes::iterator t=e->first->times.begin(); t!=e->first->times.end(); t++)
+            for(SItimes::reverse_iterator t=e->first->times.rend(); t!=e->first->times.rbegin(); t--)
                 if((t->startzeit<=(long)(azeit+ plusminus)) && ((long)(azeit+plusminus)<=(long)(t->startzeit+t->dauer)))
                 {
                     zeit=*t;
@@ -1501,67 +1501,67 @@ static void commandCurrentNextInfoChannelID(struct connectionData *client, char 
         return;
     unsigned* uniqueServiceKey=(unsigned *)data;
     dprintf("Request of current/next information for 0x%x\n", *uniqueServiceKey);
-    //dprintf("commandCurrentNextInfoChannelID: before dmxEIT.pause\n");
     if(dmxEIT.pause()) // -> lock
         return;
-    //dprintf("commandCurrentNextInfoChannelID: before lockServices\n");
     lockServices();
-    //dprintf("commandCurrentNextInfoChannelID: before lockEvents\n");
     lockEvents();
     SItime zeitEvt1(0, 0);
     const SIevent &evt=findActualSIeventForServiceUniqueKey(*uniqueServiceKey, zeitEvt1);
-    //dprintf("commandCurrentNextInfoChannelID: before unlockServices\n");
     unlockServices();
-    //dprintf("commandCurrentNextInfoChannelID: after unlockServices\n");
 
     if(evt.serviceID!=0)
     {//Found
         dprintf("current EPG found.\n");
         SItime zeitEvt2(zeitEvt1);
         const SIevent &nextEvt=findNextSIevent(evt.uniqueKey(), zeitEvt2);
+
+        std::string  next_text;
         if(nextEvt.serviceID!=0)
         {
-            dprintf("next EPG found.\n");
-            nResultDataSize=
-                sizeof(unsigned long long)+       // Unique-Key
-                sizeof(sectionsd::sectionsdTime)+ // zeit
-                strlen(evt.name.c_str())+1+	  // name + 0
-                sizeof(unsigned long long)+       // Unique-Key
-                sizeof(sectionsd::sectionsdTime)+ // zeit
-                strlen(nextEvt.name.c_str())+1;   // name + 0
-            pResultData = new char[nResultDataSize];
-            if(!pResultData)
-            {
-                fprintf(stderr, "low on memory!\n");
-                unlockEvents();
-                dmxEIT.unpause();
-                return;
-            }
-            char *p=pResultData;
-            *((unsigned long long *)p)=evt.uniqueKey();
-            p+=sizeof(unsigned long long);
-            sectionsd::sectionsdTime zeit;
-            zeit.startzeit=zeitEvt1.startzeit;
-            zeit.dauer=zeitEvt1.dauer;
-            *((sectionsd::sectionsdTime *)p)=zeit;
-            p+=sizeof(sectionsd::sectionsdTime);
-            strcpy(p, evt.name.c_str());
-            p+=strlen(evt.name.c_str())+1;
-            *((unsigned long long *)p)=nextEvt.uniqueKey();
-            p+=sizeof(unsigned long long);
-            zeit.startzeit=zeitEvt2.startzeit;
-            zeit.dauer=zeitEvt2.dauer;
-            *((sectionsd::sectionsdTime *)p)=zeit;
-            p+=sizeof(sectionsd::sectionsdTime);
-            strcpy(p, nextEvt.name.c_str());
-    //      p+=strlen(nextEvt.name.c_str())+1;
+            dprintf("next EPG found.\n")
+            next_text= nextEvt.name;
         }
+        else
+            next_text= "|";
+
+
+        nResultDataSize=
+            sizeof(unsigned long long)+       // Unique-Key
+            sizeof(sectionsd::sectionsdTime)+ // zeit
+            strlen(evt.name.c_str())+1+	  // name + 0
+            sizeof(unsigned long long)+       // Unique-Key
+            sizeof(sectionsd::sectionsdTime)+ // zeit
+            strlen(next_text.c_str())+1;   // name + 0
+        pResultData = new char[nResultDataSize];
+        if(!pResultData)
+        {
+            fprintf(stderr, "low on memory!\n");
+            unlockEvents();
+            dmxEIT.unpause();
+            return;
+        }
+        char *p=pResultData;
+        *((unsigned long long *)p)=evt.uniqueKey();
+        p+=sizeof(unsigned long long);
+        sectionsd::sectionsdTime zeit;
+        zeit.startzeit=zeitEvt1.startzeit;
+        zeit.dauer=zeitEvt1.dauer;
+        *((sectionsd::sectionsdTime *)p)=zeit;
+        p+=sizeof(sectionsd::sectionsdTime);
+        strcpy(p, evt.name.c_str());
+        p+=strlen(evt.name.c_str())+1;
+        *((unsigned long long *)p)=nextEvt.uniqueKey();
+        p+=sizeof(unsigned long long);
+        zeit.startzeit=zeitEvt2.startzeit;
+        zeit.dauer=zeitEvt2.dauer;
+        *((sectionsd::sectionsdTime *)p)=zeit;
+        p+=sizeof(sectionsd::sectionsdTime);
+        strcpy(p, next_text.c_str());
+    //      p+=strlen(nextEvt.name.c_str())+1;
+
     }
-    //dprintf("commandCurrentNextInfoChannelID: before unlockEvents\n");
     unlockEvents();
-    //dprintf("commandCurrentNextInfoChannelID: before dmxEIT.unpause\n");
     dmxEIT.unpause(); // -> unlock
-    //dprintf("commandCurrentNextInfoChannelID: after dmxEIT.unpause\n");
 
     // response
     struct sectionsd::msgResponseHeader pmResponse;
@@ -1633,11 +1633,8 @@ struct sectionsd::msgResponseHeader responseHeader;
       e.text.c_str(),
       e.extendedText.c_str()
     );
-  //dprintf("sendEPG: before unlockEvents\n");
   unlockEvents();
-  //dprintf("sendEPG: before dmxEIT.unpause\n");
   dmxEIT.unpause(); // -> unlock
-  //dprintf("sendEPG: after dmxEIT.unpause\n");
 
   int rc=writeNbytes(client->connectionSocket, (const char *)&responseHeader, sizeof(responseHeader), TIMEOUT_CONNECTIONS);
   if(rc>0)
@@ -1680,12 +1677,9 @@ static void commandActualEPGchannelID(struct connectionData *client, char *data,
     return;
   unsigned* uniqueServiceKey=(unsigned *)data;
   dprintf("Request of actual EPG for 0x%x\n", * uniqueServiceKey);
-  //dprintf("commandActualEPGchannelID: before dmxEIT.pause\n");
   if(dmxEIT.pause()) // -> lock
     return;
-  //dprintf("commandActualEPGchannelID: before lockEvents\n");
   lockEvents();
-  //dprintf("commandActualEPGchannelID: after lockEvents\n");
   SItime zeit(0, 0);
   const SIevent &evt=findActualSIeventForServiceUniqueKey(*uniqueServiceKey, zeit);
   if(evt.serviceID!=0) {
@@ -2585,7 +2579,9 @@ const unsigned timeoutInSeconds=1;
         dprintf("[eitThread] eit-thread started.\n");
         int timeoutsDMX=0;
         time_t lastRestarted=time(NULL);
-        double sorttime, last_sorttime, last_clock;
+        double sorttime= 0;
+        double last_sorttime=0;
+        double last_clock= 0;
         dmxEIT.lock();
         if(dmxEIT.start()) // -> unlock
             return 0;
