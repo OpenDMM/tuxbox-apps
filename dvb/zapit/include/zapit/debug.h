@@ -85,8 +85,15 @@ extern int debug;
 #define fop(cmd, args...) ({					\
 	int _r;							\
 	if (fd >= 0) { if ((_r = ::cmd(fd, args)) < 0)		\
-		ERROR(#cmd"("#args")");				\
-	} else { _r = fd; } 					\
+		ERROR(#cmd"(fd, "#args")"); }			\
+	else { _r = fd; } 					\
+	_r;							\
+})
+
+#define quiet_fop(cmd, args...) ({				\
+	int _r;							\
+	if (fd >= 0) { _r = ::cmd(fd, args); }			\
+	else { _r = fd; } 					\
 	_r;							\
 })
 
