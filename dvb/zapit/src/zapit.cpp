@@ -548,7 +548,9 @@ bool parse_command(CBasicMessage::Header &rmsg, int connfd)
 {
 	DBG("cmd %d (version %d) received", rmsg.cmd, rmsg.version);
 
-	if ((standby) && (rmsg.cmd != CZapitMessages::CMD_SET_STANDBY)) {
+	if ((standby) && 
+			((rmsg.cmd != CZapitMessages::CMD_SET_STANDBY) &&
+			(rmsg.cmd != CZapitMessages::CMD_SHUTDOWN))) {
 		WARN("cmd %d refused in standby mode", rmsg.cmd);
 		return true;
 	}
