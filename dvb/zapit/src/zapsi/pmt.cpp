@@ -271,9 +271,9 @@ int parse_pmt(CZapitChannel * const channel)
 	if (channel->getPmtPid() == 0)
 		return -1;
 
-#ifdef UPDATE_PMT
-	bzero(filter, DMX_FILTER_SIZE);
-	bzero(mask, DMX_FILTER_SIZE);
+	memset(filter, 0x00, DMX_FILTER_SIZE);
+	memset(mask, 0x00, DMX_FILTER_SIZE);
+
 	filter[0] = 0x02;	/* table_id */
 	filter[1] = channel->getServiceId() >> 8;
 	filter[2] = channel->getServiceId();
@@ -284,20 +284,6 @@ int parse_pmt(CZapitChannel * const channel)
 	mask[2] = 0xFF;
 	mask[3] = 0x01;
 	mask[4] = 0xFF;
-#else
-	memset(filter, 0x00, DMX_FILTER_SIZE);
-	memset(mask, 0x00, DMX_FILTER_SIZE);
-
-	filter[0] = 0x02;
-	filter[1] = channel->getServiceId() >> 8;
-	filter[2] = channel->getServiceId();
-	mask[0] = 0xFF;
-	mask[1] = 0xFF;
-	mask[2] = 0xFF;
-
-	if (channel->getPmtPid() == 0)
-		return -1;
-#endif
 
 	if ((dmx.sectionFilter(channel->getPmtPid(), filter, mask) < 0) || (dmx.read(buffer, PMT_SIZE) < 0))
 		return -1;
