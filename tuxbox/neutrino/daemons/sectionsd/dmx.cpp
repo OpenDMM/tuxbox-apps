@@ -27,9 +27,11 @@
 #include <dmxapi.h>
 #include <debug.h>
 
+#include <errno.h>
 #include <fcntl.h>
 #include <unistd.h>
 #include <sys/ioctl.h>
+#include <sys/poll.h>
 
 #include <string>
 
