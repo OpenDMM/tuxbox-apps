@@ -263,6 +263,7 @@ const char * locale_real_names[] =
 	"favorites.menueadd",
 	"favorites.nobouquets",
 	"filebrowser.delete",
+	"filebrowser.denydirectoryleave",
 	"filebrowser.dodelete1",
 	"filebrowser.dodelete2",
 	"filebrowser.filter.active",
@@ -814,6 +815,5 @@ const char * locale_real_names[] =
 	"videomenu.videosignal_yuv_c",
 	"videomenu.videosignal_yuv_v",
 	"zaptotimer.announce",
-	"filebrowser.denydirectoryleave"
 };
 #endif

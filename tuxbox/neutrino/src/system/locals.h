@@ -263,6 +263,7 @@ typedef enum
 	LOCALE_FAVORITES_MENUEADD                             ,
 	LOCALE_FAVORITES_NOBOUQUETS                           ,
 	LOCALE_FILEBROWSER_DELETE                             ,
+	LOCALE_FILEBROWSER_DENYDIRECTORYLEAVE,
 	LOCALE_FILEBROWSER_DODELETE1                          ,
 	LOCALE_FILEBROWSER_DODELETE2                          ,
 	LOCALE_FILEBROWSER_FILTER_ACTIVE                      ,
@@ -818,6 +819,5 @@ typedef enum
 	LOCALE_VIDEOMENU_VIDEOSIGNAL_YUV_C                    ,
 	LOCALE_VIDEOMENU_VIDEOSIGNAL_YUV_V                    ,
 	LOCALE_ZAPTOTIMER_ANNOUNCE                            ,
-	LOCALE_FILEBROWSER_DENYDIRECTORYLEAVE
 } neutrino_locale_t;
 #endif
