@@ -2355,6 +2355,8 @@ int CNeutrinoApp::handleMsg(uint msg, uint data)
 	{
 		unsigned int old_id = channelList->getActiveChannelOnid_sid();
 
+		g_Zapit->reinitChannels();  // reload services & bouquets
+
 		channelsInit();
 		tvMode( true );
 
