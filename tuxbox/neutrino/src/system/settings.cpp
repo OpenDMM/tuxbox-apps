@@ -57,6 +57,16 @@ int* CScanSettings::diseqscOfSat( char* satname)
 	return(NULL);
 }
 
+char* CScanSettings::satOfDiseqc(int diseqc) const{
+	if(diseqcMode == NO_DISEQC) return (char*)&satNameNoDiseqc;
+	if(diseqc >= 0 && diseqc < MAX_SATELLITES) {
+		for(int i=0; i<MAX_SATELLITES;i++) {
+			if(diseqc == satDiseqc[i]) return (char*)&satName[i];
+		}	
+	}
+	return "Unknown Satellite";
+}
+
 void CScanSettings::toSatList( CZapitClient::ScanSatelliteList& satList) const
 {
 	satList.clear();

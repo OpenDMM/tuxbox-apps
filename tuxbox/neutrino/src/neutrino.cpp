@@ -1979,7 +1979,7 @@ void CNeutrinoApp::RealRun(CMenuWidget &mainMenu)
 		uint msg; uint data;
 		g_RCInput->getMsg( &msg, &data, 100 ); // 10 secs..
 
-		if ( msg == NeutrinoMessages::RECORD_START)
+		if (msg == NeutrinoMessages::RECORD_START)
 		{
 			if(CVCRControl::getInstance()->registeredDevices() > 0)
 			{
@@ -2012,7 +2012,8 @@ void CNeutrinoApp::RealRun(CMenuWidget &mainMenu)
 
 		if ( msg == NeutrinoMessages::ZAPTO)
 		{
-			CTimerEvent::EventInfo * eventinfo = (CTimerEvent::EventInfo *) data;
+			CTimerEvent::EventInfo * eventinfo; 
+			eventinfo = (CTimerEvent::EventInfo *) data;
 			channelList->zapToOnidSid(eventinfo->onidSid);
 		}
 
@@ -2030,7 +2031,6 @@ void CNeutrinoApp::RealRun(CMenuWidget &mainMenu)
 		}
 		if ( msg == NeutrinoMessages::SLEEPTIMER)
 		{
-			printf("sleeptimer\n");
 			if(g_settings.shutdown_real)
 				ExitRun();
 			else
