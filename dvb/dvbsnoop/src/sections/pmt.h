@@ -14,5 +14,5 @@ $Id$
 
 
 
-void decode_PMT (u_char *b, int len);
+void section_PMT (u_char *b, int len);
 

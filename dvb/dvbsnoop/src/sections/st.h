@@ -14,5 +14,5 @@ $Id$
 
 
 
-void decode_ST (u_char *b, int len);
+void section_ST (u_char *b, int len);
 

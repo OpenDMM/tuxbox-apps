@@ -14,5 +14,5 @@ $Id$
 
 
 
-void decode_NIT (u_char *b, int len);
+void section_NIT (u_char *b, int len);
 

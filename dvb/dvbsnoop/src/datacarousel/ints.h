@@ -14,10 +14,10 @@ $Id$
 
 
 #ifndef __INTS_H
-#define __INTS_H 1
+#define __INTS_H
 
 
-void  decode_DSMCC_INT (u_char *b, int len);
+void  section_DSMCC_INT (u_char *b, int len);
 
 
 #endif

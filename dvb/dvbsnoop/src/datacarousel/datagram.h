@@ -14,10 +14,10 @@ $Id$
 
 
 #ifndef _DATAGRAM_H
-#define _DATAGRAM_H 1
+#define _DATAGRAM_H
 
 
-void decode_DSMCC_DATAGRAM (u_char *b, int len);
+void section_DSMCC_DATAGRAM (u_char *b, int len);
 
 
 #endif

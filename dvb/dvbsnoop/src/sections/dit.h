@@ -14,5 +14,5 @@ $Id$
 
 
 
-void decode_DIT (u_char *b, int len);
+void section_DIT (u_char *b, int len);
 

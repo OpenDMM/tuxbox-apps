@@ -14,5 +14,5 @@ $Id$
 
 
 
-void decode_PAT (u_char *b, int len);
+void section_PAT (u_char *b, int len);
 

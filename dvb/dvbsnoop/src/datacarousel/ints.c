@@ -17,6 +17,9 @@ $Id$
 
 
 $Log$
+Revision 1.14  2004/10/17 22:20:35  rasc
+section decoding functions renamed due to preparation of private structures
+
 Revision 1.13  2004/02/12 21:21:19  rasc
 MHP AIT descriptors
 some smaller changes
@@ -59,7 +62,7 @@ more PES stuff, DSM descriptors, testdata
 
 
 
-void decode_DSMCC_INT (u_char *b, int len)
+void section_DSMCC_INT (u_char *b, int len)
 {
  /* EN 301 192 7.x */
 

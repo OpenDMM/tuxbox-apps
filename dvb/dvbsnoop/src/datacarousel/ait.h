@@ -18,7 +18,7 @@ $Id$
 
 
 
-void  decode_MHP_AIT (u_char *b, int len);
+void  section_MHP_AIT (u_char *b, int len);
 
 
 

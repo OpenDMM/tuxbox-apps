@@ -18,7 +18,7 @@ $Id$
 #define  __MDT_H
 
 
-void decode_MDT (u_char *b, int len);
+void section_MDT (u_char *b, int len);
 
 
 #endif

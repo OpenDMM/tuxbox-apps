@@ -14,5 +14,5 @@ $Id$
 
 
 
-void decode_CAT (u_char *b, int len);
+void section_CAT (u_char *b, int len);
 

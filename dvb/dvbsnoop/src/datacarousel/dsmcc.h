@@ -17,7 +17,7 @@ $Id$
 #define __DSMCC_H 
 
 
-void  decode_DSMCC_section (u_char *b, int len);
+void  section_DSMCC (u_char *b, int len);
 
 
 #endif

@@ -14,5 +14,5 @@ $Id$
 
 
 
-void decode_TDT (u_char *b, int len);
+void section_TDT (u_char *b, int len);
 

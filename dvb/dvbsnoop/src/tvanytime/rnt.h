@@ -17,7 +17,7 @@ $Id$
 #define __RNT_H 
 
 
-void decode_RNT (u_char *b, int len);
+void section_RNT (u_char *b, int len);
 
 
 #endif

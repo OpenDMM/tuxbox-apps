@@ -17,7 +17,7 @@ $Id$
 #define __TOT_H 
 
 
-void decode_TOT (u_char *b, int len);
+void section_TOT (u_char *b, int len);
 
 #endif
 

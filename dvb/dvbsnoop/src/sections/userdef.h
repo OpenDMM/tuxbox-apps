@@ -15,6 +15,6 @@ $Id$
 
 
 
-void decode_PRIVATE (u_char *b, int len);
+void section_PRIVATE (u_char *b, int len);
 
 

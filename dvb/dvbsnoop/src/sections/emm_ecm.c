@@ -24,6 +24,9 @@ $Id$
 
 
 $Log$
+Revision 1.10  2004/10/17 22:20:36  rasc
+section decoding functions renamed due to preparation of private structures
+
 Revision 1.9  2004/01/02 16:40:39  rasc
 DSM-CC  INT/UNT descriptors complete
 minor changes and fixes
@@ -71,7 +74,7 @@ dvbsnoop v0.7  -- Commit to CVS
 
 
 
-void decode_EMM_ECM (u_char *b, int len)
+void section_EMM_ECM (u_char *b, int len)
 {
  /* */
 

@@ -15,10 +15,10 @@ $Id$
 
 
 #ifndef __TSDT_H
-#define __TSDT_H 1
+#define __TSDT_H
 
 
-void decode_TSDT (u_char *b, int len);
+void section_TSDT (u_char *b, int len);
 
 
 #endif

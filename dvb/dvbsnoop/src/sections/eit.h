@@ -14,5 +14,5 @@ $Id$
 
 
 
-void decode_EIT (u_char *b, int len);
+void section_EIT (u_char *b, int len);
 

@@ -14,10 +14,10 @@ $Id$
 
 
 #ifndef __UNTS_H
-#define __UNTS_H 1
+#define __UNTS_H
 
 
-void  decode_DSMCC_UNT (u_char *b, int len);
+void  section_DSMCC_UNT (u_char *b, int len);
 
 
 #endif

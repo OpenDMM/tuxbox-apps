@@ -13,6 +13,6 @@ $Id$
 */
 
 
-void decode_EMM_ECM (u_char *b, int len);
+void section_EMM_ECM (u_char *b, int len);
 
 

@@ -18,6 +18,9 @@ $Id$
 
 
 $Log$
+Revision 1.8  2004/10/17 22:20:39  rasc
+section decoding functions renamed due to preparation of private structures
+
 Revision 1.7  2004/02/20 22:18:44  rasc
 DII complete (hopefully)
 BIOP::ModuleInfo  (damned, who is spreading infos over several standards???)
@@ -62,7 +65,7 @@ more PES stuff, DSM descriptors, testdata
 
 
 
-void decode_TESTDATA (u_char *b, int len)
+void section_TESTDATA (u_char *b, int len)
 {
 
  typedef struct  _TESTDATA {

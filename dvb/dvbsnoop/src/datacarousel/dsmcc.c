@@ -18,6 +18,9 @@ $Id$
 
 
 $Log$
+Revision 1.10  2004/10/17 22:20:35  rasc
+section decoding functions renamed due to preparation of private structures
+
 Revision 1.9  2004/02/15 18:58:27  rasc
 DSM-CC  data/object carousell continued   (DSI, DII, DDB, DCancel)
 
@@ -81,7 +84,7 @@ static void DSMCC_descriptor_list (u_char *b, int len);
 
 
 
-void decode_DSMCC_section (u_char *b, int len)
+void section_DSMCC (u_char *b, int len)
 {
  /* TR 101 202 */
 

@@ -14,5 +14,5 @@ $Id$
 
 
 
-void decode_BAT (u_char *b, int len);
+void section_BAT (u_char *b, int len);
 
