@@ -293,7 +293,7 @@ void *start_scanthread(void *param)
 		eventServer->sendEvent(CZapitClient::EVT_SCAN_SATELLITE, CEventServer::INITID_ZAPIT, &satName, strlen(satName) + 1);
 
 		printf("[scan.cpp] scanning %s\n", satName);
-#if 1
+#if 0
 		FrontendParameters feparams;
 		feparams.Inversion = INVERSION_AUTO;
 		feparams.u.qam.FEC_inner = FEC_AUTO;
@@ -335,19 +335,9 @@ void *start_scanthread(void *param)
 			printf("[scan.cpp] No signal found on transponder.\n");
 		}
 #else
-		uint32_t frequency;
-
-		for (frequency = 306000; frequency <= 460000; frequency += 8000)
+		if (get_nits(306000, 6900000, FEC_AUTO, 0, 0xFF) != 0)
 		{
-			if (get_nits(frequency, 6900000, FEC_AUTO, 0, 0xFF) != 0)
-			{
-				get_nits(frequency, 6875000, FEC_AUTO, 0, 0xFF);
-			}
-		}
-
-		if (get_nits(522000, 6900000, FEC_AUTO, 0, 0xFF) != 0)
-		{
-			get_nits(522000, 6875000, FEC_AUTO, 0, 0xFF);
+			get_nits(306000, 6875000, FEC_AUTO, 0, 0xFF);
 		}
 #endif
 		get_sdts();
