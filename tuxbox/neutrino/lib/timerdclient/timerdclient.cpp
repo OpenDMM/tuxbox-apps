@@ -41,14 +41,14 @@ const          char * CTimerdClient::getSocketName() const
 
 //-------------------------------------------------------------------------
 
-void CTimerdClient::registerEvent(unsigned int eventID, unsigned int clientID, std::string udsName)
+void CTimerdClient::registerEvent(unsigned int eventID, unsigned int clientID, const char * const udsName)
 {
 	CEventServer::commandRegisterEvent msg2;
 
 	msg2.eventID = eventID;
 	msg2.clientID = clientID;
 
-	strcpy(msg2.udsName, udsName.c_str());
+	strcpy(msg2.udsName, udsName);
 
 	send(CTimerdMsg::CMD_REGISTEREVENT, (char*)&msg2, sizeof(msg2));
 

@@ -173,7 +173,7 @@ class CSectionsdClient : private CBasicClient
 	/*
 	  ein beliebiges Event anmelden
 	*/
-	void registerEvent(const unsigned int eventID, const unsigned int clientID, const std::string udsName);
+	void registerEvent(const unsigned int eventID, const unsigned int clientID, const char * const udsName);
 
 	/*
 	  ein beliebiges Event abmelden

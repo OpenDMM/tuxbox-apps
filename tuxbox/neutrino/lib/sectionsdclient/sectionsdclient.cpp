@@ -75,14 +75,14 @@ bool CSectionsdClient::send(const unsigned char command, const char* data, const
         return true;
 }
 
-void CSectionsdClient::registerEvent(const unsigned int eventID, const unsigned int clientID, const std::string udsName)
+void CSectionsdClient::registerEvent(const unsigned int eventID, const unsigned int clientID, const char * const udsName)
 {
 	CEventServer::commandRegisterEvent msg2;
 
 	msg2.eventID = eventID;
 	msg2.clientID = clientID;
 
-	strcpy(msg2.udsName, udsName.c_str());
+	strcpy(msg2.udsName, udsName);
 	
 	send(sectionsd::CMD_registerEvents, (char*)&msg2, sizeof(msg2));
 

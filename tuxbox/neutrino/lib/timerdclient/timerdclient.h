@@ -58,7 +58,7 @@ class CTimerdClient:private CBasicClient
 			EVT_REMIND
 		};
 
-		void registerEvent(unsigned int eventID, unsigned int clientID, std::string udsName);
+		void registerEvent(unsigned int eventID, unsigned int clientID, const char * const udsName);
 		void unRegisterEvent(unsigned int eventID, unsigned int clientID);
 
 		bool isTimerdAvailable();			// check if timerd is running
