@@ -51,7 +51,7 @@ void eZapScan::sel_close()
 
 void eZapScan::sel_scan()
 {
-	TransponderScan setup;
+	TransponderScan setup(LCDTitle, LCDElement);
 	hide();
 	setup.exec();
 	show();
@@ -66,6 +66,7 @@ void eZapScan::sel_satconfig()
 {
 	hide();
 	eSatelliteConfigurationManager satconfig;
+	satconfig.setLCD(LCDTitle, LCDElement);
 	satconfig.show();
 	satconfig.exec();
 	satconfig.hide();

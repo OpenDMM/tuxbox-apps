@@ -27,30 +27,25 @@
 #include <string>
 
 #include <core/gui/ewindow.h>
+#include <core/gui/statusbar.h>
+#include <core/gui/ebutton.h>
+#include <core/gui/elabel.h>
+#include <core/gui/listbox.h>
 
-class eNumber;
-class eButton;
-class eCheckbox;
 
 class eZapLanguageSetup: public eWindow
 {
-public:
-	eZapLanguageSetup();
-
-protected:
-	int eventFilter(const eWidgetEvent &event);
-
 private:
 	void okPressed();
 	void abortPressed();
 
-	void setLanguage(std::map<std::string, std::string>::iterator &);
-	void toggleLanguage();
+	eButton *ok, *abort;
+	eListBox<eListBoxEntryText> *language;
+	eStatusBar* statusbar;
 
-	eButton *language, *ok, *abort;
-
-	std::map<std::string, std::string> languages;
-	std::map<std::string, std::string>::iterator v_language;
+public:
+	eZapLanguageSetup();
+	~eZapLanguageSetup();
 };
 
 #endif
