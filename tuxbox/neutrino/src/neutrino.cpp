@@ -1076,16 +1076,19 @@ void CNeutrinoApp::InitServiceSettings(CMenuWidget &service, CMenuWidget &scanSe
 		updateSettings->addItem( new CMenuForwarder("flashupdate.expertfunctions", true, "", mtdexpert ) );
 		updateSettings->addItem( new CMenuSeparator(CMenuSeparator::LINE) );
 		
-		//get current flash-version
-		FILE* fd = fopen("/.version", "r");
-		strcpy(g_settings.softupdate_currentversion, "1.0.0");
-		if(fd)
+		//get current flash-version SBBBYYYYMMTTHHMM -- formatsting
+		CConfigFile configfile('\t');
+		if(!configfile.loadConfig("/.version"))
 		{
-			if(fgets(g_settings.softupdate_currentversion,90,fd)==NULL)
-				fclose(fd);
+			//error default
+			strcpy(g_settings.softupdate_currentversion, "0105200205212015");
 		}
-
+		else
+		{
+			strcpy(g_settings.softupdate_currentversion, configfile.getString( "version", "0105200205212015").c_str());
+		}
 		dprintf(DEBUG_INFO, "current flash-version: %s\n", g_settings.softupdate_currentversion);
+
 		updateSettings->addItem( new CMenuForwarder("flashupdate.currentversion", false, (char*) &g_settings.softupdate_currentversion, NULL ));
 
 		CMenuOptionChooser *oj = new CMenuOptionChooser("flashupdate.updatemode", &g_settings.softupdate_mode,true);
