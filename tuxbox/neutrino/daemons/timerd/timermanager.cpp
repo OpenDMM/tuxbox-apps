@@ -183,6 +183,9 @@ int CTimerManager::addEvent(CTimerEvent* evt, bool save)
 {
 	eventID++;						// increase unique event id
 	evt->eventID = eventID;
+   if(evt->eventRepeat==CTimerd::TIMERREPEAT_WEEKDAYS)
+      // Weekdays without weekday specified reduce to once
+      evt->eventRepeat=CTimerd::TIMERREPEAT_ONCE;
 	events[eventID] = evt;			// insert into events
 	m_saveEvents=save;
 	return eventID;					// return unique id
@@ -230,8 +233,12 @@ int CTimerManager::modifyEvent(int eventID, time_t announceTime, time_t alarmTim
 		event->announceTime = announceTime;
 		event->alarmTime = alarmTime;
 		event->stopTime = stopTime;
-		event->eventState = CTimerd::TIMERSTATE_SCHEDULED;
+      if(event->eventState==CTimerd::TIMERSTATE_PREANNOUNCE)
+         event->eventState = CTimerd::TIMERSTATE_SCHEDULED;
 		event->eventRepeat = evrepeat;
+      if(event->eventRepeat==CTimerd::TIMERREPEAT_WEEKDAYS)
+         // Weekdays without weekday specified reduce to once
+         event->eventRepeat=CTimerd::TIMERREPEAT_ONCE;
 		m_saveEvents=true;
 		return eventID;
 	}
@@ -251,6 +258,12 @@ int CTimerManager::modifyEvent(int eventID, uint apid)
          m_saveEvents=true;
 			return eventID;
 		}
+		else if(event->eventType == CTimerd::TIMER_ZAPTO)
+		{
+			((CTimerEvent_Zapto*) (event))->eventInfo.apid = apid;
+         m_saveEvents=true;
+         return eventID;
+      }
 	}
 	return 0;
 }
