@@ -288,13 +288,13 @@ void *decode_thread(void *ptr)
 	if ((channel->getEcmPid() != NONE) && (channel->getEcmPid() != INVALID))
 	{
 		debug("[zapit] setting ecm pid %04x\n", channel->getEcmPid());
-		cam->setEcm(channel->getTsidOnid(), channel->getPids());
+		cam->setEcm(channel);
 	}
 
 	if ((vals->new_tp == true) && (channel->getEmmPid() != NONE) && (channel->getEmmPid() != INVALID))
 	{
 		debug("[zapit] setting emm pid %04x\n", channel->getEmmPid());
-		cam->setEmm(channel->getEmmPid());
+		cam->setEmm(channel);
 	}
 
 	delete vals;

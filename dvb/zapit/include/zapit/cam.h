@@ -55,8 +55,8 @@ class CCam
 		bool isInitialized() { return initialized; }
 
 		int reset ();
-		int setEcm (uint32_t tsidOnid, const pids *decodePids);
-		int setEmm (dvb_pid_t emmPid);
+		int setEcm (CZapitChannel *channel);
+		int setEmm (CZapitChannel *channel);
 };
 
 #endif /* __cam_h__ */
