@@ -93,7 +93,7 @@ class CFrontend
 		const uint32_t getNextFrequency (uint32_t frequency);
 		const uint32_t getNextSymbolRate (uint32_t rate);
 		const FrontendParameters *getFrontend ();
-		const FrontendEvent *getEvent ();
+		const bool getEvent ();
 		const FrontendInfo *getInfo ()	{ return info; };
 
 		/* ost sec api */
