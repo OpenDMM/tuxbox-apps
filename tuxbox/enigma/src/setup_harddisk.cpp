@@ -224,6 +224,9 @@ void eHarddiskMenu::s_format()
 		int bus=!!(dev&2);
 		int target=!!(dev&1);
 
+// kill samba server... (exporting /hdd)
+		system("killall -9 smbd");
+
 		system(
 				eString().sprintf(
 				"/bin/umount /dev/ide/host%d/bus%d/target%d/lun0/part*", host, bus, target).c_str());
@@ -287,7 +290,8 @@ void eHarddiskMenu::s_format()
 		}
 		readStatus();
 	} while (0);
-	
+	// restart samba...
+	system("/bin/smbd -D");
 	show();
 }
 
