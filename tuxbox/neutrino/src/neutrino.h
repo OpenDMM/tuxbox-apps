@@ -112,7 +112,7 @@ struct messages_return {
 		};
 };
 
-struct messages {
+struct NeutrinoMessages {
 	enum
 		{
 			SHOW_EPG	= CRCInput::RC_Messages + 1,
@@ -176,6 +176,8 @@ class CNeutrinoApp : public CMenuTarget, COnPaintNotifier, CChangeObserver
 		};
 
 		string				settingsFile;
+		string				scanSettingsFile;
+		CScanSettings		scanSettings;
 
 		int				    mode;
 		int					lastMode;
@@ -234,12 +236,14 @@ class CNeutrinoApp : public CMenuTarget, COnPaintNotifier, CChangeObserver
 		void InitNetworkSettings(CMenuWidget &networkSettings);
 		void InitScreenSettings(CMenuWidget &);
 		void InitMiscSettings(CMenuWidget &);
+		void InitScanSettings(CMenuWidget &);
 		void InitParentalLockSettings(CMenuWidget &);
 		void InitVideoSettings(CMenuWidget &videoSettings, CVideoSetupNotifier* videoSetupNotifier);
 		void InitMainMenu(CMenuWidget &mainMenu, CMenuWidget &mainSettings, CMenuWidget &audioSettings,
 		                  CMenuWidget &parentallockSettings, CMenuWidget &networkSettings,
 		                  CMenuWidget &colorSettings, CMenuWidget &keySettings, CMenuWidget &videoSettings,
-		                  CMenuWidget &languageSettings, CMenuWidget &miscSettings, CMenuWidget &service);
+		                  CMenuWidget &languageSettings, CMenuWidget &miscSettings, CMenuWidget &scanSettings,
+		                  CMenuWidget &service);
 		void ClearFrameBuffer();
 		void SetupFonts();
 		void SetupFrameBuffer();
