@@ -32,6 +32,9 @@
 	Foundation, Inc., 675 Mass Ave, Cambridge, MA 02139, USA.
 
   $Log$
+  Revision 1.107  2001/12/19 21:38:08  McClean
+  new background
+
   Revision 1.106  2001/12/19 18:41:25  McClean
   change menue-structure
 
@@ -2032,10 +2035,10 @@ void CNeutrinoApp::radioMode()
 	}
 	mode = mode_radio;
 
-	g_FrameBuffer->loadPal("dboxradio.pal", 18, 199);
-	g_FrameBuffer->loadBackground("dboxradio.raw", 18);
+	g_FrameBuffer->loadPal("radiomode.pal", 18, 199);
+	g_FrameBuffer->loadBackground("radiomode.raw", 18);
 	g_FrameBuffer->useBackground(true);
-	g_FrameBuffer->paintBackground(); //BoxRel(0,0, 719,575);
+	g_FrameBuffer->paintBackground();
 
 	firstChannel();
 	g_RemoteControl->radioMode();
