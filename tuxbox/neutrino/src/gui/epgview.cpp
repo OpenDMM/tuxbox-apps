@@ -33,6 +33,9 @@
 // $Id$
 //
 // $Log$
+// Revision 1.28  2001/12/12 11:46:06  McClean
+// performance-improvements
+//
 // Revision 1.27  2001/12/12 11:33:57  McClean
 // major epg-fixes
 //
@@ -127,7 +130,6 @@ void CEpgData::start()
 
 	sy = (((g_settings.screen_EndY-g_settings.screen_StartY)-oy) / 2) + g_settings.screen_StartY;
 }
-
 
 void CEpgData::addTextToArray( string text  )
 {
