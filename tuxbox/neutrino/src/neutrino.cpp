@@ -1045,7 +1045,7 @@ void CNeutrinoApp::InitScanSettings(CMenuWidget &settings)
 
 		CZapitClient::SatelliteList satList;
 		g_Zapit->getScanSatelliteList(satList);
-		CMenuOptionStringChooser* ojSat = new CMenuOptionStringChooser("satsetup.satellite", (char*)&scanSettings.satNameNoDiseqc, scanSettings.diseqcMode == NO_DISEQC/*, new CSatelliteNotifier*/, NULL, false);
+		CMenuOptionStringChooser* ojSat = new CMenuOptionStringChooser("satsetup.satellite", (char*)&scanSettings.satNameNoDiseqc, ((scanSettings.diseqcMode == NO_DISEQC) || (scanSettings.diseqcMode == DISEQC_1_2))/*, new CSatelliteNotifier*/, NULL, false);
 		for( uint i=0; i< satList.size(); i++)
 		{
 			ojSat->addOption(satList[i].satName);

@@ -92,7 +92,7 @@ void CScanSettings::toSatList( CZapitClient::ScanSatelliteList& satList) const
 {
 	satList.clear();
 	CZapitClient::commandSetScanSatelliteList sat;
-	if ( diseqcMode == NO_DISEQC)
+	if  ((diseqcMode == NO_DISEQC) || (diseqcMode == DISEQC_1_2))
 	{
 		strncpy( sat.satName, satNameNoDiseqc, 30);
 		sat.diseqc = 0;
