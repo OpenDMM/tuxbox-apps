@@ -70,6 +70,9 @@
   Foundation, Inc., 675 Mass Ave, Cambridge, MA 02139, USA.
   
   $Log$
+  Revision 1.28  2001/11/03 16:27:50  field
+  Perspektiven Displayname gefixt
+
   Revision 1.27  2001/11/03 15:40:49  field
   Perspektiven
 
@@ -799,6 +802,7 @@ int zapit (uint onid_sid,boolean in_nvod) {
     	  if (allchans_tv.count(onid_sid) >0)
 	        {
     	      cit = allchans_tv.find(onid_sid);
+              nvodname = cit->second.name;
 	        }
     	  else
 	        {
@@ -843,10 +847,11 @@ int zapit (uint onid_sid,boolean in_nvod) {
 else
   do_search_emmpid = false;
 
+
   if (cit->second.service_type == 4)
     {
-      nvodname = cit->second.name;
       current_is_nvod = true;
+  //    nvodname = cit->second.name;
         curr_onid_sid = onid_sid;
         save_settings();
 
