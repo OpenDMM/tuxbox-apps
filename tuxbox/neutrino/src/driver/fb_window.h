@@ -26,9 +26,9 @@
 class CFBWindow
 {
  public:
-	typedef unsigned char color_t;
-	typedef void *        font_t;
-	typedef void *        private_data_t;
+	typedef unsigned short color_t;
+	typedef void *         font_t;
+	typedef void *         private_data_t;
 
  private:
 	private_data_t private_data;
