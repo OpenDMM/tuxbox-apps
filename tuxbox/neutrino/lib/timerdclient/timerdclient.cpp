@@ -25,7 +25,7 @@
 #include <stdio.h>
 
 #include <timerdclient/timerdclient.h>
-#include "eventserver.h"
+#include <eventserver.h>
 
 
 bool CTimerdClient::send(const unsigned char command, char* data = NULL, const unsigned int size = 0)
