@@ -723,8 +723,9 @@ bool parse_command(CBasicMessage::Header &rmsg, int connfd)
 				satname = xmlGetAttribute(search, "name");
 				strncpy(sat.satName, satname, 29);
 				sat.satPosition = satellitePositions[satname];
+				sat.motorPosition = motorPositions[sat.satPosition];
 				satlength = sizeof(sat);
-				printf("[zapit] sending %s, %d\n", sat.satName, sat.satPosition);
+				//printf("[zapit] sending %s, %d, %d\n", sat.satName, sat.satPosition, sat.motorPosition);
 				CBasicServer::send_data(connfd, &satlength, sizeof(satlength));
 				CBasicServer::send_data(connfd, (char *)&sat, satlength);
 				search = search->xmlNextNode;
