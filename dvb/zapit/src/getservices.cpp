@@ -78,6 +78,9 @@ void ParseTransponders (XMLTreeNode *node, uint8_t DiSEqC)
 	uint8_t polarization = 0;
 	uint8_t tmp;
 
+	/* FIXME: get inversion from services list */
+	feparams.Inversion = INVERSION_AUTO;
+
 	/* read all transponders */
 	while ((node != NULL) && (!strcmp(node->GetType(), "transponder")))
 	{
