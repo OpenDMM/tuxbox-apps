@@ -2264,6 +2264,7 @@ int CNeutrinoApp::run(int argc, char **argv)
 	g_Zapit->registerEvent(CZapitClient::EVT_ZAP_FAILED, 222, NEUTRINO_UDS_NAME);
 	g_Zapit->registerEvent(CZapitClient::EVT_ZAP_SUB_COMPLETE, 222, NEUTRINO_UDS_NAME);
 	g_Zapit->registerEvent(CZapitClient::EVT_ZAP_SUB_FAILED, 222, NEUTRINO_UDS_NAME);
+	g_Zapit->registerEvent(CZapitClient::EVT_ZAP_MOTOR, 222, NEUTRINO_UDS_NAME);
 #ifndef SKIP_CA_STATUS
 	g_Zapit->registerEvent(CZapitClient::EVT_ZAP_CA_CLEAR, 222, NEUTRINO_UDS_NAME);
 	g_Zapit->registerEvent(CZapitClient::EVT_ZAP_CA_LOCK, 222, NEUTRINO_UDS_NAME);
