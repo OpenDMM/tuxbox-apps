@@ -109,7 +109,6 @@ class CBouquetManager
 		ChannelIterator radioChannelsBegin() { return ChannelIterator(this, false); };
 
 		BouquetList Bouquets;
-		BouquetList storedBouquets;
 
 		void saveBouquets(void);
 		void saveBouquets(const CZapitClient::bouquetMode bouquetMode, const char * const providerName);
