@@ -26,9 +26,19 @@
 #include <connection/messagetools.h>  /* get_length_field_size */
 
 
-bool CCam::sendMessage(char* data, const size_t length)
+const unsigned char   CCam::getVersion   () const
 {
-	if (!open_connection(CAMD_UDS_NAME))
+	return 0x9F;
+}
+
+const          char * CCam::getSocketName() const
+{
+	return CAMD_UDS_NAME;
+}
+
+bool CCam::sendMessage(const char* data, const size_t length)
+{
+	if (!open_connection())
 		return false;
 
 	bool return_value = send_data(data, length);
