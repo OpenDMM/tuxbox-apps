@@ -41,7 +41,7 @@
 
 /* zapit headers */
 #include <zapit/audio.h>
-#include <zapit/basicserver.h>
+#include <connection/basicserver.h>
 #include <zapit/cam.h>
 #include <zapit/client/msgtypes.h>
 #include <zapit/dmx.h>

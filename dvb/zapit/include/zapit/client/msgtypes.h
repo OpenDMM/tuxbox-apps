@@ -26,7 +26,7 @@
 
 
 #include "zapittypes.h"
-#include "basicmessage.h"
+#include <connection/basicmessage.h>
 #include "zapitclient.h"
 
 
