@@ -348,6 +348,9 @@ bool CZapitClient::receive_channel_list(BouquetChannelList& channels, const bool
 				buffer[30] = (char) 0x00;
 				strncpy(buffer, response.name, 30);
 				strncpy(response.name, Utf8_to_Latin1(std::string(buffer)).c_str(), 30);
+				
+				strncpy(buffer, response.satellite, 30);
+				strncpy(response.satellite, Utf8_to_Latin1(std::string(buffer)).c_str(), 30);
 			}
 			channels.push_back(response);
 		}
