@@ -797,13 +797,15 @@ CBouquetManager::ChannelIterator CBouquetManager::ChannelIterator::operator ++(i
 	{
 		c++;
 		if ((unsigned int) c >= getBouquet()->size())
+		{
 			for (; b < Owner->Bouquets.size(); b++)
 				if (getBouquet()->size() != 0)
 				{
 					c = 0;
 					goto end;
 				}
-		b = 0; c = -2;
+			b = 0; c = -2;
+		}
 	}
  end:
 	return(*this);
