@@ -64,8 +64,8 @@ void eZapScan::sel_bouquet()
 
 void eZapScan::sel_satconfig()
 {
-	eSatelliteConfigurationManager satconfig;
 	hide();
+	eSatelliteConfigurationManager satconfig;
 	satconfig.show();
 	satconfig.exec();
 	satconfig.hide();
