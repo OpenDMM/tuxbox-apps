@@ -29,7 +29,7 @@
 
 std::string Unicode_Character_to_UTF8(const int character)
 {
-	char buf[4];
+	char buf[XML_UTF8_ENCODE_MAX];
 	int length = XmlUtf8Encode(character, buf);
 	return std::string(buf, length);
 }
