@@ -237,7 +237,8 @@ public:
 		else if ( !strcmp(eSystemInfo::getInstance()->getManufacturer(),"Dream-Multimedia-TV") )
 			dreamlogo->show();
 
-		if ( eSystemInfo::getInstance()->getHwType() == eSystemInfo::DM7000 )
+		if ( eSystemInfo::getInstance()->getHwType() == eSystemInfo::DM7000
+			|| eSystemInfo::getInstance()->getHwType() == eSystemInfo::DM7020)
 		{
 			eString fp_version = fpversion->getText();
 			fp_version += eString().sprintf(" 1.%02d", eDreamboxFP::getFPVersion());
