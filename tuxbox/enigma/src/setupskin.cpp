@@ -45,15 +45,15 @@ void eSkinSetup::loadSkins()
 
 		if (n<0)
 		{
-			if (i)
+			if (!i)
 			{
 				eDebug("error reading skin directory");
 				eMessageBox msg("error reading skin directory", "error");
 				msg.show();
 				msg.exec();
 				msg.hide();
-				continue;
 			}
+			continue;
 		}
 
 		for(int count=0;count<n;count++)
@@ -62,7 +62,7 @@ void eSkinSetup::loadSkins()
 	
 			if (fileName.find(".info") != eString::npos)
 			{
-				eString esml=getInfo(fileName.c_str(), "esml");
+				eString esml=skinPaths[i] + getInfo(fileName.c_str(), "esml");
 				eString name=getInfo(fileName.c_str(), "name");
 				eDebug("esml = %s, name = %s", esml.c_str(), name.c_str());
 				if (esml.size() && name.size())
