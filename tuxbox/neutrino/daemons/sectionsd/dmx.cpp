@@ -191,6 +191,8 @@ char * DMX::getSection(const unsigned timeoutInMSeconds, int &timeouts)
 	{
 		delete[] buf;
 		printf("[sectionsd] filter 0x%x mask 0x%x -> skip sections for table 0x%x\n", filters[filter_index].filter, filters[filter_index].mask, initial_header.table_id);
+		real_pause();
+		real_unpause();
 		return NULL;
 	}
 	
@@ -470,6 +472,12 @@ int readNbytes(int fd, char *buf, const size_t n, unsigned timeoutInMSeconds)
 		{
 			perror ("[sectionsd] poll");
 			//printf("errno: %d\n", errno);
+			return -1;
+		}
+
+		if ((ufds.revents & POLLERR) != 0) /* POLLERR means buffer error, i.e. buffer overflow */
+		{
+			puts("[sectionsd] readNbytes: received POLLERR");
 			return -1;
 		}
 
