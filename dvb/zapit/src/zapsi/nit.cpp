@@ -138,7 +138,7 @@ int parse_nit(unsigned char DiSEqC)
 						break;
 
 					case 0x44:
-						if (cable_delivery_system_descriptor(buffer + pos2, transport_stream_id, original_network_id) < 0);
+						if (cable_delivery_system_descriptor(buffer + pos2, transport_stream_id, original_network_id) < 0)
 							return -2;
 						break;
 
