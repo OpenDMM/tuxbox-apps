@@ -2,6 +2,9 @@
 // $Id$
 //
 // $Log$
+// Revision 1.30  2001/10/10 17:17:13  field
+// zappen auf onid_sid umgestellt
+//
 // Revision 1.29  2001/10/02 17:56:33  McClean
 // time in infobar (thread probs?) and "0" quickzap added
 //
@@ -393,7 +396,10 @@ void CChannelList::zapTo(int pos)
 	{
 		lasttuned = tuned;
 		tuned = pos;
-    	g_RemoteControl->zapTo(chan->key, chan->name);
+        if ( g_settings.epg_byname == 0 )
+            g_RemoteControl->zapTo_onid_sid( chan->onid_sid );
+        else
+            g_RemoteControl->zapTo( chan->name );
     }
     g_InfoViewer->showTitle(selected+ 1, chan->name, chan->onid_sid);
 }
