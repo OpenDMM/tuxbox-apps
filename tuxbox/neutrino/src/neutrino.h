@@ -141,6 +141,7 @@ struct NeutrinoMessages {
 			EVT_SCAN_NUM_TRANSPONDERS =	CRCInput::RC_Events + 17,
 			EVT_SCAN_NUM_CHANNELS =		CRCInput::RC_Events + 18,
 			EVT_SHUTDOWN =				CRCInput::RC_Events + 19,
+			EVT_TIMER =					CRCInput::RC_Events + 20,
 
 			EVT_CURRENTEPG 		=		CRCInput::RC_WithData + 1,
 			EVT_SCAN_SATELLITE	=		CRCInput::RC_WithData + 2,
