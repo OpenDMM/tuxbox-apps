@@ -23,6 +23,7 @@
 
 #include <setup_harddisk.h>
 #include <enigma.h>
+#include <enigma_main.h>
 #include <lib/gui/emessage.h>
 #include <lib/gui/ebutton.h>
 #include <lib/gui/combobox.h>
@@ -390,6 +391,7 @@ err:
 		}
 noerr:
 		{
+			eZapMain::getInstance()->clearRecordings();
 			eMessageBox msg(
 				_("successfully formatted your disk!"),
 				_("formatting harddisk..."),
