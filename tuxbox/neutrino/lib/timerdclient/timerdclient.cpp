@@ -372,4 +372,20 @@ bool CTimerdClient::isTimerdAvailable()
 	timerd_close();
 }
 //-------------------------------------------------------------------------
+bool CTimerdClient::shutdown()
+{
+	CTimerd::commandHead msg;
+	msg.version=CTimerd::ACTVERSION;
+	msg.cmd=CTimerd::CMD_SHUTDOWN;
+ 
+	timerd_connect();
+	send((char*)&msg, sizeof(msg));
+	
+	CTimerd::responseStatus response;
+	receive((char*)&response, sizeof(response));
+
+	timerd_close();
+	return response.status;
+}
+//-------------------------------------------------------------------------
 

@@ -149,6 +149,9 @@ class CTimerdClient
 			// keine ahnung ob / was hier noch fehlt
 			return addTimerEvent(CTimerEvent::TIMER_NEXTPROGRAM, &eventInfo, alarmtime, announcetime, stoptime);
 		};
+
+		// Exit timerd and programm wakeup
+		bool shutdown();
 };
 
 #endif

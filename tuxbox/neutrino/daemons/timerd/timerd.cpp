@@ -47,6 +47,8 @@
 #include "config.h"
 #include <configfile.h>
 
+bool doLoop;
+
 void loadTimersFromConfig()
 {
    CConfigFile *config = new CConfigFile(',');
@@ -459,6 +461,15 @@ void parse_command(int connfd, CTimerd::commandHead* rmessage)
          rspAvailable.available = true;
          write( connfd, &rspAvailable, sizeof(rspAvailable));
          break;
+		case CTimerd::CMD_SHUTDOWN:
+		{
+			bool ret=CTimerManager::getInstance()->shutdown();
+			CTimerd::responseStatus rspStatus;
+			rspStatus.status = ret;
+			write( connfd, &rspStatus, sizeof(rspStatus));
+			doLoop=false;
+		}
+		break;
       default:
          dprintf("unknown command\n");
    }
@@ -470,6 +481,7 @@ int main(int argc, char **argv)
    struct sockaddr_un servaddr;
    int clilen;
    bool do_fork = true;
+	doLoop=true;
 
    dprintf("startup!!!\n\n");
    if(argc > 1)
@@ -533,7 +545,7 @@ int main(int argc, char **argv)
    try
    {
       struct CTimerd::commandHead rmessage;
-      while(1)                      // wait for incomming messages
+      while(doLoop)                      // wait for incomming messages
       {
          connfd = accept(listenfd, (struct sockaddr*) &servaddr, (socklen_t*) &clilen);
          memset(&rmessage, 0, sizeof(rmessage));

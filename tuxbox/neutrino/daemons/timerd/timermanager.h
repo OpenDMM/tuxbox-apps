@@ -231,6 +231,7 @@ class CTimerManager
 		int modifyEvent(int eventID, time_t announceTime, time_t alarmTime, time_t stopTime, CTimerEvent::CTimerEventRepeat evrepeat = CTimerEvent::TIMERREPEAT_ONCE);
 		int rescheduleEvent(int eventID, time_t announceTime, time_t alarmTime, time_t stopTime);
 		void saveEventsToConfig();
+		bool shutdown();
 };
 
 #endif
