@@ -11,8 +11,6 @@
 #include <zapit/settings.h>
 #include <zapit/xmlinterface.h>
 
-uint8_t curr_diseqc = 0;
-
 extern std::map <uint32_t, transponder> transponders;
 extern tallchans allchans;
 
