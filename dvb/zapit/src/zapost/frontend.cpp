@@ -299,7 +299,6 @@ struct dvb_frontend_event CFrontend::getEvent ()
 	}
 
 	if (!tuned) {
-		std::cout << "hoooo?" << std::endl;
 		currentFrequency = 0;
 		currentTsidOnid = 0;
 	}
