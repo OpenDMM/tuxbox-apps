@@ -26,23 +26,7 @@
 #define __zapit__types_h__
 
 
-#include <stdint.h>
-
-
-/* unique channel identification */
-typedef uint32_t t_channel_id;
-#define CREATE_CHANNEL_ID ((original_network_id << 16) | service_id)
-
-
-/* diseqc types */
-enum diseqc_t
-{
-	NO_DISEQC,
-	MINI_DISEQC,
-	DISEQC_1_0,
-	DISEQC_1_1,
-	SMATV_REMOTE_TUNING
-};
+#include "clientlib/zapittypes.h"
 
 
 #endif /* __zapit__types_h__ */

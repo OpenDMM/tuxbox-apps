@@ -28,9 +28,12 @@
 #include <signal.h>
 #include <sys/ioctl.h>
 #include <sys/poll.h>
+#include <sys/socket.h>
 #include <sys/stat.h>
 #include <sys/types.h>
+#include <sys/un.h>
 #include <sys/wait.h>
+#include <unistd.h>
 
 /* d-box specific headers */
 #ifdef DBOX2
