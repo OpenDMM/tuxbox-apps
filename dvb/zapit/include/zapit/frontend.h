@@ -126,7 +126,7 @@ class CFrontend
 		void setDiseqcRepeats (uint8_t repeats)		{ diseqcRepeats = repeats; }
 		const uint8_t getDiseqcRepeats ()		{ return diseqcRepeats; }
 
-		void setDiseqcType (diseqc_t type)		{ diseqcType = type; }
+		void setDiseqcType (diseqc_t type);
 		const diseqc_t getDiseqcType ()			{ return diseqcType; }
 		
 		const bool isInitialized ()			{ return initialized; }

@@ -369,9 +369,9 @@ int zapit(const t_channel_id channel_id, bool in_nvod)
 
 	DBG("setting ca pmt");
 
-	cam->setCaPmt(channel->getCaPmt());
-
 	startPlayBack();
+
+	cam->setCaPmt(channel->getCaPmt());
 
 	save_settings(false);
 
@@ -1442,7 +1442,7 @@ unsigned int zapTo_ChannelID(t_channel_id channel_id, bool isSubService)
 	else
 		eventServer->sendEvent(CZapitClient::EVT_ZAP_COMPLETE, CEventServer::INITID_ZAPIT, &channel_id, sizeof(channel_id));
 
-	channel->setCA_STATUS(get_sdt_free_CA_mode(channel->getServiceId()));
+	channel->setCA_STATUS(get_sdt_free_CA_mode(channel->getTransportStreamId(), channel->getOriginalNetworkId(), channel->getServiceId()));
 	INFO("CA STATUS: %d", channel->getCA_STATUS());
 	return result;
 }

@@ -165,7 +165,7 @@ int get_sdts()
 
 		INFO("parsing SDT (tsid:onid %04x:%04x)", tI->second.transport_stream_id, tI->second.original_network_id);
 
-		parse_sdt(tI->second.DiSEqC);
+		parse_sdt(tI->second.transport_stream_id, tI->second.original_network_id, tI->second.DiSEqC);
 	}
 
 	return 0;

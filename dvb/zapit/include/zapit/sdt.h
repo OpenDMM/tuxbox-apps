@@ -50,8 +50,8 @@ struct sdt_generic_descriptor {
         u_char  descriptor_length               : 8;
 };
 
-int parse_sdt(const uint8_t DiSEqC);
+int parse_sdt(const t_transport_stream_id, const t_original_network_id, const uint8_t DiSEqC);
 unsigned int get_sdt_TsidOnid();
-ca_status_t get_sdt_free_CA_mode(const t_service_id p_service_id);
+ca_status_t get_sdt_free_CA_mode(const t_transport_stream_id, const t_original_network_id, const t_service_id);
 
 #endif /* __sdt_h__ */
