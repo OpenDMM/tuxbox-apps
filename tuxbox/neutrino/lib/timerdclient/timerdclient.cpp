@@ -280,11 +280,11 @@ int CTimerdClient::addTimerEvent( CTimerEvent::CTimerEventTypes evType, void* da
 	msgAddTimer.eventRepeat = evrepeat;
 
 	int length;
-	if ( evType == CTimerEvent::TIMER_SHUTDOWN || evType == CTimerEvent::TIMER_RECORD || evType == CTimerEvent::TIMER_SLEEPTIMER )
+	if ( evType == CTimerEvent::TIMER_SHUTDOWN || evType == CTimerEvent::TIMER_SLEEPTIMER )
 	{
 		length = 0;
 	}
-	else if (evType == CTimerEvent::TIMER_NEXTPROGRAM || evType == CTimerEvent::TIMER_ZAPTO)
+	else if (evType == CTimerEvent::TIMER_NEXTPROGRAM || evType == CTimerEvent::TIMER_ZAPTO || evType == CTimerEvent::TIMER_RECORD )
 	{
 		length = sizeof( CTimerEvent::EventInfo);
 	}

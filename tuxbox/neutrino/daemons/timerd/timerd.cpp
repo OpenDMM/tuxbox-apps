@@ -179,11 +179,14 @@ void parse_command(int connfd, CTimerd::commandHead* rmessage)
 				break;
 
 				case CTimerEvent::TIMER_RECORD :
+					read( connfd, &evInfo, sizeof(CTimerEvent::EventInfo));
 					event = new CTimerEvent_Record(
 						msgAddTimer.announceTime,
 						msgAddTimer.alarmTime,
 						msgAddTimer.stopTime,
 						msgAddTimer.eventRepeat);
+					static_cast<CTimerEvent_Record*>(event)->eventInfo.onidSid = evInfo.onidSid;
+					static_cast<CTimerEvent_Record*>(event)->eventInfo.epgID = evInfo.epgID;
 					rspAddTimer.eventID = CTimerManager::getInstance()->addEvent( event);
 				break;
 
@@ -197,6 +200,7 @@ void parse_command(int connfd, CTimerd::commandHead* rmessage)
 							msgAddTimer.stopTime,
 							msgAddTimer.eventRepeat);
 						static_cast<CTimerEvent_NextProgram*>(event)->eventInfo.onidSid = evInfo.onidSid;
+						static_cast<CTimerEvent_NextProgram*>(event)->eventInfo.epgID = evInfo.epgID;
 						rspAddTimer.eventID = CTimerManager::getInstance()->addEvent( event);
 					}
 				break;
