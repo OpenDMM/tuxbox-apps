@@ -55,6 +55,8 @@ extern std::map <uint8_t, std::string> scanProviders;
 extern CZapitClient::bouquetMode bouquetMode;
 extern CEventServer *eventServer;
 
+uint processed_transponders = 0;
+
 void stop_scan(const bool success)
 {
 	/* notify client about end of scan */
@@ -139,6 +141,9 @@ int get_sdts(void)
 	stiterator tI;
 
 	for (tI = scantransponders.begin(); tI != scantransponders.end(); tI++) {
+			/* msg to neutrino */
+			processed_transponders++;
+			eventServer->sendEvent(CZapitClient::EVT_SCAN_REPORT_NUM_SCANNED_TRANSPONDERS, CEventServer::INITID_ZAPIT, &processed_transponders, sizeof(processed_transponders));
 
 		if (frontend->setParameters(&tI->second.feparams, tI->second.polarization, tI->second.DiSEqC) < 0)
 			continue;
@@ -313,7 +318,6 @@ void *start_scanthread(void *param)
 
 	bool satfeed = false;
 
-	uint processed_transponders = 0;
 	scanBouquetManager = new CBouquetManager();
 
 	curr_sat = 0;
@@ -416,9 +420,6 @@ void *start_scanthread(void *param)
 
 			/* next transponder */
 			transponder = transponder->xmlNextNode;
-			/* msg to neutrino */
-			processed_transponders++;
-			eventServer->sendEvent(CZapitClient::EVT_SCAN_REPORT_NUM_SCANNED_TRANSPONDERS, CEventServer::INITID_ZAPIT, &processed_transponders, sizeof(processed_transponders));
 		}
 
 		/* 
