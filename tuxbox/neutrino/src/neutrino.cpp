@@ -2524,7 +2524,7 @@ bool CNeutrinoApp::changeNotify(string OptionName)
 
 	return false;
 }
-#include "system/flashtool.h"
+
 
 /**************************************************************************************
 *                                                                                     *
