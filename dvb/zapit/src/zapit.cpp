@@ -2,7 +2,7 @@
  * $Id$
  *
  * zapit - d-box2 linux project
- * 
+ *
  * (C) 2001, 2002 by Philipp Leusmann <faralla@berlios.de>
  *
  * based on code from older applications of the d-box2 linux project.
@@ -663,7 +663,7 @@ int zapit (uint32_t onid_sid, bool in_nvod)
 			{
 				debug("[zapit] audio device already closed.\n");
 			}
-			
+
 			if ((audio_fd = open(AUDIO_DEV, O_RDWR)) < 0)
 			{
 				perror("[zapit] unable to open audio device");
@@ -1977,6 +1977,14 @@ void parse_command()
 					msgResponseIsScanReady.scanReady = true;
 				}
 				send( connfd, &msgResponseIsScanReady, sizeof(msgResponseIsScanReady),0);
+			break;
+
+			case CZapitClient::CMD_SCANGETSATLIST :
+				CZapitClient::responseGetSatteliteList msgResponseGetSatteliteList;
+				strncpy( msgResponseGetSatteliteList.satName, "Dummy-Sat1", 30);
+				send( connfd, &msgResponseGetSatteliteList, sizeof(msgResponseGetSatteliteList),0);
+				strncpy( msgResponseGetSatteliteList.satName, "Dummy-Sat2", 30);
+				send( connfd, &msgResponseGetSatteliteList, sizeof(msgResponseGetSatteliteList),0);
 			break;
 
 			case CZapitClient::CMD_BQ_ADD_BOUQUET :
