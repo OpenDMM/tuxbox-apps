@@ -48,8 +48,8 @@ int parse_nit(unsigned char DiSEqC)
 	unsigned short network_descriptors_length;
 	unsigned short transport_descriptors_length;
 	unsigned short transport_stream_loop_length;
-	unsigned short transport_stream_id;
-	unsigned short original_network_id;
+	t_transport_stream_id transport_stream_id;
+	t_original_network_id original_network_id;
 	unsigned short network_id;
 
 	unsigned char filter[DMX_FILTER_SIZE];
@@ -125,7 +125,7 @@ int parse_nit(unsigned char DiSEqC)
 					switch (buffer[pos2])
 					{
 					case 0x41:
-						service_list_descriptor(buffer + pos2, original_network_id);
+						service_list_descriptor(buffer + pos2, transport_stream_id, original_network_id);
 						break;
 
 					case 0x42:

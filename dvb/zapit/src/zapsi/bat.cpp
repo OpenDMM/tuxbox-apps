@@ -42,8 +42,8 @@ int parse_bat(void)
 	unsigned short bouquet_id;
 	unsigned short bouquet_descriptors_length;
 	unsigned short transport_stream_loop_length;
-	unsigned short transport_stream_id;
-	unsigned short original_network_id;
+	t_transport_stream_id transport_stream_id;
+	t_original_network_id original_network_id;
 	unsigned short transport_descriptors_length;
 
 	unsigned char filter[DMX_FILTER_SIZE];
@@ -113,7 +113,7 @@ int parse_bat(void)
 			for (pos3 = pos2 + 6; pos3 < transport_descriptors_length + pos2 + 6; pos3 += buffer[pos3 + 1] + 2) {
 				switch (buffer[pos3]) {
 				case 0x41:
-					service_list_descriptor(buffer + pos3, original_network_id);
+					service_list_descriptor(buffer + pos3, transport_stream_id, original_network_id);
 					break;
 
 				case 0x42:

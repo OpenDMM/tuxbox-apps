@@ -1096,7 +1096,7 @@ bool parse_command(CBasicMessage::Header &rmsg, int connfd)
 			(
 				std::pair <t_channel_id, CZapitChannel>
 				(
-					CREATE_CHANNEL_ID,
+					CREATE_CHANNEL_ID_FROM_SERVICE_ORIGINALNETWORK_TRANSPORTSTREAM_ID(msgAddSubService.service_id, msgAddSubService.original_network_id, msgAddSubService.transport_stream_id),
 					CZapitChannel
 					(
 					    "NVOD",

@@ -47,7 +47,8 @@ typedef uint16_t t_network_id;
 
 /* unique channel identification */
 typedef uint32_t t_channel_id;
-#define CREATE_CHANNEL_ID ((original_network_id << 16) | service_id)
+#define CREATE_CHANNEL_ID_FROM_SERVICE_ORIGINALNETWORK_TRANSPORTSTREAM_ID(service_id,original_network_id,transport_stream_id) ((original_network_id << 16) | service_id)
+#define CREATE_CHANNEL_ID CREATE_CHANNEL_ID_FROM_SERVICE_ORIGINALNETWORK_TRANSPORTSTREAM_ID(service_id, original_network_id, transport_stream_id)
 #define PRINTF_CHANNEL_ID_TYPE "%08x"
 
 typedef uint64_t t_channel_id64;
