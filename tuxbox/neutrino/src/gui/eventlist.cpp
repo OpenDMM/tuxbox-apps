@@ -37,6 +37,10 @@
 //
 //
 // $Log$
+// Revision 1.43  2002/03/22 17:34:04  field
+// Massive Umstellungen - NVODs/SubChannels=KAPUTT!
+// Infoviewer tw. kaputt! NON-STABLE!
+//
 // Revision 1.42  2002/03/13 21:28:19  McClean
 // implement phong shading
 //
@@ -475,7 +479,7 @@ int EventList::exec(unsigned onidSid, const std::string& channelname)
 				         ( msg != CRCInput::RC_timeout ) )
 					{
 						// RC_red schlucken
-						g_RCInput->pushbackMsg( msg, data );
+						g_RCInput->postMsg( msg, data );
 					}
 
 					paintHead();

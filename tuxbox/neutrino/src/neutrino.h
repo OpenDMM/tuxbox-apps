@@ -120,14 +120,20 @@ struct messages {
 			STANDBY_OFF	= CRCInput::RC_Messages + 6,
 			SHUTDOWN	= CRCInput::RC_Messages + 7,
 
-			EVT_VOLCHANGED 	= 		CRCInput::RC_Events + 1,
-			EVT_MUTECHANGED	= 		CRCInput::RC_Events + 2,
-			EVT_VCRCHANGED	= 		CRCInput::RC_Events + 3,
-			EVT_MODECHANGED = 		CRCInput::RC_Events + 4,
-			EVT_TIMESET 	= 		CRCInput::RC_Events + 5,
-			EVT_BOUQUETSCHANGED =	CRCInput::RC_Events + 6,
-			EVT_SERVICESCHANGED =	CRCInput::RC_Events + 7,
-			EVT_CURRENTNEXT_EPG =	CRCInput::RC_Events + 8
+			EVT_VOLCHANGED 	= 			CRCInput::RC_Events + 1,
+			EVT_MUTECHANGED	=	 		CRCInput::RC_Events + 2,
+			EVT_VCRCHANGED	= 			CRCInput::RC_Events + 3,
+			EVT_MODECHANGED = 			CRCInput::RC_Events + 4,
+			EVT_TIMESET 	= 			CRCInput::RC_Events + 5,
+			EVT_BOUQUETSCHANGED =		CRCInput::RC_Events + 6,
+			EVT_SERVICESCHANGED =		CRCInput::RC_Events + 7,
+			EVT_CURRENTNEXT_EPG =		CRCInput::RC_Events + 8,
+			EVT_ZAP_GOT_SUBSERVICES =	CRCInput::RC_Events + 9,
+			EVT_ZAP_GOTPIDS		= 		CRCInput::RC_Events + 10,
+			EVT_ZAP_COMPLETE	= 		CRCInput::RC_Events + 11,
+			EVT_ZAP_GOTAPIDS	= 		CRCInput::RC_Events + 12,
+
+			EVT_CURRENTEPG 	=		CRCInput::RC_WithData + 1
 		};
 };
 
@@ -230,6 +236,8 @@ class CNeutrinoApp : public CMenuTarget, COnPaintNotifier, CChangeObserver
 		void CmdParser(int argc, char **argv);
 		void ShowStreamFeatures();
 
+        long long last_profile_call;
+
 	public:
 
 		CNeutrinoApp();
@@ -245,6 +253,7 @@ class CNeutrinoApp : public CMenuTarget, COnPaintNotifier, CChangeObserver
 		bool changeNotify(string OptionName);
 
 		int handleMsg(uint msg, uint data);
+		void showProfiling( string text );
 
 	friend class CNeutrinoBouquetEditorEvents;
 };
