@@ -36,7 +36,7 @@
 /* tuxbox headers */
 #include <configfile.h>
 #ifdef DBOX2
-#include <lcddclient.h>
+#include <lcddclient/lcddclient.h>
 #endif
 
 /* zapit headers */
