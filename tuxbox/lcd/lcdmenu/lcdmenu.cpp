@@ -33,7 +33,7 @@ CLCDMenu::CLCDMenu (std::string configFilename)
 {
 	rc = new CRCInput();
 
-	fontRenderer = new fontRenderClass(this);
+	fontRenderer = new LcdFontRenderClass(this);
 	fontRenderer->AddFont(FONTDIR "/micron_bold.ttf");
 	fontRenderer->InitFontCache();
 
