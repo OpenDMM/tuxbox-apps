@@ -110,7 +110,7 @@ int parse_nit(unsigned char DiSEqC)
 		transport_stream_loop_length = ((buffer[pos] & 0x0F) << 8) | buffer[pos + 1];
 
 		if (!transport_stream_loop_length)
-			return -3;
+			continue;
 
 		for (pos += 2; pos < section_length - 3; pos += transport_descriptors_length + 6)
 		{
