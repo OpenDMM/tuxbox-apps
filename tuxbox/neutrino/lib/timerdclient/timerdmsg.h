@@ -86,6 +86,7 @@ class CTimerdMsg : public CBasicMessage
 		uint                       repeatCount;
 	};
 
+
 	struct commandRemind
 	{
 		char message[REMINDER_MESSAGE_MAXLEN];
@@ -93,7 +94,12 @@ class CTimerdMsg : public CBasicMessage
 
 	struct commandExecPlugin
 	{
-		char name[EXEC_PLUGIN_MESSAGE_MAXLEN];
+		char name[EXEC_PLUGIN_NAME_MAXLEN];
+	};
+
+	struct commandRecordDir
+	{
+		char recDir[RECORD_DIR_MAXLEN];
 	};
 
 	struct commandSetAPid
@@ -119,12 +125,10 @@ class CTimerdMsg : public CBasicMessage
 	};
 
 
-
 	struct generalInteger
 	{
 		int number;
 	};
-
 
 	struct responseAddTimer
 	{
