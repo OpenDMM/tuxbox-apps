@@ -1457,8 +1457,6 @@ int main (int argc, char **argv)
 	signal(SIGTERM, signal_handler);
 	signal(SIGUSR1, signal_handler);
 
-	leaveStandby();
-
 	CBasicServer zapit_server;
 
 	if (!zapit_server.prepare(ZAPIT_UDS_NAME))
@@ -1487,6 +1485,8 @@ int main (int argc, char **argv)
 
 	// create eventServer
 	eventServer = new CEventServer;
+
+	leaveStandby();
 
 	zapit_server.run(parse_command, CZapitMessages::ACTVERSION);
 
