@@ -26,7 +26,7 @@
 #include <stdio.h>
 #include <string.h>
 #include <sstream>
-
+#include <signal.h>
 #include <unistd.h>
 
 #include <configfile.h>
@@ -37,6 +37,12 @@
 
 #include <connection/basicserver.h>
 #include <timerdclient/timerdmsg.h>
+
+static void signalHandler(int signum)
+{
+	CTimerManager::getInstance()->shutdown();
+	exit(0);
+}
 
 bool parse_command(CBasicMessage::Header &rmsg, int connfd)
 {
@@ -383,6 +389,15 @@ int main(int argc, char **argv)
 			return -1;
 		}
 	}
+
+	//catch all signals
+	signal(SIGHUP, signalHandler);
+	signal(SIGINT, signalHandler);
+	signal(SIGQUIT, signalHandler);
+	signal(SIGTERM, signalHandler);
+
+	// Start timer thread
+	CTimerManager::getInstance();
 
 	//startup Timer
 	try
