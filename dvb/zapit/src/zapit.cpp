@@ -666,7 +666,7 @@ bool parse_command(CBasicMessage::Header &rmsg, int connfd)
 	case CZapitMessages::CMD_REINIT_CHANNELS:
 	{
 		CZapitMessages::responseCmd response;
-		prepare_channels(frontend->getInfo()->type, (diseqc_t)config.getInt32("diseqcType", NO_DISEQC));
+		prepare_channels(frontend->getInfo()->type, diseqcType);
 		response.cmd = CZapitMessages::CMD_READY;
 		CBasicServer::send_data(connfd, &response, sizeof(response));
 		eventServer->sendEvent(CZapitClient::EVT_BOUQUETS_CHANGED, CEventServer::INITID_ZAPIT);
@@ -1580,8 +1580,17 @@ int main(int argc, char **argv)
 		setRadioMode();
 	else
 		setTVMode();
+		
+	if (!frontend) {
+		frontend = new CFrontend();
+		if (!frontend->isInitialized())
+		{
+			printf("[zapit] unable to open frontend devices. bye.\n");
+			exit(-1);
+		}
+	}
 
-	if (prepare_channels(frontend->getInfo()->type, (diseqc_t)config.getInt32("diseqcType", NO_DISEQC)) < 0)
+	if (prepare_channels(frontend->getInfo()->type, diseqcType) < 0)
 		WARN("error parsing services");
 	else
 		INFO("channels have been loaded succesfully");
