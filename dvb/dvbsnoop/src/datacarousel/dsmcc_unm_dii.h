@@ -13,11 +13,11 @@ $Id$
 */
 
 
-#ifndef __DSMCC_DDB_H
-#define __DSMCC_DDB_H 
+#ifndef __DSMCC_UNM_DII_H
+#define __DSMCC_UNM_DII_H
 
 
-int   dsmcc_DownloadDataMessage (int v, u_char *b, u_int len);
+int dsmcc_DownloadInfoIndication (int v, u_char *b, u_int len);
 
 
 #endif

@@ -15,6 +15,9 @@ $Id$
 
 
 $Log$
+Revision 1.28  2004/02/15 18:58:30  rasc
+DSM-CC  data/object carousell continued   (DSI, DII, DDB, DCancel)
+
 Revision 1.27  2004/02/15 01:01:04  rasc
 DSM-CC  DDB (DownloadDataBlock Message)
 DSM-CC  U-N-Message  started
@@ -640,7 +643,6 @@ char *dsmccStr_DescriptorType (u_int id)
 */
 
 char *dsmccStr_SpecifierType (u_int id)
-
 {
   STR_TABLE  TableIDs[] = {
 	{ 0x00, 0x00,   "ISO/IEC 13818-6 reserved" },
