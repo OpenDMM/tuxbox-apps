@@ -821,9 +821,14 @@ void CControlAPI::SendAllCurrentVAPid(CWebserverRequest* request)
 void CControlAPI::SendSettings(CWebserverRequest* request)
 {
 	request->SocketWriteLn(
-		"Boxtype " + Parent->Dbox_Hersteller[Parent->Controld->getBoxType()] + "\n" + 
-		"videooutput " + Parent->videooutput_names[Parent->Controld->getVideoOutput()] + "\n" +
-		"videoformat " + Parent->videoformat_names[Parent->Controld->getVideoFormat()]
+		"Boxtype " +
+		Parent->Dbox_Hersteller[Parent->Controld->getBoxType()] +
+		"\n" 
+		"videooutput " +
+		Parent->videooutput_names[(unsigned char)Parent->Controld->getVideoOutput()] +
+		"\n"
+		"videoformat " +
+		Parent->videoformat_names[(unsigned char)Parent->Controld->getVideoFormat()]
 	);
 }
 

@@ -365,7 +365,7 @@ bool CBouqueteditAPI::changeBouquet(CWebserverRequest* request)
 			Parent->Zapit->removeChannelFromBouquet(selected - 1, channels->channel_id);
 		}
 		std::string bchannels = request->ParameterList["bchannels"];
-		int pos;
+		std::string::size_type pos;
 		while ((pos = bchannels.find(',')) != std::string::npos) {
 			std::string bchannel = bchannels.substr(0, pos);
 			bchannels = bchannels.substr(pos+1, bchannels.length());
