@@ -859,7 +859,7 @@ bool CWebAPI::ShowTimerList(CWebserverRequest* request)
 					if(channel == channellist_tv.end())
 						sAddData="Unbekannter TV-Kanal";
 				}
-				if(timer->apids!="")
+				if(strlen(timer->apids) > 0)
 				{
 					sAddData+= string("(") + timer->apids + ")";
 				}
