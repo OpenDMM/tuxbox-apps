@@ -28,7 +28,7 @@ CCaDescriptor::CCaDescriptor (unsigned char * buffer)
 {
 	descriptor_tag = buffer[0];
 	descriptor_length = buffer[1];
-	CA_system_ID = *(unsigned*)(&(buffer[2]));
+	CA_system_ID = *(unsigned short*)(&(buffer[2]));
 	reserved1 = buffer[4] >> 5;
 	CA_PID = ((buffer[4] & 0x1F) << 8) | buffer[5];
 
