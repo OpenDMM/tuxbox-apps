@@ -249,6 +249,8 @@ void CTimerManager::saveEventsToConfig()
 //------------------------------------------------------------
 bool CTimerManager::shutdown()
 {
+// leider funktioniert der wakeup nicht richtig
+/*
 	time_t nextAnnounceTime=0;
 	CTimerEventMap::iterator pos = events.begin();
 	for(;pos != events.end();pos++)
@@ -290,6 +292,7 @@ bool CTimerManager::shutdown()
            dprintf("wakeup in %d min. programmed\n",minutes);
            return true;
         }
+*/        
 }
 
 //------------------------------------------------------------
