@@ -32,6 +32,9 @@
 	Foundation, Inc., 675 Mass Ave, Cambridge, MA 02139, USA.
 
   $Log$
+  Revision 1.151  2002/02/08 17:49:15  field
+  epg verbessert
+
   Revision 1.150  2002/02/04 23:26:36  Simplex
   bouquet-editor now saves changes
 
@@ -1166,7 +1169,7 @@ void CNeutrinoApp::SetupFonts()
 	g_Fonts->menu_title =   g_fontRenderer->getFont("Arial", "Bold", 30);
 	g_Fonts->menu_info =    g_fontRenderer->getFont("Arial", "Regular", 16);
 
-	g_Fonts->epg_title =    g_fontRenderer->getFont("Arial", "Regular", 30);
+	g_Fonts->epg_title =    g_fontRenderer->getFont("Arial", "Regular", 25);
 
 	g_Fonts->epg_info1 =	g_fontRenderer->getFont("Arial", "Italic", 17); // info1 must be same size as info2, but italic
 	g_Fonts->epg_info2 =	g_fontRenderer->getFont("Arial", "Regular", 17);
