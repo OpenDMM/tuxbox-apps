@@ -32,6 +32,9 @@
 	Foundation, Inc., 675 Mass Ave, Cambridge, MA 02139, USA.
 
   $Log$
+  Revision 1.178  2002/02/28 12:05:34  field
+  Kleinigkeiten
+
   Revision 1.177  2002/02/28 01:49:27  field
   Ein/Aus Handling verbessert, SectionsD gepaused beim Update
 
@@ -592,14 +595,13 @@ void CNeutrinoApp::setupNetwork(bool force)
 		setDefaultGateway(g_settings.network_defaultgateway);
 	}
 }
-void CNeutrinoApp::testNetwork(bool force)
+void CNeutrinoApp::testNetwork( )
 {
-	if((g_settings.networkSetOnStartup) || (force))
-	{
-		printf("doing network test...\n");
-		//test network
-		testNetworkSettings(g_settings.network_ip, g_settings.network_netmask, g_settings.network_broadcast, g_settings.network_defaultgateway, g_settings.network_nameserver);
-	}
+	setupNetwork( true );
+
+	printf("doing network test...\n");
+	//test network
+	testNetworkSettings(g_settings.network_ip, g_settings.network_netmask, g_settings.network_broadcast, g_settings.network_defaultgateway, g_settings.network_nameserver);
 }
 
 
@@ -1386,7 +1388,7 @@ void CNeutrinoApp::InitServiceSettings(CMenuWidget &service)
 	if (softupdate)
 	{
 		printf("init soft-update-stuff\n");
-		CMenuWidget* updateSettings = new CMenuWidget("servicemenu.update", "softupdate.raw");
+		CMenuWidget* updateSettings = new CMenuWidget("servicemenu.update", "softupdate.raw", 450);
 		updateSettings->addItem( new CMenuSeparator() );
 		updateSettings->addItem( new CMenuForwarder("menu.back") );
 		updateSettings->addItem( new CMenuSeparator(CMenuSeparator::LINE) );
@@ -2628,7 +2630,7 @@ int CNeutrinoApp::exec( CMenuTarget* parent, string actionKey )
 	}
 	else if(actionKey=="networktest")
 	{
-		 testNetwork( true  );
+		 testNetwork( );
 	}
 
 	else if(actionKey=="savesettings")
