@@ -32,7 +32,7 @@ namespace libcrypto
   #include <openssl/pem.h>
 }
 
-Crypto::x509::cert::cert ( libcrypto::X509 * _cert = NULL ) throw ()
+Crypto::x509::cert::cert ( libcrypto::X509 * _cert ) throw ()
 : _cert ( _cert )
 { }
 
