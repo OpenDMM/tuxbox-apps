@@ -851,24 +851,36 @@ int main(int argc, char **argv)
 
 	watchDog = new CEventWatchDog();
 	aspectRatioNotifier = new CControldAspectRatioNotifier();
+
 	//init
 	setVolume(settings.volume);
 	setvideooutput(settings.videooutput);
 	setVideoFormat(settings.videoformat);
+	if (settings.mute== 1)
+		Mute();
 
-	struct CControld::commandHead rmessage;
-	while(1)
-	{
-		connfd = accept(listenfd, (struct sockaddr*) &servaddr, (socklen_t*) &clilen);
-		memset(&rmessage, 0, sizeof(rmessage));
-		read(connfd,&rmessage,sizeof(rmessage));
 
-		//printf("[controld] before parse_command(connfd, &rmessage);\n");
-		parse_command(connfd, &rmessage);
-		//printf("[controld] after parse_command(connfd, &rmessage);\n");
-		close(connfd);
+    try
+    {
+		struct CControld::commandHead rmessage;
+		while(1)
+		{
+			connfd = accept(listenfd, (struct sockaddr*) &servaddr, (socklen_t*) &clilen);
+			memset(&rmessage, 0, sizeof(rmessage));
+			read(connfd,&rmessage,sizeof(rmessage));
+
+			parse_command(connfd, &rmessage);
+			close(connfd);
+		}
 	}
-
+	catch (std::exception& e)
+	{
+		printf("[controld] caught std-exception in main-thread %s!\n", e.what());
+	}
+	catch (...)
+	{
+	    printf("[controld] caught exception in main-thread!\n");
+  	}
 }
 
 void CControldAspectRatioNotifier::aspectRatioChanged( int newAspectRatio)
