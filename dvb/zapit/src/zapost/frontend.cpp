@@ -47,8 +47,6 @@ CFrontend::CFrontend ()
 {
 	failed = false;
 	tuned = false;
-	currentToneMode = 0;
-	currentVoltage = 0;
 	currentFrequency = 0;
 	currentTsidOnid = 0;
 	diseqcRepeats = 0;
@@ -73,6 +71,8 @@ CFrontend::CFrontend ()
 	}
 	else
 	{
+		secSetTone(SEC_TONE_OFF);
+		secSetVoltage(SEC_VOLTAGE_13);
 		initialized = true;
 	}
 }
@@ -574,14 +574,14 @@ const bool CFrontend::tuneFrequency (FrontendParameters feparams, uint8_t polari
 		switch (diseqcType)
 		{
 		case NO_DISEQC:
-			if (currentToneMode != toneMode)
+			if ((currentToneMode != toneMode) || (currentVoltage != voltage))
 			{
-				secSetTone(toneMode);
-				secChanged = true;
-			}
-			if (currentVoltage != voltage)
-			{
-				secSetVoltage(voltage);
+				if (currentToneMode != SEC_TONE_OFF)
+					secSetTone(SEC_TONE_OFF);
+				if (currentVoltage != voltage)
+					secSetVoltage(voltage);
+				if (toneMode != SEC_TONE_OFF)
+					secSetTone(SEC_TONE_ON);
 				secChanged = true;
 			}
 			break;
