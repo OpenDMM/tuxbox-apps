@@ -1052,14 +1052,14 @@ void sendBouquets(int connfd, const bool emptyBouquetsToo)
 	{
 		if (emptyBouquetsToo ||
 		    ((!bouquetManager->Bouquets[i]->bHidden) &&
-		     ((currentMode & RADIO_MODE) && !bouquetManager->Bouquets[i]->radioChannels.empty()) ||
-		     ((currentMode & TV_MODE) && !bouquetManager->Bouquets[i]->tvChannels.empty())))
+		     (((currentMode & RADIO_MODE) && !bouquetManager->Bouquets[i]->radioChannels.empty()) ||
+		      ((currentMode & TV_MODE) && !bouquetManager->Bouquets[i]->tvChannels.empty()))))
 		{
 // ATTENTION: in RECORD_MODE empty bouquets are not send!
 			if ((!(currentMode & RECORD_MODE)) ||
 			    ((frontend != NULL) &&
 			     (((currentMode & RADIO_MODE) && (bouquetManager->Bouquets[i]->recModeRadioSize(frontend->getTsidOnid()) > 0)) ||
-			      ((currentMode & TV_MODE)    && (bouquetManager->Bouquets[i]->recModeTVSize(frontend->getTsidOnid()) > 0)))))
+			      ((currentMode & TV_MODE)    && (bouquetManager->Bouquets[i]->recModeTVSize   (frontend->getTsidOnid()) > 0)))))
 			{
 				msgBouquet.bouquet_nr = i;
 				strncpy(msgBouquet.name, bouquetManager->Bouquets[i]->Name.c_str(), 30);
