@@ -20,6 +20,6 @@ typedef transponder_list_t::iterator stiterator;
 
 extern CBouquetManager* scanBouquetManager;
 
-char * getFrontendName();
+const char * getFrontendName(void);
 
 #endif /* __scan_h__ */
