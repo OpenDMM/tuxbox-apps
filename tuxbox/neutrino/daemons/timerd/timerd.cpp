@@ -53,7 +53,7 @@ void parse_command(int connfd, CTimerd::commandHead* rmessage)
 		return;
 	}
 
-	CTimerEvent_NextProgram::EventMap::iterator it = NULL;
+//	CTimerEvent_NextProgram::EventMap::iterator it = NULL;
 	CTimerEventMap events;
 	CTimerd::commandModifyTimer msgModifyTimer;
 	CTimerd::responseGetSleeptimer rspGetSleeptimer;
@@ -204,7 +204,7 @@ void parse_command(int connfd, CTimerd::commandHead* rmessage)
 				case CTimerEvent::TIMER_NEXTPROGRAM :
 //					CTimerd::EventInfo evInfo;
 					read( connfd, &evInfo, sizeof(CTimerEvent::EventInfo));
-
+/*
 					it = CTimerEvent_NextProgram::events.find( evInfo.uniqueKey);
 					if (it == CTimerEvent_NextProgram::events.end())
 					{
@@ -217,7 +217,6 @@ void parse_command(int connfd, CTimerd::commandHead* rmessage)
 						CTimerEvent_NextProgram::events.insert(make_pair(static_cast<CTimerEvent_NextProgram*>(event)->eventInfo.uniqueKey, static_cast<CTimerEvent_NextProgram*>(event)));
 						rspAddTimer.eventID = CTimerManager::getInstance()->addEvent( event);
 					}
-/*
 					else
 					{
 						event = it->second;

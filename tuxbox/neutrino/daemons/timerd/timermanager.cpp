@@ -29,7 +29,7 @@
 #include "clientlib/timerdclient.h"
 
 
-CTimerEvent_NextProgram::EventMap CTimerEvent_NextProgram::events;
+//CTimerEvent_NextProgram::EventMap CTimerEvent_NextProgram::events;
 
 
 //------------------------------------------------------------
@@ -99,11 +99,9 @@ void* CTimerManager::timerThread(void *arg)
 			if(event->eventState == CTimerEvent::TIMERSTATE_HASFINISHED)
 			{
 				if(event->eventRepeat != CTimerEvent::TIMERREPEAT_ONCE)
-				{
 					event->Reschedule();
-				}
 				else
-					event->eventState == CTimerEvent::TIMERSTATE_TERMINATED;
+					event->eventState = CTimerEvent::TIMERSTATE_TERMINATED;
 			}
 
 			if(event->eventState == CTimerEvent::TIMERSTATE_TERMINATED)				// event is terminated, so delete it
@@ -349,7 +347,7 @@ void CTimerEvent_Sleeptimer::fireEvent()
 	dprintf("Sleeptimer Timer fired\n");
 	//event in neutrinos remoteq. schreiben
 	CTimerManager::getInstance()->getEventServer()->sendEvent(
-		CTimerdClient::EVT_SHUTDOWN,
+		CTimerdClient::EVT_SLEEPTIMER,
 		CEventServer::INITID_TIMERD);
 }
 

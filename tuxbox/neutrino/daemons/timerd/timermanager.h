@@ -75,7 +75,7 @@ class CTimerEvent
 	public:
 		struct EventInfo
 		{
-			int      uniqueKey;
+			unsigned long long epgID;
 			int      onidSid;
 			char     name[50];
 			int      fsk;
@@ -174,6 +174,7 @@ class CTimerEvent_Standby : public CTimerEvent
 class CTimerEvent_Record : public CTimerEvent
 {
 	public:
+		CTimerEvent::EventInfo eventInfo;
 
 		CTimerEvent_Record( time_t announceTime, time_t alarmTime, time_t stopTime, CTimerEventRepeat evrepeat = TIMERREPEAT_ONCE) :
 			CTimerEvent(TIMER_RECORD, announceTime, alarmTime, stopTime, evrepeat){};
@@ -187,8 +188,8 @@ class CTimerEvent_NextProgram : public CTimerEvent
 	public:
 		CTimerEvent::EventInfo eventInfo;
 
-		typedef map< int, CTimerEvent_NextProgram*> EventMap;
-		static EventMap events;
+//		typedef map< int, CTimerEvent_NextProgram*> EventMap;
+//		static EventMap events;
 
 		CTimerEvent_NextProgram( time_t announceTime, time_t alarmTime, time_t stopTime, CTimerEventRepeat evrepeat = TIMERREPEAT_ONCE) :
 			CTimerEvent(TIMER_NEXTPROGRAM, announceTime, alarmTime, stopTime, evrepeat){};
