@@ -31,6 +31,9 @@
 $Id$
  
 $Log$
+Revision 1.8  2002/01/15 23:17:59  McClean
+cleanup
+
 Revision 1.7  2002/01/03 20:03:20  McClean
 cleanup
 
@@ -59,6 +62,7 @@ using namespace std;
 
 class CGameList : public CMenuTarget
 {
+
 		struct game
 		{
 			int         number;
@@ -68,17 +72,17 @@ class CGameList : public CMenuTarget
 			string		depend;
 		};
 
-		unsigned int		liststart;
-		unsigned int		listmaxshow;
-		unsigned int		selected;
-		int					key;
-		string				name;
+		unsigned int	liststart;
+		unsigned int	listmaxshow;
+		unsigned int	selected;
+		int				key;
+		string			name;
 		vector<game*>	gamelist;
 
-		int			fheight; // Fonthoehe Channellist-Inhalt
-		int			theight; // Fonthoehe Channellist-Titel
+		int				fheight; // Fonthoehe Channellist-Inhalt
+		int				theight; // Fonthoehe Channellist-Titel
 
-		int			fheight1,fheight2;
+		int				fheight1,fheight2;
 
 		int 			width;
 		int 			height;

@@ -32,6 +32,9 @@
 	Foundation, Inc., 675 Mass Ave, Cambridge, MA 02139, USA.
  
   $Log$
+  Revision 1.132  2002/01/15 23:17:59  McClean
+  cleanup
+
   Revision 1.131  2002/01/15 20:39:39  McClean
   better mode-switching
 
@@ -2188,6 +2191,7 @@ void CNeutrinoApp::tvMode()
 		g_Controld->setScartMode( 0 );
 	}
 	mode = mode_tv;
+	NeutrinoMode = mode_tv;
 	#ifdef USEACTIONLOG
 		g_ActionLog->println("mode: tv");
 	#endif
@@ -2238,6 +2242,7 @@ void CNeutrinoApp::radioMode()
 		g_Controld->setScartMode( 0 );
 	}
 	mode = mode_radio;
+	NeutrinoMode = mode_radio;
 	#ifdef USEACTIONLOG
 		g_ActionLog->println("mode: radio");
 	#endif
