@@ -250,7 +250,7 @@ int LoadSatellitePositions(void)
 	return 0;
 }
 
-int LoadServices(fe_type_t frontendType, diseqc_t diseqcType)
+int LoadServices(FrontendType frontendType, diseqc_t diseqcType)
 {
 	if (frontendType == FE_QPSK)
 	{
