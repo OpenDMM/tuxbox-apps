@@ -92,6 +92,10 @@
   Foundation, Inc., 675 Mass Ave, Cambridge, MA 02139, USA.
 
   $Log$
+  Revision 1.51  2001/12/20 14:31:22  obi
+  code for new tuning api can now be used if OLD_TUNER_API is undefined
+  in zapit.h and tune.cpp
+
   Revision 1.50  2001/12/20 00:47:46  faralla
   command to get vtxt-pid added
 
@@ -1436,7 +1440,11 @@ int sleepBox() {
     return -4;
   };
 
+#ifdef OLD_TUNER_API
   if (ioctl(device, OST_SET_POWER_STATE, OST_POWER_SUSPEND)!=0){
+#else
+  if (ioctl(device, FE_SET_POWER_STATE, FE_POWER_SUSPEND)!=0){
+#endif
     printf("[zapit] cannot set suspend-mode");
     return -4;
   }
