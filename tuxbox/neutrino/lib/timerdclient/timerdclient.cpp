@@ -305,4 +305,39 @@ void CTimerdClient::modifyTimerAPid(int eventid, uint apid)
 }
 
 //-------------------------------------------------------------------------
+void CTimerdClient::getWeekdaysFromStr(int *rep, char* str)
+{
+	if(*rep >= (int)CTimerd::TIMERREPEAT_WEEKDAYS)
+	{
+		for(int n=0;n<7;n++)
+		{
+			if(str[n]=='X' || str[n]=='x')
+			{
+				*rep |= (1 << (n+9));
+			}
+			else
+			{
+				*rep &= (~(1 << (n+9)));
+			}
+		}
+	}
+}
+//-------------------------------------------------------------------------
+void CTimerdClient::setWeekdaysToStr(CTimerd::CTimerEventRepeat rep, char* str)
+{
+	if(rep >= CTimerd::TIMERREPEAT_WEEKDAYS)
+	{
+		for(int n=0;n<7;n++)
+		{
+			if(rep & (1 << (n+9)))
+				str[n]='X';
+			else
+				str[n]='-';
+		}
+		str[7]=0;
+	}
+	else
+		strcpy(str,"-------");
+}
+//-------------------------------------------------------------------------
 

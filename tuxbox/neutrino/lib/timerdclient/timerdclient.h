@@ -129,6 +129,10 @@ class CTimerdClient:private CBasicClient
 
 		// Exit timerd and programm wakeup
 		bool shutdown();
+
+		// Convert String of O and X to repeat type and vice versa
+		void getWeekdaysFromStr(int *rep, char* str);
+		void setWeekdaysToStr(CTimerd::CTimerEventRepeat rep, char* str);
 };
 
 #endif

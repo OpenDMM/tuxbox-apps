@@ -2590,7 +2590,6 @@ int CNeutrinoApp::handleMsg(uint msg, uint data)
 		}
 		if((data & mode_mask)== mode_tv)
 		{
-			printf("Debug: %d %d %d\n",data,(data&norezap),norezap);
 			if( mode != mode_tv )
 				if((data & norezap)==norezap)
 					tvMode(false);
@@ -2929,9 +2928,9 @@ void CNeutrinoApp::radioMode( bool rezap)
 	frameBuffer->useBackground(true);
 	frameBuffer->paintBackground();
 
+	g_RemoteControl->radioMode();
 	if( rezap )
 	{
-		g_RemoteControl->radioMode();
 		firstChannel();
 		channelsInit();
 		channelList->zapTo( firstchannel.channelNumber -1 );
