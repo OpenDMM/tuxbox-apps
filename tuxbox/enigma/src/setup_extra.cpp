@@ -31,7 +31,7 @@
 eExpertSetup::eExpertSetup()
 	:eSetupWindow(_("Expert Setup"), 11, 400)
 {
-	cmove(ePoint(170, 145));
+	cmove(ePoint(170, 115));
 
 	int entry=0;
 #ifndef DISABLE_NETWORK

@@ -52,7 +52,8 @@ eSystemSettings::eSystemSettings()
 	CONNECT((new eListBoxEntryMenu(&list, _("OSD Settings"), eString().sprintf("(%d) %s", ++entry, _("open on screen display settings")) ))->selected, eSystemSettings::osd_settings);
 	CONNECT((new eListBoxEntryMenu(&list, _("OSD Language"), eString().sprintf("(%d) %s", ++entry, _("open language selector")) ))->selected, eSystemSettings::osd_language);
 #ifndef DISABLE_LCD
-	CONNECT((new eListBoxEntryMenu(&list, _("LCD Settings"), eString().sprintf("(%d) %s", ++entry, _("open LCD settings")) ))->selected, eSystemSettings::lcd_settings);
+	if ( eSystemInfo::getInstance()->hasLCD() )
+		CONNECT((new eListBoxEntryMenu(&list, _("LCD Settings"), eString().sprintf("(%d) %s", ++entry, _("open LCD settings")) ))->selected, eSystemSettings::lcd_settings);
 #endif
 }
 
