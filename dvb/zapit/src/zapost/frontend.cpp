@@ -512,7 +512,6 @@ void CFrontend::sendMotorCommand(uint8_t cmdtype, uint8_t address, uint8_t comma
 	secCommand cmd;
 	const secStatus *state;
 
-	printf("[frontend] sendMotorCommand: ATTENTION this function is not tested yet.\n");
 	printf("[frontend] sendMotorCommand: cmdtype   = %x, address = %x, cmd   = %x\n", cmdtype, address, command);
 	printf("[frontend] sendMotorCommand: num_parms = %d, parm1   = %x, parm2 = %x\n", num_parameters, parameter1, parameter2);
 	
