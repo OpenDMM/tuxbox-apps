@@ -786,7 +786,7 @@ int main (int argc, char ** argv)
 	int connfd;
 	struct sockaddr_un servaddr;
 	int clilen;
-	char msgbuffer[1024];
+	unsigned char msgbuffer[1024];
 
 	switch (fork())
 	{
