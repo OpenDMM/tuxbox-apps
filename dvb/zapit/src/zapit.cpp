@@ -35,9 +35,6 @@
 
 /* tuxbox headers */
 #include <configfile.h>
-#ifdef DBOX2
-#include <lcddclient/lcddclient.h>
-#endif
 
 /* zapit headers */
 #include <zapit/audio.h>
@@ -87,10 +84,6 @@ enum
 };
 
 int currentMode;
-
-#ifdef DBOX2
-CLcddClient lcdd;
-#endif /* DBOX2 */
 
 bool playbackStopForced = false;
 
@@ -273,7 +266,7 @@ int zapit(const t_channel_id channel_id, bool in_nvod)
 		if (currentMode & RECORD_MODE)
 			return -1;
 
-		if (!frontend->tuneChannel(channel))
+		if (!frontend->tuneTsidOnid(channel->getTsidOnid()))
 			return -1;
 
 		if (channel->getTsidOnid() != frontend->getTsidOnid())
@@ -355,19 +348,6 @@ int zapit(const t_channel_id channel_id, bool in_nvod)
 	{
 		channel->getCaPmt()->ca_pmt_list_management = 0x04;
 	}
-
-#ifdef DBOX2
-	if (in_nvod)
-	{
-		lcdd.setServiceName(nvodname);
-	}
-	else
-	{
-		lcdd.setServiceName(cit->second.getName());
-	}
-#endif /* DBOX2 */
-
-	DBG("setting ca pmt");
 
 	startPlayBack();
 

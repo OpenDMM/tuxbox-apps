@@ -91,10 +91,9 @@ int CVideo::setCroppingMode (video_displayformat_t format)
 
 int CVideo::setSource (video_stream_source_t source)
 {
-#ifndef ALWAYS_DO_VIDEO_SELECT_SOURCE
 	if (status.stream_source == source)
 		return 0;
-#endif
+
 	if (status.play_state != VIDEO_STOPPED)
 		return -1;
 

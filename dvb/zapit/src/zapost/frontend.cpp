@@ -471,19 +471,16 @@ void CFrontend::setDiseqcType (diseqc_t newDiseqcType)
 }
 
 const bool
-CFrontend::tuneChannel (CZapitChannel *channel)
+CFrontend::tuneTsidOnid (uint32_t tsid_onid)
 {
 	std::map <uint32_t, transponder>::iterator transponder;
 
-	if (!channel)
-		return false;
-
-	transponder = transponders.find(channel->getTsidOnid());
+	transponder = transponders.find(tsid_onid);
 
 	if (transponder == transponders.end())
 		return false;
 
-	currentTsidOnid = channel->getTsidOnid();
+	currentTsidOnid = tsid_onid;
 
 	return tuneFrequency(&(transponder->second.feparams), transponder->second.polarization, transponder->second.DiSEqC);
 }
