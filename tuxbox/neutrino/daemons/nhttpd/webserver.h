@@ -87,7 +87,6 @@ public:
 
 	int SocketConnect(Tmconnect * con,int Port);
 	void SetSockOpts();
-	void SaveConfig();
 	void ReadConfig();
 
 	friend class CWebserverRequest;
