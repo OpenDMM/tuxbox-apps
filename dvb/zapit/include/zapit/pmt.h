@@ -26,6 +26,6 @@
 #include "ci.h"
 
 int parse_pmt(CZapitChannel * const channel);
-int pmt_set_update_filter(CZapitChannel * const channel);
+int pmt_set_update_filter(CZapitChannel * const channel, int *fd);
 
 #endif /* __zapit_pmt_h__ */
