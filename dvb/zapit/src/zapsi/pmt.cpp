@@ -354,7 +354,7 @@ int parse_pmt (int demux_fd, CZapitChannel * channel)
 		while ((ca_pmt_length & mask) != ca_pmt_length)
 		{
 			length_field_size++;
-			mask = (mask << 8) & 0xFF;
+			mask = (mask << 8) | 0xFF;
 		}
 
 		caPmt->length_field.push_back((1 << 7) | length_field_size);
