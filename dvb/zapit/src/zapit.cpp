@@ -1054,9 +1054,9 @@ void sendBouquets(int connfd, const bool emptyBouquetsToo)
 		{
 // ATTENTION: in RECORD_MODE empty bouquets are not send!
 			if ((!(currentMode & RECORD_MODE)) ||
-			    ((channel != NULL) &&
-			     (((currentMode & RADIO_MODE) && (bouquetManager->Bouquets[i]->recModeRadioSize(channel->getTsidOnid()) > 0)) ||
-			      ((currentMode & TV_MODE)    && (bouquetManager->Bouquets[i]->recModeTVSize(channel->getTsidOnid()) > 0)))))
+			    ((frontend != NULL) &&
+			     (((currentMode & RADIO_MODE) && (bouquetManager->Bouquets[i]->recModeRadioSize(frontend->getTsidOnid()) > 0)) ||
+			      ((currentMode & TV_MODE)    && (bouquetManager->Bouquets[i]->recModeTVSize(frontend->getTsidOnid()) > 0)))))
 			{
 				msgBouquet.bouquet_nr = i;
 				strncpy(msgBouquet.name, bouquetManager->Bouquets[i]->Name.c_str(), 30);
