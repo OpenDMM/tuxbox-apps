@@ -364,6 +364,7 @@ int zapit (uint32_t onid_sid, bool in_nvod)
 
 		if (frontend->tuneChannel(channel) == false)
 		{
+#ifdef EXCESSIVE_TUNING_RETRIES
 			unsigned char retries;
 
 			for (retries = 0; retries < 5; retries++)
@@ -380,6 +381,16 @@ int zapit (uint32_t onid_sid, bool in_nvod)
 			{
 				return -1;
 			}
+#else
+			return -1;
+#endif
+		}
+		
+		if (channel->getTsidOnid() != frontend->getTsidOnid())
+		{
+			printf("[zapit] zigzag tuning probably failed:\n");
+			printf("[zapit] requested tsid/onid %08x but frontend is at tsid/onid %08x\n", channel->getTsidOnid(), frontend->getTsidOnid());
+			return -1;
 		}
 
 		transponder_change = true;
