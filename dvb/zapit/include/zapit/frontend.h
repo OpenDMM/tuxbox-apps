@@ -95,6 +95,8 @@ class CFrontend
 		const FrontendParameters *getFrontend ();
 		const bool getEvent ();
 		const FrontendInfo *getInfo ()	{ return info; };
+		unsigned int getFrequency ();
+		unsigned char getPolarization ();
 
 		/* ost sec api */
 		void secSetTone (secToneMode mode);

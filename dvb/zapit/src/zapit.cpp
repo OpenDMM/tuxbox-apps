@@ -1476,8 +1476,9 @@ void parse_command ()
 				msgCurrentServiceInfo.vdid = channel->getVideoPid();
 				msgCurrentServiceInfo.apid = channel->getAudioPid();
 				msgCurrentServiceInfo.vtxtpid = channel->getTeletextPid();
-				msgCurrentServiceInfo.pcrpid = channel->getPcrPid();;
-
+				msgCurrentServiceInfo.pcrpid = channel->getPcrPid();
+				msgCurrentServiceInfo.tsfrequency = frontend->getFrequency();
+				msgCurrentServiceInfo.polarisation = frontend->getPolarization();
 				send( connfd, &msgCurrentServiceInfo, sizeof(msgCurrentServiceInfo), 0);
 			break;
 
