@@ -22,6 +22,9 @@
 //    Foundation, Inc., 675 Mass Ave, Cambridge, MA 02139, USA.
 //
 // $Log$
+// Revision 1.21  2001/10/22 04:10:58  fnbrd
+// debug enhanced (commented printfs)
+//
 // Revision 1.20  2001/10/10 13:40:25  fnbrd
 // Fixed small bug with service names
 //
@@ -277,6 +280,7 @@ void SIsectionEIT::parse(void)
     e.serviceID=serviceID();
     e.originalNetworkID=originalNetworkID();
 //    printf("actpos: %p buf+bl: %p evtid: %hu desclen: %hu\n", actPos, buffer+bufferLength, evt->event_id, evt->descriptors_loop_length);
+//    printf("maxlen: %u (%s)\n", min((unsigned)(buffer+bufferLength-actPos), evt->descriptors_loop_length), (unsigned)(buffer+bufferLength-actPos)< evt->descriptors_loop_length ? "bufferLength" : "descriptor_loop_length");
     parseDescriptors(((const char *)evt)+sizeof(struct eit_event), min((unsigned)(buffer+bufferLength-actPos), evt->descriptors_loop_length), e);
     evts.insert(e);
     actPos+=sizeof(struct eit_event)+evt->descriptors_loop_length;
