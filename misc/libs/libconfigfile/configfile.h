@@ -52,6 +52,10 @@ class CConfigFile
 		void setString (const std::string p_keyName, const std::string p_keyValue);
 		int getInt (const std::string p_keyName, const int defaultValue = 0);
 		void setInt (const std::string p_keyName, const int p_keyValue);
+		long getLong (const std::string p_keyName, const long defaultValue = 0);
+		void setLong (const std::string p_keyName, const long p_keyValue);
+		long long getLongLong (const std::string p_keyName, const long long defaultValue = 0);
+		void setLongLong (const std::string p_keyName, const long long p_keyValue);
 		bool getBool (const std::string p_keyName, const bool defaultValue = false);
 		void setBool (const std::string p_keyName, const bool p_keyValue);
 
