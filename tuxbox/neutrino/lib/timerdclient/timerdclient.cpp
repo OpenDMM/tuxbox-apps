@@ -175,7 +175,7 @@ int CTimerdClient::addTimerEvent( timerTypes evType, void* data, int min, int ho
 	{
 		length = 0;
 	}
-	else if (evType == TIMER_NEXTPROGRAM)
+	else if (evType == TIMER_NEXTPROGRAM || evType == TIMER_ZAPTO)
 	{
 		length = sizeof( CTimerd::EventInfo);
 	}

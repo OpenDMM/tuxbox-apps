@@ -129,5 +129,16 @@ class CTimerEvent_NextProgram : public CTimerEvent
 		virtual void fireEvent();
 };
 
+class CTimerEvent_Zapto : public CTimerEvent
+{
+	public:
+
+		CTimerd::EventInfo eventInfo;
+
+		CTimerEvent_Zapto( int mon = 0, int day = 0, int hour = 0, int min = 0) :
+			CTimerEvent(mon, day, hour, min, CTimerdClient::TIMER_ZAPTO){};
+		virtual void fireEvent();
+};
+
 
 #endif
