@@ -28,15 +28,10 @@
 #define __webserver__
 
 #include <unistd.h>
-#include <fcntl.h>
 #include <sys/socket.h>
 #include <netinet/in.h>
-#include <netinet/in_systm.h>
-#include <netinet/ip.h>
-#include <netdb.h>
 #include <config.h>
 #include <string>
-#include <pthread.h>
 
 #include <configfile.h>
 
