@@ -84,8 +84,12 @@ extern int debug;
 
 #define fop(cmd, args...) ({					\
 	int _r;							\
-	if (fd >= 0) { if ((_r = ::cmd(fd, args)) < 0)		\
-		ERROR(#cmd"(fd, "#args")"); }			\
+	if (fd >= 0) { 						\
+		if ((_r = ::cmd(fd, args)) < 0)			\
+			ERROR(#cmd"(fd, "#args")");		\
+		else if (debug)					\
+			INFO(#cmd"(fd, "#args")");		\
+	}							\
 	else { _r = fd; } 					\
 	_r;							\
 })
