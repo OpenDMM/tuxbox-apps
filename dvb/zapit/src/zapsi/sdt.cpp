@@ -209,7 +209,7 @@ int parse_sdt(
 					break;
 
 				case 0x48:
-					service_descriptor(buffer + pos2, service_id, transport_stream_id, original_network_id, DiSEqC, free_CA_mode);
+					service_descriptor(buffer + pos2, service_id, transport_stream_id, original_network_id, DiSEqC);
 					break;
 
 				case 0x49:

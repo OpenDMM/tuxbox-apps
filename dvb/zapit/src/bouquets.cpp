@@ -396,7 +396,7 @@ bool CBouquetManager::existsChannelInBouquet( unsigned int bq_id, const t_channe
 	bool     status = false;
 	CZapitChannel  *ch = NULL;
 
-	if (bq_id >= 0 && bq_id <= Bouquets.size()) {
+	if (bq_id <= Bouquets.size()) {
 		// query TV-Channels  && Radio channels
 		ch = Bouquets[bq_id]->getChannelByChannelID(channel_id, 0);
 		if (ch)  status = true;

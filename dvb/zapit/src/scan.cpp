@@ -196,7 +196,7 @@ void write_bouquets(void)
 		scanBouquetManager->saveBouquets();
 }
 
-void write_transponder(FILE *fd, t_transport_stream_id transport_stream_id, t_original_network_id original_network_id, uint8_t diseqc)
+void write_transponder(FILE *fd, t_transport_stream_id transport_stream_id, t_original_network_id original_network_id)
 {
 	stiterator tI = scantransponders.find((transport_stream_id << 16) | original_network_id);
 
@@ -291,7 +291,7 @@ FILE *write_provider(FILE *fd, const char *type, const char *provider_name, cons
 		/* channels */
 		for (stiterator tI = scantransponders.begin(); tI != scantransponders.end(); tI++)
 		{
-			write_transponder(fd, tI->second.transport_stream_id, tI->second.original_network_id, DiSEqC);
+			write_transponder(fd, tI->second.transport_stream_id, tI->second.original_network_id);
 		}
 
 		/* end tag */
@@ -305,13 +305,12 @@ FILE *write_provider(FILE *fd, const char *type, const char *provider_name, cons
 	return fd;
 }
 
-void *start_scanthread(void *param)
+void *start_scanthread(void *)
 {
 	FILE *fd = NULL;
 
 	char providerName[32];
-	char * type;
-	
+	char *type;
 	
 	uint8_t diseqc_pos = 0;
 	uint8_t polarization = 0;
