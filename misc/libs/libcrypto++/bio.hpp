@@ -25,6 +25,7 @@
 #define __LIBCRYPTO__BIO_HPP
 
 #include <iostream>
+#include <string>
 
 namespace libcrypto
 {

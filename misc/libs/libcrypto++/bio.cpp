@@ -168,7 +168,8 @@ int Crypto::bio::istream::bio_read ( libcrypto::BIO * b, char * buf, int size )
 {
   TRACE_FUNCTION;
   Crypto::bio::istream * thiz = reinterpret_cast < Crypto::bio::istream * > ( b -> ptr );
-  return thiz -> is.readsome ( buf, size );
+  thiz -> is.get ( buf, size );
+  return thiz -> is.gcount ();
 }
 
 int Crypto::bio::ostream::bio_puts ( libcrypto::BIO * b, const char * buf )
