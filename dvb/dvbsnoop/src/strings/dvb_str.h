@@ -8,6 +8,10 @@ $Id$
 
 
 $Log$
+Revision 1.9  2003/10/17 18:16:54  rasc
+- started more work on newer ISO 13818  descriptors
+- some reorg work started
+
 Revision 1.8  2003/10/16 19:02:28  rasc
 some updates to dvbsnoop...
 - small bugfixes
@@ -85,10 +89,7 @@ char *dvbstrPESscrambling_ctrl_TYPE(u_int id);
 /* -- Div Stuff */
 
 char *dvbstrCountryCode_ID (u_int i);
-
-// Todo: 
-// Bouquet IDs (ETR 162)
-
+char *dvbstrPrivateDataSpecifier_ID (u_int i);
 
 
 
