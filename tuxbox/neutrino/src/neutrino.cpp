@@ -1054,11 +1054,12 @@ void CNeutrinoApp::InitServiceSettings(CMenuWidget &service, CMenuWidget &scanSe
 		mtdexpert->addItem( new CMenuSeparator() );
 		mtdexpert->addItem( new CMenuForwarder("menu.back") );
 		mtdexpert->addItem( new CMenuSeparator(CMenuSeparator::LINE) );
-		mtdexpert->addItem( new CMenuForwarder("flashupdate.readflash") );
-		mtdexpert->addItem( new CMenuForwarder("flashupdate.writeflash") );
+		CFlashExpert* fe = new CFlashExpert();
+		mtdexpert->addItem( new CMenuForwarder("flashupdate.readflash", true, "", fe, "readflash") );
+		mtdexpert->addItem( new CMenuForwarder("flashupdate.writeflash", true, "", fe, "writeflash") );
 		mtdexpert->addItem( new CMenuSeparator(CMenuSeparator::LINE) );
-		mtdexpert->addItem( new CMenuForwarder("flashupdate.readflashmtd") );
-		mtdexpert->addItem( new CMenuForwarder("flashupdate.writeflashmtd") );
+		mtdexpert->addItem( new CMenuForwarder("flashupdate.readflashmtd", true, "", fe, "readflashmtd") );
+		mtdexpert->addItem( new CMenuForwarder("flashupdate.writeflashmtd", true, "", fe, "writeflashmtd") );
 
 		updateSettings->addItem( new CMenuForwarder("flashupdate.expertfunctions", true, "", mtdexpert ) );
 		updateSettings->addItem( new CMenuSeparator(CMenuSeparator::LINE) );
