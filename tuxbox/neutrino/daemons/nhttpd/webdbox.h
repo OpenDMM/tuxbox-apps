@@ -82,8 +82,8 @@ class CWebDbox
 
 	// some constants
 	std::string Dbox_Hersteller[4];
-	std::string videooutput_names[3];
-	std::string videoformat_names[3];
+	std::string videooutput_names[5];
+	std::string videoformat_names[4];
 	std::string audiotype_names[5];
 
 	// get functions to collect data
