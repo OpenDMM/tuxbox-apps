@@ -1451,7 +1451,6 @@ int main(int argc, char **argv)
 	}
 
 	scan_runs = 0;
-//	found_transponders = 0;
 	found_channels = 0;
 	curr_sat = -1;
 
