@@ -1059,7 +1059,7 @@ void CNeutrinoApp::InitScanSettings(CMenuWidget &settings)
 		{
 			CMenuOptionChooser* oj = new CMenuOptionChooser( satList[i].satName, scanSettings.diseqscOfSat( satList[i].satName), true/*, new CSatelliteNotifier*/);
 			oj->addOption( -1, "options.off");
-			for( int j=0; j<=3; j++)
+			for( int j=0; j<=63; j++)
 			{
 				char jj[2];
 				sprintf( jj, "%d", j);
