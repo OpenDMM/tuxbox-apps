@@ -633,7 +633,7 @@ void parse_command(int connfd, CControld::commandHead* rmessage)
 			//printf("[controld] shutdown\n");
 			shutdownBox();
 			break;
-		case CControld::CMD_SETVOLUME:
+		case CControld::CMD_SETVOLUME_AVS:
 			//printf("[controld] set volume\n");
 			CControld::commandVolume msg;
 			read(connfd, &msg, sizeof(msg));
@@ -705,7 +705,7 @@ void parse_command(int connfd, CControld::commandHead* rmessage)
 			saveSettings();
 			break;
 
-		case CControld::CMD_GETVOLUME:
+		case CControld::CMD_GETVOLUME_AVS:
 			//printf("[controld] get volume\n");
 			CControld::responseVolume msg6;
 			msg6.volume = settings.volume;
