@@ -91,7 +91,9 @@ bool CEventServer::sendEvent2Client(const unsigned int eventID, const initiators
 
 	if(connect(sock_fd, (struct sockaddr*) &servaddr, clilen) <0 )
 	{
-		perror("[eventserver]: connect");
+		char errmsg[128];
+		snprintf(errmsg, 128, "[eventserver]: connect (%s)", ClientData->udsName);
+		perror(errmsg);
 		close(sock_fd);
 		return false;
 	}
