@@ -58,7 +58,8 @@ class CTimerd
 			TIMER_STANDBY,
 			TIMER_RECORD,
 			TIMER_REMIND,
-			TIMER_SLEEPTIMER
+			TIMER_SLEEPTIMER,
+			TIMER_IMMEDIATE_RECORD
 		};
 		
 		enum CTimerEventStates 

@@ -266,6 +266,21 @@ bool parse_command(CBasicMessage::Header &rmsg, int connfd)
 					rspAddTimer.eventID = CTimerManager::getInstance()->addEvent(event);
 					break;
 
+				case CTimerd::TIMER_IMMEDIATE_RECORD :
+					CBasicServer::receive_data(connfd, &evInfo, sizeof(CTimerd::TransferEventInfo));
+					event = new CTimerEvent_Record(
+															msgAddTimer.announceTime,
+															msgAddTimer.alarmTime,
+															msgAddTimer.stopTime,
+															evInfo.channel_id,
+															evInfo.epgID,
+															evInfo.epg_starttime,
+															evInfo.apids,
+															msgAddTimer.eventRepeat);
+					event->eventState = CTimerd::TIMERSTATE_ISRUNNING;
+					rspAddTimer.eventID = CTimerManager::getInstance()->addEvent(event);
+					break;
+
 				case CTimerd::TIMER_ZAPTO :
 					CBasicServer::receive_data(connfd, &evInfo, sizeof(CTimerd::TransferEventInfo));
 					if(evInfo.channel_id > 0)
