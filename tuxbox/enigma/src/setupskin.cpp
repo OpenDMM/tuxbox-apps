@@ -117,7 +117,7 @@ eSkinSetup::eSkinSetup()
 	baccept->setName("accept");
 	lskins=new eListBox<eListBoxEntrySkin>(this);
 	lskins->setName("skins");
-	lskins->setFlags(eListBoxBase::flagNoPageMovement);
+	lskins->setFlags(eListBoxBase::flagLostFocusOnLast);
 	statusbar=new eStatusBar(this);
 	statusbar->setName("statusbar");
 
