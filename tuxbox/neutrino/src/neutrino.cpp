@@ -1426,6 +1426,9 @@ int CNeutrinoApp::run(int argc, char **argv)
 		setupDefaults();
 		printf("using defaults...\n\n");
 	}
+	//get dbox-type everytime!
+	g_settings.box_Type = g_Controld->getBoxType();
+	printf("got boxtype from controld: %d\n", g_settings.box_Type);
 
 	CmdParser(argc, argv);
 
