@@ -40,7 +40,7 @@ int main (int argc, char **argv)
     /* remember last selection */
     if (menu->getSelectedEntry() != menu->getDefaultEntry())
     {
-	menu->getConfig()->setInt("default_entry", menu->getSelectedEntry());
+	menu->getConfig()->setInt32("default_entry", menu->getSelectedEntry());
 	menu->getConfig()->setModifiedFlag(true);
     }
 
