@@ -398,6 +398,17 @@ bool CZapitClient::getChannels( BouquetChannelList& channels, channelsMode mode,
 	return return_value;
 }
 
+/* get the name of a channel */
+std::string CZapitClient::getChannelName(const t_channel_id channel_id)
+{
+	send(CZapitMessages::CMD_GET_CHANNEL_NAME, (char *) & channel_id, sizeof(channel_id));
+
+	CZapitMessages::responseGetChannelName response;
+	CBasicClient::receive_data((char* )&response, sizeof(response));
+	close_connection();
+	return std::string(response.name);
+}
+
 /* restore bouquets so as if they where just loaded*/
 void CZapitClient::restoreBouquets()
 {

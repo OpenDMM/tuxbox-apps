@@ -112,7 +112,9 @@ class CZapitMessages
 			CMD_SET_STANDBY,
 
 			CMD_NVOD_SUBSERVICE_NUM,
-			CMD_SEND_MOTOR_COMMAND
+			CMD_SEND_MOTOR_COMMAND,
+
+			CMD_GET_CHANNEL_NAME
 		};
 
 	struct commandBoolean
@@ -255,6 +257,11 @@ class CZapitMessages
 	struct responseGeneralInteger
 	{
 		int number;
+	};
+
+	struct responseGetChannelName
+	{
+		char name[30];
 	};
 
 	struct responseGetRecordModeState
