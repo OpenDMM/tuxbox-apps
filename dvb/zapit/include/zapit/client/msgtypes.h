@@ -110,7 +110,8 @@ class CZapitMessages
 			CMD_SET_VOLUME,
 			CMD_SET_STANDBY,
 
-			CMD_NVOD_SUBSERVICE_NUM
+			CMD_NVOD_SUBSERVICE_NUM,
+			CMD_SEND_MOTOR_COMMAND
 		};
 
 	struct commandBoolean
@@ -297,6 +298,16 @@ class CZapitMessages
 	struct responseDeliverySystem
 	{
 		delivery_system_t system;
+	};
+	
+	struct commandMotor
+	{
+		uint8_t cmdtype;
+		uint8_t cmd;
+		uint8_t address;
+		uint8_t num_parameters;
+		uint8_t param1;
+		uint8_t param2;
 	};
 
 };
