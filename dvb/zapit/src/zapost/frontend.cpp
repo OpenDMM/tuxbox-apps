@@ -426,9 +426,18 @@ void CFrontend::setLnbOffset(const bool high, const uint8_t index, int offset)
 	}
 }
 
-void CFrontend::positionMotor(uint8_t diseqc)
+void CFrontend::positionMotor(uint8_t motorPosition)
 {
-	//not implemented yet
+	struct dvb_diseqc_master_cmd cmd;
+	
+	printf("[frontend] ATTENTION! not tested yet.\n");
+	cmd.msg[0] = 0xE0; //command type
+	cmd.msg[1] = 0x31; //address
+	cmd.msg[2] = 0x6B; //command: goto stored motor position
+	cmd.msg[3] = motorPosition;
+	cmd.msg_len = 4;
+	
+	sendDiseqcCommand(&cmd, 15);
 }
 
 int CFrontend::setParameters(struct dvb_frontend_parameters *feparams, const uint8_t polarization, const uint8_t diseqc)
