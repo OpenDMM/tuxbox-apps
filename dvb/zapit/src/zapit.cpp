@@ -1880,7 +1880,7 @@ void sendChannelListOfBouquet(uint nBouquet)
 		for (i = 0; i < channels.size(); i++)
 		{
 			if ((currentMode & RECORD_MODE) && (channels[i]->getTsidOnid() != frontend->getTsidOnid()))
-					break;
+					continue;
 
 			channel_msg_2 chanmsg;
 			strncpy(chanmsg.name, channels[i]->getName().c_str(), 30);
@@ -2171,6 +2171,9 @@ void internalSendChannels(ChannelList* channels)
 {
 	for (uint i = 0; i < channels->size();i++)
 	{
+		if ((currentMode & RECORD_MODE) && ((*channels)[i]->getTsidOnid() != frontend->getTsidOnid()))
+			continue;
+
 		CZapitClient::responseGetBouquetChannels response;
 		strncpy(response.name, (*channels)[i]->getName().c_str(),30);
 		response.onid_sid = (*channels)[i]->getOnidSid();
