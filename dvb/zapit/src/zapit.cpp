@@ -241,6 +241,8 @@ int save_settings (bool write)
 
 	if (write)
 	{
+		config->setInt("diseqcRepeats", frontend->getDiseqcRepeats());
+		config->setInt("diseqcType", frontend->getDiseqcType());
 		config->saveConfig(CONFIGFILE);
 	}
 
