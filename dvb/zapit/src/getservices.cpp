@@ -34,7 +34,7 @@ void ParseTransponders(xmlNodePtr node, const uint8_t DiSEqC)
 	uint8_t tmp;
 
 	/* read all transponders */
-	while ((node != NULL) && (!strcmp(node->GetType(), "transponder"))) {
+	while ((node != NULL) && (!strcmp(xmlGetName(node), "transponder"))) {
 
 		/* common */
 		GET_ATTR(node, "id", "%hx", transport_stream_id);
