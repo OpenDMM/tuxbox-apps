@@ -32,6 +32,9 @@
 	Foundation, Inc., 675 Mass Ave, Cambridge, MA 02139, USA.
 
   $Log$
+  Revision 1.95  2001/12/12 12:03:46  McClean
+  make flash-compatible
+
   Revision 1.94  2001/12/12 11:39:04  McClean
   fix timeselect-bug (cinedom)
 
@@ -920,6 +923,10 @@ void CNeutrinoApp::CmdParser(int argc, char **argv)
 		{
 			printf("Software update enabled\n");
 			softupdate = true;
+		}
+		else if ( !strcmp(argv[x], "-z"))
+		{
+			printf("zapitmode is default..\n");
 		}
 		else {
 			printf("Usage: neutrino [-su]\n");
