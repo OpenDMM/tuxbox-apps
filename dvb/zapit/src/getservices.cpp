@@ -50,7 +50,7 @@ void ParseTransponders (XMLTreeNode *node, uint8_t DiSEqC)
 		{
 			sscanf(node->GetAttributeValue("symbol_rate"), "%u", &feparams.u.qpsk.SymbolRate);
 			sscanf(node->GetAttributeValue("fec_inner"), "%hhu", &tmp);
-			feparams.u.qam.FEC_inner = CFrontend::getFEC(tmp);
+			feparams.u.qpsk.FEC_inner = CFrontend::getFEC(tmp);
 			sscanf(node->GetAttributeValue("polarization"), "%hhu", &polarization);
 		}
 
