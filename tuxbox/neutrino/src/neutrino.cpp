@@ -1187,7 +1187,7 @@ void CNeutrinoApp::InitMiscSettings(CMenuWidget &miscSettings)
 
 
 		static int fb_destination = 0;
-		FILE* fd = fopen("/var/tuxbox/boot/ppcboot.conf", "r");
+		fd = fopen("/var/tuxbox/boot/ppcboot.conf", "r");
 		if(fd)
 		{
 			char buffer[200];
