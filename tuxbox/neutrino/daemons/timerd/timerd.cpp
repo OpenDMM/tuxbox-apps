@@ -23,7 +23,6 @@
    Foundation, Inc., 675 Mass Ave, Cambridge, MA 02139, USA.
 */
 
-//#include <config.h>
 #include <stdio.h>
 #include <stdlib.h>
 #include <string.h>
@@ -40,13 +39,14 @@
 #include <sys/wait.h>
 #include <fcntl.h>
 #include <unistd.h>
+#include <config.h>
+#include <configfile.h>
 
-#include "timermanager.h"
-#include "timerdMsg.h"
-#include "debug.h"
-#include "config.h"
-#include "configfile.h"
-#include "sectionsdclient.h"
+#include <timermanager.h>
+#include <timerdMsg.h>
+#include <debug.h>
+#include <sectionsdclient.h>
+
 
 bool doLoop;
 

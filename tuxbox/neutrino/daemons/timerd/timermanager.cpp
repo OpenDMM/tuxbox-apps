@@ -27,12 +27,12 @@
 #include <sys/ioctl.h>
 #include <sstream>
 
-#include "dbox/fp.h"
+#include <dbox/fp.h>
 
-#include "timermanager.h"
-#include "debug.h"
-#include "clientlib/timerdclient.h"
-#include "sectionsdclient.h"
+#include <timermanager.h>
+#include <debug.h>
+#include <timerdclient.h>
+#include <sectionsdclient.h>
 
 //CTimerEvent_NextProgram::EventMap CTimerEvent_NextProgram::events;
 
