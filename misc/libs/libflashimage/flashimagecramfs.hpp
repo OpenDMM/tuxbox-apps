@@ -27,6 +27,7 @@
 
 #include <iostream>
 #include <map>
+#include <memory>
 #include <string>
 
 #include <libcrypto++/evp.hpp>
@@ -46,10 +47,14 @@ namespace FlashImage
 
     public:
       FlashImageCramFS ( std::iostream & );
+      virtual ~FlashImageCramFS ();
 
-      void file ( const std::string &, std::ostream & );
-      void sign ( Crypto::evp::key::privatekey &, const Crypto::evp::md::md & );
-      int verify ( Crypto::evp::key::key &, const Crypto::evp::md::md & );
+      void get_file ( const std::string &, std::ostream & );
+      int get_size ();
+      int get_size_block ();
+      void get_signature ( std::ostream & );
+      void set_signature ( std::istream & );
+      void get_block ( unsigned int, char * );
 
       static const unsigned long magic = 0x9ad13486;
 
@@ -58,7 +63,8 @@ namespace FlashImage
       void decompress ( std::istream &, std::ostream &, unsigned int );
 
       std::iostream & stream;
-      unsigned int size;
+      unsigned int cramfssize, cramfsblocks, imagesize;
+      char * const buf;
   };
 }
 

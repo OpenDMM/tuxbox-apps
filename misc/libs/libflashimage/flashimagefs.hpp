@@ -24,6 +24,7 @@
 #define __LIBFLASHIMAGE_LIBFLASHIMAGEFS_HPP
 
 #include <iostream>
+#include <stdexcept>
 #include <string>
 
 #include <libcrypto++/evp.hpp>
@@ -33,9 +34,12 @@ namespace FlashImage
   class FlashImageFS
   {
     public:
-      virtual void file ( const std::string &, std::ostream & ) = 0;
-      virtual void sign ( Crypto::evp::key::privatekey &, const Crypto::evp::md::md & ) = 0;
-      virtual int verify ( Crypto::evp::key::key &, const Crypto::evp::md::md & ) = 0;
+      virtual void get_file ( const std::string &, std::ostream & ) = 0;
+      virtual int get_size () = 0;
+      virtual int get_size_block () = 0;
+      virtual void get_signature ( std::ostream & ) = 0;
+      virtual void set_signature ( std::istream & ) { throw std::runtime_error ( "unsupported" ); }
+      virtual void get_block ( unsigned int, char * ) = 0;
   };
 }
 

@@ -29,11 +29,15 @@
 #include <map>
 #include <string>
 
+#include <libcrypto++/evp.hpp>
 #include <libcrypto++/x509.hpp>
 #include <libflashimage/flashimagefs.hpp>
 
 namespace FlashImage
 {
+  class FlashImageSign;
+  class FlashImageVerify;
+
   class FlashImage
   {
     public:
@@ -41,9 +45,10 @@ namespace FlashImage
 
       std::string get_control_field ( std::string );
 
-      bool verify_cert ( const std::string & certchain );
-      bool verify_cert ( const std::string & certchain, std::map < int, std::string > & );
-      bool verify_image ();
+      int verify_cert ( const std::string & certchain );
+      int verify_cert ( const std::string & certchain, std::map < int, std::string > & );
+      FlashImageSign sign_image ();
+      FlashImageVerify verify_image ();
 
     protected:
       static int verify_cert_callback ( int ok, libcrypto::X509_STORE_CTX * ctx ) throw ();
@@ -52,6 +57,42 @@ namespace FlashImage
       FlashImageFS & fs;
       std::map < std::string, std::string > control;
       static std::map < int, std::string > errors;
+  };
+
+  class FlashImageSignature
+  {
+    public:
+      ~FlashImageSignature ();
+      int update ();
+
+    protected:
+      FlashImageSignature ( FlashImageFS &, std::map < std::string, std::string > &, Crypto::evp::digest & );
+
+      FlashImageFS & fs;
+      std::map < std::string, std::string > & control;
+      Crypto::evp::digest & digest;
+      int block;
+      char * buf;
+  };
+
+  class FlashImageSign : public FlashImageSignature
+  {
+    public:
+      FlashImageSign ( FlashImageFS &, std::map < std::string, std::string > & );
+      void final ( Crypto::evp::key::privatekey & );
+
+    protected:
+      Crypto::evp::sign sign;
+  };
+
+  class FlashImageVerify : public FlashImageSignature
+  {
+    public:
+      FlashImageVerify ( FlashImageFS &, std::map < std::string, std::string > & );
+      int final ();
+
+    protected:
+      Crypto::evp::verify verify;
   };
 }
 

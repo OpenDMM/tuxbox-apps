@@ -24,6 +24,16 @@
 #define inline /* nix */
 #endif
 
+inline FlashImage::FlashImageSign FlashImage::FlashImage::sign_image ()
+{
+  return FlashImageSign ( fs, control );
+}
+
+inline FlashImage::FlashImageVerify FlashImage::FlashImage::verify_image ()
+{
+  return FlashImageVerify ( fs, control );
+}
+
 inline std::string FlashImage::FlashImage::get_control_field ( std::string field )
 {
   return control[field];
