@@ -13,6 +13,9 @@ $Id$
 
 
 $Log$
+Revision 1.2  2003/12/15 20:09:48  rasc
+no message
+
 Revision 1.1  2003/12/14 23:42:00  rasc
 new: bandwidth usage reporting for a PID
 
@@ -38,6 +41,7 @@ new: bandwidth usage reporting for a PID
 #include "misc/output.h"
 #include "misc/pkt_time.h"
 
+#include "dvb_api.h"
 #include "dmx_tspidbandwidth.h"
 
 

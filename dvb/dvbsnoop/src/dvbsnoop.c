@@ -16,6 +16,9 @@ $Id$
 
 
 $Log$
+Revision 1.18  2003/12/15 20:09:48  rasc
+no message
+
 Revision 1.17  2003/12/14 23:38:46  rasc
 - bandwidth reporting for a PID
 
@@ -86,6 +89,7 @@ dvbsnoop v0.7  -- Commit to CVS
 #include "dvb_api/dmx_pes.h"
 #include "dvb_api/dmx_ts.h"
 #include "dvb_api/dmx_tspidscan.h"
+#include "dvb_api/dmx_tspidbandwidth.h"
 
 
 
