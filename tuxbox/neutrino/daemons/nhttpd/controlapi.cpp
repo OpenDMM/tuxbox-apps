@@ -374,7 +374,7 @@ bool CControlAPI::ExecCGI(CWebserverRequest *request)
 bool CControlAPI::SystemCGI(CWebserverRequest *request)
 {
 	std::string pluginname;
-	
+	request->SendPlainHeader("text/plain");          // Standard httpd header senden	
 	if (request->ParameterList.size() == 1)
 	{
 
