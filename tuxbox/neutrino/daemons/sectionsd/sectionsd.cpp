@@ -23,6 +23,9 @@
 //    Foundation, Inc., 675 Mass Ave, Cambridge, MA 02139, USA.
 //
 //  $Log$
+//  Revision 1.77  2001/10/30 21:13:11  field
+//  bugfix
+//
 //  Revision 1.76  2001/10/29 17:57:09  field
 //  Problem, dass Events mit hoeherer Nummer vorgehen, behoben
 //
@@ -2755,7 +2758,6 @@ const unsigned timeoutInSeconds=1;
                     // Nicht alle Events speichern
                     for(SIevents::iterator e=eit.events().begin(); e!=eit.events().end(); e++)
                     {
-                        if(e->eventID!= 47){
                         if(e->times.size()>0)
                         {
                             if( e->times.begin()->startzeit < zeit+secondsToCache &&
@@ -2785,7 +2787,6 @@ const unsigned timeoutInSeconds=1;
                             {
                                 unlockServices();
                             }
-                        }
                         }
                     } // for
                 } // if serviceID
