@@ -229,7 +229,7 @@ void CBouquetManager::writeBouquetChannels(FILE * bouq_fd, uint i)
 			fprintf(bouq_fd, "\t\t<channel serviceID=\"%04x\" name=\"%s\" tsid=\"%04x\" onid=\"%04x\"/>\n",
 					Bouquets[i]->tvChannels[j]->getServiceId(),
 					convert_UTF8_To_UTF8_XML(Bouquets[i]->tvChannels[j]->getName()).c_str(),
-					Bouquets[i]->radioChannels[j]->getTransportStreamId(),
+					Bouquets[i]->tvChannels[j]->getTransportStreamId(),
 					Bouquets[i]->tvChannels[j]->getOriginalNetworkId());
 		}
 		for ( unsigned int j=0; j<Bouquets[i]->radioChannels.size(); j++)
