@@ -110,8 +110,6 @@ bool parse_command(CBasicMessage::Header &rmsg, int connfd)
 					else if(event->eventType == CTimerd::TIMER_RECORD)
 					{
 						CTimerEvent_Record* ev= static_cast<CTimerEvent_Record*>(event);
-						if (ev->eventInfo.epgID==0)
-							ev->getEpgId();
 						resp.epgID = ev->eventInfo.epgID;
 						resp.epg_starttime = ev->eventInfo.epg_starttime;
 						resp.channel_id = ev->eventInfo.channel_id;
@@ -121,8 +119,6 @@ bool parse_command(CBasicMessage::Header &rmsg, int connfd)
 					else if(event->eventType == CTimerd::TIMER_ZAPTO)
 					{
 						CTimerEvent_Zapto* ev= static_cast<CTimerEvent_Zapto*>(event);
-						if (ev->eventInfo.epgID==0)
-							ev->getEpgId();
 						resp.epgID = ev->eventInfo.epgID;
 						resp.epg_starttime = ev->eventInfo.epg_starttime;
 						resp.channel_id = ev->eventInfo.channel_id;
@@ -172,8 +168,6 @@ bool parse_command(CBasicMessage::Header &rmsg, int connfd)
 					else if(event->eventType == CTimerd::TIMER_RECORD)
 					{
 						CTimerEvent_Record* ev= static_cast<CTimerEvent_Record*>(event);
-						if (ev->eventInfo.epgID==0)
-							ev->getEpgId();
 						resp.epgID = ev->eventInfo.epgID;
 						resp.epg_starttime = ev->eventInfo.epg_starttime;
 						resp.channel_id = ev->eventInfo.channel_id;
@@ -183,8 +177,6 @@ bool parse_command(CBasicMessage::Header &rmsg, int connfd)
 					else if(event->eventType == CTimerd::TIMER_ZAPTO)
 					{
 						CTimerEvent_Zapto* ev= static_cast<CTimerEvent_Zapto*>(event);
-						if (ev->eventInfo.epgID==0)
-							ev->getEpgId();
 						resp.epgID = ev->eventInfo.epgID;
 						resp.epg_starttime = ev->eventInfo.epg_starttime;
 						resp.channel_id = ev->eventInfo.channel_id;
