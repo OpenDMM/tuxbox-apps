@@ -501,7 +501,7 @@ void *start_scanthread(void *)
 				/* satellite receivers might need diseqc */
 				if (frontend->getInfo()->type == FE_QPSK)
 					diseqc_pos = spI->first;
-				if (diseqc_pos = 255 /* = -1 */)
+				if (diseqc_pos == 255 /* = -1 */)
 					diseqc_pos = 0; 
 				
 				/* position satellite dish if provider is on a different satellite */
