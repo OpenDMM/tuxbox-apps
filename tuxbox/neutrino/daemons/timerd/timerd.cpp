@@ -29,7 +29,6 @@
 #include <signal.h>
 #include <unistd.h>
 
-#include <configfile.h>
 #include <timermanager.h>
 #include <debug.h>
 #include <sectionsdclient/sectionsdclient.h>
