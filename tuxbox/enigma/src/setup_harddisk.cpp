@@ -414,7 +414,7 @@ void eHarddiskMenu::readStatus()
 	int cap=getCapacity(dev)/1000*512/1000;
 	
 	if (cap != -1)
-		capacity->setText(eString().sprintf("%d.%03d GB", cap/1000, cap%1000));
+		capacity->setText(eString().sprintf("%d.%03d GB", cap/1024, cap%1024));
 		
 	numpart=numPartitions(dev);
 	int fds;
@@ -424,7 +424,7 @@ void eHarddiskMenu::readStatus()
 	else if (!numpart)
 		status->setText(_("uninitialized - format it to use!"));
 	else if ((fds=freeDiskspace(dev)) != -1)
-		status->setText(eString().sprintf(_("in use, %d.%03d GB (~%d minutes) free"), fds/1000, fds%1000, fds/33 ));
+		status->setText(eString().sprintf(_("in use, %d.%03d GB (~%d minutes) free"), fds/1024, fds%1024, fds/33 ));
 	else
 		status->setText(_("initialized, but unknown filesystem"));
 }

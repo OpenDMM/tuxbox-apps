@@ -48,7 +48,7 @@ eZapSetup::eZapSetup()
 {
 	move(ePoint(135, 120));
 	int havenetwork, haveci, haveharddisk, havelcd, haverfmod;
-	switch (atoi(eDVB::getInstance()->getInfo("mID").c_str()))
+	switch (eDVB::getInstance()->getmID())
 	{
 	case 1:
 	case 2:
