@@ -74,7 +74,6 @@ eZapLanguageSetup::eZapLanguageSetup(): eWindow(0)
 		}
 		fclose(f);
 	}
-	
 	free(temp);
 	
 	language->setCurrent(cur);
