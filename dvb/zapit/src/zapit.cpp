@@ -927,7 +927,7 @@ bool parse_command(CBasicMessage::Header &rmsg, int connfd)
 		CZapitMessages::commandExistsBouquet msgExistsBouquet;
 		CZapitMessages::responseGeneralInteger responseInteger;
 		CBasicServer::receive_data(connfd, &msgExistsBouquet, sizeof(msgExistsBouquet));
-		responseInteger.number = bouquetManager->existsBouquet(convert_to_UTF8(std::string(msgExistsBouquet.name)));
+		responseInteger.number = bouquetManager->existsBouquet(msgExistsBouquet.name);
 		CBasicServer::send_data(connfd, &responseInteger, sizeof(responseInteger)); // bouquet & channel number are already starting at 0!
 		break;
 	}

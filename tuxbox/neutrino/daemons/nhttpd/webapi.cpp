@@ -32,6 +32,8 @@
 #include "algorithm"
 #include "sstream"
 
+#include <zapit/client/zapittools.h>
+
 //-------------------------------------------------------------------------
 bool CWebAPI::Execute(CWebserverRequest* request)
 {
@@ -879,7 +881,7 @@ bool CWebAPI::ShowTimerList(CWebserverRequest* request)
 			case CTimerd::TIMER_ZAPTO :
 			case CTimerd::TIMER_RECORD :
 			{
-				sAddData = CZapitClient::Utf8_to_Latin1(Parent->Zapit->getChannelName(timer->channel_id));
+				sAddData = ZapitTools::UTF8_to_Latin1(Parent->Zapit->getChannelName(timer->channel_id).c_str());
 				if (sAddData.empty())
 					sAddData = Parent->Zapit->isChannelTVChannel(timer->channel_id) ? "Unbekannter TV-Kanal" : "Unbekannter Radiokanal";
 

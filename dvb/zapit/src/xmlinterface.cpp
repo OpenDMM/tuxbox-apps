@@ -76,47 +76,6 @@ std::string Unicode_Character_to_UTF8(const int character)
 #endif /* USE_LIBXML */
 }
 
-
-std::string convert_UTF8_To_UTF8_XML(const std::string s)
-{
-	std::string r;
-
-	for (std::string::const_iterator it = s.begin(); it != s.end(); it++)
-	{
-		switch (*it)           // cf. http://www.w3.org/TR/xhtml1/dtds.html
-		{
-		case '<':           
-			r += "&lt;";
-			break;
-		case '>':
-			r += "&gt;";
-			break;
-		case '&':
-			r += "&amp;";
-			break;
-		case '\"':
-			r += "&quot;";
-			break;
-		case '\'':
-			r += "&apos;";
-			break;
-		default:
-			r += *it;      // all UTF8 chars with more than one byte are >= 0x80 !
-/*
-  default:
-  // skip characters which are not part of ISO-8859-1
-  // 0x00 - 0x1F & 0x80 - 0x9F
-  // cf. http://czyborra.com/charsets/iso8859.html
-  //
-  // reason: sender name contain 0x86, 0x87 and characters below 0x20
-  if ((((unsigned char)s[i]) & 0x60) != 0)
-  r += *it;
-*/
-		}
-	}
-	return r;
-}
-
 std::string convert_to_UTF8(const std::string s)
 {
 	std::string r;

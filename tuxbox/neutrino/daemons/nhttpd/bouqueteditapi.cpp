@@ -26,6 +26,8 @@
 #include "bouqueteditapi.h"
 #include "debug.h"
 
+#include <zapit/client/zapittools.h>
+
 //-------------------------------------------------------------------------
 
 bool CBouqueteditAPI::Execute(CWebserverRequest* request)
@@ -125,10 +127,10 @@ bool CBouqueteditAPI::showBouquets(CWebserverRequest* request)
 		else
 			request->printf("<TD><CENTER><A HREF=\"set?selected=%i&action=hide#akt\"><IMG border=0 src=\"../images/visible.gif\" TITLE=\"Bouquet anzeigen\"></A></CENTER></TD>\n", bouquet->bouquet_nr + 1);
 
-		request->printf("<TD><A HREF=\"edit?selected=%i&name=%s\">%s</A></TD>", bouquet->bouquet_nr + 1, bouquet->name, CZapitClient::Utf8_to_Latin1(bouquet->name).c_str());
-		request->printf("<TD WIDTH=\"100\"><NOBR><A HREF=\"rename?selected=%i&name=%s\"><IMG border=0 SRC=\"../images/modify.png\" TITLE=\"Bouquet umbenennen\"></a>&nbsp;\n",bouquet->bouquet_nr + 1, CZapitClient::Utf8_to_Latin1(bouquet->name).c_str());
+		request->printf("<TD><A HREF=\"edit?selected=%i&name=%s\">%s</A></TD>", bouquet->bouquet_nr + 1, bouquet->name, ZapitTools::UTF8_to_Latin1(bouquet->name).c_str());
+		request->printf("<TD WIDTH=\"100\"><NOBR><A HREF=\"rename?selected=%i&name=%s\"><IMG border=0 SRC=\"../images/modify.png\" TITLE=\"Bouquet umbenennen\"></a>&nbsp;\n",bouquet->bouquet_nr + 1, ZapitTools::UTF8_to_Latin1(bouquet->name).c_str());
 		request->printf("<A HREF=\"delete?selected=%i&name=%s\"><IMG border=0 src=\"../images/remove.png\" TITLE=\"Bouquet löschen\"></A>&nbsp;\n",
-			bouquet->bouquet_nr + 1, CZapitClient::Utf8_to_Latin1(bouquet->name).c_str());
+			bouquet->bouquet_nr + 1, ZapitTools::UTF8_to_Latin1(bouquet->name).c_str());
 		
 
 		// move down
@@ -165,7 +167,7 @@ bool CBouqueteditAPI::addBouquet(CWebserverRequest* request)
 	}
 	else
 	{
-		if (Parent->Zapit->existsBouquet(request->ParameterList["name"]) == -1) {
+		if (Parent->Zapit->existsBouquet(ZapitTools::Latin1_to_UTF8(request->ParameterList["name"].c_str()).c_str()) == -1) {
 			Parent->Zapit->addBouquet(request->ParameterList["name"]);
 			request->Send302("/bouquetedit/main#akt");
 		} else {
