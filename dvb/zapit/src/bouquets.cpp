@@ -315,7 +315,8 @@ void CBouquetManager::makeRemainingChannelsBouquet()
 			chans_processed.insert((*jt)->getChannelID());
 	}
 
-	remainChannels = addBouquet((Bouquets.size() == 0) ? "Alle Kanäle" : "Andere"); // TODO: use locales
+	// TODO: use locales
+	remainChannels = addBouquet((Bouquets.size() == 0) ? "Alle Kan\xC3\xA4le" : "Andere"); // UTF-8 encoded
 
 	for (tallchans_iterator it=allchans.begin(); it != allchans.end(); it++)
 		if (chans_processed.find(it->first) == chans_processed.end())
