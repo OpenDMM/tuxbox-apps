@@ -426,7 +426,9 @@ delivery_system_t CZapitClient::getDeliverySystem(void)
 	send(CZapitMessages::CMD_GET_DELIVERY_SYSTEM, 0, 0);
 
 	CZapitMessages::responseDeliverySystem response;
-	CBasicClient::receive_data((char* )&response, sizeof(response));
+
+	if (!CBasicClient::receive_data((char* )&response, sizeof(response)))
+		response.system = DVB_S;  // return DVB_S if communication fails
 
 	close_connection();
 
