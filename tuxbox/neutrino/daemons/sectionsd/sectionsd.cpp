@@ -23,8 +23,8 @@
 //    Foundation, Inc., 675 Mass Ave, Cambridge, MA 02139, USA.
 //
 //  $Log$
-//  Revision 1.86  2001/11/22 12:53:38  field
-//  Kleinere Updates
+//  Revision 1.87  2001/11/22 13:19:00  field
+//  Liefert nun auch nur NEXT Epg ab
 //
 //  Revision 1.85  2001/11/15 13:25:58  field
 //  Bugfix, zeigt endlich auch die Events im gleichen Bouquet
@@ -1077,6 +1077,25 @@ static const SIevent& findActualSIeventForServiceUniqueKey(const unsigned servic
     return nullEvt;
 }
 
+static const SIevent& findNextSIeventForServiceUniqueKey(const unsigned serviceUniqueKey, SItime& zeit)
+{
+    time_t azeit=time(NULL);
+
+    for(MySIeventsOrderFirstEndTimeServiceIDEventUniqueKey::iterator e=mySIeventsOrderFirstEndTimeServiceIDEventUniqueKey.begin(); e!=mySIeventsOrderFirstEndTimeServiceIDEventUniqueKey.end(); e++)
+        if(SIservice::makeUniqueKey(e->first->originalNetworkID, e->first->serviceID)==serviceUniqueKey)
+        {
+            for(SItimes::iterator t=e->first->times.begin(); t!=e->first->times.end(); t++)
+                if ((long)(azeit)<=(long)(t->startzeit+t->dauer))
+                {
+                    zeit=*t;
+                    return *(e->first);
+                }
+        }
+
+    return nullEvt;
+}
+
+
 static const SIevent &findActualSIeventForServiceName(const char *serviceName, SItime& zeit)
 {
     unsigned serviceUniqueKey=findServiceUniqueKeyforServiceName(serviceName);
@@ -1602,9 +1621,15 @@ static void commandCurrentNextInfoChannelID(struct connectionData *client, char 
         dprintf("[sectionsd] current EPG found.\n");
 
         nextEvt=findNextSIevent(evt.uniqueKey(), zeitEvt2);
+    }
+    else
+    if ( flag & sectionsd::epg_has_anything )
+        nextEvt=findNextSIeventForServiceUniqueKey(*uniqueServiceKey, zeitEvt2);
 
-        if(nextEvt.serviceID!=0)
-            dprintf("[sectionsd] next EPG found.\n");
+    if(nextEvt.serviceID!=0)
+    {
+        dprintf("[sectionsd] next EPG found.\n");
+        flag|= sectionsd::epg_has_next;
     }
 
         nResultDataSize=
