@@ -102,7 +102,7 @@ class CZapitChannel
 		CZapitAudioChannel * getAudioChannel (unsigned char index = 0xFF);
 		unsigned short getAudioPid (unsigned char index = 0xFF);
 
-		int addAudioChannel(unsigned short pid, bool isAc3, string description, unsigned char componentTag);
+		int addAudioChannel(unsigned short pid, bool isAc3, std::string description, unsigned char componentTag);
 
 		/* set methods */
 		void setName(std::string pName)				{ name = pName; }

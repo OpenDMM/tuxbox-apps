@@ -92,7 +92,7 @@ unsigned short CZapitChannel::getAudioPid (unsigned char index = 0xFF)
 	return 0;
 }
 
-int CZapitChannel::addAudioChannel(unsigned short pid, bool isAc3, string description, unsigned char componentTag)
+int CZapitChannel::addAudioChannel(unsigned short pid, bool isAc3, std::string description, unsigned char componentTag)
 {
 	unsigned char i;
 
