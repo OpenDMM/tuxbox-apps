@@ -387,29 +387,28 @@ bool CControlAPI::VolumeCGI(CWebserverRequest *request)
 	else
 	if (request->ParameterList.size() == 1)
 	{
-		if(request->ParameterList["mute"] != "")
+		if(request->ParameterList["1"].compare("mute") == 0)
 		{
 			Parent->Controld->setMute(true);
 			request->SendOk();					// muten
 			return true;
 		}
 		else
-		if(request->ParameterList["unmute"] != "")
+		if(request->ParameterList["1"].compare("unmute") == 0)
 		{
 			Parent->Controld->setMute(false);
 			request->SendOk();					// unmuten
 			return true;
 		}
 		else
-		if(request->ParameterList["status"] != "")
+		if(request->ParameterList["1"].compare("status") == 0)
 		{
 			request->SocketWrite( (char *) (Parent->Controld->getMute()?"1":"0") );	//  mute
 			return true;
 		}
 		else
 		{	//set volume
-			char vol = atol( request->ParameterList[0].c_str() );
-			request->SocketWrite((char*) request->ParameterList[0].c_str() );
+			char vol = atol( request->ParameterList["1"].c_str() );
 			Parent->Controld->setVolume(vol);
 			request->SendOk();
 			return true;
