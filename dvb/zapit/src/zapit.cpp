@@ -707,18 +707,14 @@ bool parse_command(CBasicMessage::Header &rmsg, int connfd)
 	
 	case CZapitMessages::CMD_SCANSETSCANMOTORPOSLIST:
 	{
-		CZapitClient::commandSetScanMotorPosList sat;
-		FILE * fd = NULL;
+		CZapitClient::commandSetScanMotorPosList pos;
 		
-		fopen(MOTORCONFIGFILE, "w");
 		motorPositions.clear();
-		while (CBasicServer::receive_data(connfd, &sat, sizeof(sat))) 
+		while (CBasicServer::receive_data(connfd, &pos, sizeof(pos))) 
 		{
-			DBG("adding %s (motorPos %d)", sat.satName, sat.motorPos);
-			motorPositions[sat.satName] = sat.motorPos;
-			fprintf(fd, "%s %d\n", sat.satName, sat.motorPos);
+			DBG("adding %s (motorPos %d)", pos.satName, pos.motorPos);
+			motorPositions[pos.satName] = pos.motorPos;
 		}
-		fclose(fd);
 		break;
 	}
 	
