@@ -351,7 +351,7 @@ void eHarddiskMenu::s_format()
 		}
 		fprintf(f, "0,\n;\n;\n;\ny\n");
 		fclose(f);
-
+#if 0
 		if ( !fs->getCurrent()->getKey() )  // reiserfs
 		{
 			::sync();
@@ -369,10 +369,11 @@ void eHarddiskMenu::s_format()
 			goto noerr;
 		}
 		else  // ext3
+#endif
 		{
 			::sync();
 			if ( system( eString().sprintf(
-					"/sbin/mkfs.ext3 -T largefile4 /dev/ide/host%d/bus%d/target%d/lun0/part1", host, bus, target).c_str())>>8)
+					"/sbin/mkfs.ext3 -T largefile /dev/ide/host%d/bus%d/target%d/lun0/part1", host, bus, target).c_str())>>8)
 				goto err;
 			::sync();
 			if ( system(eString().sprintf(
@@ -456,7 +457,9 @@ eHarddiskMenu::eHarddiskMenu(int dev): dev(dev), restartNet(false)
 	sbar = new eStatusBar(this); sbar->setName("statusbar");
 
 	new eListBoxEntryText( *fs, ("ext3"), (void*) 1 );
+#ifdef ENABLE_REISERFS
 	new eListBoxEntryText( *fs, ("reiserfs"), (void*) 0 );
+#endif
 	fs->setCurrent((void*)1);
   
 	if (eSkin::getActive()->build(this, "eHarddiskMenu"))
