@@ -736,8 +736,8 @@ void handlesockmsg (unsigned char * buffer, ssize_t len, int connfd)
 
 					for (i = 0; i < caid_count; i++)
 					{
-						reply[i + 4] = caid[i] >> 8;
-						reply[i + 5] = caid[i];
+						reply[(i << 1) + 4] = caid[i] >> 8;
+						reply[(i << 1) + 5] = caid[i];
 					}
 
 					if (write(connfd, reply, sizeof(reply)) < 0)
