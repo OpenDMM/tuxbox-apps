@@ -2535,8 +2535,10 @@ int CNeutrinoApp::handleMsg(uint msg, uint data)
 				serverinfo.StopSectionsd = (g_settings.network_streaming_stopsectionsd == 1);
 				CVCRControl::getInstance()->setDeviceOptions(0,&serverinfo);
 
-				CVCRControl::getInstance()->Record((CTimerd::EventInfo *) data);
-				streamstatus = 1;
+				if (CVCRControl::getInstance()->Record((CTimerd::EventInfo *) data))
+               streamstatus = 1;
+            else
+               streamstatus = 0;
 			}
 			else
 				printf("Keine vcr Devices registriert\n");
@@ -3084,13 +3086,18 @@ bool CNeutrinoApp::changeNotify(string OptionName, void *Data)
 			{
 				eventinfo.channel_id = g_RemoteControl->current_channel_id;
 				eventinfo.epgID = g_RemoteControl->current_EPGid;
+            eventinfo.apid = 0;
 
 				CVCRControl::CServerDeviceInfo serverinfo;
 				serverinfo.StopPlayBack = (g_settings.network_streaming_stopplayback == 1);
 				serverinfo.StopSectionsd = (g_settings.network_streaming_stopsectionsd == 1);
 				CVCRControl::getInstance()->setDeviceOptions(0,&serverinfo);
 
-				CVCRControl::getInstance()->Record(&eventinfo);
+				if (CVCRControl::getInstance()->Record(&eventinfo)==false)
+            {
+               streamstatus=0;
+               return false;
+            }
 			}
 			else
 			{
