@@ -49,7 +49,7 @@ BouquetAssociationTable::BouquetAssociationTable(const uint8_t * const buffer) :
 
 BouquetAssociationTable::~BouquetAssociationTable(void)
 {
-	for (BouquetAssociationIterator b = bouquet.begin(); b != bouquet.end(); b--)
+	for (BouquetAssociationIterator b = bouquet.begin(); b != bouquet.end(); ++b)
 		delete *b;
 }
 
