@@ -416,12 +416,15 @@ int zapit (uint32_t onid_sid, bool in_nvod)
 		debug("[zapit] demux device already closed (audio)\n");
 	}
 
-	/* if channel's transponder does not match frontend's tuned transponder ... */
-	if (cit->second.getTsidOnid() != frontend->getTsidOnid())
+	/* store the new channel */
+	if ((channel == NULL) || (onid_sid != channel->getOnidSid()))
 	{
-		/* ... store the new channel, ... */
 		channel = &(cit->second);
+	}
 
+	/* if channel's transponder does not match frontend's tuned transponder ... */
+	if (channel->getTsidOnid() != frontend->getTsidOnid())
+	{
 		/* ... tune to it ... */
 		if (frontend->tuneChannel(channel) == true)
 		{
@@ -634,7 +637,6 @@ int zapit (uint32_t onid_sid, bool in_nvod)
 			debug("[zapit] audio bypass mode set\n");
 		}
 	}
-
 
 	if (channel->getVideoPid() != NONE)
 	{
