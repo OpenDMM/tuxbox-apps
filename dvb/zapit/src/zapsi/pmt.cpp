@@ -59,6 +59,7 @@ unsigned short parse_ES_info(const unsigned char * const buffer, CZapitChannel *
 	unsigned char i;
 
 	bool isAc3 = false;
+	bool isDts = false;
 	std::string description = "";
 	unsigned char componentTag = 0xFF;
 
@@ -83,6 +84,12 @@ unsigned short parse_ES_info(const unsigned char * const buffer, CZapitChannel *
 
 			case 0x03:
 				audio_stream_descriptor(buffer + pos);
+				break;
+
+			case 0x05:
+				if (descriptor_length >= 3)
+					if (!strncmp((const char*)&buffer[pos + 2], "DTS", 3))
+						isDts = true;
 				break;
 
 			case 0x09:
@@ -200,10 +207,13 @@ unsigned short parse_ES_info(const unsigned char * const buffer, CZapitChannel *
 		break;
 
 	case 0x06:
-		if (isAc3) {
+		if ((isAc3) || (isDts)) {
 			if (description == "") {
 				description = esInfo->elementary_PID;
-				description += " (AC3)";
+				if (isAc3)
+					description += " (AC3)";
+				else if (isDts)
+					description += " (DTS)";
 			}
 			channel->addAudioChannel(esInfo->elementary_PID, true, description, componentTag);
 		}
