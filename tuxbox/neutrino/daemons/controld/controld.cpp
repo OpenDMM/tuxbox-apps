@@ -690,30 +690,42 @@ void LoadScart()
 	philips_dvb[1]= 1;
 	philips_dvb[2]= 1;
 
-	FILE* fd = fopen(CONFIGDIR "/scart.conf", "r");
+	FILE* fd = fopen(CONFIGDIR"/scart.conf", "r");
 	if(fd)
 	{
 		printf("[controld]: loading scart-config (scart.conf)\n");
 
 		char buf[1000];
 		if(fgets(buf,sizeof(buf),fd)!=NULL)
-			sscanf( buf, "nokia_scart: %d %d %d\n", nokia_scart[0], nokia_scart[1], nokia_scart[2] );
-		printf( buf );
+		{
+			sscanf( buf, "nokia_scart: %d %d %d\n", &nokia_scart[0], &nokia_scart[1], &nokia_scart[2] );
+			printf( buf );
+		}
 		if(fgets(buf,sizeof(buf),fd)!=NULL)
-			sscanf( buf, "nokia_dvb: %d %d %d\n", nokia_dvb[0], nokia_dvb[1], nokia_dvb[2] );
-		printf( buf );
+		{
+			sscanf( buf, "nokia_dvb: %d %d %d\n", &nokia_dvb[0], &nokia_dvb[1], &nokia_dvb[2] );
+			printf( buf );
+		}
 		if(fgets(buf,sizeof(buf),fd)!=NULL)
-			sscanf( buf, "sagem_scart: %d %d %d\n", sagem_scart[0], sagem_scart[1], sagem_scart[2] );
-		printf( buf );
+		{
+			sscanf( buf, "sagem_scart: %d %d %d\n", &sagem_scart[0], &sagem_scart[1], &sagem_scart[2] );
+			printf( buf );
+		}
 		if(fgets(buf,sizeof(buf),fd)!=NULL)
-			sscanf( buf, "sagem_dvb: %d %d %d\n", sagem_dvb[0], sagem_dvb[1], sagem_dvb[2] );
-		printf( buf );
+		{
+			sscanf( buf, "sagem_dvb: %d %d %d\n", &sagem_dvb[0], &sagem_dvb[1], &sagem_dvb[2] );
+			printf( buf );
+		}
 		if(fgets(buf,sizeof(buf),fd)!=NULL)
-			sscanf( buf, "philips_scart: %d %d %d\n", philips_scart[0], philips_scart[1], philips_scart[2] );
-		printf( buf );
+		{
+			sscanf( buf, "philips_scart: %d %d %d\n", &philips_scart[0], &philips_scart[1], &philips_scart[2] );
+			printf( buf );
+		}
 		if(fgets(buf,sizeof(buf),fd)!=NULL)
-			sscanf( buf, "philips_dvb: %d %d %d\n", philips_dvb[0], philips_dvb[1], philips_dvb[2] );
-		printf( buf );
+		{
+			sscanf( buf, "philips_dvb: %d %d %d\n", &philips_dvb[0], &philips_dvb[1], &philips_dvb[2] );
+			printf( buf );
+		}
 		fclose(fd);
 	}
 	else
