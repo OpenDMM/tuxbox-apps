@@ -2440,7 +2440,6 @@ int CNeutrinoApp::handleMsg(uint msg, uint data)
 			else
 				g_RCInput->postMsg( NeutrinoMessages::VCR_OFF, 0 );
 		}
-		delete (unsigned char*) data;
 		return messages_return::handled | messages_return::cancel_info;
 	}
 	else if( msg == CRCInput::RC_standby )
