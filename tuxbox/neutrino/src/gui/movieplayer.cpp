@@ -120,7 +120,8 @@ static long fileposition;
 ringbuffer_t *ringbuf;
 bool bufferfilled;
 int streamingrunning;
-unsigned short pida, pidv, ac3;
+unsigned short pida, pidv;
+short ac3;
 CHintBox *hintBox;
 CHintBox *bufferingBox;
 bool avpids_found;
@@ -649,7 +650,7 @@ PlayStreamThread (void *mrl)
 	char buf[348 * 188];
 	bool failed = false;
 	// use global pida and pidv
-	pida = 0, pidv = 0, ac3 = 0;
+	pida = 0, pidv = 0, ac3 = -1;
 	int done, dmxa = 0, dmxv = 0, dvr = 0, adec = 0, vdec = 0;
 	struct dmx_pes_filter_params p;
 	ssize_t wr;
@@ -707,8 +708,14 @@ PlayStreamThread (void *mrl)
 			{
 				driverready = true;
 				// pida and pidv should have been set by ReceiveStreamThread now
-				printf ("[movieplayer.cpp] PlayStreamthread: while streaming found pida: 0x%04X ; pidv: 0x%04X\n",
-					pida, pidv);
+				// WHY ???!!!!
+				// TODO replace this with a condition/mutex !
+				while(!avpids_found)
+				{
+					usleep(100000);
+				}
+				printf ("[movieplayer.cpp] PlayStreamthread: while streaming found pida: 0x%04X ; pidv: 0x%04X ac3: %d\n",
+					pida, pidv, ac3);
 
 				p.input = DMX_IN_DVR;
 				p.output = DMX_OUT_DECODER;
@@ -722,6 +729,7 @@ PlayStreamThread (void *mrl)
 				if (ioctl (dmxv, DMX_SET_PES_FILTER, &p) < 0)
 					failed = true;
 				if (ac3 == 1) {
+					printf("Setting bypass mode\n");
 					if (ioctl (adec, AUDIO_SET_BYPASS_MODE,0UL)<0)
 					{
 						perror("AUDIO_SET_BYPASS_MODE");
@@ -801,7 +809,7 @@ PlayStreamThread (void *mrl)
 				ioctl (dmxv, DMX_STOP);
 				ioctl (dmxa, DMX_STOP);
 				ioctl (vdec, VIDEO_PLAY);
-				if (g_settings.streaming_ac3_enabled == 1) {
+				if (ac3 == 1) {
 					ioctl (adec, AUDIO_SET_BYPASS_MODE, 0UL );
 				}
 				else
@@ -1195,7 +1203,7 @@ PlayFileThread (void *filename)
 	else if (!failed)
 	{
 		ioctl (vdec, VIDEO_PLAY);
-		if (g_settings.streaming_ac3_enabled == 1) {
+		if (ac3 == 1) {
 			ioctl (adec, AUDIO_SET_BYPASS_MODE,0UL);
 		}
 		else
