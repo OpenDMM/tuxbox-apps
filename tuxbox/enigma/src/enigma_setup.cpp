@@ -41,7 +41,7 @@
 #include "upgrade.h"
 
 eZapSetup::eZapSetup()
-	:eListBoxWindow<eListBoxEntryMenu>(_("Setup"), 12, 220, true)
+	:eListBoxWindow<eListBoxEntryMenu>(_("Setup"), 12, 300, true)
 {
 	move(ePoint(150, 90)); 
 	CONNECT((new eListBoxEntryMenu(&list, _("[back]"), _("back to Mainmenu") ))->selected, eZapSetup::sel_close);
@@ -56,7 +56,7 @@ eZapSetup::eZapSetup()
 	if (eDVB::getInstance()->getInfo("mID") == "05")
 	{
 		CONNECT((new eListBoxEntryMenu(&list, _("Harddisk..."), _("initialize harddisc") ))->selected, eZapSetup::sel_harddisk);
-		CONNECT((new eListBoxEntryMenu(&list, _("Common Interface..."), _("initialize harddisc") ))->selected, eZapSetup::sel_ci);
+		CONNECT((new eListBoxEntryMenu(&list, _("Common Interface..."), _("show CI Menu") ))->selected, eZapSetup::sel_ci);
 		CONNECT((new eListBoxEntryMenu(&list, _("Upgrade..."), _("upgrade firmware") ))->selected, eZapSetup::sel_upgrade);
 	}
 }
