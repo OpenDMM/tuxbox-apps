@@ -1632,6 +1632,8 @@ void CNeutrinoApp::InitZapper()
 
 int CNeutrinoApp::run(int argc, char **argv)
 {
+	CmdParser(argc, argv);
+
 	g_info.box_Type = atoi(getenv("mID"));
 	g_info.gtx_ID = -1;
 	sscanf(getenv("gtxID"), "%x", &g_info.gtx_ID);
@@ -1649,7 +1651,6 @@ int CNeutrinoApp::run(int argc, char **argv)
 	g_settings.timing_epg = 2* 60;
 	g_settings.timing_infobar = 6;
 
-	CmdParser(argc, argv);
 
 	g_Fonts = new FontsDef;
 	SetupFonts();
