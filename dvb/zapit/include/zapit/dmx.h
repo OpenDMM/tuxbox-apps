@@ -32,6 +32,7 @@
 
 int setDmxSctFilter (int fd, unsigned short pid, unsigned char * filter, unsigned char * mask);
 int setDmxPesFilter (int fd, dmxOutput_t output, dmxPesType_t pesType, unsigned short pid);
-int unsetDmxFilter (int fd);
+int startDmxFilter (int fd);
+int stopDmxFilter (int fd);
 
 #endif /* __dmx_h__ */
