@@ -1,6 +1,4 @@
 /*
-//  $Id$
-
 	Neutrino-GUI  -   DBoxII-Project
 
 	Copyright (C) 2001 Steffen Hehn 'McClean'
@@ -161,6 +159,9 @@ struct NeutrinoMessages {
 class CNeutrinoApp : public CMenuTarget, COnPaintNotifier, CChangeObserver
 {
 	private:
+		
+		CFrameBuffer	*frameBuffer;
+
 		enum
 		{
 			mode_unknown = -1,
