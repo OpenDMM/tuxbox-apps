@@ -21,6 +21,7 @@
  */
 
 #include <enigma_setup.h>
+#include <lib/dvb/edvb.h>
 #include <lib/gui/emessage.h>
 #include <lib/system/econfig.h>
 #include <system_settings.h>
