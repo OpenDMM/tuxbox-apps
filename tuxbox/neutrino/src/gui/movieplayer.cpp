@@ -2225,17 +2225,49 @@ void CMoviePlayerGui::PlayFile (int parental)
 				std::string apidtitle = "Stream ";
 				apidtitle.append(apidnumber);
 
-				if(ac3flags[count]) apidtitle.append(" (AC3)");
+				if(ac3flags[count] == 2) 
+				{
+					apidtitle.append(" (Teletext)");
 
-				APIDSelector.addItem
-				(
-				new CMenuForwarderNonLocalized
-				(
-				apidtitle.c_str(), true, NULL, APIDChanger, apidnumber, 
-				CRCInput::convertDigitToKey(count+1)
-				), 
-				(count == 0)
-				);
+					APIDSelector.addItem
+					(
+					new CMenuForwarderNonLocalized
+					(
+					apidtitle.c_str(), false, NULL, APIDChanger, apidnumber, 
+					CRCInput::convertDigitToKey(count+1)
+					), 
+					(count == 0)
+					);
+				};
+				
+				if(ac3flags[count] == 1) 
+				{
+					apidtitle.append(" (AC3)");
+
+					APIDSelector.addItem
+					(
+					new CMenuForwarderNonLocalized
+					(
+					apidtitle.c_str(), true, NULL, APIDChanger, apidnumber, 
+					CRCInput::convertDigitToKey(count+1)
+					), 
+					(count == 0)
+					);
+				};
+				
+				if(!ac3flags[count]) 
+				{
+					APIDSelector.addItem
+					(
+					new CMenuForwarderNonLocalized
+					(
+					apidtitle.c_str(), true, NULL, APIDChanger, apidnumber, 
+					CRCInput::convertDigitToKey(count+1)
+					), 
+					(count == 0)
+					);
+					
+				};
 			}
 
 			APIDSelector.exec(NULL, "");
