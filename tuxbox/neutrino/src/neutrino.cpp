@@ -2639,6 +2639,24 @@ int CNeutrinoApp::handleMsg(uint msg, uint data)
 			ShowMsg ( "messagebox.info", string((char *) data) , CMessageBox::mbrBack, CMessageBox::mbBack, "info.raw" );
 			return messages_return::handled;
 		}
+		else if ( msg == NeutrinoMessages::CHANGEMODE )
+		{
+			if(data == mode_radio)
+			{
+				if ( mode == mode_tv )
+					radioMode();
+			}
+			if(data == mode_tv)				
+			{
+				if ( mode == mode_radio )
+					tvMode();
+			}
+			if(data == mode_standby)
+			{
+				if(mode != mode_standby)
+					standbyMode( true );
+			}
+		}
 
 	if ( ( msg>= CRCInput::RC_WithData ) && ( msg< CRCInput::RC_WithData+ 0x10000000 ) )
 		delete (unsigned char*) data;
