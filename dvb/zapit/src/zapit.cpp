@@ -307,6 +307,8 @@ int zapit(const t_channel_id channel_id, bool in_nvod, uint32_t tsid_onid)
 	{
 		bool failed = false;
 
+		thisChannel->resetPids();
+
 		DBG("looking up pids for channel_id " PRINTF_CHANNEL_ID_TYPE, thisChannel->getChannelID());
 
 		/* get program map table pid from program association table */
