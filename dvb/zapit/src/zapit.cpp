@@ -22,8 +22,6 @@
  *
  */
 
-#define UPDATE_PMT 1
-
 /* system headers */
 #include <csignal>
 #include <fcntl.h>

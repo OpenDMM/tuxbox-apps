@@ -19,7 +19,7 @@
  * Foundation, Inc., 675 Mass Ave, Cambridge, MA 02139, USA.
  *
  */
-#define UPDATE_PMT 1
+
 #ifdef UPDATE_PMT
 #include <fcntl.h>
 #include <sys/ioctl.h>
