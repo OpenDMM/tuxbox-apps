@@ -25,6 +25,9 @@
 //    Foundation, Inc., 675 Mass Ave, Cambridge, MA 02139, USA.
 //
 //  $Log$
+//  Revision 1.30  2002/03/18 15:08:50  field
+//  Updates...
+//
 //  Revision 1.29  2002/03/12 16:12:55  field
 //  Bugfixes
 //
@@ -131,7 +134,7 @@ struct sectionsd
 		unsigned dauer;
 	} __attribute__ ((packed)) ;
 
-	static const int numberOfCommands=23;
+	static const int numberOfCommands=24;
 	enum commands
 	{
 		actualEPGchannelName=0,
@@ -156,7 +159,8 @@ struct sectionsd
 		allEventsChannelID,
 		timesNVODservice,
 		getEPGPrevNext,
-		getIsTimeSet
+		getIsTimeSet,
+		serviceChanged
 	};
 
 	static const int numberOfCommands_v3=2;
