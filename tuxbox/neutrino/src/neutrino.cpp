@@ -32,6 +32,9 @@
 	Foundation, Inc., 675 Mass Ave, Cambridge, MA 02139, USA.
 
   $Log$
+  Revision 1.152  2002/02/09 01:39:58  Simplex
+  dont zap to 0 after editing bouquets
+
   Revision 1.151  2002/02/08 17:49:15  field
   epg verbessert
 
@@ -2359,9 +2362,9 @@ bool CNeutrinoApp::changeNotify(string OptionName)
 	/* (libevent) */
 void CNeutrinoBouquetEditorEvents::onBouquetsChanged()
 {
-	neutrino->firstChannel();
+//	neutrino->firstChannel();
 	neutrino->channelsInit();
-	neutrino->channelList->zapTo( 0 );
+//	neutrino->channelList->zapTo( 0 );
 }
 
 
