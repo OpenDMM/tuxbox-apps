@@ -278,23 +278,6 @@ channel_msg load_settings()
 	return output_msg;
 }
 
-bool setAudioMute (bool mute)
-{
-	if ((audio_fd == -1) && ((audio_fd = open(AUDIO_DEV, O_RDWR)) < 0))
-	{
-		perror("[zapit] " AUDIO_DEV);
-		return false;
-	}
-
-	if (ioctl(audio_fd, AUDIO_SET_MUTE, mute) < 0)
-	{
-		perror("[zapit] AUDIO_SET_MUTE");
-		return false;
-	}
-
-	return true;
-}
-
 bool setAudioBypassMode (bool isAc3)
 {
 	if (isAc3 == wasAc3)
@@ -321,6 +304,45 @@ bool setAudioBypassMode (bool isAc3)
 	}
 
 	wasAc3 = isAc3;
+
+	return true;
+}
+
+bool setAudioMute (bool mute)
+{
+	if ((audio_fd == -1) && ((audio_fd = open(AUDIO_DEV, O_RDWR)) < 0))
+	{
+		perror("[zapit] " AUDIO_DEV);
+		return false;
+	}
+
+	if (ioctl(audio_fd, AUDIO_SET_MUTE, mute) < 0)
+	{
+		perror("[zapit] AUDIO_SET_MUTE");
+		return false;
+	}
+
+	return true;
+}
+
+bool setAudioVolume (unsigned int left, unsigned int right)
+{
+	audioMixer_t mixer;
+
+	if ((audio_fd == -1) && ((audio_fd = open(AUDIO_DEV, O_RDWR)) < 0))
+	{
+		perror("[zapit] " AUDIO_DEV);
+		return false;
+	}
+
+	mixer.volume_left = left;
+	mixer.volume_right = right;
+
+	if (ioctl(audio_fd, AUDIO_SET_MIXER, &mixer) < 0)
+	{
+		perror("[zapit] AUDIO_SET_MIXER");
+		return false;
+	}
 
 	return true;
 }
@@ -1459,6 +1481,12 @@ void parse_command ()
 				setAudioMute(msgBoolean.truefalse);
 				break;
 
+			case CZapitClient::CMD_SET_VOLUME:
+				CZapitClient::commandVolume msgVolume;
+				read(connfd, &msgVolume, sizeof(msgVolume));
+				setAudioVolume(msgVolume.left, msgVolume.right);
+				break;
+
 			default:
 				printf("[zapit] unknown command (version %d)\n", CZapitClient::ACTVERSION);
 				break;
@@ -2155,6 +2183,7 @@ unsigned int zapTo_Onid_Sid (unsigned int onidSid, bool isSubService)
 
 	if (zapit(onidSid, isSubService) < 0)
 	{
+		printf("[zapit] ZAP FAILED -> CRASH FOLLOWS\n");
 		eventServer->sendEvent((isSubService ? CZapitClient::EVT_ZAP_SUB_FAILED : CZapitClient::EVT_ZAP_FAILED), CEventServer::INITID_ZAPIT, &onidSid, sizeof(onidSid));
 		return result;
 	}
