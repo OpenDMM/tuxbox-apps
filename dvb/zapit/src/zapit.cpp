@@ -1589,6 +1589,12 @@ void parse_command ()
 					unsetRecordMode();
 			break;
 
+			case CZapitClient::CMD_GET_RECORD_MODE :
+				CZapitClient::responseGetRecordModeState msgGetRecordModeState;
+				msgGetRecordModeState.activated = (currentMode & RECORD_MODE);
+				send( connfd, &msgGetRecordModeState, sizeof(msgGetRecordModeState),0);
+			break;
+
 			case CZapitClient::CMD_BQ_ADD_BOUQUET :
 				CZapitClient::commandAddBouquet msgAddBouquet;
 				read( connfd, &msgAddBouquet, sizeof(msgAddBouquet));
