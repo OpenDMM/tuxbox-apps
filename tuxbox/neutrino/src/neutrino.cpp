@@ -32,6 +32,9 @@
 	Foundation, Inc., 675 Mass Ave, Cambridge, MA 02139, USA.
  
   $Log$
+  Revision 1.134  2002/01/18 02:09:39  McClean
+  tv-radiomode-switch implemented
+
   Revision 1.133  2002/01/16 02:09:04  McClean
   cleanups+quickzap-fix
 
@@ -1922,6 +1925,18 @@ void CNeutrinoApp::RealRun(CMenuWidget &mainMenu)
 	{
 		int key = g_RCInput->getKey();
 
+		if (key==g_settings.key_tvradio_mode)
+		{
+			if(mode == mode_tv)
+			{
+				radioMode();
+			}
+			else if(mode == mode_radio)
+			{
+				tvMode();
+			}
+		}
+
 		if (key==CRCInput::RC_setup)
 		{
 			g_InfoViewer->killTitle();
@@ -2255,7 +2270,7 @@ void CNeutrinoApp::radioMode()
 	#endif
 
 	g_FrameBuffer->loadPal("radiomode.pal", 18, 199);
-	g_FrameBuffer->loadBackground("radiomode.raw", 18);
+	g_FrameBuffer->loadBackground("radiomode.raw");
 	g_FrameBuffer->useBackground(true);
 	g_FrameBuffer->paintBackground();
 
