@@ -782,6 +782,7 @@ void parse_command (CZapitClient::commandHead &rmsg)
 				prepare_channels();
 				response.cmd = CZapitClient::CMD_READY;
 				send(connfd, &response, sizeof(response), 0);
+				eventServer->sendEvent(CZapitClient::EVT_BOUQUETS_CHANGED);
 				break;
 			}
 			case CZapitClient::CMD_SCANSTART:

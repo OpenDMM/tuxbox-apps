@@ -223,6 +223,8 @@ void write_bouquets()
 	{
 		scanBouquetManager->saveBouquets();
 	}
+// TODO:
+// make zapit reload its bouquets
 }
 
 void write_transponder(FILE *fd, uint16_t transport_stream_id, uint16_t original_network_id, uint8_t diseqc)

@@ -1915,6 +1915,7 @@ int CNeutrinoApp::run(int argc, char **argv)
 	g_Zapit->registerEvent(CZapitClient::EVT_SCAN_PROVIDER, 222, NEUTRINO_UDS_NAME);
 	g_Zapit->registerEvent(CZapitClient::EVT_RECORDMODE_ACTIVATED, 222, NEUTRINO_UDS_NAME);
 	g_Zapit->registerEvent(CZapitClient::EVT_RECORDMODE_DEACTIVATED, 222, NEUTRINO_UDS_NAME);
+	g_Zapit->registerEvent(CZapitClient::EVT_BOUQUETS_CHANGED, 222, NEUTRINO_UDS_NAME);
 
 	dprintf( DEBUG_NORMAL, "timerd event register\n");
 	g_Timerd->registerEvent(CTimerdClient::EVT_ANNOUNCE_SHUTDOWN, 222, NEUTRINO_UDS_NAME);
@@ -2350,12 +2351,11 @@ int CNeutrinoApp::handleMsg(uint msg, uint data)
 
 		channelsInit();
 	}
-	else if ( ( msg == NeutrinoMessages::EVT_BOUQUETSCHANGED ) ||
-			  ( msg == NeutrinoMessages::EVT_SERVICESCHANGED ) )
+//	else if ( ( msg == NeutrinoMessages::EVT_BOUQUETSCHANGED ) ||   // EVT_BOUQUETSCHANGED: initiated by zapit
+//		  ( msg == NeutrinoMessages::EVT_SERVICESCHANGED ) )    // EVT_SERVICESCHANGED: no longer unused
+	else if ( msg == NeutrinoMessages::EVT_BOUQUETSCHANGED )        // EVT_BOUQUETSCHANGED: initiated by zapit
 	{
 		unsigned int old_id = channelList->getActiveChannelOnid_sid();
-
-		g_Zapit->reinitChannels();  // reload services & bouquets
 
 		channelsInit();
 		tvMode( true );
