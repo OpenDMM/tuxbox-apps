@@ -1085,7 +1085,7 @@ void CNeutrinoApp::InitScanSettings(CMenuWidget &settings)
 			dprintf(DEBUG_DEBUG, "got scanprovider (sat): %s\n", satList[i].satName );
 		}
 
-		CMenuOptionChooser* ojDiseqcRepeats = new CMenuOptionChooser("satsetup.diseqcrepeat", &((int)(scanSettings.diseqcRepeat)), scanSettings.diseqcMode != NO_DISEQC/*, new CSatelliteNotifier*/, NULL, false);
+		CMenuOptionChooser* ojDiseqcRepeats = new CMenuOptionChooser("satsetup.diseqcrepeat", &((int)(scanSettings.diseqcRepeat)), (scanSettings.diseqcMode != NO_DISEQC) && (scanSettings.diseqcMode != DISEQC_1_0)/*, new CSatelliteNotifier*/, NULL, false);
 		for( uint i=0; i<=2; i++)
 		{
 			char ii[2];
@@ -1105,7 +1105,7 @@ void CNeutrinoApp::InitScanSettings(CMenuWidget &settings)
 			for( int j=0; j<=63; j++)
 			{
 				char jj[2];
-				sprintf( jj, "%d", j);
+				sprintf( jj, "%d", j + 1);
 				oj->addOption( j, jj);
 			}
 			extSatSettings->addItem( oj);
