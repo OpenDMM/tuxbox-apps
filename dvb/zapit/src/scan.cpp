@@ -221,7 +221,6 @@ void write_bouquets()
 
 	else
 	{
-		scanBouquetManager->cleanUp();
 		scanBouquetManager->saveBouquets();
 	}
 }
