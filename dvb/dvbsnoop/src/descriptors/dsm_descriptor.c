@@ -1,34 +1,19 @@
 /*
-$Id$
+$Id$ 
+
 
   dvbsnoop
   (c) Rainer Scherg 2001-2003
 
+  DSM-CC Descriptors  ISO 13818-6
 
-  Descriptor Section
-  - MPEG
-  - DVB
-  - DSM-CC  (todo)
 
 
 
 $Log$
-Revision 1.9  2003/07/08 19:59:50  rasc
+Revision 1.1  2003/07/08 19:59:50  rasc
 restructuring... some new, some fixes,
 trying to include DSM-CC, Well someone a ISO13818-6 and latest version of ISO 18313-1 to spare?
-
-Revision 1.8  2003/06/24 23:51:03  rasc
-bugfixes and enhancements
-
-Revision 1.7  2003/05/03 02:51:08  obi
-skip descriptors with length == 0
-
-Revision 1.6  2003/03/17 16:15:11  obi
-fixed infinite loop
-thanks to Johannes Stezenbach
-
-Revision 1.5  2002/09/29 13:01:35  wjoost
-kleiner Fehler
 
 
 
@@ -36,12 +21,8 @@ kleiner Fehler
 
 
 #include "dvbsnoop.h"
-#include "descriptor.h"
-#include "mpeg_descriptor.h"
-#include "dvb_descriptor.h"
+#include "dsm_descriptor.h"
 #include "hexprint.h"
-
-
 
 
 
@@ -52,35 +33,43 @@ kleiner Fehler
   return byte length
 */
 
-int  descriptor  (u_char *b)
+int  descriptorDSMCC  (u_char *b)
 
 {
  int len;
  int id;
 
 
+  id  =  (int) b[0];
+  len = ((int) b[1]) + 2;
 
-  // nothing to print here?
-  if (getVerboseLevel() < 4) return len;
+  out_NL (4);
+//  out_S2B_NL (4,"DSM-CC-DescriptorTag: ",id, dvbstrDSMCCDescriptorTAG(id));
+//  out_SW_NL  (5,"Descriptor_length: ",b[1]);
+out_NL ("not yet done");
+return len;
 
-  id  =  (int)b[0];  
+  // empty ??
   len = ((int)b[1]) + 2;
+  if (b[1] == 0)
+	 return len;
 
-  indent (+1);
-
-
-
-  // Context of descriptors
-  // $$$ To be improved!!!
- 
-  if (id < 0x40) {
-	  descriptorMPEG (b);
-  } else {
-	  descriptorDVB (b);
-  }
+  // print hex buf of descriptor
+  printhex_buf (9, b,len);
 
 
-  indent (-1);
+
+  switch (b[0]) {
+
+
+     default: 
+	if (b[0] < 0x80) {
+	    out_nl (0,"  ----> ERROR: unimplemented descriptor (DSM-CC context), Report!");
+	}
+	descriptorDSMCC_any (b);
+	break;
+  } 
+
 
   return len;   // (descriptor total length)
 }
@@ -97,7 +86,7 @@ int  descriptor  (u_char *b)
   ETSI 300 468 
 */
 
-void descriptor_any (u_char *b)
+void descriptorDSMCC_any (u_char *b)
 
 {
 
@@ -121,7 +110,6 @@ void descriptor_any (u_char *b)
  printhexdump_buf (4,b+2,d.descriptor_length);
 
 }
-
 
 
 

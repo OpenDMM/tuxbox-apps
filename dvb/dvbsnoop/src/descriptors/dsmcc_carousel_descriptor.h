@@ -1,14 +1,15 @@
 /*
 $Id$ 
 
+
   dvbsnoop
   (c) Rainer Scherg 2001-2003
 
-  Descriptors Section
+  DSM-CC Descriptors  ISO 13818-6
 
 
 $Log$
-Revision 1.4  2003/07/08 19:59:50  rasc
+Revision 1.1  2003/07/08 19:59:50  rasc
 restructuring... some new, some fixes,
 trying to include DSM-CC, Well someone a ISO13818-6 and latest version of ISO 18313-1 to spare?
 
@@ -16,7 +17,8 @@ trying to include DSM-CC, Well someone a ISO13818-6 and latest version of ISO 18
 */
 
 
-int   descriptor (u_char *b);
-void  descriptor_any (u_char *b);
+int   descriptorDSMCC (u_char *b);
+void  descriptorDSMCC_any (u_char *b);
+
 
 
