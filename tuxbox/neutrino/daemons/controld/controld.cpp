@@ -45,7 +45,7 @@
 #include <basicserver.h>
 #include <configfile.h>
 #include <eventserver.h>
-#include <libtuxbox.h>
+#include <tuxbox.h>
 
 #include <controldclient/controldclient.h>
 #include <controldclient/controldMsg.h>
