@@ -1,6 +1,4 @@
 /*
-$Id$
-
 
  DVBSNOOP
 
@@ -13,13 +11,11 @@ $Id$
 
 */
 
-#ifndef __DMX_TS_H
-#define __DMX_TS_H 1
 
+#ifndef __LLC_SNAP
+#define __LLC_SNAP 1
 
-int  doReadTS (OPTION *opt);
-
+int  llc_snap (int verbosity, u_char *buf);
 
 #endif
-
 

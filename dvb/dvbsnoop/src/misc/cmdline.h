@@ -1,14 +1,25 @@
 /*
-
- -- (c) 2001 rasc
-
-
 $Id$
+
+
+ DVBSNOOP
+
+ a dvb sniffer  and mpeg2 stream analyzer tool
+ mainly for me to learn about dvb streams, mpeg2, mhp, dsm-cc, ...
+
+ http://dvbsnoop.sourceforge.net/
+
+ (c) 2001-2003   Rainer.Scherg@gmx.de
+
+
 
 
 */
 
 
+
+#ifndef __CMDLINE_H
+#define __CMDLINE_H 1
 
 
 /*
@@ -20,10 +31,11 @@ enum TIME_MODE    {NO_TIME, FULL_TIME, DELTA_TIME};
 
 typedef struct _OPTIONS {
   int         packet_mode;
+  int         packet_header_sync;	// Try to do a softsync of packet sync bytes
   int         printhex;
   int         printdecode;
   int         binary_out;
-  char        *inpPidFile;	// read from file instead of dmux if not NULL
+  char        *inpPidFile;		// read from file instead of dmux if not NULL
   int         help;
   char        *devDemux;
   char        *devDvr;
@@ -44,5 +56,7 @@ typedef struct _OPTIONS {
 int  cmdline_options (int argc, char **argv, OPTION *opt);
 
 
+
+#endif
 
 
