@@ -42,6 +42,7 @@ int bidirpipe(int pfd[], char *cmd , char *argv[])
 		return(-1);
 	else if (pid == 0) /* child process */
 	{
+		setsid();
 		if ( close(0) == -1 || close(1) == -1 || close(2) == -1 )
 			_exit(0);
 
@@ -220,12 +221,22 @@ void eConsoleAppContainer::kill()
 {
 	if ( killstate != -1 )
 	{
-		eDebug("user kill console App");
+		eDebug("user kill(SIGKILL) console App");
 		killstate=-1;
 		::kill(pid, SIGKILL);
 		closePipes();
 	}
 }
+
+void eConsoleAppContainer::sendCtrlC()
+{
+	if ( killstate != -1 )
+	{
+		eDebug("user send SIGINT(Ctrl-C) to console App");
+		::kill(pid, SIGINT);
+	}
+}
+
 
 void eConsoleAppContainer::closePipes()
 {
