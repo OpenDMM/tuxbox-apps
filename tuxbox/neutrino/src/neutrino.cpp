@@ -32,6 +32,9 @@
 	Foundation, Inc., 675 Mass Ave, Cambridge, MA 02139, USA.
 
   $Log$
+  Revision 1.115  2002/01/02 04:56:27  McClean
+  conf file unix-permission
+
   Revision 1.114  2001/12/31 16:27:13  McClean
   use lcddclient
 
@@ -663,7 +666,7 @@ bool CNeutrinoApp::loadSetup()
 void CNeutrinoApp::saveSetup()
 {
 	int fd;
-	fd = open(settingsFile.c_str(), O_WRONLY | O_CREAT );
+	fd = open(settingsFile.c_str(), O_WRONLY | O_CREAT, S_IRUSR | S_IWUSR  |  S_IRGRP | S_IWGRP  |  S_IROTH | S_IWOTH);
 
 	if (fd==-1)
 	{
