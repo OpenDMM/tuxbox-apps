@@ -2,6 +2,7 @@
  * $Id$
  *
  * (C) 2002 by Andreas Oberritter <obi@tuxbox.org>
+ *	& Steffen Hehn <mcclean@berlios.de>
  *
  * This program is free software; you can redistribute it and/or modify
  * it under the terms of the GNU General Public License as published by
@@ -28,8 +29,6 @@
 /* zapit */
 #include <zapci/ci.h>
 
-#define MAX_AUDIO_PIDS	13
-
 class CZapitAudioChannel
 {
 	public:
@@ -46,7 +45,7 @@ class CZapitChannel
 		std::string name;
 
 		/* pids of this channel */
-		std::vector <CZapitAudioChannel*> audioChannels;
+		std::vector <CZapitAudioChannel *> audioChannels;
 		unsigned short pcrPid;
 		unsigned short pmtPid;
 		unsigned short teletextPid;
