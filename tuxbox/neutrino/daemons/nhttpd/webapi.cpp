@@ -1250,18 +1250,23 @@ void CWebAPI::newTimerForm(CWebserverRequest *request)
 	CZapitClient::BouquetChannelList::iterator channel = channellist.begin();
 	for(; channel != channellist.end();channel++)
 	{
-		request->printf("<option value=\"T%u\"",channel->channel_id);
-		if(channel->channel_id == current_channel)
+		request->printf("<option value=\""
+				PRINTF_CHANNEL_ID_TYPE_NO_LEADING_ZEROS
+				"\"",
+				channel->channel_id);
+		if (channel->channel_id == current_channel)
 			request->SocketWrite(" selected");
 		request->printf(">%s\n",channel->name);
 	}
 	channellist.clear();
 	Parent->Zapit->getChannels(channellist,CZapitClient::MODE_RADIO);
-	channel = channellist.begin();
-	for(; channel != channellist.end();channel++)
+	for (channel = channellist.begin(); channel != channellist.end(); channel++)
 	{
-		request->printf("<option value=\"R%u\"",channel->channel_id);
-		if(channel->channel_id == current_channel)
+		request->printf("<option value=\""
+				PRINTF_CHANNEL_ID_TYPE_NO_LEADING_ZEROS
+				"\"",
+				channel->channel_id);
+		if (channel->channel_id == current_channel)
 			request->SocketWrite(" selected");
 		request->printf(">%s\n",channel->name);
 	}
@@ -1367,11 +1372,11 @@ time_t	announceTimeT = 0,
 	eventinfo.apids = "";
 	eventinfo.recordingSafety = (request->ParameterList["rs"] == "1");
 
-	eventinfo.mode = (request->ParameterList["mode"].c_str()[0] == 'R') ? CTimerd::MODE_RADIO : CTimerd::MODE_TV;
-
 	sscanf(request->ParameterList["channel_id"].c_str(),
 	       SCANF_CHANNEL_ID_TYPE,
 	       &eventinfo.channel_id);
+
+	eventinfo.mode = Parent->Zapit->isChannelTVChannel(eventinfo.channel_id) ? CTimerd::MODE_TV : CTimerd::MODE_RADIO;
 
 	void *data=NULL;
 	if(type == CTimerd::TIMER_RECORD)
