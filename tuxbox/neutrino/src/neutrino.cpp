@@ -32,8 +32,8 @@
 	Foundation, Inc., 675 Mass Ave, Cambridge, MA 02139, USA.
 
   $Log$
-  Revision 1.140  2002/01/29 17:26:51  field
-  Jede Menge Updates :)
+  Revision 1.141  2002/01/29 23:23:06  field
+  Mehr Details in Channellist (sectionsd updaten)
 
   Revision 1.139  2002/01/28 23:46:47  field
   Boxtyp automatisch, Vol im Scartmode, Kleinigkeiten
@@ -893,7 +893,7 @@ void CNeutrinoApp::isCamValid()
 		exit(-1);
 	}
 
-	printf("That was returned: %s\n", return_buf);
+	//printf("That was returned: %s\n", return_buf);
 
 	if (strncmp(return_buf,"00t",3))
 	{
