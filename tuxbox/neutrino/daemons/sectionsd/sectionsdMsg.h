@@ -25,6 +25,9 @@
 //    Foundation, Inc., 675 Mass Ave, Cambridge, MA 02139, USA.
 //
 //  $Log$
+//  Revision 1.7  2001/07/19 22:08:49  fnbrd
+//  Noch ne Beschreibung dazu
+//
 //  Revision 1.6  2001/07/19 22:02:13  fnbrd
 //  Mehr Befehle.
 //
@@ -119,4 +122,12 @@ enum sectionsdCommands {
 //     unsigned short (minutes after events are old (after their end time))
 //   data of response:
 //     -
+//
+// actualEventListRadioshort:
+//   data of request:
+//     -
+//   data of response:
+//     is a string (c-string) with all cached actual events,
+//     2 lines per service, first line service name, second line event name
+//
 #endif // SECTIONSDMSG_H
