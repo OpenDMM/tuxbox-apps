@@ -21,6 +21,9 @@
  *
  *
  *   $Log$
+ *   Revision 1.5  2001/04/25 07:36:58  fnbrd
+ *   Fixed mute/unmute.
+ *
  *   Revision 1.4  2001/04/01 10:30:15  gillem
  *   - fix volume
  *
@@ -217,7 +220,7 @@ int show_mute()
 		return -1;
 	}
 
-	if (i == 0)
+	if (i)
 	{
 		printf(" (muted)",i);
 	}
