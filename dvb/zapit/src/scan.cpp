@@ -513,7 +513,8 @@ void *start_scanthread(void *param)
 	printf("[scan.cpp] found %d transponders and %d channels\n", found_transponders, found_channels);
 
 	/* load new services */
-	(new CZapitClient)->reinitChannels();
+	CZapitClient myZapitClient;
+	myZapitClient.reinitChannels();
 
 	stop_scan();
 	pthread_exit(0);
