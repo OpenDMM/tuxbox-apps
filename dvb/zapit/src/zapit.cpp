@@ -2039,10 +2039,11 @@ void parse_command()
       		status = "00h";
       	else
       		status = "-0h";
-      	if (send(connfd, status, strlen(status),0) == -1) {
-		perror("[zapit] could not send any return\n");
-		return;
-	}
+      	if (send(connfd, status, strlen(status),0) == -1) 
+		{
+			perror("[zapit] could not send any return\n");
+			return;
+		}
 		if (send(connfd, &curr_sat, sizeof(short),0) == -1)
 		{
 		perror("[zapit] could not send any return\n");
@@ -2243,6 +2244,10 @@ void parse_command()
 				msgResponseIsScanReady.satellite   = curr_sat;
 				msgResponseIsScanReady.transponder = found_transponders;
 				msgResponseIsScanReady.services    = found_channels;
+		      	if (scan_runs>0)
+						msgResponseIsScanReady.scanReady   = false;
+					else
+						msgResponseIsScanReady.scanReady   = true;
 				write( connfd, &msgStartScan, sizeof(msgStartScan));
 			break;
 			
