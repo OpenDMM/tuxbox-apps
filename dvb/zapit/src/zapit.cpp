@@ -2232,6 +2232,20 @@ void parse_command()
 				send(connfd, &response, sizeof(response), 0);
 			break;
 
+			case CZapitClient::CMD_SCANSTART :
+				CZapitClient::commandStartScan msgStartScan;
+				read( connfd, &msgStartScan, sizeof(msgStartScan));
+		        start_scan(msgStartScan.satelliteMask);
+			break;
+
+			case CZapitClient::CMD_SCANREADY :
+				CZapitClient::responseIsScanReady msgResponseIsScanReady;
+				msgResponseIsScanReady.satellite   = curr_sat;
+				msgResponseIsScanReady.transponder = found_transponders;
+				msgResponseIsScanReady.services    = found_channels;
+				write( connfd, &msgStartScan, sizeof(msgStartScan));
+			break;
+			
 			case CZapitClient::CMD_BQ_ADD_BOUQUET :
 				CZapitClient::commandAddBouquet msgAddBouquet;
 				read( connfd, &msgAddBouquet, sizeof(msgAddBouquet));

@@ -20,6 +20,9 @@
   Foundation, Inc., 675 Mass Ave, Cambridge, MA 02139, USA.
 
   $Log$
+  Revision 1.12  2002/03/14 20:16:38  McClean
+  final addition of ts-scan (new commandinterface)
+
   Revision 1.11  2002/03/14 19:57:35  McClean
   add ts-scan functions to clientlib
 
@@ -238,7 +241,7 @@ void CZapitClient::reinitChannels()
 }
 
 /* start TS-Scan */
-void CZapitClient::startScan()
+void CZapitClient::startScan( int satelliteMask )
 {
 	commandHead msgHead;
 	msgHead.version=ACTVERSION;
@@ -246,6 +249,10 @@ void CZapitClient::startScan()
 
 	zapit_connect();
 	send((char*)&msgHead, sizeof(msgHead));
+
+	commandStartScan msgExt;
+	msgExt.satelliteMask = satelliteMask;
+	send((char*)&msgExt, sizeof(msgExt));
 
 	zapit_close();
 }
