@@ -8,6 +8,9 @@ $Id$
    (c) rasc
 
 $Log$
+Revision 1.11  2003/10/17 19:14:40  rasc
+no message
+
 Revision 1.10  2003/10/16 19:02:29  rasc
 some updates to dvbsnoop...
 - small bugfixes
@@ -45,7 +48,6 @@ dvbsnoop v0.7  -- Commit to CVS
 
 */
 
-#define DVBSNOOP_VERSION  "1.0a"
 
 
 #include <stdio.h>
@@ -72,6 +74,7 @@ dvbsnoop v0.7  -- Commit to CVS
 #define pes_type pesType
 #endif
 
+#include "version.h"
 #include "helper.h"
 #include "dvb_str.h"
 #include "output.h"
