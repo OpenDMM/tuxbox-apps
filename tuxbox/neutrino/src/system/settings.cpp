@@ -26,6 +26,26 @@
 
 #include <zapit/settings.h>
 
+
+const int default_timing[TIMING_SETTING_COUNT] =
+{
+	60,
+	60,
+	240,
+	6,
+	60
+};
+
+const neutrino_locale_t timing_setting_name[TIMING_SETTING_COUNT] =
+{
+	LOCALE_TIMING_MENU,
+	LOCALE_TIMING_CHANLIST,
+	LOCALE_TIMING_EPG,
+	LOCALE_TIMING_INFOBAR,
+	LOCALE_TIMING_FILEBROWSER
+};
+
+
 CScanSettings::CScanSettings(void)
 	: configfile('\t')
 {
