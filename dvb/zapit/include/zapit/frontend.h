@@ -78,8 +78,8 @@ class CFrontend
 		/*
 		 * linux dvb frontend api
 		 */
-		static fe_code_rate_t CFrontend::getCodeRate (uint8_t fec_inner);
-		static fe_modulation_t CFrontend::getModulation (uint8_t modulation);
+		static fe_code_rate_t getCodeRate (uint8_t fec_inner);
+		static fe_modulation_t getModulation (uint8_t modulation);
 
 		const dvb_frontend_info * getInfo ()	{ return info; };
 
