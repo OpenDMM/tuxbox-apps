@@ -734,11 +734,13 @@ void setTVMode ()
 void setRecordMode ()
 {
 	currentMode |= RECORD_MODE;
+	eventServer->sendEvent(CZapitClient::EVT_RECORDMODE_ACTIVATED, CEventServer::INITID_ZAPIT );
 }
 
 void unsetRecordMode ()
 {
 	currentMode &= ~RECORD_MODE;
+	eventServer->sendEvent(CZapitClient::EVT_RECORDMODE_DEACTIVATED, CEventServer::INITID_ZAPIT );
 }
 
 int prepare_channels ()
