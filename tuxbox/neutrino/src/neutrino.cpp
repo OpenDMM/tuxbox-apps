@@ -32,6 +32,9 @@
 	Foundation, Inc., 675 Mass Ave, Cambridge, MA 02139, USA.
 
   $Log$
+  Revision 1.70  2001/10/22 21:48:22  McClean
+  design-update
+
   Revision 1.69  2001/10/22 15:00:18  McClean
   icon update
 
@@ -1067,11 +1070,11 @@ void CNeutrinoApp::SelectNVOD()
     {
         // NVOD- Kanal!
 
-    	CMenuWidget NVODSelector("nvodselector.head", "audio.raw");
+    	CMenuWidget NVODSelector("nvodselector.head", "video.raw", 400);
 
         NVODSelector.addItem( new CMenuSeparator() );
-        NVODSelector.addItem( new CMenuForwarder("menu.back") );
-	    NVODSelector.addItem( new CMenuSeparator(CMenuSeparator::LINE) );
+    //    NVODSelector.addItem( new CMenuForwarder("menu.back") );
+	//   NVODSelector.addItem( new CMenuSeparator(CMenuSeparator::LINE) );
 
         for(int count=0;count<g_RemoteControl->nvods.count_nvods;count++)
         {
@@ -1136,17 +1139,16 @@ void CNeutrinoApp::SelectAPID()
     {
         // wir haben APIDs für diesen Kanal!
 
-    	CMenuWidget APIDSelector("apidselector.head", "audio.raw");
-
+    	CMenuWidget APIDSelector("apidselector.head", "audio.raw", 300);
         APIDSelector.addItem( new CMenuSeparator() );
 
 //        APIDSelector.addItem( new CMenuSeparator(CMenuSeparator::STRING, "apidselector.hint") );
 //        APIDSelector.addItem( new CMenuSeparator(CMenuSeparator::LINE) );
 
-        APIDSelector.addItem( new CMenuForwarder("menu.back") );
-	    APIDSelector.addItem( new CMenuSeparator(CMenuSeparator::LINE) );
+//        APIDSelector.addItem( new CMenuForwarder("menu.back") );
+//	    APIDSelector.addItem( new CMenuSeparator(CMenuSeparator::LINE) );
 
-        bool    has_unresolved_ctags= false;
+        bool has_unresolved_ctags= false;
         for(int count=0;count<g_RemoteControl->audio_chans.count_apids;count++)
         {
             if ( g_RemoteControl->audio_chans.apids[count].ctag != -1 )
