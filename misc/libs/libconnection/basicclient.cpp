@@ -82,7 +82,7 @@ bool CBasicClient::send_data(const char* data, const size_t size)
 	if (sock_fd == -1)
 	    return false;
 
-	if (write(sock_fd, data, size) < 0) // better: == -1
+	if (::send(sock_fd, data, size, MSG_NOSIGNAL) < 0) // better: == -1
 	{
 		printf("[CBasicClient] send failed.\n");
 		perror(getSocketName());
