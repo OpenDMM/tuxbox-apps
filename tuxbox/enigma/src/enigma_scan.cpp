@@ -59,7 +59,7 @@ void eZapScan::sel_scan()
 
 void eZapScan::sel_bouquet()
 {
-	eDVB::getInstance()->sortInChannels();
+	eDVB::getInstance()->settings->sortInChannels();
 }
 
 void eZapScan::sel_satconfig()

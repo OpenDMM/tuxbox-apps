@@ -53,7 +53,7 @@ void eSkinSetup::loadSkins()
 	{
 		eString	fileName=eString(skinPath) + eString(namelist[count]->d_name);
 
-		if (fileName.find(".info") != -1)
+		if (fileName.find(".info") != eString::npos)
 		{
 			eString esml=getInfo(fileName.c_str(), "esml");
 			eString name=getInfo(fileName.c_str(), "name");
@@ -113,23 +113,4 @@ eSkinSetup::eSkinSetup()
 
 eSkinSetup::~eSkinSetup()
 {
-}
-
-int eSkinSetup::keyDown(int rc)
-{
-	switch(rc)
-	{
-	case eRCInput::RC_RIGHT:
-		focusNext(eWidget::focusDirE);
-		return 1;
-	case eRCInput::RC_DOWN:
-		focusNext(eWidget::focusDirS);
-		return 1;
-	case eRCInput::RC_LEFT:
-		focusNext(eWidget::focusDirW);
-		return 1;
-	case eRCInput::RC_UP:
-		focusNext(eWidget::focusDirN);
-		return 1;
-	}
 }
