@@ -2563,6 +2563,11 @@ int CNeutrinoApp::handleMsg(uint msg, uint data)
 
 		if ( msg == NeutrinoMessages::ANNOUNCE_ZAPTO)
 		{
+			if ( mode == mode_standby )
+			{
+				// WAKEUP
+				standbyMode( false );
+			}
 			ShowHint ( "messagebox.info", g_Locale->getText("zaptotimer.announce") );
 			return messages_return::handled;
 		}
