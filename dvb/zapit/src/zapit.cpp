@@ -1237,7 +1237,7 @@ void sendBouquets(bool emptyBouquetsToo)
 			{
 				CZapitClient::responseGetBouquets msgBouquet;
 
-				strncpy(msgBouquet.name, Utf8_to_Latin1(bouquetManager->Bouquets[i]->Name).c_str(), 30);
+				strncpy(msgBouquet.name, bouquetManager->Bouquets[i]->Name.c_str(), 30);
 				msgBouquet.bouquet_nr = i;
 				msgBouquet.locked     = bouquetManager->Bouquets[i]->bLocked;
 				msgBouquet.hidden     = bouquetManager->Bouquets[i]->bHidden;

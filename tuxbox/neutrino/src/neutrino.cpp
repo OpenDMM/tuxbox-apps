@@ -770,7 +770,7 @@ void CNeutrinoApp::channelsInit()
 	bouquetList = new CBouquetList( "bouquetlist.head" );
 	bouquetList->orgChannelList = channelList;
 	CZapitClient::BouquetList zapitBouquets;
-	g_Zapit->getBouquets(zapitBouquets, false);
+	g_Zapit->getBouquets(zapitBouquets, false, true); // UTF-8
 	for (uint i=0; i<zapitBouquets.size(); i++)
 	{
 		bouquetList->addBouquet( zapitBouquets[i].name, zapitBouquets[i].bouquet_nr, zapitBouquets[i].locked);
