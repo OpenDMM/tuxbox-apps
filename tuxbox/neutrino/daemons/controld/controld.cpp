@@ -48,6 +48,7 @@
 
 #include <zapit/zapitclient.h>
 #include <controldclient/controldclient.h>
+#include <controldclient/controldMsg.h>
 #include <lcddclient/lcddclient.h>
 #include <timerdclient/timerdclient.h>
 #include <eventserver.h>
