@@ -72,6 +72,7 @@ eExpertSetup::eExpertSetup()
 	if (eConfig::getInstance()->getKey("/extras/record_splitsize", splitsize))
 		splitsize=1024*1024; // 1G
 	record_split_size->setCurrent(splitsize);
+	CONNECT( list.selchanged, eExpertSetup::selChanged );
 #endif
 	CONNECT((new eListBoxEntryCheck((eListBox<eListBoxEntry>*)&list,_("Serviceselector help buttons"),"/ezap/serviceselector/showButtons",_("show colored help buttons in service selector")))->selected, eExpertSetup::colorbuttonsChanged );
 	new eListBoxEntryCheck( (eListBox<eListBoxEntry>*)&list, _("Show Sat position"), "/extras/showSatPos", _("show sat position in the infobar"));
@@ -85,14 +86,15 @@ eExpertSetup::eExpertSetup()
 	CONNECT((new eListBoxEntryCheck( (eListBox<eListBoxEntry>*)&list, _("Don't open serial port"), "/ezap/extra/disableSerialOutput", _("don't write debug messages to /dev/tts/0")))->selected, eExpertSetup::reinitializeHTTPServer );
 	new eListBoxEntryCheck( (eListBox<eListBoxEntry>*)&list, _("Auto bouquet change"), "/elitedvb/extra/autobouquetchange", _("change into next bouquet when end of current bouquet is reached"));
 	setHelpID(92);
-	CONNECT( list.selchanged, eExpertSetup::selChanged );
 }
 
+#ifndef DISABLE_FILE
 void eExpertSetup::selChanged(eListBoxEntryMenu* e)
 {
 	if ( e == (eListBoxEntryMenu*)record_split_size )
 		eConfig::getInstance()->setKey("/extras/record_splitsize", (int)e->getKey());
 }
+#endif
 
 void eExpertSetup::colorbuttonsChanged(bool b)
 {
