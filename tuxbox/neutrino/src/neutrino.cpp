@@ -275,7 +275,8 @@ void CNeutrinoApp::setupDefaults()
 	g_settings.scan_astra = 1;
 	g_settings.scan_eutel = 0;
 	g_settings.scan_kopernikus = 0;
-	g_settings.scan_digituerk = 0;
+	g_settings.scan_sirius = 0;
+        g_settings.scan_digituerk = 0;
 	g_settings.scan_bouquet = 1024; //erase bouquets
 
 
@@ -756,7 +757,11 @@ void CNeutrinoApp::InitServiceSettings(CMenuWidget &service)
 		oj->addOption(0, "options.off");
 		oj->addOption(4, "options.on");
 		TSScan->addItem( oj );
-		oj = new CMenuOptionChooser("scants.digituerk", &g_settings.scan_digituerk, true );
+		oj = new CMenuOptionChooser("scants.sirius", &g_settings.scan_sirius, true );
+		oj->addOption(0, "options.off");
+		oj->addOption(16, "options.on");
+		TSScan->addItem( oj );
+                oj = new CMenuOptionChooser("scants.digituerk", &g_settings.scan_digituerk, true );
 		oj->addOption(0, "options.off");
 		oj->addOption(8, "options.on");
 		TSScan->addItem( oj );
