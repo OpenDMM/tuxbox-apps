@@ -50,6 +50,7 @@ class CLCDMenu : public CLCDDisplay
 	bool selectEntry(int);
 	int getDefaultEntry() { return defaultEntry; }
 	int getSelectedEntry() { return selectedEntry; }
+	void addNumberPrefix();
 
 	bool drawMenu();
 	bool drawString(string, int, int, int);
