@@ -1436,7 +1436,7 @@ void sendBouquetChannels(unsigned int bouquet, CZapitClient::channelsMode mode)
 {
 	bouquet--;
 
-	if ((bouquet < 0) || (bouquet>bouquetManager->Bouquets.size()))
+	if ((bouquet < 0) || (bouquet >= bouquetManager->Bouquets.size()))
 	{
 		printf("[zapit] invalid bouquet number: %d",bouquet);
 		return;
