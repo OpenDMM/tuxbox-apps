@@ -351,6 +351,9 @@ main (int argc, char ** argv) {
 		return EXIT_FAILURE;
 	}
 
+	/* yeah, evil, no need to patch mpegtools */
+	fclose(stderr);
+
 	bp = buf;
 
 	/* read one line */
@@ -366,7 +369,7 @@ main (int argc, char ** argv) {
 
 	/* send response to http client */
 	if (!strncmp(buf, "GET /", 5)) {
-		printf("HTTP/1.1 200 OK\r\nServer: d-Box network\r\n\r\n");
+		printf("HTTP/1.1 200 OK\r\nServer: streamts (%s)\r\n\r\n", &argv[1][1]);
 		fflush(stdout);
 		bp += 5;
 	}
