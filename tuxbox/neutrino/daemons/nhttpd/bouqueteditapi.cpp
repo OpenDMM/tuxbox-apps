@@ -1,5 +1,5 @@
 /*
-	webserver  -   DBoxII-Project
+	nhttpd  -  DBoxII-Project
 
 	Copyright (C) 2001/2002 Dirk Szymanski 'Dirch'
 
@@ -23,12 +23,11 @@
 
 */
 
-
 #include "bouqueteditapi.h"
 #include "debug.h"
 
-
 //-------------------------------------------------------------------------
+
 bool CBouqueteditAPI::Execute(CWebserverRequest* request)
 {
 	unsigned operation = 0;

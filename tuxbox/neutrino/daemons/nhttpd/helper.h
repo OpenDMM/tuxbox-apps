@@ -1,5 +1,5 @@
 /*      
-        webserver  -   DBoxII-Project
+        nhttpd  -  DBoxII-Project
 
         Copyright (C) 2001/2002 Dirk Szymanski 'Dirch'
 
@@ -24,15 +24,14 @@
 */
 
 
-#ifndef __webserver_helper__
-#define __webserver_helper__
+#ifndef __nhttpd_helper_h__
+#define __nhttpd_helper_h__
 
-#include <stdio.h>
-#include <stdlib.h>
+// c++
 #include <string>
 
-using namespace std;
+std::string b64decode(char *s);
+std::string itoa(unsigned int conv);
+std::string itoh(unsigned int conv);
 
-//----------------------------------------------------------------------
-
-#endif
+#endif /* __nhttpd_helper_h__ */
