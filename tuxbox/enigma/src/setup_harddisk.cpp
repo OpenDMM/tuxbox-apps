@@ -81,7 +81,7 @@ static int numPartitions(int dev)
 	return numpart;
 }
 
-static int freeDiskspace(int dev)
+int freeDiskspace(int dev, eString mp="")
 {
 	FILE *f=fopen("/proc/mounts", "rb");
 	if (!f)
@@ -102,7 +102,9 @@ static int freeDiskspace(int dev)
 			eString mountpoint=line;
 			mountpoint=mountpoint.mid(mountpoint.find(' ')+1);
 			mountpoint=mountpoint.left(mountpoint.find(' '));
-			eDebug("mountpoint: %s", mountpoint.c_str());
+//			eDebug("mountpoint: %s", mountpoint.c_str());
+			if ( mp && mountpoint != mp )
+				return -1;
 			struct statfs s;
 			int free;
 			if (statfs(mountpoint.c_str(), &s)<0)

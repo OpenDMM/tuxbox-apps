@@ -32,13 +32,13 @@
 #include <lib/base/i18n.h>
 
 eZapScan::eZapScan()
-	:eListBoxWindow<eListBoxEntryMenu>(_("Channels"), 5, 220)
+	:eListBoxWindow<eListBoxEntryMenu>(_("Channels"), 5, 300, true)
 {
 	move(ePoint(150, 136));
-	CONNECT((new eListBoxEntryMenu(&list, _("[back]")))->selected, eZapScan::sel_close);
-	CONNECT((new eListBoxEntryMenu(&list, _("Transponder scan")))->selected, eZapScan::sel_scan);	
+	CONNECT((new eListBoxEntryMenu(&list, _("[back]"), _("back to mainmenu")))->selected, eZapScan::sel_close);
+	CONNECT((new eListBoxEntryMenu(&list, _("Transponder scan"), _("goto transponder scan")))->selected, eZapScan::sel_scan);	
 	if ( eFrontend::getInstance()->Type() == eFrontend::feSatellite )  // only when a sat box is avail we shows a satellite config
-		CONNECT((new eListBoxEntryMenu(&list, _("Satellites...")))->selected, eZapScan::sel_satconfig);	
+		CONNECT((new eListBoxEntryMenu(&list, _("Satellites..."), _("goto satellite config")))->selected, eZapScan::sel_satconfig);	
 //	CONNECT((new eListBoxEntryMenu(&list, _("Bouquets...")))->selected, eZapScan::sel_bouquet);	
 }
 
