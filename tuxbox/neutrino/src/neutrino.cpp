@@ -32,6 +32,9 @@
 	Foundation, Inc., 675 Mass Ave, Cambridge, MA 02139, USA.
 
   $Log$
+  Revision 1.110  2001/12/28 16:31:09  Simplex
+  libcontroldclient is now used
+
   Revision 1.109  2001/12/26 16:23:08  Simplex
   -Streamwatchdog renamed to EventWatchDog and moved to Controld
   -EventWatchdog now works with notifier-classes instead of callback-functioms
@@ -1695,7 +1698,7 @@ int CNeutrinoApp::run(int argc, char **argv)
 	g_Locale = new CLocaleManager;
 	g_RCInput = new CRCInput;
 	g_lcdd = new CLCDD;
-	g_Controld = new CControld;
+	g_Controld = new CControldClient;
 	g_RemoteControl = new CRemoteControl;
 	g_EpgData = new CEpgData;
 	g_InfoViewer = new CInfoViewer;
