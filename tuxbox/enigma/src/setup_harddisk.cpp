@@ -373,7 +373,7 @@ void eHarddiskMenu::s_format()
 		{
 			::sync();
 			if ( system( eString().sprintf(
-					"/sbin/mkfs.ext3 -T largefile /dev/ide/host%d/bus%d/target%d/lun0/part1", host, bus, target).c_str())>>8)
+					"/sbin/mkfs.ext3 -T largefile -m0 /dev/ide/host%d/bus%d/target%d/lun0/part1", host, bus, target).c_str())>>8)
 				goto err;
 			::sync();
 			if ( system(eString().sprintf(
