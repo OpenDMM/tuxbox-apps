@@ -360,15 +360,36 @@ int zapit (uint32_t onid_sid, bool in_nvod)
 	if (channel->getTsidOnid() != frontend->getTsidOnid())
 	{
 		/* ... tune to it if not in record mode ... */
-		if ((!(currentMode & RECORD_MODE)) && (frontend->tuneChannel(channel) == true))
+		if (currentMode & RECORD_MODE)
+		{
+			return -1;
+		}
+		if(frontend->tuneChannel(channel) == true)
 		{
 			/* ... and succeed ... */
 			new_transponder = true;
 		}
 		else
 		{
+			//zap fail -> retry x times (böser böser fix)
+			int retrycount = 5;
+			bool tunedone = false;
+			while (retrycount>0)
+			{
+				printf("---------tune retry %d\n", retrycount);
+				if(frontend->tuneChannel(channel) == true)
+				{
+					new_transponder = true;
+					tunedone = true;
+					retrycount = -1;
+				}
+				retrycount--;
+			}
 			/* ... or fail. */
-			return -1;
+			if(!tunedone)
+			{
+				return -1;
+			}
 		}
 
 		cam->reset(channel->getOriginalNetworkId());
@@ -403,6 +424,16 @@ int zapit (uint32_t onid_sid, bool in_nvod)
 		/* get program map table pid from program association table */
 		if (channel->getPmtPid() == NONE)
 		{
+			//hotfix 4bugy dmxdrivers
+			if (dmx_sct_fd != -1)
+			{
+				close (dmx_sct_fd);
+				if ((dmx_sct_fd = open(DEMUX_DEV, O_RDWR)) < 0)
+				{
+					perror("[zapit] " DEMUX_DEV);
+					return -1;
+				}
+			}
 			if (parse_pat(dmx_sct_fd, channel) < 0)
 			{
 				debug("[zapit] pat parsing failed\n");
@@ -412,6 +443,16 @@ int zapit (uint32_t onid_sid, bool in_nvod)
 		}
 
 		/* parse program map table and store pids */
+		//hotfix 4bugy dmxdrivers
+		if (dmx_sct_fd != -1)
+		{
+			close (dmx_sct_fd);
+			if ((dmx_sct_fd = open(DEMUX_DEV, O_RDWR)) < 0)
+			{
+				perror("[zapit] " DEMUX_DEV);
+				return -1;
+			}
+		}
 		if (parse_pmt(dmx_sct_fd, channel) < 0)
 		{
 			debug("[zapit] pmt parsing failed\n");
