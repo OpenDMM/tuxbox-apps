@@ -558,7 +558,8 @@ void disableVideoOutput(bool disable)
 	*/
 	if(!disable)
 	{
-		zapit.setStandby(false);
+//		zapit.setStandby(false);
+		zapit.muteAudio(false);
 		setvideooutput(settings.videooutput, false);
 		setVideoFormat(settings.videoformat, false);
 	}
@@ -566,7 +567,8 @@ void disableVideoOutput(bool disable)
 	{
 		setvideooutput(0, false);
 		setVideoFormat(-1, false);
-		zapit.setStandby(true);
+//		zapit.setStandby(true);
+		zapit.muteAudio(true);
 	}
 }
 
