@@ -15,6 +15,9 @@ $Id$
 
 
 $Log$
+Revision 1.17  2004/02/04 22:36:29  rasc
+more EBU/teletext stuff
+
 Revision 1.16  2004/02/02 23:34:11  rasc
 - output indent changed to avoid \r  (which sucks on logged output)
 - EBU PES data started (teletext, vps, wss, ...)
@@ -131,6 +134,7 @@ char *dvbstrPES_EBUDataUnitID (u_int i);
 
 char *dvbstrTELETEXT_framingcode (u_int i);
 char *dvbstrTELETEXT_packetnr (u_int i);
+char *dvbstrTELETEXT_lang_code (u_int i);
 
 
 
