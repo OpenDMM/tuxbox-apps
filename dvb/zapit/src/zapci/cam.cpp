@@ -38,14 +38,12 @@ const char *CCam::getSocketName(void) const
 
 bool CCam::sendMessage(const char * const data, const size_t length)
 {
+	close_connection();
+
 	if (!open_connection())
 		return false;
 
-	bool return_value = send_data(data, length);
-
-	close_connection();
-
-	return return_value;
+	return send_data(data, length);
 }
 
 bool CCam::setCaPmt(CCaPmt * const caPmt)
@@ -54,14 +52,9 @@ bool CCam::setCaPmt(CCaPmt * const caPmt)
 		return true;
 
 	unsigned int size = caPmt->getLength();
+	unsigned char buffer[3 + get_length_field_size(size) + size];
+	size_t pos = caPmt->writeToBuffer(buffer);
 
-	char *buffer = new char[3 + get_length_field_size(size) + size];
-
-	size_t pos = caPmt->writeToBuffer((unsigned char*)buffer);
-
-	bool ret = sendMessage(buffer, pos);
-
-	delete[] buffer;
-
-	return ret;
+	return sendMessage((char *)buffer, pos);
 }
+
