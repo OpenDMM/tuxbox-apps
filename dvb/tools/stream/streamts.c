@@ -99,7 +99,7 @@ int dvr_to_ps (int dvr_fd, uint16_t audio_pid, uint16_t video_pid, uint8_t ps)
 	init_ipack(&pv, 2048, write_stdout, ps);
 
 	/* read 188 bytes */
-	if (read(dvr_fd, mbuf, TS_SIZE) < 0)
+	if (save_read(dvr_fd, mbuf, TS_SIZE) < 0)
 	{
 		perror("read");
 		return -1;
@@ -132,7 +132,7 @@ int dvr_to_ps (int dvr_fd, uint16_t audio_pid, uint16_t video_pid, uint8_t ps)
 		count = 0;
 		while (count < IN_SIZE - TS_SIZE)
 		{
-			if ((c = read(dvr_fd, buf + (len + count), IN_SIZE - (len + count))) > 0)
+			if ((c = save_read(dvr_fd, buf + (len + count), IN_SIZE - (len + count))) > 0)
 			{
 				count += c;
 			}
