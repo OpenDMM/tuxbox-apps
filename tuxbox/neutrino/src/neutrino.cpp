@@ -3019,7 +3019,7 @@ void CNeutrinoApp::AudioMute( bool newValue, bool isEvent )
 		}
 	}
 
-	if( isEvent && ( mode != mode_scart ) && ( mode != mode_mp3) && ( mode != mode_pic) && (mode != mode_ts))
+	if( isEvent && ( mode != mode_scart ) && ( mode != mode_mp3) && ( mode != mode_pic))
 	{
 		// anzeigen NUR, wenn es vom Event kommt
 		if( current_muted )
