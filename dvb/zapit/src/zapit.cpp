@@ -1969,6 +1969,27 @@ frontend->getInfo()->type == FE_QAM //bei kabel
 				send( connfd, &msgResponseGetSatelliteList, sizeof(msgResponseGetSatelliteList),0);
 			break;
 
+			case CZapitClient::CMD_SCANSETSCANSATLIST :
+				CZapitClient::commandSetScanSatelliteList sat;
+				while( read( connfd, &sat, sizeof(sat)))
+				{
+					printf("[zapit] %s %d", sat.satName, sat.diseqc);
+					// todo
+				}
+			break;
+
+			case CZapitClient::CMD_SCANSETDISEQCTYPE :
+				diseqc_t diseqc;
+				read( connfd, &diseqc, sizeof(diseqc));
+				// todo
+			break;
+
+			case CZapitClient::CMD_SCANSETDISEQCREPEAT :
+				int repeat;
+				read( connfd, &repeat, sizeof(repeat));
+				// todo
+			break;
+
 			case CZapitClient::CMD_BQ_ADD_BOUQUET :
 				CZapitClient::commandAddBouquet msgAddBouquet;
 				read( connfd, &msgAddBouquet, sizeof(msgAddBouquet));
