@@ -43,6 +43,7 @@
 #include <lcddclient.h>
 
 /* zapit library headers */
+#include <message.h>
 #include <zapci/cam.h>
 #include <zapost/audio.h>
 #include <zapost/dmx.h>

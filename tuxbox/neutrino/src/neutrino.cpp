@@ -37,7 +37,6 @@
 #include "global.h"
 #include "neutrino.h"
 
-#include "zapit/getservices.h"
 #include "daemonc/remotecontrol.h"
 
 #include "driver/framebuffer.h"

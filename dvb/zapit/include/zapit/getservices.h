@@ -64,28 +64,4 @@ struct transponder
 	}
 };
 
-typedef struct bouquet_msg_struct
-{
-	unsigned int bouquet_nr;
-	char name[30];
-
-} bouquet_msg;
-
-typedef struct channel_msg_struct
-{
-	unsigned int chan_nr;
-	char name[30];
-	char mode;
-
-} channel_msg;
-
-typedef struct channel_msg_struct_2
-{
-	unsigned int chan_nr;
-	char name[30];
-	char mode;
-	unsigned int onid_tsid;
-
-} channel_msg_2;
-
 #endif /* __getservices_h__ */
