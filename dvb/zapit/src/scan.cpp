@@ -483,9 +483,8 @@ void *start_scanthread(void *param)
 			{
 				if (scI->second.service_type != stI->second)
 				{
-					printf("[scan.cpp] setting service_type of onid:sid %04x:%04x from %02x to %02x\n",
-							(stI->first >> 16) & 0xFFFF,
-							stI->first & 0xFFFF,
+					printf("[scan.cpp] setting service_type of channel_id %08x from %02x to %02x\n",
+							stI->first,
 							scI->second.service_type,
 							stI->second);
 
@@ -522,7 +521,7 @@ void *start_scanthread(void *param)
 	}
 	else
 	{
-		printf("[scan.cpp] Channels have been loaded succesfully\n");
+		printf("[scan.cpp] Channels loaded succesfully\n");
 	}
 
 	stop_scan();
