@@ -35,6 +35,9 @@
 // $Id$
 //
 // $Log$
+// Revision 1.11  2001/11/26 02:34:04  McClean
+// include (.../../stuff) changed - correct unix-formated files now
+//
 // Revision 1.10  2001/11/15 11:42:41  McClean
 // gpl-headers added
 //
@@ -70,12 +73,12 @@
 //
 //
 
-#include "../driver/framebuffer.h"
-#include "../driver/fontrenderer.h"
-#include "../driver/rcinput.h"
-#include "../daemonc/remotecontrol.h"
-#include "../helpers/infoviewer.h"
-#include "../helpers/settings.h"
+#include "driver/framebuffer.h"
+#include "driver/fontrenderer.h"
+#include "driver/rcinput.h"
+#include "daemonc/remotecontrol.h"
+#include "helpers/infoviewer.h"
+#include "helpers/settings.h"
 #include "menue.h"
 #include "color.h"
 
