@@ -24,6 +24,9 @@
 //    Foundation, Inc., 675 Mass Ave, Cambridge, MA 02139, USA.
 //
 // $Log$
+// Revision 1.2  2001/05/19 22:46:50  fnbrd
+// Jetzt wellformed xml.
+//
 // Revision 1.1  2001/05/16 15:23:47  fnbrd
 // Alles neu macht der Mai.
 //
@@ -33,5 +36,7 @@ time_t changeUTCtoCtime(const unsigned char *buffer);
 
 // returns the descriptor type as readable text
 const char *decode_descr (unsigned char tag_value);
+
+int saveStringToXMLfile(FILE *out, const char *string);
 
 #endif // SIUTILS_HPP
