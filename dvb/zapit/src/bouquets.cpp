@@ -24,7 +24,7 @@
  */
 
 #include <map>
-#include <ext/hash_set>
+#include <set>
 
 /* tuxbox headers */
 #include <configfile.h>
@@ -306,7 +306,7 @@ void CBouquetManager::restoreBouquets()
 void CBouquetManager::makeRemainingChannelsBouquet()
 {
 	ChannelList unusedChannels;
-	__gnu_cxx::hash_set<t_channel_id> chans_processed;
+	set<t_channel_id> chans_processed;
 
 	for (vector<CBouquet*>::iterator it = Bouquets.begin(); it != Bouquets.end(); it++)
 	{

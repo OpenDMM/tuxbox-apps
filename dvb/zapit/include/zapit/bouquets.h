@@ -8,7 +8,7 @@
 #include <algorithm>
 #include <functional>
 #include <vector>
-#include <ext/hash_map>
+#include <map>
 #include <stdint.h>
 #include <stdio.h>
 
@@ -17,8 +17,8 @@
 
 using namespace std;
 
-typedef __gnu_cxx::hash_map<t_channel_id, CZapitChannel> tallchans;
-typedef __gnu_cxx::hash_map<t_channel_id, CZapitChannel>::iterator tallchans_iterator;
+typedef map<t_channel_id, CZapitChannel> tallchans;
+typedef map<t_channel_id, CZapitChannel>::iterator tallchans_iterator;
 
 typedef vector<CZapitChannel*> ChannelList;
 
