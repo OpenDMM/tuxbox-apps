@@ -16,6 +16,9 @@ $Id$
 
 
 $Log$
+Revision 1.7  2004/01/02 22:25:39  rasc
+DSM-CC  MODULEs descriptors complete
+
 Revision 1.6  2004/01/02 16:40:38  rasc
 DSM-CC  INT/UNT descriptors complete
 minor changes and fixes
@@ -333,7 +336,7 @@ static void  dsmcc_program_stream_descriptorlist_loop (u_char *b, int len)
 		len--;
   	  }
 
-	  len2 = descriptor (b, DSMCC);
+	  len2 = descriptor (b, DSMCC_STREAM);   // $$$ TODO is this correct?
 	  b += len2;
 	  len -= len2;
 
