@@ -23,6 +23,9 @@
 //    Foundation, Inc., 675 Mass Ave, Cambridge, MA 02139, USA.
 //
 //  $Log$
+//  Revision 1.38  2001/07/25 15:53:21  fnbrd
+//  Neues Antwort-Format bei current/next
+//
 //  Revision 1.37  2001/07/25 15:06:18  fnbrd
 //  Added exception-handlers for better bug hunting.
 //
@@ -966,10 +969,12 @@ static void commandCurrentNextInfoChannelName(struct connectionData *client, cha
       // Folgendes ist grauenvoll, habs aber einfach kopiert aus epgd
       // und keine Lust das grossartig zu verschoenern
       nResultDataSize=
+        12+1+					// Unique-Key + del
         strlen(evt.name.c_str())+1+		//Name + del
         3+2+1+					//std:min + del
         4+1+					//dauer (mmmm) + del
         3+1+					//100 + del
+        12+1+					// Unique-Key + del
         strlen(nextEvt.name.c_str())+1+		//Name + del
         3+2+1+					//std:min + del
         4+1+1;					//dauer (mmmm) + del + 0
@@ -984,9 +989,11 @@ static void commandCurrentNextInfoChannelName(struct connectionData *client, cha
       unsigned dauer2=zeitEvt2.dauer/60;
 
       sprintf(pResultData,
-      "%s\n%02d:%02d\n%04u\n%03u\n%s\n%02d:%02d\n%04u\n",
+      "%012llx\n%s\n%02d:%02d\n%04u\n%03u\n%012llx\n%s\n%02d:%02d\n%04u\n",
+        evt.uniqueKey(),
         evt.name.c_str(),
         nSH, nSM, dauer, nProcentagePassed,
+        nextEvt.uniqueKey(),
         nextEvt.name.c_str(),
         nSH2, nSM2, dauer2);
     }
