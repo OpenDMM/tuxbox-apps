@@ -162,25 +162,25 @@ void CBouquet::moveService(const unsigned int oldPosition, const unsigned int ne
 	}
 }
 
-int CBouquet::recModeRadioSize (unsigned int tsid)
+size_t CBouquet::recModeRadioSize(const uint32_t tsid_onid)
 {
-	int size = 0;
-	for ( unsigned int i=0; i< tvChannels.size(); i++)
-	{
-		if ( tsid == tvChannels[i]->getTsidOnid())
+	size_t size = 0;
+
+	for (size_t i = 0; i < radioChannels.size(); i++)
+		if (tsid_onid == radioChannels[i]->getTsidOnid())
 			size++;
-	}
+
 	return size;
 }
 
-int CBouquet::recModeTVSize( unsigned int tsid)
+size_t CBouquet::recModeTVSize(const uint32_t tsid_onid)
 {
-	int size = 0;
-	for ( unsigned int i=0; i< radioChannels.size(); i++)
-	{
-		if ( tsid == radioChannels[i]->getTsidOnid())
+	size_t size = 0;
+
+	for (size_t i = 0; i < tvChannels.size(); i++)
+		if (tsid_onid == tvChannels[i]->getTsidOnid())
 			size++;
-	}
+
 	return size;
 }
 

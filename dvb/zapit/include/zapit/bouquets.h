@@ -67,8 +67,8 @@ class CBouquet
 	
 	void moveService (const unsigned int oldPosition, const unsigned int newPosition, const unsigned char serviceType);
 	
-	int recModeRadioSize(unsigned int);
-	int recModeTVSize(unsigned int);
+	size_t recModeRadioSize(const uint32_t tsid_onid);
+	size_t recModeTVSize(const uint32_t tsid_onid);
 	CZapitChannel* getChannelByChannelID(const t_channel_id channel_id, const unsigned char serviceType = ST_RESERVED);
 };
 
