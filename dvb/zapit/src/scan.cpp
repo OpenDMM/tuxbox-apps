@@ -669,7 +669,8 @@ void *start_scanthread(void *scanmode)
 		while ((search = xmlGetNextOccurence(search, frontendType)) != NULL)
 		{
 			/* write services */
-			scan_success = scan_success || write_provider(fd, frontendType, xmlGetAttribute(search, "name"));
+			if (write_provider(fd, frontendType, xmlGetAttribute(search, "name")))
+				scan_success = true;
 			
 			/* go to next satellite */
 			search = search->xmlNextNode;
