@@ -38,7 +38,7 @@
 #include <core/gui/elabel.h>
 
 eZapSetup::eZapSetup()
-	:eListBoxWindow<eListBoxEntryMenu>(_("Setup"), 8, 220, true)
+	:eListBoxWindow<eListBoxEntryMenu>(_("Setup"), 9, 220, true)
 {
 	eDebug("statusbar = %p", statusbar);
 	move(ePoint(150, 136));
@@ -57,8 +57,8 @@ eZapSetup::eZapSetup()
 
 void eZapSetup::onSelChanged( eListBoxEntryMenu* p)
 {
-	eDebug("Update Statusbar to %s", p->getHelpText().c_str() );
-	eDebug("Statusbar pos is left = %i, top = %i, width = %i, height = %i", statusbar->getLabel().getPosition().x(), statusbar->getLabel().getPosition().y(), statusbar->getLabel().getSize().width(), statusbar->getLabel().getSize().height() );
+//	eDebug("Update Statusbar to %s", p->getHelpText().c_str() );
+//	eDebug("Statusbar pos is left = %i, top = %i, width = %i, height = %i", statusbar->getLabel().getPosition().x(), statusbar->getLabel().getPosition().y(), statusbar->getLabel().getSize().width(), statusbar->getLabel().getSize().height() );
 	statusbar->getLabel().setText( p->getHelpText() );		
 }
 
