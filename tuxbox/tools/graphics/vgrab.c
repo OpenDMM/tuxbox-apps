@@ -92,7 +92,7 @@ void usage (char *name){
 		"         <left> must be even\n"
 		"         <width> must be even\n"
 		"         <scale> must be an integer value 1..30\n"
-		"         <opt> TODO", name);
+		"         <opt> TODO\n", name);
 }
 
 int main(int argc, char **argv){
