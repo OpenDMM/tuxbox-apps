@@ -820,7 +820,7 @@ bool parse_command (CZapitMessages::commandHead &rmsg)
 				CZapitMessages::commandRenameBouquet msgRenameBouquet;
 				read(connfd, &msgRenameBouquet, sizeof(msgRenameBouquet)); // bouquet & channel number are already starting at 0!
 				if (msgRenameBouquet.bouquet < bouquetManager->Bouquets.size())
-					bouquetManager->Bouquets[msgRenameBouquet.bouquet]->Name = msgRenameBouquet.name;
+					bouquetManager->Bouquets[msgRenameBouquet.bouquet]->Name = convert_to_UTF8(std::string(msgRenameBouquet.name));
 				break;
 			}
 			case CZapitMessages::CMD_BQ_EXISTS_BOUQUET:
@@ -1237,7 +1237,7 @@ void sendBouquets(bool emptyBouquetsToo)
 			{
 				CZapitClient::responseGetBouquets msgBouquet;
 
-				strncpy(msgBouquet.name, bouquetManager->Bouquets[i]->Name.c_str(), 30);
+				strncpy(msgBouquet.name, Utf8_to_Latin1(bouquetManager->Bouquets[i]->Name).c_str(), 30);
 				msgBouquet.bouquet_nr = i;
 				msgBouquet.locked     = bouquetManager->Bouquets[i]->bLocked;
 				msgBouquet.hidden     = bouquetManager->Bouquets[i]->bHidden;
@@ -1259,7 +1259,7 @@ void internalSendChannels(ChannelList* channels, const unsigned int first_channe
 			continue;
 
 		CZapitClient::responseGetBouquetChannels response;
-		strncpy(response.name, (*channels)[i]->getName().c_str(),30);
+		strncpy(response.name, Utf8_to_Latin1((*channels)[i]->getName()).c_str(),30);
 		response.channel_id = (*channels)[i]->getChannelID();
 		response.nr = first_channel_nr + i;
 

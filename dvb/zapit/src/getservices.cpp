@@ -91,7 +91,7 @@ void ParseChannels (XMLTreeNode *node, t_transport_stream_id transport_stream_id
 	while ((node != NULL) && (!strcmp(node->GetType(), "channel")))
 	{
 		sscanf(node->GetAttributeValue("service_id"), "%hx", &service_id);
-		name = Utf8_to_Latin1(node->GetAttributeValue("name"));
+		name = node->GetAttributeValue("name");
 		sscanf(node->GetAttributeValue("service_type"), "%hhx", &service_type);
 
 		switch (service_type)
