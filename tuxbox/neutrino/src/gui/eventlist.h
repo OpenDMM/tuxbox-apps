@@ -4,6 +4,9 @@
 // $Id$
 //
 // $Log$
+// Revision 1.3  2001/09/18 14:58:20  field
+// Eventlist verbessert
+//
 // Revision 1.2  2001/09/18 11:34:42  fnbrd
 // Some changes.
 //
@@ -39,7 +42,7 @@ class EventList
     void removeAllEvents(void);
     void readEvents(const std::string& channelname); // I really don't like handling names
     unsigned int		selected;
-    unsigned int		tuned;
+    int                 current_event;
     unsigned int		liststart;
     unsigned int		listmaxshow;
     unsigned int		numwidth;
