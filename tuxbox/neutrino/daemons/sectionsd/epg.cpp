@@ -22,6 +22,9 @@
 //    Foundation, Inc., 675 Mass Ave, Cambridge, MA 02139, USA.
 //
 // $Log$
+// Revision 1.9  2001/05/15 05:02:55  fnbrd
+// Weiter gearbeitet.
+//
 // Revision 1.8  2001/05/14 13:44:23  fnbrd
 // Erweitert.
 //
@@ -64,6 +67,8 @@ int main(int argc, char **argv)
   printf("Time needed: %ds\n", (int)difftime(endtime, starttime));
 //  for_each(epgset.begin(), epgset.end(), printSmallSectionHeader());
 //  for_each(epgset.begin(), epgset.end(), printSIsection());
-//  for_each(epgset.begin(), epgset.end(), printSIsectionEIT());
+#ifdef READ_PRESENT_INFOS
+  for_each(epgset.begin(), epgset.end(), printSIsectionEIT());
+#endif
   return 0;
 }
