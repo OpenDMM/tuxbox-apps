@@ -11,11 +11,14 @@ $Id$
 
 
  -- Private TAG Space  DSM-CC   INT, UNT, ...
- -- DSM-CC Descriptors  ISO 13818-6  // TR 102 006
+ -- DSM-CC INT/UNT Descriptors
 
 
 
 $Log$
+Revision 1.11  2004/01/03 00:30:06  rasc
+DSM-CC  STREAM descriptors module (started)
+
 Revision 1.10  2004/01/02 22:25:35  rasc
 DSM-CC  MODULEs descriptors complete
 
@@ -58,7 +61,7 @@ more PES stuff, DSM descriptors, testdata
 #define __DSM_INT_UNT_DESCRIPTOR_H 1
 
 
-int  descriptorDSMCC_INT_UNT_Private (u_char *b);
+int  descriptorDSMCC_INT_UNT (u_char *b);
 
 void descriptorDSMCC_scheduling (u_char *b);
 void descriptorDSMCC_update (u_char *b);
