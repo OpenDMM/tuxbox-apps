@@ -1,3 +1,4 @@
+#ifndef DISABLE_FILE
 /*
  * setup_harddisk.cpp
  *
@@ -616,3 +617,5 @@ void ePartitionCheck::getData( eString str )
 	else if ( str.find("[N/Yes]") != eString::npos )
 		fsck->write("Yes");
 }
+
+#endif // DISABLE_FILE
