@@ -36,6 +36,8 @@
 #include <sys/types.h>
 #include <sys/un.h>
 
+#include <tuxbox/tuxbox.h>
+
 #include <dbox/avs_core.h>
 #include <dbox/fp.h>
 #include <dbox/saa7126_core.h>
@@ -555,21 +557,20 @@ void disableVideoOutput(bool disable)
 
 void setBoxType()
 {
-	char strmID[40];
-	strcpy( strmID, getenv("mID") );
-	int mID = atoi(strmID);
+	unsigned int manufacturer = tuxbox_get_manufacturer();
 
-	switch ( mID )
+	switch ( manufacturer )
 	{
-	case 3:	settings.boxtype= CControldClient::BOXTYPE_SAGEM;
+	case TUXBOX_MANUFACTURER_SAGEM:	settings.boxtype= CControldClient::BOXTYPE_SAGEM;
 		break;
-	case 2:	settings.boxtype= CControldClient::BOXTYPE_PHILIPS;
+	case TUXBOX_MANUFACTURER_PHILIPS:	settings.boxtype= CControldClient::BOXTYPE_PHILIPS;
 		break;
+	case TUXBOX_MANUFACTURER_NOKIA:
 	default:
 		settings.boxtype= CControldClient::BOXTYPE_NOKIA;
 	}
 
-	printf("[controld] Boxtype detected: (%s, %d, %d, %s)\n", strmID, mID, settings.boxtype, BoxNames[settings.boxtype]);
+	printf("[controld] Boxtype detected: (%d, %d, %s %s)\n", manufacturer, settings.boxtype, tuxbox_get_manufacturer_str(), tuxbox_get_model_str());
 }
 
 
