@@ -543,6 +543,7 @@ const char * locale_real_names[] =
 	"movieplayer.toomanybookmarks",
 	"movieplayer.tshelp",
 	"movieplayer.tsplayback",
+	"movieplayer.tsplayback_pc",
 	"movieplayer.vcdplayback",
 	"movieplayer.vlchelp",
 	"movieplayer.wrongvlcversion",
