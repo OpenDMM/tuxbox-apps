@@ -1441,8 +1441,8 @@ void CNeutrinoApp::InitParentalLockSettings(CMenuWidget &parentallockSettings)
 
 	CMenuOptionChooser* oj = new CMenuOptionChooser("parentallock.prompt", &g_settings.parentallock_prompt, true);
 	oj->addOption(PARENTALLOCK_PROMPT_NEVER         , "parentallock.never");
-	oj->addOption(PARENTALLOCK_PROMPT_ONSTART       , "parentallock.onstart");
-	//oj->addOption(PARENTALLOCK_PROMPT_CHANGETOLOCKED, "parentallock.changetolocked");
+//	oj->addOption(PARENTALLOCK_PROMPT_ONSTART       , "parentallock.onstart");
+	oj->addOption(PARENTALLOCK_PROMPT_CHANGETOLOCKED, "parentallock.changetolocked");
 	oj->addOption(PARENTALLOCK_PROMPT_ONSIGNAL      , "parentallock.onsignal");
 	parentallockSettings.addItem( oj );
 
