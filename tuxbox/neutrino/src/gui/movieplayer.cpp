@@ -201,14 +201,14 @@ CMoviePlayerGui::exec (CMenuTarget * parent, const std::string & actionKey)
 		frameBuffer->ClearFrameBuffer();
 	}
 
-	CBookmark * theBookmark=NULL;
-    if (actionKey=="bookmarkplayback") {
-        isBookmark = true;
-        theBookmark = bookmarkmanager->getBookmark(NULL);
-        if (theBookmark == NULL) {
-            bookmarkmanager->flush();
-            return menu_return::RETURN_REPAINT;
-        }
+	const CBookmark * theBookmark = NULL;
+	if (actionKey=="bookmarkplayback") {
+		isBookmark = true;
+		theBookmark = bookmarkmanager->getBookmark(NULL);
+		if (theBookmark == NULL) {
+			bookmarkmanager->flush();
+			return menu_return::RETURN_REPAINT;
+		}
 	}
 	
 	// set zapit in standby mode
@@ -252,7 +252,7 @@ CMoviePlayerGui::exec (CMenuTarget * parent, const std::string & actionKey)
         isBookmark = true;
         if (theBookmark != NULL) {
             startfilename = theBookmark->getUrl();
-            sscanf (theBookmark->getTime().c_str(), "%lld", &startposition);
+            sscanf (theBookmark->getTime(), "%lld", &startposition);
             int vlcpos = startfilename.rfind("vlc://");
             if (vlcpos==0)
             {
