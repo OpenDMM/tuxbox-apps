@@ -1430,27 +1430,22 @@ int startPlayBack()
 		return -1;
 	}
 
+	/* start demux filters */
+	setDmxPesFilter(dmx_pcr_fd, DMX_OUT_DECODER, DMX_PES_PCR, channel->getPcrPid());
+	setDmxPesFilter(dmx_audio_fd, DMX_OUT_DECODER, DMX_PES_AUDIO, channel->getAudioPid());
+	setDmxPesFilter(dmx_video_fd, DMX_OUT_DECODER, DMX_PES_VIDEO, channel->getVideoPid());
+
 	video->setSource(VIDEO_SOURCE_DEMUX);
 	video->start();
 
 	/* set bypass mode */
 	if (channel->getAudioChannel())
-	{
 		if (channel->getAudioChannel()->isAc3)
-		{
 			audio->enableBypass();
-		}
 		else
-		{
 			audio->disableBypass();
-		}
-	}
-	audio->start();
 
-	/* start demux filters */
-	setDmxPesFilter(dmx_pcr_fd, DMX_OUT_DECODER, DMX_PES_PCR, channel->getPcrPid());
-	setDmxPesFilter(dmx_audio_fd, DMX_OUT_DECODER, DMX_PES_AUDIO, channel->getAudioPid());
-	setDmxPesFilter(dmx_video_fd, DMX_OUT_DECODER, DMX_PES_VIDEO, channel->getVideoPid());
+	audio->start();
 
 #if 0
 
