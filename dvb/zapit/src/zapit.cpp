@@ -97,6 +97,8 @@ int connfd;
 CLcddClient lcdd;
 #endif /* DBOX2 */
 
+bool playbackStopForced = false;
+
 bool debug = false;
 
 /* near video on demand */
@@ -1019,11 +1021,13 @@ void parse_command (CZapitClient::commandHead &rmsg)
 				break;
 			}
 			case CZapitClient::CMD_SB_START_PLAYBACK:
+				playbackStopForced = false;
 				startPlayBack();
 				break;
 
 			case CZapitClient::CMD_SB_STOP_PLAYBACK:
 				stopPlayBack();
+				playbackStopForced = true;
 				break;
 
 			case CZapitClient::CMD_GETPIDS:
@@ -1462,6 +1466,9 @@ void sendChannels( CZapitClient::channelsMode mode, CZapitClient::channelsOrder 
 
 int startPlayBack()
 {
+	if (playbackStopForced == true)
+		return -1;
+
 	if ((dmx_pcr_fd == -1) && (dmx_pcr_fd = open(DEMUX_DEV, O_RDWR)) < 0)
 	{
 		perror("[zapit] " DEMUX_DEV);
@@ -1579,6 +1586,8 @@ int startPlayBack()
 
 int stopPlayBack()
 {
+	if (playbackStopForced == true)
+		return -1;
 
 #ifdef DBOX2
 	stopVbi();
