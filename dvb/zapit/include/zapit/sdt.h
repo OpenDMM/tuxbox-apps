@@ -43,6 +43,11 @@ enum service_type_e
 	DVB_MHP_SERVICE
 };
 
+struct sdt_generic_descriptor {
+        u_char  descriptor_tag                  : 8;
+        u_char  descriptor_length               : 8;
+};
+
 int parse_sdt ();
 unsigned int get_sdt_TsidOnid ();
 

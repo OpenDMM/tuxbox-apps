@@ -39,7 +39,7 @@ std::string curr_chan_name;
 uint32_t found_transponders;
 uint32_t found_channels;
 std::string lastProviderName;
-std::map <uint32_t, uint8_t> service_types;
+std::map <t_channel_id, uint8_t> service_types;
 
 extern CFrontend *frontend;
 extern CEventServer *eventServer;
@@ -277,10 +277,11 @@ uint8_t network_name_descriptor (uint8_t *buffer)
 /* 0x41 */
 uint8_t service_list_descriptor (uint8_t *buffer, uint16_t original_network_id)
 {
-	unsigned char i;
-
-	for (i = 0; i < buffer[1]; i += 3)
-		service_types[(original_network_id << 16) | (buffer[i+2] << 8) | buffer[i+3]] = buffer[i+4];
+	for (int i = 0; i < buffer[1]; i += 3)
+		{
+			uint16_t service_id = (buffer[i + 2] << 8) | buffer[i + 3];
+			service_types[CREATE_CHANNEL_ID] = buffer[i + 4];
+		}
 
 	return buffer[1];
 }

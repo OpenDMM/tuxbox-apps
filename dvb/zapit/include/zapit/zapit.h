@@ -26,7 +26,6 @@ int start_scan();
 /**************************************************************/
 
 void addChannelToBouquet (unsigned int bouquet, t_channel_id channel_id);
-void removeChannelFromBouquet (unsigned int bouquet, t_channel_id channel_id);
 void sendBouquets (bool emptyBouquetsToo);
 void internalSendChannels (ChannelList* channels);
 void sendBouquetChannels (unsigned int bouquet, CZapitClient::channelsMode mode = CZapitClient::MODE_CURRENT);
