@@ -23,6 +23,9 @@
 //    Foundation, Inc., 675 Mass Ave, Cambridge, MA 02139, USA.
 //
 //  $Log$
+//  Revision 1.9  2001/07/14 22:59:58  fnbrd
+//  removeOldEvents() in SIevents
+//
 //  Revision 1.8  2001/07/14 17:36:04  fnbrd
 //  Verbindungsthreads sind jetzt detached (kein Mem-leak mehr)
 //
@@ -586,6 +589,10 @@ static void *houseKeepingThread(void *)
       rc=sleep(rc); // sleep 60 seconds
     printf("housekeeping.\n");
     pthread_mutex_lock(&eventsLock);
+    unsigned anzEventsAlt=events.size();
+    events.removeOldEvents();
+    if(events.size()!=anzEventsAlt)
+      printf("Removed %d old events.\n", anzEventsAlt-events.size());
     printf("Number of events: %u\n", events.size());
     pthread_mutex_unlock(&eventsLock);
     pthread_mutex_lock(&servicesLock);
@@ -595,8 +602,7 @@ static void *houseKeepingThread(void *)
     struct mallinfo speicherinfo=mallinfo();
     printf("total size of memory occupied by chunks handed out by malloc: %d\n", speicherinfo.uordblks);
     printf("total bytes memory allocated with `sbrk' by malloc, in bytes: %d (%dkb, %fMB)\n",speicherinfo.arena, speicherinfo.arena/1024, (float)speicherinfo.arena/(1024.*1024));
-  }
-
+  } // for endlos
 }
 
 int main(void)
