@@ -26,7 +26,7 @@
 
 
 #include "zapittypes.h"
-#include <connection/basicclient.h>
+#include <connection/basicmessage.h>
 #include "zapitclient.h"
 
 
@@ -66,6 +66,7 @@ class CZapitMessages
 			CMD_GET_CA_INFO,					// not supported yet
 			CMD_GET_CURRENT_SERVICEID,
 			CMD_GET_CURRENT_SERVICEINFO,
+			CMD_GET_DELIVERY_SYSTEM,
 
 			CMD_SCANSTART,
 			CMD_SCANREADY,
@@ -104,7 +105,9 @@ class CZapitMessages
 			CMD_SET_AUDIOCHAN,
 			CMD_MUTE,
 			CMD_SET_VOLUME,
-			CMD_SET_STANDBY
+			CMD_SET_STANDBY,
+
+			CMD_NVOD_SUBSERVICE_NUM
 		};
 
 	struct commandBoolean
@@ -285,6 +288,11 @@ class CZapitMessages
 		unsigned int satellite;
 		unsigned int transponder;
 		unsigned int services;
+	};
+
+	struct responseDeliverySystem
+	{
+		delivery_system_t system;
 	};
 
 };
