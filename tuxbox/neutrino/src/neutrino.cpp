@@ -1793,6 +1793,12 @@ void CNeutrinoApp::RealRun(CMenuWidget &mainMenu)
 
 int CNeutrinoApp::handleMsg(uint msg, uint data)
 {
+	int res;
+
+	res = g_InfoViewer->handleMsg(msg, data);
+
+	if ( res != messages_return::unhandled )
+		return res;
 
     if ( msg == messages::EVT_VCRCHANGED )
 	{
