@@ -21,19 +21,4 @@
  *
  */
 
-#ifndef __sectionsd__debug_h__
-#define __sectionsd__debug_h__
-
-
-#include <stdio.h>
-
-
-extern bool debug;
-
-
-#define dprintf(fmt, args...) { if (debug) { printf(fmt, ## args); fflush(stdout); } }
-#define dputs(str)            { if (debug) { puts(str);            fflush(stdout); } }
-
-
-#endif /* __sectionsd__debug_h__ */
-
+bool debug = false;
