@@ -279,9 +279,7 @@ main (int argc, char ** argv) {
 		if (!strcmp(argv[i], "-s"))
 			silent = 1;
 		if (!strcmp(argv[i], "-l"))
-		{
 			sscanf(argv[++i], "%d", &limit);
-		}
 		i++;
 	}
 	if (limit <= 0)
