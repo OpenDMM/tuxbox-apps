@@ -32,6 +32,7 @@
 #include <setup_rc.h>
 #include <setup_harddisk.h>
 #include <setup_rfmod.h>
+#include <setup_extra.h>
 #include <enigma_ci.h>
 #include <enigma_scan.h>
 #include <setupskin.h>
@@ -99,6 +100,7 @@ eZapSetup::eZapSetup()
 	CONNECT((new eListBoxEntryMenu(&list, _("Skin..."), eString().sprintf("(%d) %s", ++entry, _("open skin selector")) ))->selected, eZapSetup::sel_skin);
 	CONNECT((new eListBoxEntryMenu(&list, _("Language..."), eString().sprintf("(%d) %s", ++entry, _("open language selector")) ))->selected, eZapSetup::sel_language);
 	CONNECT((new eListBoxEntryMenu(&list, _("Ngrab..."), eString().sprintf("(%d) %s", ++entry, _("open ngrab config")) ))->selected, eZapSetup::sel_engrab);
+	CONNECT((new eListBoxEntryMenu(&list, _("Extra settings..."), eString().sprintf("(%d) %s", ++entry, _("open extra config")) ))->selected, eZapSetup::sel_extra);
 	if (haveharddisk)
 		CONNECT((new eListBoxEntryMenu(&list, _("Harddisk..."), eString().sprintf("(%d) %s", ++entry, _("open harddisk setup")) ))->selected, eZapSetup::sel_harddisk);
 	if (haveci)
@@ -213,10 +215,22 @@ void eZapSetup::sel_video()
 	setup.hide();
 	show();
 }
+
 void eZapSetup::sel_engrab()
 {
 	hide();
 	ENgrabSetup setup;
+	setup.setLCD(LCDTitle, LCDElement);
+	setup.show();
+	setup.exec();
+	setup.hide();
+	show();
+}
+
+void eZapSetup::sel_extra()
+{
+	hide();
+	eZapExtraSetup setup;
 	setup.setLCD(LCDTitle, LCDElement);
 	setup.show();
 	setup.exec();
