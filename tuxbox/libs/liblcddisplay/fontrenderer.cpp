@@ -122,7 +122,7 @@ FT_Error LcdFontRenderClass::getGlyphBitmap(FTC_Image_Desc *font, FT_ULong glyph
 	return FTC_SBit_Cache_Lookup(sbitsCache, font, glyph_index, sbit);
 }
 
-int LcdFontRenderClass::AddFont(const char *filename)
+const char * const LcdFontRenderClass::AddFont(const char * const filename)
 {
 	printf("[LCDFONT] adding font %s...", filename);
 	fflush(stdout);
@@ -133,7 +133,7 @@ int LcdFontRenderClass::AddFont(const char *filename)
 	if ((error=FT_New_Face(library, filename, 0, &face)))
 	{
 		printf(" failed: %i\n", error);
-		return error;
+		return NULL;
 	}
 	n->filename = strdup(filename);
 	n->family   = strdup(face->family_name);
@@ -143,7 +143,7 @@ int LcdFontRenderClass::AddFont(const char *filename)
 	n->next=font;
 	printf("OK (%s/%s)\n", n->family, n->style);
 	font=n;
-	return 0;
+	return n->style;
 }
 
 LcdFontRenderClass::fontListEntry::~fontListEntry()
