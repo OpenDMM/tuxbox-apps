@@ -34,6 +34,8 @@
 
 #define TIMEOUT_SEC  7
 #define TIMEOUT_USEC 0
+#define MAX_TIMEOUT_SEC  300
+#define MAX_TIMEOUT_USEC 0
 
 CBasicClient::CBasicClient()
 {
@@ -98,16 +100,24 @@ bool CBasicClient::send_data(const char* data, const size_t size)
 	return true;
 }
 
-bool CBasicClient::receive_data(char* data, const size_t size)
+bool CBasicClient::receive_data(char* data, const size_t size, bool use_max_timeout)
 {
 	timeval timeout;
 
 	if (sock_fd == -1)
 		return false;
-	
-	timeout.tv_sec  = TIMEOUT_SEC;
-	timeout.tv_usec = TIMEOUT_USEC;
-	
+
+	if (use_max_timeout)
+	{
+		timeout.tv_sec  = MAX_TIMEOUT_SEC;
+		timeout.tv_usec = MAX_TIMEOUT_USEC;
+	}
+	else
+	{
+		timeout.tv_sec  = TIMEOUT_SEC;
+		timeout.tv_usec = TIMEOUT_USEC;
+	}
+
 	if (::receive_data(sock_fd, data, size, timeout) == false)
 	{
 		printf("[CBasicClient] receive failed: %s\n", getSocketName());
