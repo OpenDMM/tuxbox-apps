@@ -32,8 +32,8 @@
 	Foundation, Inc., 675 Mass Ave, Cambridge, MA 02139, USA.
 
   $Log$
-  Revision 1.160  2002/02/22 20:30:22  field
-  Stream-Info durch "Features" ersetzt (vtxt usw :)
+  Revision 1.161  2002/02/22 22:47:20  field
+  Features-Menue verbessert
 
   Revision 1.158  2002/02/20 00:07:52  McClean
   add -flash for directly neutrino-start (for alexW)
@@ -1790,7 +1790,7 @@ void CNeutrinoApp::SelectAPID()
 
 void CNeutrinoApp::ShowStreamFeatures()
 {
-	CMenuWidget StreamFeatureSelector("streamfeatures.head", "video.raw", 300);
+	CMenuWidget StreamFeatureSelector("streamfeatures.head", "features.raw", 300);
 	//StreamFeatureSelector.addItem( new CMenuSeparator() );
 
 	char id[5];
