@@ -32,6 +32,9 @@
 	Foundation, Inc., 675 Mass Ave, Cambridge, MA 02139, USA.
 
   $Log$
+  Revision 1.57  2001/10/07 13:16:57  McClean
+  rgb/svideo/composite__4:3/16:9 switch
+
   Revision 1.56  2001/10/07 12:17:22  McClean
   video mode setup (pre)
 
@@ -451,8 +454,8 @@ void CNeutrinoApp::setupDefaults()
 	strcpy(g_settings.language, "english");
 
 	//video
-	g_settings.video_Signal = 0;
-	g_settings.video_Format = 0;
+	g_settings.video_Signal = 0; //composite?
+	g_settings.video_Format = 2; //4:3
     g_settings.epg_byname   = 0;
 
 	//audio
