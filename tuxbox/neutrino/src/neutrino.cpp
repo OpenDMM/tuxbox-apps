@@ -1953,11 +1953,17 @@ int CNeutrinoApp::handleMsg(uint msg, uint data)
 	else if ( msg == NeutrinoMessages::EVT_RECORDMODE_ACTIVATED )
 	{
 		printf("neutino - recordmode on\n");
+		if(!g_InfoViewer->is_visible)
+		{
+			g_RCInput->postMsg( CRCInput::RC_help, 0 );
+		}
+		g_InfoViewer->setRecordMode(true);
 		channelsInit();
 	}
 	else if ( msg == NeutrinoMessages::EVT_RECORDMODE_DEACTIVATED )
 	{
 		printf("neutino - recordmode off\n");
+		g_InfoViewer->setRecordMode(false);
 		channelsInit();
 	}
 	else if ( ( msg == NeutrinoMessages::EVT_BOUQUETSCHANGED ) ||
