@@ -38,7 +38,7 @@
 class CZapitMessages
 {
  public:
-	static const char ACTVERSION = 6;
+	static const char ACTVERSION = 7;
 
 	enum commands
 		{
@@ -118,7 +118,8 @@ class CZapitMessages
 			CMD_NVOD_SUBSERVICE_NUM,
 			CMD_SEND_MOTOR_COMMAND,
 
-			CMD_GET_CHANNEL_NAME
+			CMD_GET_CHANNEL_NAME,
+			CMD_IS_TV_CHANNEL
 		};
 
 	struct commandBoolean

@@ -709,21 +709,6 @@ bool parse_command(CBasicMessage::Header &rmsg, int connfd)
 		break;
 	}
 
-	case CZapitMessages::CMD_GET_CHANNEL_NAME:
-	{
-		t_channel_id                           requested_channel_id;
-		CZapitMessages::responseGetChannelName response;
-		CBasicServer::receive_data(connfd, &requested_channel_id, sizeof(requested_channel_id));
-		tallchans_iterator it = allchans.find(requested_channel_id);
-		if (it == allchans.end())
-			response.name[0] = 0;
-		else
-			strncpy(response.name, it->second.getName().c_str(), 30);
-
-		CBasicServer::send_data(connfd, &response, sizeof(response));
-		break;
-	}
-
 	case CZapitMessages::CMD_GET_CURRENT_TP:
 	{
 		TP_params TP;
@@ -1167,6 +1152,38 @@ bool parse_command(CBasicMessage::Header &rmsg, int connfd)
 		CBasicServer::receive_data(connfd, &msgMotor, sizeof(msgMotor));
 		printf("[zapit] received motor command: %x %x %x %x %x %x\n", msgMotor.cmdtype, msgMotor.address, msgMotor.cmd, msgMotor.num_parameters, msgMotor.param1, msgMotor.param2);
 		frontend->sendMotorCommand(msgMotor.cmdtype, msgMotor.address, msgMotor.cmd, msgMotor.num_parameters, msgMotor.param1, msgMotor.param2);
+		break;
+	}
+
+	case CZapitMessages::CMD_GET_CHANNEL_NAME:
+	{
+		t_channel_id                           requested_channel_id;
+		CZapitMessages::responseGetChannelName response;
+		CBasicServer::receive_data(connfd, &requested_channel_id, sizeof(requested_channel_id));
+		tallchans_iterator it = allchans.find(requested_channel_id);
+		if (it == allchans.end())
+			response.name[0] = 0;
+		else
+			strncpy(response.name, it->second.getName().c_str(), 30);
+
+		CBasicServer::send_data(connfd, &response, sizeof(response));
+		break;
+	}
+
+	case CZapitMessages::CMD_IS_TV_CHANNEL:
+	{
+		t_channel_id                             requested_channel_id;
+		CZapitMessages::responseGeneralTrueFalse response;
+		CBasicServer::receive_data(connfd, &requested_channel_id, sizeof(requested_channel_id));
+		tallchans_iterator it = allchans.find(requested_channel_id);
+		if (it == allchans.end())
+			/* if in doubt (i.e. unknown channel) answer no */
+			response.status = false;
+		else
+			/* FIXME: the following check is no even remotely accurate */
+			response.status = (it->second.getServiceType() != ST_DIGITAL_RADIO_SOUND_SERVICE);
+
+		CBasicServer::send_data(connfd, &response, sizeof(response));
 		break;
 	}
 
