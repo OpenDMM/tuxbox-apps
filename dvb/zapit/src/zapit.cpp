@@ -595,27 +595,13 @@ int start_scan ()
 
 	stopPlayBack();
 
+	scan_runs = 1;
+
 	if (pthread_create(&scan_thread, 0, start_scanthread, NULL))
 	{
 		perror("[zapit] pthread_create: scan_thread");
+		scan_runs = 0;
 		return -1;
-	}
-
-	debug("[zapit] waiting for scan to start\n");
-
-	while (scan_runs == 0)
-	{
-		/*
-		 * this stupid line of code is here just
-		 * to workaround a stupid behaviour because
-		 * the scan thread won't recognize that scan_runs
-		 * changes. maybe it is the compiler's fault.
-		 * or maybe i do not know enough about pthreads
-		 * to fix this in a better way.
-		 * - obi -
-		 */
-
-		printf("[zapit] something sucks here.\n");
 	}
 
 	return 0;
