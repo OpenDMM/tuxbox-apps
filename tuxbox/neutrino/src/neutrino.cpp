@@ -830,7 +830,7 @@ void CNeutrinoApp::InitServiceSettings(CMenuWidget &service)
 	service.addItem( new CMenuSeparator(CMenuSeparator::LINE) );
 
 	//servicescan
-	CMenuWidget* TSScan = new CMenuWidget("servicemenu.scants", "mainmenue.raw");
+	CMenuWidget* TSScan = new CMenuWidget("servicemenu.scants", "settings.raw");
 	TSScan->addItem( new CMenuForwarder("menu.back") );
 	TSScan->addItem( new CMenuSeparator(CMenuSeparator::LINE) );
 	service.addItem( new CMenuForwarder("bouqueteditor.name", true, "", new CBEBouquetWidget( new CNeutrinoBouquetEditorEvents(this))));
@@ -862,6 +862,33 @@ void CNeutrinoApp::InitServiceSettings(CMenuWidget &service)
 	TSScan->addItem( new CMenuSeparator(CMenuSeparator::LINE) );
 	TSScan->addItem( new CMenuForwarder("scants.startnow", true, "", g_ScanTS) );
 	service.addItem( new CMenuForwarder("servicemenu.scants", true, "", TSScan) );
+
+
+	//kabel-lnb-settings
+	if (atoi(getenv("fe"))==1)
+	{// only sat-params....
+		//todo
+	}
+	else
+	{//kabel
+		CMenuWidget* cableSettings = new CMenuWidget("servicemenu.cablesetup", "settings.raw");
+		cableSettings->addItem( new CMenuSeparator() );
+		cableSettings->addItem( new CMenuForwarder("menu.back") );
+		cableSettings->addItem( new CMenuSeparator(CMenuSeparator::LINE) );
+
+		static int dummy = 0;
+		FILE* fd = fopen("/var/etc/.specinv", "r");
+		if(fd)
+		{
+			dummy=1;
+			fclose(fd);
+		}
+		oj = new CMenuOptionChooser("cablesetup.spectralInversion", &dummy, true, new CCableSpectalInversionNotifier );
+		oj->addOption(0, "options.off");
+		oj->addOption(1, "options.on");
+		cableSettings->addItem( oj );
+		service.addItem( new CMenuForwarder("servicemenu.cablesetup", true, "", cableSettings) );
+	}
 
 	//ucodecheck
 	service.addItem( new CMenuForwarder("servicemenu.ucodecheck", true, "", UCodeChecker ) );
@@ -1978,7 +2005,7 @@ void CNeutrinoApp::setVolume(int key, bool bDoPaint)
 		g_FrameBuffer->RestoreScreen(x, y, dx, dy, pixbuf);
 }
 
-void CNeutrinoApp::tvMode( bool rezap = true )
+void CNeutrinoApp::tvMode( bool rezap )
 {
 	if( mode == mode_tv )
 	{
