@@ -74,7 +74,9 @@ class CTimerdClient
 			EVT_SHUTDOWN = 1,
 			EVT_NEXTPROGRAM,
 			EVT_STANDBY,
-			EVT_RECORD
+			EVT_RECORD,
+			EVT_STANDBY_ON,
+			EVT_STANDBY_OFF
 		};
 
 		CTimerdClient::CTimerdClient();
