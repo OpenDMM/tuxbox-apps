@@ -448,7 +448,7 @@ bool CWebAPI::ShowCurrentStreamInfo(CWebserverRequest* request)
 	params["onid"] = itoh(serviceinfo.onid);
 	params["sid"] = itoh(serviceinfo.sid);
 	params["tsid"] = itoh(serviceinfo.tsid);
-	params["vpid"] = itoh(serviceinfo.vdid);
+	params["vpid"] = itoh(serviceinfo.vpid);
 	params["apid"] = itoh(serviceinfo.apid);
 	params["vtxtpid"] = (serviceinfo.vtxtpid != 0)?itoh(serviceinfo.vtxtpid):"nicht verfügbar";
 	params["tsfrequency"] = itoa(serviceinfo.tsfrequency);

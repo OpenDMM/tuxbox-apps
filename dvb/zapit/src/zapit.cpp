@@ -651,7 +651,7 @@ bool parse_command(CBasicMessage::Header &rmsg, int connfd)
 		msgCurrentServiceInfo.onid = channel->getOriginalNetworkId();
 		msgCurrentServiceInfo.sid = channel->getServiceId();
 		msgCurrentServiceInfo.tsid = channel->getTransportStreamId();
-		msgCurrentServiceInfo.vdid = channel->getVideoPid();
+		msgCurrentServiceInfo.vpid = channel->getVideoPid();
 		msgCurrentServiceInfo.apid = channel->getAudioPid();
 		msgCurrentServiceInfo.vtxtpid = channel->getTeletextPid();
 		msgCurrentServiceInfo.pcrpid = channel->getPcrPid();
@@ -1374,9 +1374,9 @@ int startPlayBack(CZapitChannel *thisChannel)
 
 	if (thisChannel->getPcrPid() != 0)
 		have_pcr = true;
-	if (thisChannel->getAudioPid() != 0)
+	if (thisChannel->getAudioPid() != NONE)
 		have_audio = true;
-	if ((thisChannel->getVideoPid() != 0) && (currentMode & TV_MODE))
+	if ((thisChannel->getVideoPid() != NONE) && (currentMode & TV_MODE))
 		have_video = true;
 	if (thisChannel->getTeletextPid() != 0)
 		have_teletext = true;
