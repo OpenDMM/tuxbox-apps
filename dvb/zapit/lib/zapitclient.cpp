@@ -349,6 +349,7 @@ bool CZapitClient::receive_channel_list(BouquetChannelList& channels, const bool
 			channels.push_back(response);
 		}
 	}
+	return true;
 }
 
 
