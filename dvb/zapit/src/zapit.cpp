@@ -926,14 +926,17 @@ bool parse_command(CBasicMessage::Header &rmsg, int connfd)
 
 	case CZapitMessages::CMD_GETPIDS:
 	{
-		CZapitClient::responseGetOtherPIDs responseGetOtherPIDs;
-		responseGetOtherPIDs.vpid = channel->getVideoPid();
-		responseGetOtherPIDs.ecmpid = NONE; // TODO: remove
-		responseGetOtherPIDs.vtxtpid = channel->getTeletextPid();
-		responseGetOtherPIDs.pcrpid = channel->getPcrPid();
-		responseGetOtherPIDs.selected_apid = channel->getAudioChannelIndex();
-		CBasicServer::send_data(connfd, &responseGetOtherPIDs, sizeof(responseGetOtherPIDs));
-		sendAPIDs(connfd);
+		if (channel)
+		{
+			CZapitClient::responseGetOtherPIDs responseGetOtherPIDs;
+			responseGetOtherPIDs.vpid = channel->getVideoPid();
+			responseGetOtherPIDs.ecmpid = NONE; // TODO: remove
+			responseGetOtherPIDs.vtxtpid = channel->getTeletextPid();
+			responseGetOtherPIDs.pcrpid = channel->getPcrPid();
+			responseGetOtherPIDs.selected_apid = channel->getAudioChannelIndex();
+			CBasicServer::send_data(connfd, &responseGetOtherPIDs, sizeof(responseGetOtherPIDs));
+			sendAPIDs(connfd);
+		}
 		break;
 	}
 
@@ -1089,6 +1092,14 @@ void internalSendChannels(int connfd, ChannelList* channels, const unsigned int 
 
 void sendAPIDs(int connfd)
 {
+	CZapitMessages::responseGeneralInteger responseInteger;
+	responseInteger.number = channel->getAudioChannelCount();
+	if (CBasicServer::send_data(connfd, &responseInteger, sizeof(responseInteger)) == false)
+	{
+		ERROR("could not send any return");
+		return;
+	}
+
 	for (uint32_t i = 0; i < channel->getAudioChannelCount(); i++)
 	{
 		CZapitClient::responseGetAPIDs response;
