@@ -21,17 +21,19 @@
  */
 
 #include <software_update.h>
+#include <flashtool.h>
 #include <lib/gui/emessage.h>
 #include <upgrade.h>
 
 eSoftwareUpdate::eSoftwareUpdate()
-	:eSetupWindow(_("Software Update"), 5, 400)
+	:eSetupWindow(_("Software Update"), 6, 400)
 {
 	move(ePoint(140, 100));
 #ifndef DISABLE_NETWORK
 	int entry=0;
 	CONNECT((new eListBoxEntryMenu(&list, _("Internet Update"), eString().sprintf("(%d) %s", ++entry, _("open internet update")) ))->selected, eSoftwareUpdate::internet_update );
 	CONNECT((new eListBoxEntryMenu(&list, _("Manual Update"), eString().sprintf("(%d) %s", ++entry, _("open manual update")) ))->selected, eSoftwareUpdate::manual_update );
+	CONNECT((new eListBoxEntryMenu(&list, _("Expert Flash Save/Restore"), eString().sprintf("(%d) %s", ++entry, _("open expert flash tool")) ))->selected, eSoftwareUpdate::flash_tool);
 #endif
 }
 
@@ -71,3 +73,17 @@ void eSoftwareUpdate::manual_update()
 	show();
 }
 #endif
+
+void eSoftwareUpdate::flash_tool()
+{
+	hide();
+	eFlashtoolMain setup;
+#ifndef DISABLE_LCD
+	setup.setLCD(LCDTitle, LCDElement);
+#endif
+	setup.show();
+	setup.exec();
+	setup.hide();
+	show();
+}
+
