@@ -1415,8 +1415,9 @@ void signal_handler(int signum)
 		debug = !debug;
 		break;
 	default:
-		enterStandby();
-		exit(0);
+                CZapitClient zapit;
+                zapit.shutdown();
+                break;
 	}
 }
 
@@ -1508,6 +1509,9 @@ int main(int argc, char **argv)
 
 	delete bouquetManager;
 	delete eventServer;
+
+        INFO("shutdown complete");
+
 	return 0;
 }
 
