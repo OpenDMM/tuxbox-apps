@@ -49,8 +49,7 @@ eExpertSetup::eExpertSetup()
 	}
 #endif
 	CONNECT((new eListBoxEntryMenu(&list, _("Remote Control"), eString().sprintf("(%d) %s", ++entry, _("open remote control setup")) ))->selected, eExpertSetup::rc_setup);
-	if ( eSystemInfo::getInstance()->getHwType() >= eSystemInfo::DM7000 &&
-		eSystemInfo::getInstance()->getHwType() != eSystemInfo::DM7020 )
+	if ( eSystemInfo::getInstance()->getHwType() >= eSystemInfo::DM7000 )
 		CONNECT((new eListBoxEntryMenu(&list, _("Factory reset"), eString().sprintf("(%d) %s", ++entry, _("all settings will set to factory defaults")) ))->selected, eExpertSetup::factory_reset);
 	new eListBoxEntrySeparator( (eListBox<eListBoxEntry>*)&list, eSkin::getActive()->queryImage("listbox.separator"), 0, true );
 	CONNECT((new eListBoxEntryCheck((eListBox<eListBoxEntry>*)&list,_("Serviceselector help buttons"),"/ezap/serviceselector/showButtons",_("show colored help buttons in service selector")))->selected, eExpertSetup::colorbuttonsChanged );
@@ -159,6 +158,9 @@ void eExpertSetup::factory_reset()
 	{
 		switch( eSystemInfo::getInstance()->getHwType() )
 		{
+			case eSystemInfo::DM7020:
+				system("rm /etc/enigma/* && cp /etc/enigma_defaults/* /etc/enigma/ && killall -9 enigma");
+				break;
 			case eSystemInfo::DM7000:
 			case eSystemInfo::DM500:
 			case eSystemInfo::DM5620:
