@@ -29,6 +29,7 @@
 #include                "config.h"
 #else
 #define CONFIGDIR       "/var/tuxbox/config"
+#define DATADIR		"/share/tuxbox" //for compatibiliy with rel_alexW
 #endif
 
 #define ZAPITCONFIGDIR  CONFIGDIR "/zapit"
