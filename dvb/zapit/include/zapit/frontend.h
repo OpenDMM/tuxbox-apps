@@ -115,6 +115,8 @@ class CFrontend
 		const bool sendDiseqcStandby ();
 		const bool sendDiseqcZeroByteCommand (uint8_t addr, uint8_t cmd);
 		const bool sendDiseqcSmatvRemoteTuningCommand (secToneMode toneMode, secVoltage voltage, uint8_t diseqc, uint32_t frequency);
+		const int32_t getCurrentSatellitePosition() { return currentSatellitePosition; }
+		void setCurrentSatellitePosition(int32_t satellitePosition) {currentSatellitePosition = satellitePosition; } 
 
 		void setDiseqcRepeats(uint32_t repeats)	{ diseqcRepeats = repeats; }
 		void setDiseqcType(diseqc_t type)	{ diseqcType = type; }
