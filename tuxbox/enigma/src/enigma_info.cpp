@@ -64,6 +64,8 @@ static eString getVersionInfo(const char *info)
 {
 	FILE *f=fopen("/.version", "rt");
 	if (!f)
+		f = fopen("/etc/image-version", "rt");
+	if (!f)
 		return "";
 	eString result;
 	while (1)
