@@ -824,6 +824,19 @@ bool CBouquetManager::ChannelIterator::operator == (const ChannelIterator& it) c
 	return( (b == it.b) && (c == it.c));    // not quite correct (might have different Owner and/or be radio/tv iterator!)
 }
 
+CBouquetManager::ChannelIterator CBouquetManager::ChannelIterator::FindChannelNr(const unsigned int channel)
+{
+	c = channel;
+	for (b = 0; b < Owner->Bouquets.size(); b++)
+		if (getBouquet()->size() > (unsigned int)c)
+			goto end;
+		else
+			c -= getBouquet()->size();
+	b = 0; c = -2;
+ end:
+	return (*this);
+}
+
 CBouquetManager::ChannelIterator CBouquetManager::tvChannelsFind( unsigned int onid_sid)
 {
 	ChannelIterator it = tvChannelsBegin();

@@ -100,6 +100,8 @@ class CBouquetManager
 				bool operator == (const ChannelIterator& it) const;
 				ChannelIterator operator ++(int);
 				CZapitChannel* operator *();
+				ChannelIterator FindChannelNr(const unsigned int channel);
+				bool EndOfChannels () { return (c == -2) && (b == 0); };
 		};
 
 		ChannelIterator tvChannelsBegin() { return ChannelIterator(this, 0, -1, true)++; };

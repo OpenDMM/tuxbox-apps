@@ -1671,33 +1671,10 @@ unsigned int zapTo_Onid_Sid (unsigned int onidSid, bool isSubService)
 
 unsigned zapTo (unsigned int channel)
 {
-	unsigned result = 0;
-
-	if (currentMode & RADIO_MODE)
-	{
-		CBouquetManager::ChannelIterator radiocit = bouquetManager->radioChannelsBegin();
-		while ((radiocit != bouquetManager->radioChannelsEnd()) && (channel>1))
-		{
-			radiocit++;
-			channel--;
-		}
-		//	bouquetManager->saveAsLast( bouquet-1, channel-1);
-		if (radiocit != bouquetManager->radioChannelsEnd())
-			result = zapTo_Onid_Sid ( (*radiocit)->getOnidSid(), false );
-	}
+	CBouquetManager::ChannelIterator cit = ((currentMode & RADIO_MODE) ? bouquetManager->radioChannelsBegin() : bouquetManager->tvChannelsBegin()).FindChannelNr(channel);
+	if (!(cit.EndOfChannels()))
+		return zapTo_Onid_Sid((*cit)->getOnidSid(), false);
 	else
-	{
-		CBouquetManager::ChannelIterator tvcit = bouquetManager->tvChannelsBegin();
-		while ((tvcit != bouquetManager->tvChannelsEnd()) && (channel>1))
-		{
-			tvcit++;
-			channel--;
-		}
-		//	bouquetManager->saveAsLast( bouquet-1, channel-1);
-		if (tvcit != bouquetManager->tvChannelsEnd())
-			result = zapTo_Onid_Sid ( (*tvcit)->getOnidSid(), false );
-	}
-
-	return result;
+		return 0;
 }
 
