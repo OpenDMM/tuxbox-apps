@@ -322,6 +322,10 @@ int CTimerdClient::addTimerEvent( CTimerEvent::CTimerEventTypes evType, void* da
 	{
 		length = sizeof(CTimerd::commandSetStandby);
 	}
+	else if(evType == CTimerEvent::TIMER_REMIND)
+	{
+		length = sizeof(CTimerd::commandRemind);
+	}
 	else
 	{
 		length = 0;
