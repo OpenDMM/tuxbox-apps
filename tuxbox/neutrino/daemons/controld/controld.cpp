@@ -230,11 +230,11 @@ void setVideoFormat(int format, bool bSaveFormat = true )
 
 		switch (aspectRatio)
 		{
-		case 2 :	// 4:3
+		case 0 :	// 4:3
 			format= 2;
 			break;
-		case 3 :	// 16:9
-		case 4 :	// 21,1:1
+		case 1 :	// 16:9
+		case 2 :	// 21,1:1
 			format= 1;
 			break;
 		default:
@@ -905,11 +905,11 @@ void CControldAspectRatioNotifier::aspectRatioChanged( int newAspectRatio )
 	{
 		switch (newAspectRatio)
 		{
-		case 2 :	// 4:3
+		case 0 :	// 4:3
 			setVideoFormat( 2, false );
 			break;
-		case 3 :	// 16:9
-		case 4 :	// 2,21:1
+		case 1 :	// 16:9
+		case 2 :	// 2,21:1
 			setVideoFormat( 1, false );
 			break;
 		default:
