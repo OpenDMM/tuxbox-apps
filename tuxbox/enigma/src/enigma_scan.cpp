@@ -47,8 +47,7 @@ eZapScan::eZapScan()
 		CONNECT((new eListBoxEntryMenu(&list, _("Motor Setup..."), _("goto Motor Setup")))->selected, eZapScan::sel_rotorConfig);
 	}
 	
-	if(eDVB::getInstance()->getmID() != 6)
-		CONNECT((new eListBoxEntryMenu(&list, _("SID...")))->selected, eZapScan::sel_bouquet);
+//	CONNECT((new eListBoxEntryMenu(&list, _("SID...")))->selected, eZapScan::sel_bouquet);
 }
 
 eZapScan::~eZapScan()
