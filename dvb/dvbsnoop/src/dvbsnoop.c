@@ -24,6 +24,9 @@ $Id$
 
 
 $Log$
+Revision 1.9  2003/10/24 22:17:13  rasc
+code reorg...
+
 Revision 1.8  2003/10/16 19:02:28  rasc
 some updates to dvbsnoop...
 - small bugfixes
@@ -59,12 +62,12 @@ dvbsnoop v0.7  -- Commit to CVS
 
 
 #include "dvbsnoop.h"
-#include "cmdline.h"
-#include "dmx_sect.h"
-#include "dmx_pes.h"
-#include "dmx_ts.h"
-#include "hexprint.h"
-#include "pkt_time.h"
+#include "dvb_api/dmx_sect.h"
+#include "dvb_api/dmx_pes.h"
+#include "dvb_api/dmx_ts.h"
+#include "misc/cmdline.h"
+#include "misc/hexprint.h"
+#include "misc/pkt_time.h"
 
 
 

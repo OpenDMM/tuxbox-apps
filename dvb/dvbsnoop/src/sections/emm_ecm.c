@@ -8,6 +8,9 @@ $Id$
 
 
 $Log$
+Revision 1.7  2003/10/24 22:17:21  rasc
+code reorg...
+
 Revision 1.6  2003/07/06 05:49:25  obi
 CAMT fix and indentation
 
@@ -35,7 +38,10 @@ dvbsnoop v0.7  -- Commit to CVS
 
 #include "dvbsnoop.h"
 #include "emm_ecm.h"
-#include "hexprint.h"
+#include "descriptors/descriptor.h"
+#include "strings/dvb_str.h"
+#include "misc/output.h"
+#include "misc/hexprint.h"
 
 
 

@@ -8,6 +8,9 @@ $Id$
 
 
 $Log$
+Revision 1.2  2003/10/24 22:17:21  rasc
+code reorg...
+
 Revision 1.1  2003/10/19 13:59:00  rasc
 -more table decoding
 
@@ -19,8 +22,11 @@ Revision 1.1  2003/10/19 13:59:00  rasc
 
 
 #include "dvbsnoop.h"
-#include "table_userdef.h"
-#include "hexprint.h"
+#include "userdef.h"
+#include "descriptors/descriptor.h"
+#include "strings/dvb_str.h"
+#include "misc/output.h"
+#include "misc/hexprint.h"
 
 
 

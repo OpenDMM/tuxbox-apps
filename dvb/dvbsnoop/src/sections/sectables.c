@@ -7,6 +7,9 @@ $Id$
 
 
 $Log$
+Revision 1.9  2003/10/24 22:17:21  rasc
+code reorg...
+
 Revision 1.8  2003/10/21 20:12:51  rasc
 no message
 
@@ -53,7 +56,7 @@ dvbsnoop v0.7  -- Commit to CVS
 #include "sit.h"
 #include "eit.h"
 #include "emm_ecm.h"
-#include "table_userdef.h"
+#include "userdef.h"
 #include "datacarousel/datagram.h"
 #include "datacarousel/ints.h"
 

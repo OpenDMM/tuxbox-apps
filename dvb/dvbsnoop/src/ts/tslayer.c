@@ -7,6 +7,9 @@ $Id$
 
 
 $Log$
+Revision 1.4  2003/10/24 22:17:24  rasc
+code reorg...
+
 Revision 1.3  2002/08/17 20:36:12  obi
 no more compiler warnings
 
@@ -24,7 +27,9 @@ dvbsnoop v0.7  -- Commit to CVS
 
 #include "dvbsnoop.h"
 #include "tslayer.h"
-#include "hexprint.h"
+#include "strings/dvb_str.h"
+#include "misc/output.h"
+#include "misc/hexprint.h"
 
 
 

@@ -9,6 +9,9 @@ $Id$
 
 
 $Log$
+Revision 1.6  2003/10/24 22:17:20  rasc
+code reorg...
+
 Revision 1.5  2003/10/16 19:02:26  rasc
 some updates to dvbsnoop...
 - small bugfixes
@@ -35,7 +38,9 @@ dvbsnoop v0.7  -- Commit to CVS
 
 #include "dvbsnoop.h"
 #include "bat.h"
-#include "descriptor.h"
+#include "descriptors/descriptor.h"
+#include "strings/dvb_str.h"
+#include "misc/output.h"
 
 
 

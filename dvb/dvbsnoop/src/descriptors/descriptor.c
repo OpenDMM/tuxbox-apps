@@ -13,6 +13,9 @@ $Id$
 
 
 $Log$
+Revision 1.11  2003/10/24 22:17:14  rasc
+code reorg...
+
 Revision 1.10  2003/10/13 23:27:35  rasc
 Bugfix, verbose < 4 segfaulted, tnx to 'mws'  for reporting.
 
@@ -42,7 +45,7 @@ kleiner Fehler
 #include "descriptor.h"
 #include "mpeg_descriptor.h"
 #include "dvb_descriptor.h"
-#include "hexprint.h"
+#include "helper/hexprint.h"
 
 
 

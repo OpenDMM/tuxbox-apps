@@ -8,6 +8,9 @@ $Id$
 
 
 $Log$
+Revision 1.4  2003/10/24 22:17:14  rasc
+code reorg...
+
 Revision 1.3  2003/10/21 21:31:29  rasc
 no message
 
@@ -27,7 +30,7 @@ Revision 1.1  2003/10/19 22:22:58  rasc
 
 #include "dvbsnoop.h"
 #include "datagram.h"
-#include "descriptor.h"
+#include "descriptors/descriptor.h"
 
 
 
