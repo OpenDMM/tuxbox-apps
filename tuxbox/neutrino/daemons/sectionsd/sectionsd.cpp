@@ -23,6 +23,9 @@
 //    Foundation, Inc., 675 Mass Ave, Cambridge, MA 02139, USA.
 //
 //  $Log$
+//  Revision 1.59  2001/09/26 09:54:50  field
+//  Neues Kommando (fuer Tontraeger-Auswahl)
+//
 //  Revision 1.58  2001/09/20 19:22:10  fnbrd
 //  Changed format of eventlists with IDs
 //
@@ -1224,6 +1227,60 @@ static void commandCurrentNextInfoChannelName(struct connectionData *client, cha
   return;
 }
 
+static void commandCurrentComponentTagsChannelID(struct connectionData *client, char *data, const unsigned dataLength)
+{
+  char *TagList=new char[65*1024]; // 65kb should be enough and dataLength is unsigned short
+  if(!TagList) {
+    fprintf(stderr, "low on memory!\n");
+    return;
+  }
+  *TagList=0;
+  if(dataLength!=4)
+    return;
+  unsigned* uniqueServiceKey=(unsigned *)data;
+
+  dprintf("Request of Current ComponentTags for 0x%x\n", *uniqueServiceKey);
+
+  if(dmxEIT.pause()) // -> lock
+    return;
+
+  lockEvents();
+  lockServices();
+  SItime zeitEvt1(0, 0);
+  const SIevent &evt=findActualSIeventForServiceUniqueKey(*uniqueServiceKey, zeitEvt1);
+  unlockServices();
+  if(evt.serviceID!=0)
+  {//Found
+    dprintf("current EPG found.\n");
+
+    dprintf("evt.components.size %d \n", evt.components.size());
+    for(SIcomponents::iterator cmp=evt.components.begin(); cmp!=evt.components.end(); cmp++)
+    {
+        dprintf(" %s \n", cmp->component.c_str());
+
+        char tags[1000];
+        sprintf(tags, "%02hhx %02hhx %02hhx\n%s\n", cmp->componentTag, cmp->componentType, cmp->streamContent, cmp->component.c_str() );
+        strcat(TagList, tags);
+    }
+  }
+  unlockEvents();
+  dmxEIT.unpause(); // -> unlock
+
+  struct sectionsd::msgResponseHeader responseHeader;
+  responseHeader.dataLength=strlen(TagList)+1;
+  if (responseHeader.dataLength== 1)
+     responseHeader.dataLength= 0;
+
+  if(writeNbytes(client->connectionSocket, (const char *)&responseHeader, sizeof(responseHeader), TIMEOUT_CONNECTIONS)>0) {
+    if(responseHeader.dataLength)
+      writeNbytes(client->connectionSocket, TagList, responseHeader.dataLength, TIMEOUT_CONNECTIONS);
+  }
+  else
+    dputs("[sectionsd] Fehler/Timeout bei write");
+  delete[] TagList;
+  return;
+}
+
 static void commandCurrentNextInfoChannelID(struct connectionData *client, char *data, const unsigned dataLength)
 {
   int nResultDataSize=0;
@@ -1734,7 +1791,8 @@ static void (*connectionCommands[sectionsd::numberOfCommands]) (struct connectio
   commandEventListRadioIDs,
   commandCurrentNextInfoChannelID,
   commandEPGepgID,
-  commandEPGepgIDshort
+  commandEPGepgIDshort,
+  commandCurrentComponentTagsChannelID
 };
 
 static void *connectionThread(void *conn)
