@@ -1509,15 +1509,17 @@ int startPlayBack()
 	video->start();
 
 	/* set bypass mode */
-	if (channel->getAudioChannel()->isAc3)
+	if (channel->getAudioChannel())
 	{
-		audio->enableBypass();
+		if (channel->getAudioChannel()->isAc3)
+		{
+			audio->enableBypass();
+		}
+		else
+		{
+			audio->disableBypass();
+		}
 	}
-	else
-	{
-		audio->disableBypass();
-	}
-
 	audio->start();
 
 	/* start demux filters */
