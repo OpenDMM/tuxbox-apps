@@ -2,6 +2,9 @@
 // $Id$
 //
 // $Log$
+// Revision 1.12  2001/09/26 09:57:03  field
+// Tontraeger-Auswahl ok (bei allen Chans. auf denen EPG geht)
+//
 // Revision 1.11  2001/09/21 14:33:39  field
 // Eventlist - ok/? vertauscht, epg-Breite flexibel
 //
