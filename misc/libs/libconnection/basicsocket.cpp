@@ -33,7 +33,7 @@
 
 bool send_data(int fd, const void * data, const size_t size, const timeval timeout)
 {
-	fd_set       readfds, writefds, exceptfds;
+	fd_set       writefds;
 	timeval      tv;
 	const void * buffer;
 	size_t       n;
@@ -52,14 +52,12 @@ bool send_data(int fd, const void * data, const size_t size, const timeval timeo
 			if (errno == EPIPE)
 				return false;
 			
-			FD_ZERO(&readfds);
 			FD_ZERO(&writefds);
-			FD_ZERO(&exceptfds);
 			FD_SET(fd, &writefds);
 			
 			tv = timeout;
 			
-			rc = select(fd + 1, &readfds, &writefds, &exceptfds, &tv);
+			rc = select(fd + 1, NULL, &writefds, NULL, &tv);
 			
 			if (rc == 0)
 			{
@@ -71,6 +69,65 @@ bool send_data(int fd, const void * data, const size_t size, const timeval timeo
 				perror("[basicsocket] send_data select");
 				return false;
 			}
+		}
+		else
+			n -= rc;
+	}
+	return true;
+}
+
+
+bool receive_data(int fd, void * data, const size_t size, const timeval timeout)
+{
+	fd_set    readfds;
+	timeval   tv;
+	void    * buffer;
+	size_t    n;
+	int       rc;
+
+	n = size;
+
+	while (n > 0)
+	{
+		FD_ZERO(&readfds);
+		FD_SET(fd, &readfds);
+		
+		tv = timeout;
+		
+		rc = select(fd + 1, &readfds, NULL, NULL, &tv);
+			
+		if (rc == 0)
+		{
+			printf("[basicsocket] receive timed out.\n");
+			return false;
+		}
+		if (rc == -1)
+		{
+			perror("[basicsocket] receive_data select");
+			return false;
+		}
+		buffer = (void *)((char *)data + (size - n));
+		rc = ::recv(fd, buffer, n, MSG_DONTWAIT | MSG_NOSIGNAL);
+		
+		if ((rc == 0) || (rc == -1))
+		{
+			if (rc == -1)
+			{
+				perror("[basicsocket] receive_data");
+
+				if (errno == EPIPE)
+					return false;
+			}
+			else
+			{
+				/*
+				 * silently return false
+				 *
+				 * printf("[basicsocket] no more data\n");
+				 */
+				return false;
+			}
+
 		}
 		else
 			n -= rc;
