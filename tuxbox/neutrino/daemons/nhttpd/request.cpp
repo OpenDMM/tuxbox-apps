@@ -220,6 +220,7 @@ int ende, anfang, t;
 		{
 			URL = url.substr(0,t);
 			Param_String = url.substr(t+1,url.length() - (t+1));
+			URLDecode(Param_String);
 
 			return ParseParams(Param_String);
 		}
