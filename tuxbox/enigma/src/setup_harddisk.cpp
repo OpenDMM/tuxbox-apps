@@ -29,6 +29,7 @@
 #include <lib/gui/combobox.h>
 #include <lib/gui/emessage.h>
 #include <lib/gui/statusbar.h>
+#include <lib/dvb/epgcache.h>
 #include <sys/vfs.h> // for statfs
 #include <unistd.h>
 #include <signal.h>
@@ -499,6 +500,10 @@ int ePartitionCheck::eventHandler( const eWidgetEvent &e )
 	{
 		case eWidgetEvent::execBegin:
 		{
+			system("killall nmbd");
+			system("killall smbd");
+			eEPGCache::getInstance()->messages.send(eEPGCache::Message(eEPGCache::Message::pause));
+			eEPGCache::getInstance()->messages.send(eEPGCache::Message(eEPGCache::Message::flush));
 			eString fs = getPartFS(dev,"/hdd"),
 							part = fs.mid( fs.find(",")+1 );
 
@@ -586,6 +591,8 @@ int ePartitionCheck::eventHandler( const eWidgetEvent &e )
 			eWindow::globalCancel(eWindow::ON);
 			if (fsck)
 				delete fsck;
+			eEPGCache::getInstance()->messages.send(eEPGCache::Message(eEPGCache::Message::restart));
+			eDVB::getInstance()->restartSamba();
 		break;
 
 		default:
