@@ -33,6 +33,9 @@
 // $Id$
 //
 // $Log$
+// Revision 1.11  2001/11/23 16:58:41  McClean
+// update-functions
+//
 // Revision 1.10  2001/11/15 11:42:41  McClean
 // gpl-headers added
 //
@@ -71,6 +74,7 @@
 #include "helpers/scan.h"
 #include "widget/eventlist.hpp"
 #include "helpers/locale.h"
+#include "helpers/update.h"
 
 #ifndef NEUTRINO_CPP
 #define NEUTRINO_CPP extern
@@ -96,6 +100,7 @@ NEUTRINO_CPP  EventList       *g_EventList;
 NEUTRINO_CPP  CStreamInfo     *g_StreamInfo;
 NEUTRINO_CPP  CUCodeCheck     *g_UcodeCheck;
 NEUTRINO_CPP  CScanTs         *g_ScanTS;
+NEUTRINO_CPP  CFlashUpdate    *g_Update;
 
 NEUTRINO_CPP  CScreenSetup    *g_ScreenSetup;
 
