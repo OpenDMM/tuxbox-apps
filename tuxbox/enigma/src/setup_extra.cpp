@@ -57,7 +57,7 @@ eExpertSetup::eExpertSetup()
 		CONNECT((new eListBoxEntryMenu(&list, _("Factory reset"), eString().sprintf("(%d) %s", ++entry, _("all settings will set to factory defaults")) ))->selected, eExpertSetup::factory_reset);
 	new eListBoxEntrySeparator( (eListBox<eListBoxEntry>*)&list, eSkin::getActive()->queryImage("listbox.separator"), 0, true );
 #ifndef DISABLE_FILE
-	if ( eSystemInfo::getInstance()->canRecordTS() )
+	if ( eSystemInfo::getInstance()->canRecordTS() && !eDVB::getInstance()->recorder )
 	{
 		list.setFlags(list.getFlags()|eListBoxBase::flagNoPageMovement);
 		record_split_size = new eListBoxEntryMulti( (eListBox<eListBoxEntryMulti>*)&list, _("record split size (left, right)"));
