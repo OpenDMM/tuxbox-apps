@@ -33,7 +33,7 @@
 #include "descriptors.h"
 #include "pmt.h"
 
-#define PMT_SIZE  1024
+#define PMT_SIZE 1024 + 3
 
 /*
  * Stream types
