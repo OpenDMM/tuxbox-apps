@@ -5,6 +5,7 @@
 #include <sys/ioctl.h>
 #include <unistd.h>
 
+#include <stdint.h>
 #include <dbox/fb.h>
 
 void help (char *prog_name)

@@ -33,6 +33,7 @@
 #include <sys/stat.h>
 #include <unistd.h>
 
+#include <stdint.h>
 #include <dbox/fb.h>
 
 #include <config.h>
