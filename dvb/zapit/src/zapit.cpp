@@ -70,6 +70,9 @@
   Foundation, Inc., 675 Mass Ave, Cambridge, MA 02139, USA.
   
   $Log$
+  Revision 1.22  2001/10/25 17:20:50  field
+  Umlaute gefixt! (unbedingt make clean)
+
   Revision 1.21  2001/10/18 23:04:48  field
   vtxt-neues cmd
 
@@ -169,7 +172,7 @@
 
 
 #include "zapit.h"
-#include "../../apps//mczap/lcdd/lcdd.h"
+#include "../../apps/mczap/lcdd/lcdd.h"
 
 extern uint16_t old_tsid;
 uint curr_onid_sid = 0;
