@@ -631,7 +631,6 @@ void parse_command(int connfd, CControld::commandHead* rmessage)
 			//printf("[controld] mute\n");
 			settings.mute = 1;
 			audioControl::setMute(true);
-			audioControl::setMuteSPDIF(true);
 			lcdd.setMute(true);
 			eventServer->sendEvent(CControldClient::EVT_MUTECHANGED, CEventServer::INITID_CONTROLD, &settings.mute, sizeof(settings.mute));
 			break;
@@ -639,7 +638,6 @@ void parse_command(int connfd, CControld::commandHead* rmessage)
 			//printf("[controld] unmute\n");
 			settings.mute = 0;
 			audioControl::setMute(false);
-			audioControl::setMuteSPDIF(false);
 			lcdd.setMute(false);
 			eventServer->sendEvent(CControldClient::EVT_MUTECHANGED, CEventServer::INITID_CONTROLD, &settings.mute, sizeof(settings.mute));
 			break;
