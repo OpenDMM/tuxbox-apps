@@ -47,9 +47,9 @@
 #include <ost/video.h>
 
 #include <zapit/zapitclient.h>
-#include <controldclient.h>
-#include <lcddclient.h>
-#include <timerdclient.h>
+#include <controldclient/controldclient.h>
+#include <lcddclient/lcddclient.h>
+#include <timerdclient/timerdclient.h>
 #include <eventserver.h>
 
 #include "eventwatchdog.h"

@@ -42,10 +42,9 @@
 #include <config.h>
 #include <configfile.h>
 
-#include <timermanager.h>
-#include <timerdMsg.h>
-#include <debug.h>
-#include <sectionsdclient.h>
+#include <timerdclient/timerdclient.h>
+#include <timerdclient/debug.h>
+#include <sectionsdclient/sectionsdclient.h>
 
 
 bool doLoop;

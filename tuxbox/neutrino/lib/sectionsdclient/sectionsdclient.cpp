@@ -20,6 +20,12 @@
   Foundation, Inc., 675 Mass Ave, Cambridge, MA 02139, USA.
 
   $Log$
+  Revision 1.23  2002/10/13 11:35:03  woglinde
+
+
+  yeah, its done neutrino compiles now again,
+  you can go on and find bugs
+
   Revision 1.22  2002/10/13 05:42:51  woglinde
 
 
@@ -85,8 +91,8 @@
 */
 
 
-#include <sectionsdclient.h>
 #include <eventserver.h>
+#include <sectionsdclient/sectionsdclient.h>
 
 
 CSectionsdClient::CSectionsdClient()
