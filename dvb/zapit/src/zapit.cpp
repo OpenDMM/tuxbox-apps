@@ -70,6 +70,9 @@
   Foundation, Inc., 675 Mass Ave, Cambridge, MA 02139, USA.
   
   $Log$
+  Revision 1.16  2001/10/16 19:22:06  field
+  Anpassung fuer NVODs
+
   Revision 1.15  2001/10/16 17:00:44  faralla
   nvod nearly ready
 
@@ -1590,20 +1593,34 @@ void parse_command()
         }
         break;
     case 'e':
-      printf("[zapit] changing nvod");
-      number = 0;
-      sscanf((const char*) &rmsg.param3, "%x", &number);
+        printf("[zapit] changing nvod\n");
+        number = 0;
+        sscanf((const char*) &rmsg.param3, "%x", &number);
       
-      if (zapit(number,true) > 0)
-      	status = "00e";
-      else
-      	status = "-0e";
-      //printf("zapit is sending back a status-msg %s\n", status);
-      if (send(connfd, status, strlen(status),0) <0) {
-	perror("Could not send any retun\n");
-	return;
-      }
-      break;
+        if (zapit(number,true) > 0)
+        {
+            strcpy(m_status, "00e");
+            m_status[1]= pids_desc.count_apids & 0x0f;
+            if ( current_is_nvod )
+                m_status[1]|= 0x80;
+            if ( pids_desc.ecmpid != 0)
+                m_status[1]|= 0x40;
+        }
+        else
+            strcpy(m_status, "-0e");
+
+        //printf("zapit is sending back a status-msg %s\n", status);
+        if (send(connfd, m_status, 3, 0) <0)
+        {
+            perror("Could not send any retun\n");
+            return;
+        }
+        if (send(connfd, &pids_desc , sizeof(pids),0) == -1)
+        {
+            perror("Could not send any retun\n");
+            return;
+        }
+        break;
     case 'f':
       if (current_is_nvod)
 	status = "00f";
@@ -1682,7 +1699,7 @@ void parse_command()
     }
     else
     {
-        printf("num: %d\n", cnt_nvods);
+        printf("[zapit] receiving nvods (%d)\n", cnt_nvods);
         for (int cnt= 0; cnt<cnt_nvods; cnt++)
         {
             if (recv(connfd, &nvod_onidsid, 4,0)==-1)
@@ -1695,9 +1712,10 @@ void parse_command()
 				perror("receiving nvod_channels");
 				return;
 			}
-    		printf("Received onid_sid %x. tsid: %x, sid: %x, onid: %x\n", nvod_onidsid, nvod_tsid, (nvod_onidsid&0xFFFF), (nvod_onidsid>>16));
+    		//printf("Received onid_sid %x. tsid: %x, sid: %x, onid: %x\n", nvod_onidsid, nvod_tsid, (nvod_onidsid&0xFFFF), (nvod_onidsid>>16));
     		nvodchannels.insert(std::pair<int,channel>(nvod_onidsid,channel("NVOD",0,0,0,0,0,(nvod_onidsid&0xFFFF),nvod_tsid,(nvod_onidsid>>16),1)));
         }
+
     }
 	break;
 	default:  
