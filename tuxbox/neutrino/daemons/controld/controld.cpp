@@ -816,11 +816,11 @@ void sig_catch(int signal)
 		break;
 	default:
 		saveSettings();
-		exit(0);
+		exit(EXIT_SUCCESS);
 	}
 }
 
-int main(int argc, char **argv)
+int main(int /*argc*/, char** /*argv*/)
 {
 	CBasicServer controld_server;
 
@@ -833,22 +833,21 @@ int main(int argc, char **argv)
 	{
 	case -1:
 		perror("[controld] fork");
-		return -1;
+		return EXIT_FAILURE;
 	case 0:
 		break;
 	default:
-		return 0;
+		return EXIT_SUCCESS;
 	}
 	
 	if (setsid() == -1)
 	{
 		perror("[controld] setsid");
-		return -1;
+		return EXIT_FAILURE;
 	}
 
 	eventServer = new CEventServer;
 
-	//busyBox
 	signal(SIGHUP,sig_catch);
 	signal(SIGINT,sig_catch);
 	signal(SIGQUIT,sig_catch);
@@ -892,6 +891,8 @@ int main(int argc, char **argv)
 	controld_server.run(parse_command, CControld::ACTVERSION);
 
 	shutdownBox();
+
+	return EXIT_SUCCESS;
 }
 
 void CControldAspectRatioNotifier::aspectRatioChanged( int newAspectRatio )
