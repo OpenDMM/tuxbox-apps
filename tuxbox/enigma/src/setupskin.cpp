@@ -35,7 +35,6 @@ void eSkinSetup::loadSkins()
 
 	const char *skinPaths[] = { CONFIGDIR "/enigma/skins/", DATADIR "/enigma/skins/", 0 };
 
-	struct dirent **namelist;
 	char *current_skin=0;
 	eConfig::getInstance()->getKey("/ezap/ui/skin", current_skin);
 
@@ -43,6 +42,7 @@ void eSkinSetup::loadSkins()
 
 	for (int i=0; skinPaths[i]; ++i)
 	{
+		struct dirent **namelist=0;
 		int n = scandir(skinPaths[i], &namelist, 0, alphasort);
 
 		if ( n < 0 && i)
@@ -78,7 +78,9 @@ void eSkinSetup::loadSkins()
 			}
 			free(namelist[count]);
 		}
-		free(namelist);
+
+		if (namelist)
+			free(namelist);
 	}
 
 	if (selection)
