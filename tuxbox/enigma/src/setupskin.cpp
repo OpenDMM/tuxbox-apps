@@ -45,16 +45,13 @@ void eSkinSetup::loadSkins()
 	{
 		int n = scandir(skinPaths[i], &namelist, 0, alphasort);
 
-		if (n<0)
+		if ( n < 0 && i)
 		{
-			if (!i)
-			{
-				eDebug("error reading skin directory");
-				eMessageBox msg("error reading skin directory", "error");
-				msg.show();
-				msg.exec();
-				msg.hide();
-			}
+			eDebug("error reading skin directory");
+			eMessageBox msg("error reading skin directory", "error");
+			msg.show();
+			msg.exec();
+			msg.hide();
 			continue;
 		}
 
