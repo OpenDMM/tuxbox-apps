@@ -37,8 +37,8 @@
 #define NONE 0x0000
 #define INVALID 0x1FFF
 
-void ParseTransponders(xmlNodePtr xmltransponder, const unsigned char DiSEqC, std::string satellite);
-void ParseChannels    (xmlNodePtr node, const t_transport_stream_id transport_stream_id, const t_original_network_id original_network_id, const unsigned char DiSEqC, std::string satellite);
+void ParseTransponders(xmlNodePtr xmltransponder, const unsigned char DiSEqC, std::string satellite, int32_t satellitePosition);
+void ParseChannels    (xmlNodePtr node, const t_transport_stream_id transport_stream_id, const t_original_network_id original_network_id, const unsigned char DiSEqC, std::string satellite, int32_t satellitePosition);
 void FindTransponder  (xmlNodePtr root);
 void LoadSortList     ();
 int LoadServices      ();

@@ -60,7 +60,7 @@ class CFrontend
 		/* current diseqc position */
 		uint8_t currentDiseqc;
 		/* current satellite position */
-		uint32_t currentSatellitePosition;
+		int32_t currentSatellitePosition;
 		/* how often to repeat DiSEqC 1.1 commands */
 		uint32_t diseqcRepeats;
 		/* DiSEqC type of attached hardware */
