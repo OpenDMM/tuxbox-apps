@@ -125,7 +125,12 @@ string nummer = "1";
 		int pos = param_str.find('=');
 		if(pos != -1)
 		{
-			ParameterList[param_str.substr(0,pos)] = param_str.substr(pos+1,param_str.length() - (pos+1));
+			if (ParameterList[param_str.substr(0,pos)] == "")
+				ParameterList[param_str.substr(0,pos)] = param_str.substr(pos+1,param_str.length() - (pos+1));
+			else {
+				ParameterList[param_str.substr(0,pos)] += ",";
+				ParameterList[param_str.substr(0,pos)] += param_str.substr(pos+1,param_str.length() - (pos+1));
+			}
 		}
 		else
 		{
