@@ -67,11 +67,13 @@
 #include "gui/favorites.h"
 #include "gui/sleeptimer.h"
 #include "gui/dboxinfo.h"
+#include "gui/timerlist.h"
 
 #include "system/setting_helpers.h"
 #include "system/settings.h"
 #include "system/debug.h"
 #include "system/flashtool.h"
+
 
 #include <stdio.h>
 #include <unistd.h>
@@ -1069,6 +1071,7 @@ void CNeutrinoApp::InitServiceSettings(CMenuWidget &service, CMenuWidget &scanSe
 	service.addItem( new CMenuForwarder("menu.back") );
 	service.addItem( new CMenuSeparator(CMenuSeparator::LINE) );
 	service.addItem( new CMenuForwarder("bouqueteditor.name", true, "", new CBEBouquetWidget()));
+	service.addItem( new CMenuForwarder("timerlist.name", true, "", new CTimerList()));
 	service.addItem( new CMenuForwarder("servicemenu.scants", true, "", &scanSettings ) );
 	service.addItem( new CMenuForwarder("servicemenu.ucodecheck", true, "", UCodeChecker ) );
 
