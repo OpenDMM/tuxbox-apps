@@ -93,6 +93,7 @@
 #include "gui/sleeptimer.h"
 #include "gui/dboxinfo.h"
 #include "gui/timerlist.h"
+#include "gui/alphasetup.h"
 
 #include "system/setting_helpers.h"
 #include "system/settings.h"
@@ -350,6 +351,10 @@ int CNeutrinoApp::loadSetup()
 	g_settings.video_Signal = configfile.getInt32( "video_Signal", 0 ); //composite
 	g_settings.video_Format = configfile.getInt32( "video_Format", 2 ); //4:3
 
+	//fb-alphawerte für gtx
+	g_settings.gtx_alpha1 = configfile.getInt32( "gtx_alpha1", 0);
+	g_settings.gtx_alpha2 = configfile.getInt32( "gtx_alpha2", 1);
+	
 	//misc
 	g_settings.shutdown_real = configfile.getInt32( "shutdown_real", true );
 	g_settings.shutdown_showclock = configfile.getInt32( "shutdown_showclock", 1 );
@@ -545,6 +550,10 @@ void CNeutrinoApp::saveSetup()
 	//video
 	configfile.setInt32( "video_Signal", g_settings.video_Signal );
 	configfile.setInt32( "video_Format", g_settings.video_Format );
+
+	//fb-alphawerte für gtx
+	configfile.setInt32( "gtx_alpha1", g_settings.gtx_alpha1 );
+	configfile.setInt32( "gtx_alpha2", g_settings.gtx_alpha2 );
 
 	//misc
 	configfile.setInt32( "shutdown_real", g_settings.shutdown_real );
@@ -1612,11 +1621,18 @@ void CNeutrinoApp::InitColorSettings(CMenuWidget &colorSettings, CMenuWidget &fo
 
 	colorSettings.addItem( new CMenuSeparator(CMenuSeparator::LINE) );
 
-	CMenuOptionChooser* oj = new CMenuOptionChooser("colormenu.fade", &g_settings.widget_fade, true );
-	oj->addOption(0, "options.off");
-	oj->addOption(1, "options.on");
-	colorSettings.addItem( oj );
-
+	if(getenv("gtxID")=="ffffffff")
+	{
+		//menuefaden nur bei enx-chips!
+		CMenuOptionChooser* oj = new CMenuOptionChooser("colormenu.fade", &g_settings.widget_fade, true );
+		oj->addOption(0, "options.off");
+		oj->addOption(1, "options.on");
+		colorSettings.addItem( oj );
+	} else {
+		//alpha-werte nur einstellen wenn gtx-chip
+		CAlphaSetup* chAlphaSetup = new CAlphaSetup("colormenu.gtx_alpha", &g_settings.gtx_alpha1, &g_settings.gtx_alpha2, NULL);
+		colorSettings.addItem( new CMenuForwarder("colormenu.gtx_alpha", true, "", chAlphaSetup ));
+	}
 }
 
 void CNeutrinoApp::InitColorThemesSettings(CMenuWidget &colorSettings_Themes)
