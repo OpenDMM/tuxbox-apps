@@ -2055,6 +2055,14 @@ void CNeutrinoApp::ShowStreamFeatures()
 	StreamFeatureSelector.addItem( new CMenuForwarder("timerlist.name", true, "",
 																	  new CTimerList(), id, true, CRCInput::RC_yellow, "gelb.raw"), false );
 
+	// -- Sectionsd pause
+	int dummy = g_Sectionsd->getIsScanningActive();
+	CMenuOptionChooser* oj = new CMenuOptionChooser("mainmenu.pausesectionsd", &dummy, true, new CPauseSectionsdNotifier );
+	oj->addOption(0, "options.off");
+	oj->addOption(1, "options.on");
+	StreamFeatureSelector.addItem( oj );
+
+
 	// -- Stream Info
 	StreamFeatureSelector.addItem( new CMenuForwarder("streamfeatures.info", true, "",
 																	  StreamFeaturesChanger, id, true, CRCInput::RC_help, "help_small.raw"), false );
