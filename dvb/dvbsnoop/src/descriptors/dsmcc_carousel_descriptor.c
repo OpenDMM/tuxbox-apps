@@ -17,6 +17,10 @@ $Id$
 
 
 $Log$
+Revision 1.16  2004/01/22 22:58:29  rasc
+deleting modul  (again?)
+somehow  obsolete module re-appeared??? (or I forgot something)
+
 Revision 1.15  2004/01/11 21:01:31  rasc
 PES stream directory, PES restructured
 
@@ -51,7 +55,7 @@ more PES stuff, DSM descriptors, testdata
 
 #include "dvbsnoop.h"
 #include "descriptor.h"
-#include "dsmcc_module_descriptor.h"
+#include "dsmcc_carousel_descriptor.h"
 #include "dsmcc_int_unt_descriptor.h"
 #include "strings/dsmcc_str.h"
 #include "misc/hexprint.h"

@@ -11,11 +11,15 @@ $Id$
 
 
  -- Private TAG Space  DSM-CC
- -- DSM-CC MODULE Descriptors 
+ -- DSM-CC Carousel Descriptors 
 
 
 
 $Log$
+Revision 1.11  2004/01/22 22:58:29  rasc
+deleting modul  (again?)
+somehow  obsolete module re-appeared??? (or I forgot something)
+
 Revision 1.10  2004/01/11 21:01:31  rasc
 PES stream directory, PES restructured
 
