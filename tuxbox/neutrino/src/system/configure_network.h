@@ -27,6 +27,7 @@
 class CNetworkConfig
 {
  private:
+	bool        orig_automatic_start;
 	std::string orig_address;
 	std::string orig_netmask;
 	std::string orig_broadcast;
@@ -38,6 +39,7 @@ class CNetworkConfig
 	bool modified_from_orig(void);
 
  public:
+	bool        automatic_start;
 	std::string address;
 	std::string netmask;
 	std::string broadcast;
