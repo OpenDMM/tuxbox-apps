@@ -252,7 +252,7 @@ bool CScanSettings::saveSettings(const std::string fileName)
 		{
 			fd = fopen(MOTORCONFIGFILE, "w");
 			for (i = 0; i < satCount; i++)
-				fprintf(fd, "%s:%d\n", satName[i], satMotorPos[i]+1);
+				fprintf(fd, "%s:%d\n", satName[i], satMotorPos[i]);
 			fclose(fd);
 		}
 	}
