@@ -32,6 +32,9 @@
 	Foundation, Inc., 675 Mass Ave, Cambridge, MA 02139, USA.
 
   $Log$
+  Revision 1.111  2001/12/29 02:17:00  McClean
+  make some settings get from controld
+
   Revision 1.110  2001/12/28 16:31:09  Simplex
   libcontroldclient is now used
 
@@ -1747,12 +1750,15 @@ int CNeutrinoApp::run(int argc, char **argv)
 
 	//misc Setup
 	InitMiscSettings(miscSettings);
+	miscSettings.setOnPaintNotifier(this);
 
 	//audio Setup
 	InitAudioSettings(audioSettings, audioSetupNotifier);
 
 	//video Setup
 	InitVideoSettings(videoSettings, videoSetupNotifier);
+	videoSettings.setOnPaintNotifier(this);
+
 
 	//network Setup
 	InitNetworkSettings(networkSettings);
@@ -1916,6 +1922,21 @@ void CNeutrinoApp::ExitRun()
 
 	g_Controld->shutdown();
 	sleep(55555);
+}
+
+bool CNeutrinoApp::onPaintNotify(string MenuName)
+{
+	if(MenuName == "videomenu.head")
+	{//aktuelle werte vom controld holen...
+		g_settings.video_Signal = g_Controld->getVideoOutput();
+		g_settings.video_Format = g_Controld->getVideoFormat();
+	}
+	else if(MenuName == "miscsettings.head")
+	{//aktuelle werte vom controld holen...
+		g_settings.box_Type = g_Controld->getBoxType();
+	}
+
+	return false;
 }
 
 void CNeutrinoApp::AudioMuteToggle()
