@@ -587,6 +587,9 @@ void setBoxType()
 	case TUXBOX_VENDOR_DREAM_MM:
 		settings.boxtype = CControldClient::TUXBOX_MAKER_DREAM_MM;
 		break;
+	case TUXBOX_VENDOR_TECHNOTREND:
+		settings.boxtype = CControldClient::TUXBOX_MAKER_TECHNOTREND;
+		break;
 	default:
 		settings.boxtype = CControldClient::TUXBOX_MAKER_UNKNOWN;
 	}
