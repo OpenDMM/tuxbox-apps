@@ -1624,7 +1624,7 @@ int main(int argc, char **argv)
 			fprintf(stderr,
 				"Usage: %s [-d] [-q]\n"
 				"-d : debug mode\n"
-				"-q : quit mode\n"
+				"-q : quiet mode\n"
 				"\n"
 				"Keys in config file "	CONFIGFILE ":\n"
 				"saveLastChannel" ", "
