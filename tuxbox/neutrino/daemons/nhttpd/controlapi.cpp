@@ -658,10 +658,11 @@ bool CControlAPI::ZaptoCGI(CWebserverRequest *request)
 {
 	request->SendPlainHeader("text/plain");          // Standard httpd header senden
 
-	if (request->ParameterList.size() == 0)
+	if (request->ParameterList.empty())
 	{
-		//paramlos - aktuelles programm anzeigen
-		request->printf("%u\n", Parent->Zapit->getCurrentServiceID());
+		request->printf(PRINTF_CHANNEL_ID_TYPE_NO_LEADING_ZEROS
+				"\n",
+				Parent->Zapit->getCurrentServiceID());
 		return true;
 	}
 	else if (request->ParameterList.size() == 1)
