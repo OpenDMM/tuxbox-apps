@@ -142,7 +142,7 @@ class CTimerEvent_Zapto : public CTimerEvent_Record
 			  CTimerd::CChannelMode mode = CTimerd::MODE_TV,
 			  CTimerd::CTimerEventRepeat evrepeat = CTimerd::TIMERREPEAT_ONCE):
 		CTimerEvent_Record(announceTime, alarmTime, (time_t) 0, channel_id, epgID, epg_starttime, "", mode, evrepeat)
-		{};
+		{eventType = getEventType();};
 	CTimerEvent_Zapto(CConfigFile *config, int iId):
 		CTimerEvent_Record(config, iId)
 		{};
