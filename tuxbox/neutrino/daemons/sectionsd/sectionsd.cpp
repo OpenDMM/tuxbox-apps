@@ -1526,7 +1526,10 @@ static void commandCurrentNextInfoChannelID(int connfd, char *data, const unsign
 	unsigned flag = 0;
 
 	const SIevent &evt = findActualSIeventForServiceUniqueKey(*uniqueServiceKey, zeitEvt1, 0, &flag);
-
+	if(evt.name.empty() && flag !=0)
+	{
+		dmxEIT.change( 0 );
+	}
 	if (evt.service_id == 0)
 	{
 		MySIservicesOrderUniqueKey::iterator si = mySIservicesOrderUniqueKey.end();
