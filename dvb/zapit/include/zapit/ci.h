@@ -69,9 +69,10 @@ class CCaPmt : public CCaTable
 	public:
 		CCaPmt ();
 		~CCaPmt ();
+		unsigned int getLength ();
 
 		unsigned int	ca_pmt_tag		: 24;
-		unsigned char	length_field		: 8;
+		std::vector <unsigned char> length_field;
 		unsigned char	ca_pmt_list_management	: 8;
 		unsigned short	program_number		: 16;
 		unsigned char	reserved1		: 2;
