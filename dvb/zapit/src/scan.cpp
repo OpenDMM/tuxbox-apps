@@ -153,10 +153,10 @@ int get_nits (uint32_t frequency, uint32_t symbol_rate, CodeRate FEC_inner, uint
 int get_sdts()
 {
 	stiterator tI;
-	int demux_fd = open(DEMUX_DEV, O_RDWR);
+	int demux_fd = open(DEMUX_DEVICE, O_RDWR);
 
 	if (demux_fd == -1)
-		perror(DEMUX_DEV);
+		perror(DEMUX_DEVICE);
 
 	for (tI = scantransponders.begin(); tI != scantransponders.end(); tI++)
 	{

@@ -27,6 +27,7 @@
 #include <unistd.h>
 
 #include "video.h"
+#include "settings.h"
 
 CVideo::CVideo ()
 {

@@ -28,6 +28,7 @@
 #include <unistd.h>
 
 #include "audio.h"
+#include "settings.h"
 
 CAudio::CAudio()
 {
@@ -36,9 +37,9 @@ CAudio::CAudio()
 	mixer.volume_left = 0;
 	mixer.volume_right = 0;
 
-	if ((fd = open(AUDIO_DEV, O_RDWR)) < 0)
+	if ((fd = open(AUDIO_DEVICE, O_RDWR)) < 0)
 	{
-		perror(AUDIO_DEV);
+		perror(AUDIO_DEVICE);
 	}
 	else if (ioctl(fd, AUDIO_GET_STATUS, &status) < 0)
 	{

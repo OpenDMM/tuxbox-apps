@@ -25,7 +25,6 @@
 #include <time.h>
 
 #include <ost/video.h>
-#define VIDEO_DEVICE "/dev/dvb/card0/video0"
 
 class CVideo
 {

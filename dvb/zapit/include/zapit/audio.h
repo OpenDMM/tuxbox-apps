@@ -25,7 +25,6 @@
 
 /* nokia api */
 #include <ost/audio.h>
-#define AUDIO_DEV "/dev/dvb/card0/audio0"
 
 class CAudio
 {
