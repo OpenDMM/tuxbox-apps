@@ -28,16 +28,15 @@
 
 eZapLanguageSetup::eZapLanguageSetup(): eWindow(0)
 {
-	int fd=eSkin::getActive()->queryValue("fontsize", 20);
-
 	setText(_("Language Setup"));
 	move(ePoint(150, 136));
-	resize(eSize(350, 230));
+	resize(eSize(390, 230));
 
 	eLabel *l=new eLabel(this);
 	l->setText(_("Language:"));
-	l->move(ePoint(10, 20));
-	l->resize(eSize(150, fd+4));
+  l->setFlags(eLabel::flagVCenter);
+	l->move(ePoint(20, 20));
+	l->resize(eSize(140, 35));
 
 	language=new eListBox<eListBoxEntryText>(this, l);
 	language->loadDeco();
@@ -52,11 +51,11 @@ eZapLanguageSetup::eZapLanguageSetup(): eWindow(0)
 	if ( eConfig::getInstance()->getKey("/elitedvb/language", temp) )
 		temp=0;
 		
-	eListBoxEntryText *cur;
+	eListBoxEntryText *cur=0;
 
 	if (!f)
 	{
-		new eListBoxEntryText(language, "Englisch", (void*) new eString("C"));
+		new eListBoxEntryText(language, "English", (void*) new eString("C"));
 		new eListBoxEntryText(language, "Deutsch", (void*) new eString("de_DE"));
 	} else
 	{
@@ -83,15 +82,15 @@ eZapLanguageSetup::eZapLanguageSetup(): eWindow(0)
 	ok=new eButton(this);
 	ok->setText(_("save"));
 	ok->move(ePoint(20, 80));
-	ok->resize(eSize(90, fd+4));
+	ok->resize(eSize(170, 40));
 	ok->setHelpText(_("save changes and close window"));
 	ok->loadDeco();
 	CONNECT(ok->selected, eZapLanguageSetup::okPressed);
 
 	abort=new eButton(this);
 	abort->setText(_("abort"));
-	abort->move(ePoint(140, 80));
-	abort->resize(eSize(100, fd+4));
+	abort->move(ePoint(210, 80));
+	abort->resize(eSize(170, 40));
 	abort->setHelpText(_("leave language setup (no changes are saved)"));
 	abort->loadDeco();
 	CONNECT(abort->selected, eZapLanguageSetup::abortPressed);
