@@ -150,6 +150,12 @@ bool CControlAPI::TimerCGI(CWebserverRequest *request)
 				Parent->WebAPI->doModifyTimer(request);
 				request->SendOk();
 			}
+			else if (request->ParameterList["action"] == "remove")
+			{
+				unsigned removeId = atoi(request->ParameterList["id"].c_str());
+				Parent->Timerd->removeTimerEvent(removeId);
+				request->SendOk();
+			}
 		}
 		else
 		{
