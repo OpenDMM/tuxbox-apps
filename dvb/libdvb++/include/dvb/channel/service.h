@@ -24,7 +24,7 @@
 
 #include <string>
 #include <map>
-#include <dvb/descriptor/service_descriptor.h>
+#include <dvbsi++/service_descriptor.h>
 
 class Service
 {

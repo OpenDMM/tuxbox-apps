@@ -23,9 +23,9 @@
 #define __dvb_channel_transponder_h__
 
 #include <map>
-#include <dvb/descriptor/cable_delivery_system_descriptor.h>
-#include <dvb/descriptor/satellite_delivery_system_descriptor.h>
-#include <dvb/descriptor/terrestrial_delivery_system_descriptor.h>
+#include <dvbsi++/cable_delivery_system_descriptor.h>
+#include <dvbsi++/satellite_delivery_system_descriptor.h>
+#include <dvbsi++/terrestrial_delivery_system_descriptor.h>
 #include <dvb/types.h>
 #include "service.h"
 
