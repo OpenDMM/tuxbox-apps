@@ -177,12 +177,11 @@ CMoviePlayerGui::CMoviePlayerGui()
 	Path_vlc += g_settings.streaming_server_startdir;
 	Path_vlc_settings = g_settings.streaming_server_startdir;
 
-	if (g_settings.filebrowser_denydirectoryleave == 1) {
-	    filebrowser = new CFileBrowser (Path_local);
-    }
-    else {
-        filebrowser = new CFileBrowser ();
-    }
+	if (g_settings.filebrowser_denydirectoryleave)
+		filebrowser = new CFileBrowser(Path_local.c_str());
+	else
+		filebrowser = new CFileBrowser();
+
 	filebrowser->Multi_Select = false;
 	filebrowser->Dirs_Selectable = false;
 	tsfilefilter.addFilter ("ts");
