@@ -591,8 +591,32 @@ void setBoxType()
 	default:
 		settings.boxtype = CControldClient::TUXBOX_MAKER_UNKNOWN;
 	}
+	// fallback to old way ( via env. var)
+	if(settings.boxtype==CControldClient::TUXBOX_MAKER_UNKNOWN)
+	{
+		char strmID[40];
+		int mID;
+		if(getenv("mID")!=NULL)
+			strcpy( strmID, getenv("mID") );
+		mID = atoi(strmID);
 
-	printf("[controld] Boxtype detected: (%d, %d, %s %s)\n", tuxbox_get_vendor(), settings.boxtype, tuxbox_get_vendor_str(), tuxbox_get_model_str());
+		switch ( mID )
+		{
+			case 3:	
+			   settings.boxtype= CControldClient::TUXBOX_MAKER_SAGEM;
+			   break;
+			case 2:	
+			   settings.boxtype= CControldClient::TUXBOX_MAKER_PHILIPS;
+			   break;
+			default:
+				settings.boxtype= CControldClient::TUXBOX_MAKER_NOKIA;
+		}
+		printf("[controld] Boxtype detected: (%d)\n", settings.boxtype);
+	}
+	else
+		printf("[controld] Boxtype detected: (%d, %s %s)\n", settings.boxtype, tuxbox_get_vendor_str(), tuxbox_get_model_str());
+
+
 }
 
 
