@@ -186,16 +186,6 @@ class CZapitMessages
 		CZapitClient::channelsOrder order;
 	};
 
-	struct commandAddBouquet
-	{
-		char name[30];
-	};
-
-	struct commandExistsBouquet
-	{
-		char name[30];
-	};
-
 	struct commandExistsChannelInBouquet
 	{
 		unsigned int bouquet;
@@ -223,7 +213,6 @@ class CZapitMessages
 	struct commandRenameBouquet
 	{
 		unsigned int bouquet;
-		char         name[30];
 	};
 
 	struct commandMoveBouquet

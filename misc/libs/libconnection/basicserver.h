@@ -40,8 +40,11 @@ class CBasicServer
 	bool parse(bool (parse_command)(CBasicMessage::Header &rmsg, int connfd), const CBasicMessage::t_version version);
 
  public:
-	static bool receive_data(int fd, void * data, const size_t size);
-	static bool send_data(int fd, const void * data, const size_t size);
+	static bool   receive_data  (int fd, void * data, const size_t size);
+	static bool   send_data     (int fd, const void * data, const size_t size);
+	static char * receive_string(int fd);
+	static void   delete_string (char * data);
+
 	bool prepare(const char* socketname);
 
 	// run the server socket
