@@ -281,7 +281,7 @@ int main (int argc, char** argv)
 	{
 #define NEUTRINO_UDS_NAME "/tmp/neutrino.sock"
 		std::cout << "registering neutrino" << std::endl;
-		for (int i = CZapitClient::EVT_ZAP_FAILED; i <= CZapitClient::EVT_BOUQUETS_CHANGED; i++)
+		for (int i = CZapitClient::FIRST_EVENT_MARKER; i < CZapitClient::LAST_EVENT_MARKER; i++)
 			zapit.registerEvent(i, 222, NEUTRINO_UDS_NAME);
 		return 0;
 	}
