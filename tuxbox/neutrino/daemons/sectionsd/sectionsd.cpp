@@ -23,6 +23,9 @@
 //    Foundation, Inc., 675 Mass Ave, Cambridge, MA 02139, USA.
 //
 //  $Log$
+//  Revision 1.132  2002/10/02 17:45:30  thegoodguy
+//  Bugfixes: Fix handling of "small" sections & implement own table_id filter (joint effort with the sedulous alexw)
+//
 //  Revision 1.131  2002/09/25 23:27:48  thegoodguy
 //  Tiny code cleanup
 //
@@ -4204,7 +4207,7 @@ static void *eitThread(void *)
 			}
 
 			timeoutsDMX = 0;
-			buf = new char[sizeof(header) + header.section_length - 5];
+			buf = new char[3 + header.section_length];
 
 			if (!buf)
 			{
@@ -4215,9 +4218,13 @@ static void *eitThread(void *)
 			}
 
 			// Den Header kopieren
-			memcpy(buf, &header, sizeof(header));
+			memcpy(buf, &header, min((unsigned int)(3 + header.section_length), sizeof(header)));
 
-			rc = dmxEIT.read(buf + sizeof(header), header.section_length - 5, timeoutInMSeconds);
+			if (header.section_length > 5)
+			    rc = dmxEIT.read(buf + sizeof(header), header.section_length - 5, timeoutInMSeconds);
+
+			if (header.section_length < 5)
+			    continue;
 
 			dmxEIT.unlock();
 
@@ -4238,6 +4245,12 @@ static void *eitThread(void *)
 				dmxEIT.real_pause(); // -> lock
 				dmxEIT.real_unpause(); // -> unlock
 				continue;
+			}
+
+			if (((header.table_id ^ dmxEIT.filters[dmxEIT.filter_index].filter) & dmxEIT.filters[dmxEIT.filter_index].mask) != 0)
+			{
+			    dprintf("[eitThread] filter 0x%x mask 0x%x -> skip sections for table 0x%x\n", dmxEIT.filters[dmxEIT.filter_index].filter, dmxEIT.filters[dmxEIT.filter_index].mask, header.table_id);
+			    continue;
 			}
 
 			if ((header.current_next_indicator) && (!dmxEIT.pauseCounter ))
