@@ -26,7 +26,7 @@
 #include <unistd.h>
 #include <signal.h>
 
-// #define EXT3
+ #define EXT3
 
 static int getCapacity(int dev)
 {
