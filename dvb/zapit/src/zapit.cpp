@@ -25,7 +25,7 @@
 
 // TODO: write a CZapit class
 
-#include <dbox/avia_vbi.h>
+#include <dbox/avia_gt_vbi.h>
 #include <fcntl.h>
 #include <ost/audio.h>
 #include <ost/video.h>
@@ -36,7 +36,6 @@
 #include <sys/types.h>
 #include <sys/wait.h>
 
-#include "bouquets.h"
 #include "configfile.h"
 #include "cam.h"
 #include "cat.h"
