@@ -2535,6 +2535,8 @@ bool CNeutrinoApp::changeNotify(string OptionName)
 int main(int argc, char **argv)
 {
 	printf("NeutrinoNG $Id$\n\n");
+	//dhcp-client beenden, da sonst neutrino beim hochfahren stehenbleibt
+	system("killall -9 udhcpc >/dev/null 2>/dev/null");
 	tzset();
 	initGlobals();
 	return CNeutrinoApp::getInstance()->run(argc, argv);
