@@ -2,6 +2,9 @@
   $Id$
   
   $Log$
+  Revision 1.21  2003/01/30 13:50:39  thegoodguy
+  libucodes requires libmd5sum
+
   Revision 1.20  2002/09/18 07:44:07  obi
   some more ucodes
 
@@ -44,7 +47,7 @@
 #include <stdio.h>
 #include <stdlib.h>
 #include <string.h>
-#include "../libmd5sum/libmd5sum.h"
+#include <libmd5sum.h>
 
 
 struct Sucode
