@@ -771,7 +771,6 @@ void CNeutrinoApp::doChecks()
 	if(fd)
 		fclose(fd);
 	ucodes_ok= ucodes_ok&&(fd);
-
 	if( !ucodes_ok )
 		ShowMsg ( "messagebox.error", g_Locale->getText("ucodes.failure"), CMessageBox::mbrCancel, CMessageBox::mbCancel, "error.raw" );
 }
@@ -2285,6 +2284,7 @@ int CNeutrinoApp::run(int argc, char **argv)
 
 void CNeutrinoApp::RealRun(CMenuWidget &mainMenu)
 {
+	dprintf(DEBUG_NORMAL, "initialized everything\n");
 	while( true )
 	{
 		uint msg; uint data;
@@ -2837,6 +2837,13 @@ int CNeutrinoApp::handleMsg(uint msg, uint data)
 			// noch nicht im Scart-Mode...
 			scartMode( false );
 		}
+	}
+	else if( msg == NeutrinoMessages::EVT_START_PLUGIN )
+	{
+		string plugname = std::string((char *) data);
+				g_PluginList->setvtxtpid( g_RemoteControl->current_PIDs.PIDs.vtxtpid );
+		g_PluginList->startPlugin( plugname );
+		delete (unsigned char*) data;
 	}
 
 	if( ( msg>= CRCInput::RC_WithData ) && ( msg< CRCInput::RC_WithData+ 0x10000000 ) )
