@@ -23,6 +23,8 @@
 
 #include <stdio.h>
 
+#include <zapit/debug.h>
+#include <zapit/xmlinterface.h>
 
 #ifdef USE_LIBXML
 #include <libxml/xmlmemory.h>
@@ -32,9 +34,6 @@
 #include <xmltok.h>
 #endif /* USE_LIBXML */
 
-
-#include <zapit/debug.h>
-#include <zapit/xmlinterface.h>
 
 xmlNodePtr xmlGetNextOccurence(xmlNodePtr cur, const char * s)
 {
