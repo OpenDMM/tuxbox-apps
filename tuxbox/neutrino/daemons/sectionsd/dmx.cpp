@@ -423,6 +423,9 @@ int DMX::change(const int new_filter_index)
 
 	if (!isOpen())
 	{
+#ifdef PAUSE_EQUALS_STOP	       
+		pthread_cond_signal(&change_cond);
+#endif
 		unlock();
 		return 1;
 	}
