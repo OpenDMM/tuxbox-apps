@@ -204,7 +204,7 @@ class CNeutrinoApp : public CMenuTarget, COnPaintNotifier, CChangeObserver
 		CIPChangeNotifier			*MyIPChanger;
 
 
-		void isCamValid();
+		void doChecks();
 		void firstChannel();
 		void setupDefaults();
 		void setupColors_classic();
