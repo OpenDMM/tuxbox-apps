@@ -78,6 +78,9 @@
   Foundation, Inc., 675 Mass Ave, Cambridge, MA 02139, USA.
 
   $Log$
+  Revision 1.38  2001/11/19 22:43:25  Simplex
+  improved bouquetchannel handling
+
   Revision 1.37  2001/11/18 22:45:58  Simplex
   little modifications for bouquethandling
   new command for reolading services.xml and bouquets.xml
@@ -1368,7 +1371,7 @@ int prepare_channels()
 	found_channels = 0;
 
   int ls = LoadServices();
-  int lb = LoadBouquets();
+  LoadBouquets();
 
   if (ls > 0)
     {
@@ -2141,15 +2144,10 @@ void sendBouquetList()
 		return;
 	}
 
-	if (allBouquets.size() == 0)
+	uint nBouquetCount = allBouquets.size();
+	if (send(connfd, &nBouquetCount, sizeof(nBouquetCount),0) == -1)
 	{
-		printf("[zapit] bouquet list is empty\n");
-		status = "-0q";
-		if (send(connfd, status, strlen(status),0) == -1)
-		{
-			perror("[zapit] could not send any return\n");
-			return;
-		}
+		perror("[zapit] could not send any return\n");
 		return;
 	}
 	else
