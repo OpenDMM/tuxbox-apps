@@ -323,6 +323,7 @@ int zapit(const t_channel_id channel_id, bool in_nvod, uint32_t tsid_onid)
 #endif
 	{
 		bool failed = false;
+      unsigned char audioChannel = thisChannel->getAudioChannelIndex();
 
 		thisChannel->resetPids();
 
@@ -340,6 +341,8 @@ int zapit(const t_channel_id channel_id, bool in_nvod, uint32_t tsid_onid)
 			WARN("pmt parsing failed");
 			failed = true;
 		}
+
+      thisChannel->setAudioChannel(audioChannel);
 
 		if ((!failed) && (thisChannel->getAudioPid() == NONE) && (thisChannel->getVideoPid() == NONE)) {
 			WARN("neither audio nor video pid found");
