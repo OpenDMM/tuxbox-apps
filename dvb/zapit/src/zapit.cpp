@@ -453,6 +453,15 @@ void setTVMode ()
 	currentMode &= ~RADIO_MODE;
 }
 
+int getMode ()
+{
+	if(currentMode & TV_MODE)
+		return CZapitClient::MODE_TV;
+	if(currentMode & RADIO_MODE)
+		return CZapitClient::MODE_RADIO;
+	return 0;
+}
+
 void setRecordMode ()
 {
 	currentMode |= RECORD_MODE;
@@ -614,6 +623,13 @@ bool parse_command(CBasicMessage::Header &rmsg, int connfd)
 				{
 					setRadioMode();
 				}
+				break;
+			}
+			case CZapitMessages::CMD_GET_MODE:
+			{
+				CZapitMessages::responseGetMode msgGetMode;
+				msgGetMode.mode = (CZapitClient::channelsMode) getMode();
+				send(connfd, &msgGetMode, sizeof(msgGetMode), 0);
 				break;
 			}
 			case CZapitMessages::CMD_GET_CURRENT_SERVICEID:

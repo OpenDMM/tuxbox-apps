@@ -45,6 +45,7 @@ class CZapitMessages
 			CMD_ZAPTO_CHANNELNR,
 			CMD_STOP_VIDEO,					// not supported yet
 			CMD_SET_MODE,
+			CMD_GET_MODE,
 			CMD_GET_LAST_CHANNEL,
 			CMD_GET_APID_VPID,				// not supported yet
 			CMD_GET_VTXT_PID,				// not supported yet
@@ -247,6 +248,11 @@ class CZapitMessages
 	struct responseGetRecordModeState
 	{
 		bool activated;
+	};
+
+	struct responseGetMode
+	{
+		CZapitClient::channelsMode  mode;
 	};
 
 	struct responseGetPlaybackState

@@ -223,6 +223,17 @@ void CZapitClient::setMode( channelsMode mode )
 	close_connection();
 }
 
+int CZapitClient::getMode()
+{
+	send(CZapitMessages::CMD_GET_MODE);
+
+	CZapitMessages::responseGetMode response;
+	CBasicClient::receive_data((char* )&response, sizeof(response));
+
+	close_connection();
+	return response.mode;
+}
+
 void CZapitClient::setSubServices( subServiceList& subServices )
 {
 	unsigned int i;
