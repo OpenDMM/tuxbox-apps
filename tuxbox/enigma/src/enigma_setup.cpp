@@ -262,7 +262,9 @@ void eZapSetup::sel_setup_av()
 
 void eZapSetup::sel_language()
 {
+	hide();
 	eWizardLanguage::run();
+	show();
 }
 
 void eZapSetup::sel_timezone()
