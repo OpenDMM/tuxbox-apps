@@ -35,6 +35,9 @@ $Id$
  
 History:
  $Log$
+ Revision 1.34  2002/02/19 23:41:48  McClean
+ add neutrino-direct-start option (for alexW's-Images only at the moment)
+
  Revision 1.33  2002/01/04 02:38:05  McClean
  cleanup
 
@@ -351,7 +354,7 @@ int CMenuOptionChooser::exec(CMenuTarget*)
 	paint(true);
 	if(observ)
 	{
-		observ->changeNotify( optionName );
+		observ->changeNotify( optionName, optionValue );
 	}
 	return 0;
 }
@@ -442,7 +445,7 @@ int CMenuOptionStringChooser::exec(CMenuTarget*)
 	paint(true);
 	if(observ)
 	{
-		wantsRepaint = observ->changeNotify( optionName );
+		wantsRepaint = observ->changeNotify( optionName, optionValue );
 	}
 	if ( wantsRepaint)
 		return RETURN_REPAINT;
