@@ -90,6 +90,9 @@
   Foundation, Inc., 675 Mass Ave, Cambridge, MA 02139, USA.
 
   $Log$
+  Revision 1.43  2001/12/06 21:21:24  faralla
+  nvod-grabbing fix
+
   Revision 1.42  2001/11/24 13:47:31  Simplex
   fixed "radio-only bouquets"-bug
 
@@ -1717,7 +1720,10 @@ void parse_command()
       if (Radiomode_on)
 	cit = allchans_radio.find(curr_onid_sid);
       else
-	cit =allchans_tv.find(curr_onid_sid);
+       	if (current_is_nvod)
+        	cit = nvodchannels.find(curr_onid_sid);
+      	else
+		cit =allchans_tv.find(curr_onid_sid);
 
       if (curr_onid_sid == 0)
 	{
