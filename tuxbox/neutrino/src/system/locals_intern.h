@@ -808,6 +808,7 @@ const char * locale_real_names[] =
 	"timing.hint_2",
 	"timing.infobar",
 	"timing.menu",
+	"timing.numericzap",
 	"ucodecheck.avia500",
 	"ucodecheck.avia600",
 	"ucodecheck.cam-alpha",
