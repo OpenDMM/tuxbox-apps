@@ -41,6 +41,8 @@ class CaDescriptor : public Descriptor
 		uint16_t getCaSystemId(void) const;
 		uint16_t getCaPid(void) const;
 		const PrivateDataByteVector *getPrivateDataBytes(void) const;
+
+		size_t writeToBuffer(uint8_t * const buffer) const;
 };
 
 typedef std::vector<CaDescriptor *> CaDescriptorVector;

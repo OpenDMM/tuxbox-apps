@@ -35,6 +35,8 @@ class CaLengthField
 
 	public:
 		CaLengthField(const uint32_t length);
+
+		size_t writeToBuffer(uint8_t * const buffer) const;
 };
 
 class CaElementaryStreamInfo
@@ -51,6 +53,8 @@ class CaElementaryStreamInfo
 		~CaElementaryStreamInfo(void);
 
 		uint16_t getLength(void) const;
+
+		size_t writeToBuffer(uint8_t * const buffer) const;
 };
 
 typedef std::vector<CaElementaryStreamInfo *> CaElementaryStreamInfoVector;
@@ -74,6 +78,9 @@ class CaProgramMapTable
 	public:
 		CaProgramMapTable(const ProgramMapTable * const pmt, const uint8_t listManagement, const uint8_t cmdId);
 		~CaProgramMapTable(void);
+
+		size_t writeToBuffer(uint8_t * const buffer) const;
+		ssize_t writeToFile(int fd) const;
 };
 
 typedef std::vector<CaProgramMapTable *> CaProgramMapTableVector;

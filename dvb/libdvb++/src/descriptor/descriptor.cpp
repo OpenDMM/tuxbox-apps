@@ -37,3 +37,13 @@ uint8_t Descriptor::getLength(void) const
 	return descriptorLength;
 }
 
+size_t Descriptor::writeToBuffer(uint8_t * const buffer) const
+{
+	size_t total = 0;
+
+	buffer[total++] = descriptorTag;
+	buffer[total++] = descriptorLength;
+
+	return total;
+}
+
