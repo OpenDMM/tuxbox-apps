@@ -2649,22 +2649,27 @@ int CNeutrinoApp::exec( CMenuTarget* parent, string actionKey )
 	return returnval;
 }
 
+/**************************************************************************************
+*                                                                                     *
+*          changeNotify - min menu streaming server start / stop                      *
+*                                                                                     *
+**************************************************************************************/
 bool CNeutrinoApp::changeNotify(string OptionName, void *Data)
 {
 	CTimerEvent::EventInfo eventinfo;
 
-//	printf("neutrino: streaming geaendert Option: '%s' !\n",OptionName.c_str());
-//	printf("streaming : %d\n", streamstatus);
 	if(CVCRControl::getInstance()->registeredDevices() > 0)
 	{
-		if(streamstatus == 1)
+		if(streamstatus == 1)	
 		{
 			eventinfo.onidSid = g_RemoteControl->current_onid_sid;
 			eventinfo.epgID = g_RemoteControl->current_EPGid;
+
 			CVCRControl::CServerDeviceInfo serverinfo;
 			serverinfo.StopPlayBack = (g_settings.network_streaming_stopplayback == 1);
 			serverinfo.StopSectionsd = (g_settings.network_streaming_stopsectionsd == 1);
 			CVCRControl::getInstance()->setDeviceOptions(0,&serverinfo);
+
 			CVCRControl::getInstance()->Record(&eventinfo);
 		}
 		else
