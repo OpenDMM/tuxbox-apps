@@ -96,6 +96,7 @@ class CLCDMenu : public CLCDDisplay
 		int lineSpacing;
 		int textAlign;
 		bool showNumbers;
+		int timeoutValue;
 
 		int selectedEntry;
 		int entryCount;

@@ -44,6 +44,7 @@ CLCDMenu::CLCDMenu (std::string configFilename)
 		config->setInt("default_entry", 0);
 		config->setInt("text_align", 0);
 		config->setBool("show_numbers", false);
+		config->setInt("timeout", 10);
 		config->setString("pin", std::string("__lUISdFwUYjg"));
 		addEntry("Enigma");
 		addEntry("Neutrino");
@@ -60,6 +61,7 @@ CLCDMenu::CLCDMenu (std::string configFilename)
 	defaultEntry = config->getInt("default_entry");
 	textAlign = config->getInt("text_align");
 	showNumbers = config->getBool("show_numbers");
+	timeoutValue = config->getInt("timeout");
 	cryptedPin = config->getString("pin");
 	entries = config->getStringVector("menu_items");
 	pinEntries = config->getIntVector("pin_protect");
@@ -210,7 +212,6 @@ void CLCDMenu::timeout (int signal)
 
 bool CLCDMenu::rcLoop ()
 {
-	int timeoutValue = 10; // sekunden
 	bool selected = false;
 
 	signal(SIGALRM, &timeout);
