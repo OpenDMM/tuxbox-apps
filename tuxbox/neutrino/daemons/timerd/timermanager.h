@@ -37,9 +37,16 @@
 #include <configfile.h>
 #include "config.h"
 
+
+#include <stdint.h>
+typedef uint32_t t_channel_id; // should be the same as in zapit/clientlib/zapittypes.h
+
+
 #define CONFIGFILE CONFIGDIR "/timerd.conf"
 
+
 using namespace std;
+
 
 class CTimerEvent;
 typedef map<int, CTimerEvent*> CTimerEventMap;
@@ -53,7 +60,7 @@ class CTimerEvent
 		struct EventInfo
 		{
 			unsigned long long epgID;
-			unsigned int      onidSid;
+			t_channel_id       channel_id;
 		};
 		
 		enum CTimerEventRepeat 

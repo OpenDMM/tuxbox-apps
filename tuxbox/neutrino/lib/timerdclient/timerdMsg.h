@@ -134,7 +134,7 @@ class CTimerd
 			time_t							alarmTime;
 			time_t							announceTime;
 			time_t							stopTime;
-			unsigned int onidSid ; //only filled if applicable
+			t_channel_id channel_id; //only filled if applicable
 			unsigned long long epgID; //only filled if applicable
 			bool standby_on; //only filled if applicable
 		};
