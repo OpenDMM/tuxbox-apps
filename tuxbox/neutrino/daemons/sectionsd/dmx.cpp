@@ -259,7 +259,7 @@ int DMX::start(void)
 	
 	pthread_mutex_lock(&start_stop_mutex);
 
-	rc = immediate_start(void);
+	rc = immediate_start();
 
 	pthread_mutex_unlock(&start_stop_mutex);
 
