@@ -122,7 +122,14 @@ class CZapitMessages
 			CMD_IS_TV_CHANNEL                  = 70,
 
 			CMD_GET_FE_SIGNAL                  = 71,
-			CMD_SCANSTOP					= 72
+			CMD_SCANSTOP                       = 72,
+
+			CMD_SET_AE_IEC_ON                  = 73,
+			CMD_SET_AE_IEC_OFF                 = 74,
+			CMD_GET_AE_IEC_STATE               = 75,
+			CMD_SET_AE_PLAYBACK_SPTS           = 76,
+			CMD_SET_AE_PLAYBACK_PES            = 77,
+			CMD_GET_AE_PLAYBACK_STATE          = 78
 		};
 
 	struct commandBoolean

@@ -869,6 +869,52 @@ bool CZapitClient::isRecordModeActive()
 	return response.activated;
 }
 
+void CZapitClient::IecOn()
+{
+	send(CZapitMessages::CMD_SET_AE_IEC_ON);
+	close_connection();
+}
+
+void CZapitClient::IecOff()
+{
+	send(CZapitMessages::CMD_SET_AE_IEC_OFF);
+	close_connection();
+}
+
+int CZapitClient::IecState()
+{
+	send(CZapitMessages::CMD_GET_AE_IEC_STATE);
+
+        CZapitMessages::responseGeneralInteger response;
+        CBasicClient::receive_data((char* )&response, sizeof(response));
+
+        close_connection();
+        return response.number;
+}
+
+void CZapitClient::PlaybackSPTS()
+{
+	send(CZapitMessages::CMD_SET_AE_PLAYBACK_SPTS);
+	close_connection();
+}
+
+void CZapitClient::PlaybackPES()
+{
+	send(CZapitMessages::CMD_SET_AE_PLAYBACK_PES);
+	close_connection();
+}
+
+int CZapitClient::PlaybackState()
+{
+	send(CZapitMessages::CMD_GET_AE_PLAYBACK_STATE);
+
+        CZapitMessages::responseGeneralInteger response;
+        CBasicClient::receive_data((char* )&response, sizeof(response));
+
+        close_connection();
+        return response.number;
+}
+
 void CZapitClient::registerEvent(const unsigned int eventID, const unsigned int clientID, const char * const udsName)
 {
 	CEventServer::commandRegisterEvent msg;

@@ -32,6 +32,8 @@ void sendAPIDs(int connfd);
 void enterStandby(void);
 void leaveStandby(void);
 void setVideoSystem_t(int video_system);
+void setIec(int);
+void setDemuxMode(int);
 
 #define PAL	0
 #define NTSC	1
