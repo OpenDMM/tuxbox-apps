@@ -164,7 +164,7 @@ void CScanSettings::useDefaults(const delivery_system_t _delivery_system)
 	switch (delivery_system)
 	{
 	case DVB_C:
-		strcpy(satNameNoDiseqc, "Telekom/Ish");
+		strcpy(satNameNoDiseqc, "Kabel Deutschland");
 		break;
 	case DVB_S:
 		strcpy(satNameNoDiseqc, "Astra 19.2E");
