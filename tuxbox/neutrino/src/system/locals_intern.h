@@ -525,6 +525,7 @@ const char * locale_real_names[] =
 	"miscsettings.hwsections",
 	"miscsettings.infobar_sat_display",
 	"miscsettings.noaviawatchdog",
+	"miscsettings.noenxwatchdog",
 	"miscsettings.pmtupdate",
 	"miscsettings.shutdown_real",
 	"miscsettings.shutdown_real_rcdelay",
