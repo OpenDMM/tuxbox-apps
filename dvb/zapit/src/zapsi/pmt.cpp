@@ -228,6 +228,9 @@ unsigned short parse_ES_info (unsigned char * buffer, CZapitChannel * channel, C
 	case 0x0B:
 		break;
 
+	case 0x90:
+		break;
+
 	case 0x93:
 		break;
 
