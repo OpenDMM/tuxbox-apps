@@ -1009,7 +1009,7 @@ void parse_command (CZapitClient::commandHead &rmsg)
 					//printf("got subchan %x %x\n", msgAddSubService.onidsid, msgAddSubService.tsid);
 					nvodchannels.insert
 					(
-					    std::pair <int, CZapitChannel>
+					    std::pair <t_channel_id, CZapitChannel>
 					    (
 						msgAddSubService.onidsid,
 						CZapitChannel

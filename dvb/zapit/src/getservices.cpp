@@ -7,6 +7,7 @@
 #include <zapost/frontend.h>
 
 #include "bouquets.h"
+#include "channel.h"
 #include "getservices.h"
 
 uint8_t curr_diseqc = 0;
@@ -99,9 +100,9 @@ void ParseChannels (XMLTreeNode *node, uint16_t transport_stream_id, uint16_t or
 		case DIGITAL_RADIO_SOUND_SERVICE:
 			allchans.insert
 			(
-				std::pair <uint32_t, CZapitChannel>
+				std::pair <t_channel_id, CZapitChannel>
 				(
-					(original_network_id << 16) | service_id,
+					CREATE_CHANNEL_ID,
 					CZapitChannel
 					(
 						name,

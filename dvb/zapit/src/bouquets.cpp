@@ -255,7 +255,7 @@ void CBouquetManager::parseBouquetsXml(const XMLTreeNode *root)
 			search = search->GetNext();
 		}
 
-		unsigned int onid, sid;
+		unsigned int original_network_id, service_id;
 
 		printf("[zapit] reading Bouquets ");
 		while ((search) && (!(strcmp(search->GetType(), "Bouquet"))))
@@ -269,10 +269,10 @@ void CBouquetManager::parseBouquetsXml(const XMLTreeNode *root)
 
 			while (channel_node)
 			{
-				sscanf(channel_node->GetAttributeValue("serviceID"), "%x", &sid);
-				sscanf(channel_node->GetAttributeValue("onid"), "%x", &onid);
+				sscanf(channel_node->GetAttributeValue("serviceID"), "%x", &service_id);
+				sscanf(channel_node->GetAttributeValue("onid"), "%x", &original_network_id);
 
-				CZapitChannel* chan = findChannelByChannelID( (onid << 16) + sid);
+				CZapitChannel* chan = findChannelByChannelID(CREATE_CHANNEL_ID);
 
 				if (chan != NULL)
 					newBouquet->addService(chan);
