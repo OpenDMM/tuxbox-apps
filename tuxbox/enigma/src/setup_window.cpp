@@ -22,7 +22,7 @@
 
 #include <setup_window.h>
 
-Signal1<void,eSetupWindow*> eSetupWindow::setupHook;
+Signal2<void,eSetupWindow*,int*> eSetupWindow::setupHook;
 
 class eSetupWindowSelectN
 {
