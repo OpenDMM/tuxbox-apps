@@ -199,7 +199,7 @@ FILE *write_xml_header (const char *filename)
 	}
 	else
 	{
-		fprintf(fd, "<?xml version=\"1.0\" encoding=\"iso-8859-1\"?>\n<zapit>\n");
+		fprintf(fd, "<?xml version=\"1.0\" encoding=\"UTF-8\"?>\n<zapit>\n");
 	}
 
 	return fd;
@@ -287,7 +287,7 @@ void write_transponder(FILE *fd, t_transport_stream_id transport_stream_id, t_or
 				fprintf(fd,
 					"\t\t\t<channel service_id=\"%04x\" name=\"%s\" service_type=\"%02x\"/>\n",
 					cI->second.getServiceId(),
-					convertForXML(cI->second.getName()).c_str(),
+					convert_to_UTF8_XML(cI->second.getName()).c_str(),
 					cI->second.getServiceType());
 			}
 		}
