@@ -113,7 +113,8 @@ TWebDbox::TWebDbox(CWebserver *server)
 	TimerEventStateNames[CTimerEvent::TIMERSTATE_SCHEDULED]="wartet";
 	TimerEventStateNames[CTimerEvent::TIMERSTATE_PREANNOUNCE]="announced";
 	TimerEventStateNames[CTimerEvent::TIMERSTATE_ISRUNNING]="aktiv";
-	TimerEventStateNames[CTimerEvent::TIMERSTATE_TERMINATED]="beendet";
+	TimerEventStateNames[CTimerEvent::TIMERSTATE_HASFINISHED]= "beendet";
+	TimerEventStateNames[CTimerEvent::TIMERSTATE_TERMINATED]= "beendet";
 
 }
 //-------------------------------------------------------------------------

@@ -87,6 +87,8 @@ CWebserver::CWebserver(bool debug)
 	EventServer->registerEvent2( NeutrinoMessages::SHUTDOWN, CEventServer::INITID_NHTTPD, "/tmp/neutrino.sock");
 	EventServer->registerEvent2( NeutrinoMessages::STANDBY_ON, CEventServer::INITID_NHTTPD, "/tmp/neutrino.sock");
 	EventServer->registerEvent2( NeutrinoMessages::STANDBY_OFF, CEventServer::INITID_NHTTPD, "/tmp/neutrino.sock");
+	EventServer->registerEvent2( NeutrinoMessages::EVT_POPUP, CEventServer::INITID_NHTTPD, "/tmp/neutrino.sock");
+	EventServer->registerEvent2( NeutrinoMessages::EVT_EXTMSG, CEventServer::INITID_NHTTPD, "/tmp/neutrino.sock");
 	if(DEBUG) printf("WebDbox initialized\n");
 }
 //-------------------------------------------------------------------------
