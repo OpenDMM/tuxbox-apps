@@ -148,7 +148,6 @@ int main(int argc, char * argv[])
 						break;
 					case CMD_VCR_RECORD:
 						fprintf(stderr, "[fserver.c] ********************** START RECORDING **********************\n");
-						fprintf(stderr, "[fserver.c] ONIDSID	 : %x\n", recdata.onidsid);
 						fprintf(stderr, "[fserver.c] APID		: %x\n", recdata.apid);
 						fprintf(stderr, "[fserver.c] VPID		: %x\n", recdata.vpid);
 						fprintf(stderr, "[fserver.c] CHANNELNAME : %s\n", recdata.channelname);
@@ -304,7 +303,6 @@ int AnalyzeXMLRequest(char *szXML, RecordingData   *rdata)
 	char *p2=NULL;
 	char *p3=NULL;
 	char szcommand[264]="";
-	char szonidsid[264]="";
 	char szapid[264]="";
 	char szvpid[264]="";
 	char szmode[3]="";
@@ -318,7 +316,6 @@ int AnalyzeXMLRequest(char *szXML, RecordingData   *rdata)
 	rdata->apid=0;
 	rdata->vpid=0;
 	rdata->cmd=CMD_VCR_UNKNOWN;
-	rdata->onidsid=0;
 	strcpy(rdata->channelname,"");
 
 	p1=ParseForString(szXML,"<record ", 1);
@@ -364,23 +361,6 @@ int AnalyzeXMLRequest(char *szXML, RecordingData   *rdata)
 				}
 			}
 		}
-	if (p1!=NULL)
-		{
-		p2=ParseForString(p1,"<onidsid>", 1);
-		p3=p2;
-		p1=NULL;
-		if (p2!=NULL)
-			{
-			p1=ParseForString(p2,"</onidsid>", 0);
-			if (p1!=NULL)
-				{
-				memcpy(szonidsid,p3,p1-p3);
-				szonidsid[p1-p3]=0;
-				hr=1;
-				}
-			}
-		}
-	
 	if (p1!=NULL)
 		{
 		p2=ParseForString(p1,"<mode>", 1);
@@ -442,8 +422,6 @@ int AnalyzeXMLRequest(char *szXML, RecordingData   *rdata)
 		rdata->cmd=CMD_VCR_RESUME;
 	if (!strcmp(szcommand,"available"))
 		rdata->cmd=CMD_VCR_AVAILABLE;
-
-	rdata->onidsid=atol(szonidsid);
 
 	return(hr);
 }

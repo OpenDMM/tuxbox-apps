@@ -38,7 +38,6 @@ enum CVCRDevices
 typedef struct 
     {    
     int cmd; 
-    int onidsid;
     int apid;
     int vpid;
     char    channelname[264];
