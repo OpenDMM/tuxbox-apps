@@ -86,7 +86,7 @@ public:
 	void Stop();
 
 	int SocketConnect(Tmconnect * con,int Port);
-
+	void SetSockOpts();
 	void SaveConfig();
 	void ReadConfig();
 
