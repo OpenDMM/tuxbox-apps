@@ -88,15 +88,4 @@ typedef enum {
 	ST_RCS_FLS,
 	ST_DVB_MHP_SERVICE
 } service_type_t;
-
- /* thegoodguy structure für weniger events
- struct scaninfo
- 	{
- 	uint32_t found_tv_chans;
- 	uint32_t found_radio_chans;
- 	uint32_t found_data_chans;
- 	char      ServiceName[30];
- 	};
- */
-
 #endif /* __zapittypes_h__ */
