@@ -552,7 +552,11 @@ bool parse_command(CBasicMessage::Header &rmsg, int connfd)
 
 	if ((standby) && 
 			((rmsg.cmd != CZapitMessages::CMD_SET_STANDBY) &&
-			(rmsg.cmd != CZapitMessages::CMD_SHUTDOWN))) {
+			(rmsg.cmd != CZapitMessages::CMD_SHUTDOWN) &&
+			(rmsg.cmd != CZapitMessages::CMD_SET_AE_IEC_ON) &&
+			(rmsg.cmd != CZapitMessages::CMD_SET_AE_IEC_OFF) &&
+			(rmsg.cmd != CZapitMessages::CMD_GET_AE_IEC_STATE) &&
+			(rmsg.cmd != CZapitMessages::CMD_GET_AE_PLAYBACK_STATE))) {
 		WARN("cmd %d refused in standby mode", rmsg.cmd);
 		return true;
 	}
@@ -1640,10 +1644,6 @@ void enterStandby(void)
 	if (videoDecoder) {
 		delete videoDecoder;
 		videoDecoder = NULL;
-	}
-	if (aviaExtDriver) {
-		delete aviaExtDriver;
-		aviaExtDriver = NULL;
 	}
 
 	tuned_transponder_id = TRANSPONDER_ID_NOT_TUNED;
