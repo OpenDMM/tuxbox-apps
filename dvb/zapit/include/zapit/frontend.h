@@ -125,7 +125,6 @@ class CFrontend
 		const diseqc_t getDiseqcType()		{ return diseqcType; }
 		const bool isInitialized()		{ return initialized; }
 		const uint32_t getTsidOnid()		{ return currentTsidOnid; }
-		const uint64_t getSposTsidOnid()	{ return currentSposTsidOnid; }
 
 		void setLnbOffset(bool high, uint8_t index, int32_t offset)
 		{
