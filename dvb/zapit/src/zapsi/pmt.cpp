@@ -19,15 +19,12 @@
  * Foundation, Inc., 675 Mass Ave, Cambridge, MA 02139, USA.
  *
  */
-
-#ifdef UPDATE_PMT
 #include <fcntl.h>
 #include <sys/ioctl.h>
 #include <unistd.h>
 
 /* zapit */
 #include <zapit/settings.h>
-#endif
 #include <zapit/descriptors.h>
 #include <zapit/dmx.h>
 #include <zapit/debug.h>
@@ -322,7 +319,6 @@ int parse_pmt(CZapitChannel * const channel)
 	return 0;
 }
 
-#ifdef UPDATE_PMT
 int pmt_set_update_filter(CZapitChannel * const channel, int *fd)
 {
 	struct dmx_sct_filter_params dsfp;
@@ -359,4 +355,4 @@ int pmt_set_update_filter(CZapitChannel * const channel, int *fd)
 
 	return 0;
 }
-#endif
+
