@@ -929,7 +929,8 @@ bool parse_command(CBasicMessage::Header &rmsg, int connfd)
 				    original_network_id,
 				    1,
 				    channel->getDiSEqC(),
-				    channel->getSatelliteName()
+				    channel->getSatelliteName(), 
+				    channel->getSatellitePosition()
 				)
 			    )
 			);
