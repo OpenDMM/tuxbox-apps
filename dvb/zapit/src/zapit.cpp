@@ -583,7 +583,7 @@ bool parse_command(CBasicMessage::Header &rmsg, int connfd)
 	case CZapitMessages::CMD_GET_CURRENT_SERVICEID:
 	{
 		CZapitMessages::responseGetCurrentServiceID msgCurrentSID;
-		msgCurrentSID.channel_id = tuned_transponder_id ? channel->getChannelID() : 0;
+		msgCurrentSID.channel_id = channel->getChannelID();
 		CBasicServer::send_data(connfd, &msgCurrentSID, sizeof(msgCurrentSID));
 		break;
 	}
