@@ -117,7 +117,7 @@ bool CControlAPI::TimerCGI(CWebserverRequest *request)
 		{
 			if(request->ParameterList["action"] == "new")
 			{
-//				doNewTimer(helper);
+				Parent->WebAPI->doNewTimer(request);
 				request->SendOk();
 			}
 		}
@@ -531,9 +531,9 @@ bool CControlAPI::ZaptoCGI(CWebserverRequest *request)
 		char buf[10];
 		sprintf(buf, "%u\n", Parent->Zapit->getCurrentServiceID());
 		request->SocketWrite(buf);
+		return true;
 	}
-	else
-	if (request->ParameterList.size() == 1)
+	else if (request->ParameterList.size() == 1)
 	{
 		if(request->ParameterList["mode"] != "")			// TV oder RADIO - Mode
 		{
