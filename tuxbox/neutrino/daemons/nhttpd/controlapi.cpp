@@ -193,7 +193,8 @@ bool CControlAPI::SetModeCGI(CWebserverRequest *request)
 		{
 			Parent->Zapit->setRecordMode(false);
 			Parent->Sectionsd->setPauseScanning(false);
-			Parent->Zapit->startPlayBack();
+         if (!Parent->Zapit->isPlayBackActive())
+            Parent->Zapit->startPlayBack();
 		}
 
 		request->SendOk();
@@ -612,28 +613,6 @@ bool CControlAPI::ZaptoCGI(CWebserverRequest *request)
 	}
 	else if (request->ParameterList.size() == 1)
 	{
-/*
-		if(request->ParameterList["mode"] != "")			// TV oder RADIO - Mode
-		{
-			if(request->ParameterList["mode"] == "TV")
-			{
-				Parent->Zapit->setMode(CZapitClient::MODE_RADIO);
-				sleep(1);
-				Parent->UpdateBouquets();
-			}
-			else if(request->ParameterList["mode"] == "RADIO")
-			{
-				Parent->Zapit->setMode(CZapitClient::MODE_RADIO);
-				sleep(1);
-				Parent->UpdateBouquets();
-			}
-			else
-			{
-				request->SendError();
-				return false;
-			}
-		}
-*/
 		if (request->ParameterList["1"] == "getpids")		// getpids !
 		{
 			SendcurrentVAPid(request);
@@ -657,6 +636,11 @@ bool CControlAPI::ZaptoCGI(CWebserverRequest *request)
 			dprintf("start playback requested..\n");
 			request->SendOk();
 		}
+		else if (request->ParameterList["1"] == "statusplayback")
+		{
+			request->SocketWrite((char *) (Parent->Zapit->isPlayBackActive() ? "1" : "0")); 
+			return true;
+		}
 		else if (request->ParameterList["1"] == "stopsectionsd")
 		{
 			Parent->Sectionsd->setPauseScanning(true);
@@ -666,6 +650,11 @@ bool CControlAPI::ZaptoCGI(CWebserverRequest *request)
 		{
 			Parent->Sectionsd->setPauseScanning(false);
 			request->SendOk();
+		}
+		else if (request->ParameterList["1"] == "statussectionsd")
+		{
+			request->SocketWrite((char *) (Parent->Sectionsd->getIsScanningActive() ? "1" : "0")); 
+			return true;
 		}
 		else
 		{
