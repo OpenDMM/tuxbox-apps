@@ -31,7 +31,7 @@
 std::string Unicode_Character_to_UTF8(const int character);
 
 std::string convert_UTF8_To_UTF8_XML(const std::string s);
-std::string convert_to_UTF8(std::string s);
+std::string convert_to_UTF8(const std::string s);
 std::string Utf8_to_Latin1(const std::string s);
 
 XMLTreeParser* parseXmlFile(const std::string filename);
