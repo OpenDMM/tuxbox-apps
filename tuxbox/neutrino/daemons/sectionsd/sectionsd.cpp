@@ -23,6 +23,10 @@
 //    Foundation, Inc., 675 Mass Ave, Cambridge, MA 02139, USA.
 //
 //  $Log$
+//  Revision 1.110  2002/04/06 20:01:50  Simplex
+//  - made EVT_NEXTPROGRAM work
+//  - communication with timerd should be changed to eventserver
+//
 //  Revision 1.109  2002/03/29 15:47:18  obi
 //  use setsid()
 //  field, mcclean: i guess that is what you wanted instead of catching signals ;)
@@ -354,6 +358,9 @@
 #include "eventserver.h"
 #include "sectionsdclient.h"
 
+#include "timerdclient.h"
+#include "../timermanager.h"
+
 // 5 Minuten Zyklus...
 // Zeit die fuer die scheduled eit's benutzt wird (in Sekunden)
 #define TIME_EIT_SCHEDULED 60
@@ -383,7 +390,8 @@ static int scanning=1;
 // EVENTS...
 
 CEventServer    *eventServer;
-
+CTimerdClient   *timerdClient;
+bool            timerd = false;
 
 #define dprintf(fmt, args...) {if(debug) printf(fmt, ## args);}
 #define dputs(str) {if(debug) puts(str);}
@@ -566,6 +574,7 @@ static void addEvent(const SIevent &evt)
                     // nicht vorhanden -> einfuegen
                     mySIeventsOrderServiceUniqueKeyFirstStartTimeEventUniqueKey.insert(std::make_pair(ie->second, ie->second));
                     mySIeventsOrderFirstEndTimeServiceIDEventUniqueKey.insert(std::make_pair(ie->second, ie->second));
+
                 }
                 // Und die Zeiten im Event updaten
                 ie->second->times.insert(e->times.begin(), e->times.end());
@@ -584,6 +593,32 @@ static void addEvent(const SIevent &evt)
             // diese beiden Mengen enthalten nur Events mit Zeiten
             mySIeventsOrderServiceUniqueKeyFirstStartTimeEventUniqueKey.insert(std::make_pair(e, e));
             mySIeventsOrderFirstEndTimeServiceIDEventUniqueKey.insert(std::make_pair(e, e));
+
+            if (timerd)
+            {
+            	CTimerEvent_NextProgram::EventInfo evInfo;
+                evInfo.uniqueKey = e->uniqueKey();
+                evInfo.onidSid = (e->originalNetworkID << 16) + e->serviceID;
+                strncpy( evInfo.name, evt.name.c_str(), 50);
+                evInfo.fsk = evt.getFSK();
+
+                for (SItimes::iterator it = evt.times.begin(); it != evt.times.end(); it++)
+                {
+                	time_t actTime_t;
+                	::time(&actTime_t);
+                	if (it->startzeit > actTime_t)
+                	{
+                		struct tm* startTime = localtime( &(it->startzeit));
+                		timerdClient->addTimerEvent(
+                			CTimerdClient::TIMER_NEXTPROGRAM,
+                			&evInfo,
+                			startTime->tm_min,
+                			startTime->tm_hour,
+                			startTime->tm_mday,
+                			startTime->tm_mon);
+                	}
+                }
+            }
         }
 //    }
 
@@ -3555,6 +3590,11 @@ int main(int argc, char **argv)
 		{
 			if(!strcmp(argv[1], "-d"))
 				debug=1;
+			else if(!strcmp(argv[1], "-t"))
+			{
+				timerd=true;
+				printf("[sectionsd] using timerd");
+			}
 			else
 			{
 				printHelp();
@@ -3612,6 +3652,7 @@ int main(int argc, char **argv)
 		}
 
 		eventServer = new CEventServer;
+		timerdClient = new CTimerdClient;
 
 		// SDT-Thread starten
 		rc=pthread_create(&threadSDT, 0, sdtThread, 0);
