@@ -33,7 +33,6 @@
 #include <time.h>
 #include <sys/timeb.h>
 
-#include <vector>
 #include <map>
 
 #include <zapit/zapitclient.h>
