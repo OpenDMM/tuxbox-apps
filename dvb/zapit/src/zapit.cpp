@@ -325,7 +325,7 @@ uint16_t parse_ES_info(uint8_t *buffer, pids *ret_pids, uint16_t ca_system_id)
 				break;
 
 			case 0x09: /* CA_descriptor */
-				if ((ecm_pid = no_ecmpid_found) || (ecm_pid == invalid_ecmpid_found))
+				if ((ecm_pid == no_ecmpid_found) || (ecm_pid == invalid_ecmpid_found))
 					ecm_pid = _(&buffer[descr_pos], descriptor_length, ca_system_id);
 				break;
 
