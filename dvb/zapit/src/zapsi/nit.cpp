@@ -120,7 +120,8 @@ int parse_nit(const t_satellite_position satellite_position, const unsigned char
 			original_network_id = (buffer[pos + 2] << 8) | buffer[pos + 3];
 			transport_descriptors_length = ((buffer[pos + 4] & 0x0F) << 8) | buffer[pos + 5];
 
-			transponder_id = CREATE_TRANSPONDER_ID_FROM_SATELLITEPOSITION_ORIGINALNETWORK_TRANSPORTSTREAM_ID(satellite_position,original_network_id,transport_stream_id);
+			// frequency will be inserted in satellite/cable_delivery_system_descriptor()
+			transponder_id = CREATE_TRANSPONDER_ID_FROM_FREQUENCY_SATELLITEPOSITION_ORIGINALNETWORK_TRANSPORTSTREAM_ID(0, satellite_position,original_network_id,transport_stream_id);
 
 			if (transponders.find(transponder_id) == transponders.end())
 			{

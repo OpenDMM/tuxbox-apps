@@ -22,7 +22,7 @@
 
 #include <zapit/channel.h>
 
-CZapitChannel::CZapitChannel(const std::string & p_name, t_service_id p_sid, t_transport_stream_id p_tsid, t_original_network_id p_onid, unsigned char p_service_type, unsigned char p_DiSEqC, t_satellite_position p_satellite_position)
+CZapitChannel::CZapitChannel(const std::string & p_name, t_service_id p_sid, t_transport_stream_id p_tsid, t_original_network_id p_onid, unsigned char p_service_type, unsigned char p_DiSEqC, t_satellite_position p_satellite_position, frequency_kHz_t p_frequency)
 {
 	name = p_name;
 	service_id = p_sid;
@@ -31,7 +31,7 @@ CZapitChannel::CZapitChannel(const std::string & p_name, t_service_id p_sid, t_t
 	serviceType = p_service_type;
 	DiSEqC = p_DiSEqC;
 	satellitePosition = p_satellite_position;
-
+	frequency = p_frequency;
 	caPmt = NULL;
 	resetPids();
 }
