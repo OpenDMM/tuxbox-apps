@@ -175,6 +175,7 @@ int CAPIDSelectExec::exec(CMenuTarget* parent, const std::string & actionKey)
 CMoviePlayerGui::CMoviePlayerGui()
 {
 	frameBuffer = CFrameBuffer::getInstance();
+	bookmarkmanager=0;
 
 	if(strlen (g_settings.network_nfs_moviedir) != 0)
 		Path_local = g_settings.network_nfs_moviedir;
@@ -206,7 +207,8 @@ CMoviePlayerGui::CMoviePlayerGui()
 CMoviePlayerGui::~CMoviePlayerGui ()
 {
 	delete filebrowser;
-	delete bookmarkmanager;
+	if(bookmarkmanager)
+		delete bookmarkmanager;
 	g_Zapit->setStandby (false);
 	g_Sectionsd->setPauseScanning (false);
 
@@ -224,7 +226,8 @@ CMoviePlayerGui::exec (CMenuTarget * parent, const std::string & actionKey)
 		Path_vlc += g_settings.streaming_server_startdir;
 		Path_vlc_settings = g_settings.streaming_server_startdir;
 	}
-	bookmarkmanager = new CBookmarkManager ();
+	if(!bookmarkmanager)
+		bookmarkmanager = new CBookmarkManager ();
 
 	if(parent)
 	{
@@ -339,6 +342,11 @@ CMoviePlayerGui::exec (CMenuTarget * parent, const std::string & actionKey)
 
 	CLCD::getInstance()->showServicename(g_RemoteControl->getCurrentChannelName());
 	// always exit all
+	if(bookmarkmanager)
+	{
+		delete bookmarkmanager;
+		bookmarkmanager=0;
+	}
 	return menu_return::RETURN_REPAINT;
 }
 
@@ -1024,6 +1032,9 @@ PlayStreamThread (void *mrl)
 				case CMoviePlayerGui::JF:
 				case CMoviePlayerGui::JB:
 				case CMoviePlayerGui::AUDIOSELECT:
+				case CMoviePlayerGui::ITEMSELECT:
+					break;
+				default:
 					break;
 			}
 		}
@@ -2254,6 +2265,7 @@ void CMoviePlayerGui::PlayFile (int parental)
 			}
 
 			APIDSelector.exec(NULL, "");
+			delete APIDChanger;
 			showaudioselectdialog = false;
 		}
 
