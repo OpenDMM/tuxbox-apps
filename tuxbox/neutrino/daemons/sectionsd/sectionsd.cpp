@@ -2917,7 +2917,7 @@ static void *timeThread(void *)
 		  if ((tmTime->tm_year + 1900) >= 2005) {
 			first_time = false;
 			timeset = true;
-		  	dprintf("we arlready have a time set\n");
+		  	dprintf("we already have a time set\n");
 		  }
 		}
 
