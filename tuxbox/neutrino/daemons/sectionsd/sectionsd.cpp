@@ -82,12 +82,16 @@
 //#include "../timermanager.h"
 
 // 60 Minuten Zyklus...
-#define TIME_EIT_SCHEDULED_PAUSE 60* 60
+// #define TIME_EIT_SCHEDULED_PAUSE 60* 60
+// -- 5 Minutes max. pause should improve behavior  (rasc, 2005-05-02)
+#define TIME_EIT_SCHEDULED_PAUSE 5* 60
 // Zeit die fuer die gewartet wird, bevor der Filter weitergeschaltet wird, falls es automatisch nicht klappt
 #define TIME_EIT_SKIPPING 30
 
 // 12h Pause für SDT
-#define TIME_SDT_SCHEDULED_PAUSE 12* 60* 60
+//#define TIME_SDT_SCHEDULED_PAUSE 12* 60* 60
+// -- shorter time for pause should  result in better behavior  (rasc, 2005-05-02)
+#define TIME_SDT_SCHEDULED_PAUSE 1* 60* 60
 #define TIME_SDT_SKIPPING 5
 
 
@@ -2937,8 +2941,10 @@ static void *timeThread(void *)
 				 * current events were most likely ignored as they seem 
 				 * to be too far in the future (cf. secondsToCache)
 				 */
-				dmxEIT.change(0);
-				dmxSDT.change(0);
+				// -- do not trash read events, cleanup will be done hopefully
+				// -- by housekeeping anyway  (rasc (2005-05-02)
+				// dmxEIT.change(0);
+				// dmxSDT.change(0);
 			}
 			else {
 				if (timeset) {
