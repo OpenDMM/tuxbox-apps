@@ -1972,6 +1972,8 @@ void *mp_playFileThread (void *filename)
 		//-- reader loop --
 		//-----------------
 		fprintf(stderr,"[mp] entering player loop\n");
+		//lcd 
+		short prozent=0,last_prozent=1,lcdSetting=g_settings.lcd_setting[SNeutrinoSettings::LCD_SHOW_VOLUME];
 		while( (ctx->itChanged == false) &&
 				 (g_playstate >= CMoviePlayerGui::PLAY) )
 		{
@@ -1999,13 +2001,21 @@ void *mp_playFileThread (void *filename)
 			//-- after device reset, DMX devices --
 			//-- has to be started here ...      --
 			mp_startDMX(ctx);	// starts only if stopped !
-
+			//lcd 
+			prozent=(ctx->pos*100)/ctx->fileSize;
+			if(last_prozent !=prozent && lcdSetting!=1)
+			{
+				g_settings.lcd_setting[SNeutrinoSettings::LCD_SHOW_VOLUME]=lcdSetting;
+				last_prozent=prozent;
+				CLCD::getInstance()->showPercentOver(prozent);
+				g_settings.lcd_setting[SNeutrinoSettings::LCD_SHOW_VOLUME]=1;
+			}
 			//-- write stream data now --
 			write(ctx->dvr, ctx->dvrBuf, rd);
 		}
 
 		fprintf(stderr,"[mp] leaving reader loop\n");
-
+		g_settings.lcd_setting[SNeutrinoSettings::LCD_SHOW_VOLUME]=lcdSetting;
 		//-- close input stream --
 		//------------------------
 		if(ctx->inFd != -1)
