@@ -37,6 +37,6 @@ void StrSearchReplace( std::string &s, const std::string &to_find, const std::st
 	{
 		s.erase(location,to_find.size());
 		s.insert(location,repl_with);
-		s.location = s.find(to_find, location);
+		location = s.find(to_find, location);
 	}
 }
