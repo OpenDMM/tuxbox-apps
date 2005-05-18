@@ -41,6 +41,7 @@
 #include <daemonc/remotecontrol.h>
 extern CRemoteControl * g_RemoteControl; /* neutrino.cpp */
 #include <system/settings.h>
+#include <system/helper.h>
 #include <gui/plugins.h>
 extern CPlugins       * g_PluginList;
 
@@ -1087,23 +1088,27 @@ void updateLcd(const std::string & sel_filename)
 			lcd = "|| (";
 			lcd += sel_filename;
 			lcd += ')';
+			StrSearchReplace(lcd,"_", " ");
 			break;
 
 		case CMoviePlayerGui::REW:
 			sprintf(tmp, "%dx<< ", g_speed);
 			lcd = tmp;
 			lcd += sel_filename;
+			StrSearchReplace(lcd,"_", " ");
 			break;
 
 		case CMoviePlayerGui::FF:
 			sprintf(tmp, "%dx>> ", g_speed);
 			lcd = tmp;
 			lcd += sel_filename;
+			StrSearchReplace(lcd,"_", " ");
 			break;
 
 		default:
 			lcd = "> ";
 			lcd += sel_filename;
+			StrSearchReplace(lcd,"_", " ");
 			break;
 	}
 
@@ -1972,7 +1977,7 @@ void *mp_playFileThread (void *filename)
 		//-- reader loop --
 		//-----------------
 		fprintf(stderr,"[mp] entering player loop\n");
-		//lcd 
+		//lcd
 		short prozent=0,last_prozent=1,lcdSetting=g_settings.lcd_setting[SNeutrinoSettings::LCD_SHOW_VOLUME];
 		while( (ctx->itChanged == false) &&
 				 (g_playstate >= CMoviePlayerGui::PLAY) )
@@ -2001,7 +2006,7 @@ void *mp_playFileThread (void *filename)
 			//-- after device reset, DMX devices --
 			//-- has to be started here ...      --
 			mp_startDMX(ctx);	// starts only if stopped !
-			//lcd 
+			//lcd
 			prozent=(ctx->pos*100)/ctx->fileSize;
 			if(last_prozent !=prozent && lcdSetting!=1)
 			{
