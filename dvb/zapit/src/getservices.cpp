@@ -301,15 +301,15 @@ int LoadServices(fe_type_t frontendType, diseqc_t diseqcType)
 	FindTransponder(xmlDocGetRootElement(parser)->xmlChildrenNode);
 	xmlFreeDoc(parser);
 
+        if ((parser = parseXmlFile(ANTISERVICES_XML))) {
+                printf("[getservices] " ANTISERVICES_XML " found.\n");
+                NukeChannels(xmlDocGetRootElement(parser)->xmlChildrenNode);
+                xmlFreeDoc(parser);
+        }
+
 	if ((parser = parseXmlFile(MYSERVICES_XML))) {
 		printf("[getservices] " MYSERVICES_XML "  found.\n");
 		FindTransponder(xmlDocGetRootElement(parser)->xmlChildrenNode);
-		xmlFreeDoc(parser);
-	}
-
-	if ((parser = parseXmlFile(ANTISERVICES_XML))) {
-		printf("[getservices] " ANTISERVICES_XML " found.\n");
-		NukeChannels(xmlDocGetRootElement(parser)->xmlChildrenNode);
 		xmlFreeDoc(parser);
 	}
 
