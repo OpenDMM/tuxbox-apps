@@ -71,7 +71,7 @@ void help(char *prog_name) {
 		"                      6    4:3 with 14:9 center letterbox\n"
 		"                      7    16:9 full format (anamorphic)\n"
 		"                      8    turned off\n"
-		" -t, --ttx [<x>]      teletext VBI reinsertion\n"
+		" -t, --ttx <x>        teletext VBI reinsertion\n"
 		"                      none get teletext reinsertion state\n"
 		"                      0    turned off\n"
 		"                      1    turned on\n");
