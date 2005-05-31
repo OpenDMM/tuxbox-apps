@@ -1094,13 +1094,16 @@ void CControlAPI::SendAllCurrentVAPid(CWebserverRequest* request)
 			{
 				if ( pids.APIDs[j].component_tag == tags[i].componentTag )
 				{
-					if(!tags[i].component.empty())
+ 					if(!tags[i].component.empty())
 					{
 						if(!(isalnum(tags[i].component[0])))
 							tags[i].component=tags[i].component.substr(1,tags[i].component.length()-1);
 						request->printf("%05u %s\n",pids.APIDs[j].pid,tags[i].component.c_str());
 						eit_not_ok=false;
 					}
+					else
+						request->printf("%05u %s\n",pids.APIDs[j].pid,pids.APIDs[j].is_ac3 ? " (AC3)": " ");
+
 					break;
 				}
 			}
