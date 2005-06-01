@@ -142,6 +142,8 @@ unsigned short ac3flags[10];
 unsigned short numpida=0;
 unsigned int currentapid = 0, currentac3 = 0, apidchanged=0;
 bool showaudioselectdialog = false;
+short lcdSetting=0;
+bool ldcUpdate =false;
 
 
 //------------------------------------------------------------------------
@@ -1538,7 +1540,8 @@ static void mp_checkEvent(MP_CTX *ctx)
 
 			//-- (live) stream should have 1 atrack only --
 			if(ctx->isStream)	break;
-
+			g_settings.lcd_setting[SNeutrinoSettings::LCD_SHOW_VOLUME]=lcdSetting;
+			ldcUpdate=true;
 			mp_analyze(ctx);
 			fprintf(stderr, "[mp] using pida: 0x%04X ; pidv: 0x%04X ; ac3: %d\n",
 					  ctx->pida, ctx->pidv, ctx->ac3);
@@ -1978,7 +1981,8 @@ void *mp_playFileThread (void *filename)
 		//-----------------
 		fprintf(stderr,"[mp] entering player loop\n");
 		//lcd
-		short prozent=0,last_prozent=1,lcdSetting=g_settings.lcd_setting[SNeutrinoSettings::LCD_SHOW_VOLUME];
+		short prozent=0,last_prozent=1;
+		lcdSetting=g_settings.lcd_setting[SNeutrinoSettings::LCD_SHOW_VOLUME];
 		while( (ctx->itChanged == false) &&
 				 (g_playstate >= CMoviePlayerGui::PLAY) )
 		{
@@ -2008,10 +2012,11 @@ void *mp_playFileThread (void *filename)
 			mp_startDMX(ctx);	// starts only if stopped !
 			//lcd
 			prozent=(ctx->pos*100)/ctx->fileSize;
-			if(last_prozent !=prozent && lcdSetting!=1)
+			if((last_prozent !=prozent && lcdSetting!=1) || ldcUpdate)
 			{
 				g_settings.lcd_setting[SNeutrinoSettings::LCD_SHOW_VOLUME]=lcdSetting;
 				last_prozent=prozent;
+				ldcUpdate=false;
 				CLCD::getInstance()->showPercentOver(prozent);
 				g_settings.lcd_setting[SNeutrinoSettings::LCD_SHOW_VOLUME]=1;
 			}
