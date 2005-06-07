@@ -142,8 +142,8 @@ unsigned short ac3flags[10];
 unsigned short numpida=0;
 unsigned int currentapid = 0, currentac3 = 0, apidchanged=0;
 bool showaudioselectdialog = false;
-short lcdSetting=0;
-bool ldcUpdate =false;
+short lcdSetting=-1;
+bool lcdUpdateTsMode =false;
 
 
 //------------------------------------------------------------------------
@@ -312,6 +312,7 @@ CMoviePlayerGui::exec (CMenuTarget * parent, const std::string & actionKey)
 			}
 			else
 			{
+				CLCD::getInstance()->setMode (CLCD::MODE_TVRADIO);
 				// TODO check if file is a TS. Not required right now as writing bookmarks is disabled for PES anyway
 				isTS = true;
 				isPES = false;
@@ -1540,8 +1541,11 @@ static void mp_checkEvent(MP_CTX *ctx)
 
 			//-- (live) stream should have 1 atrack only --
 			if(ctx->isStream)	break;
-			g_settings.lcd_setting[SNeutrinoSettings::LCD_SHOW_VOLUME]=lcdSetting;
-			ldcUpdate=true;
+			if(lcdSetting != -1)
+			{
+				g_settings.lcd_setting[SNeutrinoSettings::LCD_SHOW_VOLUME]=lcdSetting;
+				lcdUpdateTsMode=true;
+			}
 			mp_analyze(ctx);
 			fprintf(stderr, "[mp] using pida: 0x%04X ; pidv: 0x%04X ; ac3: %d\n",
 					  ctx->pida, ctx->pidv, ctx->ac3);
@@ -2012,11 +2016,11 @@ void *mp_playFileThread (void *filename)
 			mp_startDMX(ctx);	// starts only if stopped !
 			//lcd
 			prozent=(ctx->pos*100)/ctx->fileSize;
-			if((last_prozent !=prozent && lcdSetting!=1) || ldcUpdate)
+			if((last_prozent !=prozent && lcdSetting!=1) || lcdUpdateTsMode)
 			{
 				g_settings.lcd_setting[SNeutrinoSettings::LCD_SHOW_VOLUME]=lcdSetting;
 				last_prozent=prozent;
-				ldcUpdate=false;
+				lcdUpdateTsMode=false;
 				CLCD::getInstance()->showPercentOver(prozent);
 				g_settings.lcd_setting[SNeutrinoSettings::LCD_SHOW_VOLUME]=1;
 			}
