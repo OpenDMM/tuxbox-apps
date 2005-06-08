@@ -355,7 +355,7 @@ void eHarddiskMenu::s_format()
 		}
 		fprintf(f, "0,\n;\n;\n;\ny\n");
 		fclose(f);
-#if 0
+#if ENABLE_REISERFS
 		if ( !fs->getCurrent()->getKey() )  // reiserfs
 		{
 			::sync();
