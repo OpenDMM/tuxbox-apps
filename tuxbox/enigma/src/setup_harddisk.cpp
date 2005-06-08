@@ -189,9 +189,9 @@ eHarddiskSetup::eHarddiskSetup()
 	
 	move(ePoint(150, 136));
 	
-	for (int host=0; host<1; host++)
-		for (int bus=0; bus<1; bus++)
-			for (int target=0; target<1; target++)
+	for (int host=0; host<2; host++)
+		for (int bus=0; bus<2; bus++)
+			for (int target=0; target<2; target++)
 			{
 				int num=target+bus*2+host*4;
 				
