@@ -77,7 +77,7 @@ std::string Unicode_Character_to_UTF8(const int character)
 }
 
 #ifdef USE_LIBXML
-xmlDocPtr parseXmlFile(const char * filename)
+xmlDocPtr parseXmlFile(const char * filename, bool warning_by_nonexistence /* = true */)
 {
 	xmlDocPtr doc;
 	xmlNodePtr cur;
@@ -103,7 +103,7 @@ xmlDocPtr parseXmlFile(const char * filename)
 	}
 }
 #else /* USE_LIBXML */
-xmlDocPtr parseXmlFile(const char * filename)
+xmlDocPtr parseXmlFile(const char * filename, bool warning_by_nonexistence /* = true */)
 {
 	char buffer[2048];
 	XMLTreeParser* tree_parser;
@@ -115,7 +115,8 @@ xmlDocPtr parseXmlFile(const char * filename)
 
 	if (xml_file == NULL)
 	{
-		perror(filename);
+	        if (warning_by_nonexistence)
+			perror(filename);
 		return NULL;
 	}
 
