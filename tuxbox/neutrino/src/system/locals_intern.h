@@ -781,6 +781,7 @@ const char * locale_real_names[] =
 	"settings.pos_bottom_right",
 	"settings.pos_top_left",
 	"settings.pos_top_right",
+	"shutdownerror.recoding",
 	"shutdowntimer.announce",
 	"sleeptimerbox.announce",
 	"sleeptimerbox.hint1",
@@ -935,6 +936,6 @@ const char * locale_real_names[] =
 	"zapit.scantype.radio",
 	"zapit.scantype.tv",
 	"zapit.scantype.tvradio",
- 	"zaptotimer.announce",
+	"zaptotimer.announce",
 };
 #endif
