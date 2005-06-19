@@ -1830,6 +1830,7 @@ int main(int argc, char **argv)
 			        "diseqcRepeats" ", "
 				"diseqcType" ", "
 				"motorRotationSpeed" ", "
+				"traceNukes" ", "
 				"lnb0_OffsetLow" ", ..., " "lnb63_OffsetLow" ", "
 				"lnb0_OffsetHigh" ", ..., " "lnb63_OffsetHigh" "."
 				"\n", argv[0]);
