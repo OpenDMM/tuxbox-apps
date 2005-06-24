@@ -180,6 +180,8 @@ eConsoleAppContainer::eConsoleAppContainer( const eString &cmd )
 		argv[cnt] = new char[ cmds.length() ];
 		strcpy( argv[cnt], cmds.c_str() );
 	}
+	else
+		cnt=0;
 
   // get one read ,one write and the err pipe to the prog..
 
@@ -187,17 +189,14 @@ eConsoleAppContainer::eConsoleAppContainer( const eString &cmd )
 //	while(argv[tmp])
 //		eDebug("%d is %s", tmp, argv[tmp++]);
   
-	if ( (pid = bidirpipe(fd, argv[0], argv)) == -1 )
-	{
-		while ( cnt > 0 )
-			delete [] argv[cnt--];
-		delete [] argv;
-		return;
-	}
+	pid = bidirpipe(fd, argv[0], argv);
 
 	while ( cnt > 0 )  // release heap memory
 		delete [] argv[cnt--];
 	delete [] argv;
+	
+	if ( pid == -1 )
+		return;
 
 //	eDebug("pipe in = %d, out = %d, err = %d", fd[0], fd[1], fd[2]);
 
