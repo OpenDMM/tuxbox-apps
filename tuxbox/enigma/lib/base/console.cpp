@@ -181,7 +181,7 @@ eConsoleAppContainer::eConsoleAppContainer( const eString &cmd )
 		strcpy( argv[cnt], cmds.c_str() );
 	}
 	else
-		cnt=0;
+		cnt=1;
 
   // get one read ,one write and the err pipe to the prog..
 
@@ -191,7 +191,7 @@ eConsoleAppContainer::eConsoleAppContainer( const eString &cmd )
   
 	pid = bidirpipe(fd, argv[0], argv);
 
-	while ( cnt > 0 )  // release heap memory
+	while ( cnt >= 0 )  // release heap memory
 		delete [] argv[cnt--];
 	delete [] argv;
 	
