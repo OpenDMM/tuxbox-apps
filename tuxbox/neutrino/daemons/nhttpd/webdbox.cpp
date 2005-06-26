@@ -33,6 +33,7 @@
 // nhttpd
 #include "debug.h"
 #include "webdbox.h"
+#include "lcdapi.h"
 
 //-------------------------------------------------------------------------
 
@@ -97,6 +98,7 @@ CWebDbox::CWebDbox(CWebserver *server)
 	ControlAPI = new CControlAPI(this);
 	WebAPI = new CWebAPI(this);
 	BouqueteditAPI = new CBouqueteditAPI(this);
+	LcdAPI = new CLCDAPI(this);
 
 	UpdateBouquets();
 
@@ -137,6 +139,8 @@ CWebDbox::~CWebDbox(void)
 		delete BouqueteditAPI;
 	if (WebAPI)
 		delete WebAPI;
+	if (LcdAPI)
+		delete LcdAPI;
 	if (ControlAPI)
 		delete ControlAPI;
 	if (Controld)

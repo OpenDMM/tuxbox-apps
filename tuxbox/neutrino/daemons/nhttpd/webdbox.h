@@ -40,6 +40,7 @@
 // nhttpd
 #include "helper.h"
 #include "request.h"
+#include "lcdapi.h"
 
 class CWebserver;
 class CWebserverRequest;
@@ -47,6 +48,7 @@ class CControlAPI;
 class CWebAPI;
 class CBouqueteditAPI;
 class CWebDbox;
+class CLCDAPI;
 
 #include "controlapi.h"
 #include "bouqueteditapi.h"
@@ -64,6 +66,7 @@ class CWebDbox
 	CSectionsdClient	*Sectionsd;
 	CZapitClient		*Zapit;
 	CTimerdClient		*Timerd;
+	CLCDAPI                         *LcdAPI;
 
 	CEventServer		*EventServer;
 
