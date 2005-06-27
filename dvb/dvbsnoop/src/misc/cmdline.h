@@ -48,6 +48,7 @@ typedef struct _OPTIONS {
   long        timeout_ms;		// read timeout in ms
   long        rd_packet_count;		// read max. n packets
   long        dec_packet_count;		// decode max. n packets
+  int         rd_all_sections;		// read all sections no. for a pid
   int         spider_pid;		// Section PID spider mode
   int         ts_subdecode;		// sub decode PES or SEC in TS stream
   int         ts_raw_mode;		// Read full TS in TS stream mode (if hardware supported)
