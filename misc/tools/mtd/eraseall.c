@@ -36,9 +36,9 @@
 #include <sys/ioctl.h>
 #include <sys/mount.h>
 #include "crc32.h"
-
-#include <linux/mtd/mtd.h>
-#include "linux/jffs2.h"
+#include <mtd/mtd-user.h>
+#include <mtd/jffs2-user.h>
+int target_endian;
 
 #ifndef cpu_to_je16
 #define cpu_to_je16(x) (x)

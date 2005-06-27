@@ -39,7 +39,7 @@
 #include <sys/ioctl.h>
 #include <fcntl.h>
 #include <unistd.h>
-#include <linux/mtd/mtd.h>
+#include <mtd/mtd-user.h>
 #include <getopt.h>
 
 typedef int bool;
