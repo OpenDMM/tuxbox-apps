@@ -1,7 +1,8 @@
 /*
 	nhttpd  -  DBoxII-Project
 
-    Copyright (C) 2005 SnowHead
+	Copyright (C) 2001/2002 Dirk Szymanski 'Dirch'
+	Copyright (C) 2005 SnowHead
 
 	$Id$
 
