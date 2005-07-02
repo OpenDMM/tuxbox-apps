@@ -22,6 +22,17 @@
  *
  */
 
+/*
+ Options:
+ -d	Debugmode: Don't fork, additionally generate debugging messages
+
+ -q     Be quiet.
+
+ Signal handling:
+  SIGTERM, SIGHUP: Terminates zapit (gracefully)
+  SIGUSR1:         Toggles debug mode
+*/
+
 /* system headers */
 #include <csignal>
 #include <fcntl.h>
@@ -1831,6 +1842,7 @@ int main(int argc, char **argv)
 				"diseqcType" ", "
 				"motorRotationSpeed" ", "
 				"traceNukes" ", "
+				"ChannelNamesFromBouquet" ", "
 				"lnb0_OffsetLow" ", ..., " "lnb63_OffsetLow" ", "
 				"lnb0_OffsetHigh" ", ..., " "lnb63_OffsetHigh" "."
 				"\n", argv[0]);
