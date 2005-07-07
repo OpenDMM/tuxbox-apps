@@ -32,6 +32,11 @@
 eExpertSetup::eExpertSetup()
 	:eSetupWindow(_("Expert Setup"), 10, 400)
 {
+	init_eExpertSetup();
+}
+
+void eExpertSetup::init_eExpertSetup()
+{
 	cmove(ePoint(170, 115));
 
 	int lockWebIf=1;
