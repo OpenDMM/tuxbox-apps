@@ -18,6 +18,8 @@ $Id$
 #ifndef __CMDLINE_H
 #define __CMDLINE_H 
 
+#include "dvb_api/dvb_api.h"
+
 
 /*
  -- defs...
@@ -41,8 +43,9 @@ typedef struct _OPTIONS {
   char        *devFE;			// input device Frontend
   long        rd_buffer_size;		// read buffer size in (0L = default)
   u_int       pid;			// decode PID
-  u_int       filter;			// PID filter
-  u_int       mask;			// PID mask
+  int         filterLen;		// bytelength of section filter
+  u_char      filter[DMX_FILTER_SIZE];	// section byte filter
+  u_char      mask[DMX_FILTER_SIZE];	// section byte mask
   int         crc;			// section CRC check?
   int         max_dmx_filter;		// max dmx filter use? (pidscan)
   long        timeout_ms;		// read timeout in ms
