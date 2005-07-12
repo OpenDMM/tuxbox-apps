@@ -115,6 +115,7 @@ void eZapSetup::expert_setup()
 	setup.show();
 	setup.exec();
 	setup.hide();
+	eConfig::getInstance()->flush();
 	show();
 }
 
