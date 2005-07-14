@@ -392,6 +392,8 @@ const char * locale_real_names[] =
 	"fontsize.gamelist_itemlarge",
 	"fontsize.gamelist_itemsmall",
 	"fontsize.hint",
+	"fontsize.imageinfo_info",
+	"fontsize.imageinfo_small",
 	"fontsize.infobar_channame",
 	"fontsize.infobar_info",
 	"fontsize.infobar_number",
