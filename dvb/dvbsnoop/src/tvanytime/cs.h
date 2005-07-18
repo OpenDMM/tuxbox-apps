@@ -13,11 +13,11 @@ $Id$
 */
 
 
-#ifndef __RNT_H
-#define __RNT_H 
+#ifndef __CS_H
+#define __CS_H 
 
 
-void section_TVA_RNT (u_char *b, int len);
+void section_TVA_CS (u_char *b, int len);
 
 
 #endif
