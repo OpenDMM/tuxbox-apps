@@ -547,6 +547,7 @@ const char * locale_real_names[] =
 	"miscsettings.shutdown_real_rcdelay",
 	"miscsettings.sptsmode",
 	"miscsettings.startbhdriver",
+	"miscsettings.tuxtxt_cache",
 	"motorcontrol.head",
 	"movieplayer.bookmark",
 	"movieplayer.bookmarkname",
