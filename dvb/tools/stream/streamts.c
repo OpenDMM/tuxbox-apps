@@ -357,6 +357,7 @@ main (int argc, char ** argv) {
 	unsigned char *bp;
 	unsigned char mode;
 	unsigned char tsfile[IN_SIZE];
+	int tsfilelen = 0;
 	int fileslice = 0;
 	int i = 0;
 	
@@ -438,6 +439,7 @@ main (int argc, char ** argv) {
 				break;
 			}
 		}
+		tsfilelen = strlen(tsfile);
 		/* open ts file */
 		if ((dvrfd = open(tsfile, O_RDONLY)) < 0) {
 			free(buf);
@@ -464,7 +466,8 @@ main (int argc, char ** argv) {
 			pos = 0;
 			todo = IN_SIZE;
 
-			while ((!exit_flag) && (todo)) {
+			while (todo) 
+			{
 				r = read(dvrfd, buf + pos, todo);
 				if (r > 0) {
 					pos += r;
@@ -482,12 +485,8 @@ main (int argc, char ** argv) {
 						else
 						{
 							close(dvrfd);
-							char temp[5];
-							char filename[IN_SIZE];
-							strcpy(filename, tsfile);
-							sprintf(temp, ".%03d", ++fileslice);
-							strcat(filename, temp);
-							if ((dvrfd = open(filename, O_RDONLY)) < 0) {
+							sprintf(&tsfile[tsfilelen], ".%03d", ++fileslice);
+							if ((dvrfd = open(tsfile, O_RDONLY)) < 0) {
 								free(buf);
 								return EXIT_SUCCESS;
 							}
