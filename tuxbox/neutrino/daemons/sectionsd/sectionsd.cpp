@@ -1691,6 +1691,10 @@ static void sendEPG(int connfd, const SIevent& e, const SItime& t, int shortepg 
 		    strlen(e.name.c_str()) + 1 + 		// Name + del
 		    strlen(e.text.c_str()) + 1 + 		// Text + del
 		    strlen(e.extendedText.c_str()) + 1 + 	// ext + del
+			// 21.07.2005 - rainerk
+			// Send extended events
+		    strlen(e.itemDescription.c_str()) + 1 + // Item Description + del
+		    strlen(e.item.c_str()) + 1 + // Item + del
 		    strlen(e.contentClassification.c_str()) + 1 + 		// Text + del
 		    strlen(e.userClassification.c_str()) + 1 + 	// ext + del
 		    1 +                                   // fsk
@@ -1724,6 +1728,12 @@ static void sendEPG(int connfd, const SIevent& e, const SItime& t, int shortepg 
 		p += strlen(e.text.c_str()) + 1;
 		strcpy(p, e.extendedText.c_str());
 		p += strlen(e.extendedText.c_str()) + 1;
+		// 21.07.2005 - rainerk
+		// Send extended events
+		strcpy(p, e.itemDescription.c_str());
+		p += strlen(e.itemDescription.c_str()) + 1;
+		strcpy(p, e.item.c_str());
+		p += strlen(e.item.c_str()) + 1;
 		strcpy(p, e.contentClassification.c_str());
 		p += strlen(e.contentClassification.c_str()) + 1;
 		strcpy(p, e.userClassification.c_str());
