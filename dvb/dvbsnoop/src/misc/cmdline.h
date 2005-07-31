@@ -47,6 +47,7 @@ typedef struct _OPTIONS {
   u_char      filter[DMX_FILTER_SIZE];	// section byte filter
   u_char      mask[DMX_FILTER_SIZE];	// section byte mask
   int         crc;			// section CRC check?
+  int         soft_crc;			// section CRC soft check?
   int         max_dmx_filter;		// max dmx filter use? (pidscan)
   long        timeout_ms;		// read timeout in ms
   long        rd_packet_count;		// read max. n packets
@@ -66,7 +67,8 @@ typedef struct _OPTIONS {
  -- prototypes
 */
 
-int  cmdline_options (int argc, char **argv, OPTION *opt);
+int    cmdline_options (int argc, char **argv, OPTION *opt);
+OPTION *getOptionPtr (void);
 
 #endif
 
