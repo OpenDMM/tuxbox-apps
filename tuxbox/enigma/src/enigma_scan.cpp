@@ -49,8 +49,14 @@ eZapScan::eZapScan()
 		CONNECT((new eListBoxEntryMenu(&list, _("Satfind"), eString().sprintf("(%d) %s", ++entry, _("open the satfinder"))))->selected, eZapScan::sel_satfind);
 		CONNECT((new eListBoxEntryMenu(&list, _("Motor Setup"), eString().sprintf("(%d) %s", ++entry, _("open Motor Setup"))))->selected, eZapScan::sel_rotorConfig);
 		CONNECT((new eListBoxEntryMenu(&list, _("Transponder Edit"), eString().sprintf("(%d) %s", ++entry, _("for automatic scan"))))->selected, eZapScan::sel_transponderEdit);
-		new eListBoxEntrySeparator( (eListBox<eListBoxEntry>*)&list, eSkin::getActive()->queryImage("listbox.separator"), 0, true );
 	}
+	else if ( eSystemInfo::getInstance()->getFEType() == eSystemInfo::feTerrestrial )
+	{
+		CONNECT((new eListBoxEntryMenu(&list, _("Signalfind"), eString().sprintf("(%d) %s", ++entry, _("open the signalfinder"))))->selected, eZapScan::sel_satfind);
+		(new eListBoxEntryCheck( (eListBox<eListBoxEntry>*)&list, _("Disable 5V"), "/elitedvb/DVB/config/disable_5V", _("disable 5V for passive terrerstrial antennas")))
+			->selected.connect( slot(*eFrontend::getInstance(), &eFrontend::setTerrestrialAntennaVoltage) );
+	}
+	new eListBoxEntrySeparator( (eListBox<eListBoxEntry>*)&list, eSkin::getActive()->queryImage("listbox.separator"), 0, true );
 	CONNECT((new eListBoxEntryMenu(&list, _("Automatic Transponder Scan"), eString().sprintf("(%d) %s", ++entry, _("open automatic transponder scan"))))->selected, eZapScan::sel_autoScan);
 	if ( eSystemInfo::getInstance()->getFEType() == eSystemInfo::feSatellite )  // only when a sat box is avail we shows a satellite config
 		CONNECT((new eListBoxEntryMenu(&list, _("Automatic Multisat Scan"), eString().sprintf("(%d) %s", ++entry, _("open automatic multisat transponder scan"))))->selected, eZapScan::sel_multiScan);
