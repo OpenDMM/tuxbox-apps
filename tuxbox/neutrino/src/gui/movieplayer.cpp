@@ -2541,7 +2541,7 @@ CMoviePlayerGui::PlayStream (int streamtype)
 	{
 		strcpy (mrl, "dvdsimple:");
 		strcat (mrl, g_settings.streaming_server_cddrive);
-		strcat (mrl, "@1:1-");
+		strcat (mrl, ":");
 		printf ("[movieplayer.cpp] Generated MRL: %s\n", mrl);
 		sel_filename = "DVD";
 		open_filebrowser = false;
@@ -2551,7 +2551,7 @@ CMoviePlayerGui::PlayStream (int streamtype)
 	{
 		strcpy (mrl, "vcd:");
 		strcat (mrl, g_settings.streaming_server_cddrive);
-		strcat (mrl, "@1:1-");
+		strcat (mrl, ":");
 		printf ("[movieplayer.cpp] Generated MRL: %s\n", mrl);
 		sel_filename = "(S)VCD";
 		open_filebrowser = false;
