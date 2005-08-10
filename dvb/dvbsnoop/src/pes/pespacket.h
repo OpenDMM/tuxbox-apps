@@ -16,6 +16,7 @@ $Id$
 #ifndef __PESPACKET_H
 #define __PESPACKET_H 1
 
+void decodePS_buf (u_char *b, u_int len, int pid);
 void decodePES_buf (u_char *b, u_int len, int pid);
 
 #endif
