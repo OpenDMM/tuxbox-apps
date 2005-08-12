@@ -42,6 +42,8 @@ typedef struct _OPTIONS {
   char        *devDemux;		// input device DMX
   char        *devDvr;			// input device DVR
   char        *devFE;			// input device Frontend
+  int         dvbAdapterNr;		// /dev/dvb/adapterN/... (Api3)
+  int         dvbDeviceNr;		// z.B. /dev/dvb/.../demuxN
   long        rd_buffer_size;		// read buffer size in (0L = default)
   u_int       pid;			// decode PID
   int         filterLen;		// bytelength of section filter
