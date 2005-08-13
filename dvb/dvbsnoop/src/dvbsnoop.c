@@ -14,6 +14,9 @@ $Id$
 
 
 $Log$
+Revision 1.31  2005/08/13 00:06:56  rasc
+no message
+
 Revision 1.30  2005/08/10 21:28:17  rasc
 New: Program Stream handling  (-s ps)
 
@@ -229,7 +232,7 @@ int main(int argc, char **argv)
 			break;
 
 		default:
-			fprintf (stderr,"unknown snoop type (this should never happen..\n");
+			fprintf (stderr,"unknown snoop type (this should never happen).\n");
 			break;
 
 	  }
