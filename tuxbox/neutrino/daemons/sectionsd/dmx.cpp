@@ -50,7 +50,7 @@ extern void showProfiling(std::string text);
 extern bool timeset;
 
 
-DMX::DMX(const unsigned char p, const unsigned short bufferSizeInKB)
+DMX::DMX(const unsigned short p, const unsigned short bufferSizeInKB)
 {
 	fd = -1;
 	lastChanged = 0;

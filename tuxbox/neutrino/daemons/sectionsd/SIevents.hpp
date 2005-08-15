@@ -106,6 +106,15 @@ public:
 		name = l.name;
 	}
 
+	// default
+	SIlinkage(void) {
+		linkageType = 0;
+		transportStreamId = 0;
+		originalNetworkId = 0;
+		serviceId = 0;
+//		name = ;
+	}
+	
 	// Der Operator zum sortieren
 	bool operator < (const SIlinkage& l) const {
 		return name < l.name;

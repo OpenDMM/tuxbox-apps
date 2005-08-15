@@ -32,7 +32,7 @@ class DMX
  private:
 	int             fd;
 	pthread_mutex_t pauselock;
-	unsigned char   pID;
+	unsigned short  pID;
 	unsigned short  dmxBufferSizeInKB;
 
 	inline bool isOpen(void) { return (fd != -1); }
@@ -57,7 +57,7 @@ class DMX
 	pthread_mutex_t        start_stop_mutex;
 
 
-	DMX(const unsigned char p, const unsigned short bufferSizeInKB);
+	DMX(const unsigned short p, const unsigned short bufferSizeInKB);
 	~DMX();
 
 	int start(void);
