@@ -1133,6 +1133,7 @@ bool parse_command(CBasicMessage::Header &rmsg, int connfd)
 			responseGetOtherPIDs.pcrpid = channel->getPcrPid();
 			responseGetOtherPIDs.pmtpid = channel->getPmtPid();
 			responseGetOtherPIDs.selected_apid = channel->getAudioChannelIndex();
+			responseGetOtherPIDs.privatepid = channel->getPrivatePid();
 			CBasicServer::send_data(connfd, &responseGetOtherPIDs, sizeof(responseGetOtherPIDs));
 			sendAPIDs(connfd);
 		}

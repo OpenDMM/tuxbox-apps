@@ -570,3 +570,45 @@ ssize_t readNbytes(int fd, char * buf, const size_t n, unsigned timeoutInMSecond
 
 	return j;
 }
+
+
+
+int DMX::setPid(const unsigned short new_pid)
+{
+        lock();
+
+	if (!isOpen())
+	{
+#ifdef PAUSE_EQUALS_STOP	       
+		pthread_cond_signal(&change_cond);
+#endif
+		unlock();
+		return 1;
+	}
+
+	if (real_pauseCounter > 0)
+	{
+		dprintf("changeDMX: for 0x%x ignored! because of real_pauseCounter> 0\n", new_pid);
+		unlock();
+		return 0;	// läuft nicht (zB streaming)
+	}
+	closefd();
+
+	pID = new_pid;
+	int rc = immediate_start();
+
+	if (rc != 0)
+	{
+		unlock();
+		return rc;
+	}
+
+        pthread_cond_signal(&change_cond);
+
+	if (timeset)
+		lastChanged = time(NULL);
+
+	unlock();
+
+	return 0;
+}

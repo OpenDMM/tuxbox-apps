@@ -82,7 +82,7 @@ class DMX
 
 	char * getSection(const unsigned timeoutInMSeconds, int &timeouts);
 	// section with size < 3 + 5 are skipped !
+	int setPid(const unsigned short new_pid);
 };
 
 #endif /* __sectionsd__dmx_h__ */
-

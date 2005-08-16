@@ -99,6 +99,7 @@ void CZapitChannel::resetPids(void)
 	pmtPid = 0;
 	teletextPid = 0;
 	videoPid = 0;
+	privatePid = 0;
 
 	pidsFlag = false;
 }

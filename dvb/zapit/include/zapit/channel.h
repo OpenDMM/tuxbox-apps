@@ -52,6 +52,7 @@ class CZapitChannel
 		unsigned short			pmtPid;
 		unsigned short			teletextPid;
 		unsigned short			videoPid;
+		unsigned short			privatePid;
 
 		/* set true when pids are set up */
 		bool pidsFlag;
@@ -99,6 +100,7 @@ class CZapitChannel
 		unsigned short		getPmtPid(void)			{ return pmtPid; }
 		unsigned short		getTeletextPid(void)		{ return teletextPid; }
 		unsigned short		getVideoPid(void)		{ return videoPid; }
+		unsigned short		getPrivatePid(void)		{ return privatePid; }
 		bool			getPidsFlag(void)		{ return pidsFlag; }
 		CCaPmt *		getCaPmt(void)			{ return caPmt; }
 
@@ -116,6 +118,7 @@ class CZapitChannel
 		void setPmtPid(unsigned short pPmtPid)			{ pmtPid = pPmtPid; }
 		void setTeletextPid(unsigned short pTeletextPid)	{ teletextPid = pTeletextPid; }
 		void setVideoPid(unsigned short pVideoPid)		{ videoPid = pVideoPid; }
+		void setPrivatePid(unsigned short pPrivatePid)		{ privatePid = pPrivatePid; }
 		void setPidsFlag(void)					{ pidsFlag = true; }
 		void setCaPmt(CCaPmt *pCaPmt)				{ caPmt = pCaPmt; }
 		/* cleanup methods */
