@@ -3671,6 +3671,10 @@ static void *pptThread(void *)
 					//dprintf("[eitThread] added %d events (end)\n",  eit.events().size());
 				} // if
 			} // if
+			else
+			{
+				delete[] buf;
+			}
 		} // for
 	} // try
 	catch (std::exception& e)
