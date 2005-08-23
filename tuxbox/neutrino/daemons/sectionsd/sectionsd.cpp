@@ -413,16 +413,29 @@ static void removeNewEvents(void)
 
 static void removeOldEvents(const long seconds)
 {
-	// Alte events loeschen
-	time_t zeit = time(NULL);
+   bool goodtimefound;
 
-	for (MySIeventsOrderFirstEndTimeServiceIDEventUniqueKey::iterator e = mySIeventsOrderFirstEndTimeServiceIDEventUniqueKey.begin(); e != mySIeventsOrderFirstEndTimeServiceIDEventUniqueKey.end(); e++)
-		if ((*e)->times.begin()->startzeit + (long)(*e)->times.begin()->dauer < zeit - seconds)
-			deleteEvent((*e)->uniqueKey());
-		else
-			break; // sortiert nach Endzeit, daher weiteres Suchen unnoetig
+   // Alte events loeschen
+   time_t zeit = time(NULL);
 
-	return ;
+   for (MySIeventsOrderFirstEndTimeServiceIDEventUniqueKey::iterator e = mySIeventsOrderFirstEndTimeServiceIDEventUniqueKey.begin(); e != mySIeventsOrderFirstEndTimeServiceIDEventUniqueKey.end(); e++) {
+
+      goodtimefound = false;
+      for (SItimes::iterator t = (*e)->times.begin(); t != (*e)->times.end(); t++)
+      {
+         if (t->startzeit + (long)t->dauer >= zeit - seconds) {
+            goodtimefound=true;
+            // one time found -> exit times loop
+            break;
+         }
+      }
+      if (false == goodtimefound)
+         deleteEvent((*e)->uniqueKey());
+      else
+;//solange das nicht richtig funktioniert einfach bis zum ende suchen
+//         break; // sortiert nach Endzeit, daher weiteres Suchen unnoetig
+   }
+   return ;
 }
 
 //  SIservicePtr;
@@ -3671,6 +3684,10 @@ static void *pptThread(void *)
 					//dprintf("[eitThread] added %d events (end)\n",  eit.events().size());
 				} // if
 			} // if
+			else
+			{
+				delete[] buf;
+			}
 		} // for
 	} // try
 	catch (std::exception& e)
