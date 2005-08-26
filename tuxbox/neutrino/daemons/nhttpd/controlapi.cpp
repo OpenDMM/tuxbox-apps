@@ -347,8 +347,8 @@ bool CControlAPI::ExecCGI(CWebserverRequest *request)
 					FILE *f = popen(abscmd.c_str(),"r");
 					if (f != NULL)
 					{
-						char output[8192];
-						while (fgets(output,8192,f))
+						char output[1024];
+						while (fgets(output,1024,f))
 						{
 							request->SocketWrite(output);
 						}
