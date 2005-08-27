@@ -163,7 +163,7 @@ int main(int argc, char* argv[]) {
 	else if (argc == 4 && !strcmp(argv[1],"settime"))
 		settime(argv[2],argv[3]);
 	else {
-		printf("\nRead/Write RTC time\n$Version$ $Author$\n\n");
+		printf("\nRead/Write RTC time\n$Revision$\n\n");
 		printf("Usage: <rtctest> command\n");
 		printf("\ncommand:\n");
 		printf("hwtosys\t\t - set system time from rtc\n");
