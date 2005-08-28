@@ -170,6 +170,7 @@ class CSectionsdClient : private CBasicClient
 
 	bool getEPGidShort(const event_id_t eventid, CShortEPGData * epgdata);
 
+	void setPrivatePid(const unsigned short pid);
 
 	/*
 	  ein beliebiges Event anmelden

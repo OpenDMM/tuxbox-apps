@@ -81,6 +81,7 @@ struct sectionsd
 		pauseSorting,
 		CMD_registerEvents,
 		CMD_unregisterEvents,
+		setPrivatePid,
 		numberOfCommands        // <- no actual command, end of command marker
 	};
 

@@ -601,3 +601,12 @@ bool CSectionsdClient::getEPGidShort(const event_id_t eventid, CShortEPGData * e
 	
 	return false;
 }
+
+void CSectionsdClient::setPrivatePid(const unsigned short pid)
+{
+	send(sectionsd::setPrivatePid, (char*)&pid, sizeof(pid));
+
+	readResponse();
+	close_connection();
+}
+
