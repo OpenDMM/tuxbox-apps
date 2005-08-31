@@ -45,6 +45,9 @@ class CControlAPI
 		void SendBouquet(CWebserverRequest *request,int BouquetNr);
 		void SendChannelList(CWebserverRequest *request);
 		void SendTimers(CWebserverRequest* request);
+		//yweb
+		void YWeb_SendVideoStreamingPids(CWebserverRequest* request, int apid_no);
+		void YWeb_SendRadioStreamingPid(CWebserverRequest* request);
 
 		// CGI functions for ExecuteCGI
 		bool TimerCGI(CWebserverRequest *request);
@@ -72,6 +75,7 @@ class CControlAPI
 		bool SystemCGI(CWebserverRequest *request);
 		bool RCCGI(CWebserverRequest *request);
 		bool LCDAction(CWebserverRequest *request);
+		bool YWebCGI(CWebserverRequest *request);
 	public:
 		CControlAPI(CWebDbox *parent) { Parent = parent; };
 		bool Execute(CWebserverRequest *request);
