@@ -111,7 +111,29 @@ void eExpertSetup::init_eExpertSetup()
 #ifndef TUXTXT_CFG_STANDALONE
 	CONNECT((new eListBoxEntryCheck( (eListBox<eListBoxEntry>*)&list, _("Disable teletext caching"), "/ezap/extra/teletext_caching", _("don't cache teletext pages in background")))->selected, eExpertSetup::tuxtxtCachingChanged );
 #endif
+	if ( eSystemInfo::getInstance()->getHwType() == eSystemInfo::DM7000 ||
+	    eSystemInfo::getInstance()->getHwType() == eSystemInfo::DM7020)
+		CONNECT_2_1((new eListBoxEntryCheck( (eListBox<eListBoxEntry>*)&list, _("Disable CoreFiles creating"), "/extras/corefiles_disable", _("don't create corefiles after Enigma crash")))->selected, eExpertSetup::fileToggle,"/var/etc/.no_corefiles");
 	setHelpID(92);
+}
+
+void eExpertSetup::fileToggle(bool newState, const char* filename)
+{
+	FILE* test;
+	test = fopen(filename,"r");
+	if (test != NULL)
+	{
+		fclose(test);
+		eString cmd = "rm ";
+		cmd += filename;
+		::unlink(filename);
+	}
+	else
+	{
+		eString cmd = "touch ";
+		cmd += filename;
+		system(cmd.c_str());
+	}
 }
 
 #ifndef TUXTXT_CFG_STANDALONE
