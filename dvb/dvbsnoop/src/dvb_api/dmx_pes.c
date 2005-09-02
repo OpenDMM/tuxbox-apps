@@ -20,6 +20,9 @@ $Id$
 
 
 $Log$
+Revision 1.33  2005/09/02 14:11:34  rasc
+TS code redesign, xPCR and DTS timestamps decoding
+
 Revision 1.32  2005/08/10 21:28:17  rasc
 New: Program Stream handling  (-s ps)
 
@@ -497,4 +500,8 @@ static long ps_chainread_packheader (int fd, u_char *buf)
 
 
 
+
+
+// $$$ TODO
+// also read iso 13818-2 and iso 13818-3 streams
 
