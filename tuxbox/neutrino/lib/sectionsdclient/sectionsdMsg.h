@@ -36,18 +36,19 @@
 
 struct sectionsd
 {
-	static const CBasicMessage::t_version ACTVERSION = 4;
+	static const CBasicMessage::t_version ACTVERSION = 5;
 
 	struct msgRequestHeader
 	{
 		unsigned char version;
 		unsigned char command;
-		unsigned short dataLength;
+		unsigned short stuff_bytes;
+		unsigned int dataLength;
 	} __attribute__ ((packed)) ;
 
 	struct msgResponseHeader
 	{
-		unsigned short dataLength;
+		unsigned int dataLength;
 	} __attribute__ ((packed)) ;
 
 	enum commands
