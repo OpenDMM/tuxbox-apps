@@ -580,8 +580,16 @@ void SIsectionSDT::parse(void)
 	struct sdt_service *sv;
 	unsigned short descriptors_loop_length;
 
-	if (!buffer || bufferLength < sizeof(SI_section_SDT_header) + sizeof(struct sdt_service) || parsed)
+	if (!buffer || parsed)
 		return;
+
+	if (bufferLength < sizeof(SI_section_SDT_header) + sizeof(struct sdt_service)) {
+printf("SDT fix?\n");
+		delete [] buffer;
+		buffer=0;
+		bufferLength=0;
+		return;
+	}
 
 	actPos = &buffer[sizeof(SI_section_SDT_header)];
 
