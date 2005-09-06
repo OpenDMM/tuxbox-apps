@@ -16,6 +16,9 @@ $Id$
 
 
 $Log$
+Revision 1.29  2005/09/06 23:13:52  rasc
+catch OS signals (kill ...) for smooth program termination
+
 Revision 1.28  2005/09/02 14:11:35  rasc
 TS code redesign, xPCR and DTS timestamps decoding
 
@@ -317,6 +320,9 @@ void decodePES_buf (u_char *b, u_int len, int pid)
 //
 // $$$ TODO  0x00000100-B8 ISO 13818-2  Start codes
 //
+// $$$ TODO  len may contain multiple PS/PES packets (e.g. from ts subdecode)
+//           has to be implemented somewhere
+//           also TS read of unbound streams
 
 
 

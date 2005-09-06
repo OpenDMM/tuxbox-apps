@@ -12,6 +12,9 @@ $Id$
 
 
 $Log$
+Revision 1.12  2005/09/06 23:13:51  rasc
+catch OS signals (kill ...) for smooth program termination
+
 Revision 1.11  2005/05/08 23:23:06  rasc
 display bandwidth average at end of poll
 
@@ -74,6 +77,7 @@ new: bandwidth usage reporting for a PID
 #include "misc/cmdline.h"
 #include "misc/output.h"
 #include "misc/pkt_time.h"
+#include "misc/sig_abort.h"
 
 #include "dvb_api.h"
 #include "dmx_error.h"
@@ -181,7 +185,7 @@ int ts_pidbandwidth (OPTION *opt)
 	packets_total = 0;
   	packets_bad = 0;
 
-	while (1) {
+	while ( !isSigAbort() ) {
 		int b_len, b_start;
 
 		// -- we will poll the PID in 2 secs intervall
