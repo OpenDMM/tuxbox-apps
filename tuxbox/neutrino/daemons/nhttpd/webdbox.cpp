@@ -34,6 +34,7 @@
 #include "debug.h"
 #include "webdbox.h"
 #include "lcdapi.h"
+#include "yapi.h"
 
 //-------------------------------------------------------------------------
 
@@ -99,6 +100,7 @@ CWebDbox::CWebDbox(CWebserver *server)
 	WebAPI = new CWebAPI(this);
 	BouqueteditAPI = new CBouqueteditAPI(this);
 	LcdAPI = new CLCDAPI(this);
+	yAPI = new CyAPI(this);
 
 	UpdateBouquets();
 
@@ -151,6 +153,8 @@ CWebDbox::~CWebDbox(void)
 		delete Zapit;
 	if (Timerd)
 		delete Timerd;
+	if (yAPI)
+		delete yAPI;
 	if (EventServer)
 		delete EventServer;
 }
