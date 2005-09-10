@@ -43,7 +43,7 @@
 
 #define NHTTPD_VERSION "2.1a"
 
-#define PRIVATEDOCUMENTROOT	"/share/tuxbox/neutrino/httpd"
+#define PRIVATEDOCUMENTROOT	"/share/tuxbox/neutrino/httpd-y"
 #define PUBLICDOCUMENTROOT	"/var/httpd"
 
 class CWebDbox;
