@@ -609,15 +609,9 @@ bool CWebserverRequest::SendResponse()
 
 	if( Client_Addr.find(IADDR_LOCAL)>0 ) // != local
 	{
-//		aprintf("do auth:%s\n",Client_Addr.c_str());
 		if(!Authenticate()) // Jeder Aufruf muss geprueft werden
         		return false;
 	}
-//	else
-//	{
-//
-//		aprintf("not auth:%s\n",Client_Addr.c_str());
-//	}
 	
 	if( (Path.compare("/control/") == 0) || (Path.compare("/cgi-bin/") == 0) )
 	{	// api for external programs
@@ -630,6 +624,10 @@ bool CWebserverRequest::SendResponse()
 	else if(Path.compare("/fb/") == 0)						// webbrowser api
 	{
 		return Parent->WebDbox->WebAPI->Execute(this);
+	}
+	else if(Path.compare("/y/") == 0)			// y api
+	{
+		return Parent->WebDbox->yAPI->Execute(this);
 	}
 	else
 	{														//normal file
