@@ -120,7 +120,7 @@ live_buildpanel()
 # -----------------------------------
 case "$1" in
 	panel)
-		live_buildpanel	;;
+		live_buildpanel	$* ;;
 
 	zapto)
 		wget -O - -q "$y_url_control/zapto?$2" >/dev/null
