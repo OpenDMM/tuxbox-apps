@@ -16,6 +16,9 @@ $Id$
 
 
 $Log$
+Revision 1.10  2005/09/12 20:56:16  rasc
+Make dvbsnoop compile on Cygwin / Windows
+
 Revision 1.9  2005/09/02 14:11:35  rasc
 TS code redesign, xPCR and DTS timestamps decoding
 
@@ -57,6 +60,7 @@ trying to include DSM-CC, Well someone a ISO13818-6 and latest version of ISO 18
 #include <stdarg.h>
 
 
+#include "dvbsnoop.h"
 #include "output.h"
 
 

@@ -7,12 +7,15 @@ $Id$
  a dvb sniffer  and mpeg2 stream analyzer tool
  http://dvbsnoop.sourceforge.net/
 
- (c) 2001-2004   Rainer.Scherg@gmx.de (rasc)
+ (c) 2001-2005   Rainer.Scherg@gmx.de (rasc)
 
 
 
 
 $Log$
+Revision 1.5  2005/09/12 20:56:16  rasc
+Make dvbsnoop compile on Cygwin / Windows
+
 Revision 1.4  2004/11/16 23:02:50  rasc
 cmd option "-tsraw" for full/raw TS read (if supported by hard-/firmware)
 

@@ -15,6 +15,9 @@ $Id$
 
 
 $Log$
+Revision 1.11  2005/09/12 20:56:16  rasc
+Make dvbsnoop compile on Cygwin / Windows
+
 Revision 1.10  2005/09/02 14:11:35  rasc
 TS code redesign, xPCR and DTS timestamps decoding
 
@@ -59,8 +62,8 @@ dvbsnoop v0.7  -- Commit to CVS
 #include "cmdline.h"
 #include "pkt_time.h"
 
-#include "unistd.h"
-#include "time.h"
+#include <unistd.h>
+#include <time.h>
 
 
 static struct timeval    last_tv = {0,0};

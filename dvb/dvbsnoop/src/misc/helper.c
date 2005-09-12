@@ -13,6 +13,9 @@ $Id$
 
 
 $Log$
+Revision 1.39  2005/09/12 20:56:16  rasc
+Make dvbsnoop compile on Cygwin / Windows
+
 Revision 1.38  2005/09/02 14:11:35  rasc
 TS code redesign, xPCR and DTS timestamps decoding
 
@@ -165,6 +168,7 @@ dvbsnoop v0.7  -- Commit to CVS
 #include <assert.h>
 
 
+#include "dvbsnoop.h"
 #include "helper.h"
 #include "hexprint.h"
 #include "output.h"
