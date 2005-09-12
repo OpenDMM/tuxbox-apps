@@ -111,6 +111,7 @@ void eExpertSetup::init_eExpertSetup()
 #ifndef TUXTXT_CFG_STANDALONE
 	CONNECT((new eListBoxEntryCheck( (eListBox<eListBoxEntry>*)&list, _("Disable teletext caching"), "/ezap/extra/teletext_caching", _("don't cache teletext pages in background")))->selected, eExpertSetup::tuxtxtCachingChanged );
 #endif
+	new eListBoxEntryCheck( (eListBox<eListBoxEntry>*)&list, _("Enable History Zapping"), "/elitedvb/extra/extzapping", _("Do not care about actual mode when zapping in history list"));	
 	if ( eSystemInfo::getInstance()->getHwType() == eSystemInfo::DM7000 ||
 	    eSystemInfo::getInstance()->getHwType() == eSystemInfo::DM7020)
 		CONNECT_2_1((new eListBoxEntryCheck( (eListBox<eListBoxEntry>*)&list, _("Disable CoreFiles"), "/extras/corefiles_disable", _("don't create 'Corefiles' after an Enigma crash")))->selected, eExpertSetup::fileToggle,"/var/etc/.no_corefiles");
