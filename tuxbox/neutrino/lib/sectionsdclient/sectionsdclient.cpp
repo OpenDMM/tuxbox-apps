@@ -384,10 +384,13 @@ CChannelEventList CSectionsdClient::getChannelEvents(const bool tv_mode)
 	close_connection();
 	return eList;
 }
+#include <iostream>
 
 CChannelEventList CSectionsdClient::getEventsServiceKey(const t_channel_id channel_id)
 {
 	CChannelEventList eList;
+	int is_double=0;
+	char tmpstr[256];
 
 	if (send(sectionsd::allEventsChannelID_, (char*)&channel_id, sizeof(channel_id)))
 	{
@@ -418,8 +421,17 @@ CChannelEventList CSectionsdClient::getEventsServiceKey(const t_channel_id chann
 
 				aEvent.text= dp;
 				dp+=strlen(dp)+1;
-
-				eList.push_back(aEvent);
+				if(is_double!=aEvent.startTime)
+				{
+					eList.push_back(aEvent);
+				}
+				else
+				{
+ 					struct tm *tmStartZeit = localtime(&aEvent.startTime);
+					strftime(tmpstr, sizeof(tmpstr), "%d %B %H:%M, ", tmStartZeit );
+					std::cout << "DOPPEL? : " << tmpstr<<"  "<<aEvent.description << std::endl;
+				}
+				is_double=aEvent.startTime;
 			}
 			delete[] pData;
 		}
