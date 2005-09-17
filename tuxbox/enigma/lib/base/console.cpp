@@ -74,7 +74,8 @@ eConsoleAppContainer::eConsoleAppContainer( const eString &cmd )
 :pid(-1), killstate(0)
 {
 //	eDebug("cmd = %s", cmd.c_str() );
-	memset(fd, 0, sizeof(fd) );
+	for (int i=0; i < 3; ++i)
+		fd[i]=-1;
 	int cnt=2; // path to app + terminated 0
 	eString str(cmd?cmd:"");
 
