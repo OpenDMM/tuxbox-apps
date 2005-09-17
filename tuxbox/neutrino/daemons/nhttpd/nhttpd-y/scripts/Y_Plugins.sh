@@ -5,8 +5,8 @@
 # $Revision$
 # -----------------------------------------------------------
 
-. /share/tuxbox/neutrino/httpd-y/scripts/_Y_Globals.sh
-. $y_path_scripts/_Y_Library.sh
+. ./_Y_Globals.sh
+. ./_Y_Library.sh
 
 # ===========================================================
 # Plugin : VNC
@@ -157,7 +157,7 @@ nhttpd_set()
 # -----------------------------------------------------------
 # Main
 # -----------------------------------------------------------
-. $y_path_scripts/_Y_Webserver_Check.sh
+#. ./_Y_Webserver_Check.sh
 
 case "$1" in
 	vnc_build_form)
