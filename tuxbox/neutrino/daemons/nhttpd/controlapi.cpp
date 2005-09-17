@@ -1486,7 +1486,7 @@ std::string CControlAPI::YexecuteScript(CWebserverRequest *request, std::string 
 		if( test != NULL )
 		{
 			fclose(test);
-			
+			chdir(PLUGIN_DIRS[i].c_str());
 			FILE *f = popen( (fullfilename+" "+para).c_str(),"r"); //execute
 			if (f != NULL)
 			{
