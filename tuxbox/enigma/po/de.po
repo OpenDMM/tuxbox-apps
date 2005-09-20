@@ -4121,6 +4121,14 @@ msgstr "CoreFiles abschalten"
 msgid "don't create 'Corefiles' after an Enigma crash"
 msgstr "Keine 'Corefiles' nach einem Enigma Absturz erstellen"
 
+#: src/setup_extra.cpp:120
+msgid "Show Boot-Info"
+msgstr "Boot-Informationen anzeigen"
+
+#: src/setup_extra.cpp:120
+msgid "Show Boot-Infos (IP, etc.)"
+msgstr "Boot-Informationen wie Imagedatum, IP, usw anzeigen"
+
 #: src/setup_extra.cpp:121
 msgid "Disable HW_Sections"
 msgstr "HW_Sections abschalten"
