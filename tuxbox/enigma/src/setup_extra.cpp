@@ -115,6 +115,13 @@ void eExpertSetup::init_eExpertSetup()
 	if ( eSystemInfo::getInstance()->getHwType() == eSystemInfo::DM7000 ||
 	    eSystemInfo::getInstance()->getHwType() == eSystemInfo::DM7020)
 		CONNECT_2_1((new eListBoxEntryCheck( (eListBox<eListBoxEntry>*)&list, _("Disable CoreFiles"), "/extras/corefiles_disable", _("don't create 'Corefiles' after an Enigma crash")))->selected, eExpertSetup::fileToggle,"/var/etc/.no_corefiles");
+#ifndef HAVE_DREAMBOX_HARDWARE
+	new eListBoxEntrySeparator( (eListBox<eListBoxEntry>*)&list, eSkin::getActive()->queryImage("listbox.separator"), 0, true );
+		CONNECT_2_1((new eListBoxEntryCheck( (eListBox<eListBoxEntry>*)&list, _("Disable HW_Sections"), "/extras/hw_sections_disable", _("Don't use hardware section filtering")))->selected, eExpertSetup::fileToggle,"/var/etc/.hw_sections ");
+		CONNECT_2_1((new eListBoxEntryCheck( (eListBox<eListBoxEntry>*)&list, _("Disable Watchdog"), "/extras/watchdog_disable", _("Don't use the Watchdog")))->selected, eExpertSetup::fileToggle,"/var/etc/.no_watchdog");
+		CONNECT_2_1((new eListBoxEntryCheck( (eListBox<eListBoxEntry>*)&list, _("Disable ENX Watchdog"), "/extras/enxwatchdog_disable", _("Don't use the ENX-Watchdog")))->selected, eExpertSetup::fileToggle,"/var/etc/.no_enxwatchdog");
+		CONNECT_2_1((new eListBoxEntryCheck( (eListBox<eListBoxEntry>*)&list, _("Enable SPTS Mode"), "/extras/spts_mode", _("use SPTS-Mode (enables TS-recording)")))->selected, eExpertSetup::fileToggle,"/var/etc/.spts_mode");
+#endif
 	setHelpID(92);
 }
 
