@@ -4145,23 +4145,23 @@ msgstr "Watchdog abschalten"
 msgid "Don't use the Watchdog"
 msgstr "Keinen Watchdog nutzen"
 
-#: src/setup_extra.cpp:123
+#: src/setup_extra.cpp:124
 msgid "Disable ENX-Watchdog"
 msgstr "ENX-Watchdog abschalten"
 
-#: src/setup_extra.cpp:123
+#: src/setup_extra.cpp:124
 msgid "Don't use the ENX-Watchdog"
 msgstr "Keinen ENX-Watchdog nutzen"
 
-#: src/setup_extra.cpp:124
+#: src/setup_extra.cpp:125
 msgid "Enable SPTS-Mode"
 msgstr "SPTS-Modus aktivieren"
 
-#: src/setup_extra.cpp:124
+#: src/setup_extra.cpp:125
 msgid "use SPTS-Mode (enables TS-recording)"
 msgstr "SPTS-Modus nutzen (aktiviert TS-recording)"
 
-#: src/setup_extra.cpp:252
+#: src/setup_extra.cpp:253
 msgid ""
 "When you do a factory reset, you will lost ALL your configuration data\n"
 "(including bouquets, services, satellite data ...)\n"
@@ -4176,7 +4176,7 @@ msgstr ""
 "\n"
 "Wirklich den Vorgang fortsetzen?"
 
-#: src/setup_extra.cpp:257
+#: src/setup_extra.cpp:258
 msgid "Factory reset..."
 msgstr "Werkseinstellungen..."
 
