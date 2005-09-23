@@ -182,6 +182,7 @@ check_Y_Web_conf()
 	then
 		echo "skin=Tuxbox"  >$y_config_Y_Web
 		echo "slavebox="	>>$y_config_Y_Web
-		echo "live_resolution=1"	>>$y_config_Y_Web
+		echo "live_resolution_w=384"	>>$y_config_Y_Web
+		echo "live_resolution_wh=288"	>>$y_config_Y_Web
 	fi
 }
