@@ -62,6 +62,7 @@ live_getmode()
 # -----------------------------------------------------------
 live_buildpage()
 {
+	check_Y_Web_conf
 	mode=`live_getmode`
 	if [ "$mode" = "tv" ]
 	then
@@ -73,6 +74,13 @@ live_buildpage()
 			moz)
 				buildHTML=`sed -e s/Y_URL/$url/g $y_path_httpd/Y_Live_Moz_tmpl.htm` ;;
 		esac
+		# set Resolution
+		config_open $y_config_Y_Web
+		res_w=`config_get_value 'live_resolution_w'`
+		res_h=`config_get_value 'live_resolution_h'`
+		buildHTML=`echo "$buildHTML"|sed -e s/Y_res_w/$res_w/g`
+		buildHTML=`echo "$buildHTML"|sed -e s/Y_res_h/$res_h/g`
+
 		echo "$buildHTML"
 	else
 		prepare_radio

@@ -188,6 +188,10 @@ case "$1" in
 	yreboot)
 		yreboot
 		echo "Reboot..." ;;
+		
+	check_yWeb_conf)
+		check_Y_Web_conf ;;
+		
 	*)
 		echo "Parameter falsch: $*" ;;
 esac
