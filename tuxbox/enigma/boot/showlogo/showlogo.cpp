@@ -74,12 +74,6 @@
 
 #define LOGO "/root/platform/kernel/bild"
 
-struct {
-	int mpeg;
-	int video;
-} fd;
-
-
 int displayIFrame(const char *frame, int len)
 {
 	int fdv = open("/dev/video", O_WRONLY);
