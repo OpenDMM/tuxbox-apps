@@ -234,7 +234,7 @@ bool stmenu::loadconfig()
 				timeoutValue = atoi(line + 8);
 			else 
 			if (!strncmp(line, "videoformat", 10))
-				videoformat = atoi(line + 11);
+				videoformat = atoi(line + 12);
 			else 
 			if (!strncmp(line, "selentry", 8))
 				sscanf(line, "selentry=%s", selentry_st);
