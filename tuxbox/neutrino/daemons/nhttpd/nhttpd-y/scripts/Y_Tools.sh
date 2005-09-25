@@ -131,7 +131,6 @@ zapit_upload()
 # -----------------------------------
 # Main
 # -----------------------------------
-#. ./_Y_Webserver_Check.sh
 
 case "$1" in
 	image_backup_build_form)
@@ -188,10 +187,10 @@ case "$1" in
 	yreboot)
 		yreboot
 		echo "Reboot..." ;;
-		
+
 	check_yWeb_conf)
 		check_Y_Web_conf ;;
-		
+
 	*)
 		echo "Parameter falsch: $*" ;;
 esac
