@@ -617,17 +617,21 @@ bool CWebserverRequest::SendResponse()
 	{	// api for external programs
 		return Parent->WebDbox->ControlAPI->Execute(this);
 	}
-	else if(Path.compare("/bouquetedit/") == 0)				// bouquetedit api
+	else if(Path.compare("/bouquetedit/") == 0)	// bouquetedit api
 	{
 		return Parent->WebDbox->BouqueteditAPI->Execute(this);
 	}
-	else if(Path.compare("/fb/") == 0)						// webbrowser api
+	else if(Path.compare("/fb/") == 0)	// webbrowser api
 	{
 		return Parent->WebDbox->WebAPI->Execute(this);
 	}
 	else if(Path.compare("/y/") == 0)			// y api
 	{
 		return Parent->WebDbox->yAPI->Execute(this);
+	}
+	else if(FileExt.compare("yhtm") == 0)			// y pasrsing
+	{
+		return Parent->WebDbox->yAPI->ParseAndSendFile(this);
 	}
 	else
 	{														//normal file
