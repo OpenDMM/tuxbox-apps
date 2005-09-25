@@ -32,6 +32,7 @@
 #include "my_lcd.h"
 #include "my_rc.h"
 #include "my_timer.h"
+#include "processutils.h"
 
 #define VERSION "0.0.1"
 
@@ -65,6 +66,7 @@ class stmenu: public Object
 	void rc_event(unsigned short key);
 	void mainloop();
 	bool loadconfig();
+	void saveconfig();
 	bool loadskin();
 	bool loadimagelist();
 	void timeout();
