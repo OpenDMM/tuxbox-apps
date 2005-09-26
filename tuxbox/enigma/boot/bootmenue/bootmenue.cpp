@@ -19,6 +19,7 @@
  *
  */
 
+#ifdef HAVE_DREAMBOX_HARDWARE
 #include "bootmenue.h"
 
 #define CONFIGFILE "/var/boot/bootmenue.conf"
@@ -386,4 +387,4 @@ int main(int argc, char **argv)
 	stmenu::getInstance();
 	return 0;
 }
-
+#endif
