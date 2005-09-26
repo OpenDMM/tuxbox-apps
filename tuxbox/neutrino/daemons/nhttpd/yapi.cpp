@@ -280,7 +280,7 @@ std::string CyAPI::cgi_file_parsing(CWebserverRequest *request, std::string html
 			while (!fin.eof()) 
 			{
 				getline(fin, ytmp);
-				html_template += ytmp;
+				html_template = html_template + ytmp + "\r\n";
 			}
 			yresult += cgi_cmd_parsing(request, html_template, ydebug); // parsing engine
 			fin.close();
