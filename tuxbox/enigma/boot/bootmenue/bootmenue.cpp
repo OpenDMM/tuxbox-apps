@@ -390,4 +390,11 @@ int main(int argc, char **argv)
 	stmenu::getInstance();
 	return 0;
 }
+#else
+int main(int argc, char **argv)
+{
+	printf("not supported on dbox2\n");
+	return 0;
+}
+
 #endif
