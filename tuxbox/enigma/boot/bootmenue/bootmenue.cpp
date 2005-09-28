@@ -393,7 +393,6 @@ int main(int argc, char **argv)
 #else
 int main(int argc, char **argv)
 {
-	printf("not supported on dbox2\n");
 	return 0;
 }
 
