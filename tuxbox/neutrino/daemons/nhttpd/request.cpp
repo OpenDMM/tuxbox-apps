@@ -39,6 +39,7 @@
 
 #define OUTBUFSIZE 10240
 #define IADDR_LOCAL "127.0.0.1"
+#define UPLOAD_TMP_FILE "/tmp/upload.tmp"
 
 //-------------------------------------------------------------------------
 
@@ -370,7 +371,7 @@ bool CWebserverRequest::ParseRequest()
 
 //-------------------------------------------------------------------------
 
-bool CWebserverRequest::HandleUpload()				// momentan broken
+bool CWebserverRequest::HandleUpload()	
 {
 	int t,y = 0;
 
@@ -378,7 +379,7 @@ bool CWebserverRequest::HandleUpload()				// momentan broken
 
 	if(HeaderList["Content-Length"] != "")
 	{
-		FILE *out = fopen("/var/tmp/upload.tmp","w"); // save tmp & mem - open here => File=0 tmp=Socket-space
+		remove(UPLOAD_TMP_FILE);
 		// Get Multipart Upload
 		//--------------------------------
 		aprintf("Contenlaenge gefunden\n");
@@ -448,15 +449,15 @@ bool CWebserverRequest::HandleUpload()				// momentan broken
 			
 			// Write Upload Extract file
 			//--------------------------------
+			FILE *out = fopen(UPLOAD_TMP_FILE,"w"); // save tmp & mem - open here => File=0 tmp=Socket-space
 			if(out != NULL)
 			{
 				fwrite(buff.c_str(),buff.length(),1,out);
+				fclose(out);
 			}
 			else
-				aprintf("nicht geschreiben\n");
+				aprintf("nicht geschrieben\n");
 		}
-		if(out != NULL)
-			fclose(out);
 		if(gelesen == contentsize)
 		{
 			aprintf("Upload komplett gelesen: %ld bytes\n",contentsize);

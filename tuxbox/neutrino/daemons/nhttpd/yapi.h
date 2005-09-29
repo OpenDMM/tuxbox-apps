@@ -84,6 +84,7 @@ class CyAPI
 	std::string func_get_mode();
 	std::string func_get_video_pids(std::string para);
 	std::string func_get_radio_pid();
+	std::string func_get_audio_pids_as_dropdown(std::string para);
 
 	// helpers
 	std::string YWeb_cgi_get_ini(std::string filename, std::string varname);

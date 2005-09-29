@@ -31,6 +31,9 @@
 #include "request.h"
 #include "webdbox.h"
 
+bool initialize_iso639_map(void);
+const char * getISO639Description(const char * const iso);
+
 class CControlAPI
 {
 	protected:
