@@ -190,6 +190,9 @@ case "$1" in
 
 	check_yWeb_conf)
 		check_Y_Web_conf ;;
+		
+	rcsim)
+		rcsim $2 >/dev/null ;;
 
 	*)
 		echo "Parameter falsch: $*" ;;

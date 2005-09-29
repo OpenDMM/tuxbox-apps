@@ -98,9 +98,10 @@ nhttpd_set()
 yWeb_set()
 {
 		config_open $y_config_Y_Web
-		config_set_value 'slavebox' $1
-		config_set_value 'live_resolution_w' $2
-		config_set_value 'live_resolution_h' $3
+		config_set_value 'live_resolution_w' $1
+		config_set_value 'live_resolution_h' $2
+		config_set_value 'slavebox' $3
+		
 		config_write $y_config_Y_Web
 		msg="<b>Parameter uebernommen</b><br>Wenn die Aufloesung geaendert wurde, dann Browser Refresh"
 		y_format_message_html
