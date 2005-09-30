@@ -258,10 +258,10 @@ void eExpertSetup::factory_reset()
 {
 	hide();
 	eMessageBox mb(
-		_("When you do a factory reset, you will lost ALL your configuration data\n"
+		_("When you do a factory reset, you will lose ALL your configuration data\n"
 			"(including bouquets, services, satellite data ...)\n"
-			"After finishing the factory reset, your receiver restarts automatically!\n\n"
-			"Really do factory reset?"),
+			"After completion of factory reset, your receiver will restart automatically!\n\n"
+			"Really do a factory reset?"),
 		_("Factory reset"),
 		eMessageBox::btYes|eMessageBox::btNo|eMessageBox::iconQuestion,
 		eMessageBox::btNo );
