@@ -22,7 +22,7 @@
 #ifdef HAVE_DREAMBOX_HARDWARE
 #include "bootmenue.h"
 
-#define CONFIGFILE "/var/boot/bootmenue.conf"
+#define CONFIGFILE "/var/tuxbox/config/enigma/bootmenue.conf"
 #define SCRIPTFILE "/tmp/bm.sh"
 
 extern int fh_png_getsize(const char *, int *, int *, int, int);
@@ -395,5 +395,4 @@ int main(int argc, char **argv)
 {
 	return 0;
 }
-
 #endif
