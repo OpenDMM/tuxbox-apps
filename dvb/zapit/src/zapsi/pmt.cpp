@@ -32,6 +32,12 @@
 
 #define PMT_SIZE 1024
 
+#ifndef SKIP_CA_STATUS
+#include <eventserver.h>
+#include <zapit/client/zapitclient.h>
+extern CEventServer *eventServer;
+#endif
+
 /*
  * Stream types
  * ------------
@@ -94,6 +100,10 @@ unsigned short parse_ES_info(const unsigned char * const buffer, CZapitChannel *
 
 			case 0x09:
 				esInfo->addCaDescriptor(buffer + pos);
+#ifndef SKIP_CA_STATUS					
+				eventServer->sendEvent(CZapitClient::EVT_ZAP_CA_LOCK, CEventServer::INITID_ZAPIT);
+//				INFO("Event_ESINFO: CA_LOCK send");
+#endif
 				break;
 
 			case 0x0A: /* ISO_639_language_descriptor */
@@ -340,6 +350,10 @@ int parse_pmt(CZapitChannel * const channel)
 			switch (buffer[i]) {
 			case 0x09:
 				caPmt->addCaDescriptor(buffer + i);
+#ifndef SKIP_CA_STATUS
+				eventServer->sendEvent(CZapitClient::EVT_ZAP_CA_LOCK, CEventServer::INITID_ZAPIT);
+//				INFO("Event_PMT: CA_LOCK send");
+#endif
 				break;
 			default:
 				DBG("decriptor_tag: %02x", buffer[i]);

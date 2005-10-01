@@ -213,6 +213,11 @@ int zapit(const t_channel_id channel_id, bool in_nvod, transponder_id_t transpon
 	tallchans_iterator cit;
 	transponder_id_t current_transponder_id;
 
+#ifndef SKIP_CA_STATUS
+	eventServer->sendEvent(CZapitClient::EVT_ZAP_CA_CLEAR, CEventServer::INITID_ZAPIT);
+//	INFO("Event: CA_CLEAR send");
+#endif
+
 	DBG("tuned_transponder_id: " PRINTF_TRANSPONDER_ID_TYPE, tuned_transponder_id);
 
 	if (transponder_id == TRANSPONDER_ID_NOT_TUNED)	/* usual zap */
