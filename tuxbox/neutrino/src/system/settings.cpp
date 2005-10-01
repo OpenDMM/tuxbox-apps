@@ -299,7 +299,7 @@ bool CScanSettings::saveSettings(const char * const fileName)
 			}
 		}
 	}
-	configfile.getInt32("scan_mode",scan_mode );
+	configfile.setInt32("scan_mode",scan_mode );
 	configfile.setInt32("TP_scan", TP_scan);
 	configfile.setInt32("TP_fec", TP_fec);
 	configfile.setInt32("TP_pol", TP_pol);
