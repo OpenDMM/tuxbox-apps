@@ -258,11 +258,11 @@ bool stmenu::loadconfig()
 				inetd = atoi(line + 11);
 		}
 		fclose(in);
-
-		tmp_ver = std::string("BootManager - ") + std::string(VERSION);
 	}
 	else
 		printf("[BOOTMANAGER] <%s not found>, using defaults...\n", CONFIGFILE);
+	
+	tmp_ver = std::string("BootManager - ") + std::string(VERSION);
 
 	return true;
 }
