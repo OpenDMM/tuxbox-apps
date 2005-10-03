@@ -34,7 +34,7 @@
 #include "my_timer.h"
 #include "processutils.h"
 
-#define VERSION "0.0.3"
+#define VERSION "0.0.4"
 
 class image
 {
