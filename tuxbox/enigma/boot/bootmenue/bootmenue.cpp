@@ -163,6 +163,9 @@ bool stmenu::loadskin()
 	if (strlen(skin_path) > 0 && strlen(skin_name) > 0)
 	{
 		std::string tmp = std::string(skin_path) + "/" + std::string(skin_name);
+		
+		if (access(tmp.c_str(), R_OK) != 0)
+			tmp = "/share/tuxbox/enigma/boot/blank.skin";
 
 		if (FILE *in = fopen(tmp.c_str(), "rt"))
 		{
