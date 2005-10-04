@@ -228,7 +228,7 @@ bool stmenu::loadconfig()
 	strcpy(skin_path, "/share/tuxbox/enigma/boot");
 	strcpy(skin_name, "blank.skin");
 	strcpy(mpoint, "/var/mnt/usb");
-	inetd = 0;
+	inetd = 1;
 	if (FILE *in = fopen(CONFIGFILE, "rt"))
 	{
 		printf("[STARTMENU] config loaded\n");
@@ -364,7 +364,7 @@ void stmenu::newscript(std::string image)
 			fprintf(f, "killall -9 init\n");
 			if (strcmp(mpoint, "/hdd"))
 				fprintf(f, "umount /hdd\n");
-			fprintf(f, "rm %s\n",SCRIPTFILE);
+			fprintf(f, "rm %s\n", SCRIPTFILE);
 			fprintf(f, "chroot %s ../go\n", image.c_str());
 		}
 		else
