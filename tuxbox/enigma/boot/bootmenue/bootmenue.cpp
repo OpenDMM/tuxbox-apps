@@ -225,8 +225,8 @@ bool stmenu::loadconfig()
 	timeoutValue = 10;
 	videoformat = 1;
 	selentry_st[0] = '\0';
-	strcpy(skin_path, "/share/tuxbox/enigma/boot");
-	strcpy(skin_name, "blank.skin");
+	strcpy(skin_path, "/var/tuxbox/config/enigma/boot");
+	strcpy(skin_name, "");
 	strcpy(mpoint, "/var/mnt/usb");
 	inetd = 1;
 	if (FILE *in = fopen(CONFIGFILE, "rt"))
