@@ -187,7 +187,7 @@ void activateMenu(eString menu)
 	{
 		while (getline(initFile, line, '\n'))
 		{
-			if (line.find("fwpro"))
+			if (line.find("fwpro") != eString::npos)
 			{
 				int pos = line.find_first_not_of(" ");
 				active = (line[pos] != '#' && line[pos] != ':');
@@ -208,7 +208,7 @@ void activateMenu(eString menu)
 					}
 				}
 			}
-			if (line.find("bm.sh"))
+			if (line.find("bm.sh") != eString::npos)
 			{
 				int pos = line.find_first_not_of(" ");
 				active = (line[pos] != '#' && line[pos] != ':');
