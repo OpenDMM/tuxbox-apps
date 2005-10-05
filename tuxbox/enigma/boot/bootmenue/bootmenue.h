@@ -66,7 +66,7 @@ class stmenu: public Object
 	void rc_event(unsigned short key);
 	void mainloop();
 	bool loadconfig();
-	void saveconfig();
+	void saveconfig(bool);
 	bool loadskin();
 	bool loadimagelist();
 	void timeout();
