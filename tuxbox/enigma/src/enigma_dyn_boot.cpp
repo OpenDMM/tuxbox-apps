@@ -587,8 +587,8 @@ eString setBootManagerSettings(eString request, eString dirpath, eString opts, e
 	unsigned int pos = skinName.find_last_of("/");
 	if (pos != eString::npos && pos > 0)
 	{
-		skinName = skinName.right(skinName.length() - pos - 1) + ".skin";
-		skinPath = skinName.left(pos);
+		skinName = skinName.right(skinName.length() - pos - 1);
+		skinPath = skinPath.left(pos);
 	}
 	
 	saveconfig(mpoint, selectedEntry, inetd, timeoutValue, videoFormat, skinPath, skinName);
