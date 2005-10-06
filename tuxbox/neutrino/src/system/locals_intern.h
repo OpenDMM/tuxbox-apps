@@ -710,6 +710,8 @@ const char * locale_real_names[] =
 	"rclock.unlockmsg",
 	"recordingmenu.choose_direct_rec_dir",
 	"recordingmenu.defdir",
+	"recordingmenu.dir_permissions",
+	"recordingmenu.dir_permissions_hint",
 	"recordingmenu.epg_for_filename",
 	"recordingmenu.file",
 	"recordingmenu.filename_template",
