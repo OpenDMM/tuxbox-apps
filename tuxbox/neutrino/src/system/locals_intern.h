@@ -156,6 +156,8 @@ const char * locale_real_names[] =
 	"apidselector.head",
 	"audiomenu.PCMOffset",
 	"audiomenu.analogout",
+	"audiomenu.audio_left_right_selectable",
+	"audiomenu.audiochannel_up_down_enable",
 	"audiomenu.avs",
 	"audiomenu.avs_control",
 	"audiomenu.dolbydigital",
