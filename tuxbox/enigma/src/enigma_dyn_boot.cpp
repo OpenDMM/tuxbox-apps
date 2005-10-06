@@ -73,7 +73,7 @@ void loadconfig(eString& mpoint, eString& selectedEntry, eString& inetd, eString
 	skinPath = "/share/tuxbox/enigma/boot";
 	skinName = "blank.skin";
 	mpoint = "/var/mnt/usb";
-	inetd = "0";
+	inetd = "1";
 	
 	ifstream configFile(CONFIGFILE);
 	eString line;
