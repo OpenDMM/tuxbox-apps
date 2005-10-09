@@ -33,8 +33,9 @@
 #include "my_rc.h"
 #include "my_timer.h"
 #include "processutils.h"
+#include <bootmenue/bmconfig.h>
 
-#define VERSION "0.0.4"
+#define BMVERSION "0.1.0"
 
 class image
 {
@@ -48,6 +49,7 @@ class stmenu: public Object
 	static stmenu *instance;
 	fbClass *display;
 	CLCDDisplay *lcd;
+	bmconfig *config;
 
 	std::vector<image> imagelist;
 
@@ -56,23 +58,17 @@ class stmenu: public Object
 	int str_r, str_g, str_b;
 	int sel_r, sel_g, sel_b;
 
-	int timeoutValue, videoformat, selentry, maxentry;
-	char version[256], selentry_st[256], skin_path[256], skin_name[256];
-	std::string tmp_ver;
-
-	char mpoint[256];
-	int inetd;
+	int selentry, maxentry;
+	eString tmp_ver;
 
 	void rc_event(unsigned short key);
 	void mainloop();
-	bool loadconfig();
-	void saveconfig(bool);
 	bool loadskin();
 	bool loadimagelist();
 	void timeout();
 
-	void newscript(std::string image);
-	void goscript(std::string image);
+	void startscript(eString image);
+	void goscript(eString image);
 
 	void drawmenu();
 	void showpic();
