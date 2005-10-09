@@ -105,13 +105,4 @@ class bmconfig: public Object
 			fclose(f);
 		}
 	}
-	
-	
-	void mountJFFS2()
-	{
-		system("umount /tmp/jffs2");
-		system("mkdir /tmp/jffs2");
-		system("mount -t jffs2 /dev/mtdblock/1 /tmp/jffs2");
-	}
-
 };
