@@ -32,10 +32,9 @@
 #include "my_lcd.h"
 #include "my_rc.h"
 #include "my_timer.h"
-#include "processutils.h"
 #include <bootmenue/bmconfig.h>
 
-#define BMVERSION "0.1.0"
+#define BMVERSION "0.1.1"
 
 class image
 {
