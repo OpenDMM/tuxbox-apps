@@ -80,6 +80,7 @@ public:
 	int mountMountPoint(int);
 	int mountMountPoint(eString);
 	int unmountMountPoint(int);
+	bool isMountPointMounted(eString);
 	void automountMountPoints(void);
 	void unmountAllMountPoints(void);
 	int selectMovieSource(int);

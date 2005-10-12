@@ -358,6 +358,21 @@ int eMountMgr::mountMountPoint(eString localDir)
 	return rc;
 }
 
+bool eMountMgr::isMountPointMounted(eString localDir)
+{
+	bool rc = false;
+	for (mp_it = mountPoints.begin(); mp_it != mountPoints.end(); mp_it++)
+	{
+		if (mp_it->mp.localDir == localDir)
+		{
+			if (mp_it->mp.mounted)
+				rc = true;
+			break;
+		}
+	}
+	return rc;
+}
+
 int eMountMgr::unmountMountPoint(int id)
 {
 	int rc = 0;
