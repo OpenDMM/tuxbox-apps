@@ -18,13 +18,10 @@
  * Foundation, Inc., 675 Mass Ave, Cambridge, MA 02139, USA.
  *
  */
- 
-#ifdef ENABLE_DYN_MOUNT
 
 #ifndef __enigma_mount_h__
 #define __enigma_mount_h__
 
-#include <configfile.h>
 #include <string.h>
 #include <lib/gui/listbox.h>
 
@@ -49,17 +46,15 @@ class eMountPoint
 {
 private:
 	bool fileSystemIsSupported(eString);
-	bool isMounted(void);
 public:
-	
 	t_mount mp;
-	eMountPoint(CConfigFile *, int);
 	eMountPoint(t_mount);
 	~eMountPoint();
 	
 	void save(FILE *, int);
 	int mount(void);
 	int unmount(void);
+	bool isMounted(void);
 	bool isIdentical(eString, eString);
 };
 
@@ -92,6 +87,4 @@ public:
 	eMountMgr();
 	~eMountMgr();
 };
-#endif
-
 #endif

@@ -19,7 +19,7 @@
  *
  */
  
-#ifdef ENABLE_DYN_BOOT
+#ifdef ENABLE_EXPERT_WEBIF
 #include <map>
 #include <time.h>
 #include <fcntl.h>
@@ -565,4 +565,4 @@ void ezapBootManagerInitializeDyn(eHTTPDynPathResolver *dyn_resolver, bool lockW
 	dyn_resolver->addDyn("GET", "/cgi-bin/setbootmanagersettings", setBootManagerSettings, lockWeb);
 }
 
-#endif // ENABLE_DYN_BOOT
+#endif
