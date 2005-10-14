@@ -33,15 +33,9 @@
 #include "my_rc.h"
 #include "my_timer.h"
 #include <bootmenue/bmconfig.h>
+#include <bootmenue/bmimage.h>
 
-#define BMVERSION "0.1.1"
-
-class image
-{
- public:
-	std::string name;
-	std::string location;
-};
+#define BMVERSION "0.2"
 
 class stmenu: public Object
 {
@@ -49,8 +43,7 @@ class stmenu: public Object
 	fbClass *display;
 	CLCDDisplay *lcd;
 	bmconfig *config;
-
-	std::vector<image> imagelist;
+	bmimages *img;
 
 	int ver_x, ver_y, ver_font, ver_r, ver_g, ver_b;
 	int menu_x, menu_y, menu_xs, menu_ys;
@@ -62,13 +55,14 @@ class stmenu: public Object
 
 	void rc_event(unsigned short key);
 	void mainloop();
-	bool loadskin();
-	bool loadimagelist();
+	bool loadSkin();
+	int loadImageList();
 	void timeout();
 
 	void startscript(eString image);
 	void goscript(eString image);
 
+	void drawversion();
 	void drawmenu();
 	void showpic();
 
