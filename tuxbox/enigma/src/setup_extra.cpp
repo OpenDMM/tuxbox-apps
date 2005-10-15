@@ -119,6 +119,10 @@ void eExpertSetup::init_eExpertSetup()
 	    eSystemInfo::getInstance()->getHwType() == eSystemInfo::DM7020)
 		CONNECT_2_1((new eListBoxEntryCheck( (eListBox<eListBoxEntry>*)&list, _("Disable CoreFiles"), "/extras/corefiles_disable", _("don't create 'Corefiles' after an Enigma crash")))->selected, eExpertSetup::fileToggle,"/var/etc/.no_corefiles");
 #if ENABLE_EXPERT_WEBIF
+	int dontMountHDD = 0;
+	if (access("/var/etc/.dont_mount_hdd", R_OK) == 0)
+		dontMountHDD = 1;
+	eConfig::getInstance()->setKey("/extras/dont_mount_hdd", dontMountHDD);
 	CONNECT_2_1((new eListBoxEntryCheck( (eListBox<eListBoxEntry>*)&list, _("Disable HDD mount"), "/extras/dont_mount_hdd", _("don't mount the HDD via 'rcS'")))->selected, eExpertSetup::fileToggle,"/var/etc/.dont_mount_hdd");
 #endif
 #endif
@@ -141,8 +145,6 @@ void eExpertSetup::fileToggle(bool newState, const char* filename)
 	if (test != NULL)
 	{
 		fclose(test);
-		eString cmd = "rm ";
-		cmd += filename;
 		::unlink(filename);
 	}
 	else
