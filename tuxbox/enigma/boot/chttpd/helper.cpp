@@ -19,6 +19,7 @@
  *
  */
 
+#ifdef ENABLE_EXPERT_WEBIF
 #include <stdlib.h>                      // calloc and free prototypes.
 #include <stdio.h>                       // printf prototype.
 #include <string.h>                      // str* and memset prototypes.
@@ -188,5 +189,5 @@ char *b64buffer(char *s, bool f)
               (f ? "encode" : "decode"), s);
     return  b;                              // Return the pointer or null.
 }
-
+#endif
 

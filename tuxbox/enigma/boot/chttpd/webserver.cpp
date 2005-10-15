@@ -19,6 +19,7 @@
  *
  */
 
+#ifdef ENABLE_EXPERT_WEBIF
 #include <netinet/in.h> 
 #include <netinet/tcp.h>
 #include <arpa/inet.h>
@@ -283,3 +284,5 @@ int CWebserver::SocketConnect(Tmconnect * con,int Port)
 	else
 		return con->sock_fd;
 }
+#endif
+

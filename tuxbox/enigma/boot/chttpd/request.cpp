@@ -19,6 +19,7 @@
  *
  */
 
+#ifdef ENABLE_EXPERT_WEBIF
 #include <cstdarg>
 #include <cstdio>
 #include <fcntl.h>
@@ -846,4 +847,5 @@ void CWebserverRequest::URLDecode(std::string &encodedString)
 	encodedString = newString;
 	free(newString);
 }
+#endif
 

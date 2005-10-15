@@ -19,6 +19,7 @@
  *
  */
 
+#ifdef ENABLE_EXPERT_WEBIF
 #define CHTTPD_VERSION "0.1"
 
 #include <signal.h>
@@ -131,4 +132,10 @@ int main(int argc, char **argv)
 
 	return 0; 
 }
+#else
+int main(int argc, char **argv)
+{
+	return 0;
+}
+#endif
 

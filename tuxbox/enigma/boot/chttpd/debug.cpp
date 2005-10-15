@@ -19,6 +19,7 @@
  *
  */
 
+#ifdef ENABLE_EXPERT_WEBIF
 #include <cstdarg>
 #include <cstdio>
 #include <cstdlib>
@@ -162,5 +163,7 @@ void CDEBUG::printf ( const char *fmt, ... )
 
 	pthread_mutex_unlock( &Log_mutex );
 }
+#endif
+
 
 
