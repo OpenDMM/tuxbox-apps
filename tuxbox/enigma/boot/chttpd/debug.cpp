@@ -39,14 +39,6 @@ CDEBUG *CDEBUG::getInstance(void)
 	return instance;
 }
 
-void CDEBUG::deleteInstance(void)
-{
-	if (instance)
-		delete instance;
-
-	instance = NULL;
-}
-
 CDEBUG::CDEBUG(void)
 {
 	Debug = false;

@@ -42,7 +42,6 @@ class CDEBUG
 		bool Debug;
 
 		static CDEBUG *getInstance(void);
-		static void deleteInstance(void);
 
 		void printf(const char *fmt, ...);
 		void debugprintf(const char *fmt, ...);
