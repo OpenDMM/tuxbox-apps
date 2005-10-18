@@ -928,6 +928,34 @@ static eString deleteMovie(eString request, eString dirpath, eString opts, eHTTP
 	}
 	return closeWindow(content, "Please wait...", 2000);
 }
+
+static eString renameMovie(eString request, eString dirpath, eString opts, eHTTPConnection *content)
+{
+	bool changed = false ;
+	std::map<eString, eString> opt = getRequestOptions(opts, '&');
+
+	eString sref = opt["ref"];
+	eString newname = opt["desc"];
+	eServiceReference ref = string2ref(sref);
+	ePlaylist *recordings = eZapMain::getInstance()->getRecordings();
+
+	if (newname)
+	{
+		for (std::list<ePlaylistEntry>::iterator it(recordings->getList().begin()); it != recordings->getList().end(); ++it) 
+		{
+			if (it->service.path == ref.path)
+			{
+				it->service.descr = newname ;
+				changed = true ;
+				break;
+			}
+		}
+	}
+	if (changed)
+		recordings->save();
+	
+	return closeWindow(content, "Please wait...", 100);
+}
 #endif
 
 class myService
@@ -2652,6 +2680,7 @@ void ezapInitializeDyn(eHTTPDynPathResolver *dyn_resolver)
 #ifndef DISABLE_FILE
 	dyn_resolver->addDyn("GET", "/cgi-bin/recoverRecordings", recoverRecordings, lockWeb);
 	dyn_resolver->addDyn("GET", "/cgi-bin/deleteMovie", deleteMovie, lockWeb);
+	dyn_resolver->addDyn("GET", "/cgi-bin/renameMovie", renameMovie, lockWeb);
 #endif
 	dyn_resolver->addDyn("GET", "/cgi-bin/osdshot", osdshot, lockWeb);
 	
