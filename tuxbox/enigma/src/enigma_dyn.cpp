@@ -1226,6 +1226,8 @@ static eString getZap(eString path)
 			result.strReplace("#STREAMBUTTON#", tmp);
 			tmp = button(100, "Recover", BLUE, "javascript:recoverMovies()", "#FFFFFF");
 			result.strReplace("#RECOVERBUTTON#", tmp);
+			tmp = button(100, "Rename", TOPNAVICOLOR, "javascript:renameMovie()", "#000000");
+			result.strReplace("#RENAMEBUTTON#", tmp);
 		}
 		else
 #endif
