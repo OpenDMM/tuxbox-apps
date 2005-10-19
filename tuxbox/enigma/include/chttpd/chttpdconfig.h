@@ -41,7 +41,6 @@ public:
 	bool AutoStart;
 	int Port;
 	bool THREADS;
-	bool VERBOSE;
 	bool MustAuthenticate;
 	bool Verbose;
 	bool Log;
