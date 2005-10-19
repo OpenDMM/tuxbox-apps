@@ -111,7 +111,7 @@ eString setCHTTPDSettings(eString request, eString dirpath, eString opts, eHTTPC
 	
 	content->local_header["Content-Type"]="text/html; charset=utf-8";
 	
-	chttpdconf.AutoStart = opt["autoStart"] == "on";
+	chttpdconf.AutoStart = opt["AutoStart"] == "on";
 	chttpdconf.Port = atoi(opt["Port"].c_str());
 	chttpdconf.THREADS = opt["Threads"] == "on";
 	chttpdconf.Verbose = opt["Verbose"] == "on";
