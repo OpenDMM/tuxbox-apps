@@ -57,7 +57,7 @@ eString getConfigCHTTPD(void)
 	if (*pidList != -1)
 		chttpdStatus = "Running";
 	
-	chttpdConfig.load();
+	chttpdconf.load();
 	
 	eString result = readFile(TEMPLATE_DIR + "chttpdSettings.tmp");
 	
