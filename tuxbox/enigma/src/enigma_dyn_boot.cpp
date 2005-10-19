@@ -179,7 +179,10 @@ void activateMenu(eString menu)
 	if (!found)
 	{
 		if (bm)
+		{
 			file += "\n/bin/bootmenue && /tmp/bm.sh";
+			initChanged = true;
+		}
 	}
 	
 	if (initChanged)
