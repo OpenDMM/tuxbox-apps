@@ -7,7 +7,7 @@ $Id$
  a dvb sniffer  and mpeg2 stream analyzer tool
  http://dvbsnoop.sourceforge.net/
 
- (c) 2001-2004   Rainer.Scherg@gmx.de (rasc)
+ (c) 2001-2005   Rainer.Scherg@gmx.de (rasc)
 
 */
 
@@ -29,6 +29,12 @@ $Id$
 /* dummy Flag, if not supported */
 #warning "No large file support..."
 #define O_LARGEFILE 0x00
+#endif
+
+
+#ifndef O_BINARY
+/* dummy Flag, if not supported - needed for CYGWIN support */
+#define O_BINARY 0x00
 #endif
 
 

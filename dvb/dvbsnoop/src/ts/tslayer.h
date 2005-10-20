@@ -18,7 +18,8 @@ $Id$
 #define __TS_LAYER_H 
 
 
-void decodeTS_buf (u_char *b, int len, u_int pid);
+void processTS_packet (u_int pid, long packet_nr, u_char *b, int len);
+void decodeTS_packet (u_char *b, int len, u_int pid);
 int  ts_adaptation_field (u_char *b);
 int  ts_adaptation_field_extension (u_char *b);
 int  print_PCR_field (int v, const char *str, u_char *b, int bit_offset);

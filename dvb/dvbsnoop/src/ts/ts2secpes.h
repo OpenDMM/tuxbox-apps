@@ -8,7 +8,7 @@ $Id$
  a dvb sniffer  and mpeg2 stream analyzer tool
  http://dvbsnoop.sourceforge.net/
 
- (c) 2001-2004   Rainer.Scherg@gmx.de
+ (c) 2001-2005   Rainer.Scherg@gmx.de
 
 
 */
@@ -25,7 +25,7 @@ int  ts2SecPes_AddPacketContinue (int pid, int cc, u_char *b, u_int len);
 
 void ts2SecPes_subdecode (u_char *b, int len, u_int pid);
 int  ts2SecPes_checkAndDo_PacketSubdecode_Output (void);
-void ts2SecPes_Output_subdecode (void);
+void ts2SecPes_Output_subdecode (u_int overleap_bytes);
 
 
 

@@ -13,6 +13,12 @@ $Id$
 
 
 $Log$
+Revision 1.6  2005/10/20 22:25:07  rasc
+ - Bugfix: tssubdecode check for PUSI and SI pointer offset
+   still losing packets, when multiple sections in one TS packet.
+ - Changed: some Code rewrite
+ - Changed: obsolete option -nosync, do always packet sync
+
 Revision 1.5  2005/09/12 20:56:16  rasc
 Make dvbsnoop compile on Cygwin / Windows
 
@@ -50,7 +56,7 @@ some changes on packet header output
 
 
 
-void  print_packet_header (OPTION *opt, char *packetTyp, int pid, int count, int length, int skipped_bytes)
+void  print_packet_header (OPTION *opt, char *packetTyp, u_int pid, int count, int length)
 
 {
    char  str[50];
@@ -80,10 +86,10 @@ void  print_packet_header (OPTION *opt, char *packetTyp, int pid, int count, int
    	out_receive_time (1, opt);
    }
 
-   if (skipped_bytes) {
-       out_nl (1,"Syncing %s... (%ld bytes skipped)",
-		packetTyp,skipped_bytes);
-   }
+//   if (skipped_bytes) {
+//       out_nl (1,"Syncing %s... (%ld bytes skipped)",
+//		packetTyp,skipped_bytes);
+//   }
 
    out_nl (1,"------------------------------------------------------------");
 
