@@ -122,7 +122,7 @@ config_set_value()
 	tmp=`echo "$cfg" | sed -n "/^$1=.*/p"`
 	if [ "$tmp" = "" ]
 	then
-		cfg=`echo "$cfg\n$1=$2"`
+		cfg=`echo -e "$cfg\n$1=$2"`
 	else
 		cmd="sed -e s/^$1=.*/$1=$2/g"
 		cfg=`echo "$cfg" | $cmd`
