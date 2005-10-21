@@ -20,6 +20,7 @@
  */
  
 #define CONFIGFILE "/tuxbox/config/enigma/bootmenue.conf"
+#define SKINDIR "/var/tuxbox/config/enigma/boot"
 
 #include <iomanip>
 #include <iostream>
@@ -42,7 +43,7 @@ class bmconfig: public Object
 		timeoutValue = "10";
 		videoFormat = "1";
 		selectedEntry = "";
-		skinPath = "/share/tuxbox/enigma/boot";
+		skinPath = SKINDIR;
 		skinName = "blank.skin";
 		mpoint = "/var/mnt/usb";
 		inetd = "1";

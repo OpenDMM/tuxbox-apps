@@ -35,7 +35,7 @@
 #include <bootmenue/bmconfig.h>
 #include <bootmenue/bmimage.h>
 
-#define BMVERSION "0.2"
+#define BMVERSION "0.3"
 
 class stmenu: public Object
 {

@@ -49,8 +49,6 @@ extern eString firmwareLevel(eString versionString);
 
 using namespace std;
 
-#define SKINDIR "/var/tuxbox/config/enigma/boot"
-
 void mountJFFS2()
 {
 	system("umount /tmp/jffs2");
