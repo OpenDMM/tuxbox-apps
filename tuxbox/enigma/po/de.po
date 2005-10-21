@@ -5727,3 +5727,10 @@ msgstr ""
 msgid "time correction change error"
 msgstr "Fehler beim Ändern der Zeitkorrektur"
 
+#: src/flashtool.cpp:52
+msgid "Save image or part of it"
+msgstr "Image oder ein Teil davon sichern"
+
+#: src/flashtool.cpp:53
+msgid "Flash image or part of it"
+msgstr "Image oder ein Teil davon einspielen"
