@@ -99,7 +99,7 @@ eString startCHTTPD(eString request, eString dirpath, eString opts, eHTTPConnect
 	
 	pidList = eProcessUtils::getPID("chttpd");
 	if (*pidList == -1)
-		system("/bin/chttpd&");
+		system("chttpd&");
 	free(pidList);
 	
 	return closeWindow(content, "", 10);
