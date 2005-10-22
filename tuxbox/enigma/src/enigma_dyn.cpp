@@ -2148,13 +2148,15 @@ static eString satFinder(eString request, eString dirpath, eString opts, eHTTPCo
 static eString message(eString request, eString dirpath, eString opt, eHTTPConnection *content)
 {
 	std::map<eString, eString> opts = getRequestOptions(opt, '&');
+	eString wait = opts["wait"];
 	eString msg = opts["message"];
 	if (!msg)
 		msg = opt;
 	if (!msg)
 		msg = "Error: No message text available.";
 		
-	eZapMain::getInstance()->postMessage(eZapMessage(1, _("External Message"), httpUnescape(msg), 10), 0);
+	int timeout = (wait == "on") ? 0 : 10;
+	eZapMain::getInstance()->postMessage(eZapMessage(1, _("External Message"), httpUnescape(msg), timeout), 0);
 		
 	return closeWindow(content, "", 10);
 }
