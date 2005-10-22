@@ -43,7 +43,7 @@ stmenu::stmenu()
 	CONNECT(CTimer::getInstance()->selected, stmenu::timeout);
 	config->load();
 	CTimer::getInstance()->start(atoi(config->timeoutValue.c_str()));
-	if (loadImageList() > 0)
+	if (loadImageList() > 1)
 	{
 		loadSkin();
 		showpic();
