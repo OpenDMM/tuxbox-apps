@@ -98,7 +98,7 @@ public:
 			}
 			closedir(d);
 		}
-		return imageList.size() - 1;
+		return imageList.size();
 	}
 	
 	void discard(eString location)
