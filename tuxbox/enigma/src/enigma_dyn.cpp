@@ -701,8 +701,13 @@ eString getLeftNavi(eString mode)
 		result += button(110, "Message", LEFTNAVICOLOR, "javascript:sendMessage2TV()");
 		result += "<br>";
 #ifdef DEBUG
-		result += button(110, "Logging", LEFTNAVICOLOR, "javascript:logging()");
-		result += "<br>";
+		int disableSerialOutput = 0;
+		eConfig::getInstance()->getKey("/ezap/extra/disableSerialOutput", disableSerialOutput);
+		if (disableSerialOutput == 0)
+		{
+			result += button(110, "Logging", LEFTNAVICOLOR, "javascript:logging()");
+			result += "<br>";
+		}
 #endif
 		result += button(110, "Satfinder", LEFTNAVICOLOR, pre + "?mode=controlSatFinder" + post);
 		switch (eSystemInfo::getInstance()->getHwType())
