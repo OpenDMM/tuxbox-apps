@@ -28,6 +28,8 @@ int  ts2SecPes_checkAndDo_PacketSubdecode_Output (void);
 void ts2SecPes_Output_subdecode (u_int overleap_bytes);
 
 void  ts2sec_multipacket (u_char *b, int len, u_int pid);
+void  ts2ps_pes_multipacket (u_char *b, int len, u_int pid);
+
 
 
 
