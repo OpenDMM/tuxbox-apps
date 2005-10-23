@@ -13,6 +13,9 @@ $Id$
 
 
 $Log$
+Revision 1.9  2005/10/23 20:58:14  rasc
+subdecode multiple SI packets with TS packet using -tssubdecode
+
 Revision 1.8  2005/09/13 18:41:15  rasc
 ... revert cygwin stuff
 
@@ -49,7 +52,7 @@ This is a shortcut for -demux -dvr and -frontend...
 //#ifndef ioctl
 //
 //#warning "----"
-//#warning "IOCTL not defined (nneded for dvb-api), using dummy!"
+//#warning "IOCTL not defined (needed for dvb-api), using dummy!"
 //#warning "dvbsnoop only will support offline mode..."
 //#warning "----"
 //
