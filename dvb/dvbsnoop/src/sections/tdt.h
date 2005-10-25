@@ -6,7 +6,7 @@ $Id$
  a dvb sniffer  and mpeg2 stream analyzer tool
  http://dvbsnoop.sourceforge.net/
 
- (c) 2001-2004   Rainer.Scherg@gmx.de (rasc)
+ (c) 2001-2005   Rainer.Scherg@gmx.de (rasc)
 
 
 
@@ -14,5 +14,12 @@ $Id$
 
 
 
+#ifndef __TDT_H
+#define __TDT_H 
+
+
 void section_TDT (u_char *b, int len);
+
+
+#endif
 
