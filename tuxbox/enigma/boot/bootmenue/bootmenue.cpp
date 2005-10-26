@@ -222,6 +222,9 @@ void stmenu::showpic()
 		if (pic.length() > 4) 
 			pic = pic.left(pic.length() - 4);
 		pic += "png";
+		
+		if (access(pic.c_str(), R_OK) != 0)
+			pic = "/share/tuxbox/enigma/boot/blank.png";
 
 		if (fh_png_id(pic.c_str()) == 1)
 		{
