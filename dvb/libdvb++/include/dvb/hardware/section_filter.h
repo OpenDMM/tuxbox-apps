@@ -353,8 +353,8 @@ bool SectionFilter<T>::section(const uint8_t * const data, const uint16_t size)
 			else if (sectionsCounter.size() > (unsigned)(data[7] + 1)) {
 				DVB_FATAL("sectionsCounter.size() > (data[7] + 1)");
 			}
-			startTime = time(NULL);
 		}
+		startTime = time(NULL);
 	}
 
 	return done;
