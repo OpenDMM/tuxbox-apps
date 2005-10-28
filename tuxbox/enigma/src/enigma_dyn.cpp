@@ -125,7 +125,7 @@ eString firmwareLevel(eString verid)
 {
 	eString result = "unknown";
 
-	if (verid)
+	if (verid && verid != "&nbsp;")
 	{
 		int type = atoi(verid.left(1).c_str());
 		char *typea[3];
