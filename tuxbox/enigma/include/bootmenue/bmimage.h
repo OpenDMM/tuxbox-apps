@@ -124,27 +124,13 @@ public:
 	
 	void discard(eString location)
 	{
-		for (it = imageList.begin(); it != imageList.end(); it++)
-		{
-			if (it->location == location)
-			{
-				system(eString("rm -rf \"" + location + "\"").c_str());
-				break;
-			}
-		}
+		system(eString("rm -rf \"" + location + "\"").c_str());
 	}
 	
 	void rename(eString from, eString to)
 	{
-		for (it = imageList.begin(); it != imageList.end(); it++)
-		{
-			if (it->name == from)
-			{
-				system(eString("mv \"" + from + "\" \"" + to + "\"").c_str());
-				eString name = to.right(to.length() - to.find_last_of("/") - 1);
-				setImageName(to, name);
-			}
-		}
+		eString name = to.right(to.length() - to.find_last_of("/") - 1);
+		setImageName(to, name);
 	}
 	
 #ifdef INSTIMAGESUPPORT
