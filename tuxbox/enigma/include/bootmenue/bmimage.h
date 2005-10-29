@@ -18,7 +18,7 @@
  * Foundation, Inc., 675 Mass Ave, Cambridge, MA 02139, USA.
  *
  */
- 
+
 #include <errno.h>
 #include <fcntl.h>
 #include <stdio.h>
@@ -33,6 +33,8 @@
 #include <include/lib/base/estring.h>
 #ifdef INSTIMAGESUPPORT
 #include <src/enigma.h>
+#define TUXBOXDATADIR "/share/tuxbox"
+#include <src/enigma_dyn_utils.h>
 #endif
 
 using namespace std;
