@@ -153,6 +153,12 @@ eString setConfigSwapFile(eString request, eString dirpath, eString opts, eHTTPC
 	std::map<eString, eString> opt = getRequestOptions(opts, '&');
 	eString swap = opt["swap"];
 	eString swapFile = opt["swapfile"];
+	
+	if (swap == "on")
+	{
+		if (access(swapFile.c_str(), W_OK) != 0)
+			system(eString("dd if=/dev/zero of=" + swapFile + " bs=1024 count=32768").c_str());
+	}
 
 	setSwapFile((swap == "on") ? 1 : 0, swapFile);
 
