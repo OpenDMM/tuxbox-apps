@@ -155,17 +155,17 @@ public:
 		// check if directory is available, delete it and recreate it
 		if (access(imageDir.c_str(), W_OK) == 0)
 			system(eString("rm -rf " + imageDir).c_str());
-			system(eString("mkdir " + imageDir + " --mode=777 --parents").c_str());
+		system(eString("mkdir " + imageDir + " --mode=777 --parents").c_str());
 		if (access(imageDir.c_str(), W_OK) != 0)
 			return -3;
 	
 		// split image file
 		eString squashfsPart = mountDir + "/squashfs.img";
-		remove(eString(squashfsPart + "/squashfs.img").c_str());
+		remove(squashfsPart.c_str());
 		if (system(eString("dd if=" + sourceImage + " of=" + squashfsPart + " bs=1024 skip=1152 count=4992").c_str()) >> 8)
 			return -4;
 		eString cramfsPart = mountDir + "/cramfs.img";
-		remove(eString(cramfsPart + "/cramfs.img").c_str());
+		remove(cramfsPart.c_str());
 		if (system(eString("dd if=" + sourceImage + " of=" + cramfsPart + " bs=1024 skip=0 count=1152").c_str()) >> 8)
 			return -5;
 		remove(sourceImage.c_str());
@@ -176,7 +176,7 @@ public:
 		system(eString("/tmp/instimg.sh " + imageDir + " " + cramfsPart + " " + squashfsPart + " &").c_str());
 		eZap::getInstance()->quit(2);
 		
-		return -6;
+		return 0;
 	}
 #endif
 };
