@@ -584,7 +584,6 @@ void SIsectionSDT::parse(void)
 		return;
 
 	if (bufferLength < sizeof(SI_section_SDT_header) + sizeof(struct sdt_service)) {
-printf("SDT fix?\n");
 		delete [] buffer;
 		buffer=0;
 		bufferLength=0;
@@ -608,6 +607,7 @@ printf("SDT fix?\n");
 	parsed = 1;
 }
 
+#ifndef DO_NOT_INCLUDE_STUFF_NOT_NEEDED_FOR_SECTIONSD
 // Liest n Bytes aus einem Socket per read
 // Liefert 0 bei timeout
 // und -1 bei Fehler
@@ -924,4 +924,4 @@ int SIsections :: readSections(const unsigned short pid, const unsigned char fil
 	close(fd);
 	return 0;
 }
-
+#endif

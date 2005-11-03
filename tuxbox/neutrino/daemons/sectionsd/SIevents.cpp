@@ -253,6 +253,7 @@ return j;
 }
 */
 
+#ifndef DO_NOT_INCLUDE_STUFF_NOT_NEEDED_FOR_SECTIONSD
 // Liest n Bytes aus einem Socket per read
 // Liefert 0 bei timeout
 // und -1 bei Fehler
@@ -474,3 +475,4 @@ void SIevents::mergeAndRemoveTimeShiftedEvents(const SIservices &services)
 			it++;
 	}
 }
+#endif
