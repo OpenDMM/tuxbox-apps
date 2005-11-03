@@ -320,7 +320,6 @@ void SectionFilter<T>::release(void)
 	if (fd != -1) {
 		if (!done) {
 			stop();
-			pool->removeFilter(fd);
 		}
 		pool->closeDemux(fd);
 		fd = -1;
