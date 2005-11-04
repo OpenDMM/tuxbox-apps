@@ -56,7 +56,7 @@ eZapScan::eZapScan()
 		(new eListBoxEntryCheck( (eListBox<eListBoxEntry>*)&list, _("Disable 5V"), "/elitedvb/DVB/config/disable_5V", _("disable 5V for passive terrerstrial antennas")))
 			->selected.connect( slot(*eFrontend::getInstance(), &eFrontend::setTerrestrialAntennaVoltage) );
 	}
-	if ( eSystemInfo::getInstance()->getFEType() != eSystemInfo::feCable)
+	if ( eSystemInfo::getInstance()->getFEType() != eSystemInfo::feCable )
 	{
 	new eListBoxEntrySeparator( (eListBox<eListBoxEntry>*)&list, eSkin::getActive()->queryImage("listbox.separator"), 0, true );
 	}
