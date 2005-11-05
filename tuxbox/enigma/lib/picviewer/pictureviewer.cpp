@@ -42,7 +42,7 @@
 #include <lib/gdi/font.h>
 #include <lib/picviewer/pictureviewer.h>
 #include "fb_display.h"
-#include "format_config.h"
+#include <lib/picviewer/format_config.h>
 #include <lib/driver/eavswitch.h>
 
 /* resize.cpp */
