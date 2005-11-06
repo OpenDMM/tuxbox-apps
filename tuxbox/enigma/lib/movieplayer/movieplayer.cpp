@@ -127,7 +127,6 @@ eMoviePlayer::eMoviePlayer(): messages(this,1)
 
 eMoviePlayer::~eMoviePlayer()
 {
-#if 0
 	killThreads();
 	messages.send(Message::quit);
 	if (thread_running())
@@ -135,7 +134,6 @@ eMoviePlayer::~eMoviePlayer()
 	if (instance == this)
 		instance = 0;
 	status.ACTIVE = false;
-#endif
 }
 
 void eMoviePlayer::thread()
