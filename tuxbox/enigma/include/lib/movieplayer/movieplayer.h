@@ -29,6 +29,14 @@
 #include <lib/dvb/service.h>
 #include <lib/dvb/dvbservice.h>
 
+struct player_value
+{
+	int STAT, BUFFERTIME, JUMPMIN;
+	bool ACTIVE, ACT_AC3, BUFFERFILLED, AVPIDS_FOUND;
+	unsigned short PIDA, PIDV;
+	short AC3;
+};
+
 class eMoviePlayer: public eMainloop, private eThread, public Object
 {
 	struct Message
@@ -53,7 +61,6 @@ class eMoviePlayer: public eMainloop, private eThread, public Object
 	static eMoviePlayer *instance;
 	int serverPort;
 	eString serverIP;
-	int status;
 	eServiceReference suspendedServiceReference;
 	void gotMessage(const Message &message);
 	void thread();
@@ -62,14 +69,16 @@ class eMoviePlayer: public eMainloop, private eThread, public Object
 public:
 	eMoviePlayer();
 	~eMoviePlayer();
+	player_value status;
 	int sendRequest2VLC(eString command);
 	void control(const char *command, const char *filename);
 	void leaveStreamingClient();
-	int getStatus() { return status; }
+	player_value getStatus() { return status; }
 	eString sout(eString mrl);
 	void readStreamingServerSettings(eString& ip, int& port, eString& dvddrive, int& videodatarate, int& resolution, int& mpegcodec, int& transcodevideo, int& audiodatarate, int& transcodeaudio);
 	void writeStreamingServerSettings(eString ip, int port, eString dvddrive, int videodatarate, int resolution, int mpegcodec, int transcodevideo, int audiodatarate, int transcodeaudio);
 	static eMoviePlayer *getInstance() { return instance; }
+	enum {STOPPED, PREPARING, STREAMERROR, PLAY, PAUSE, FF, REW, RESYNC, JF, JB, SKIP, SOFTRESET = 99};
 };
 
 #endif

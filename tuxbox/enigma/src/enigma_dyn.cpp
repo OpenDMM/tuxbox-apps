@@ -295,7 +295,7 @@ static eString videocontrol(eString request, eString dirpath, eString opts, eHTT
 	eServiceReference sref = string2ref(sReference);
 	eString command = opt["command"];
 #ifdef ENABLE_EXPERT_WEBIF
-	if (eMoviePlayer::getInstance()->getStatus())
+	if (eMoviePlayer::getInstance()->getStatus().ACTIVE)
 	{
 		eMoviePlayer::getInstance()->control(command.c_str(), "");
 	}
