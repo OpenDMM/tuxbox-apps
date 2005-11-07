@@ -956,6 +956,8 @@ static void sendAllEvents(int connfd, t_channel_id serviceUniqueKey, bool oldFor
 
 		lockEvents();
 		int serviceIDfound = 0;
+		int is_double=0;//für rtl fix
+		std::string test_double;//für rtl fix
 
 		for (MySIeventsOrderServiceUniqueKeyFirstStartTimeEventUniqueKey::iterator e = mySIeventsOrderServiceUniqueKeyFirstStartTimeEventUniqueKey.begin(); e != mySIeventsOrderServiceUniqueKeyFirstStartTimeEventUniqueKey.end(); e++)
 		{
@@ -965,44 +967,55 @@ static void sendAllEvents(int connfd, t_channel_id serviceUniqueKey, bool oldFor
 
 				for (SItimes::iterator t = (*e)->times.begin(); t != (*e)->times.end(); t++)
 				{
-					if ( oldFormat )
+					if(!(is_double==t->startzeit &&test_double==(*e)->name.c_str()))//für rtl fix
 					{
-						char strZeit[50];
-						sprintf(strZeit, "%012llx ", (*e)->uniqueKey());
-						strcat(liste, strZeit);
-
-						struct tm *tmZeit;
-						tmZeit = localtime(&(t->startzeit));
-						sprintf(strZeit, "%02d.%02d %02d:%02d %u ",
-						        tmZeit->tm_mday, tmZeit->tm_mon + 1, tmZeit->tm_hour, tmZeit->tm_min, (*e)->times.begin()->dauer / 60);
-						strcat(liste, strZeit);
-						strcat(liste, (*e)->name.c_str());
-						strcat(liste, "\n");
-					}
-					else
-					{
-						*((event_id_t *)liste) = (*e)->uniqueKey();
-						liste += sizeof(event_id_t);
-						*((unsigned *)liste) = t->startzeit;
-						liste += 4;
-						*((unsigned *)liste) = t->dauer;
-						liste += 4;
-						strcpy(liste, (*e)->name.c_str());
-						liste += strlen(liste);
-						liste++;
-
-						if (((*e)->text).empty())
+						if ( oldFormat )
 						{
-							strcpy(liste, (*e)->extendedText.substr(0, 40).c_str());
-							liste += strlen(liste);
+							char strZeit[50];
+							sprintf(strZeit, "%012llx ", (*e)->uniqueKey());
+							strcat(liste, strZeit);
+
+							struct tm *tmZeit;
+							tmZeit = localtime(&(t->startzeit));
+							sprintf(strZeit, "%02d.%02d %02d:%02d %u ",
+									tmZeit->tm_mday, tmZeit->tm_mon + 1, tmZeit->tm_hour, tmZeit->tm_min, (*e)->times.begin()->dauer / 60);
+							strcat(liste, strZeit);
+							strcat(liste, (*e)->name.c_str());
+							strcat(liste, "\n");
 						}
 						else
 						{
-							strcpy(liste, (*e)->text.c_str());
+							*((event_id_t *)liste) = (*e)->uniqueKey();
+							liste += sizeof(event_id_t);
+							*((unsigned *)liste) = t->startzeit;
+							liste += 4;
+							*((unsigned *)liste) = t->dauer;
+							liste += 4;
+							strcpy(liste, (*e)->name.c_str());
 							liste += strlen(liste);
-						}
+							liste++;
 
-						liste++;
+							if (((*e)->text).empty())
+							{
+								strcpy(liste, (*e)->extendedText.substr(0, 40).c_str());
+								liste += strlen(liste);
+							}
+							else
+							{
+								strcpy(liste, (*e)->text.c_str());
+								liste += strlen(liste);
+							}
+
+							liste++;
+						}
+						is_double=t->startzeit;
+						test_double=(*e)->name.c_str();
+					}
+					else
+					{
+						is_double=t->startzeit; 	 
+						test_double=(*e)->name.c_str();
+						continue;
 					}
 				}
 			} // if = serviceID
