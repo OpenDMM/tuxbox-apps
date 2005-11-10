@@ -46,8 +46,8 @@ bool eMPConfig::load()
 	FILE *in = fopen(file.c_str(), "rt");
 	if (!in) 
 	{
-		eString file = CONFFILE0;
-		FILE *in = fopen(file.c_str(), "rt");
+		file = CONFFILE0;
+		in = fopen(file.c_str(), "rt");
 		if (!in) 
 		{
 			eDebug("[MPCONFIG] unable to open %s", file.c_str()); 
@@ -131,6 +131,7 @@ bool eMPConfig::load()
 				a.audioRate = tmparate;
 				a.transcodeAudio = (tmpatrans == "1");
 				a.AC3 = (tmpac3 == "1");
+
 				videoParmList.push_back(a);
 			}
 		}
@@ -180,6 +181,8 @@ struct videoTypeParms eMPConfig::getVideoParms(eString extension)
 {
 	struct videoTypeParms vparms;
 	
+	extension = extension.upper();
+	
 	vparms.name = "default";
 	vparms.extension = extension;
 	vparms.videoRate = "1024";
@@ -190,7 +193,6 @@ struct videoTypeParms eMPConfig::getVideoParms(eString extension)
 	vparms.transcodeAudio = false;
 	vparms.AC3 = false;
 	
-	extension = extension.upper();
 	for (unsigned int i = 0; i < videoParmList.size(); i++)
 	{
 		if (videoParmList[i].extension == extension)
