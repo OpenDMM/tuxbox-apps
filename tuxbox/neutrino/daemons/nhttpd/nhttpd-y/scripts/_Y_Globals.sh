@@ -36,5 +36,7 @@ y_wait_live="$y_path_httpd/Y_Live_Wait.yhtm"
 y_tmp_m3u="$y_path_tmp/y.m3u"
 y_tmp_m4u="$y_path_tmp/y.m4u"
 
+y_out_html="$y_path_tmp/y_out.yhtm"
+y_install="$y_path_tmp/install.sh"
 
 
