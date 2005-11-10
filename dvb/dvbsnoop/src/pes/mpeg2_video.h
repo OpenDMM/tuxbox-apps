@@ -13,11 +13,12 @@ $Id$
 
 */
 
-#ifndef __PES_DATA_SYNC_H
-#define __PES_DATA_SYNC_H 
+#ifndef __MPEG2_VIDEO__
+#define __MPEG2_VIDEO__
 
 
-void PES_decodeDATA_SYNC (u_char *b, int len);
+void MPEG2_decodeUserData (u_char *b, int len);
+void MPEG2_decodeGroupOfPictures (u_char *b, int len);
 
 
 #endif

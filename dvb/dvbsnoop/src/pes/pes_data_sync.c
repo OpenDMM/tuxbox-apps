@@ -7,7 +7,7 @@ $Id$
  a dvb sniffer  and mpeg2 stream analyzer tool
  http://dvbsnoop.sourceforge.net/
 
- (c) 2001-2004   Rainer.Scherg@gmx.de  (rasc)
+ (c) 2001-2005   Rainer.Scherg@gmx.de  (rasc)
 
 
 
@@ -16,6 +16,9 @@ $Id$
 
 
 $Log$
+Revision 1.2  2005/11/10 00:05:45  rasc
+ - New: PS MPEG2 UserData + GOP, DVB-S2 fix
+
 Revision 1.1  2004/02/02 23:41:23  rasc
 - output indent changed to avoid \r  (which sucks on logged output)
 - EBU PES data started (teletext, vps, wss, ...)

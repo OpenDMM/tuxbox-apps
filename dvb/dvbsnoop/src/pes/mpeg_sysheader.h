@@ -1,5 +1,7 @@
 /*
+$Id$
 
+   
  DVBSNOOP
 
  a dvb sniffer  and mpeg2 stream analyzer tool
@@ -11,10 +13,11 @@
 
 */
 
-#ifndef __PES_PSM_H__
-#define __PES_PSM_H__
+#ifndef __MPEG_SYS_HEADER__
+#define __MPEG_SYS_HEADER__
 
-void  PES_decodePSM (u_char *b, int len);
+
+void mpeg_system_header (int v, u_char *b, int len);
 
 
 #endif

@@ -13,8 +13,8 @@ $Id$
 
 */
 
-#ifndef __PESPACKET_H
-#define __PESPACKET_H 
+#ifndef __PESPACKET_H__
+#define __PESPACKET_H__ 
 
 void processPS_PES_packet (u_int pid, long pkt_nr, u_char *buf, int len);
 void decodePS_PES_packet (u_char *b, u_int len, int pid);
