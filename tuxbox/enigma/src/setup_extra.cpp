@@ -131,6 +131,12 @@ void eExpertSetup::init_eExpertSetup()
 	new eListBoxEntryCheck( (eListBox<eListBoxEntry>*)&list, _("Enable Zapping History"), "/elitedvb/extra/extzapping", _("don't care about actual mode when zapping in history list"));	
 	if ( eSystemInfo::getInstance()->getHwType() < eSystemInfo::DM5600 )
 		new eListBoxEntryCheck( (eListBox<eListBoxEntry>*)&list, _("Disable Standby"), "/extras/fastshutdown", _("Box goes directly into Deep-Standby"));
+#ifdef ENABLE_MHW_EPG
+	int mhwepg=1;
+	if ( eConfig::getInstance()->getKey("/extras/mhwepg", mhwepg) )
+		eConfig::getInstance()->setKey("/extras/mhwepg", mhwepg);
+	new eListBoxEntryCheck( (eListBox<eListBoxEntry>*)&list, _("Enable MHW EPG"), "/extras/mhwepg", _("Mediahighway EPG, activate swap space when using with multiple operators"));
+#endif
 #ifdef HAVE_DREAMBOX_HARDWARE
 	if ( eSystemInfo::getInstance()->getHwType() == eSystemInfo::DM7000 )
 	{
