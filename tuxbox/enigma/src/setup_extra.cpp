@@ -130,7 +130,7 @@ void eExpertSetup::init_eExpertSetup()
 #endif
 	new eListBoxEntryCheck( (eListBox<eListBoxEntry>*)&list, _("Enable Zapping History"), "/elitedvb/extra/extzapping", _("don't care about actual mode when zapping in history list"));	
 	if ( eSystemInfo::getInstance()->getHwType() < eSystemInfo::DM5600 )
-		new eListBoxEntryCheck( (eListBox<eListBoxEntry>*)&list, _("Disable Standby"), "/extras/fastshutdown", _("Box goes direct into Deep-Standby"));
+		new eListBoxEntryCheck( (eListBox<eListBoxEntry>*)&list, _("Disable Standby"), "/extras/fastshutdown", _("Box goes directly into Deep-Standby"));
 #ifdef ENABLE_MHW_EPG
 	int mhwepg=1;
 	if ( eConfig::getInstance()->getKey("/extras/mhwepg", mhwepg) )
