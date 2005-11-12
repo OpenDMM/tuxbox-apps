@@ -43,7 +43,7 @@
 
 eString getAttribute(eString filename, eString attribute);
 eString readFile(eString filename);
-eString button(int width, eString buttonText, eString buttonColor, eString buttonRef, eString color="");
+eString button(int width, eString buttonText, eString buttonColor, eString buttonRef, eString color="", bool xml=false);
 eString getTitle(eString title);
 int getHex(int c);
 eString httpUnescape(const eString &string);

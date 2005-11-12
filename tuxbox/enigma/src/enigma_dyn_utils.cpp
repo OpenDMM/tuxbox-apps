@@ -121,7 +121,7 @@ eString readFile(eString filename)
 	return result;
 }
 
-eString button(int width, eString buttonText, eString buttonColor, eString buttonRef, eString color)
+eString button(int width, eString buttonText, eString buttonColor, eString buttonRef, eString color, bool xml)
 {
 	eString ref1, ref2;
 
@@ -149,7 +149,10 @@ eString button(int width, eString buttonText, eString buttonColor, eString butto
 		}
 		if (color)
 			result << "color: " << color << "; ";
-		result << "\" value=\"" << buttonText << "\" onclick=\"" << ref1 << buttonRef << ref2 << "\">";
+			
+		eString ending = (xml) ? " />" : ">";
+		
+		result << "\" value=\"" << buttonText << "\" onclick=\"" << ref1 << buttonRef << ref2 << "\"" << ending;
 	}
 	else
 		result << "<a href=\"" << buttonRef << "\"><span class=\"button\">" << buttonText << "</span></a>&nbsp;";
