@@ -171,13 +171,13 @@ void* CTimerManager::timerThread(void *arg)
 				}
 			}
 			pthread_mutex_unlock(&tm_eventsMutex);
-			pthread_setcancelstate(PTHREAD_CANCEL_ENABLE,NULL);
 
 			// save events if requested
 			if(timerManager->m_saveEvents)
 			{
 				timerManager->saveEventsToConfig();
 			}
+			pthread_setcancelstate(PTHREAD_CANCEL_ENABLE,NULL);
 
 /*			int wait = sleeptime-(((int)time(NULL)) % sleeptime);
 			if(wait==0) wait=sleeptime;
