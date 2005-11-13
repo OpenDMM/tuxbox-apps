@@ -215,7 +215,8 @@ int eMountPoint::mount()
 							for (unsigned int i = 0; i < 90; ++i )
 								close(i);
 
-							int rc = system(cmd.c_str());
+							int retry = 10;
+							while ((rc = system(cmd.c_str())) >> 8 && retry-- > 0);
 							eDebug("[ENIGMA_MOUNT] mount rc = %d", rc);
 							
 							if (mp.localDir == "/hdd")
