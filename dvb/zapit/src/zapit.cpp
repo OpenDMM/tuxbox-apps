@@ -759,8 +759,16 @@ bool parse_command(CBasicMessage::Header &rmsg, int connfd)
 
 	case CZapitMessages::CMD_REINIT_CHANNELS:
 	{
+		// Houdini: save actual channel to restore it later, old version's channel was set to scans.conf initial channel
+		t_channel_id cid= channel ? channel->getChannelID() : 0; 
+
 		CZapitMessages::responseCmd response;
 		prepare_channels(frontend->getInfo()->type, diseqcType);
+
+		tallchans_iterator cit = allchans.find(cid);
+		if (cit != allchans.end()) 
+			channel = &(cit->second); 
+
 		response.cmd = CZapitMessages::CMD_READY;
 		CBasicServer::send_data(connfd, &response, sizeof(response));
 		eventServer->sendEvent(CZapitClient::EVT_BOUQUETS_CHANGED, CEventServer::INITID_ZAPIT);
