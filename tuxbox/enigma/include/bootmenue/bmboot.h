@@ -25,7 +25,7 @@
 
 using namespace std;
 
-#include <include/lib/base/estring.h>
+#include <lib/base/estring.h>
 
 class bmboot: public Object
 {

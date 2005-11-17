@@ -30,7 +30,7 @@
 #include <iomanip>
 #include <iostream>
 #include <fstream>
-#include <include/lib/base/estring.h>
+#include <lib/base/estring.h>
 #ifdef INSTIMAGESUPPORT
 #include <src/enigma.h>
 #define TUXBOXDATADIR "/share/tuxbox"
