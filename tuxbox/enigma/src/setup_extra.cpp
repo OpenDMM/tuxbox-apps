@@ -147,6 +147,11 @@ void eExpertSetup::init_eExpertSetup()
 		new eListBoxEntrySeparator( (eListBox<eListBoxEntry>*)&list, eSkin::getActive()->queryImage("listbox.separator"), 0, true );
 		CONNECT_2_1((new eListBoxEntryCheck( (eListBox<eListBoxEntry>*)&list, _("Disable CoreFiles"), "/extras/corefiles_disable", _("don't create 'Corefiles' after an Enigma crash")))->selected, eExpertSetup::fileToggle,"/var/etc/.no_corefiles");
 	}
+	int hddSlave = 0;
+	if (access("/var/etc/.hdd_is_slave", R_OK) == 0)
+		hddSlave = 1;
+	eConfig::getInstance()->setKey("/extras/hdd_is_slave", hddSlave);
+	CONNECT_2_1((new eListBoxEntryCheck( (eListBox<eListBoxEntry>*)&list, _("HDD is 'Slave'"), "/extras/hdd_is_slave", _("HDD runs as 'slave'")))->selected, eExpertSetup::fileToggle,"/var/etc/.hdd_is_slave");
 #ifdef ENABLE_EXPERT_WEBIF
 	int dontMountHDD = 0;
 	if (access("/var/etc/.dont_mount_hdd", R_OK) == 0)
