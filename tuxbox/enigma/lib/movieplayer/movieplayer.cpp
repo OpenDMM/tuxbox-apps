@@ -494,10 +494,16 @@ eString eMoviePlayer::sout(eString mrl)
 	
 	eString name = "File";
 	if (mrl.find("dvdsimple:") != eString::npos)
+	{
 		name = "DVD";
+		extension = "NONE";
+	}
 	else
 	if (mrl.find("vcd:") != eString::npos)
+	{
 		name = "VCD";
+		extension = "NONE";
+	}
 	
 	struct serverConfig server = mpconfig.getServerConfig();
 	struct videoTypeParms video = mpconfig.getVideoParms(name, extension);
