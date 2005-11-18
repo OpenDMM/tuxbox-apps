@@ -4141,14 +4141,6 @@ msgstr "CoreFiles abschalten"
 msgid "don't create 'Corefiles' after an Enigma crash"
 msgstr "Keine 'Corefiles' nach einem Enigma Absturz erstellen"
 
-#: src/setup_extra.cpp:154
-msgid "HDD is 'Slave'"
-msgstr "HDD ist 'Slave'"
-
-#: src/setup_extra.cpp:154
-msgid "HDD runs as 'slave'"
-msgstr "Festplatte läuft als 'Slave'"
-
 #: src/setup_extra.cpp:160
 msgid "Disable HDD mount"
 msgstr "HDD mount deaktivieren"
