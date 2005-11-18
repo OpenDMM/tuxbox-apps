@@ -1920,6 +1920,10 @@ int main(int argc, char **argv)
 	eventServer = new CEventServer;
 
 	leaveStandby();
+	//zap to lastchannel with zapit TEST
+	CZapitClient::responseGetLastChannel lastchannel;
+	lastchannel=load_settings();
+	zapTo(lastchannel.channelNumber);
 
 	if (update_pmt) {
 		while (zapit_server.run(parse_command, CZapitMessages::ACTVERSION, true)) {
