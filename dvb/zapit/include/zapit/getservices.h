@@ -43,7 +43,7 @@ void ParseTransponders(xmlNodePtr xmltransponder, const unsigned char DiSEqC, t_
 void ParseChannels    (xmlNodePtr node, const t_transport_stream_id transport_stream_id, const t_original_network_id original_network_id, const unsigned char DiSEqC, t_satellite_position satellitePosition, const uint32_t frequency, bool remove_as_default);
 void FindTransponder  (xmlNodePtr root);
 void LoadSortList     ();
-int LoadServices      (fe_type_t, diseqc_t);
+int LoadServices      (fe_type_t, diseqc_t, bool);
 
 struct transponder
 {

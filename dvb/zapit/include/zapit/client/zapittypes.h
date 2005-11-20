@@ -45,10 +45,16 @@ typedef int16_t t_satellite_position;
 
 typedef uint16_t t_network_id;
 
+//Introduced by Nirvana 11/05. Didn't check if there are similar types
+typedef uint16_t t_bouquet_id;
+//Introduced by Nirvana 11/05. Didn't check if there are similar types
+typedef uint32_t t_transponder_id;
+
 /* unique channel identification */
 typedef uint64_t t_channel_id;
 #define CREATE_CHANNEL_ID_FROM_SERVICE_ORIGINALNETWORK_TRANSPORTSTREAM_ID(service_id,original_network_id,transport_stream_id) ((((t_channel_id)transport_stream_id) << 32) | (((t_channel_id)original_network_id) << 16) | (t_channel_id)service_id)
 #define CREATE_CHANNEL_ID CREATE_CHANNEL_ID_FROM_SERVICE_ORIGINALNETWORK_TRANSPORTSTREAM_ID(service_id, original_network_id, transport_stream_id)
+#define CREATE_TRANSPONDER_ID_FROM_ORIGINALNETWORK_TRANSPORTSTREAM_ID(original_network_id,transport_stream_id) ((((t_original_network_id) original_network_id) << 16) | (t_transport_stream_id) transport_stream_id)
 #define GET_ORIGINAL_NETWORK_ID_FROM_CHANNEL_ID(channel_id) ((t_original_network_id)((channel_id) >> 16))
 #define GET_SERVICE_ID_FROM_CHANNEL_ID(channel_id) ((t_service_id)(channel_id))
 #define PRINTF_CHANNEL_ID_TYPE "%16llx"

@@ -32,6 +32,7 @@
 // forward references
 class SIservice;
 class SIservices;
+class SIbouquets;
 
 struct eit_event {
 	unsigned event_id_hi			: 8;

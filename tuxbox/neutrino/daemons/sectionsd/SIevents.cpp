@@ -39,6 +39,8 @@
 #include "SIutils.hpp"
 #include "SIservices.hpp"
 #include "SIevents.hpp"
+#include "SIbouquets.hpp"
+#include "SInetworks.hpp"
 #include "SIsections.hpp"
 #include <dmxapi.h>
 

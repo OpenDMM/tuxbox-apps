@@ -285,7 +285,7 @@ void CBouquetManager::saveBouquets(const CZapitClient::bouquetMode bouquetMode, 
 		Bouquets.clear();
 		remainChannels = NULL;
 		
-		LoadServices(frontend->getInfo()->type, frontend->getDiseqcType());
+		LoadServices(frontend->getInfo()->type, frontend->getDiseqcType(), false);
 		
 		loadBouquets();
 		

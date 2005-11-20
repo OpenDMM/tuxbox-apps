@@ -408,6 +408,15 @@ void CZapitClient::reinitChannels()
 	close_connection();
 }
 
+//called when sectionsd updates currentservices.xml
+void CZapitClient::reloadCurrentServices()
+{
+	send(CZapitMessages::CMD_RELOAD_CURRENTSERVICES);
+
+	CZapitMessages::responseCmd response;
+	CBasicClient::receive_data((char* )&response, sizeof(response), true);
+	close_connection();
+}
 
 void CZapitClient::muteAudio(const bool mute)
 {

@@ -74,7 +74,9 @@ class CSectionsdClient : private CBasicClient
 	enum events
 		{
 			EVT_TIMESET,
-			EVT_GOT_CN_EPG
+			EVT_GOT_CN_EPG,
+			EVT_SERVICES_UPDATE,
+			EVT_BOUQUETS_UPDATE
 		};
 	
 	struct epgflags {
