@@ -1592,7 +1592,8 @@ static bool getscanning()
 	
 	while ( (!feof(scanconf)) && (strncmp(buffer, "scanSectionsd=", 14) != 0) )
 		fgets(buffer, 255, scanconf);
-	
+	fclose(scanconf);
+
 	if (!strncmp(buffer, "scanSectionsd=", 14))
 	{
 		switch (buffer[14]) {
