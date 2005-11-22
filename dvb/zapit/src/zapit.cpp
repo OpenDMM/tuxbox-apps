@@ -2305,9 +2305,12 @@ int main(int argc, char **argv)
 
 	leaveStandby();
 	//zap to lastchannel with zapit TEST
+
+#if 0
 	CZapitClient::responseGetLastChannel lastchannel;
 	lastchannel=load_settings();
 	zapTo(lastchannel.channelNumber);
+#endif
 
 	if (update_pmt) {
 		while (zapit_server.run(parse_command, CZapitMessages::ACTVERSION, true)) {
