@@ -727,10 +727,12 @@ void CTimerManager::shutdownOnWakeup()
 	{
 		CTimerEvent *event = pos->second;
 		if((event->eventType == CTimerd::TIMER_RECORD ||
-			 event->eventType == CTimerd::TIMER_ZAPTO ) &&
-			event->eventState == CTimerd::TIMERSTATE_SCHEDULED)
+		    event->eventType == CTimerd::TIMER_ZAPTO ) &&
+		   (event->eventState == CTimerd::TIMERSTATE_SCHEDULED ||
+		    event->eventState == CTimerd::TIMERSTATE_PREANNOUNCE ||
+		    event->eventState == CTimerd::TIMERSTATE_ISRUNNING))
 		{
-			// Wir wachen nur für Records und Zaptos wieder auf
+			// Bei anstehendem/laufendem RECORD oder ZAPTO Timer nicht runterfahren
 			if(event->announceTime < nextAnnounceTime || nextAnnounceTime==0)
 			{
 				nextAnnounceTime=event->announceTime;
