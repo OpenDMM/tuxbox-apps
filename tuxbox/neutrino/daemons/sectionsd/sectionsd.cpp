@@ -917,7 +917,6 @@ static void commandPauseScanning(int connfd, char *data, const unsigned dataLeng
 
 	return ;
 }
-
 static void commandGetIsScanningActive(int connfd, char* /*data*/, const unsigned /*dataLength*/)
 {
 	struct sectionsd::msgResponseHeader responseHeader;
@@ -1695,7 +1694,6 @@ static void commandserviceChanged(int connfd, char *data, const unsigned dataLen
 */
 		initNITtables();
 		initSDTtables();
-		auto_scanning = getscanning();
 
 		doWakeUp = true;
 
@@ -2779,6 +2777,23 @@ static void commandSetPrivatePid(int connfd, char *data, const unsigned dataLeng
 	return ;
 }
 
+static void commandSetSectionsdScanMode(int connfd, char *data, const unsigned dataLength)
+{
+	if (dataLength != 4)
+		return ;
+
+	lockMessaging();
+	auto_scanning = *((int*)data);
+
+	struct sectionsd::msgResponseHeader responseHeader;
+	responseHeader.dataLength = 0;
+	
+	unlockMessaging();
+
+	writeNbytes(connfd, (const char *)&responseHeader, sizeof(responseHeader), WRITE_TIMEOUT_IN_SECONDS);
+	return ;
+
+}
 
 static void (*connectionCommands[sectionsd::numberOfCommands]) (int connfd, char *, const unsigned) =
     {
@@ -2811,7 +2826,8 @@ static void (*connectionCommands[sectionsd::numberOfCommands]) (int connfd, char
         commandPauseSorting,
 	commandRegisterEventClient,
 	commandUnRegisterEventClient,
-	commandSetPrivatePid
+	commandSetPrivatePid,
+	commandSetSectionsdScanMode
     };
 
 //static void *connectionThread(void *conn)

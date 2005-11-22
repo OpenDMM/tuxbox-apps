@@ -174,6 +174,8 @@ class CSectionsdClient : private CBasicClient
 
 	void setPrivatePid(const unsigned short pid);
 
+	void setSectionsdScanMode(const int scanMode);
+
 	/*
 	  ein beliebiges Event anmelden
 	*/

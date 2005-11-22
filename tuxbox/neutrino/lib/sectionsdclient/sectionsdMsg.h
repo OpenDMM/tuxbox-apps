@@ -83,6 +83,7 @@ struct sectionsd
 		CMD_registerEvents,
 		CMD_unregisterEvents,
 		setPrivatePid,
+		setSectionsdScanMode,
 		numberOfCommands        // <- no actual command, end of command marker
 	};
 

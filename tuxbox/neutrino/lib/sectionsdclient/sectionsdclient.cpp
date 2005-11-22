@@ -614,3 +614,10 @@ void CSectionsdClient::setPrivatePid(const unsigned short pid)
 	close_connection();
 }
 
+void CSectionsdClient::setSectionsdScanMode(const int scanMode)
+{
+	 send(sectionsd::setSectionsdScanMode, (char*)&scanMode, sizeof(scanMode));
+
+	readResponse();
+	close_connection();
+}
