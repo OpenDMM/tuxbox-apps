@@ -19,6 +19,7 @@ $Id$
 
 void MPEG2_decodeUserData (u_char *b, int len);
 void MPEG2_decodeGroupOfPictures (u_char *b, int len);
+void MPEG2_decodeSequenceHeader (u_char *b, int len);
 
 
 #endif
