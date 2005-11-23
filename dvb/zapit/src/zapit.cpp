@@ -231,11 +231,10 @@ bool write_provider(FILE * tmp, xmlNodePtr provider, const bool start)
 				sprintf(prov_str,"\t<%s name=\"%s\" diseqc=\"%s\">\n", frontendType.c_str(), provider_name.c_str(), diseqc.c_str());
 			else {
 				east_west = xmlGetNumericAttribute(provider, "east_west", 16);
-				sprintf(prov_str,"\t<%s name=\"%s\" orbital=\"%04x\" east_west=\"%hu\" diseqc=\"%s\">\n", 
+				sprintf(prov_str,"\t<%s name=\"%s\" position=\"%04x\" diseqc=\"%s\">\n", 
 					frontendType.c_str(), 
 					provider_name.c_str(),
 					orbital,
-					east_west,
 					diseqc.c_str());			
 			}
 			is_sat = true;
