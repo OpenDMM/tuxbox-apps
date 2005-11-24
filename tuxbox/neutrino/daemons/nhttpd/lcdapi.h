@@ -65,7 +65,7 @@ class CLCDAPI
 	CLCDDisplay			display;
 	LcdFontRenderClass	*fontRenderer;
 	LcdFont				*font;
-	const char 			*style_name[2];
+	const char 			*style_name[3];
 public:
 	CLCDAPI(CWebDbox *webdbox);
 	~CLCDAPI(void);
