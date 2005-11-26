@@ -143,16 +143,26 @@ public:
 	
 	std::vector<eString> skinList;
 	
-	int getSkins(eString skinPath)
+	int getSkins(eString skinPath, eString mountPoint)
 	{
+		eString dirs[2];
+		eString dir;
+
 		skinList.clear();
-		
-		mountJFFS2();
+
+		dirs[0] = skinPath;
+		dirs[1] = mountPoint + "/boot/skins";
 	
-		if (skinPath.find("/var") == 0)
+		for (int i = 0; i < 2; i++)
 		{
-			skinPath = "/tmp/jffs2" + skinPath.right(skinPath.length() - 4);
-			DIR *d = opendir(skinPath.c_str());
+			dir = dirs[i];
+			if (i == 0)
+			{
+				mountJFFS2();
+				if (dirs[i].find("/var") == 0)
+					dir = "/tmp/jffs2" + dirs[i].right(dirs[i].length() - 4);
+			}
+			DIR *d = opendir(dir.c_str());
 			if (d)
 			{
 				while (struct dirent *e = readdir(d))
@@ -161,14 +171,14 @@ public:
 					{
 						eString name = eString(e->d_name);
 						if (name.right(5) == ".skin")
-							skinList.push_back(name);
+							skinList.push_back(eString(dirs[i] + "/" + name));
 					}
 				}
 				closedir(d);
 			}
+			if (i == 0)
+				unmountJFFS2();
 		}
-		unmountJFFS2();
-		
 		return skinList.size();
 	}
 };
