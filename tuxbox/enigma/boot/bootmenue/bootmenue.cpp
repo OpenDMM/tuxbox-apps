@@ -59,6 +59,9 @@ stmenu::stmenu()
 			{
 				srand((unsigned)time(NULL));
 				skin = bmgr->skinList[rand() % bmgr->skinList.size()];
+				unsigned int pos = skin.find_last_of('/');
+				config->skinName = skin.right(skin.length() - pos - 1);
+				config->skinPath = skin.left(pos);
 			}
 			loadSkin(skin);
 			eString pic = skin.replace(skin.find(".skin"), 5, ".png");
