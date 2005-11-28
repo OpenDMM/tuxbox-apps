@@ -1184,11 +1184,16 @@ bool parse_command(CBasicMessage::Header &rmsg, int connfd)
 	case CZapitMessages::CMD_RELOAD_CURRENTSERVICES:
 	{
 		CZapitMessages::responseCmd response;
+		t_channel_id cid= channel ? channel->getChannelID() : 0; 
+
 		transponders.clear();
 		bouquetManager->clearAll();
 		allchans.clear();  // <- this invalidates all bouquets, too!
 		LoadServices(frontend->getInfo()->type, diseqcType, false); //true for only loading currentservices...
 		bouquetManager->loadBouquets();
+		tallchans_iterator cit = allchans.find(cid);
+		if (cit != allchans.end()) 
+			channel = &(cit->second); 
 		response.cmd = CZapitMessages::CMD_READY;
 		CBasicServer::send_data(connfd, &response, sizeof(response));
 		eventServer->sendEvent(CZapitClient::EVT_BOUQUETS_CHANGED, CEventServer::INITID_ZAPIT);
