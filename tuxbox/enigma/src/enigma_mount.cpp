@@ -176,7 +176,7 @@ int eMountPoint::mount()
 							cmd = "mount -t cifs //";
 							cmd += ip + "/" + mp.mountDir + " " + mp.localDir + " -o user=";
 							cmd += (mp.userName) ? mp.userName : "anonymous";
-							cmd += (mp.password) ? ("pass=" + mp.password) : "";
+							cmd += (mp.password) ? (",pass=" + mp.password) : "";
 							cmd += ",unc=//" + ip + "/" + mp.mountDir;
 							cmd += (mp.options) ? ("," + mp.options) : "";
 						}
