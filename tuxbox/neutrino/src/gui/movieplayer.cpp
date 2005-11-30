@@ -2544,10 +2544,6 @@ void CMoviePlayerGui::PlayFile (int parental)
 
 				//-- stop playback + start filebrowser --
 			case CRCInput::RC_home:
-				char message[50];
-				sprintf(message, "Möchten Sie den Movieplayer beenden?");
-				if (ShowMsgUTF(LOCALE_MESSAGEBOX_INFO, message, CMessageBox::mbrNo, CMessageBox::mbYes | CMessageBox::mbNo, "softupdate.raw") != CMessageBox::mbrNo)
-				{
 #ifdef MOVIEBROWSER  			
 				if(isMovieBrowser == true && p_movie_info != NULL)
 				{ 
@@ -2564,7 +2560,6 @@ void CMoviePlayerGui::PlayFile (int parental)
 				g_playstate = CMoviePlayerGui::STOPPED;
 				pthread_join(rct, NULL);
 				open_filebrowser = true;
-				}
 				break;
 
 				//-- pause / play --
