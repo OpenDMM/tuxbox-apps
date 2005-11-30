@@ -113,6 +113,9 @@ extern CPlugins       * g_PluginList;
 #define MAXREADSIZE 348*188
 #define MINREADSIZE 348*188
 
+#define MOVIEPLAYER_START_SCRIPT CONFIGDIR "/movieplayer.start" 
+#define MOVIEPLAYER_END_SCRIPT CONFIGDIR "/movieplayer.end"
+
 //TODO: calculate offset for jumping 1 minute forward/backwards in stream
 // needs to be a multiplier of 188
 // do a VERY shitty approximation here...
@@ -276,6 +279,10 @@ CMoviePlayerGui::exec (CMenuTarget * parent, const std::string & actionKey)
 
 	// set zapit in standby mode
 	g_Zapit->setStandby (true);
+	
+	puts("[movieplayer.cpp] executing " MOVIEPLAYER_START_SCRIPT ".");
+	if (system(MOVIEPLAYER_START_SCRIPT) != 0)
+	perror("Datei " MOVIEPLAYER_START_SCRIPT " fehlt. Bitte erstellen, wenn gebraucht.\nFile " MOVIEPLAYER_START_SCRIPT " not found. Please create if needed.\n");
 
 	// tell neutrino we're in ts_mode
 	CNeutrinoApp::getInstance ()->handleMsg (NeutrinoMessages::CHANGEMODE,
@@ -365,6 +372,10 @@ CMoviePlayerGui::exec (CMenuTarget * parent, const std::string & actionKey)
 
 	// Restore last mode
 	g_Zapit->setStandby (false);
+	
+	puts("[movieplayer.cpp] executing " MOVIEPLAYER_END_SCRIPT ".");
+	if (system(MOVIEPLAYER_END_SCRIPT) != 0)
+	perror("Datei " MOVIEPLAYER_END_SCRIPT " fehlt. Bitte erstellen, wenn gebraucht.\nFile " MOVIEPLAYER_END_SCRIPT " not found. Please create if needed.\n");
 
 	// Start Sectionsd
 	g_Sectionsd->setPauseScanning (false);
@@ -2533,6 +2544,10 @@ void CMoviePlayerGui::PlayFile (int parental)
 
 				//-- stop playback + start filebrowser --
 			case CRCInput::RC_home:
+				char message[50];
+				sprintf(message, "Möchten Sie den Movieplayer beenden?");
+				if (ShowMsgUTF(LOCALE_MESSAGEBOX_INFO, message, CMessageBox::mbrNo, CMessageBox::mbYes | CMessageBox::mbNo, "softupdate.raw") != CMessageBox::mbrNo)
+				{
 #ifdef MOVIEBROWSER  			
 				if(isMovieBrowser == true && p_movie_info != NULL)
 				{ 
@@ -2549,6 +2564,7 @@ void CMoviePlayerGui::PlayFile (int parental)
 				g_playstate = CMoviePlayerGui::STOPPED;
 				pthread_join(rct, NULL);
 				open_filebrowser = true;
+				}
 				break;
 
 				//-- pause / play --
