@@ -58,7 +58,7 @@ CFBWindow::~CFBWindow(void)
 	{
 		if (((CPrivateData *)private_data)->Background != NULL)
 			((CPrivateData *)private_data)->frameBuffer->RestoreScreen(x, y, dx, dy, (fb_pixel_t *)((CPrivateData *)private_data)->Background);
-		
+		delete ((CPrivateData *)private_data)->Background;
 		delete ((CPrivateData *)private_data);
 		private_data = NULL;
 	}
