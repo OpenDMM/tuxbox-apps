@@ -457,29 +457,34 @@ static void removeNewEvents(void)
 
 static void removeOldEvents(const long seconds)
 {
-   bool goodtimefound;
+	bool goodtimefound;
+	MySIeventsOrderFirstEndTimeServiceIDEventUniqueKey::iterator etmp;
 
-   // Alte events loeschen
-   time_t zeit = time(NULL);
+	// Alte events loeschen
+	time_t zeit = time(NULL);
 
-   for (MySIeventsOrderFirstEndTimeServiceIDEventUniqueKey::iterator e = mySIeventsOrderFirstEndTimeServiceIDEventUniqueKey.begin(); e != mySIeventsOrderFirstEndTimeServiceIDEventUniqueKey.end(); e++) {
-
-      goodtimefound = false;
-      for (SItimes::iterator t = (*e)->times.begin(); t != (*e)->times.end(); t++)
-      {
-         if (t->startzeit + (long)t->dauer >= zeit - seconds) {
-            goodtimefound=true;
-            // one time found -> exit times loop
-            break;
-         }
-      }
-      if (false == goodtimefound)
-         deleteEvent((*e)->uniqueKey());
-      else
-;//solange das nicht richtig funktioniert einfach bis zum ende suchen
-//         break; // sortiert nach Endzeit, daher weiteres Suchen unnoetig
-   }
-   return ;
+	for (MySIeventsOrderFirstEndTimeServiceIDEventUniqueKey::iterator e = mySIeventsOrderFirstEndTimeServiceIDEventUniqueKey.begin(); 
+			e != mySIeventsOrderFirstEndTimeServiceIDEventUniqueKey.end(); e++) {
+		goodtimefound = false;
+		for (SItimes::iterator t = (*e)->times.begin(); t != (*e)->times.end(); t++) {
+			if (t->startzeit + (long)t->dauer >= zeit - seconds) {
+				goodtimefound=true;
+				// one time found -> exit times loop
+				break;
+			}
+		}
+		if (false == goodtimefound) {
+			// keep track of our iterator
+			etmp = e;
+			etmp--;
+			deleteEvent((*e)->uniqueKey());
+			e = etmp;
+		}
+		else
+			;// solange das nicht richtig funktioniert einfach bis zum ende suchen
+			// break; // sortiert nach Endzeit, daher weiteres Suchen unnoetig
+	}
+	return ;
 }
 
 //  SIservicePtr;
