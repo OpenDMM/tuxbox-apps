@@ -53,11 +53,14 @@ struct sectionsd
 
 	enum commands
 	{
-		actualEPGchannelName=0,
+		//actualEPGchannelName=0,
+		dummy1,
 		actualEventListTVshort,
-		currentNextInformation,
+		//currentNextInformation,
+		dummy2,
 		dumpStatusinformation,
-		allEventsChannelName,
+		//allEventsChannelName,
+		dummy3,
 		setHoursToCache,
 		setEventsAreOldInMinutes,
 		dumpAllServices,
