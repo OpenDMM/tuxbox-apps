@@ -498,8 +498,8 @@ static void removeOldEvents(const long seconds)
 	// Alte events loeschen
 	time_t zeit = time(NULL);
 
-	for (MySIeventsOrderFirstEndTimeServiceIDEventUniqueKey::iterator e = mySIeventsOrderFirstEndTimeServiceIDEventUniqueKey.begin(); 
-			e != mySIeventsOrderFirstEndTimeServiceIDEventUniqueKey.end(); e++) {
+	MySIeventsOrderFirstEndTimeServiceIDEventUniqueKey::iterator e = mySIeventsOrderFirstEndTimeServiceIDEventUniqueKey.begin();
+	while (e != mySIeventsOrderFirstEndTimeServiceIDEventUniqueKey.end()) {
 		goodtimefound = false;
 		for (SItimes::iterator t = (*e)->times.begin(); t != (*e)->times.end(); t++) {
 			if (t->startzeit + (long)t->dauer >= zeit - seconds) {
@@ -511,12 +511,18 @@ static void removeOldEvents(const long seconds)
 		if (false == goodtimefound) {
 			// keep track of our iterator
 			etmp = e;
-			etmp--;
-			deleteEvent((*e)->uniqueKey());
+			if (etmp == mySIeventsOrderFirstEndTimeServiceIDEventUniqueKey.begin()) {
+				etmp++; // get next element
+				deleteEvent((*e)->uniqueKey());
+			} else {
+				etmp--; // get last element and iterate later
+				deleteEvent((*e)->uniqueKey());
+				etmp++;
+			}
 			e = etmp;
 		}
 		else
-			;// solange das nicht richtig funktioniert einfach bis zum ende suchen
+			e++;   // solange das nicht richtig funktioniert einfach bis zum ende suchen
 			// break; // sortiert nach Endzeit, daher weiteres Suchen unnoetig
 	}
 	return ;
