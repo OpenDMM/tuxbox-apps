@@ -90,7 +90,7 @@ bool CControlAPI::Execute(CWebserverRequest* request)
 		"timer","setmode","standby","getdate","gettime","settings","getservicesxml",
 		"getbouquetsxml","getonidsid","message","info","shutdown","volume",
 		"channellist","getbouquet","getbouquets","epg","version","zapto", "startplugin",
-		"getmode","exec","system","rc","lcd","yweb",NULL
+		"getmode","exec","system","rc","lcd","yweb","reboot",NULL
 	};
 
 	dprintf("Execute CGI : %s\n",request->Filename.c_str());
@@ -181,6 +181,8 @@ bool CControlAPI::Execute(CWebserverRequest* request)
 	        return LCDAction(request);
 	case 25:
 	        return YWebCGI(request);
+	case 26:
+		return RebootCGI(request);
 	default:
 		request->SendError();
 		return false;
@@ -635,6 +637,15 @@ bool CControlAPI::ShutdownCGI(CWebserverRequest *request)
 		request->SendError();
 		return false;
 	}
+}
+
+//-------------------------------------------------------------------------
+
+bool CControlAPI::RebootCGI(CWebserverRequest *request)
+{
+	FILE *f = fopen("/tmp/.reboot", "w");
+	fclose(f);
+	return ShutdownCGI(request);
 }
 
 //-------------------------------------------------------------------------

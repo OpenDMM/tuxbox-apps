@@ -507,6 +507,7 @@ const char * locale_real_names[] =
 	"mainmenu.pausesectionsd",
 	"mainmenu.pictureviewer",
 	"mainmenu.radiomode",
+	"mainmenu.reboot",
 	"mainmenu.recording",
 	"mainmenu.recording_start",
 	"mainmenu.recording_stop",

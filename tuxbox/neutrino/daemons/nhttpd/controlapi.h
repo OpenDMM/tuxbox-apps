@@ -80,6 +80,7 @@ class CControlAPI
 		bool RCCGI(CWebserverRequest *request);
 		bool LCDAction(CWebserverRequest *request);
 		bool YWebCGI(CWebserverRequest *request);
+		bool RebootCGI(CWebserverRequest *request);
 	public:
 		static const unsigned int PLUGIN_DIR_COUNT = 5;
 		std::string PLUGIN_DIRS[PLUGIN_DIR_COUNT];
