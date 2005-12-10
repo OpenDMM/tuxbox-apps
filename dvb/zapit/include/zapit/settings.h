@@ -37,7 +37,6 @@
 #define MOTORCONFIGFILE		ZAPITCONFIGDIR "/motor.conf"
 #define SERVICES_XML		ZAPITCONFIGDIR "/services.xml"
 #define MYSERVICES_XML		ZAPITCONFIGDIR "/myservices.xml"
-#define ANTISERVICES_XML	ZAPITCONFIGDIR "/antiservices.xml"
 #define SERVICES_TMP    	"/tmp/services.tmp"
 #define BOUQUETS_XML    	ZAPITCONFIGDIR "/bouquets.xml"
 #define BOUQUETS_TMP    	"/tmp/bouquets.tmp"
