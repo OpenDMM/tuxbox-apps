@@ -129,6 +129,7 @@ static bool isTS, isPES, isBookmark;
 
 #ifdef MOVIEBROWSER  			
 static bool isMovieBrowser = false;
+static bool movieBrowserDelOnExit = false;
 #endif /* MOVIEBROWSER */
 
 int g_speed = 1;
@@ -209,8 +210,8 @@ CMoviePlayerGui::CMoviePlayerGui()
 	filebrowser->Multi_Select = false;
 	filebrowser->Dirs_Selectable = false;
 
-#ifdef MOVIEBROWSER  			
-	moviebrowser= new CMovieBrowser();
+#ifdef MOVIEBROWSER  
+	moviebrowser = NULL;			
 #endif /* MOVIEBROWSER */
 
 	tsfilefilter.addFilter ("ts");
@@ -228,8 +229,11 @@ CMoviePlayerGui::CMoviePlayerGui()
 CMoviePlayerGui::~CMoviePlayerGui ()
 {
 	delete filebrowser;
-#ifdef MOVIEBROWSER  			
-	delete moviebrowser;
+#ifdef MOVIEBROWSER  
+	if(moviebrowser != NULL)
+	{	
+		delete moviebrowser;
+	}
 #endif /* MOVIEBROWSER */
 	if(bookmarkmanager)
 		delete bookmarkmanager;
@@ -325,9 +329,21 @@ CMoviePlayerGui::exec (CMenuTarget * parent, const std::string & actionKey)
 #ifdef MOVIEBROWSER  			
 	else if(actionKey=="tsmoviebrowser")
 	{
-		isMovieBrowser = true;
-		isTS = true;
-		PlayFile();
+		if(moviebrowser == NULL)
+		{
+			TRACE("[mp] new MovieBrowser");
+			moviebrowser= new CMovieBrowser();
+		}
+		if(moviebrowser != NULL)
+		{
+			isMovieBrowser = true;
+			isTS = true;
+			PlayFile();
+		}
+		else
+		{
+			TRACE("[mp] error: cannot create MovieBrowser");
+		}
 	}
 #endif /* MOVIEBROWSER */
 	else if(actionKey=="tsplayback_pc")
@@ -392,6 +408,15 @@ CMoviePlayerGui::exec (CMenuTarget * parent, const std::string & actionKey)
 		delete bookmarkmanager;
 		bookmarkmanager=0;
 	}
+	
+	if(moviebrowser != NULL && movieBrowserDelOnExit == TRUE)
+	{
+		//moviebrowser->fileInfoStale();
+		TRACE("[mp] delete MovieBrowser");
+		delete moviebrowser;
+		moviebrowser = NULL;
+	}
+		
 	return menu_return::RETURN_REPAINT;
 }
 
