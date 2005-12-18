@@ -1022,9 +1022,10 @@ static void commandDumpAllServices(int connfd, char* /*data*/, const unsigned /*
 			        s->second->eitScheduleFlag(), s->second->eitPresentFollowingFlag(),
 		        	s->second->runningStatus(), s->second->freeCAmode(),
 		        	s->second->nvods.size());
+/**	soll es in count ? 
 			+ strlen(s->second->serviceName.c_str()) + 1
-			+ strlen(s->second->providerName.c_str()) + 1
-			+ 3; /* '\n' */
+ 			+ strlen(s->second->providerName.c_str()) + 1
+ 			+ 3;  **/
 		if (count < MAX_SIZE_SERVICELIST)
 		{
 			strcat(serviceList, daten);
@@ -3413,7 +3414,7 @@ bool updateCurrentXML(xmlNodePtr provider, xmlNodePtr tp_node, const bool overwr
 
 				dprintf("[sectionsd] Removing Service %s\n", name.c_str());
 				fprintf(dst,
-					"\t\t\t<channel action=\"%s\" service_id=\"%04x\" name=\"%s\" service_type=\"%02x\"/>\n",
+					"\t\t\t<channel action=\"%s\" service_id=\"%04lx\" name=\"%s\" service_type=\"%02lx\"/>\n",
 					"remove",
 					xmlGetNumericAttribute(node, "service_id", 16),
 					UTF8_to_UTF8XML(name.c_str()).c_str(),

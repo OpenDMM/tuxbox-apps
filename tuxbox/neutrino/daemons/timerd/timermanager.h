@@ -68,6 +68,7 @@ class CTimerEvent
 	virtual void announceEvent(){};
 	virtual void saveToConfig(CConfigFile *config);
 	virtual void Refresh(){};
+	virtual ~CTimerEvent(){};
 };
 
 typedef std::map<int, CTimerEvent*> CTimerEventMap;

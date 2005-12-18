@@ -39,7 +39,7 @@ const          char * CSectionsdClient::getSocketName() const
 	return SECTIONSD_UDS_NAME;
 }
 
-int CSectionsdClient::readResponse(char* data, int size)
+int CSectionsdClient::readResponse(char* data,unsigned int size)
 {
 	struct sectionsd::msgResponseHeader responseHeader;
 	if (!receive_data((char*)&responseHeader, sizeof(responseHeader)))

@@ -66,7 +66,7 @@ class CSectionsdClient : private CBasicClient
 	virtual const unsigned char   getVersion   () const;
 	virtual const          char * getSocketName() const;
 
-	int readResponse(char* data = NULL, int size = 0);
+	int readResponse(char* data = NULL, unsigned int size = 0);
 	bool send(const unsigned char command, const char* data = NULL, const unsigned int size = 0);
 	char * parseExtendedEvents(char * dp, CEPGData * epgdata);
 
