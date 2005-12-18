@@ -38,7 +38,7 @@ class CFBWindow
 	int dx, dy; /* dimension         */
 
 	CFBWindow(const int _x, const int _y, const int _dx, const int _dy);
-	~CFBWindow();
+	virtual~CFBWindow();
 
 	void paintBoxRel(const int _x, const int _y, const int _dx, const int _dy, const color_t _col);
 	bool paintIcon(const char * const _filename, const int _x, const int _y, const color_t _offset = 1);
