@@ -151,16 +151,8 @@ config_set_value_direct()
 # -----------------------------------------------------------
 yreboot()
 {
-
-    killall -9 nhttpd
-    killall -9 controld
-    killall zapit
-    sleep 1
-    killall -9 camd2
-    killall -9 timerd
-    killall -9 sectionsd
-    sleep 1
-    reboot
+	reboot
+#	wget -O - -q "$y_url_control/reboot"
 }
 
 # -----------------------------------------------------------
