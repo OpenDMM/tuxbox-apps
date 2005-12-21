@@ -426,7 +426,7 @@ void eMountMgr::unmountAllMountPoints(void)
 {
 	for (mp_it = mountPoints.begin(); mp_it != mountPoints.end(); mp_it++)
 	{
-		if (mp_it->mp.mounted == 1)
+		if ((mp_it->mp.mounted == 1) && (mp_it->mp.automount == 1))
 			mp_it->unmount();
 	}
 }
