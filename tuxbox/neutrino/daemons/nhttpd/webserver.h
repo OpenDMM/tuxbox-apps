@@ -45,6 +45,7 @@
 
 #define PRIVATEDOCUMENTROOT	"/share/tuxbox/neutrino/httpd-y"
 #define PUBLICDOCUMENTROOT	"/var/httpd"
+#define NEUTRINO_CONF		"/var/tuxbox/config/neutrino.conf"
 
 class CWebDbox;
 class TWebserverRequest;
