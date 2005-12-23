@@ -388,6 +388,16 @@ void bouquet_name_descriptor(const unsigned char * const)
 {
 }
 
+bool check_blacklisted_digital_plus(const t_original_network_id onid, const t_transport_stream_id tsid)
+{
+	if ( (onid == 0x0001) &&
+		     ((tsid == 0x03F0) || (tsid == 0x0408) || (tsid == 0x040E) || (tsid == 0x0412) || (tsid == 0x0416) || (tsid == 0x041E) ||
+		     (tsid == 0x0420) || (tsid == 0x0422) || (tsid == 0x0424)) )
+		return true;
+	else
+		return false;
+}
+
 /* 0x48 */
 void service_descriptor(const unsigned char * const buffer, const t_service_id service_id, const t_transport_stream_id transport_stream_id, const t_original_network_id original_network_id, const t_satellite_position satellite_position, const uint8_t DiSEqC, const uint32_t frequency)
 {
@@ -418,6 +428,11 @@ void service_descriptor(const unsigned char * const buffer, const t_service_id s
 	else if (providerName == "PREMIERE")
 	{
 		providerName = "Premiere"; // well the name PREMIERE itself is not a problem
+		in_blacklist = true;
+	}
+	else if((check_blacklisted_digital_plus(original_network_id, transport_stream_id)))
+	{
+		providerName = "Digital+"; 
 		in_blacklist = true;
 	}
 
