@@ -49,7 +49,7 @@ struct videoTypeParms
 	eString videoRatio;
 	bool transcodeVideo;
 	bool transcodeAudio;
-	bool AC3;
+	eString fps;
 };
 
 struct codecs

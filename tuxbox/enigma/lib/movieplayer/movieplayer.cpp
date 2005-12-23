@@ -531,7 +531,7 @@ eString eMoviePlayer::sout(eString mrl)
 			soutURL += ",vb=" + video.videoRate;
 			soutURL += ",width=" + res_horiz;
 			soutURL += ",height=" + res_vert;
-			soutURL += ",fps=25";
+			soutURL += ",fps=" + video.fps;
 		}
 		if (video.transcodeAudio)
 		{
