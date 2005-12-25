@@ -258,8 +258,7 @@ void CBouquetManager::saveBouquets(void)
 
 void CBouquetManager::saveBouquets(const CZapitClient::bouquetMode bouquetMode, const char * const providerName)
 {
-//	printf("[zapit] b size %d\n", Bouquets.size());
-//	printf("[zapit] b name %s\n", providerName);
+/* //	printf("[zapit] b size %d\n", Bouquets.size());
 	if (bouquetMode == CZapitClient::BM_CREATESATELLITEBOUQUET)
 	{
 //	printf("[zapit] b mode sat \n");
@@ -275,7 +274,7 @@ void CBouquetManager::saveBouquets(const CZapitClient::bouquetMode bouquetMode, 
 		if(Bouquets.size() > 0)
 		Bouquets[0]->Name = providerName;
 	}
-	
+*/	
 //	printf("[zapit] b mode sat \n");
 	if ((bouquetMode == CZapitClient::BM_UPDATEBOUQUETS) || (bouquetMode == CZapitClient::BM_CREATESATELLITEBOUQUET))
 	{
