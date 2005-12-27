@@ -7,7 +7,7 @@ $Id$
  a dvb sniffer  and mpeg2 stream analyzer tool
  http://dvbsnoop.sourceforge.net/
 
- (c) 2001-2004   Rainer.Scherg@gmx.de (rasc)
+ (c) 2001-2006   Rainer.Scherg@gmx.de (rasc)
 
 */
 
@@ -15,7 +15,7 @@ $Id$
 #define __DMX_ERROR_H
 
 
-int  IO_error (u_char *str);
+int  IO_error (char *str);
 
 
 #endif
