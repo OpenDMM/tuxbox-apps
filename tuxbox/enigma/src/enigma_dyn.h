@@ -23,9 +23,9 @@
 #define __enigma_dyn_h
 
 #ifdef ENABLE_EXPERT_WEBIF
-#define WEBIFVERSION "5.9.0-Expert"
+#define WEBIFVERSION "5.9.1-Expert"
 #else
-#define WEBIFVERSION "5.9.0"
+#define WEBIFVERSION "5.9.1"
 #endif
 
 #define ZAPMODETV 0
