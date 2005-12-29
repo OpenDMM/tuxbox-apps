@@ -7,7 +7,7 @@ $Id$
  a dvb sniffer  and mpeg2 stream analyzer tool
  http://dvbsnoop.sourceforge.net/
 
- (c) 2001-2005   Rainer.Scherg@gmx.de
+ (c) 2001-2006   Rainer.Scherg@gmx.de
 
 
 
@@ -24,7 +24,7 @@ $Id$
 
 
 #define DVBSNOOP_URL         "http://dvbsnoop.sourceforge.net/"
-#define DVBSNOOP_COPYRIGHT   "(c) 2001-2005  Rainer Scherg  (rasc)"
+#define DVBSNOOP_COPYRIGHT   "(c) 2001-2006  Rainer Scherg  (rasc)"
 
 
 #endif

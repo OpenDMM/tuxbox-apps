@@ -6,7 +6,7 @@ $Id$
  a dvb sniffer  and mpeg2 stream analyzer tool
  http://dvbsnoop.sourceforge.net/
 
- (c) 2001-2005   Rainer.Scherg@gmx.de (rasc)
+ (c) 2001-2006   Rainer.Scherg@gmx.de (rasc)
 
 
 
@@ -44,7 +44,7 @@ typedef struct _PRIVATE_DESCRIPTOR_STRUCTURES_FUNC {
 void section_PRIVATE (u_char *b, int len);
 void descriptor_PRIVATE (u_char *b, DTAG_SCOPE scope);
 
-void set_PRIVATE_ProviderStr (u_char *s);
+void set_PRIVATE_ProviderStr (char *s);
 void list_PRIVATE_ProviderStrs (void);
 
 
