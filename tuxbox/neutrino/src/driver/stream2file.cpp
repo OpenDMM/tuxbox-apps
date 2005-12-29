@@ -402,6 +402,7 @@ void * DMXThread(void * v_arg)
 		stream2file_status2_t s;
 		s.status = exit_flag;
 		strncpy(s.dir,dirname(myfilename),100);
+		s.dir[99] = '\0';
 		eventServer.sendEvent(NeutrinoMessages::EVT_RECORDING_ENDED, CEventServer::INITID_NEUTRINO, &s, sizeof(s));
 		printf("[stream2file] pthreads exit code: %u\n", exit_flag);
 	}
