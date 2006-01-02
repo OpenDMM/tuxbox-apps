@@ -7,7 +7,7 @@ $Id$
  a dvb sniffer  and mpeg2 stream analyzer tool
  http://dvbsnoop.sourceforge.net/
 
- (c) 2001-2004   Rainer.Scherg@gmx.de (rasc)
+ (c) 2001-2006   Rainer.Scherg@gmx.de (rasc)
 
 
  -- Private TAG Space  DSM-CC
@@ -16,6 +16,9 @@ $Id$
 
 
 $Log$
+Revision 1.15  2006/01/02 18:23:58  rasc
+just update copyright and prepare for a new public tar ball
+
 Revision 1.14  2004/02/17 23:54:13  rasc
 Bug (not fixed yet): DSM-CC  DII Carousel Descriptor Loop is strange
 

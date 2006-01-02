@@ -7,13 +7,16 @@ $Id$
  a dvb sniffer  and mpeg2 stream analyzer tool
  http://dvbsnoop.sourceforge.net/
 
- (c) 2001-2004   Rainer.Scherg@gmx.de (rasc)
+ (c) 2001-2006   Rainer.Scherg@gmx.de (rasc)
 
 
 
 
 
 $Log$
+Revision 1.10  2006/01/02 18:24:04  rasc
+just update copyright and prepare for a new public tar ball
+
 Revision 1.9  2004/12/07 21:01:42  rasc
 Large file support (> 2 GB) for -if cmd option. (tnx to K.Zheng,  Philips.com for reporting)
 

@@ -8,14 +8,14 @@ $Id$
  a dvb sniffer  and mpeg2 stream analyzer tool
  http://dvbsnoop.sourceforge.net/
 
- (c) 2001-2005   Rainer.Scherg@gmx.de
+ (c) 2001-2006   Rainer.Scherg@gmx.de
 
 
 */
 
 
 #ifndef __TSLAYER_H
-#define __TS_LAYER_H 
+#define __TSLAYER_H 
 
 
 void processTS_packet (u_int pid, long packet_nr, u_char *b, int len);

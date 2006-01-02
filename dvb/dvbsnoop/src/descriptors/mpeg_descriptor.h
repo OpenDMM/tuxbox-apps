@@ -7,7 +7,7 @@ $Id$
  a dvb sniffer  and mpeg2 stream analyzer tool
  http://dvbsnoop.sourceforge.net/
 
- (c) 2001-2005   Rainer.Scherg@gmx.de  (rasc)
+ (c) 2001-2006   Rainer.Scherg@gmx.de  (rasc)
 
  -- MPEG Descriptors  ISO/IEC 13818-2
 
@@ -15,6 +15,9 @@ $Id$
 
 
 $Log$
+Revision 1.13  2006/01/02 18:23:58  rasc
+just update copyright and prepare for a new public tar ball
+
 Revision 1.12  2005/11/10 23:34:37  rasc
 Some H.222.1 AMD 4+5 update
 

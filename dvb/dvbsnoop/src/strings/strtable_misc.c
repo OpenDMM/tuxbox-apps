@@ -7,7 +7,7 @@ $Id$
  a dvb sniffer  and mpeg2 stream analyzer tool
  http://dvbsnoop.sourceforge.net/
 
- (c) 2001-2004   Rainer.Scherg@gmx.de
+ (c) 2001-2006   Rainer.Scherg@gmx.de
 
 
  -- String table misc.
@@ -15,6 +15,9 @@ $Id$
 
 
 $Log$
+Revision 1.2  2006/01/02 18:24:32  rasc
+just update copyright and prepare for a new public tar ball
+
 Revision 1.1  2004/07/24 11:47:08  rasc
 EN 301 192 update
  - New: ECM_repetition_rate_descriptor (EN 301 192 v1.4.1)

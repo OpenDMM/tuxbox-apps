@@ -7,7 +7,7 @@ $Id$
  a dvb sniffer  and mpeg2 stream analyzer tool
  http://dvbsnoop.sourceforge.net/
 
- (c) 2001-2005   Rainer.Scherg@gmx.de  (rasc)
+ (c) 2001-2006   Rainer.Scherg@gmx.de  (rasc)
 
 
  -- FrontEnd routines...
@@ -17,6 +17,9 @@ $Id$
 
 
 $Log$
+Revision 1.9  2006/01/02 18:23:59  rasc
+just update copyright and prepare for a new public tar ball
+
 Revision 1.8  2005/08/22 22:37:59  rasc
 ATSC frontend info
 
