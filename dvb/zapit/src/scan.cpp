@@ -727,8 +727,8 @@ void *start_scanthread(void *scanmode)
 			}
 		}
 		else
-			scan_success = write_provider(fd, frontendType, providerName);
-	
+                        scan_success = write_provider(fd, frontendType, scanProviders.begin()->second.c_str());
+
 		write_xml_footer(fd);
 		chmod(SERVICES_XML, S_IRUSR | S_IWUSR | S_IRGRP | S_IROTH);
 
