@@ -43,6 +43,12 @@
 		based on code of Steffen Hehn 'McClean'
 
 	$Log$
+	Revision 1.7  2006/01/05 03:58:49  Arzka
+	Hopefully fixed a memory leak
+	  fb_window.cpp:61: warning: deleting `void*' is undefined
+	
+	Removed few minor compilation warnings about used data types with printf formatters in moviebrowser.cpp and movieinfo.cpp
+	
 	Revision 1.6  2005/12/23 18:45:42  metallica
 	Günther moviebrowser.cpp update
 	
@@ -2486,28 +2492,28 @@ void CMovieBrowser::loadMovies(void)
 		clock_t clock_prev = clock_start;
 		clock_t clock_act = clock_start;
 
-		TRACE("[mb] loadMovies:  %d,%d\r\n",clock(),time_start);
+		TRACE("[mb] loadMovies:  %ld,%ld\r\n",(long)clock(),(long)time_start);
 		
 		CHintBox loadBox(LOCALE_MOVIEBROWSER_HEAD,g_Locale->getText(LOCALE_MOVIEBROWSER_SCAN_FOR_MOVIES));
 		loadBox.paint();
 
 		loadAllTsFileNamesFromStorage(); // P1
-		clock_act = clock()/10000;TRACE("[mb] *1:%3d,%3d*\r\n",clock_act - clock_prev,time(NULL));clock_prev = clock_act;	
+		clock_act = clock()/10000;TRACE("[mb] *1:%3ld,%3ld*\r\n",clock_act - clock_prev, (long)time(NULL));clock_prev = clock_act;	
 		loadAllMovieInfo(); // P1
-		clock_act = clock()/10000;TRACE("[mb] *2:%3d,%3d*\r\n",clock_act - clock_prev,time(NULL));clock_prev = clock_act;
+		clock_act = clock()/10000;TRACE("[mb] *2:%3ld,%3ld*\r\n",clock_act - clock_prev, (long)time(NULL));clock_prev = clock_act;
 		updateSerienames();
 		m_file_info_stale = false;
 
 		loadBox.hide();
 
-		clock_act = clock()/10000;TRACE("[mb] *3:%3d,%3d*\r\n",clock_act - clock_prev,time(NULL));clock_prev = clock_act;
+		clock_act = clock()/10000;TRACE("[mb] *3:%3ld,%3ld*\r\n",clock_act - clock_prev, (long)time(NULL));clock_prev = clock_act;
 		refreshBrowserList();	
-		clock_act = clock()/10000;TRACE("[mb] *4:%3d,%3d*\r\n",clock_act - clock_prev,time(NULL));clock_prev = clock_act;
+		clock_act = clock()/10000;TRACE("[mb] *4:%3ld,%3ld*\r\n",clock_act - clock_prev, (long)time(NULL));clock_prev = clock_act;
 		refreshLastPlayList();	
 		refreshLastRecordList();
 		refreshFilterList();
 		refreshMovieInfo();	// is done by refreshBrowserList if needed
-		TRACE("[mb] ***Total:%d,%d***\r\n",(time(NULL)-time_start), ((clock()/10000)-clock_start));
+		TRACE("[mb] ***Total:%ld,%ld***\r\n",(time(NULL)-time_start), ((clock()/10000)-clock_start));
 }
 /************************************************************************
 
