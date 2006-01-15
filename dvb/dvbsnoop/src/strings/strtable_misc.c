@@ -15,6 +15,9 @@ $Id$
 
 
 $Log$
+Revision 1.3  2006/01/15 17:50:31  rasc
+no message
+
 Revision 1.2  2006/01/02 18:24:32  rasc
 just update copyright and prepare for a new public tar ball
 
@@ -44,11 +47,11 @@ char *findTableID (STR_TABLE *t, u_int id)
 
   while (t->str) {
     if (t->from <= id && t->to >= id)
-       return t->str;
+       return (char *) t->str;
     t++;
   }
 
-  return ">>ERROR: not (yet) defined... Report!<<";
+  return (char *) ">>ERROR: not (yet) defined... Report!<<";
 }
 
 
