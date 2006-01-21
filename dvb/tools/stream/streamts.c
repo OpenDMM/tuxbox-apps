@@ -430,14 +430,26 @@ main (int argc, char ** argv) {
 	else
 	{
 		/* ts filename */
-		strcpy(tsfile, bp);
-		for (i = 0; i < strlen(bp) - 3; i++) 
+		int j = 0;
+		i = 0;
+		while (i < strlen(bp) - 3)
 		{
-			if ((tsfile[i] == '.') && (tsfile[i + 1] == 't') && (tsfile[i + 2] == 's'))
+			if ((bp[i] == '.') && (bp[i + 1] == 't') && (bp[i + 2] == 's'))
 			{
-				tsfile[i + 3] = '\0';
+				tsfile[j] = bp[i];
+				tsfile[j + 1] = bp[i + 1];
+				tsfile[j + 2] = bp[i + 2];
+				tsfile[j + 3] = '\0';
 				break;
 			}
+			else
+			if ((bp[i] == '%') && (bp[i + 1] == '2') && (bp[i + 2] == '0'))
+			{
+				tsfile[j++] = ' ';
+				i += 3;
+			}
+			else
+				tsfile[j++] = bp[i++];
 		}
 		tsfilelen = strlen(tsfile);
 		/* open ts file */

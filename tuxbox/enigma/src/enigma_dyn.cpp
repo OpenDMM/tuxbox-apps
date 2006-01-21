@@ -2033,7 +2033,7 @@ static eString moviem3u(eString request, eString dirpath, eString opts, eHTTPCon
 	content->local_header["Content-Type"]="video/mpegfile";
 	content->local_header["Cache-Control"] = "no-cache";
 
-	return "http://" + getIP() + ":31342" + movieFile;
+	return "http://" + getIP() + ":31342" + movieFile.strReplace(" ", "%20");
 }
 
 static eString mPlayer(eString request, eString dirpath, eString opt, eHTTPConnection *content)
