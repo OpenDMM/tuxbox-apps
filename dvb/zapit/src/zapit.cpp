@@ -955,14 +955,16 @@ int start_scan(bool scan_mode)
 
 	bouquetManager->clearAll();
 	stopPlayBack();
-	pmt_stop_update_filter(&pmt_update_fd);
-	pmt_update_fd = -1;
+	if (pmt_update_fd>0) {
+		pmt_stop_update_filter(&pmt_update_fd);
+		pmt_update_fd = -1;
+	}
 	tuned_transponder_id = TRANSPONDER_ID_NOT_TUNED;
 	found_transponders = 0;
 	found_channels = 0;
 	scan_runs = 1;
 
-	if (pthread_create(&scan_thread, 0, start_scanthread,  (void*)scan_mode)) {
+	if ((errno=pthread_create(&scan_thread, 0, start_scanthread,  (void*)scan_mode))) {
 		ERROR("pthread_create");
 		scan_runs = 0;
 		return -1;
