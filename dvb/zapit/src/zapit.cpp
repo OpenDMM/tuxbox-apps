@@ -955,7 +955,7 @@ int start_scan(bool scan_mode)
 
 	bouquetManager->clearAll();
 	stopPlayBack();
-	if (pmt_update_fd>0) {
+	if (pmt_update_fd>=0) {
 		pmt_stop_update_filter(&pmt_update_fd);
 		pmt_update_fd = -1;
 	}
