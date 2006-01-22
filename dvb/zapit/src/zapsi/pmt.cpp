@@ -409,7 +409,7 @@ int pmt_set_update_filter(CZapitChannel * const channel, int *fd)
 int pmt_stop_update_filter(int *fd)
 {
 	if ((*fd == -1)) {
-		fprintf(stderr,"check your code - nothing to stop");
+		fprintf(stderr,"check your code - nothing to stop\n");
 		return 0;
 	}
 	if (ioctl(*fd, DMX_STOP) < 0) {
