@@ -531,6 +531,7 @@ bool VlcRequestStream(int  transcodeVideo, int transcodeAudio)
 			souturl += res_horiz;
 			souturl += ",height=";
 			souturl += res_vert;
+			souturl += ",fps=25";
 		}
 		if(transcodeAudio!=0)
 		{
