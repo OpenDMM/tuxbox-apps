@@ -558,7 +558,7 @@ bool VlcRequestStream(int  transcodeVideo, int transcodeAudio)
 
 	// play MRL
 	std::string playurl = baseurl;
-	playurl += "?control=pause";
+	playurl += "?control=play";
 	httpres = sendGetRequest(playurl, response, false);
 
 	return true; // TODO error checking
