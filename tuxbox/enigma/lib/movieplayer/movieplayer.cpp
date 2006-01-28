@@ -114,8 +114,8 @@ void killReceiverThread()
 
 void killThreads()
 {
-	killReceiverThread();
 	killPVRThread();
+	killReceiverThread();
 }
 
 eMoviePlayer::eMoviePlayer(): messages(this, 1)
@@ -149,7 +149,9 @@ void eMoviePlayer::thread()
 void eMoviePlayer::leaveStreamingClient()
 {
 	eMoviePlayer::getInstance()->sendRequest2VLC("?control=stop");
+	pthread_mutex_lock(&mutex);
 	tsBuffer.clear();
+	pthread_mutex_unlock(&mutex);
 	Decoder::Flush();
 	status.ACTIVE = false;
 	status.STAT = STOPPED;
