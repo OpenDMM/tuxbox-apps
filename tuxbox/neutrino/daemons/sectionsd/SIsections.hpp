@@ -829,9 +829,9 @@ protected:
 	SIbouquets bsv;
 	int parsed;
 	void parse(void);
-	void parseDescriptors(const char *desc, unsigned len, SIbouquet &s);
-	void parseBouquetNameDescriptor(const char *buf, SIbouquet &s);
-	void parseServiceListDescriptor(const char *buf, SIbouquet &s);
+//	int parseDescriptors(const char *desc, unsigned len, SIbouquet &s, int section_no, int count, const char *bouquetName);
+//	void parseBouquetNameDescriptor(const char *buf, SIbouquet &s);
+//	int parseServiceListDescriptor(const char *buf, SIbouquet &s, int section_no, int count);
 };
 
 class SIsectionNIT : public SIsection

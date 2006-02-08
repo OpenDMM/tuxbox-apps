@@ -42,6 +42,8 @@
 #define BOUQUETS_TMP    	"/tmp/bouquets.tmp"
 #define CURRENTSERVICES_XML	"/tmp/currentservices.xml"
 #define CURRENTSERVICES_TMP	"/tmp/currentservices.tmp"
+#define CURRENTBOUQUETS_XML	"/tmp/currentbouquets.xml"
+#define CURRENTBOUQUETS_TMP	"/tmp/currentbouquets.tmp"
 
 #define CABLES_XML      	DATADIR "/cables.xml"
 #define SATELLITES_XML  	DATADIR "/satellites.xml"
