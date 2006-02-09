@@ -34,7 +34,7 @@ y_boot_logo_lcd="/var/tuxbox/boot/logo-lcd"
 y_tmp="$y_path_tmp/y.tmp"
 y_wait_live="$y_path_httpd/Y_Live_Wait.yhtm"
 y_tmp_m3u="$y_path_tmp/y.m3u"
-y_tmp_m4u="$y_path_tmp/y.m4u"
+y_tmp_pls="$y_path_tmp/y.pls"
 
 y_out_html="$y_path_tmp/y_out.yhtm"
 y_install="$y_path_tmp/install.sh"
