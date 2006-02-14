@@ -105,7 +105,7 @@ class CTimerdMsg : public CBasicMessage
 	struct commandSetAPid
 	{
 		int   eventID;
-		char  apids[TIMERD_APIDS_MAXLEN];
+		unsigned char  apids;
 	};
 
 	struct commandRemoveTimer

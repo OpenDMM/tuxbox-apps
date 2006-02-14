@@ -104,8 +104,7 @@ bool parse_command(CBasicMessage::Header &rmsg, int connfd)
 						resp.epgID = static_cast<CTimerEvent_NextProgram*>(event)->eventInfo.epgID;
 						resp.epg_starttime = static_cast<CTimerEvent_NextProgram*>(event)->eventInfo.epg_starttime;
 						resp.channel_id = static_cast<CTimerEvent_NextProgram*>(event)->eventInfo.channel_id;
-						strcpy(resp.apids, 
-						       static_cast<CTimerEvent_Record*>(event)->eventInfo.apids.substr(0,sizeof(resp.apids)-1).c_str());
+						resp.apids = static_cast<CTimerEvent_Record*>(event)->eventInfo.apids;
 					}
 					else if(event->eventType == CTimerd::TIMER_RECORD)
 					{
@@ -113,7 +112,7 @@ bool parse_command(CBasicMessage::Header &rmsg, int connfd)
 						resp.epgID = ev->eventInfo.epgID;
 						resp.epg_starttime = ev->eventInfo.epg_starttime;
 						resp.channel_id = ev->eventInfo.channel_id;
-						strcpy(resp.apids, ev->eventInfo.apids.substr(0,sizeof(resp.apids)-1).c_str());
+						resp.apids = ev->eventInfo.apids;
 						strcpy(resp.recordingDir, ev->recordingDir.substr(0,sizeof(resp.recordingDir)-1).c_str());						
 					}
 					else if(event->eventType == CTimerd::TIMER_ZAPTO)
@@ -122,7 +121,7 @@ bool parse_command(CBasicMessage::Header &rmsg, int connfd)
 						resp.epgID = ev->eventInfo.epgID;
 						resp.epg_starttime = ev->eventInfo.epg_starttime;
 						resp.channel_id = ev->eventInfo.channel_id;
-						strcpy(resp.apids, ev->eventInfo.apids.substr(0,sizeof(resp.apids)-1).c_str());
+						resp.apids = ev->eventInfo.apids;
 					}
 					else if(event->eventType == CTimerd::TIMER_REMIND)
 					{
@@ -167,8 +166,7 @@ bool parse_command(CBasicMessage::Header &rmsg, int connfd)
 						resp.epgID = static_cast<CTimerEvent_NextProgram*>(event)->eventInfo.epgID;
 						resp.epg_starttime = static_cast<CTimerEvent_NextProgram*>(event)->eventInfo.epg_starttime;
 						resp.channel_id = static_cast<CTimerEvent_NextProgram*>(event)->eventInfo.channel_id;
-						strcpy(resp.apids, 
-								 static_cast<CTimerEvent_Record*>(event)->eventInfo.apids.substr(0,sizeof(resp.apids)-1).c_str());
+						resp.apids = static_cast<CTimerEvent_Record*>(event)->eventInfo.apids;
 					}
 					else if(event->eventType == CTimerd::TIMER_RECORD)
 					{
@@ -176,7 +174,7 @@ bool parse_command(CBasicMessage::Header &rmsg, int connfd)
 						resp.epgID = ev->eventInfo.epgID;
 						resp.epg_starttime = ev->eventInfo.epg_starttime;
 						resp.channel_id = ev->eventInfo.channel_id;
-						strcpy(resp.apids, ev->eventInfo.apids.substr(0,sizeof(resp.apids)-1).c_str());
+						resp.apids = ev->eventInfo.apids;
 						strcpy(resp.recordingDir, ev->recordingDir.substr(0,sizeof(resp.recordingDir)-1).c_str());
 					}
 					else if(event->eventType == CTimerd::TIMER_ZAPTO)
@@ -185,7 +183,7 @@ bool parse_command(CBasicMessage::Header &rmsg, int connfd)
 						resp.epgID = ev->eventInfo.epgID;
 						resp.epg_starttime = ev->eventInfo.epg_starttime;
 						resp.channel_id = ev->eventInfo.channel_id;
-						strcpy(resp.apids, ev->eventInfo.apids.substr(0,sizeof(resp.apids)-1).c_str());
+						resp.apids = ev->eventInfo.apids;
 					}
 					else if(event->eventType == CTimerd::TIMER_REMIND)
 					{

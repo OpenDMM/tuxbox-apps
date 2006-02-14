@@ -120,7 +120,7 @@ class CTimerEvent_Record : public CTimerEvent
 			   t_channel_id channel_id,
 			   event_id_t epgID = 0,
 			   time_t epg_starttime = 0, 
-			   std::string apids = "",
+			   unsigned char apids = TIMERD_APIDS_STD,
 			   CTimerd::CTimerEventRepeat evrepeat = CTimerd::TIMERREPEAT_ONCE,
 			   uint repeatcount = 1, const std::string recDir = "");
 	CTimerEvent_Record(CConfigFile *config, int iId);
@@ -144,7 +144,7 @@ class CTimerEvent_Zapto : public CTimerEvent_Record
 			  time_t epg_starttime = 0, 
 			  CTimerd::CTimerEventRepeat evrepeat = CTimerd::TIMERREPEAT_ONCE,
 			  uint repeatcount = 1):
-		CTimerEvent_Record(announceTime, alarmTime, (time_t) 0, channel_id, epgID, epg_starttime, "", evrepeat,repeatcount)
+		CTimerEvent_Record(announceTime, alarmTime, (time_t) 0, channel_id, epgID, epg_starttime, 0, evrepeat,repeatcount)
 	{eventType = getEventType();};
 	CTimerEvent_Zapto(CConfigFile *config, int iId):
 		CTimerEvent_Record(config, iId)
@@ -235,7 +235,7 @@ public:
 	CTimerd::CTimerEventTypes *getEventType(int eventID);
 //	int modifyEvent(int eventID, time_t announceTime, time_t alarmTime, time_t stopTime, uint repeatcount, CTimerd::CTimerEventRepeat evrepeat = CTimerd::TIMERREPEAT_ONCE);
 	int modifyEvent(int eventID, time_t announceTime, time_t alarmTime, time_t stopTime, uint repeatcount, CTimerd::CTimerEventRepeat evrepeat, CTimerd::responseGetTimer& data);
-	int modifyEvent(int eventID, std::string apids);
+	int modifyEvent(int eventID, unsigned char apids);
 	int rescheduleEvent(int eventID, time_t announceTime, time_t alarmTime, time_t stopTime);
 	void saveEventsToConfig();
 	void loadEventsFromConfig();

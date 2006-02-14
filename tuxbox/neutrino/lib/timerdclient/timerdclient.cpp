@@ -271,7 +271,7 @@ int CTimerdClient::addTimerEvent( CTimerd::CTimerEventTypes evType, void* data, 
 		evType == CTimerd::TIMER_IMMEDIATE_RECORD )
 	{
 		CTimerd::EventInfo *ei=static_cast<CTimerd::EventInfo*>(data); 
-		strcpy(tei.apids, ei->apids.substr(0, TIMERD_APIDS_MAXLEN-1).c_str());
+		tei.apids = ei->apids;
 		tei.channel_id = ei->channel_id;
 		tei.epg_starttime	= ei->epg_starttime;
 		tei.epgID = ei->epgID;
@@ -282,7 +282,7 @@ int CTimerdClient::addTimerEvent( CTimerd::CTimerEventTypes evType, void* data, 
 	else if(evType == CTimerd::TIMER_RECORD)
 	{
 		CTimerd::RecordingInfo *ri=static_cast<CTimerd::RecordingInfo*>(data); 
-		strncpy(tri.apids, ri->apids, TIMERD_APIDS_MAXLEN-1);
+		tri.apids = ri->apids;
 		tri.channel_id = ri->channel_id;
 		tri.epg_starttime	= ri->epg_starttime;
 		tri.epgID = ri->epgID;
@@ -374,11 +374,11 @@ bool CTimerdClient::shutdown()
 	return response.status;
 }
 //-------------------------------------------------------------------------
-void CTimerdClient::modifyTimerAPid(int eventid, std::string apids)
+void CTimerdClient::modifyTimerAPid(int eventid, unsigned char apids)
 {
 	CTimerdMsg::commandSetAPid data;
 	data.eventID=eventid;
-	strcpy(data.apids, apids.substr(0, TIMERD_APIDS_MAXLEN-1).c_str());
+	data.apids = apids;
 	send(CTimerdMsg::CMD_SETAPID, (char*) &data, sizeof(data)); 
 	close_connection();
 }
