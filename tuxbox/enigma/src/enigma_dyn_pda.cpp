@@ -361,7 +361,7 @@ static eString pda_root(eString request, eString dirpath, eString opts, eHTTPCon
 
 	pdaScreen = 1;
 	screenWidth = 240;
-	eConfig::getInstance()->setKey("/ezap/webif/pdaScreen", pdaScreen);
+	eConfig::getInstance()->setKey("/ezap/webif/screenWidth", screenWidth);
 
 	std::map<eString,eString> opt = getRequestOptions(opts, '&');
 	content->local_header["Content-Type"] = "text/html; charset=utf-8";
