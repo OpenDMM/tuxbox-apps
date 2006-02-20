@@ -2259,7 +2259,7 @@ void CMoviePlayerGui::PlayFile (int parental)
 			if(g_playstate == CMoviePlayerGui::PLAY)
 			{
 				int play_sec = g_fileposition / (MINUTEOFFSET/60);  // get current seconds from moviestart 
-				TRACE(" %6ds\r\n",play_sec);
+				//TRACE(" %6ds\r\n",play_sec);
 
 				if(play_sec + 10 < jump_not_until || play_sec  > jump_not_until +10) jump_not_until = 0; // check if !jump is stale (e.g. if user jumped forward or backward)
 				

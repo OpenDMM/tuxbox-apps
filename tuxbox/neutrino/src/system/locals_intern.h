@@ -628,7 +628,7 @@ const char * locale_real_names[] =
 	"moviebrowser.menu_parental_lock_activated",
 	"moviebrowser.menu_parental_lock_activated_no",
 	"moviebrowser.menu_parental_lock_activated_yes",
-	"moviebrowser.menu_parental_lock_activated_yes_temp",
+	"moviebrowser.menu_parental_lock_activated_no_temp",
 	"moviebrowser.menu_parental_lock_head",
 	"moviebrowser.menu_parental_lock_rate_head",
 	"moviebrowser.scan_for_movies",

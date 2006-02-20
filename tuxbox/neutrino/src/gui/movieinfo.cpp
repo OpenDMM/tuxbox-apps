@@ -3,6 +3,8 @@
 
  	Homepage: http://dbox.cyberphoria.org/
 
+	$Id$
+
 	Kommentar:
 
 	Diese GUI wurde von Grund auf neu programmiert und sollte nun vom
@@ -38,9 +40,6 @@
 
 	Author: Günther@tuxbox.berlios.org
 
-	Revision History:
-	Date			Author		Change Description
-	Nov 2005		Günther	initial start
 
 ****************************************************************************/			
 #ifdef HAVE_CONFIG_H
