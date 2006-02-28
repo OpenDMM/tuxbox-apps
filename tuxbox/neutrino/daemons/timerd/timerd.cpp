@@ -114,6 +114,7 @@ bool parse_command(CBasicMessage::Header &rmsg, int connfd)
 						resp.channel_id = ev->eventInfo.channel_id;
 						resp.apids = ev->eventInfo.apids;
 						strcpy(resp.recordingDir, ev->recordingDir.substr(0,sizeof(resp.recordingDir)-1).c_str());						
+						strcpy(resp.epgTitle, ev->epgTitle.substr(0,sizeof(resp.epgTitle)-1).c_str());						
 					}
 					else if(event->eventType == CTimerd::TIMER_ZAPTO)
 					{
@@ -176,6 +177,7 @@ bool parse_command(CBasicMessage::Header &rmsg, int connfd)
 						resp.channel_id = ev->eventInfo.channel_id;
 						resp.apids = ev->eventInfo.apids;
 						strcpy(resp.recordingDir, ev->recordingDir.substr(0,sizeof(resp.recordingDir)-1).c_str());
+						strcpy(resp.epgTitle, ev->epgTitle.substr(0,sizeof(resp.epgTitle)-1).c_str());						
 					}
 					else if(event->eventType == CTimerd::TIMER_ZAPTO)
 					{

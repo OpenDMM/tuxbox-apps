@@ -36,6 +36,7 @@
 #define REMINDER_MESSAGE_MAXLEN 31
 #define EXEC_PLUGIN_NAME_MAXLEN 31
 #define RECORD_DIR_MAXLEN 100
+#define EPG_TITLE_MAXLEN 50
 
 #define TIMERD_APIDS_CONF 0x00
 #define TIMERD_APIDS_STD  0x01
@@ -100,7 +101,9 @@ class CTimerd
 
 		struct TransferRecordingInfo : TransferEventInfo
 		{
-			char         recordingDir[RECORD_DIR_MAXLEN];			
+			char         recordingDir[RECORD_DIR_MAXLEN];
+			char         epgTitle[EPG_TITLE_MAXLEN];
+
 		};
 
 		class RecordingInfo : public EventInfo
@@ -127,6 +130,7 @@ class CTimerd
 				unsigned char apids;
 				int eventID;
 				char recordingDir[RECORD_DIR_MAXLEN];
+				char epgTitle[EPG_TITLE_MAXLEN];
 			};
 
 		struct RecordingStopInfo
@@ -152,6 +156,7 @@ class CTimerd
 			char              message[REMINDER_MESSAGE_MAXLEN];         //only filled if applicable
 			char              pluginName[EXEC_PLUGIN_NAME_MAXLEN];      //only filled if applicable
 			char              recordingDir[RECORD_DIR_MAXLEN];       //only filled if applicable
+			char              epgTitle[EPG_TITLE_MAXLEN];       //only filled if applicable
 			
 			bool operator< (const responseGetTimer& a) const
 			{

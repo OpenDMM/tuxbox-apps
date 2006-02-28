@@ -116,6 +116,7 @@ class CTimerEvent_Record : public CTimerEvent
  public:
 	CTimerd::EventInfo eventInfo;
 	std::string recordingDir;
+	std::string epgTitle;
 	CTimerEvent_Record(time_t announceTime, time_t alarmTime, time_t stopTime, 
 			   t_channel_id channel_id,
 			   event_id_t epgID = 0,
