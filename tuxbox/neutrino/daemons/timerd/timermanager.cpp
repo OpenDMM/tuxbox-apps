@@ -1188,7 +1188,6 @@ void CTimerEvent_Record::Reschedule()
 	// clear epgId on reschedule
 	eventInfo.epgID = 0;
 	eventInfo.epg_starttime = 0;
-	epgTitle="";
 	CTimerEvent::Reschedule();
 	getEpgId();
 }

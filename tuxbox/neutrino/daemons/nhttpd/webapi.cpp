@@ -958,8 +958,14 @@ bool CWebAPI::ShowTimerList(CWebserverRequest* request)
 					}
 					else
 					{
+						sAddData+="<BR>";
 						sAddData+=timer->epgTitle;
 					}
+				}
+				else
+				{
+					sAddData+="<BR>";
+					sAddData+=timer->epgTitle;
 				}
 
 			}
