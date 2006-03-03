@@ -58,7 +58,7 @@ int main(int argc, char **argv)
 		}
 		else {
 			val = foo;
-			printf("reg %02lx: %02lx\n", reg, val);
+			printf("reg %02lx: %02x\n", reg, ((unsigned char*)(&foo))[0]);
 		}
 	}
 
