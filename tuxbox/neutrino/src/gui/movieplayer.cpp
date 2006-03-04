@@ -1882,7 +1882,7 @@ static void mp_tcpClose(int fd)
 
 //== mp_playFileThread ==
 //=======================
-void *mp_playFileThread (void *filename)
+void *do_mp_playFileThread (void *filename)
 {
 	std::string   fname  = (const char *)filename;
 	bool          failed = true;
@@ -1923,12 +1923,11 @@ void *mp_playFileThread (void *filename)
 	//------------------------
 	if(failed)
 	{
-		fprintf(stderr, "[mp] mp_playFileThread terminated\n");
+		fprintf(stderr, "[mp] mp_playFileThread terminated due to error\n");
 		g_playstate = CMoviePlayerGui::STOPPED;
 		mp_closeDVBDevices(ctx);
-		pthread_exit(NULL);
+		return 0;
 	}
-
 	do
 	{
 		//-- (live) stream or ... --
@@ -2065,7 +2064,6 @@ void *mp_playFileThread (void *filename)
 				rd = mp_tcpRead(ctx->pH, ctx->dvrBuf, rSize, PF_RD_TIMEOUT);
 			else
 				rd	= read(ctx->inFd, ctx->dvrBuf, rSize);
-
 			//-- update file position --
 			ctx->pos += rd;
 			g_fileposition = ctx->pos;
@@ -2154,7 +2152,13 @@ void *mp_playFileThread (void *filename)
 	}
 
 	fprintf(stderr, "[mp] mp_playFileThread terminated\n");
-	pthread_exit (NULL);
+	return 0;
+}
+
+void *mp_playFileThread (void *filename)
+{
+	void *ret = do_mp_playFileThread(filename);
+	pthread_exit(ret);
 }
 
 //=======================================
@@ -2902,7 +2906,7 @@ void CMoviePlayerGui::PlayFile (int parental)
 			case NeutrinoMessages::STANDBY_ON:
 			case NeutrinoMessages::SHUTDOWN:
 			case NeutrinoMessages::SLEEPTIMER:
-				fprintf(stderr,"[mp] teminating due to high-prio event\n");
+				fprintf(stderr,"[mp] terminating due to high-prio event\n");
 				g_RCInput->postMsg (msg, data);
 				requestStop = true; // force exit
 				break;
