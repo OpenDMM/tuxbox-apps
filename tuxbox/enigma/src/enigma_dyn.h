@@ -25,7 +25,7 @@
 #ifdef ENABLE_EXPERT_WEBIF
 #define WEBIFVERSION "5.9.5-Expert"
 #else
-#define WEBIFVERSION "5.9.5"
+#define WEBIFVERSION "5.9.6"
 #endif
 
 #define ZAPMODETV 0

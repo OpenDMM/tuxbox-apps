@@ -1994,7 +1994,7 @@ static eString getvideom3u()
 	eString pmtpid = eString().sprintf("%04x", Decoder::current.pmtpid);
 	eString pcrpid = eString().sprintf("%04x", Decoder::current.pcrpid);
 
-	eString apids;	
+	eString apids = apid;
 	eDVBServiceController *sapi = eDVB::getInstance()->getServiceAPI();
 	if (sapi)
 	{
@@ -2002,7 +2002,9 @@ static eString getvideom3u()
 		for (std::list<eDVBServiceController::audioStream>::iterator it(astreams.begin())
 			;it != astreams.end(); ++it)
 		{
-			apids += "," + eString().sprintf("%04x", it->pmtentry->elementary_PID);
+			eString apid2 = eString().sprintf("%04x", it->pmtentry->elementary_PID);
+			if (apid2 != apid)
+				apids += "," + apid2;
 		}
 	}
 
