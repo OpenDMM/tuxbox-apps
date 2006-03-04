@@ -837,6 +837,7 @@ const char * locale_real_names[] =
 	"recordingmenu.splitsize",
 	"recordingmenu.stopplayback",
 	"recordingmenu.stopsectionsd",
+	"recordingmenu.stream_pmt_pid",
 	"recordingmenu.stream_vtxt_pid",
 	"recordingmenu.use_fdatasync",
 	"recordingmenu.use_o_sync",
