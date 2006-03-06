@@ -61,6 +61,7 @@ typedef struct _OPTIONS {
   int         ts_raw_mode;		// Read full TS in TS stream mode (if hardware supported)
   int         time_mode;		// time print mode
   char        *privateProviderStr;	// Private Provider ID str (usedef tables, descr)
+  int         dsmcc_save;		// save modules from DSM-CC to file
   int         hide_copyright;  		// suppress message at prog start
   int         help;
 } OPTION;

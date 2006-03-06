@@ -13,12 +13,11 @@ $Id$
 */
 
 
-#ifndef _IOP_IOR
-#define _IOP_IOR
+#ifndef _BIOP_MESSAGE
+#define _BIOP_MESSAGE
 
 
-int    IOP_IOR (int v, u_char *b);
-u_long IOP_taggedProfile (int v, u_char *b);
+u_long  BIOP_Message (int v, u_char *b);
 
 
 #endif

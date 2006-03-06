@@ -16,6 +16,12 @@ $Id$
 
 
 $Log$
+Revision 1.14  2006/03/06 00:04:52  rasc
+More DSM-CC stuff: BIOP::FileMessage, BIOP::DirectoryMessage,
+BIOP::Stream::BIOP::StreamEvent, BIOP::ServiceGateway, DSM-TAPs, etc.
+this is a preparation for a patch sent in by Richard Case (DSMCC-Save).
+Attention: Code is still untested and may considered to be buggy (some teststreams are needed)...
+
 Revision 1.13  2006/01/02 18:23:58  rasc
 just update copyright and prepare for a new public tar ball
 
@@ -64,7 +70,7 @@ more PES stuff, DSM descriptors, testdata
 
 
 #ifndef __DSM_INT_UNT_DESCRIPTOR_H
-#define __DSM_INT_UNT_DESCRIPTOR_H 1
+#define __DSM_INT_UNT_DESCRIPTOR_H 
 
 
 int  descriptorDSMCC_INT_UNT (u_char *b);

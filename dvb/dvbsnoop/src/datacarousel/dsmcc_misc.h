@@ -48,7 +48,9 @@ int   dsmcc_UserID (int v, u_char *b, int len);
 u_long dsmcc_print_transactionID_32 (int v, u_char *b);
 
 int   dsmcc_carousel_NSAP_address_B20 (int v, const char *s, u_char *b);
+int   dsmcc_BIOP_DSM_Name (int v, const char *str, u_char *b, u_long *kind);
 int   dsmcc_CarouselDescriptor_Loop (const char *s, u_char *b, int len);
+int   dsmcc_DVB_service_location (int v, u_char *b);
 
 
 #endif
