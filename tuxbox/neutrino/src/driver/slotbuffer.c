@@ -105,3 +105,9 @@ void slotbuffer_advance_write_pointer(slotbuffer_t * const slotbuffer, const siz
 	if (slotbuffer->write_pointer >= slotbuffer->size)
 		slotbuffer->write_pointer = 0;
 }
+
+void slotbuffer_clear(slotbuffer_t * const slotbuffer)
+{
+	slotbuffer->write_pointer = 0;
+	slotbuffer->read_pointer = 0;
+}

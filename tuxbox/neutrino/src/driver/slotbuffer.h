@@ -40,5 +40,6 @@ size_t         slotbuffer_remaining_continuous_read_space (slotbuffer_t * const 
 size_t         slotbuffer_remaining_continuous_write_space(slotbuffer_t * const slotbuffer                    );
 void           slotbuffer_advance_read_pointer            (slotbuffer_t * const slotbuffer, size_t const delta);
 void           slotbuffer_advance_write_pointer           (slotbuffer_t * const slotbuffer, size_t const delta);
+void           slotbuffer_clear                           (slotbuffer_t * const slotbuffer);
 
 #endif
