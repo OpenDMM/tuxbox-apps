@@ -2481,7 +2481,7 @@ static void commandActualEPGchannelName(int connfd, char *data, const unsigned d
 */
 static void sendEventList(int connfd, const unsigned char serviceTyp1, const unsigned char serviceTyp2 = 0, int sendServiceName = 1)
 {
-#define MAX_SIZE_BIGEVENTLIST	64*1024
+#define MAX_SIZE_BIGEVENTLIST	128*1024
 
 	char *evtList = new char[MAX_SIZE_BIGEVENTLIST]; // 128k müssen reichen... schaut euch mal das Ergebnis für loop an, jedesmal wenn die Senderliste aufgerufen wird
 	long count=0, loop=0;
