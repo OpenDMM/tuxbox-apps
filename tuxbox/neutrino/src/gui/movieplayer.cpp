@@ -1749,6 +1749,8 @@ static bool mp_openDVBDevices(MP_CTX *ctx)
 	ctx->adec = -1;
 	ctx->vdec = -1;
 
+	ctx->startDMX = false;
+
 	if((ctx->dmxa = open(DMX, O_RDWR)) < 0
 		|| (ctx->dmxv = open(DMX, O_RDWR)) < 0
 		|| (ctx->dvr = open(DVR, O_WRONLY)) < 0
@@ -1800,9 +1802,6 @@ static void mp_closeDVBDevices(MP_CTX *ctx)
 //==================
 static void mp_softReset(MP_CTX *ctx, bool refill = true)
 {
-	//-- prevent overlapped calls --
-	if (ctx->startDMX) return;
-
 	//-- stop DMX devices --
 	ioctl(ctx->dmxv, DMX_STOP);
 	ioctl(ctx->dmxa, DMX_STOP);
@@ -2594,6 +2593,7 @@ void *mp_playFileMain(void *filename)
 		//-- to get a consitant state. restart of all DVB-devices will --
 		//-- be initiated by a SoftReset in the next turn/start.       --
 		mp_freezeAV(ctx);
+		ctx->startDMX = false;
 
 		//-- check for another item to play --
 		//------------------------------------
@@ -3764,7 +3764,7 @@ void CMoviePlayerGui::showHelpTS()
 	helpbox.addLine(g_Locale->getText(LOCALE_MOVIEPLAYER_TSHELP12));
 	helpbox.addLine("Version: $Revision$");
 	helpbox.addLine("Movieplayer (c) 2003, 2004 by gagga");
-	helpbox.addLine("wabber-edition: v1.0 (c) 2005 by gmo18t");
+	helpbox.addLine("wabber-edition: v1.1 (c) 2005 by gmo18t");
 	hide();
 	helpbox.show(LOCALE_MESSAGEBOX_INFO);
 }
