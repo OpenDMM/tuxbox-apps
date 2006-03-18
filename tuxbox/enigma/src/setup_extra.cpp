@@ -110,7 +110,8 @@ void eExpertSetup::init_eExpertSetup()
 	CONNECT( list.selchanged, eExpertSetup::selInfobarChanged );
 
 	CONNECT((new eListBoxEntryCheck(&list,_("Serviceselector help buttons"),"/ezap/serviceselector/showButtons",_("show colored help buttons in service selector")))->selected, eExpertSetup::colorbuttonsChanged );
-	new eListBoxEntryCheck(&list, _("Show Sat position"), "/extras/showSatPos", _("show sat position in the infobar"));
+	if ( eSystemInfo::getInstance()->getFEType() == eSystemInfo::feSatellite)
+		new eListBoxEntryCheck(&list, _("Show Sat position"), "/extras/showSatPos", _("show sat position in the infobar"));
 	if ( eSystemInfo::getInstance()->getHwType() >= eSystemInfo::DM7000 )
 		CONNECT((new eListBoxEntryCheck(&list,_("Enable fast zapping"),"/elitedvb/extra/fastzapping",_("enables faster zapping.. but with visible sync")))->selected, eExpertSetup::fastZappingChanged );
 	new eListBoxEntryCheck(&list, _("Skip confirmations"), "/elitedvb/extra/profimode", _("enable/disable confirmations"));
