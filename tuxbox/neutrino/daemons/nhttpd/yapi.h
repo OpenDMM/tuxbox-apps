@@ -95,7 +95,7 @@ private:
 	std::string func_unmount_get_list();
 	std::string func_do_reload_nhttpd_config(CWebserverRequest* request);
 	std::string func_get_partition_list();
-
+	std::string func_get_boxtype();
 	// helpers
 	std::string YWeb_cgi_get_ini(std::string filename, std::string varname, std::string yaccess);
 	void YWeb_cgi_set_ini(std::string filename, std::string varname, std::string varvalue, std::string yaccess);
