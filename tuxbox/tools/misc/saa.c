@@ -93,7 +93,7 @@ int read_powersave()
 		return -1;
 	}
 
-	printf("SAA7126 POWER STATE: ");
+	printf("SAA7126 POWER SAVE STATE: ");
 
 	if(arg)
 		printf("ON\n");
