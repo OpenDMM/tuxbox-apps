@@ -47,7 +47,7 @@ int CSectionsdClient::readResponse(char* data,unsigned int size)
 
 	if ( data != NULL )
 	{
-		if ( responseHeader.dataLength != size )
+		if ( responseHeader.dataLength != (unsigned)size )
 			return -1;
 		else
 			return receive_data(data, size);

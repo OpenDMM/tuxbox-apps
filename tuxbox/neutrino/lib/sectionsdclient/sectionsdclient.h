@@ -71,6 +71,14 @@ class CSectionsdClient : private CBasicClient
 	char * parseExtendedEvents(char * dp, CEPGData * epgdata);
 
  public:
+	enum SIlanguageMode_t {
+		ALL,
+		FIRST_FIRST,
+		FIRST_ALL,
+		ALL_FIRST,
+		ALL_ALL,
+	};
+
 	enum events
 		{
 			EVT_TIMESET,

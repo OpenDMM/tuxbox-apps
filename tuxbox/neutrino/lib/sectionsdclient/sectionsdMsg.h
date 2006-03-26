@@ -87,6 +87,14 @@ struct sectionsd
 		CMD_unregisterEvents,
 		setPrivatePid,
 		setSectionsdScanMode,
+
+ 		LoadLanguages,
+ 		SaveLanguages,
+ 		SetLanguages,
+ 		GetLanguages,
+ 		SetLanguageMode,
+ 		GetLanguageMode,
+
 		numberOfCommands        // <- no actual command, end of command marker
 	};
 
@@ -290,4 +298,42 @@ struct sectionsd
 //     unique key (long long, hex) 0xff start time GMT (ctime, hex ) for next event
 
 //
+// LoadLanguages
+//   data of request:
+//     none
+//   data of response:
+//     success status (sizeof(bool))
+//  
+// SaveLanguages
+//   data of request:
+//     none
+//   data of response:
+//     success status (sizeof(bool))
+// 
+// SetLanguages
+//   data of request:
+//     n * 3 bytes (iso_639_2 language codes)
+//   data of response:
+//     success status (sizeof(bool))
+//   
+//	GetLanguages
+//   data of request:
+//     none
+//   data of response:
+//     n * 3 bytes (iso_639_2 language codes)
+//
+//	SetLanguageMode
+//   data of request:
+//     mode (sizeof(CSectionsdClient::SIlanguageMode_t),
+//           ALL, FIRST_FIRST, FIRST_ALL, ALL_FIRST or ALL_ALL)
+//   data of response:
+//     success status (sizeof(bool))
+//
+//	GetLanguageMode
+//   data of request:
+//     none
+//   data of response:
+//     mode (see above)
+//
+
 #endif // SECTIONSDMSG_H
