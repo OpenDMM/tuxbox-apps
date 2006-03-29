@@ -41,11 +41,12 @@
 #define SA	struct sockaddr
 #define SAI	struct sockaddr_in
 
-#define NHTTPD_VERSION "2.2.0"
+#define NHTTPD_VERSION "2.2.1"
 
 #define PRIVATEDOCUMENTROOT	"/share/tuxbox/neutrino/httpd-y"
 #define PUBLICDOCUMENTROOT	"/var/httpd"
 #define NEUTRINO_CONF		"/var/tuxbox/config/neutrino.conf"
+#define HOSTEDDOCUMENTROOT	"/mnt/hosted"
 
 class CWebDbox;
 class TWebserverRequest;
@@ -72,10 +73,12 @@ public:
 
 	std::string		PrivateDocumentRoot;
 	std::string		PublicDocumentRoot;
+	std::string		HostedDocumentRoot;
 	std::string		Zapit_XML_Path;
 
 	std::string		AuthUser;
 	std::string		AuthPassword;
+	std::string		NoAuthClient; // IP of Client with no Authentication check
 
 	CWebDbox		*WebDbox;
 

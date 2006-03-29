@@ -103,10 +103,12 @@ void CWebserver::ReadConfig(void)
 	MustAuthenticate = Config->getBool("Authenticate", false);
 	PrivateDocumentRoot = Config->getString("PrivatDocRoot", PRIVATEDOCUMENTROOT);
 	PublicDocumentRoot = Config->getString("PublicDocRoot", PUBLICDOCUMENTROOT);
+	HostedDocumentRoot = Config->getString("HostedDocRoot", HOSTEDDOCUMENTROOT);
 	NewGui = Config->getBool("NewGui", true);
 	Zapit_XML_Path = Config->getString("Zapit_XML_Path", "/var/tuxbox/config/zapit");
 	AuthUser = Config->getString("AuthUser", "root");
 	AuthPassword = Config->getString("AuthPassword", "dbox2");
+	NoAuthClient = Config->getString("NoAuthClient", "");
 
 	if (Config->getUnknownKeyQueryedFlag() == true)
 		Config->saveConfig(NHTTPD_CONFIGFILE);

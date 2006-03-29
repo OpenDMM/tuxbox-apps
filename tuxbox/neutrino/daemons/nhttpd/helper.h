@@ -35,5 +35,6 @@ std::string itoa(unsigned int conv);
 std::string itoh(unsigned int conv);
 
 bool ySplitString(std::string str, std::string delimiter, std::string& left, std::string& right);
+bool nocase_compare (char c1, char c2);
 
 #endif /* __nhttpd_helper_h__ */

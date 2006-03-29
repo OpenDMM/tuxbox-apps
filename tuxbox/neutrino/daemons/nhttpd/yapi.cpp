@@ -396,7 +396,7 @@ std::string  CyAPI::cgi_cmd_parsing(CWebserverRequest* request, std::string html
 //	if-empty:<value>~<then>~<else>
 //	if-equal:<left_value>~<right_value>~<then>~<else> (left_value == right_value?)
 //	if-not-equal:<left_value>~<right_value>~<then>~<else> (left_val!e == right_value?)
-//	if-file-exists:<filename>~<them>~<else>
+//	if-file-exists:<filename>~<then>~<else>
 //	include-block:<filename>;<block-name>[;<default-text>]
 //	var-get:<varname>
 //	var-set:<varname>=<varvalue>
@@ -463,7 +463,7 @@ std::string  CyAPI::YWeb_cgi_cmd(CWebserverRequest* request, std::string ycmd)
 				while (!fin.eof())
 				{
 					getline(fin, ytmp);
-					yresult += ytmp;
+					yresult += ytmp +"\n";
 				}
 				fin.close();
 			}
