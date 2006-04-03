@@ -220,6 +220,8 @@ CMoviePlayerGui::CMoviePlayerGui()
 	vlcfilefilter.addFilter ("m2p");
 	vlcfilefilter.addFilter ("avi");
 	vlcfilefilter.addFilter ("vob");
+	vlcfilefilter.addFilter ("wmv");
+	vlcfilefilter.addFilter ("m2v");
 
 	filebrowser->Filter = &tsfilefilter;
 }
