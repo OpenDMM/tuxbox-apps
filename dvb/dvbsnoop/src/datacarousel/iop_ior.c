@@ -11,12 +11,15 @@ $Id$
 
  -- dsmcc  Interoperable Object Reference (IOR)
  -- TR 101 202 v1.2.1  4.7.5.2
- -- TS 102 81
+ -- TS 102 812
 
 
 
 
 $Log$
+Revision 1.4  2006/04/04 17:27:56  rasc
+no message
+
 Revision 1.3  2006/03/06 00:04:50  rasc
 More DSM-CC stuff: BIOP::FileMessage, BIOP::DirectoryMessage,
 BIOP::Stream::BIOP::StreamEvent, BIOP::ServiceGateway, DSM-TAPs, etc.
