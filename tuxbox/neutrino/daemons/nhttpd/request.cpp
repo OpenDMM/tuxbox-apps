@@ -633,7 +633,8 @@ bool CWebserverRequest::SendResponse()
 	RewriteURL();
 	std::string _hosted="/hosted/";
 
-	if( Client_Addr.find(IADDR_LOCAL)>0 && Client_Addr.find(Parent->NoAuthClient)>0) // dont check local calls or calls from NoAuthClient
+	if( Client_Addr.find(IADDR_LOCAL)>0 && 
+		(Parent->NoAuthClient == "" || Client_Addr.find(Parent->NoAuthClient)>0)) // dont check local calls or calls from NoAuthClient
 	{
 		if(!Authenticate()) 							// check every call for authtication
         		return false;
