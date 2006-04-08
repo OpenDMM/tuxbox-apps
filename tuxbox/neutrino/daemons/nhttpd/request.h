@@ -73,6 +73,7 @@ protected:
 	bool ParseFirstLine(std::string zeile);
 	bool ParseParams(std::string param_string);
 	bool ParseHeader(std::string header);
+	std::string GetRawLoopingRequest(void);
 
 
 public:

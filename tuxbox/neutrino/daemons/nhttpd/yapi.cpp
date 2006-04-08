@@ -569,7 +569,10 @@ std::string  CyAPI::YWeb_cgi_get_ini(std::string filename, std::string varname, 
 //	aprintf("ini-get: var:%s yaccess:(%s)\n", varname.c_str(), yaccess.c_str());
 	std::string result;
 	if((yaccess == "open") || (yaccess == ""))
+	{
+		Config->clear();
 		Config->loadConfig(filename);
+	}
 	result = Config->getString(varname, "");
 	return result;	
 }
@@ -583,7 +586,10 @@ void  CyAPI::YWeb_cgi_set_ini(std::string filename, std::string varname, std::st
 //	aprintf("ini-set: var:%s yaccess:(%s)\n", varname.c_str(), yaccess.c_str());
 	std::string result;
 	if((yaccess == "open") || (yaccess == ""))
+	{
+		Config->clear();
 		Config->loadConfig(filename);
+	}
 	Config->setString(varname, varvalue);
 	if((yaccess == "save") || (yaccess == ""))
 		Config->saveConfig(filename);
