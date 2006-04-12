@@ -180,7 +180,9 @@ int SIevent::saveXML2(FILE *file) const
 
 std::string SIevent::getName() const
 {
-  return SIlanguage::filter(langName, 1);
+	std::string retval;
+	SIlanguage::filter(langName, 1, retval);
+  return retval;
 }
 
 void SIevent::setName(const std::string &lang, const std::string &name)
@@ -190,7 +192,9 @@ void SIevent::setName(const std::string &lang, const std::string &name)
 
 std::string SIevent::getText() const
 {
-	return SIlanguage::filter(langText, 0);
+	std::string retval;
+	SIlanguage::filter(langText, 0, retval);
+	return retval;
 }
 
 void SIevent::setText(const std::string &lang, const std::string &text)
@@ -200,7 +204,9 @@ void SIevent::setText(const std::string &lang, const std::string &text)
 
 std::string SIevent::getExtendedText() const
 {
-	return SIlanguage::filter(langExtendedText, 0);
+	std::string retval;
+	SIlanguage::filter(langExtendedText, 0, retval);
+	return retval;
 }
 
 void SIevent::appendExtendedText(const std::string &lang, const std::string &text)
