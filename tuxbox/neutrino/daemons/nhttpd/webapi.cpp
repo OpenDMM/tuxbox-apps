@@ -1444,6 +1444,8 @@ void CWebAPI::doNewTimer(CWebserverRequest *request)
 			stopTimeT = atoi(request->ParameterList["stop"].c_str());
 		if(request->ParameterList["announce"] != "")
 			announceTimeT = atoi(request->ParameterList["announce"].c_str());
+		else
+			announceTimeT = alarmTimeT;
 	}
 	else if(request->ParameterList["alDate"] != "") //given formatted
 	{
@@ -1463,6 +1465,7 @@ void CWebAPI::doNewTimer(CWebserverRequest *request)
 	
 		correctTime(alarmTime);
 		alarmTimeT = mktime(alarmTime);
+		announceTimeT = alarmTimeT;
 		struct tm *stopTime = localtime(&alarmTimeT);
 		stopTime->tm_sec = 0;
 		// Stop Time - Format exact! HH:MM
@@ -1508,6 +1511,7 @@ void CWebAPI::doNewTimer(CWebserverRequest *request)
 		}
 		correctTime(alarmTime);
 		alarmTimeT = mktime(alarmTime);
+		announceTimeT = alarmTimeT;
 
 		struct tm *stopTime = alarmTime;
 		if(request->ParameterList["sd"] != "")
