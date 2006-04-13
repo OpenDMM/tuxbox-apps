@@ -41,7 +41,7 @@
 #define SA	struct sockaddr
 #define SAI	struct sockaddr_in
 
-#define NHTTPD_VERSION "2.2.2"
+#define NHTTPD_VERSION "2.2.3"
 
 #define PRIVATEDOCUMENTROOT	"/share/tuxbox/neutrino/httpd-y"
 #define PUBLICDOCUMENTROOT	"/var/httpd"
