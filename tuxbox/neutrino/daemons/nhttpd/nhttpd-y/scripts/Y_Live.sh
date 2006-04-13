@@ -75,7 +75,8 @@ case "$1" in
 
 	prepare_radio)
 		prepare_radio
-		url=`buildStreamingAudioRawURL`
+		Y_APid=`call_webserver "control/yweb?radio_stream_pid"`
+		url="http://$2:31338/$Y_APid"
 		echo "$url" > $y_tmp_m3u
 		echo "$url" > $y_tmp_pls
 		;;
