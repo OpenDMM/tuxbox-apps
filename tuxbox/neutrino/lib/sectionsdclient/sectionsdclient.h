@@ -77,6 +77,7 @@ class CSectionsdClient : private CBasicClient
 		FIRST_ALL,
 		ALL_FIRST,
 		ALL_ALL,
+		LANGUAGE_MODE_OFF,
 	};
 
 	enum events

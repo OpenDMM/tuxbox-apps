@@ -325,20 +325,20 @@ public:
 //      dauer=0;
 //      startzeit=0;
 	}
-    unsigned short eventID;
+	unsigned short eventID;
 	// Name aus dem Short-Event-Descriptor
-  std::string getName() const;
+	std::string getName() const;
 	void setName(const std::string &lang, const std::string &name);
 
 	// Text aus dem Short-Event-Descriptor
-  std::string getText() const;
+	std::string getText() const;
 	void setText(const std::string &lang, const std::string &text);
 
 	std::string itemDescription; // Aus dem Extended Descriptor
 	std::string item; // Aus dem Extended Descriptor
 
 	// Aus dem Extended Descriptor
-  std::string getExtendedText() const;
+	std::string getExtendedText() const;
 	void appendExtendedText(const std::string &lang, const std::string &text);
 
 	std::string contentClassification; // Aus dem Content Descriptor, als String, da mehrere vorkommen koennen
