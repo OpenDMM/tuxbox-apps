@@ -570,6 +570,7 @@ const char * locale_real_names[] =
 	"miscsettings.sptsmode",
 	"miscsettings.startbhdriver",
 	"miscsettings.tuxtxt_cache",
+	"miscsettings.virtual_zap_mode",
 	"motorcontrol.head",
 	"moviebrowser.book_head",
 	"moviebrowser.book_lastmoviestop",
