@@ -620,6 +620,7 @@ void mergeBouquets()
 	xmlNodePtr bouquet;
 	xmlNodePtr current_bouquet;
 	t_bouquet_id bouquet_id;
+	bool found;
 	
 	if (!(tmp = fopen(CURRENTBOUQUETS_XML, "r")))
 		return;
@@ -647,7 +648,7 @@ void mergeBouquets()
 		if (bouquet_id) {
 		
 			current_bouquet = xmlDocGetRootElement(current_parser)->xmlChildrenNode;
-			bool found = false;
+			found = false;
 			
 			while ((current_bouquet) && (!found)) {
 				if (bouquet_id == xmlGetNumericAttribute(current_bouquet, "bouquet_id", 16)) {
@@ -666,13 +667,26 @@ void mergeBouquets()
 			write_bouquet_xml(tmp, bouquet);
 		bouquet = bouquet->xmlNextNode;
 	}
-	/*
+	
 	current_bouquet = xmlDocGetRootElement(current_parser)->xmlChildrenNode;
 	while (current_bouquet) {
-		write_bouquet_xml(tmp, current_bouquet);
+		
+		bouquet_id = xmlGetNumericAttribute(current_bouquet, "bouquet_id", 16);
+		bouquet = xmlDocGetRootElement(bouquet_parser)->xmlChildrenNode;
+	
+		found = false;
+		
+		while ((bouquet) && (!found)) {
+			if (bouquet_id == xmlGetNumericAttribute(bouquet, "bouquet_id", 16))
+				found = true;
+			else
+				bouquet = bouquet->xmlNextNode;
+		}
+		if (!found)
+			write_bouquet_xml(tmp, current_bouquet);
 		current_bouquet = current_bouquet->xmlNextNode;
 	}
-	*/
+	
 	write_bouquet_xml_footer(tmp);
 	fclose(tmp);
 	xmlFreeDoc(bouquet_parser);
@@ -1644,8 +1658,10 @@ bool parse_command(CBasicMessage::Header &rmsg, int connfd)
 	case CZapitMessages::CMD_BQ_SAVE_BOUQUETS:
 	{
 		CZapitMessages::responseCmd response;
+		CZapitMessages::commandBoolean msgBoolean;
 
-		bouquetManager->saveBouquets();
+		CBasicServer::receive_data(connfd, &msgBoolean, sizeof(msgBoolean));
+		bouquetManager->saveBouquets(msgBoolean.truefalse);
 		bouquetManager->renumServices();
 
 		response.cmd = CZapitMessages::CMD_READY;

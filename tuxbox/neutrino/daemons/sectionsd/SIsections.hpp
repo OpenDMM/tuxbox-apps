@@ -768,6 +768,7 @@ private:
 	void parse(void);
 	void parseDescriptors(const char *desc, unsigned len, SIservice &s);
 	void parseServiceDescriptor(const char *buf, SIservice &s);
+	void parsePrivateDataDescriptor(const char *buf, SIservice &s);
 	void parseNVODreferenceDescriptor(const char *buf, SIservice &s);
 };
 

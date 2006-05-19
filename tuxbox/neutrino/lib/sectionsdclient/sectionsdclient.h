@@ -85,7 +85,8 @@ class CSectionsdClient : private CBasicClient
 			EVT_TIMESET,
 			EVT_GOT_CN_EPG,
 			EVT_SERVICES_UPDATE,
-			EVT_BOUQUETS_UPDATE
+			EVT_BOUQUETS_UPDATE,
+			EVT_WRITE_SI_FINISHED
 		};
 	
 	struct epgflags {
@@ -184,6 +185,12 @@ class CSectionsdClient : private CBasicClient
 	void setPrivatePid(const unsigned short pid);
 
 	void setSectionsdScanMode(const int scanMode);
+	
+	void freeMemory();
+	
+	void readSIfromXML(const char * epgxmlname);
+	
+	void writeSI2XML(const char * epgxmlname);
 
 	/*
 	  ein beliebiges Event anmelden

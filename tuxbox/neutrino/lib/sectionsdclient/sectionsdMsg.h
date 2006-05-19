@@ -87,8 +87,12 @@ struct sectionsd
 		CMD_unregisterEvents,
 		setPrivatePid,
 		setSectionsdScanMode,
-
- 		LoadLanguages,
+		
+		freeMemory,
+		readSIfromXML,
+		writeSI2XML,
+ 		
+		LoadLanguages,
  		SaveLanguages,
  		SetLanguages,
  		GetLanguages,

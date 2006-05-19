@@ -45,6 +45,8 @@ int usage (const char * basename)
 	std::cout << "reload channels bouquets: " << basename << " -c" << std::endl;
 	std::cout << "save bouquets: " << basename << " -sb" << std::endl
 		  << std::endl;
+	std::cout << "save bouquets including bouquet others: " << basename << " -sbo" << std::endl
+		  << std::endl;
 	std::cout << "show satellites: " << basename << " -sh" << std::endl;
 	std::cout << "select satellites: " << basename << " -se <satmask> <diseqc order>" << std::endl;
 	std::cout << "start transponderscan: " << basename << " -st" << std::endl
@@ -109,6 +111,7 @@ int main (int argc, char** argv)
 	bool spts = false;
 	bool decmode = false;
 	bool getpids = false;
+	bool includeBouquetOthers = false;
 	uint8_t motorCmdType = 0;
 	uint8_t motorCmd = 0;
 	uint8_t motorNumParameters = 0;
@@ -228,6 +231,13 @@ int main (int argc, char** argv)
 			recordmode = true;
 			continue;
 		}
+		// don't change order with "-sb" or the other will always be found first
+		else if (!strncmp(argv[i], "-sbo", 4))
+		{
+			savebouquets = true;
+			includeBouquetOthers = true;
+			continue;
+		}
 		else if (!strncmp(argv[i], "-sb", 3))
 		{
 			savebouquets = true;
@@ -261,7 +271,7 @@ int main (int argc, char** argv)
                         set_pal = true;
                         continue;
                 }
-        
+
                 else if (!strncmp(argv[i], "--ntsc", 5))
                 {
                         set_ntsc = true;
@@ -456,7 +466,7 @@ int main (int argc, char** argv)
 
 	if (savebouquets)
 	{
-		zapit.saveBouquets();
+		zapit.saveBouquets(includeBouquetOthers);
 		return 0;
 	}
 
