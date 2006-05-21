@@ -2102,7 +2102,7 @@ static void commandCurrentNextInfoChannelID(int connfd, char *data, const unsign
 				{
 					// this is a race condition if first entry found is == mySIeventsOrderUniqueKey.begin()
 					// so perform a check
-					if (efirst != mySIeventsOrderUniqueKey.begin())
+					if (eFirst != mySIeventsOrderUniqueKey.begin())
 						--eFirst;
 
 					if (eFirst != mySIeventsOrderUniqueKey.begin())
@@ -3096,7 +3096,7 @@ static void commandFreeMemory(int connfd, char *data, const unsigned dataLength)
 	EITThreadsPause();
 	dmxSDT.pause();
 	lockTransponders();
-	mySItransponderOrderUniqueKey.clear();
+	mySItranspondersOrderUniqueKey.clear();
 	
 	unlockTransponders();
 	lockServices();
@@ -3109,10 +3109,10 @@ static void commandFreeMemory(int connfd, char *data, const unsigned dataLength)
 	unlockBouquets();
 	lockEvents();
 
-	mySIeventsOrderFirstEndTimeServiceIdEventUniqueKey.clear();
+	mySIeventsOrderFirstEndTimeServiceIDEventUniqueKey.clear();
 	mySIeventsOrderServiceUniqueKeyFirstStartTimeEventUniqueKey.clear();
-	mySIeventsOrderUniqueKey.erase(uniqueKey);
-	mySIeventsNVODorderUniqueKey.erase(uniqueKey);
+	mySIeventsOrderUniqueKey.clear();
+	mySIeventsNVODorderUniqueKey.clear();
 	                                
 	unlockEvents();
 	dmxSDT.unpause();
