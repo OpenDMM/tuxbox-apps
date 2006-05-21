@@ -3093,27 +3093,38 @@ static void commandFreeMemory(int connfd, char *data, const unsigned dataLength)
 	EITThreadsPause();
 	dmxSDT.pause();
 	lockTransponders();
-	MySItranspondersOrderUniqueKey::iterator t = mySItranspondersOrderUniqueKey.begin();
-	while (t != mySItranspondersOrderUniqueKey.end()) {
-		mySItranspondersOrderUniqueKey.erase(t->first);
-		t = mySItranspondersOrderUniqueKey.begin();
-	}
+//	MySItranspondersOrderUniqueKey::iterator t = mySItranspondersOrderUniqueKey.begin();
+//	while (t != mySItranspondersOrderUniqueKey.end()) {
+//		mySItranspondersOrderUniqueKey.erase(t->first);
+//		t = mySItranspondersOrderUniqueKey.begin();
+//	}
+	mySItransponderOrderUniqueKey.clear();
+	
 	unlockTransponders();
 	lockServices();
-	MySIservicesOrderUniqueKey::iterator s = mySIservicesOrderUniqueKey.begin();
-	while (s != mySIservicesOrderUniqueKey.end()) {
-		mySIservicesOrderUniqueKey.erase(s->first);
-		s = mySIservicesOrderUniqueKey.begin();
-	}
+//	MySIservicesOrderUniqueKey::iterator s = mySIservicesOrderUniqueKey.begin();
+//	while (s != mySIservicesOrderUniqueKey.end()) {
+//		mySIservicesOrderUniqueKey.erase(s->first);
+//		s = mySIservicesOrderUniqueKey.begin();
+//	}
+	mySIservicesOrderUniqueKey.clear();
+		
 	unlockServices();
 	lockBouquets();
-	MySIbouquetsOrderUniqueKey::iterator b = mySIbouquetsOrderUniqueKey.begin();
-	while (b != mySIbouquetsOrderUniqueKey.end()) {
-		mySIbouquetsOrderUniqueKey.erase(b->first);
-		b = mySIbouquetsOrderUniqueKey.begin();
-	}
+//	MySIbouquetsOrderUniqueKey::iterator b = mySIbouquetsOrderUniqueKey.begin();
+//	while (b != mySIbouquetsOrderUniqueKey.end()) {
+//		mySIbouquetsOrderUniqueKey.erase(b->first);
+//		b = mySIbouquetsOrderUniqueKey.begin();
+//	}
+	mySIbouquetsOrderUniqueKey.clear();
+
 	unlockBouquets();
 	lockEvents();
+// why not just perform a mySIeventsOrderFirstEndTimeServiceIdEventUniqueKey.clear();
+//                        mySIeventsOrderServiceUniqueKeyFirstStartTimeEventUniqueKey.clear();
+//			  mySIeventsOrderUniqueKey.clear();
+//			  mySIeventsNVODorderUniqueKey.clear();
+// and save a lot of iterations/checks/runtime on this topic?
 	MySIeventsOrderFirstEndTimeServiceIDEventUniqueKey::iterator e = mySIeventsOrderFirstEndTimeServiceIDEventUniqueKey.begin();
 	while (e != mySIeventsOrderFirstEndTimeServiceIDEventUniqueKey.end()) {
 		deleteEvent((*e)->uniqueKey());
