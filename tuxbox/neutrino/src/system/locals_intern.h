@@ -688,6 +688,7 @@ const char * locale_real_names[] =
 	"movieplayer.tshelp10",
 	"movieplayer.tshelp11",
 	"movieplayer.tshelp12",
+	"movieplayer.tshelp13",
 	"movieplayer.tshelp2",
 	"movieplayer.tshelp3",
 	"movieplayer.tshelp4",
