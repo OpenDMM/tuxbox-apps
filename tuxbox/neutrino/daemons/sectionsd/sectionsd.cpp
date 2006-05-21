@@ -588,7 +588,7 @@ static void removeOldEvents(const long seconds)
 static void removeOldEvents(const long seconds)
 {
 	bool goodtimefound;
-//	MySIeventsOrderFirstEndTimeServiceIDEventUniqueKey::iterator etmp;
+	MySIeventsOrderFirstEndTimeServiceIDEventUniqueKey::iterator etmp;
 
 	// Alte events loeschen
 	time_t zeit = time(NULL);
@@ -604,12 +604,12 @@ static void removeOldEvents(const long seconds)
 				break;
 			}
 		}
-//		etmp = e;
-//		etmp++;
+		etmp = e;
+		etmp++;
 		if (false == goodtimefound) {
-			deleteEvent((*(e++))->uniqueKey());
+			deleteEvent((*(e))->uniqueKey());
 		}
-//		e = etmp;
+		e = etmp;
 	}
 	
 	return;
