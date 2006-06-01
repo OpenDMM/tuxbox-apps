@@ -1132,7 +1132,11 @@ PlayStreamThread (void *mrl)
 	std::string stopurl = baseurl;
 	stopurl += "?control=stop";
 	httpres = sendGetRequest(stopurl, response, false);
-
+	// clean up playlist
+	std::string emptyurl = baseurl;
+	emptyurl += "?control=empty";
+	httpres = sendGetRequest(emptyurl, response, false);
+	
 	printf ("[movieplayer.cpp] Waiting for RCST to stop\n");
 	pthread_join (rcst, NULL);
 	printf ("[movieplayer.cpp] Seems that RCST was stopped succesfully\n");
