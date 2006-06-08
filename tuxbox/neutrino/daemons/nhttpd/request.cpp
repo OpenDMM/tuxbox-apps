@@ -600,7 +600,7 @@ void CWebserverRequest::Send500Error(void)
 
 void CWebserverRequest::SendPlainHeader(std::string contenttype)
 {
-	SocketWrite("HTTP/1.0 200 OK\r\nContent-Type: " + contenttype + "; charset: utf-8\r\n\r\n");
+	SocketWrite("HTTP/1.1 200 OK\r\nContent-Type: " + contenttype + "; charset: utf-8\r\nCache-Control: no-cache\r\n\r\n");
 	HttpStatus = 200;
 }
 
