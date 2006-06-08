@@ -824,15 +824,15 @@ int scan_transponder(TP_params *TP)
 
 	scanBouquetManager = new CBouquetManager();
 
+	diseqc_pos = TP->diseqc;
+	for (spI = scanProviders.begin(); spI != scanProviders.end(); spI++)
+		if (diseqc_pos == spI->first) {
+			strcpy(providerName, spI->second.c_str());
+			break;
+		}
+	printf("[scan_transponder] scanning sat %s diseqc %d\n", providerName, diseqc_pos);
 	printf("[scan_transponder] freq %d rate %d fec %d pol %d\n", TP->feparams.frequency, TP->feparams.u.qpsk.symbol_rate, TP->feparams.u.qpsk.fec_inner, TP->polarization);
 
-	//scanProviders[TP->diseqc] = "Test";
-
-	strcpy(providerName, scanProviders.begin()->second.c_str());
-	//strcpy(providerName, "Test");
-	diseqc_pos = scanProviders.begin()->first;
-
-	printf("[scan_transponder] scanning sat %s diseqc %d\n", providerName, diseqc_pos);
 	eventServer->sendEvent(CZapitClient::EVT_SCAN_SATELLITE, CEventServer::INITID_ZAPIT, providerName, strlen(providerName) + 1);
 
 	scan_mode = true;

@@ -234,7 +234,7 @@ bool CSectionsdClient::getLinkageDescriptorsUniqueKey(const event_id_t uniqueKey
 		receive_data(pData, nBufSize);
 		char* dp = pData;
 
-		int	count= *(int *) pData;
+		int count= *(int *) pData;
 		dp+= sizeof(int);
 
 		CSectionsdClient::responseGetLinkageDescriptors response;
@@ -342,11 +342,11 @@ bool CSectionsdClient::getCurrentNextServiceKey(const t_channel_id channel_id, C
 
 
 
-CChannelEventList CSectionsdClient::getChannelEvents(const bool tv_mode)
+CChannelEventList CSectionsdClient::getChannelEvents(const bool tv_mode, t_channel_id *p_requested_channels, int size_requested_channels)
 {
 	CChannelEventList eList;
 
-	if (send(tv_mode ? sectionsd::actualEventListTVshortIDs : sectionsd::actualEventListRadioShortIDs))
+	if (send(tv_mode ? sectionsd::actualEventListTVshortIDs : sectionsd::actualEventListRadioShortIDs, (char*)p_requested_channels, size_requested_channels))
 	{
 		int nBufSize = readResponse();
 
