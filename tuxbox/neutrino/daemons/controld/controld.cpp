@@ -997,6 +997,12 @@ bool parse_command(CBasicMessage::Header &rmsg, int connfd)
 		CBasicServer::receive_data(connfd, &msg5, sizeof(msg5));
 		setScartMode(msg5.mode);
 		break;
+	case CControldMsg::CMD_GETSCARTMODE:
+		//printf("[controld] get scartmode\n");
+		CControldMsg::commandScartMode msg51;
+		msg51.mode = vcr;
+		CBasicServer::send_data(connfd, &msg51, sizeof(CControldMsg::responseScartMode));
+		break;
 	case CControldMsg::CMD_SETVIDEOPOWERDOWN:
 		//printf("[controld] set scartmode\n");
 		CControldMsg::commandVideoPowerSave msg10;
