@@ -36,6 +36,9 @@ const char * getISO639Description(const char * const iso);
 
 class CControlAPI
 {
+	private:
+		int rc_send(int ev, unsigned int code, unsigned int value);
+
 	protected:
 		CWebDbox * Parent;
 
@@ -81,6 +84,12 @@ class CControlAPI
 		bool LCDAction(CWebserverRequest *request);
 		bool YWebCGI(CWebserverRequest *request);
 		bool RebootCGI(CWebserverRequest *request);
+		bool RCEmCGI(CWebserverRequest *request);
+		bool AspectRatioCGI(CWebserverRequest *request);
+		bool VideoFormatCGI(CWebserverRequest *request);
+		bool VideoOutputCGI(CWebserverRequest *request);
+		bool VCROutputCGI(CWebserverRequest *request);
+		bool ScartModeCGI(CWebserverRequest *request);
 	public:
 		static const unsigned int PLUGIN_DIR_COUNT = 5;
 		std::string PLUGIN_DIRS[PLUGIN_DIR_COUNT];
