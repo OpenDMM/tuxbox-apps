@@ -668,7 +668,10 @@ void routeVideo() {
 
   switchvalue v2 = settings.vcroutput == CControld::FORMAT_SVIDEO ? vcr_switches.svideo : vcr_switches.cvbs;
 
-  switchvalue fblk = vcr ? f.fblk : (settings.videooutput == CControld::FORMAT_RGB) ? 1 : 0;
+  switchvalue fblk = 
+    videoOutputDisabled ? 0 
+    : vcr ? f.fblk
+    : (settings.videooutput == CControld::FORMAT_RGB) ? 1 : 0;
 
   routeVideo(v1, f.a1, v2, f.a2, v3, f.a3, fblk);
 }
