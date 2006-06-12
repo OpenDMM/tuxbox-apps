@@ -569,6 +569,7 @@ void setVideoFormat(int format, bool bSaveFormat = true )
 	      execute_start_file(FORMAT_16_9_FILE);
 	      CIRSend irs("16:9");
 	      irs.Send();
+	      last_videoformat = format;
 	    }
 	    break;
 	  case AVS_FNCOUT_EXT43:
@@ -576,12 +577,12 @@ void setVideoFormat(int format, bool bSaveFormat = true )
 	      execute_start_file(FORMAT_4_3_FILE);
 	      CIRSend irs("4:3");
 	      irs.Send();
+	      last_videoformat = format;
 	    }
 	    break;
 	  default:
 	    break;
 	  }
-	  last_videoformat = format;
 	}
 }
 
