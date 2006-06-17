@@ -30,6 +30,9 @@
 #include <string>
 #include <map>
 
+#include <config.h>
+#include <configfile.h>
+
 #include "webserver.h"
 
 typedef std::map<std::string, std::string> CStringList;
@@ -92,6 +95,10 @@ public:
 	std::string Param_String;
 	std::string Client_Addr;
 
+	//ycgi session vars
+	std::map<std::string, std::string> ycgi_vars;
+	CConfigFile *yConfig;
+	
 	CStringList ParameterList;
 	CStringList HeaderList;
 	

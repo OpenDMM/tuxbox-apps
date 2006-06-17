@@ -104,6 +104,8 @@ void CWebserver::ReadConfig(void)
 	PrivateDocumentRoot = Config->getString("PrivatDocRoot", PRIVATEDOCUMENTROOT);
 	PublicDocumentRoot = Config->getString("PublicDocRoot", PUBLICDOCUMENTROOT);
 	HostedDocumentRoot = Config->getString("HostedDocRoot", HOSTEDDOCUMENTROOT);
+	ExtrasDocumentRoot = Config->getString("ExtrasDocRoot", EXTRASDOCUMENTROOT);
+	ExtrasDocumentURL = Config->getString("ExtrasDocURL", EXTRASDOCUMENTURL);
 	NewGui = Config->getBool("NewGui", true);
 	Zapit_XML_Path = Config->getString("Zapit_XML_Path", "/var/tuxbox/config/zapit");
 	AuthUser = Config->getString("AuthUser", "root");

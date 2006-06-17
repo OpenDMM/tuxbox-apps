@@ -29,12 +29,15 @@
 
 // c++
 #include <string>
+#include <vector>
 
 std::string b64decode(char *s);
 std::string itoa(unsigned int conv);
 std::string itoh(unsigned int conv);
 
+std::string trim(std::string const& source, char const* delims = " \t\r\n");
 bool ySplitString(std::string str, std::string delimiter, std::string& left, std::string& right);
+std::vector<std::string> ySplitStringVector(std::string str, std::string delimiter);
 bool nocase_compare (char c1, char c2);
 
 #endif /* __nhttpd_helper_h__ */
