@@ -601,7 +601,7 @@ void CWebserverRequest::Send500Error(void)
 
 void CWebserverRequest::SendPlainHeader(std::string contenttype)
 {
-	SocketWrite("HTTP/1.0 200 OK\r\nContent-Type: " + contenttype + "\r\nCache-Control: no-cache\r\n\r\n");
+	SocketWrite("HTTP/1.1 200 OK\r\nContent-Type: " + contenttype + "\r\nCache-Control: no-cache\r\n\r\n");
 	HttpStatus = 200;
 }
 
@@ -610,7 +610,7 @@ void CWebserverRequest::SendPlainHeader(std::string contenttype)
 void CWebserverRequest::RewriteURL()
 {
 
-	if(( URL.length() == 1) && (URL[URL.length()-1] == '/' ))		// Wenn letztes Zeichen ein / ist dann index.html anhängen
+	if(( URL.length() == 1) && (URL[URL.length()-1] == '/' ))		// Wenn letztes Zeichen ein / ist dann index.html anhï¿½gen
 	{
 		Path = URL;
 		Filename = "index.html";
@@ -794,7 +794,7 @@ std::string CWebserverRequest::GetContentType(std::string ext)
 bool CWebserverRequest::SendFile(const std::string path,const std::string filename)
 {
 	if( (tmpint = OpenFile(path, filename) ) != -1 )
-	{											// Wenn Datei geöffnet werden konnte
+	{											// Wenn Datei geï¿½fnet werden konnte
 		if (!SocketWrite("HTTP/1.0 200 OK\r\n"))
 		{
 			close(tmpint);
