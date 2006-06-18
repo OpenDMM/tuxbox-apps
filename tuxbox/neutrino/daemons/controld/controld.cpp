@@ -677,6 +677,8 @@ void routeVideo() {
   routeVideo(v1, f.a1, v2, f.a2, v3, f.a3, fblk);
 }
 
+void disableVideoOutput(bool disable);
+
 void switch_vcr( bool vcr_on)
 {
 	int activeAspectRatio;
@@ -685,6 +687,7 @@ void switch_vcr( bool vcr_on)
 	{
 		//turn to scart-input
 	        activeAspectRatio = aspectRatio_vcr;
+		disableVideoOutput(false);
 		printf("[controld]: switch to scart-input... (%d)\n", settings.boxtype);
 	}
 	else
