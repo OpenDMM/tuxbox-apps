@@ -315,15 +315,15 @@ function live_kill_streams()
 }
 function live_switchto(_mode)
 {
-	live_kill_streams();
+	//live_kill_streams();
 	var _actual_spts = dbox_spts_status();
 	if(_mode == "tv" && !_actual_spts)
 		dbox_spts_set(true);
 	else if(_mode == "radio" && _actual_spts)
 		dbox_spts_set(false);
 	
-	//var _actual_mode = dbox_getmode();
-	//if(_actual_mode != _mode)
+	var _actual_mode = dbox_getmode();
+	if(_actual_mode != _mode)
 		dbox_setmode(_mode);
 }
 function live_lock()
