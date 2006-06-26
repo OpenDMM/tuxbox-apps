@@ -187,6 +187,8 @@ void eExpertSetup::init_eExpertSetup()
 		sptsMode = 1;
 	eConfig::getInstance()->setKey("/extras/spts_mode", sptsMode);
 	CONNECT_2_1((new eListBoxEntryCheck(&list, _("Enable SPTS-Mode"), "/extras/spts_mode", _("use SPTS-Mode (enables TS-recording)")))->selected, eExpertSetup::fileToggle,"/var/etc/.spts_mode");
+	if ( eSystemInfo::getInstance()->getHwType() == eSystemInfo::dbox2Philips )
+	CONNECT_2_1((new eListBoxEntryCheck(&list, _("New Philips driver"), "/extras/tda80xx", _("use tda80xx driver for Philips boxes")))->selected, eExpertSetup::fileToggle,"/var/etc/.tda80xx");
 #endif
 	setHelpID(92);
 }
