@@ -674,6 +674,8 @@ void SIsectionSDT::parseDescriptors(const char *des, unsigned len, SIservice &s)
 //      printf("Found Private Data Specifier\n");
       parsePrivateDataDescriptor((const char *)desc, s);
     }
+    // hotfix for ARD crash
+    if (len<desc->descriptor_length+2) break;
     len-=desc->descriptor_length+2;
     des+=desc->descriptor_length+2;
   }
