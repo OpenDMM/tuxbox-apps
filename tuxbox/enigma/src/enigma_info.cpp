@@ -155,6 +155,8 @@ public:
 			case eSystemInfo::feTerrestrial:
 				frontend->setText(_("Frontend: Terrestrial"));
 				break;
+			default:
+				frontend->setText(_("Frontend: Unknown"));
 		}
 
 		eString sharddisks;

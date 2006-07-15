@@ -356,6 +356,8 @@ static eString getXSLStreamInfo(eString request, eString dirpath, eString opt, e
 		case eSystemInfo::feTerrestrial:
 			result = readFile(TEMPLATE_DIR + "streaminfo_terrestrial.xsl");
 			break;
+		default:
+			result = readFile(TEMPLATE_DIR + "streaminfo_unknown.xsl");
 	}
 	
 	return result;
@@ -652,7 +654,8 @@ static eString getXMLStreamInfo(eString request, eString dirpath, eString opt, e
 				break;
 			}
 			default:
-				result.strReplace("#FRONTEND#", "NONE");
+				result.strReplace("#FRONTEND#", "Unknown");
+				break;
 		}
 	}
 	
