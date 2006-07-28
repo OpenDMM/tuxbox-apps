@@ -368,6 +368,12 @@ bool setStaticAttributes(const std::string name, const bool automatic_start, con
 bool setDhcpAttributes(const std::string name, const bool automatic_start)
 {
 	std::map<std::string, std::string> attribute;
+	const size_t max_hostname_len = 128;
+	char hostname[max_hostname_len];
+
+	if (gethostname(hostname, max_hostname_len) == 0) {
+		attribute["hostname"] = (std::string)hostname;
+	}
 
 	return write_interface("/etc/network/interfaces", name, automatic_start, "inet", "dhcp", attribute);
 }
