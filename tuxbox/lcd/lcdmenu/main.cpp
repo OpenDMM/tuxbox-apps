@@ -32,31 +32,46 @@ int main (int argc, char **argv)
     if (!menu->isAvailable())
 	    return 0;
 
-    /* draw the menu */
-    menu->drawMenu();
-
-    /* select default entry */
-    menu->selectEntry(menu->getDefaultEntry());
-
-    /* get command from remote control */
-    menu->rcLoop();
-
-    /* remember last selection */
-    if (menu->getSelectedEntry() != menu->getDefaultEntry())
+    if (menu->onlyOneGUI())
     {
+      menu->selectEntry(menu->getDefaultEntry());
+      std::cout << "[lcdmenu] Only one GUI was found, selecting that\n";
+    }
+    else
+    {
+      /* draw the menu */
+      menu->drawMenu();
+
+      /* select default entry */
+      menu->selectEntry(menu->getDefaultEntry());
+
+      /* get command from remote control */
+      menu->rcLoop();
+
+      /* Get here only if user really pressed a button (i.e. not when
+	 timeout occurs) */
+
+      /* remember last selection */
+      if (menu->getSelectedEntry() != menu->getDefaultEntry())
+      {
 	menu->getConfig()->setInt32("default_entry", menu->getSelectedEntry());
 	menu->getConfig()->setModifiedFlag(true);
-    }
+      }
 
-    if (menu->getConfig()->getModifiedFlag())
-    {
+      if (menu->getConfig()->getModifiedFlag())
+      {
 	/* save configuraion */
 	menu->getConfig()->saveConfig(CONFIGFILE);
+      }
+
     }
 
     /* clear screen before exit */
     menu->draw_fill_rect(0, 0, 119, 63, CLCDDisplay::PIXEL_OFF);
     menu->update();
 
+    menu->exec();		// Does not return, unless error occurs
+
+    // Fallback to old behavior
     return menu->getSelectedEntry();
 }

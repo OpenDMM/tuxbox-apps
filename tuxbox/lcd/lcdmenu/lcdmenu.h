@@ -58,7 +58,9 @@ class CLCDMenu : public CLCDDisplay
 		bool selectEntry (int);
 		int getDefaultEntry () { return defaultEntry; }
 		int getSelectedEntry () { return selectedEntry; }
+		bool onlyOneGUI() { return noGUIs <= 1; }
 		void addNumberPrefix ();
+		void exec();
 
 		bool drawMenu ();
 		bool drawString (std::string, int, int, int);
@@ -102,10 +104,14 @@ class CLCDMenu : public CLCDDisplay
 
 		int selectedEntry;
 		int entryCount;
+		int noGUIs;
 		int defaultEntry;
 		int visibleEntries;
 
 		std::vector <std::string> entries;
+		std::vector <std::string> entries_files;
+		std::vector <std::string> entries_execfiles;
+		std::vector <std::string> entries_isGUI;
 		std::vector <int> pinEntries;
 
 		int pinFailures;
