@@ -118,8 +118,10 @@ ePictureViewer::ePictureViewer(const eString &filename)
 	l->setFont(eSkin::getActive()->queryFont("epg.title"));
 	l->resize(eSize(clientrect.width() - 100, 30));
 	l->setText(_("Loading slide... please wait."));
-	
+
+#ifndef DISABLE_LCD
 	pLCD = eZapLCD::getInstance();
+#endif
 
 	fh_root = NULL;
 	m_scaling = COLOR;
