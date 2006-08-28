@@ -985,6 +985,7 @@ const char * locale_real_names[] =
 	"streamingmenu.streaming_resolution",
 	"streamingmenu.streaming_server_cddrive",
 	"streamingmenu.streaming_server_startdir",
+    "streamingmenu.streaming_show_tv_in_browser",
 	"streamingmenu.streaming_transcode_audio",
 	"streamingmenu.streaming_transcode_video_codec",
 	"streamingmenu.streaming_type",
