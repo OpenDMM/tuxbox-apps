@@ -2686,8 +2686,8 @@ if(g_settings.streaming_use_buffer)
 			//-- analyze TS file (set apid/vpid/ac3, filesize, nSegsMax, ... in --
 			//-- ctx) on leave, read position of file will be set to start pos.  -- 
 			mp_analyze(ctx);
-        	//-- audio track may be selected --
-        	mp_selectAudio(ctx);
+			//-- audio track may be selected --
+			mp_selectAudio(ctx);
 }
 else
 {
@@ -2696,8 +2696,8 @@ else
 
 			//-- analyze TS file (set apid/vpid/ac3 in ctx) --
 			mp_analyze(ctx);
-        	//-- audio track may be selected --
-        	mp_selectAudio(ctx);
+			//-- audio track may be selected --
+			mp_selectAudio(ctx);
 
 			//-- get file size --
 			ctx->fileSize = lseek (ctx->inFd, 0L, SEEK_END);
@@ -2720,7 +2720,7 @@ else
 		
 if(!g_settings.streaming_use_buffer)
 {
-mp_bufferReset(ctx);
+	mp_bufferReset(ctx);
 }
 
 		//-- aspect ratio init --
@@ -2736,7 +2736,7 @@ if(g_settings.streaming_use_buffer)
 		//-- lcd stuff --
 		int cPercent   = 0;
 		int lPercent   = -1;
-		int lcdSetting = g_settings.lcd_setting[SNeutrinoSettings::LCD_SHOW_VOLUME]; 
+		lcdSetting = g_settings.lcd_setting[SNeutrinoSettings::LCD_SHOW_VOLUME];
 		
 		//== (II) player loop: consists of "writer" in this thread and   ==
 		//== "reader" in an extra thread encapsulated by a queue object, ==
@@ -2837,7 +2837,7 @@ else
 			write(ctx->dvr, ctx->tmpBuf, rd);
 		}
 }
-        
+
 		//-- restore original lcd settings --			
 		g_settings.lcd_setting[SNeutrinoSettings::LCD_SHOW_VOLUME]=lcdSetting;
 		
