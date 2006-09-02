@@ -43,6 +43,9 @@
 		based on code of Steffen Hehn 'McClean'
 
 	$Log$
+	Revision 1.9  2006/09/02 21:34:27  guenther
+	Movie info is now updated after movie is erased
+	
 	Revision 1.8  2006/02/20 01:10:34  guenther
 	- temporary parental lock updated - remove 1s debug prints in movieplayer- Delete file without rescan of movies- Crash if try to scroll in list with 2 movies only- UTF8XML to UTF8 conversion in preview- Last file selection recovered- use of standard folders adjustable in config- reload and remount option in config
 	
@@ -1889,8 +1892,8 @@ void CMovieBrowser::onDeleteFile(MI_MOVIE_INFO& movieSelectionHandler)
 			refreshBrowserList();
 			refreshLastPlayList();	
 			refreshLastRecordList();	
+            refreshMovieInfo();
 	    		
-			//loadMovies(); // //TODO we might remove the handle from the handle list only, to avoid reload .....
 			refresh();
 		}
     } 
