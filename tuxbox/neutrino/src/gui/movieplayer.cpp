@@ -3761,7 +3761,7 @@ void CMoviePlayerGui::PlayFile (int parental)
 				//-- jump to end --
 			case CRCInput::RC_8:
 				g_jumpseconds = PF_JMP_END;  // dirty hack 2
-				g_playstate = CMoviePlayerGui::JF;
+				g_playstate = CMoviePlayerGui::JPOS;
 				update_lcd = true;
 				FileTime.hide();
 				break;
