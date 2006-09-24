@@ -1018,6 +1018,13 @@ bool parse_command(CBasicMessage::Header &rmsg, int connfd)
 		disableVideoOutput(msg10.powerdown);
 		break;
 		
+	case CControldMsg::CMD_GETVIDEOPOWERDOWN:
+		//printf("[controld] CMD_GETVIDEOPOWERDOWN\n");
+		CControldMsg::responseVideoPowerSave msg101;
+		msg101.videoPowerSave = videoOutputDisabled;
+		CBasicServer::send_data(connfd, &msg101, sizeof(msg101));
+		break;
+
 	case CControldMsg::CMD_GETVIDEOFORMAT:
 		//printf("[controld] get videoformat (fnc)\n");
 		CControldMsg::responseVideoFormat msg8;
