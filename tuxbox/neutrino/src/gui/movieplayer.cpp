@@ -3414,7 +3414,7 @@ void CMoviePlayerGui::PlayFile (int parental)
     			if(g_ac3flags[count] == 1)
     			{
                     get_movie_info_apid_name(g_apids[count],p_movie_info,&apidtitle);
-    				if(apidtitle.find("AC3") < 0) //std::nopos)
+     				if((int)apidtitle.find("AC3") < 0) //std::nopos)
                         apidtitle.append(" (AC3)");
                     APIDSelector.addItem(new CMenuForwarderNonLocalized(apidtitle.c_str(), true, NULL, APIDChanger, apidnumber,CRCInput::convertDigitToKey(count+1)),
                                                (count == 0));
@@ -3750,7 +3750,7 @@ void CMoviePlayerGui::PlayFile (int parental)
 				FileTime.hide();
 				break;
 
-				//-- jump 10 minutes back --
+				//-- jump 10 minutes back -- 
 			case CRCInput::RC_7:
 				g_jumpseconds = -10 * 60;
 				g_playstate   = CMoviePlayerGui::JB;
