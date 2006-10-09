@@ -139,6 +139,7 @@ void eExpertSetup::init_eExpertSetup()
 		eConfig::getInstance()->setKey("/extras/mhwepg", mhwepg);
 	new eListBoxEntryCheck(&list, _("Enable MHW EPG"), "/extras/mhwepg", _("Mediahighway EPG, activate swap space when using with multiple operators"));
 #endif
+	new eListBoxEntryCheck(&list, _("Use EPG cache for Infobar"), "/ezap/osd/useEPGCache", _("use the 'EPG cache' for the infobar if the EIT is unavailable"));	
 #ifdef HAVE_DREAMBOX_HARDWARE
 	if ( eSystemInfo::getInstance()->getHwType() == eSystemInfo::DM7000 )
 	{
