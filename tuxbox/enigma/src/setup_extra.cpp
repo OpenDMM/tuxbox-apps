@@ -193,11 +193,11 @@ void eExpertSetup::init_eExpertSetup()
 	eConfig::getInstance()->setKey("/extras/spts_mode", sptsMode);
 	CONNECT_2_1((new eListBoxEntryCheck(&list, _("Enable SPTS-Mode"), "/extras/spts_mode", _("use SPTS-Mode (enables TS-recording)")))->selected, eExpertSetup::fileToggle,"/var/etc/.spts_mode");
 //File I/O-Options
-	int hdd_O_SYNC = 0;
-	if (access("/var/etc/.o_sync", R_OK) == 0)
-		hdd_O_SYNC = 1;
-	eConfig::getInstance()->setKey("/extras/hdd_O_SYNC", hdd_O_SYNC);
-	CONNECT_2_1((new eListBoxEntryCheck(&list, _("Use O_SYNC"), "/extras/hdd_O_SYNC", _("Write file using the O_SYNC-Option")))->selected, eExpertSetup::fileToggle,"/var/etc/.o_sync");
+	int OSyncDisable = 0;
+	if (access("/var/etc/.no_o_sync", R_OK) == 0)
+		OSyncDisable = 1;
+	eConfig::getInstance()->setKey("/extras/O_SYNC_disable", OSyncDisable);
+	CONNECT_2_1((new eListBoxEntryCheck(&list, _("Disable O_SYNC"), "/extras/O_SYNC_disable", _("Don't user O_SYNC when writing to a file")))->selected, eExpertSetup::fileToggle,"/var/etc/.no_o_sync");
 //Alternative Frontenddriver for Philips
 	if ( eSystemInfo::getInstance()->getHwType() == eSystemInfo::dbox2Philips )
 	{
