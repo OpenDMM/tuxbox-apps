@@ -435,6 +435,10 @@ void service_descriptor(const unsigned char * const buffer, const t_service_id s
 		providerName = "Digital+"; 
 		in_blacklist = true;
 	}
+	else if (providerName == "BetaDigital")
+	{
+		in_blacklist = true;
+	}
 
 	if (in_blacklist)
 	{
