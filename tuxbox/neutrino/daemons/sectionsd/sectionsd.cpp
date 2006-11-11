@@ -4863,7 +4863,7 @@ static void addBouquetToCurrentXML(xmlNodePtr bouquet, t_bouquet_id bouquet_id)
 	xmlNodePtr node;
 
 	if (!(dst = fopen(CURRENTBOUQUETS_TMP, "w"))) {
-		dprintf("unable to open %s for writing", CURRENTSERVICES_TMP);
+		dprintf("unable to open %s for writing", CURRENTBOUQUETS_TMP);
 		return;
 	}
 
