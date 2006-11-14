@@ -504,6 +504,11 @@ static void addEventTimes(const SIevent &evt)
 
 //			printf("Updating: %04x times.size() = %d\n", (int) evt.uniqueKey(), e->second->times.size());
 		}
+		else
+		{
+			// Event nicht vorhanden -> einfuegen
+			addEvent(evt);
+		}
 	}
 }
 
