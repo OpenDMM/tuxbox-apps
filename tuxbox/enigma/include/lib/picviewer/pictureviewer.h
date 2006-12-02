@@ -80,6 +80,7 @@ public:
 //	void Zoom(float factor);
 //	void Move(int dx, int dy);
 	void slideshowTimeout();
+	eString GetCurrentFile() { return *myIt; }
 private:
 	CFormathandler *fh_root;
 	ScalingMode m_scaling;
