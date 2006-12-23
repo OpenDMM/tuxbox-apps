@@ -340,7 +340,7 @@ static void Usage ()
 	printf(
 	"DBoxShot (c) by Daniel Scheack <dscheack@t-online.de>\n"
 	"%s\n"
-	"Usage: dboxshot [-d] [-h] [-c hex] [-t n] [-o filename]\n"
+	"Usage: dboxshot [-d] [-h] [-r] [-c hex] [-t n] [-o filename]\n"
 	"  Options\n"
 	"  -d\tDebugmodus enabled\n"
 	"  -h\tprint out this message\n"
@@ -354,7 +354,7 @@ static void Usage ()
 int main (int argc, char* argv[])
 {
 	int opt;
-	char *filename = "fbout.bmp";
+	char *filename = "/tmp/fbout.bmp";
 	bgcolor bg;
 	int comp = false;
 	int bgflag = false;
