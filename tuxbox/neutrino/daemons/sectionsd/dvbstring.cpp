@@ -224,7 +224,6 @@ CDVBString::CDVBString(const char * the_content, const int size)
 		content = "";
 	else
 	{
-		std::string s;
 		while(i < size)
 		{
 			// skip characters 0x00 - 0x1F & 0x80 - 0x9F
