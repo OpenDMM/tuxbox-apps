@@ -186,8 +186,8 @@ bool get_movie_info_apid_name(int apid,MI_MOVIE_INFO* movie_info,std::string* ap
 {
     if(movie_info == NULL || apidtitle == NULL)
         return false;
-        
-    for(int i=0; i < movie_info->audioPids.size(); i++)
+
+    for(unsigned int i=0; i < movie_info->audioPids.size(); i++)
     {
        //printf("check pid MovieInfo %d Stream%d\n",p_movie_info->audioPids[i].epgAudioPid,g_apids[count]);
        if( movie_info->audioPids[i].epgAudioPid == apid && 
@@ -205,7 +205,7 @@ int get_next_movie_info_bookmark_pos_sec(MI_MOVIE_INFO* movie_info, int pos_sec,
 {
     if(movie_info == NULL)    
         return -1;
-        
+
     int new_pos_sec ; // init below
 
     if(direction == true)
@@ -250,7 +250,7 @@ int get_next_movie_info_bookmark_pos_sec(MI_MOVIE_INFO* movie_info, int pos_sec,
     }
     if(found == false) // if we did not found any, set return to invalid
         new_pos_sec = -1;
-        
+
     printf("current %ds,new %ds\n",pos_sec,new_pos_sec);
     return new_pos_sec;
 }
