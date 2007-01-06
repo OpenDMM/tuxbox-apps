@@ -2326,7 +2326,7 @@ static eString remoteControl(eString request, eString dirpath, eString opts, eHT
 				sprintf(tmp, "/dev/input/event%d", cnt);
 				if (stat(tmp, &s))
 					break;
-				if ((fd=open(tmp, O_RDONLY)) == -1)
+				if ((fd=open(tmp, O_RDWR|O_NONBLOCK)) == -1)
 					eDebug("open %s failed(%m)", tmp);
 				else 
 				{
@@ -2355,7 +2355,7 @@ static eString remoteControl(eString request, eString dirpath, eString opts, eHT
 		{
 			char tmp[128];
 			sprintf(tmp, "/dev/input/event%d", keyb_evt_dev_num);
-			if ((evd=open(tmp, O_RDONLY)) < 0)
+			if ((evd=open(tmp, O_RDWR|O_NONBLOCK)) < 0)
 				eDebug("open %s failed(%m)", tmp);
 		}
 InputDevFound:
