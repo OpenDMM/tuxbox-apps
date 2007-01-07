@@ -186,6 +186,8 @@ class CSectionsdClient : private CBasicClient
 
 	CChannelEventList getEventsServiceKey(const t_channel_id channel_id);
 
+    bool getEventsServiceKeySearchAdd(CChannelEventList& evtlist,const t_channel_id channel_id,char m_search_typ,std::string& m_search_text);
+
 	bool getEPGid(const event_id_t eventid, const time_t starttime, CEPGData * epgdata);
 
 	bool getActualEPGServiceKey(const t_channel_id channel_id, CEPGData * epgdata);

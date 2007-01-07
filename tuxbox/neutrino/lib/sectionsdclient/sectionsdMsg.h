@@ -60,7 +60,7 @@ struct sectionsd
 		dummy2,
 		dumpStatusinformation,
 		//allEventsChannelName,
-		dummy3,
+		allEventsChannelIDSearch,
 		setHoursToCache,
 		setEventsAreOldInMinutes,
 		dumpAllServices,
