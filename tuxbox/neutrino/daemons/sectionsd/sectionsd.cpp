@@ -6819,9 +6819,9 @@ static void readEPGFilter(void)
 
 		while (filter) {
 
-			onid = xmlGetNumericAttribute(filter, "original_network_id", 16);
-			tsid = xmlGetNumericAttribute(filter, "transport_stream_id", 16);
-			sid  = xmlGetNumericAttribute(filter, "service_id", 16);
+			onid = xmlGetNumericAttribute(filter, "onid", 16);
+			tsid = xmlGetNumericAttribute(filter, "tsid", 16);
+			sid  = xmlGetNumericAttribute(filter, "serviceID", 16);
 
 			addEPGFilter(onid, tsid, sid);
 
