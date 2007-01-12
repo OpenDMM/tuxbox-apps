@@ -1396,7 +1396,7 @@ static void commandDumpAllServices(int connfd, char* /*data*/, const unsigned /*
 	return ;
 }
 
-
+#if 0
 static void commandSetEventsAreOldInMinutes(int connfd, char *data, const unsigned dataLength)
 {
 	if (dataLength != 2)
@@ -1432,6 +1432,7 @@ static void commandSetHoursToCache(int connfd, char *data, const unsigned dataLe
 
 	return ;
 }
+#endif
 
 static void sendAllEvents(int connfd, t_channel_id serviceUniqueKey, bool oldFormat = true,char search = 0,std::string* search_text = NULL )
 {
@@ -3920,9 +3921,9 @@ static s_cmd_table connectionCommands[sectionsd::numberOfCommands] = {
 {	commandDummy2,				"commandDummy2"				},
 {	commandDumpStatusInformation,		"commandDumpStatusInformation"		},
         //commandAllEventsChannelName,
-{	commandAllEventsChannelIDSearch,        "commandAllEventsChannelIDSearch"				},
-{	commandSetHoursToCache,			"commandSetHoursToCache"		},
-{	commandSetEventsAreOldInMinutes,        "commandSetEventsAreOldInMinutes"	},
+{	commandAllEventsChannelIDSearch,        "commandAllEventsChannelIDSearch"	},
+{	commandDummy2,				"commandSetHoursToCache"		},
+{	commandDummy2,				"commandSetEventsAreOldInMinutes"	},
 {	commandDumpAllServices,                 "commandDumpAllServices"		},
 {	commandEventListRadio,                  "commandEventListRadio"			},
 {	commandGetNextEPG,                      "commandGetNextEPG"			},
