@@ -320,6 +320,10 @@ int CPictureViewerGui::show()
 					update = true;
 				}
 			}
+			else if(m_state == SLIDESHOW)
+			{
+				m_state = VIEW;
+			}
 		}
 		else if(msg==CRCInput::RC_green)
 		{
@@ -374,7 +378,7 @@ int CPictureViewerGui::show()
 		}
 		else if(msg==CRCInput::RC_blue)
 		{
-			if ((m_state == MENU) && (!playlist.empty()))
+			if ((m_state == MENU || m_state == VIEW) && (!playlist.empty()))
 			{
 				m_time=(long)time(NULL);
 				view(selected);
