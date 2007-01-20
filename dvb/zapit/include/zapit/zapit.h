@@ -19,7 +19,7 @@ int start_scan(bool scan_mode);
 /**************************************************************/
 
 void addChannelToBouquet (const unsigned int bouquet, const t_channel_id channel_id);
-void sendBouquets        (int connfd, const bool emptyBouquetsToo);
+void sendBouquets        (int connfd, const bool emptyBouquetsToo, const CZapitClient::channelsMode mode = CZapitClient::MODE_CURRENT);
 void internalSendChannels(int connfd, ChannelList* channels);
 void sendBouquetChannels (int connfd, const unsigned int bouquet, CZapitClient::channelsMode mode = CZapitClient::MODE_CURRENT);
 void sendChannels        (int connfd, const CZapitClient::channelsMode mode = CZapitClient::MODE_CURRENT, const CZapitClient::channelsOrder order = CZapitClient::SORT_BOUQUET);

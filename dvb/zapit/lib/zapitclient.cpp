@@ -268,11 +268,12 @@ void CZapitClient::zaptoNvodSubService(const int num)
 
 /* gets all bouquets */
 /* bouquets are numbered starting at 0 */
-void CZapitClient::getBouquets(BouquetList& bouquets, const bool emptyBouquetsToo, const bool utf_encoded)
+void CZapitClient::getBouquets(BouquetList& bouquets, const bool emptyBouquetsToo, const bool utf_encoded, const channelsMode mode)
 {
 	CZapitMessages::commandGetBouquets msg;
 
 	msg.emptyBouquetsToo = emptyBouquetsToo;
+	msg.mode = mode;
 
 	send(CZapitMessages::CMD_GET_BOUQUETS, (char*)&msg, sizeof(msg));
 

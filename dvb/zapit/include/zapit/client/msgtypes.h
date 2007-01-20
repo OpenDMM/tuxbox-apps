@@ -179,6 +179,7 @@ class CZapitMessages
 	struct commandGetBouquets
 	{
 		bool emptyBouquetsToo;
+		CZapitClient::channelsMode mode;
 	};
 
 	struct commandSetMode
