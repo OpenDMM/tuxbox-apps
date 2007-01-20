@@ -1,7 +1,7 @@
 /*
  * $Id$
  *
- * (C) 2005 by digi_casi <digi_casi@tuxbox.org>
+ * (C) 2005,2007 by digi_casi <digi_casi@tuxbox.org>
  *
  * This program is free software; you can redistribute it and/or modify
  * it under the terms of the GNU General Public License as published by
@@ -23,9 +23,9 @@
 #define __enigma_dyn_h
 
 #ifdef ENABLE_EXPERT_WEBIF
-#define WEBIFVERSION "5.9.7-Expert"
+#define WEBIFVERSION "5.9.8-Expert"
 #else
-#define WEBIFVERSION "5.9.7"
+#define WEBIFVERSION "5.9.8"
 #endif
 
 #define ZAPMODETV 0
