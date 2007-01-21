@@ -1953,10 +1953,10 @@ void sendBouquets(int connfd, const bool emptyBouquetsToo, const CZapitClient::c
 
 	for (uint i = 0; i < bouquetManager->Bouquets.size(); i++)
 	{
-		if (emptyBouquetsToo ||
-			((!bouquetManager->Bouquets[i]->bHidden) &&
-			((wantedMode & RADIO_MODE) && !bouquetManager->Bouquets[i]->radioChannels.empty()) ||
-			((wantedMode & TV_MODE) && !bouquetManager->Bouquets[i]->tvChannels.empty())))
+		if ((!bouquetManager->Bouquets[i]->bHidden) &&
+			(emptyBouquetsToo ||
+			(((wantedMode & RADIO_MODE) && !bouquetManager->Bouquets[i]->radioChannels.empty()) ||
+			((wantedMode & TV_MODE) && !bouquetManager->Bouquets[i]->tvChannels.empty()))))
 		{
 // ATTENTION: in RECORD_MODE empty bouquets are not send!
 			if ((!(currentMode & RECORD_MODE)) ||
