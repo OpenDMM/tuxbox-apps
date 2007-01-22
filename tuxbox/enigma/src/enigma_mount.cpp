@@ -277,11 +277,20 @@ t_mount eMountMgr::getMountPointData(int pid)
 
 void eMountMgr::changeMountPoint(int pid, t_mount pmp)
 {
+	int rc = 0;
 	for (mp_it = mountPoints.begin(); mp_it != mountPoints.end(); mp_it++)
 	{
 		if (mp_it->mp.id == pid)
 		{
-			mp_it->mp = pmp;
+			if (mp_it->mp.mounted)
+			{
+				rc = mp_it->unmount();
+				mp_it->mp = pmp;
+				rc = mp_it->mount();
+			}
+			else
+				mp_it->mp = pmp;
+			save();
 			break;
 		}
 	}
