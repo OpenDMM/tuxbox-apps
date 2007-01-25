@@ -689,7 +689,7 @@ int CNeutrinoApp::loadSetup()
 		g_settings.network_nfs_automount[i] = configfile.getInt32( cfg_key, 0);
 		sprintf(cfg_key, "network_nfs_type_%d", i);
 		g_settings.network_nfs_type[i] = configfile.getInt32( cfg_key, 0);
-		sprintf(cfg_key,"network_nfs_username_%d", i);
+		sprintf(cfg_key, "network_nfs_username_%d", i);
 		strcpy( g_settings.network_nfs_username[i], configfile.getString( cfg_key, "" ).c_str() );
 		sprintf(cfg_key, "network_nfs_password_%d", i);
 		strcpy( g_settings.network_nfs_password[i], configfile.getString( cfg_key, "" ).c_str() );
@@ -1497,7 +1497,7 @@ void CNeutrinoApp::CmdParser(int argc, char **argv)
 			}
 			x += 3;
 		}
-		else if ((!strcmp(argv[x], "-v")) || (!strcmp(argv[x], "--verbose")))
+		else if (((!strcmp(argv[x], "-v")) || (!strcmp(argv[x], "--verbose"))) && (x+1 < argc))
 		{
 			int dl = atoi(argv[x+ 1]);
 			dprintf(DEBUG_NORMAL, "set debuglevel: %d\n", dl);
