@@ -239,7 +239,7 @@ int eMountPoint::unmount()
 	mp.mounted = false;
 	int rc = umount2(mp.localDir.c_str(), MNT_FORCE);
 	if (mp.localDir == "/hdd")
-		eZapMain::getInstance()->loadRecordings();
+		system("sleep 5 && wget -O /dev/null http://127.0.0.1/cgi-bin/reloadRecordings&");
 	return rc;
 }
 
