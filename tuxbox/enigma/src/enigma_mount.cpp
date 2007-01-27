@@ -39,6 +39,7 @@
 #include <enigma_dyn_utils.h>
 #include <enigma_mount.h>
 #include <configfile.h>
+#include <enigma_main.h>
 
 using namespace std;
 
@@ -236,7 +237,10 @@ int eMountPoint::mount()
 int eMountPoint::unmount()
 {
 	mp.mounted = false;
-	return umount2(mp.localDir.c_str(), MNT_FORCE);
+	int rc = umount2(mp.localDir.c_str(), MNT_FORCE);
+	if (mp.localDir == "/hdd")
+		eZapMain::getInstance()->loadRecordings();
+	return rc;
 }
 
 eMountMgr::eMountMgr()
