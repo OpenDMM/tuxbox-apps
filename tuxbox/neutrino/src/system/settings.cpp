@@ -110,7 +110,7 @@ char * CScanSettings::satOfDiseqc(int diseqc) const
 				return (char *)&satName[i];
 		}
 	}
-	return "Unknown Satellite";
+	return "Unknown";
 }
 
 char * CScanSettings::satOfMotorPos(int32_t motorPos) const
@@ -120,7 +120,7 @@ char * CScanSettings::satOfMotorPos(int32_t motorPos) const
 		if (motorPos == satMotorPos[i]) 
 			return (char *)&satName[i];
 	}	
-	return "Unknown Satellite";
+	return "Unknown";
 }
 
 void CScanSettings::toSatList( CZapitClient::ScanSatelliteList& satList) const
