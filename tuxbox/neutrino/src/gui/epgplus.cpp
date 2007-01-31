@@ -2251,7 +2251,7 @@ int EpgPlus::MenuTargetAddRecordTimer::exec
 				epgPlus->paint();
 				recDir = recDirs.get_selected_dir();
 			}
-			if (recDir != "")
+			if ((recDir != "") || (RECORDING_FILE != g_settings.recording_type))
 			{
 				if (timerdclient.addRecordTimerEvent
 				    ( this->epgPlus->selectedChannelEntry->channel->channel_id
