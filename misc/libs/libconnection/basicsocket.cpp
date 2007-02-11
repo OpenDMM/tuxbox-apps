@@ -103,7 +103,7 @@ bool receive_data(int fd, void * data, const size_t size, const timeval timeout)
 
 		if (rc == 0)
 		{
-			printf("[basicsocket] receive timed out.\n");
+			printf("[basicsocket] receive timed out. waiting process %d\n", getpid());
 			return false;
 		}
 		if (rc == -1)
