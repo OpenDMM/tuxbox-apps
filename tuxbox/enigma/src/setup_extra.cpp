@@ -359,6 +359,7 @@ void eExpertSetup::factory_reset()
 	{
 		switch( eSystemInfo::getInstance()->getHwType() )
 		{
+			case eSystemInfo::DM600PVR:
 			case eSystemInfo::DM7020:
 				system("rm -R /etc/enigma && killall -9 enigma");
 				break;
