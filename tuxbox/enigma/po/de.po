@@ -1662,15 +1662,15 @@ msgstr "Startassistent"
 
 #: src/enigma.cpp:494
 msgid "It's now safe to unplug power!"
-msgstr "Sie können den Strom nun abschalten!"
+msgstr "Sie können Ihre Dreambox nun vom Strom trennen!"
 
 #: src/enigma.cpp:495
-msgid "Shutdown finished..."
+msgid "Shutdown finished"
 msgstr "Herunterfahren beendet"
 
 #: src/enigma.cpp:522
-msgid "Please wait until your Dreambox is shutting down!"
-msgstr "Bitte warten bis Ihre Dreambox heruntergefahren ist!"
+msgid "Please wait... your Dreambox is shutting down!"
+msgstr "Bitte warten... Ihre Dreambox wird heruntergefahren!"
 
 #: src/enigma.cpp:523
 msgid "Shutdown..."
