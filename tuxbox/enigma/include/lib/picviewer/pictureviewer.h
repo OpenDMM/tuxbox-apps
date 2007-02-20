@@ -58,9 +58,9 @@ class ePictureViewer: public eWidget
 	bool showBusySign;
 	bool switchto43;
 	int format169;
-#ifndef DISABLE_LCD
+//#ifndef DISABLE_LCD
 	eZapLCD* pLCD;
-#endif
+//#else
 public:
 	ePictureViewer(const eString &filename);
 	~ePictureViewer();
