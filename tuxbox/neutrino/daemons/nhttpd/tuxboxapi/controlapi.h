@@ -91,6 +91,7 @@ private:
 	void addBouquetCGI(CyhookHandler *hh);
 	void renameBouquetCGI(CyhookHandler *hh);
 	void changeBouquetCGI(CyhookHandler *hh);
+	void updateBouquetCGI(CyhookHandler *hh);
 	void build_live_url(CyhookHandler *hh);
 
 protected:
