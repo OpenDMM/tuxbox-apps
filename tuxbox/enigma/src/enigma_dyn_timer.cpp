@@ -772,6 +772,10 @@ static eString addTimerEvent(eString request, eString dirpath, eString opts, eHT
 
 		eventStartTime = mktime(&start);
 		eventEndTime = mktime(&end);
+
+		if (timer == "repeating" && eventEndTime < eventStartTime)
+			eventEndTime += 24 * 60 * 60;
+
 		eventDuration = eventEndTime - eventStartTime;
 	}
 
