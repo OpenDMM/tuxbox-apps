@@ -230,6 +230,15 @@ eString getConfigSettings(void)
 		free(trustedhosts);
 	}
 	result.strReplace("#TRUSTEDHOSTS#", rpl);
+	char *epgcachepath=NULL;
+	eConfig::getInstance()->getKey("/extras/epgcachepath", epgcachepath);
+	rpl = "/hdd";
+	if ( epgcachepath )
+	{
+		rpl = epgcachepath;
+		free(epgcachepath);
+	}
+	result.strReplace("#EPGCACHEPATH#", rpl);
 	return result;
 }
 
@@ -245,7 +254,9 @@ eString setConfigSettings(eString request, eString dirpath, eString opts, eHTTPC
 	eString webiflock = opt["webiflock"];
 	eString audiochannelspriority = opt["audiochannelspriority"];
 	eString trustedhosts = opt["trustedhosts"];
+	eString epgcachepath = opt["epgcachepath"];
 	eConfig::getInstance()->setKey("/ezap/webif/trustedhosts", trustedhosts.c_str());
+	eConfig::getInstance()->setKey("/extras/epgcachepath", epgcachepath.c_str());
 
 	int oldti = 0;
 	eConfig::getInstance()->getKey("/extras/hdparm-s", oldti);
