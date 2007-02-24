@@ -2624,7 +2624,7 @@ void CNeutrinoApp::InitRecordingSettings(CMenuWidget &recordingSettings)
 	char temp[10];
 	for(int i=0 ; i < MAX_RECORDING_DIR ; i++)
 	{
-		fc1[i] = new CDirChooser(&g_settings.recording_dir[i],"/mnt/","/hdd");
+		fc1[i] = new CDirChooser(&g_settings.recording_dir[i]);
 		snprintf(temp,10,"%d:",i);
 		temp[9]=0;// terminate for sure
 		mffc[i] = new CMenuForwarderNonLocalized(temp, true, g_settings.recording_dir[i],fc1[i]);
