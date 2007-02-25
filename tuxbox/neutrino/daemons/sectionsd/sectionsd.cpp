@@ -151,6 +151,9 @@ static long secondsToCache;
 //static long oldEventsAre = 60*60L; // 2h  (sometimes want to know something about current/last movie)
 static long oldEventsAre;
 static int scanning = 1;
+
+#define EPG_FILTER_PATH "/var/tuxbox/config/zapit/epgfilter.xml"
+std::string epg_filter_dir = EPG_FILTER_PATH;
 static bool epg_filter_is_whitelist = false;
 static bool epg_filter_except_current_next = false;
 
@@ -6804,7 +6807,7 @@ static void *houseKeepingThread(void *)
 
 static void readEPGFilter(void)
 {
-	xmlDocPtr filter_parser = parseXmlFile("/var/tuxbox/config/epgfilter.xml");
+	xmlDocPtr filter_parser = parseXmlFile(epg_filter_dir.c_str());
 
 	t_original_network_id onid = 0;
 	t_transport_stream_id tsid = 0;
