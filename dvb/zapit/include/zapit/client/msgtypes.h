@@ -131,7 +131,8 @@ class CZapitMessages
 			CMD_SET_AE_PLAYBACK_PES            = 77,
 			CMD_GET_AE_PLAYBACK_STATE          = 78,
 			CMD_SCANSETTYPE                    = 79,
-			CMD_RELOAD_CURRENTSERVICES	   = 80
+			CMD_RELOAD_CURRENTSERVICES	   = 80,
+			CMD_SET_SUBTITLE                   = 81,
 		};
 
 	struct commandBoolean
@@ -174,6 +175,11 @@ class CZapitMessages
 	struct commandSetAudioChannel
 	{
 		unsigned int channel;
+	};
+
+	struct commandSetSubtitle
+	{
+		unsigned int index;
 	};
 
 	struct commandGetBouquets
