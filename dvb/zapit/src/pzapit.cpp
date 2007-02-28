@@ -665,6 +665,23 @@ getpids:
 				std::cout << ", ac3";
 			std::cout << ")" << std::endl;
 		}
+
+		for (count = 0 ; count < pids.SubPIDs.size() ; count++)
+		{
+			if (pids.SubPIDs[count].pid != pids.PIDs.vtxtpid) {
+				std::cout << "DVB-Sub "
+					<< std::dec << count + 1 
+                                	<< ": 0x" << std::hex << pids.SubPIDs[count].pid
+                                	<< " (" << pids.SubPIDs[count].desc << ")"
+                                	<< std::endl;
+			} else {
+				std::cout << "TTX-Sub "
+					<< std::dec << count + 1
+					<< ": " << pids.SubPIDs[count].composition_page
+                                	<< " (" << pids.SubPIDs[count].desc << ")"
+                                	<< std::endl;
+			}
+		}
 	}
 
 	return 0;

@@ -29,6 +29,7 @@ unsigned int zapTo(const unsigned int channel);
 unsigned int zapTo(const unsigned int bouquet, const unsigned int channel);
 unsigned int zapTo_ChannelID(const t_channel_id channel_id, const bool isSubService);
 void sendAPIDs(int connfd);
+void sendSubPIDs(int connfd);
 void enterStandby(void);
 void leaveStandby(void);
 void setVideoSystem_t(int video_system);

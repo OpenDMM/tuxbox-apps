@@ -234,6 +234,7 @@ void CZapitClient::getPIDS(responseGetPIDs& pids)
 {
 	CZapitMessages::responseGeneralInteger responseInteger;
 	responseGetAPIDs                       responseAPID;
+	responseGetSubPIDs                     responseSubPID;
 
 	send(CZapitMessages::CMD_GETPIDS);
 
@@ -249,6 +250,18 @@ void CZapitClient::getPIDS(responseGetPIDs& pids)
 		{
 			CBasicClient::receive_data((char*)&responseAPID, sizeof(responseAPID));
 			pids.APIDs.push_back(responseAPID);
+		};
+	}
+
+	pids.SubPIDs.clear();
+	if (CBasicClient::receive_data((char* )&responseInteger, sizeof(responseInteger)))
+	{
+		pids.SubPIDs.reserve(responseInteger.number);
+
+		while (responseInteger.number-- > 0)
+		{
+			CBasicClient::receive_data((char*)&responseSubPID, sizeof(responseSubPID));
+			pids.SubPIDs.push_back(responseSubPID);
 		};
 	}
 
