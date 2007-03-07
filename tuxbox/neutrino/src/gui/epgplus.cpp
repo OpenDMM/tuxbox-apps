@@ -448,7 +448,7 @@ void EpgPlus::TimeLine::paintMark
 			, this->y + this->fontTime->getHeight() + this->fontTime->getHeight()
 			, textWidth
 			, timeStr
-			, this->backMarkColor
+			, this->markColor
 			, 0
 			, true
 			); // UTF-8
@@ -2815,4 +2815,3 @@ int EpgPlus::MenuWidgetSizeSettings::MenuTargetEditSize::exec
 }
 
 */
-
