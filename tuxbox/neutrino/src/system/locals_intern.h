@@ -517,6 +517,7 @@ const char * locale_real_names[] =
 	"lcdmenu.power",
 	"lcdmenu.statusline",
 	"lcdmenu.statusline.both",
+	"lcdmenu.statusline.both_audio",
 	"lcdmenu.statusline.playtime",
 	"lcdmenu.statusline.volume",
 	"mainmenu.audioplayer",
