@@ -106,8 +106,8 @@ class CZapitChannel
 		/* last selected audio channel */
 		unsigned char			currentAudioChannel;
 
-                /* chosen subtitle stream */
-                unsigned char                   currentSub;
+		/* chosen subtitle stream */
+		unsigned char                   currentSub;
 
 		/* set true when pids are updated */
 		bool pidsUpdated;

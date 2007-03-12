@@ -911,6 +911,8 @@ int zapit(const t_channel_id channel_id, bool in_nvod, transponder_id_t transpon
 			failed = true;
 		}
 
+		parse_static_pids(thisChannel);
+
 		thisChannel->setAudioChannel(audioChannel);
 
 		if ((!failed) && (thisChannel->getAudioPid() == NONE) && (thisChannel->getVideoPid() == NONE)) {
