@@ -101,6 +101,7 @@ struct SNeutrinoSettings
 
 	//widget settings
 	int widget_fade;
+    int widget_osd;
 
 	//colors
 	unsigned char gtx_alpha1;
