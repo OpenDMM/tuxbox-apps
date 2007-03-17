@@ -709,7 +709,7 @@ void CSectionsdClient::freeMemory()
 
 void CSectionsdClient::readSIfromXML(const char * epgxmlname)
 {
-	send(sectionsd::readSIfromXML, (char*) epgxmlname, strlen(epgxmlname));
+	send(sectionsd::readSIfromXML, (char*) epgxmlname, strlen(epgxmlname) + 1); // include '\0'
 
 	readResponse();
 	close_connection();
@@ -717,7 +717,7 @@ void CSectionsdClient::readSIfromXML(const char * epgxmlname)
 
 void CSectionsdClient::writeSI2XML(const char * epgxmlname)
 {
-	send(sectionsd::writeSI2XML, (char*) epgxmlname, strlen(epgxmlname));
+	send(sectionsd::writeSI2XML, (char*) epgxmlname, strlen(epgxmlname) + 1); // include '\0'
 
 	readResponse();
 	close_connection();
