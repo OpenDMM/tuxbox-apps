@@ -1988,6 +1988,7 @@ void sendBouquets(int connfd, const bool emptyBouquetsToo, const CZapitClient::c
 	} 
 	else if (mode == CZapitClient::MODE_RADIO) 	wantedMode = RADIO_MODE;
 	else if (mode == CZapitClient::MODE_TV) 	wantedMode = TV_MODE;
+	else if (mode == CZapitClient::MODE_ALL) 	wantedMode = TV_MODE | RADIO_MODE;
 
 	for (uint i = 0; i < bouquetManager->Bouquets.size(); i++)
 	{
@@ -2057,6 +2058,7 @@ void internalSendChannels(int connfd, ChannelList* channels, const unsigned int 
 
 		CZapitClient::responseGetBouquetChannels response;
 		strncpy(response.name, ((*channels)[i]->getName()).c_str(), 30);
+		response.name[29]   = '\0'; // so string is zero terminated
 		response.satellitePosition = (*channels)[i]->getSatellitePosition();
 		response.channel_id = (*channels)[i]->getChannelID();
 		response.nr = first_channel_nr + i;

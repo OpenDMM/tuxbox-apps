@@ -1034,7 +1034,7 @@ int CTimerList::newTimer()
 
 	CZapitClient zapit;
 	CZapitClient::BouquetList bouquetlist;
-	zapit.getBouquets(bouquetlist, false, true); // UTF-8
+	zapit.getBouquets(bouquetlist, false, true, CZapitClient::MODE_ALL); // UTF-8
 	CZapitClient::BouquetList::iterator bouquet = bouquetlist.begin();
 	CMenuWidget mctv(LOCALE_TIMERLIST_BOUQUETSELECT, NEUTRINO_ICON_SETTINGS);
 	CMenuWidget mcradio(LOCALE_TIMERLIST_BOUQUETSELECT, NEUTRINO_ICON_SETTINGS);
