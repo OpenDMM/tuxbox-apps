@@ -238,7 +238,7 @@ class CNeutrinoApp : public CMenuTarget, CChangeObserver
 		static CNeutrinoApp* getInstance();
 
 		void channelsInit(int init_mode, int mode = -1);
-//		void channelsInit4Record();
+		void channelsInit4Record();
 		int run(int argc, char **argv);
 		//callback stuff only....
 		int exec(CMenuTarget* parent, const std::string & actionKey);
