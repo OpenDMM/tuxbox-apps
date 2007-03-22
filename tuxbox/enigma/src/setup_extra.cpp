@@ -60,7 +60,8 @@ void eExpertSetup::init_eExpertSetup()
 	{
 		CONNECT((new eListBoxEntryMenu(&list, _("Communication Setup"), eString().sprintf("(%d) %s", ++entry, _("open communication setup")) ))->selected, eExpertSetup::communication_setup);
 		CONNECT((new eListBoxEntryMenu(&list, _("Ngrab Streaming Setup"), eString().sprintf("(%d) %s", ++entry, _("open ngrab server setup")) ))->selected, eExpertSetup::ngrab_setup);
-		if ( eSystemInfo::getInstance()->getHwType() != eSystemInfo::DM7020 )  // no update for 7020 yet
+		if ( eSystemInfo::getInstance()->getHwType() != eSystemInfo::DM7020 &&
+			eSystemInfo::getInstance()->getHwType() != eSystemInfo::DM600PVR )  // no update for 7020 and dm600pvr yes
 			CONNECT((new eListBoxEntryMenu(&list, _("Software Update"), eString().sprintf("(%d) %s", ++entry, _("open software update")) ))->selected, eExpertSetup::software_update);
 	}
 	int startSamba=1;
