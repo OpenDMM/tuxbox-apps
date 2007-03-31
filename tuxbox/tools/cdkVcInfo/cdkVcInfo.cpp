@@ -67,8 +67,8 @@ int main()
       sscanf(buf, "version=%1d%1d%2d%4d%2d%2d%2d%2d", 
 	     &release_type, &imageversion, &imagesubver,
 	     &year, &month, &day, &hour, &minute);
-      sscanf(buf, "creator=%s", (char *) &creator);
-      sscanf(buf, "imagename=%s", (char *) &imagename);
+      sscanf(buf, "creator=%[^\n]", (char *) &creator);
+      sscanf(buf, "imagename=%[^\n]", (char *) &imagename);
     }
     fclose(fv);
   }
