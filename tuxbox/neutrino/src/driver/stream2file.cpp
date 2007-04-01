@@ -273,7 +273,7 @@ void * DMXThread(void * v_arg)
 
 	if( !ringbuf )
 	{
-		exit_flag = STREAM2FILE_RECORDING_THREADS_FAILED;
+		exit_flag = STREAM2FILE_STATUS_RECORDING_THREADS_FAILED;
 	}
 
 	filename_data.ringbuffer = ringbuf;
