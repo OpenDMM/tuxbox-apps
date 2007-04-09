@@ -1397,6 +1397,13 @@ void CNeutrinoApp::channelsInit(int init_mode, int mode)
 			if (zapitBouquets[i].locked)
 			{
 				channel->bAlwaysLocked = true;
+
+				for (int k=0; k<channelListTV->getSize(); k++)
+				{
+					if ((*channelListTV)[k]->channel_id == zapitChannels[j].channel_id) {
+						(*channelListTV)[k]->bAlwaysLocked = true;
+					}
+				}
 			}
 		}
 	}
@@ -4439,7 +4446,7 @@ void CNeutrinoApp::RealRun(CMenuWidget &mainMenu)
 				channelList->numericZap( msg );
 			}
 			else
-			  {     // turn on LCD display by kicking it
+			{     // turn on LCD display by kicking it
 				if (msg == CRCInput::RC_home)
 					CLCD::getInstance()->setMode(CLCD::MODE_TVRADIO);
 				handleMsg(msg, data);
