@@ -50,7 +50,7 @@
 #define NEUTRINO_ICON_BUTTON_8         "8.raw"
 #define NEUTRINO_ICON_BUTTON_9         "9.raw"
 
-#define NEUTRINO_ICON_BUTTON_TOP       "top.raw"
+#define NEUTRINO_ICON_BUTTON_TOP       "up.raw"
 #define NEUTRINO_ICON_BUTTON_RIGHT     "right.raw"
 #define NEUTRINO_ICON_BUTTON_DOWN      "down.raw"
 #define NEUTRINO_ICON_BUTTON_LEFT      "left.raw"
