@@ -302,7 +302,7 @@ CMoviePlayerGui::CMoviePlayerGui()
 		filebrowser = new CFileBrowser (Path_local.c_str());	// with filebrowser patch
 	else
 		filebrowser	= new CFileBrowser();
-	filebrowser->Multi_Select = false;
+	filebrowser->Multi_Select = true;
 	filebrowser->Dirs_Selectable = false;
 
 #ifdef MOVIEBROWSER  
@@ -421,7 +421,6 @@ CMoviePlayerGui::exec (CMenuTarget * parent, const std::string & actionKey)
 
 	if(actionKey=="fileplayback")
 	{
-        filebrowser->Multi_Select = true;
 		PlayStream (STREAMTYPE_FILE);
 	}
 	else if(actionKey=="dvdplayback")
@@ -434,7 +433,6 @@ CMoviePlayerGui::exec (CMenuTarget * parent, const std::string & actionKey)
 	}
 	else if(actionKey=="tsplayback")
 	{
-        filebrowser->Multi_Select = true;
 		isTS=true;
 		PlayFile();
 	}
@@ -3137,7 +3135,6 @@ void CMoviePlayerGui::PlayFile (int parental)
 			sel_filename     = startfilename;
 			update_lcd       = true;
 			start_play       = true;
-			isBookmark       = false;
 		}
 
 #ifdef MOVIEBROWSER  			
@@ -3388,7 +3385,8 @@ void CMoviePlayerGui::PlayFile (int parental)
 			//-- create player thread in PLAY mode --
 			g_playstate = CMoviePlayerGui::PLAY;  // !!!
 			int retval;
-			if (filelist.size() == 1 || isMovieBrowser) {
+			if (filelist.size() == 1 || isBookmark || isMovieBrowser) {
+                isBookmark = false;
                 retval = pthread_create(&rct, 0, mp_playFileThread, (void *)filename);
             } else {
                 retval = pthread_create(&rct, 0, mp_playFileThread, NULL);
