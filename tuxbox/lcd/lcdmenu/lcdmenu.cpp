@@ -530,10 +530,7 @@ void CLCDMenu::exec()
       std::cout << "[lcdmenu] " << execfilename
 		<< " was not found, not exec-ing\n";
     }
-#ifdef DEBUG
-    std::cout << "Now I would have exec-ed " << execfilename << "\n";
-#else
+
     execl(execfilename.c_str(), execfilename.c_str(), NULL);
-#endif
   }
 }
