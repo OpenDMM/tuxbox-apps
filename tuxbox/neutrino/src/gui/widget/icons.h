@@ -75,6 +75,6 @@
 
 /* misc */
 
-#define NEUTRINO_ICON_VARPATH         "var/tuxbox/share/neutrino/icons/"  //alternatively path for user-defined icons 
+#define NEUTRINO_ICON_VARPATH         "var/share/tuxbox/neutrino/icons/"  //alternatively path for user-defined icons 
 
 #endif /* __gui_widget_icons_h__ */
