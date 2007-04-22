@@ -388,6 +388,7 @@ const char * locale_real_names[] =
 	"flashupdate.readflash",
 	"flashupdate.readflashmtd",
 	"flashupdate.ready",
+	"flashupdate.reallyflashchipset",
 	"flashupdate.reallyflashmtd",
 	"flashupdate.savesuccess",
 	"flashupdate.selectimage",

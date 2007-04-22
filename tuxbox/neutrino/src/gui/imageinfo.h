@@ -72,6 +72,7 @@ class CImageInfo : public CMenuTarget
 		std::string imagedate;
 		std::string imagetype;
 		std::string partitions;
+		std::string chiptype;
 		CPIG *pig;
 		
 		void paint();
@@ -94,8 +95,8 @@ class CImageInfo : public CMenuTarget
 		void hide();
 		int exec(CMenuTarget* parent, const std::string& actionKey);
 		const char *ImageInfo( int InfoType );
-		std::string getChipInfo();
-		std::string getImageInfoVersion();
+		std::string getChipInfo(void);
+		std::string getImageInfoVersion(void);
 		std::string getSysInfo(std::string infotag, bool reverse);
 		void LoadImageInfo(void);
 };

@@ -377,8 +377,7 @@ string CImageInfo::getSysInfo(string infotag, bool reverse)
 }
 
 string CImageInfo::getChipInfo()
-{
-	string chiptype;	
+{		
 	string str = getSysInfo("D-Box 2 flash memory: Found ", false);
 	
 	string::size_type locx = str.find( "x16", 0 );
