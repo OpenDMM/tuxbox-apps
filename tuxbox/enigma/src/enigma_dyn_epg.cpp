@@ -166,6 +166,10 @@ eString getServiceEPG(eString format, eString opts)
 					result.strReplace("#DURATION#", eString().sprintf("%d", event.duration));
 					eString tmp = filter_string(description);
 					result.strReplace("#DESCRIPTION#", XMLify(tmp, format)); 
+					tmp.strReplace("\'", "\\\'");
+					tmp.strReplace("\"", "\\\"");
+					tmp.strReplace("&", "~");
+					result.strReplace("#DESCRIPTIONJS#", XMLify(tmp, format)); 
 					tmp = filter_string(ext_description);
 					result.strReplace("#DETAILS#", XMLify(tmp, format));
 					result.strReplace("#GENRE#", genre);
