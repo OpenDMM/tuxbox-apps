@@ -514,8 +514,9 @@ void CBouquetManager::renumServices()
 	deleteBouquet(remainChannels);
 	remainChannels = NULL;
 	
-	if (config.getBool("makeRemainingChannelsBouquet", true))
+	if (config.getBool("makeRemainingChannelsBouquet", true)) {
 		makeRemainingChannelsBouquet();
+	}
 }
 
 CBouquet* CBouquetManager::addBouquet(const std::string & name)

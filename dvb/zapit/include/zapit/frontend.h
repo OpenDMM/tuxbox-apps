@@ -54,7 +54,8 @@ class CFrontend
 		fe_spectral_inversion_t last_inversion;
 		/* speed up cable seach */
 		fe_modulation_t last_qam;
-
+		/* selects different software control modes for uncommitted switch */
+		int uncommitted_switch_mode;
 
 		uint32_t			getDiseqcReply(const int timeout_ms) const;
 		struct dvb_frontend_event	getEvent(void);
@@ -70,13 +71,14 @@ class CFrontend
 		void				sendDiseqcStandby(void);
 		void				sendDiseqcZeroByteCommand(const uint8_t frm, const uint8_t addr, const uint8_t cmd);
 		void				sendToneBurst(const fe_sec_mini_cmd_t burst, const uint32_t ms);
+		void				sendUncommittedSwitchesCommand(uint8_t usCommand);
 		void				setFrontend(const struct dvb_frontend_parameters *feparams);
 		void				setSec(const uint8_t sat_no, const uint8_t pol, const bool high_band, const uint32_t frequency);
 		void				reset(void);
 
 
 	public:
-		CFrontend(void);
+		CFrontend(int _uncomitted_switch_mode = 0);
 		~CFrontend(void);
 
 		static fe_code_rate_t		getCodeRate(const uint8_t fec_inner);
