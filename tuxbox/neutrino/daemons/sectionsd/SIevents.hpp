@@ -359,6 +359,7 @@ public:
 	// Aus dem Extended Descriptor
 	std::string getExtendedText() const;
 	void appendExtendedText(const std::string &lang, const std::string &text);
+	void setExtendedText(const std::string &lang, const std::string &text);
 
 	std::string contentClassification; // Aus dem Content Descriptor, als String, da mehrere vorkommen koennen
 	std::string userClassification; // Aus dem Content Descriptor, als String, da mehrere vorkommen koennen

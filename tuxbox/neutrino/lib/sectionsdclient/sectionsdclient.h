@@ -154,6 +154,7 @@ class CSectionsdClient : private CBasicClient
 	{
 		int scanMode;
 		int epg_cache;
+		int epg_extendedcache;
 		int epg_old_events;
 		int epg_max_events;
 		int network_ntprefresh;

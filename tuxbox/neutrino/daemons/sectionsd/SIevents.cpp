@@ -264,6 +264,15 @@ void SIevent::appendExtendedText(const std::string &lang, const std::string &tex
 	}
 }
 
+void SIevent::setExtendedText(const std::string &lang, const std::string &text)
+{
+	if (CSectionsdClient::LANGUAGE_MODE_OFF == SIlanguage::getMode()){
+		langExtendedText[languangeOFF] = text;
+	} else {
+		langExtendedText[lang] = text;
+	}
+}
+
 void SIevent::dump(void) const
 {
 	printf("Unique key: %llx\n", uniqueKey());

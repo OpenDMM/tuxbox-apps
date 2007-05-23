@@ -62,6 +62,7 @@ struct sectionsd
 		//allEventsChannelName,
 		allEventsChannelIDSearch,
 		setHoursToCache,
+		setHoursExtendedCache,
 		setEventsAreOldInMinutes,
 		dumpAllServices,
 		actualEventListRadioshort,
@@ -124,6 +125,7 @@ struct sectionsd
 	{
 		int scanMode;
 		int epg_cache;
+		int epg_extendedcache;
 		int epg_old_events;
 		unsigned int epg_max_events;
 		int network_ntprefresh;

@@ -731,6 +731,7 @@ void CSectionsdClient::setConfig(const epg_config config)
 
 	msg->scanMode		= config.scanMode;
 	msg->epg_cache		= config.epg_cache;
+	msg->epg_extendedcache	= config.epg_extendedcache;
 	msg->epg_old_events	= config.epg_old_events;
 	msg->epg_max_events	= config.epg_max_events;
 	msg->network_ntprefresh	= config.network_ntprefresh;
