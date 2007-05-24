@@ -220,6 +220,7 @@ struct SNeutrinoSettings
 	int streaming_use_buffer;
 	int streaming_buffer_segment_size;
 	int streaming_show_tv_in_browser;
+	int streaming_allow_multiselect;
 
 	int filesystem_is_utf8;
 	// default plugin for ts-movieplayer (red button)

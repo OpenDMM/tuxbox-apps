@@ -1036,6 +1036,7 @@ const char * locale_real_names[] =
 	"streamingmenu.352x576",
 	"streamingmenu.480x576",
 	"streamingmenu.704x576",
+	"streamingmenu.filebrowser_allow_multiselect",
 	"streamingmenu.head",
 	"streamingmenu.mpeg1",
 	"streamingmenu.mpeg2",

@@ -302,7 +302,7 @@ CMoviePlayerGui::CMoviePlayerGui()
 		filebrowser = new CFileBrowser (Path_local.c_str());	// with filebrowser patch
 	else
 		filebrowser	= new CFileBrowser();
-	filebrowser->Multi_Select = true;
+		
 	filebrowser->Dirs_Selectable = false;
 
 #ifdef MOVIEBROWSER  
@@ -378,6 +378,12 @@ CMoviePlayerGui::exec (CMenuTarget * parent, const std::string & actionKey)
 			return menu_return::RETURN_REPAINT;
 		}
 	}
+	
+	if (g_settings.streaming_allow_multiselect) {
+        filebrowser->Multi_Select = true;
+    } else {
+        filebrowser->Multi_Select = false;
+    }
 
     g_ZapitsetStandbyState = false; // 'Init State
     
@@ -3329,8 +3335,13 @@ void CMoviePlayerGui::PlayFile (int parental)
 				if(filebrowser->exec(Path_local.c_str()))
 				{
 					Path_local = filebrowser->getCurrentDir();
-					filelist = filebrowser->getSelectedFiles();
-	
+					if (g_settings.streaming_allow_multiselect) {
+                        filelist = filebrowser->getSelectedFiles();
+                    } else {
+                        CFile *file = filebrowser->getSelectedFile();
+                        filelist.push_back(*file);
+                    }
+        
 					if(!filelist.empty())
 					{
                         if (g_settings.streaming_show_tv_in_browser == true &&
@@ -4009,7 +4020,13 @@ CMoviePlayerGui::PlayStream (int streamtype)
 			if(filebrowser->exec(Path_vlc.c_str()))
 			{
 				Path_vlc = filebrowser->getCurrentDir ();
-				filelist = filebrowser->getSelectedFiles();
+				if (g_settings.streaming_allow_multiselect) {
+                    filelist = filebrowser->getSelectedFiles();
+                } else {
+                    CFile *file = filebrowser->getSelectedFile();
+                    filelist.push_back(*file);
+                }
+
 				if(!filelist.empty())
 				{
 					filename = filelist[0].Name.c_str();
