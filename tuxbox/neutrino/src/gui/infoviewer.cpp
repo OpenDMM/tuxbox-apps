@@ -130,7 +130,7 @@ void CInfoViewer::paintTime( bool show_dot, bool firstPaint )
 {
 	if ( gotTime )
 	{
-	    int ChanNameY = BoxStartY + (ChanHeight>>1)   + 5; //oberkante schatten?
+	    int ChanNameY = BoxStartY + (ChanHeight>>1)   + SHADOW_OFFSET; //oberkante schatten?
 
 		char timestr[10];
 		struct timeb tm;
