@@ -274,6 +274,14 @@ class CUCodeCheckExec : public CMenuTarget
 void testNetworkSettings(const char* ip, const char* netmask, const char* broadcast, const char* gateway, const char* nameserver, bool ip_static);
 void showCurrentNetworkSettings();
 
+class CNetAdapter
+{
+	private:
+		long mac_addr_sys ( u_char *addr);	
+	public:
+		std::string getMacAddr(void);
+};
+
 // USERMENU
  class CUserMenuMenu : public CMenuTarget
 {	
