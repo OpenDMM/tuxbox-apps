@@ -3339,6 +3339,7 @@ void CMoviePlayerGui::PlayFile (int parental)
                         filelist = filebrowser->getSelectedFiles();
                     } else {
                         CFile *file = filebrowser->getSelectedFile();
+                        filelist.clear();
                         filelist.push_back(*file);
                     }
         
@@ -4024,6 +4025,7 @@ CMoviePlayerGui::PlayStream (int streamtype)
                     filelist = filebrowser->getSelectedFiles();
                 } else {
                     CFile *file = filebrowser->getSelectedFile();
+                    filelist.clear();
                     filelist.push_back(*file);
                 }
 
