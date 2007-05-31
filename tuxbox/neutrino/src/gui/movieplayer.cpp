@@ -2684,7 +2684,7 @@ void *mp_playFileMain(void *filename)
 	        ctx->itChanged = false;
 	        ctx->lst_cnt   = 0;
          	ctx->it        = 0;
-         	for (unsigned int i = 0; i < filelist.size(); i++) {
+         	for (unsigned int i = 0; i < PF_LST_ITEMS; i++) {
              	ctx->lst[ctx->lst_cnt].pname = filelist[ctx->lst_cnt].Name.c_str();
              	ctx->lst_cnt++;
             }
