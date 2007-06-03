@@ -22,7 +22,12 @@
 #ifndef __getservices_h__
 #define __getservices_h__
 
+#if HAVE_DVB_API_VERSION < 3
+#include <ost/frontend.h>
+#define fe_type_t	FrontendType
+#else
 #include <linux/dvb/frontend.h>
+#endif
 
 #include <eventserver.h>
 

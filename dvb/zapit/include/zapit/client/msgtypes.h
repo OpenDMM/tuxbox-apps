@@ -124,12 +124,14 @@ class CZapitMessages
 			CMD_GET_FE_SIGNAL                  = 71,
 			CMD_SCANSTOP                       = 72,
 
+#ifndef HAVE_DREAMBOX_HARDWARE
 			CMD_SET_AE_IEC_ON                  = 73,
 			CMD_SET_AE_IEC_OFF                 = 74,
 			CMD_GET_AE_IEC_STATE               = 75,
 			CMD_SET_AE_PLAYBACK_SPTS           = 76,
 			CMD_SET_AE_PLAYBACK_PES            = 77,
 			CMD_GET_AE_PLAYBACK_STATE          = 78,
+#endif
 			CMD_SCANSETTYPE                    = 79,
 			CMD_RELOAD_CURRENTSERVICES	   = 80,
 			CMD_SET_SUBTITLE                   = 81,

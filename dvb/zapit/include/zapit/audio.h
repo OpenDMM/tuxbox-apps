@@ -23,7 +23,18 @@
 #ifndef __zapit_audio_h__
 #define __zapit_audio_h__
 
+#if HAVE_DVB_API < 3
+#include <ost/audio.h>
+#define audio_stream_source_t	audioStreamSource_t
+#define audio_play_state_t	audioPlayState_t
+#define audio_channel_select_t	audioChannelSelect_t
+#define audio_mixer		audioMixer
+#define	audio_status		audioStatus
+#define stream_source		streamSource
+#define channel_select		channelSelect
+#else
 #include <linux/dvb/audio.h>
+#endif
 
 class CAudio
 {

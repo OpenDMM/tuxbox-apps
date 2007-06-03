@@ -5,7 +5,11 @@
 #ifndef __scan_h__
 #define __scan_h__
 
+#if HAVE_DVB_API_VERSION < 3
+#include <ost/frontend.h>
+#else
 #include <linux/dvb/frontend.h>
+#endif
 
 #include <inttypes.h>
 

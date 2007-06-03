@@ -896,6 +896,7 @@ bool CZapitClient::isRecordModeActive()
 	return response.activated;
 }
 
+#ifndef HAVE_DREAMBOX_HARDWARE
 void CZapitClient::IecOn()
 {
 	send(CZapitMessages::CMD_SET_AE_IEC_ON);
@@ -941,6 +942,7 @@ int CZapitClient::PlaybackState()
         close_connection();
         return response.number;
 }
+#endif
 
 void CZapitClient::registerEvent(const unsigned int eventID, const unsigned int clientID, const char * const udsName)
 {
