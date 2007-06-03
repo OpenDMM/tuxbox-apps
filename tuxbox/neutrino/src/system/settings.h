@@ -321,11 +321,14 @@ struct SNeutrinoSettings
 #define UTF8_TO_FILESYSTEM_ENCODING(a) (g_settings.filesystem_is_utf8 ? (a) : ZapitTools::UTF8_to_Latin1(a).c_str())
 #define FILESYSTEM_ENCODING_TO_UTF8_STRING(a) (g_settings.filesystem_is_utf8 ? (a) : Latin1_to_UTF8(a))
 
-
+#ifdef HAVE_DREAMBOX_HARDWARE
+#define DRIVER_SETTING_FILES_COUNT 2
+#else
 #if HAVE_DVB_API_VERSION == 1
 #define DRIVER_SETTING_FILES_COUNT 6
 #else
 #define DRIVER_SETTING_FILES_COUNT 5
+#endif
 #endif
 
 // #define MISC_SETTING_SPTS_MODE 0

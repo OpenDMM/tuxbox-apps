@@ -5959,7 +5959,9 @@ int eit_set_update_filter(int *fd)
 	dsfp.filter.mask[1] = 0xFF;
 	dsfp.filter.mask[2] = 0xFF;
 	dsfp.filter.mask[3] = (0x1F << 1) | 0x01;
+#if HAVE_DVB_API >= 3
 	dsfp.filter.mode[3] = 0x1F << 1;
+#endif
 //	dsfp.filter.mask[4] = 0xFF;
 	dsfp.flags = DMX_CHECK_CRC | DMX_IMMEDIATE_START;
 	dsfp.pid = 0x12;
