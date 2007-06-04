@@ -50,7 +50,7 @@
 #define SATELLITES_XML  	DATADIR "/satellites.xml"
 #define TERRESTRIAL_XML 	DATADIR "/terrestrial.xml"
 
-#if HAVE_DVB_API < 3
+#if HAVE_DVB_API_VERSION < 3
 #define AUDIO_DEVICE    	"/dev/dvb/card0/audio0"
 #define DEMUX_DEVICE    	"/dev/dvb/card0/demux0"
 #define FRONTEND_DEVICE 	"/dev/dvb/card0/frontend0"

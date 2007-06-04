@@ -23,7 +23,7 @@
 #ifndef __zapit_audio_h__
 #define __zapit_audio_h__
 
-#if HAVE_DVB_API < 3
+#if HAVE_DVB_API_VERSION < 3
 #include <ost/audio.h>
 #define audio_stream_source_t	audioStreamSource_t
 #define audio_play_state_t	audioPlayState_t
