@@ -248,11 +248,16 @@ int LoadMotorPositions(void)
 
 int LoadSatellitePositions(void)
 {
-	xmlDocPtr parser = parseXmlFile(SATELLITES_XML);
+	struct stat buf;
+	std::string filename = (std::string)ZAPITCONFIGDIR + "/" + SATELLITES_XML;
+	if ((stat(filename.c_str(), &buf) == -1) && (errno == ENOENT))
+		filename = (std::string)DATADIR + "/" + SATELLITES_XML;
+
+	xmlDocPtr parser = parseXmlFile(filename.c_str());
 
 	if (parser == NULL)
 	{
-		printf("[getservices] satellites.xml not found.\n");
+		printf("[getservices] satellites.xml\n");
 		return -1;
 	}
 
