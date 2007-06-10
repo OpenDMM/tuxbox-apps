@@ -4686,7 +4686,12 @@ bool updateCurrentXML(xmlNodePtr provider, xmlNodePtr tp_node, const int scanTyp
 }
 
 xmlNodePtr getProviderFromSatellitesXML(xmlNodePtr node, const int position) {
-	xmlDocPtr satellites_parser = parseXmlFile(SATELLITES_XML);
+	struct stat buf;
+	std::string filename = (std::string)ZAPITCONFIGDIR + "/" + SATELLITES_XML;
+	if ((stat(filename.c_str(), &buf) == -1) && (errno == ENOENT))
+		filename = (std::string)DATADIR + "/" + SATELLITES_XML;
+
+	xmlDocPtr satellites_parser = parseXmlFile(filename.c_str());
 	if (satellites_parser == NULL)
 		return NULL;
 	xmlNodePtr satellite = xmlDocGetRootElement(satellites_parser)->xmlChildrenNode;
