@@ -374,10 +374,7 @@ static eString setAudio(eString request, eString dirpath, eString opts, eHTTPCon
 	eAVSwitch::getInstance()->selectAudioChannel(atoi(channel.c_str()));
 
 	eDVBServiceController *sapi = eDVB::getInstance()->getServiceAPI();
-	if (0 && eSystemInfo::getInstance()->getHwType() == eSystemInfo::DM600PVR &&
-		eDVB::getInstance()->recorder )
-		eDebug("no audio track selection possible");
-	else if (sapi)
+	if (sapi)
 	{
 		std::list<eDVBServiceController::audioStream> &astreams(sapi->audioStreams);
 		std::list<eDVBServiceController::audioStream>::iterator it(astreams.begin());

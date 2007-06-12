@@ -60,9 +60,15 @@ void eExpertSetup::init_eExpertSetup()
 	{
 		CONNECT((new eListBoxEntryMenu(&list, _("Communication Setup"), eString().sprintf("(%d) %s", ++entry, _("open communication setup")) ))->selected, eExpertSetup::communication_setup);
 		CONNECT((new eListBoxEntryMenu(&list, _("Ngrab Streaming Setup"), eString().sprintf("(%d) %s", ++entry, _("open ngrab server setup")) ))->selected, eExpertSetup::ngrab_setup);
-		if ( eSystemInfo::getInstance()->getHwType() != eSystemInfo::DM7020 &&
-			eSystemInfo::getInstance()->getHwType() != eSystemInfo::DM600PVR )  // no update for 7020 and dm600pvr yes
+		switch (eSystemInfo::getInstance()->getHwType())
+		{
+		case eSystemInfo::DM7020:
+		case eSystemInfo::DM600PVR:
+		case eSystemInfo::DM500PLUS:
+			break;
+		default:
 			CONNECT((new eListBoxEntryMenu(&list, _("Software Update"), eString().sprintf("(%d) %s", ++entry, _("open software update")) ))->selected, eExpertSetup::software_update);
+		}
 	}
 	int startSamba=1;
 	if ( eConfig::getInstance()->getKey("/elitedvb/network/samba", startSamba) )
@@ -360,6 +366,7 @@ void eExpertSetup::factory_reset()
 	{
 		switch( eSystemInfo::getInstance()->getHwType() )
 		{
+			case eSystemInfo::DM500PLUS:
 			case eSystemInfo::DM600PVR:
 			case eSystemInfo::DM7020:
 				system("rm -R /etc/enigma && killall -9 enigma");
