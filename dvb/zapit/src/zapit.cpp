@@ -1095,7 +1095,7 @@ void parseScanInputXml(void)
 
 	complete_filename = (std::string)ZAPITCONFIGDIR + "/" + filename;
 	if ((stat(complete_filename.c_str(), &buf) == -1) && (errno == ENOENT))
-		complete_filename = (std::string)DATADIR + "/" + SATELLITES_XML;
+		complete_filename = (std::string)DATADIR + "/" + filename;
 	scanInputParser = parseXmlFile(complete_filename.c_str());
 }
 
