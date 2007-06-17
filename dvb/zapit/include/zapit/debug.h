@@ -94,6 +94,20 @@ extern int debug;
 	_r;							\
 })
 
+#if HAVE_DVB_API_VERSION < 3
+#define fop_sec(cmd, args...) ({					\
+	int _r;							\
+	if (secfd >= 0) { 						\
+		if ((_r = ::cmd(secfd, args)) < 0)			\
+			ERROR(#cmd"(secfd, "#args")");		\
+		else if (debug)					\
+			INFO(#cmd"(secfd, "#args")");		\
+	}							\
+	else { _r = secfd; } 					\
+	_r;							\
+})
+#endif
+
 #define quiet_fop(cmd, args...) ({				\
 	int _r;							\
 	if (fd >= 0) { _r = ::cmd(fd, args); }			\
