@@ -99,7 +99,7 @@ int * CScanSettings::motorPosOfSat(char* satname)
 
 char * CScanSettings::satOfDiseqc(int diseqc) const
 {
-	if (0/*diseqcMode == NO_DISEQC*/) 
+	if (diseqcMode == NO_DISEQC) 
 		return (char *)&satNameNoDiseqc;
 		
 	if (diseqc >= 0 && diseqc < MAX_SATELLITES) 
