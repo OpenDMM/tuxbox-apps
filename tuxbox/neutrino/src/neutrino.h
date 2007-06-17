@@ -134,7 +134,9 @@ class CNeutrinoApp : public CMenuTarget, CChangeObserver
 		CShutdownCountNotifier		*shutdownCountNotifier;
 
 		CNVODChangeExec         	*NVODChanger;
+#ifndef HAVE_DREAMBOX_HARDWARE
 		CUCodeCheckExec			*UCodeChecker;
+#endif
 		CStreamFeaturesChangeExec	*StreamFeaturesChanger;
 		CMoviePluginChangeExec 		*MoviePluginChanger;
 		CIPChangeNotifier		*MyIPChanger;
@@ -148,7 +150,9 @@ class CNeutrinoApp : public CMenuTarget, CChangeObserver
 		bool showUserMenu(int button);
 		bool getNVODMenu(CMenuWidget* menu);
 
+#ifndef HAVE_DREAMBOX_HARDWARE
 		bool ucodes_available(void);
+#endif
 		void firstChannel();
 		void setupColors_classic();
 		void setupColors_neutrino();

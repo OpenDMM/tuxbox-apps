@@ -439,7 +439,9 @@ int pmt_set_update_filter(CZapitChannel * const channel, int *fd)
 	dsfp.filter.mask[2] = 0xFF;
 	dsfp.filter.mask[3] = (0x1F << 1) | 0x01;
 	dsfp.filter.mask[4] = 0xFF;
+#if HAVE_DVB_API_VERSION >= 3
 	dsfp.filter.mode[3] = 0x1F << 1;
+#endif
 	dsfp.flags = DMX_CHECK_CRC | DMX_IMMEDIATE_START;
 	dsfp.pid = channel->getPmtPid();
 	dsfp.timeout = 0;

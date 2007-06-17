@@ -108,8 +108,10 @@ class CFrameBuffer
 		unsigned int getStride() const;             // size of a single line in the framebuffer (in bytes)
 		bool getActive() const;                     // is framebuffer active?
 
+#if HAVE_DVB_API_VERSION >= 3
 		void setTransparency( int tr = 0 );
 		void setBlendLevel(int blev1, int blev2);
+#endif
 
 		//Palette stuff
 		void setAlphaFade(int in, int num, int tr);
