@@ -50,6 +50,14 @@ std::map <t_channel_id, uint8_t> service_types;
 extern CFrontend *frontend;
 extern CEventServer *eventServer;
 
+#if HAVE_DVB_API_VERSION < 3
+#define frequency Frequency
+#define symbol_rate SymbolRate
+#define inversion Inversion
+#define fec_inner FEC_inner
+#define modulation QAM
+#endif
+
 void generic_descriptor(const unsigned char * const)
 {
 #if 0

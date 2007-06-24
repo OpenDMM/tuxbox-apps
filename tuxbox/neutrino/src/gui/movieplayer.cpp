@@ -29,8 +29,6 @@
 #include <config.h>
 #endif
 
-#if HAVE_DVB_API_VERSION >= 3
-
 #include <gui/movieplayer.h>
 
 #include <global.h>
@@ -62,9 +60,17 @@ extern CPlugins       * g_PluginList;
 #include <gui/widget/stringinput.h>
 #include <gui/widget/stringinput_ext.h>
 
+#if HAVE_DVB_API_VERSION >= 3
 #include <linux/dvb/audio.h>
 #include <linux/dvb/dmx.h>
 #include <linux/dvb/video.h>
+#else
+#include <ost/audio.h>
+#include <ost/dmx.h>
+#include <ost/video.h>
+#define dmx_pes_filter_params	dmxPesFilterParams
+#define pes_type	pesType
+#endif
 
 #include <algorithm>
 #include <fstream>
@@ -92,12 +98,16 @@ extern CPlugins       * g_PluginList;
 #define MOVIE_HINT_BOX_TIMER 5 // time to show bookmark hints in seconds
 #endif /* MOVIEBROWSER */
 
-
+#if HAVE_DVB_API_VERSION < 3
+#define ADAP	"/dev/dvb/card0"
+#define DVR	"/dev/pvr"
+#else
 #define ADAP	"/dev/dvb/adapter0"
+#define DVR	ADAP "/dvr0"
+#endif
 #define ADEC	ADAP "/audio0"
 #define VDEC	ADAP "/video0"
 #define DMX	ADAP "/demux0"
-#define DVR	ADAP "/dvr0"
 
 #define AVIA_AV_STREAM_TYPE_0           0x00
 #define AVIA_AV_STREAM_TYPE_SPTS        0x01
@@ -4295,7 +4305,7 @@ CMoviePlayerGui::PlayStream (int streamtype)
 // checks if AR has changed an sets cropping mode accordingly
 void checkAspectRatio (int vdec, bool init)
 {
-
+#if HAVE_DVB_API_VERSION >= 3
     static video_size_t size;
     static time_t last_check=0;
 
@@ -4340,8 +4350,11 @@ void checkAspectRatio (int vdec, bool init)
             last_check=time(NULL);
         }
     }
-}
+#else
+	if (init)
+		printf("[movieplayer.cpp] checkAspectRatio apparently not needed on old API\n");
 #endif
+}
 
 void CMoviePlayerGui::showHelpTS()
 {
