@@ -498,6 +498,8 @@ const char * locale_real_names[] =
 	"keybindingmenu.pageup",
 	"keybindingmenu.pageup_head",
 	"keybindingmenu.quickzap",
+	"keybindingmenu.reload",
+	"keybindingmenu.reload_head",
 	"keybindingmenu.repeatblock",
 	"keybindingmenu.repeatblockgeneric",
 	"keybindingmenu.sort",
