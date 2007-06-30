@@ -62,6 +62,7 @@ struct SNeutrinoSettings
 	int tuxtxt_cache;
 #endif
 	int virtual_zap_mode;
+	int infobar_show;
 
 	// EPG
 	std::string epg_cache;
