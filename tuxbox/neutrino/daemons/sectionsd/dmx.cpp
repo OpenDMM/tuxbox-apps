@@ -903,3 +903,43 @@ int DMX::setPid(const unsigned short new_pid)
 
 	return 0;
 }
+
+int DMX::setCurrentService(int new_current_service)
+{
+        lock();
+
+	if (!isOpen())
+	{
+#ifdef PAUSE_EQUALS_STOP
+		pthread_cond_signal(&change_cond);
+#endif
+		unlock();
+		return 1;
+	}
+
+	if (real_pauseCounter > 0)
+	{
+		dprintf("currentDMX: for 0x%x ignored! because of real_pauseCounter> 0\n", new_current_service);
+		unlock();
+		return 0;	// läuft nicht (zB streaming)
+	}
+	closefd();
+
+	current_service = new_current_service;
+	int rc = immediate_start();
+
+	if (rc != 0)
+	{
+		unlock();
+		return rc;
+	}
+
+        pthread_cond_signal(&change_cond);
+
+	if (timeset)
+		lastChanged = time(NULL);
+
+	unlock();
+
+	return 0;
+}
