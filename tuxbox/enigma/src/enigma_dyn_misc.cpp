@@ -748,7 +748,7 @@ static eString startPlugin(eString request, eString dirpath, eString opt, eHTTPC
 	if (opts.find("name") == opts.end())
 		return "E: no plugin name given";
 
-	eZapPlugins plugins(-1);
+	eZapPlugins plugins(eZapPlugins::AnyPlugin);
 	eString path;
 	if (opts.find("path") != opts.end())
 	{
