@@ -27,8 +27,6 @@
 #include <lib/gui/emessage.h>
 #include <lib/system/econfig.h>
 
-extern eString getInfo(const char *file, const char *info);
-
 void eSkinSetup::loadSkins()
 {
 	eListBoxEntrySkin* selection=0;
@@ -72,8 +70,9 @@ void eSkinSetup::loadSkins()
 
 			if (fileName.find(".info") != eString::npos)
 			{
-				eString esml=skinPaths[i] + getInfo(fileName.c_str(), "esml");
-				eString name=getInfo(fileName.c_str(), "name");
+				eSimpleConfigFile config(fileName.c_str());
+				eString esml = skinPaths[i] + config.getInfo("esml");
+				eString name = config.getInfo("name");
 				eDebug("esml = %s, name = %s", esml.c_str(), name.c_str());
 				if (esml.size() && name.size())
 				{
