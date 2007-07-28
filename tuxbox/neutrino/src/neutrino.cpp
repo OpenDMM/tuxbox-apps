@@ -4386,6 +4386,37 @@ void CNeutrinoApp::RealRun(CMenuWidget &mainMenu)
 					channelList->exec();
 				}
 			}
+#ifdef HAVE_DREAMBOX_HARDWARE
+			// support for additional buttons on Dreambox Remote
+			else if( msg == CRCInput::RC_tv )
+			{
+				if( mode != mode_tv )
+				{
+					tvMode();
+				}
+			}
+			else if( msg == CRCInput::RC_radio )
+			{
+				if( mode != mode_radio )
+				{
+					radioMode();
+				}
+			}
+			else if( msg == CRCInput::RC_text )
+			{
+				g_PluginList->startPlugin("tuxtxt");
+			}
+			else if( msg == CRCInput::RC_audio )
+			{
+				// audio channel selection
+				showUserMenu(SNeutrinoSettings::BUTTON_GREEN);
+			}
+			else if( msg == CRCInput::RC_video )
+			{
+				// nvod selection
+				showUserMenu(SNeutrinoSettings::BUTTON_YELLOW);
+			}
+#endif
 			else if( msg == CRCInput::RC_red )
 			{	// eventlist
 				showUserMenu(SNeutrinoSettings::BUTTON_RED);  //USERMENU
