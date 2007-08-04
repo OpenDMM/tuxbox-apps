@@ -3532,6 +3532,7 @@ void CMoviePlayerGui::PlayFile (int parental)
 			case CRCInput::RC_yellow:
 				if(rc_blocked == false)	// prevent to fast repeats
 				{
+					update_lcd  = true;
 					g_playstate = (g_playstate == CMoviePlayerGui::PAUSE) ? CMoviePlayerGui::PLAY : CMoviePlayerGui::PAUSE;
 					rc_blocked  = true;
 				}
