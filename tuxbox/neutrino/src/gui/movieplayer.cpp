@@ -3323,6 +3323,9 @@ void CMoviePlayerGui::PlayFile (int parental)
 						TRACE("[mp] start pos %llu, %d s Name: %s\r\n",g_startposition,moviebrowser->getCurrentStartPos(),filename);
 						// get the movie info handle (to be used for e.g. bookmark handling)
 						p_movie_info = moviebrowser->getCurrentMovieInfo();
+
+						if(FileTime.IsVisible()) // update time if visible
+							FileTime.show(g_startposition / SECONDOFFSET);
 	
 						update_lcd   = true;
 						start_play   = true;
@@ -3369,7 +3372,10 @@ void CMoviePlayerGui::PlayFile (int parental)
 						update_lcd   = true;
 						start_play   = true;
                         p_movie_info = NULL; // ew might get the movie info here some time
- 					}
+                        
+						if(FileTime.IsVisible()) // update time if visible
+							FileTime.show(0);
+					}
 				}
 			}// MOVIEBROWSER added
 
