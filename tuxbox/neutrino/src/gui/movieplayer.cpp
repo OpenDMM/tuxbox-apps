@@ -3153,6 +3153,7 @@ void CMoviePlayerGui::PlayFile (int parental)
 	bool        open_filebrowser = true;
 	bool        start_play       = false;
 	bool        requestStop      = false;
+	bool        rc_blocked       = false;
 
 	g_playstate = CMoviePlayerGui::STOPPED;
 
@@ -3567,16 +3568,16 @@ void CMoviePlayerGui::PlayFile (int parental)
 
 				//-- pause / play --
 			case CRCInput::RC_yellow:
-				static time_t RC_yellow_time = 0;
-				if(time(NULL) - RC_yellow_time > 1) // wait at least 1 sec before next yellow button, 
+				if(rc_blocked == false)	// prevent to fast repeats
 				{
 					update_lcd  = true;
 					g_playstate = (g_playstate == CMoviePlayerGui::PAUSE) ? CMoviePlayerGui::PLAY : CMoviePlayerGui::PAUSE;
 					if(g_show_movieviewer)
 						showMovieViewer();
-					
-					RC_yellow_time = time(NULL);
+					else
+						rc_blocked  = true;
 				}
+
 				break;
 
 				//-- invoke bookmark manager --
@@ -3937,6 +3938,7 @@ void CMoviePlayerGui::PlayFile (int parental)
 					requestStop = true;
 				}
 
+				rc_blocked = false;
 				break;
 		}
 	}
