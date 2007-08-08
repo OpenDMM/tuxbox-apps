@@ -51,6 +51,7 @@ extern CPlugins       * g_PluginList;
 #include <gui/nfs.h>
 #include <gui/bookmarkmanager.h>
 #include <gui/timeosd.h>
+#include <gui/movieviewer.h>
 
 #include <gui/widget/buttons.h>
 #include <gui/widget/icons.h>
@@ -178,6 +179,9 @@ unsigned short g_numpida=0;
 unsigned int   g_currentapid = 0;
 unsigned int   g_currentac3  = 0;
 unsigned int   g_apidchanged = 0;
+unsigned int   g_has_ac3 = false;
+unsigned short g_prozent=0;
+video_size_t   g_size;
 
 bool  g_showaudioselectdialog = false;
 short g_lcdSetting = -1;
@@ -185,7 +189,7 @@ bool  g_lcdUpdateTsMode = false;
 
 CFileList filelist;
 
-
+bool g_show_movieviewer = false;
 
 
 //------------------------------------------------------------------------
@@ -2933,7 +2937,8 @@ else
 		//-----------------
 		fprintf(stderr,"[mp] entering player loop\n");
 		//lcd
-		short prozent=0,last_prozent=1;
+		short last_prozent=1;
+		g_prozent = 0;
 		g_lcdSetting=g_settings.lcd_setting[SNeutrinoSettings::LCD_SHOW_VOLUME];
 		while( (ctx->itChanged == false) &&
 				 (g_playstate >= CMoviePlayerGui::PLAY) )
@@ -2963,13 +2968,13 @@ else
 			//-- has to be started here ...      --
 			mp_startDMX(ctx);	// starts only if stopped !
 			//lcd
-			prozent=(ctx->pos*100)/ctx->fileSize;
-			if((last_prozent !=prozent && g_lcdSetting!=1) || g_lcdUpdateTsMode)
+			g_prozent=(ctx->pos*100)/ctx->fileSize;
+			if((last_prozent !=g_prozent && g_lcdSetting!=1) || g_lcdUpdateTsMode)
 			{
 				g_settings.lcd_setting[SNeutrinoSettings::LCD_SHOW_VOLUME]=g_lcdSetting;
-				last_prozent=prozent;
+				last_prozent=g_prozent;
 				g_lcdUpdateTsMode=false;
-				CLCD::getInstance()->showPercentOver(prozent);
+				CLCD::getInstance()->showPercentOver(g_prozent);
 				g_settings.lcd_setting[SNeutrinoSettings::LCD_SHOW_VOLUME]=1;
 			}
 			//-- write stream data now --
@@ -3070,6 +3075,30 @@ void CMoviePlayerGui::ParentalEntrance(void)
 		PlayFile(1);
 	}
 }
+//=======================================
+//== CMoviePlayerGui::showMovieViewer      ==
+//=======================================
+void CMoviePlayerGui::showMovieViewer(void)
+{
+	CMovieViewer mv;
+	g_has_ac3 = 0;
+	for( unsigned int count = 0; count < g_numpida; count++ )
+	{
+			if(g_ac3flags[count] == 1)
+				g_has_ac3 = 1;
+	}
+
+	mv.setData(	(g_size.aspect_ratio == VIDEO_FORMAT_4_3)? 0:1, 
+			g_playstate, 
+			g_currentac3, 
+			g_has_ac3, 
+			g_numpida, 
+			g_prozent, 
+			filename);
+	mv.exec();
+}
+
+
 
 //===============================
 //== CMoviePlayerGui::PlayFile ==
@@ -3124,7 +3153,6 @@ void CMoviePlayerGui::PlayFile (int parental)
 	bool        open_filebrowser = true;
 	bool        start_play       = false;
 	bool        requestStop      = false;
-	bool        rc_blocked       = false;
 
 	g_playstate = CMoviePlayerGui::STOPPED;
 
@@ -3494,6 +3522,9 @@ void CMoviePlayerGui::PlayFile (int parental)
             APIDSelector.exec(NULL, ""); // otherwise use Dialog
             delete APIDChanger;
 			g_showaudioselectdialog = false;
+
+			if(g_show_movieviewer)
+				showMovieViewer();
 		}
 
 		//-- filetime display --
@@ -3536,11 +3567,15 @@ void CMoviePlayerGui::PlayFile (int parental)
 
 				//-- pause / play --
 			case CRCInput::RC_yellow:
-				if(rc_blocked == false)	// prevent to fast repeats
+				static time_t RC_yellow_time = 0;
+				if(time(NULL) - RC_yellow_time > 1) // wait at least 1 sec before next yellow button, 
 				{
 					update_lcd  = true;
 					g_playstate = (g_playstate == CMoviePlayerGui::PAUSE) ? CMoviePlayerGui::PLAY : CMoviePlayerGui::PAUSE;
-					rc_blocked  = true;
+					if(g_show_movieviewer)
+						showMovieViewer();
+					
+					RC_yellow_time = time(NULL);
 				}
 				break;
 
@@ -3698,9 +3733,12 @@ void CMoviePlayerGui::PlayFile (int parental)
 
 				//-- Help --
 			case CRCInput::RC_help:
-				showHelpTS();
+				if(g_show_movieviewer)
+					showMovieViewer();
+				else
+					showHelpTS();
+				
 				break;
-
 				//-- filetime on/off --
 			case CRCInput::RC_setup:
 				if(FileTime.IsVisible())
@@ -3899,7 +3937,6 @@ void CMoviePlayerGui::PlayFile (int parental)
 					requestStop = true;
 				}
 
-				rc_blocked = false;
 				break;
 		}
 	}
@@ -4313,7 +4350,6 @@ CMoviePlayerGui::PlayStream (int streamtype)
 void checkAspectRatio (int vdec, bool init)
 {
 #if HAVE_DVB_API_VERSION >= 3
-    static video_size_t size;
     static time_t last_check=0;
 
     // only necessary for auto mode, check each 5 sec. max
@@ -4327,13 +4363,15 @@ void checkAspectRatio (int vdec, bool init)
         // We set the display format to the correct value cyclic
         // This issue might be better fixed in the AVIA itself ... sometime   ... if somebody knows how ...
         ioctl(vdec, VIDEO_SET_DISPLAY_FORMAT, VIDEO_CENTER_CUT_OUT);
-        last_check=time(NULL);
+        if(ioctl(vdec, VIDEO_GET_SIZE, &g_size) < 0)
+             perror("[movieplayer.cpp] VIDEO_GET_SIZE");
+         last_check=time(NULL);
     }
     else if(g_settings.video_Format == 0 )//Display format auto
     {
         if(init)
         {
-            if(ioctl(vdec, VIDEO_GET_SIZE, &size) < 0)
+            if(ioctl(vdec, VIDEO_GET_SIZE, &g_size) < 0)
                 perror("[movieplayer.cpp] VIDEO_GET_SIZE");
             last_check=0;
         }
@@ -4342,7 +4380,7 @@ void checkAspectRatio (int vdec, bool init)
             video_size_t new_size;
             if(ioctl(vdec, VIDEO_GET_SIZE, &new_size) < 0)
                 perror("[movieplayer.cpp] VIDEO_GET_SIZE");
-            if(size.aspect_ratio != new_size.aspect_ratio)
+            if(g_size.aspect_ratio != new_size.aspect_ratio)
             {
                 printf("[movieplayer.cpp] AR change detected in auto mode, adjusting display format\n");
                 video_displayformat_t vdt;
@@ -4352,10 +4390,16 @@ void checkAspectRatio (int vdec, bool init)
                     vdt = VIDEO_CENTER_CUT_OUT;
                 if(ioctl(vdec, VIDEO_SET_DISPLAY_FORMAT, vdt))
                     perror("[movieplayer.cpp] VIDEO_SET_DISPLAY_FORMAT");
-                memcpy(&size, &new_size, sizeof(size));
+                memcpy(&g_size, &new_size, sizeof(g_size));
             }
             last_check=time(NULL);
         }
+    }
+    else
+    {
+        if(ioctl(vdec, VIDEO_GET_SIZE, &g_size) < 0)
+            perror("[movieplayer.cpp] VIDEO_GET_SIZE");
+        last_check=time(NULL);;
     }
 #else
 	if (init)
