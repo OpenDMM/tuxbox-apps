@@ -409,6 +409,19 @@ bool CMovieInfo::parseXmlTree (char* text, MI_MOVIE_INFO* movie_info)
 }
 
 
+/************************************************************************
+
+************************************************************************/
+void CMovieInfo::showMovieInfo(const char* filename)
+{
+	if(filename == NULL)
+		return;
+	
+	MI_MOVIE_INFO movie_info;
+	movie_info.file.Name = filename;
+	if(loadMovieInfo(&movie_info ) == true)
+		showMovieInfo(movie_info);
+}
 
 /************************************************************************
 
