@@ -181,7 +181,9 @@ unsigned int   g_currentac3  = 0;
 unsigned int   g_apidchanged = 0;
 unsigned int   g_has_ac3 = false;
 unsigned short g_prozent=0;
+#if HAVE_DVB_API_VERSION >=3
 video_size_t   g_size;
+#endif // HAVE_DVB_API_VERSION >=3
 
 bool  g_showaudioselectdialog = false;
 short g_lcdSetting = -1;
@@ -3080,6 +3082,7 @@ void CMoviePlayerGui::ParentalEntrance(void)
 //=======================================
 void CMoviePlayerGui::showMovieViewer(void)
 {
+	uint aspect = 0;
 	CMovieViewer mv;
 	g_has_ac3 = 0;
 	for( unsigned int count = 0; count < g_numpida; count++ )
@@ -3087,8 +3090,11 @@ void CMoviePlayerGui::showMovieViewer(void)
 			if(g_ac3flags[count] == 1)
 				g_has_ac3 = 1;
 	}
+#if HAVE_DVB_API_VERSION >=3
+	aspect = (g_size.aspect_ratio == VIDEO_FORMAT_4_3)? 0:1;
+#endif // HAVE_DVB_API_VERSION >=3
 
-	mv.setData(	(g_size.aspect_ratio == VIDEO_FORMAT_4_3)? 0:1, 
+	mv.setData(	aspect, 
 			g_playstate, 
 			g_currentac3, 
 			g_has_ac3, 
