@@ -191,7 +191,7 @@ bool  g_lcdUpdateTsMode = false;
 
 CFileList filelist;
 
-bool g_show_movieviewer = false;
+bool g_show_movieviewer = true;
 
 
 //------------------------------------------------------------------------
