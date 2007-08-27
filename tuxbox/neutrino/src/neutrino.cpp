@@ -2255,6 +2255,8 @@ const CMenuOptionChooser::keyval FLASHUPDATE_UPDATEMODE_OPTIONS[FLASHUPDATE_UPDA
 void CNeutrinoApp::InitServiceSettings(CMenuWidget &service, CMenuWidget &scanSettings)
 {
 	dprintf(DEBUG_DEBUG, "init serviceSettings\n");
+
+	// Dynamic renumbering
 	int shortcut3 = 0;
 	service.addItem(GenericMenuSeparator);
 	service.addItem(GenericMenuBack);
