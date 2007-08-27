@@ -78,6 +78,8 @@ class CNeutrinoApp : public CMenuTarget, CChangeObserver
 			RECORDING_VCR    = 2,
 			RECORDING_FILE   = 3
 		};
+		
+		void saveSetup();
 
  private:
 	CFrameBuffer * frameBuffer;
@@ -164,7 +166,6 @@ class CNeutrinoApp : public CMenuTarget, CChangeObserver
 
 		void startNextRecording();
 
-		void saveSetup();
 		int loadSetup();
 
 		void tvMode( bool rezap = true );
