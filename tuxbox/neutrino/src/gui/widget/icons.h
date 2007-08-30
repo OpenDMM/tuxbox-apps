@@ -36,6 +36,7 @@
 #define NEUTRINO_ICON_BUTTON_HOME	"home.raw"
 #define NEUTRINO_ICON_BUTTON_MUTE	"mute.raw"
 #define NEUTRINO_ICON_BUTTON_MUTE_SMALL	"mute_small.raw"
+#define NEUTRINO_ICON_BUTTON_POWER	"power.raw"
 
 #define NEUTRINO_ICON_BUTTON_OKAY	"ok.raw"
 
@@ -65,6 +66,7 @@
 #define NEUTRINO_ICON_SETTINGS		"settings.raw"
 #define NEUTRINO_ICON_SHELL		"shell.raw"
 #define NEUTRINO_ICON_UPNP		"upnp.raw"
+#define NEUTRINO_ICON_PROTECTING		"protecting.raw"
 
 
 /* icon widths */
