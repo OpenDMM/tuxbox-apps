@@ -266,6 +266,7 @@ const char * locale_real_names[] =
 	"colorthememenu.dvb2k_theme",
 	"colorthememenu.head",
 	"colorthememenu.neutrino_theme",
+	"colorthememenu.virginmedia",
 	"date.Apr",
 	"date.Aug",
 	"date.Dec",

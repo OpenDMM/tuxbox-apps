@@ -160,6 +160,7 @@ class CNeutrinoApp : public CMenuTarget, CChangeObserver
 		void setupColors_neutrino();
 		void setupColors_dblue();
 		void setupColors_dvb2k();
+		void setupColors_virginmedia();
 		void setupNetwork( bool force= false );
 		void setupNFS();
 		void setupRecordingDevice(void);
