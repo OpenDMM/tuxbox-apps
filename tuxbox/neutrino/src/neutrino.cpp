@@ -1241,6 +1241,7 @@ void CNeutrinoApp::saveSetup()
 	configfile.setInt32 ( "personalize_pinstatus", g_settings.personalize_pinstatus );
 	configfile.setInt32 ( "personalize_bluebutton", g_settings.personalize_bluebutton );
 	configfile.setInt32 ( "personalize_redbutton", g_settings.personalize_redbutton );
+	configfile.setString( "personalize_pincode", g_settings.personalize_pincode);
 
 	configfile.setInt32 ( "personalize_tvmode", g_settings.personalize_tvmode );
 	configfile.setInt32 ( "personalize_radiomode", g_settings.personalize_radiomode );
