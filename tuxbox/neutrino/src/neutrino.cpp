@@ -83,10 +83,6 @@
 #include "gui/nfs.h"
 #include "gui/screensetup.h"
 
-#if ENABLE_UPNP
-#include "gui/upnpbrowser.h"
-#endif
-
 #include <system/setting_helpers.h>
 #include <system/settings.h>
 #include <system/debug.h>
