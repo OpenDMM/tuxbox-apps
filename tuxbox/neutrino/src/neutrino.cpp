@@ -3472,6 +3472,11 @@ int CNeutrinoApp::exec(CMenuTarget* parent, const std::string & actionKey)
 		setupColors_dblue();
 		colorSetupNotifier->changeNotify(NONEXISTANT_LOCALE, NULL);
 	}
+	else if (actionKey=="theme_dbrown")
+	{
+		setupColors_dbrown();
+		colorSetupNotifier->changeNotify(NONEXISTANT_LOCALE, NULL);
+	}
 	else if (actionKey=="theme_virgin")
 	{
 		setupColors_virginmedia();
