@@ -68,6 +68,32 @@ typedef struct neutrino_font_descr
 	int          size_offset;
 } neutrino_font_descr_struct;
 
+typedef struct font_sizes
+{
+	const neutrino_locale_t name;
+	const unsigned int      defaultsize;
+	const unsigned int      style;
+	const unsigned int      size_offset;
+} font_sizes_struct;
+
+typedef struct font_sizes_groups
+{
+	const neutrino_locale_t                     groupname;
+	const unsigned int                          count;
+	const SNeutrinoSettings::FONT_TYPES * const content;
+	const char * const                          actionkey;
+} font_sizes_groups_struct;
+
+#define FONT_STYLE_REGULAR 0
+#define FONT_STYLE_BOLD    1
+#define FONT_STYLE_ITALIC  2
+
+extern const font_sizes_struct neutrino_font[];
+extern const char * locale_real_names[]; /* #include <system/locals_intern.h> */
+
+#define OPTIONS_OFF0_ON1_OPTION_COUNT 2
+extern const CMenuOptionChooser::keyval OPTIONS_OFF0_ON1_OPTIONS[];
+
 class CNeutrinoApp : public CMenuTarget, CChangeObserver
 {
  public:
@@ -146,6 +172,9 @@ class CNeutrinoApp : public CMenuTarget, CChangeObserver
 		CConsoleDestChangeNotifier	*ConsoleDestinationChanger;
 		CRCLock                         *rcLock;
 		CMenuTarget* 			moviePlayerGui;
+		bool 				parentallocked;
+		CFontSizeNotifier 		*fontsizenotifier;
+		bool 				waitforshutdown;
 
 		// USERMENU
 		CTimerList			*Timerlist;

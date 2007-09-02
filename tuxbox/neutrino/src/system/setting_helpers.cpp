@@ -59,9 +59,6 @@
 #include <gui/plugins.h>
 #include <daemonc/remotecontrol.h>
 
-extern CPlugins       * g_PluginList;    /* neutrino.cpp */
-extern CRemoteControl * g_RemoteControl; /* neutrino.cpp */
-
 extern "C" int pinghost( const char *hostname );
 
 #ifndef TUXTXT_CFG_STANDALONE

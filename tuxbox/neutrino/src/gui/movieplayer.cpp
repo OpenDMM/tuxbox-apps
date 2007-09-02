@@ -37,13 +37,10 @@
 #include <driver/fontrenderer.h>
 #include <driver/rcinput.h>
 #include <daemonc/remotecontrol.h>
-extern CRemoteControl * g_RemoteControl; /* neutrino.cpp */
 #include <system/settings.h>
 #include <system/helper.h>
 #include <system/xmlinterface.h>
 #include <gui/plugins.h>
-extern CPlugins       * g_PluginList;
-
 
 #include <gui/eventlist.h>
 #include <gui/color.h>
