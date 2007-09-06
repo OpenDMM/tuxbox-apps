@@ -438,8 +438,8 @@ int CNeutrinoApp::loadSetup()
 #if ENABLE_UPNP
  	g_settings.personalize_upnpbrowser = configfile.getInt32("personalize_upnpbrowser", 1);
 #endif
-	g_settings.personalize_settings = configfile.getInt32("personalize_settings", 1);
-	g_settings.personalize_service = configfile.getInt32("personalize_service", 1);
+	g_settings.personalize_settings = configfile.getInt32("personalize_settings", 0);
+	g_settings.personalize_service = configfile.getInt32("personalize_service", 0);
 	g_settings.personalize_sleeptimer = configfile.getInt32("personalize_sleeptimer", 1);
 	g_settings.personalize_reboot = configfile.getInt32("personalize_reboot", 1);
 	g_settings.personalize_shutdown = configfile.getInt32("personalize_shutdown", 1);
