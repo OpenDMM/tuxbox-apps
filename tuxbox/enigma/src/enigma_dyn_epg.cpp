@@ -538,7 +538,8 @@ public:
 
 static eString getMultiEPG(eString request, eString dirpath, eString opts, eHTTPConnection *content)
 {
-	content->local_header["Content-Type"]="text/html; charset=utf-8";
+	content->local_header["Content-Type"] = "text/html; charset=utf-8";
+	content->local_header["Cache-Control"] = "no-cache,no-store,must-revalidate,max-age=1";
 	std::map<eString, eString>opt = getRequestOptions(opts, '&');
 	eString refs = opt["ref"];
 	eServiceReference bouquetRef = string2ref(refs);
@@ -559,13 +560,15 @@ static eString getMultiEPG(eString request, eString dirpath, eString opts, eHTTP
 
 static eString getHTMLServiceEPG(eString request, eString dirpath, eString opts, eHTTPConnection *content)
 {
-	content->local_header["Content-Type"]="text/html; charset=utf-8";
+	content->local_header["Content-Type"] = "text/html; charset=utf-8";
+	content->local_header["Cache-Control"] = "no-cache,no-store,must-revalidate,max-age=1";
 	return getServiceEPG("HTML", opts);
 }
 
 static eString getchannelinfo(eString request, eString dirpath, eString opts, eHTTPConnection *content)
 {   
-	content->local_header["Content-Type"]="text/html; charset=utf-8";
+	content->local_header["Content-Type"] = "text/html; charset=utf-8";
+	content->local_header["Cache-Control"] = "no-cache,no-store,must-revalidate,max-age=1";
 	eString result = getEITC(readFile(TEMPLATE_DIR + "eit.tmp"), "HTML");
 	result.strReplace("#SERVICENAME#", getCurService());
     
