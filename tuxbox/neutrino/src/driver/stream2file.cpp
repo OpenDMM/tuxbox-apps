@@ -572,6 +572,7 @@ stream2file_error_msg_t stop_recording(void)
 	{
 		CMovieInfo mi;
 		MI_MOVIE_INFO movieinfo; 
+		mi.clearMovieInfo(&movieinfo);
 
 		time(&record_end_time);
 		printf("record time: %d \n",(uint)record_end_time-record_start_time);
