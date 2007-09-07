@@ -3319,7 +3319,7 @@ void CMoviePlayerGui::PlayFile (int parental)
 		if(open_filebrowser)
 		{
 			open_filebrowser    = false;
-ifdef MOVIEBROWSER  			
+#ifdef MOVIEBROWSER  			
 			if(isMovieBrowser == true)
 			{
                 if (g_settings.streaming_show_tv_in_browser == true && 
