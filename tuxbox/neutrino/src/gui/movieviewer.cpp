@@ -271,8 +271,6 @@ void CMovieViewer::exec()
 			}
 			else
 			{
-				if (( msg != CRCInput::RC_timeout ) && (msg != CRCInput::RC_ok))
-					g_RCInput->postMsg( msg, data );
 				res = messages_return::cancel_info;
 			}
 		}
@@ -361,7 +359,6 @@ void CMovieViewer::show()
 
 	///////////////////////////
 	// paint number box 
-	printf("w%d,h%d\n",ChanWidth,ChanHeight);
 	frameBuffer->paintBoxRel(BoxStartX+10, BoxStartY+10, ChanWidth, ChanHeight, COL_INFOBAR_SHADOW_PLUS_0);
 	frameBuffer->paintBoxRel(BoxStartX,    BoxStartY,    ChanWidth, ChanHeight, col_NumBox);
 
