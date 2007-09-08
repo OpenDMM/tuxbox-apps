@@ -47,6 +47,7 @@ class CPersonalizeGui : public CMenuTarget
 private:
 CFrameBuffer *frameBuffer;
 int x, y, width, height, hheight, mheight;
+void ShowHelpPersonalize();
 
 public:
 CConfigFile                     configfile;

@@ -305,11 +305,11 @@ void CNeutrinoApp::InitMainMenu(CMenuWidget &mainMenu,
 		mainSettings.addItem(new CLockedMenuForwarder(LOCALE_MAINSETTINGS_MISC, g_settings.personalize_pincode, true, true, NULL, &miscSettings, NULL, CRCInput::RC_yellow, NEUTRINO_ICON_BUTTON_YELLOW));
 
 	if (g_settings.personalize_pinstatus == 0){
-		shortcut++;
+		shortcut2++;
 		mainSettings.addItem(new CMenuForwarder(LOCALE_PERSONALIZE_HEAD, true, NULL, new CPersonalizeGui(), NULL, CRCInput::convertDigitToKey((shortcut2 == 10) ? 0 : shortcut2)));
 		}
 	if (g_settings.personalize_pinstatus == 1){
-		shortcut++;
+		shortcut2++;
 		mainSettings.addItem(new CLockedMenuForwarder(LOCALE_PERSONALIZE_HEAD, g_settings.personalize_pincode, true, true, NULL, new CPersonalizeGui(), NULL, CRCInput::convertDigitToKey((shortcut2 == 10) ? 0 : shortcut2)));
 		}
 }
