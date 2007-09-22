@@ -49,6 +49,7 @@ extern CRemoteControl * g_RemoteControl; /* neutrino.cpp */
 
 #include <string>
 #include <system/settings.h>
+#include <gui/widget/messagebox.h>
 
 #include <sys/timeb.h>
 #include <time.h>
@@ -1160,9 +1161,24 @@ void CInfoViewer::showLcdPercentOver()
 	}
 }
 
+void CInfoViewer::showEpgInfo()   //message on event change
+{
+	char runningStart[10];
+	char nextStart[10];
+	std::string eventname = info_CurrentNext.current_name;
+   
+	struct tm *pStartZeit = localtime(&info_CurrentNext.current_zeit.startzeit);
+	sprintf( (char*)&runningStart, "%02d:%02d", pStartZeit->tm_hour, pStartZeit->tm_min );
+      
+	struct tm *pnStartZeit = localtime(&info_CurrentNext.next_zeit.startzeit);
+	sprintf( (char*)&nextStart, "%02d:%02d", pnStartZeit->tm_hour, pnStartZeit->tm_min);
 
-
-
+	if (eventname.length() !=0)
+		{
+		std::string message =  eventname + g_Locale->getText(LOCALE_INFOVIEWER_MESSAGE_TO) + nextStart;
+		ShowMsgUTF(LOCALE_INFOVIEWER_MESSAGE_NOW, message, CMessageBox::mbrBack, CMessageBox::mbBack, "info.raw", 420, 6); // UTF-8
+		}		
+} 
 
 //
 //  -- InfoViewer Menu Handler Class
