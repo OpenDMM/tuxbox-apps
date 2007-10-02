@@ -3692,5 +3692,16 @@ int main(int argc, char **argv)
 
 	tzset();
 	initGlobals();
+
+	char * buf = (char*)malloc(64);
+	int count;
+	if (buf && (count = readlink("/proc/self/exe", buf, 63)) >= 0) {
+		buf[count] = '\0';
+		printf("starting %s\n", buf);
+		free(buf);
+	}
+	for (int i = 3; i < 256; i++)
+		close(i);
+
 	return CNeutrinoApp::getInstance()->run(argc, argv);
 }
