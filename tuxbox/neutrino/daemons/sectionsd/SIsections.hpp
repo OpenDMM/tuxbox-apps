@@ -574,6 +574,7 @@ public:
 			return  ((((struct SI_section_PPT_header *)buffer)->duration_hi)>>4)*10*3600L + ((((struct SI_section_PPT_header *)buffer)->duration_hi)&0x0f)*3600L +
 				((((struct SI_section_PPT_header *)buffer)->duration_mid)>>4)*10*60L + ((((struct SI_section_PPT_header *)buffer)->duration_mid)&0x0f)*60L +
 				((((struct SI_section_PPT_header *)buffer)->duration_lo)>>4)*10 + ((((struct SI_section_PPT_header *)buffer)->duration_lo)&0x0f);
+		return(0);
 	}
 
 	short int descriptor_section_length(void) const {
