@@ -2630,6 +2630,7 @@ eString getBoxStatus(eString format)
 static eString data(eString request, eString dirpath, eString opt, eHTTPConnection *content)
 {
 	content->local_header["Content-Type"]="text/html; charset=utf-8";
+	content->local_header["Cache-Control"] = "no-cache,no-store,must-revalidate,max-age=1";
 	return getBoxStatus("HTML");
 }
 
