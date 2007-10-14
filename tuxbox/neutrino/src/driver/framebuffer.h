@@ -27,6 +27,7 @@
 #ifndef __framebuffer__
 #define __framebuffer__
 
+#include <sys/types.h>
 
 #include <linux/fb.h>
 #include <linux/vt.h>
