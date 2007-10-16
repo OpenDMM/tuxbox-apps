@@ -943,7 +943,7 @@ void CInfoViewer::show_Data( bool calledFromEvent)
 		}
 		else
 		{
-			runningPercent=(unsigned)((float)(jetzt-info_CurrentNext.current_zeit.startzeit)/(float)info_CurrentNext.current_zeit.dauer*100.);
+			runningPercent=(jetzt-info_CurrentNext.current_zeit.startzeit) * 100 / info_CurrentNext.current_zeit.dauer;
 			sprintf( (char*)&runningRest, "%d / %d min", seit, rest);
 		}
 
@@ -1153,8 +1153,8 @@ void CInfoViewer::showLcdPercentOver()
 			if (jetzt < info_CurrentNext.current_zeit.startzeit)
 				runningPercent = 0;
 			else
-				runningPercent=MIN((unsigned)((float)(jetzt-info_CurrentNext.current_zeit.startzeit)/
-														(float)info_CurrentNext.current_zeit.dauer*100.),100);
+				runningPercent=MIN((jetzt-info_CurrentNext.current_zeit.startzeit) * 100 /
+					            info_CurrentNext.current_zeit.dauer ,100);
 		}
 		CLCD::getInstance()->showPercentOver(runningPercent);
 	}
