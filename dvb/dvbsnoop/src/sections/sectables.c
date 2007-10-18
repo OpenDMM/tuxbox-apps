@@ -15,6 +15,9 @@ $Id$
 
 
 $Log$
+Revision 1.36  2007/10/18 20:49:52  rasc
+Mpeg NTP descriptor bugfix, minor changes
+
 Revision 1.35  2005/12/29 02:43:39  rasc
 gcc fixes, man page update
 
@@ -246,7 +249,7 @@ void decodeSI_packet (u_char *buf, int len, u_int pid)
 
 
   // nothing to output ?  
-  if (getVerboseLevel() < 2) return;
+  if (getMaxVerboseLevel() < 2) return;
 
 
   if (pid != DUMMY_PID) {

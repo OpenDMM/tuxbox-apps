@@ -18,6 +18,9 @@ $Id$
 
 
 $Log$
+Revision 1.51  2007/10/18 20:49:49  rasc
+Mpeg NTP descriptor bugfix, minor changes
+
 Revision 1.50  2006/02/12 23:17:11  rasc
 TS 101 191 MIP - Mega-Frame Initialization Packet for DVB-T/H  (TS Pid 0x15)
 
@@ -2984,6 +2987,9 @@ void descriptorDVB_DSNG  (u_char *b)
 void descriptorDVB_PDC  (u_char *b)
 
 {
+
+	// $$$ TODO
+
     u_long     programme_identification_label;
     // ... splits in
     u_int     day;
