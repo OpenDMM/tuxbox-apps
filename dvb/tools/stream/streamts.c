@@ -513,7 +513,7 @@ main (int argc, char ** argv) {
 			if (offset == -1)
 				continue;
 
-			packet_stdout(buf + offset, r - offset, NULL);
+			packet_stdout(buf + offset, pos - offset, NULL);
 		}
 	}
 
