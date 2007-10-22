@@ -1,4 +1,5 @@
 /*
+  $Id$
   Neutrino-GUI  -   DBoxII-Project
 
   Copyright (C) 2001 Steffen Hehn 'McClean'
@@ -212,6 +213,11 @@ class CAudioPlayerGui : public CMenuTarget
 	 * @return true if file should be overwritten, false otherwise
 	 */
 	bool askToOverwriteFile(const std::string& filename);
+	bool openFilebrowser(void);
+	bool clearPlaylist(void);
+	bool shuffelPlaylist(void);	
+	bool playNext(bool allow_rotate = false);
+	bool playPrev(bool allow_rotate = false);
 	
  public:
 	CAudioPlayerGui();
