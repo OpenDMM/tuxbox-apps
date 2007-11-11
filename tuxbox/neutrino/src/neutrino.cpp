@@ -3468,31 +3468,6 @@ int CNeutrinoApp::exec(CMenuTarget* parent, const std::string & actionKey)
 		setupColors_neutrino();
 		colorSetupNotifier->changeNotify(NONEXISTANT_LOCALE, NULL);
 	}
-	else if (actionKey=="theme_classic")
-	{
-		setupColors_classic();
-		colorSetupNotifier->changeNotify(NONEXISTANT_LOCALE, NULL);
-	}
-	else if (actionKey=="theme_dblue")
-	{
-		setupColors_dblue();
-		colorSetupNotifier->changeNotify(NONEXISTANT_LOCALE, NULL);
-	}
-	else if (actionKey=="theme_dbrown")
-	{
-		setupColors_dbrown();
-		colorSetupNotifier->changeNotify(NONEXISTANT_LOCALE, NULL);
-	}
-	else if (actionKey=="theme_virgin")
-	{
-		setupColors_virginmedia();
-		colorSetupNotifier->changeNotify(NONEXISTANT_LOCALE, NULL);
-	}
-	else if (actionKey=="theme_dvb2k")
-	{
-		setupColors_dvb2k();
-		colorSetupNotifier->changeNotify(NONEXISTANT_LOCALE, NULL);
-	}
 	else if(actionKey=="savesettings")
 	{
 		CHintBox * hintBox = new CHintBox(LOCALE_MESSAGEBOX_INFO, g_Locale->getText(LOCALE_MAINSETTINGS_SAVESETTINGSNOW_HINT)); // UTF-8
