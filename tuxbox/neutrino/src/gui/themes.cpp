@@ -1,8 +1,6 @@
 /*
 	Neutrino-GUI  -   DBoxII-Project
 
-	Timerliste by Zwen
-	
 	License: GPL
 
 	This program is free software; you can redistribute it and/or modify
@@ -41,8 +39,13 @@
 
 #include "themes.h"
 
+/* undef THEMESDIR cause was defined in config.h without ending / */
+#ifdef THEMESDIR
+#undef THEMESDIR
+#endif
+#define THEMESDIR "/share/tuxbox/neutrino/themes/"
+#define USERDIR "/var" THEMESDIR
 #define FILE_PREFIX ".theme"
-#define FULLPATH THEMESDIR "/"
 
 CThemes::CThemes()
 : themefile('\t')
@@ -56,8 +59,6 @@ CThemes::CThemes()
 	y=(((g_settings.screen_EndY- g_settings.screen_StartY)-height) / 2) + g_settings.screen_StartY;
 
 	themeFilter.addFilter ("theme");
-	Path = FULLPATH;
-//	Path = "/var/tuxbox/config/themes/";
 
 }
 
@@ -65,8 +66,15 @@ int CThemes::exec(CMenuTarget* parent, const std::string & actionKey)
 {
 	int res = menu_return::RETURN_REPAINT;
 
-	if(actionKey=="loadtheme")
+	if(actionKey=="usertheme")
 	{
+		Path = USERDIR;
+		fileChooser();
+		return res;
+	}
+	else if(actionKey=="standardtheme")
+	{
+		Path = THEMESDIR;
 		fileChooser();
 		return res;
 	}
@@ -116,20 +124,26 @@ void CThemes::Show()
 	themes->addItem(GenericMenuBack);
 	themes->addItem(GenericMenuSeparatorLine);
 
-	CMenuForwarder *m1 = new CMenuForwarder(LOCALE_COLORTHEMEMENU_LOAD, true, NULL, this, "loadtheme");
+	CMenuForwarder *m1 = new CMenuForwarder(LOCALE_COLORTHEMEMENU_SELECT1, true, NULL, this, "usertheme");
+	CMenuForwarder *m2 = new CMenuForwarder(LOCALE_COLORTHEMEMENU_SELECT2, true, NULL, this, "standardtheme");
 
-	CStringInputSMS *nameInput = new CStringInputSMS(LOCALE_COLORTHEMEMENU_SAVE, &file_name, 30, NONEXISTANT_LOCALE, NONEXISTANT_LOCALE, "abcdefghijklmnopqrstuvwxyz0123456789- ");
-	CMenuForwarder *m2 = new CMenuForwarder(LOCALE_COLORTHEMEMENU_SAVE, true , NULL, nameInput);
+	CStringInputSMS *nameInput = new CStringInputSMS(LOCALE_COLORTHEMEMENU_NAME, &file_name, 30, NONEXISTANT_LOCALE, NONEXISTANT_LOCALE, "abcdefghijklmnopqrstuvwxyz0123456789- ");
+	CMenuForwarder *m3 = new CMenuForwarder(LOCALE_COLORTHEMEMENU_SAVE, true , NULL, nameInput);
 
-	themes->addItem(m1);
 	themes->addItem(m2);
+	// Don't show User-Theme if Userdir does'nt exist
+	if ( access(USERDIR, 0) == 0 ) {
+		themes->addItem(m1);
+		themes->addItem(GenericMenuSeparatorLine);
+		themes->addItem(m3);
+	}
 
 	themes->exec(NULL, "");
 	themes->hide();
 	delete themes;
 
 	if (strlen(file_name.c_str()) > 1) {
-		std::string userfile = Path.c_str() + file_name + FILE_PREFIX;
+		std::string userfile = USERDIR + file_name + FILE_PREFIX;
 		saveFile((char*)userfile.c_str());
 	}
 }
