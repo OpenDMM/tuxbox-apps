@@ -1045,6 +1045,7 @@ const char * locale_real_names[] =
 	"settings.noconffile",
 	"settings.pos_bottom_left",
 	"settings.pos_bottom_right",
+	"settings.pos_infobar",
 	"settings.pos_top_left",
 	"settings.pos_top_right",
 	"shutdown.recoding_query",
