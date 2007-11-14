@@ -634,10 +634,12 @@ int DMX::unpause(void)
 
 int DMX::change(const int new_filter_index)
 {
-	showProfiling("changeDMX: before pthread_mutex_lock(&start_stop_mutex)");
+	if (debug)
+		showProfiling("changeDMX: before pthread_mutex_lock(&start_stop_mutex)");
         lock();
 
-	showProfiling("changeDMX: after pthread_mutex_lock(&start_stop_mutex)");
+	if (debug)
+		showProfiling("changeDMX: after pthread_mutex_lock(&start_stop_mutex)");
 
 	filter_index = new_filter_index;
 	first_skipped = 0;
@@ -685,7 +687,8 @@ int DMX::change(const int new_filter_index)
 			return rc;
 		}
 
-		showProfiling("after DMX_SET_FILTER");
+		if (debug)
+			showProfiling("after DMX_SET_FILTER");
 	}
 /*	else
 	{
