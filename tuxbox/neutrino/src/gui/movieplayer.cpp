@@ -2898,19 +2898,23 @@ if(g_settings.streaming_use_buffer)
 					//-- detect/process events --
 					mp_checkEvent(ctx);
         
-					//-- lcd progress bar --
-					if ( (g_lcdSetting != 1) && (ctx->fileSize > 0) )
+					if ( ctx->fileSize > 0 )
 					{
 				  		cPercent = (ctx->pos*100)/ctx->fileSize;
-				  		if (lPercent != cPercent)
-				  		{
-					  		g_settings.lcd_setting[SNeutrinoSettings::LCD_SHOW_VOLUME]=g_lcdSetting;
-					  		lPercent = cPercent;
-					  		CLCD::getInstance()->showPercentOver(cPercent);
-					  		g_settings.lcd_setting[SNeutrinoSettings::LCD_SHOW_VOLUME]=1;
+						// set percent for MovieViewer
+						g_prozent = cPercent;
+						//-- lcd progress bar --
+						if ( g_lcdSetting != 1 )
+						{
+				  			if (lPercent != cPercent)
+				  			{
+					  			g_settings.lcd_setting[SNeutrinoSettings::LCD_SHOW_VOLUME]=g_lcdSetting;
+					  			lPercent = cPercent;
+					  			CLCD::getInstance()->showPercentOver(cPercent);
+					  			g_settings.lcd_setting[SNeutrinoSettings::LCD_SHOW_VOLUME]=1;
+							}
 						}
 					}
-        
 					//-- write queue-segment to dvr-device --
 					if (!q->writerRun()) break;
         
