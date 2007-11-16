@@ -34,6 +34,7 @@
 #include <system/setting_helpers.h>
 #include <gui/widget/stringinput.h>
 #include <gui/widget/stringinput_ext.h>
+#include <gui/widget/messagebox.h>
 
 #include <sys/stat.h>
 #include <sys/time.h>
