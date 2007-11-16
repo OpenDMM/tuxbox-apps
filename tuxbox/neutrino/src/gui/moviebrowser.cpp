@@ -43,6 +43,10 @@
 		based on code of Steffen Hehn 'McClean'
 
 	$Log$
+	Revision 1.16  2007/11/16 16:54:55  ecosys
+	changed cursor focus, thx to ingrid
+	http://tuxbox-forum.dreambox-fan.de/forum/viewtopic.php?p=346678#346678
+	
 	Revision 1.15  2007/08/16 20:25:29  guenther
 	update some locals
 	
@@ -3221,8 +3225,6 @@ int CMovieBrowser::showStartPosSelectionMenu(void) // P2
 			
 	startPosSelectionMenu.addItem(GenericMenuSeparator);
 	
-	startPosSelectionMenu.addItem(new CMenuForwarder(LOCALE_MOVIEBROWSER_START_RECORD_START, true,NULL));
-	position[menu_nr++] = 0;
 	if( m_movieSelectionHandler->bookmarks.start != 0)
 	{
 		startPosSelectionMenu.addItem(new CMenuForwarder(LOCALE_MOVIEBROWSER_BOOK_MOVIESTART, true, start_pos));
@@ -3233,6 +3235,8 @@ int CMovieBrowser::showStartPosSelectionMenu(void) // P2
 		startPosSelectionMenu.addItem(new CMenuForwarder(LOCALE_MOVIEBROWSER_BOOK_LASTMOVIESTOP, true, play_pos));
 		position[menu_nr++] = m_movieSelectionHandler->bookmarks.lastPlayStop;
 	}
+	startPosSelectionMenu.addItem(new CMenuForwarder(LOCALE_MOVIEBROWSER_START_RECORD_START, true,NULL));
+	position[menu_nr++] = 0;
 	startPosSelectionMenu.addItem(GenericMenuSeparatorLine);
 
 	for(int i =0 ; i < MI_MOVIE_BOOK_USER_MAX && menu_nr < MAX_NUMBER_OF_BOOKMARK_ITEMS; i++ )
