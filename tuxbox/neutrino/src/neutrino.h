@@ -200,7 +200,7 @@ class CNeutrinoApp : public CMenuTarget, CChangeObserver
 		void standbyMode( bool bOnOff );
 		void setVolume(const neutrino_msg_t key, const bool bDoPaint = true);
 		void AudioMute( bool newValue, bool isEvent= false );
-
+		void paintMuteIcon( bool is_visible = true );
 
 		void ExitRun(const bool write_si);
 		void RealRun(CMenuWidget &mainSettings);
