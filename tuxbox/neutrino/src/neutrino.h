@@ -175,6 +175,7 @@ class CNeutrinoApp : public CMenuTarget, CChangeObserver
 		bool 				parentallocked;
 		CFontSizeNotifier 		*fontsizenotifier;
 		bool 				waitforshutdown;
+		bool				volumeBarIsVisible;
 
 		// USERMENU
 		CTimerList			*Timerlist;
