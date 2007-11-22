@@ -2046,7 +2046,7 @@ static void commandDumpAllServices(int connfd, char* /*data*/, const unsigned /*
 			strcat(serviceList, s->second->providerName.c_str());
 			strcat(serviceList, "\n");
 		} else {
-			dprintf("warning: commandDumpAllServices: serviceList cut\n")
+			dprintf("warning: commandDumpAllServices: serviceList cut\n");
 			break;
 		}
 	}
@@ -2216,7 +2216,7 @@ static void sendAllEvents(int connfd, t_channel_id serviceUniqueKey, bool oldFor
 								strcat(liste, (*e)->getName().c_str());
 								strcat(liste, "\n");
 							} else {
-								dprintf("warning: sendAllEvents eventlist cut\n")
+								dprintf("warning: sendAllEvents eventlist cut\n");
 								break;
 							}
 						}
@@ -2256,7 +2256,7 @@ static void sendAllEvents(int connfd, t_channel_id serviceUniqueKey, bool oldFor
 								}
 								liste++;
 							} else {
-								dprintf("warning: sendAllEvents eventlist cut\n")
+								dprintf("warning: sendAllEvents eventlist cut\n");
 								break;
 							}
 						}
@@ -3467,7 +3467,7 @@ static void sendEventList(int connfd, const unsigned char serviceTyp1, const uns
 							*liste = '\n';
 							liste++;
 						} else {
-							dprintf("warning: sendEventList - eventlist cut\n")
+							dprintf("warning: sendEventList - eventlist cut\n");
 							break;
 						}
 
@@ -3508,7 +3508,7 @@ static void sendEventList(int connfd, const unsigned char serviceTyp1, const uns
 							}
 							liste++;
 						} else {
-							dprintf("warning: sendEventList - eventlist cut\n")
+							dprintf("warning: sendEventList - eventlist cut\n");
 							break;
 						}
 					} // else !sendServiceName
@@ -6710,7 +6710,7 @@ static void *eitThread(void *)
 							else
 							{
 								sendToSleepNow = true;
-								dputs("sendToSleepNow = true")
+								dputs("sendToSleepNow = true");
 							}
 						}
 				}
