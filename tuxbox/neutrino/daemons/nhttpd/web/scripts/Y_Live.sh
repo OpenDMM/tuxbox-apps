@@ -87,15 +87,12 @@ case "$1" in
 		;;
 		
 	udp_stream)
-echo "udp stream"
 		if [ "$2" = "start" ]
 		then
 			shift 2
-echo "kill all streams"
 			killall streamts
 			killall streampes
 			killall udpstreamts
-echo "start udpstream"
 			if [ -e /var/bin/udpstreamts ]
 			then
 				/var/bin/udpstreamts $* &

@@ -170,7 +170,7 @@ CyVLC.prototype = {
 	},
 	toggle_mute : function() {
 		switch(this.plugin) {
-			case "ie1":	this.vlc.toggleMute();reak;
+			case "ie1":	this.vlc.toggleMute();break;
 			case "moz2":	this.vlc.audio.toggleMute();break;
 			default:	this.vlc.mute();break;
 		}
