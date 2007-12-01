@@ -216,7 +216,8 @@ class CSectionsdClient : private CBasicClient
 	void unRegisterEvent(const unsigned int eventID, const unsigned int clientID);
 
 	void setConfig(const epg_config config);
-	
+
+	std::string getStatusinformation(void);
 };
 
 class CEPGData
