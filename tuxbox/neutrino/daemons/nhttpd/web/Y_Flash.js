@@ -110,7 +110,7 @@ function do_image_upload_ready_error()
 function do_image_flash_ready()
 {
 	window.clearInterval(aktiv);
-	flash_diag.hide();
+	$('flash_diag').hide();
 	loadSyncURL("/control/lcd?lock=0");
 	alert("Image geflasht. Nach Reboot OK druecken");
 	top.location.href="/";
