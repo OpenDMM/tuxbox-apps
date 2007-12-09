@@ -1933,12 +1933,15 @@ bool parse_command(CBasicMessage::Header &rmsg, int connfd)
 
 	case CZapitMessages::CMD_SET_STANDBY:
 	{
+		CZapitMessages::responseCmd response;
 		CZapitMessages::commandBoolean msgBoolean;
 		CBasicServer::receive_data(connfd, &msgBoolean, sizeof(msgBoolean));
 		if (msgBoolean.truefalse)
 			enterStandby();
 		else
 			leaveStandby();
+		response.cmd = CZapitMessages::CMD_READY;
+		CBasicServer::send_data(connfd, &response, sizeof(response));
 		break;
 	}
 
