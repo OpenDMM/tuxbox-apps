@@ -125,7 +125,6 @@
 #define MOVIEPLAYER_START_SCRIPT CONFIGDIR "/movieplayer.start" 
 #define MOVIEPLAYER_END_SCRIPT CONFIGDIR "/movieplayer.end"
 
-#define ZAPIT_STAND_BY_WAIT_US 300000  // time in us
 bool g_ZapitsetStandbyState = false;
 
 
@@ -407,10 +406,10 @@ CMoviePlayerGui::exec (CMenuTarget * parent, const std::string & actionKey)
              actionKey != "fileplayback"     &&
     	     actionKey != "tsplayback_pc"    ) ) 
 	{
-	    // set zapit in standby mode
-        g_ZapitsetStandbyState = true; 
-    	g_Zapit->setStandby (true);
-    }
+		// set zapit in standby mode
+		g_ZapitsetStandbyState = true; 
+		g_Zapit->setStandby (true);
+	}
 
 
 	puts("[movieplayer.cpp] executing " MOVIEPLAYER_START_SCRIPT ".");
@@ -516,11 +515,10 @@ CMoviePlayerGui::exec (CMenuTarget * parent, const std::string & actionKey)
 	}
 
 	// Restore last mode
-    if (true == g_ZapitsetStandbyState)
-    {
-        usleep(ZAPIT_STAND_BY_WAIT_US);
-        g_Zapit->setStandby (false);
-     }
+	if (true == g_ZapitsetStandbyState)
+	{
+		g_Zapit->setStandby (false);
+	}
 	
 	puts("[movieplayer.cpp] executing " MOVIEPLAYER_END_SCRIPT ".");
 	if (system(MOVIEPLAYER_END_SCRIPT) != 0)
@@ -1966,14 +1964,37 @@ if(!g_settings.streaming_use_buffer)
 
 	gDeviceState = DVB_DEVICES_UNDEF;  // initial (undef)
 
-	if((ctx->dmxa = open(DMX, O_RDWR)) < 0
-		|| (ctx->dmxv = open(DMX, O_RDWR)) < 0
-		|| (ctx->dvr = open(DVR, O_WRONLY)) < 0
-		|| (ctx->adec = open(ADEC, O_RDWR)) < 0 || (ctx->vdec = open(VDEC, O_RDWR)) < 0)
-	{
-		return false;
+	if((ctx->dmxa = open(DMX, O_RDWR)) < 0) {
+		perror("[mp] dmxa " DMX);
+		goto error;
+	}
+	if((ctx->dmxv = open(DMX, O_RDWR)) < 0) {
+		perror("[mp] dmxv " DMX);
+		goto error;	
+	}
+	if((ctx->dvr = open(DVR, O_WRONLY)) < 0) {
+		perror("[mp] dvr " DVR);
+		goto error;	
+	}
+	if((ctx->adec = open(ADEC, O_RDWR)) < 0) {
+		perror("[mp] adec " ADEC);
+		goto error;	
+	}
+	if((ctx->vdec = open(VDEC, O_RDWR)) < 0) {
+		perror("[mp] vdec " VDEC);
+		goto error;
 	}
 	return true;
+error:
+	if(ctx->dmxa != -1)
+		close(ctx->dmxa);
+	if(ctx->dmxv != -1)
+		close(ctx->dmxv);
+	if(ctx->dvr != -1)
+		close(ctx->dvr);
+	if(ctx->adec != -1)
+		close(ctx->adec);
+	return false;
 }
 
 static void mp_closeDVBDevices(MP_CTX *ctx)
@@ -3326,13 +3347,12 @@ void CMoviePlayerGui::PlayFile (int parental)
 #ifdef MOVIEBROWSER  			
 			if(isMovieBrowser == true)
 			{
-                if (g_settings.streaming_show_tv_in_browser == true && 
-                    g_ZapitsetStandbyState == true)
-                {
-                    usleep(ZAPIT_STAND_BY_WAIT_US);
-                    g_Zapit->setStandby (false);
-                    g_ZapitsetStandbyState = false;
-                }
+				if (g_settings.streaming_show_tv_in_browser == true && 
+				    g_ZapitsetStandbyState == true)
+				{
+					g_Zapit->setStandby (false);
+					g_ZapitsetStandbyState = false;
+				}
 				// start the moviebrowser instead of the filebrowser
 				if(moviebrowser->exec(Path_local.c_str()))
 				{
@@ -3342,14 +3362,13 @@ void CMoviePlayerGui::PlayFile (int parental)
 	
 					if((file = moviebrowser->getSelectedFile()) != NULL)
 					{
-                        if (g_settings.streaming_show_tv_in_browser == true &&
-                            g_ZapitsetStandbyState == false)
-                        {
-                                g_Zapit->setStandby (true);
-                                g_ZapitsetStandbyState = true;
-                                usleep(ZAPIT_STAND_BY_WAIT_US);
-                        }
-                        
+						if (g_settings.streaming_show_tv_in_browser == true &&
+						    g_ZapitsetStandbyState == false)
+						{
+							g_Zapit->setStandby (true);
+							g_ZapitsetStandbyState = true;
+						}
+
 						filename     = file->Name.c_str();
 						sel_filename = file->getFileName();
 						// get the start position for the movie
@@ -3369,13 +3388,12 @@ void CMoviePlayerGui::PlayFile (int parental)
 			else
 #endif /* MOVIEBROWSER */
 			{ // MOVIEBROWSER added
-                if (g_settings.streaming_show_tv_in_browser == true && 
-                    g_ZapitsetStandbyState == true)
-                {
-                    usleep(ZAPIT_STAND_BY_WAIT_US);
-                    g_Zapit->setStandby (false);
-                    g_ZapitsetStandbyState = false;
-                }
+				if (g_settings.streaming_show_tv_in_browser == true && 
+				    g_ZapitsetStandbyState == true)
+				{
+					g_Zapit->setStandby (false);
+					g_ZapitsetStandbyState = false;
+				}
 
 				filebrowser->Filter = &tsfilefilter;
 				//-- play selected file or ... --
@@ -3392,14 +3410,13 @@ void CMoviePlayerGui::PlayFile (int parental)
         
 					if(!filelist.empty())
 					{
-                        if (g_settings.streaming_show_tv_in_browser == true &&
-                            g_ZapitsetStandbyState == false)
-                        {
-                                g_Zapit->setStandby (true);
-                                g_ZapitsetStandbyState = true;
-                                usleep(ZAPIT_STAND_BY_WAIT_US);
-                        }
-                        
+						if (g_settings.streaming_show_tv_in_browser == true &&
+						    g_ZapitsetStandbyState == false)
+						{
+							g_Zapit->setStandby (true);
+							g_ZapitsetStandbyState = true;
+						}
+
 						filename     = filelist[0].Name.c_str();
 		   				sel_filename = filelist[0].getFileName();
 	
@@ -4085,12 +4102,12 @@ CMoviePlayerGui::PlayStream (int streamtype)
 
 		if(open_filebrowser && !cdDvd)
 		{
-            if (g_settings.streaming_show_tv_in_browser == true &&
-                    g_ZapitsetStandbyState == true) {
-                usleep(ZAPIT_STAND_BY_WAIT_US);
-                g_Zapit->setStandby (false);
-                g_ZapitsetStandbyState = false;
-            }
+			if (g_settings.streaming_show_tv_in_browser == true &&
+			    g_ZapitsetStandbyState == true)
+			{
+				g_Zapit->setStandby (false);
+				g_ZapitsetStandbyState = false;
+			}
 			open_filebrowser = false;
 			filename = NULL;
 			filebrowser->Filter = &vlcfilefilter;
@@ -4139,12 +4156,12 @@ CMoviePlayerGui::PlayStream (int streamtype)
 
 		if(start_play)
 		{
-            if (g_settings.streaming_show_tv_in_browser == true &&
-                            g_ZapitsetStandbyState == false) {
-                g_Zapit->setStandby (true);
-                g_ZapitsetStandbyState = true;
-                usleep(ZAPIT_STAND_BY_WAIT_US);
-            }
+			if (g_settings.streaming_show_tv_in_browser == true &&
+			    g_ZapitsetStandbyState == false)
+			{
+				g_Zapit->setStandby (true);
+				g_ZapitsetStandbyState = true;
+			}
 			start_play = false;
 			bufferfilled = false;
 			avpids_found=false;
