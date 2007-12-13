@@ -614,7 +614,9 @@ case "$1" in
 			echo "on"
 		fi
 		;;
-
+	var_space)
+		df|grep /var
+		;;
 	*)
 		echo "[Y_Tools.sh] Parameter falsch: $*" ;;
 esac
