@@ -7629,8 +7629,29 @@ int main(int argc, char **argv)
 			return EXIT_FAILURE;
 		}
 
+		/* i'm creating all threads with SCHED_RR policy. Not because i want them
+		   to have real-time properties, but because, citing the pthread_attr_getschedpolicy(3p)
+		   man page:
+		    "When threads executing with the scheduling  policy SCHED_FIFO, SCHED_RR, or
+		     SCHED_SPORADIC are waiting on a mutex, they shall acquire the mutex in priority
+		     order when the mutex is unlocked."
+		   This is what we need, to make sure that the main loop (which handles the connection
+		   with the GUI) gets the lock in a predictable time frame. SCHED_RR looks like the
+		   best suited of the different choices to me.
+		   TODO: i consider this a gross hack, somebody who knows more about phtreads and the
+			 differences wrt. 2.4 and 2.6 kernels should clean this mess up and fix it.
+		 */
+		pthread_attr_init(&attr);
+		pthread_attr_setschedpolicy(&attr,SCHED_RR);
+		/* "For the SCHED_FIFO and SCHED_RR policies, the only required member of param
+		    is sched_priority."
+		   create all threads with a priority below the main loop, the main loop gets -5
+		 */
+		parm.sched_priority = -10;
+		pthread_attr_setschedparam(&attr,&parm);
+
 		// EIT-Thread starten
-		rc = pthread_create(&threadEIT, 0, eitThread, 0);
+		rc = pthread_create(&threadEIT, &attr, eitThread, 0);
 
 		if (rc) {
 			fprintf(stderr, "[sectionsd] failed to create eit-thread (rc=%d)\n", rc);
@@ -7638,17 +7659,12 @@ int main(int argc, char **argv)
 		}
 
 		// premiere private epg -Thread starten
-		rc = pthread_create(&threadPPT, 0, pptThread, 0);
+		rc = pthread_create(&threadPPT, &attr, pptThread, 0);
 
 		if (rc) {
 			fprintf(stderr, "[sectionsd] failed to create ppt-thread (rc=%d)\n", rc);
 			return EXIT_FAILURE;
 		}
-
-		pthread_attr_init(&attr);
-		parm.sched_priority=0;
-		pthread_attr_setschedpolicy(&attr,SCHED_RR);
-		pthread_attr_setschedparam(&attr,&parm);
 
 		// NIT-Thread starten
 		rc = pthread_create(&threadNIT, &attr, nitThread, 0);
@@ -7666,11 +7682,6 @@ int main(int argc, char **argv)
 			return EXIT_FAILURE;
 		}
 
-		pthread_attr_init(&attr);
-		parm.sched_priority=0;
-		pthread_attr_setschedpolicy(&attr,SCHED_RR);
-		pthread_attr_setschedparam(&attr,&parm);
-
 		// housekeeping-Thread starten
 		rc = pthread_create(&threadHouseKeeping, &attr, houseKeepingThread, 0);
 
@@ -7679,9 +7690,9 @@ int main(int argc, char **argv)
 			return EXIT_FAILURE;
 		}
 
-		pthread_attr_t conn_attrs;
-		pthread_attr_init(&conn_attrs);
-		pthread_attr_setdetachstate(&conn_attrs, PTHREAD_CREATE_DETACHED);
+		/* now set the priority for the mainloop */
+		parm.sched_priority = -5;
+		pthread_setschedparam(pthread_self(), SCHED_RR, &parm);
 
 		if (update_eit) {
 			struct pollfd pfd;
