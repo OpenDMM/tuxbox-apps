@@ -27,6 +27,8 @@
 #include <unistd.h>
 #include <signal.h>
 #include <errno.h>
+#include <sys/types.h>
+#include <sys/wait.h>
 
 int bidirpipe(int pfd[], char *cmd , char *argv[])
 {
@@ -223,7 +225,11 @@ void eConsoleAppContainer::kill()
 	{
 		eDebug("user kill(SIGKILL) console App");
 		killstate=-1;
-		::kill(pid, SIGKILL);
+		/*
+		 * Use a negative pid value, to signal the whole process group
+		 * ('pid' might not even be running anymore at this point)
+		 */
+		::kill(-pid, SIGKILL);
 		closePipes();
 	}
 }
@@ -233,7 +239,11 @@ void eConsoleAppContainer::sendCtrlC()
 	if ( killstate != -1 )
 	{
 		eDebug("user send SIGINT(Ctrl-C) to console App");
-		::kill(pid, SIGINT);
+		/*
+		 * Use a negative pid value, to signal the whole process group
+		 * ('pid' might not even be running anymore at this point)
+		 */
+		::kill(-pid, SIGINT);
 	}
 }
 
@@ -273,7 +283,20 @@ void eConsoleAppContainer::readyRead(int what)
 	{
 		eDebug("child has terminated");
 		closePipes();
-		/*emit*/ appClosed(killstate);
+		int childstatus;
+		int retval = killstate;
+		/*
+		 * We have to call 'wait' on the child process, in order to avoid zombies.
+		 * Also, this gives us the chance to provide better exit status info to appClosed.
+		 */
+		if (::waitpid(pid, &childstatus, 0) > 0)
+		{
+			if (WIFEXITED(childstatus))
+			{
+				retval = WEXITSTATUS(childstatus);
+			}
+		}
+		/*emit*/ appClosed(retval);
 	}
 }
 
