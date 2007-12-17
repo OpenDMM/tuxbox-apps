@@ -202,7 +202,7 @@ class CNeutrinoApp : public CMenuTarget, CChangeObserver
 		void setVolume(const neutrino_msg_t key, const bool bDoPaint = true);
 		void AudioMute( bool newValue, bool isEvent= false );
 		void paintMuteIcon( bool is_visible = true );
-
+		
 		void ExitRun(const bool write_si);
 		void RealRun(CMenuWidget &mainSettings);
 		void InitZapper();
@@ -253,6 +253,7 @@ class CNeutrinoApp : public CMenuTarget, CChangeObserver
 		void CmdParser(int argc, char **argv);
 		void ShowStreamFeatures();
 		bool doGuiRecord(char * preselectedDir, bool addTimer = false);
+		bool doShowMuteIcon(void);
 		CNeutrinoApp();
 
 	public:

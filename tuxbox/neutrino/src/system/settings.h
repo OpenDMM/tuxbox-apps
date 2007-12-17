@@ -64,6 +64,7 @@ struct SNeutrinoSettings
 #endif
 	int virtual_zap_mode;
 	int infobar_show;
+	int show_mute_icon;
 
 	// EPG
 	std::string epg_cache;
