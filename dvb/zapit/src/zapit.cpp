@@ -2484,7 +2484,7 @@ void leaveStandby(void)
 	frontend->setDiseqcType(diseqcType);
 
 	for (unsigned int i = 0; i < MAX_LNBS; i++) {
-		char tmp[16];
+		char tmp[17]; // "lnb63_OffsetHigh\0"
 		sprintf(tmp, "lnb%d_OffsetLow", i);
 		frontend->setLnbOffset(false, i, config.getInt32(tmp, 9750000));
 		sprintf(tmp, "lnb%d_OffsetHigh", i);
