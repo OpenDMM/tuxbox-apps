@@ -522,7 +522,11 @@ void setVideoFormat(int format, bool bSaveFormat = true )
 		}
 	}
 
-	printf("[controld] format: %s\n",format_string[format]);
+	printf("[controld] format: ");
+	if (format >= 0 && format <= 3)
+		printf("%s\n", format_string[format]);
+	else
+		printf("unknown (%d)\n", format);
 
 	if ((fd = open(AVS_DEVICE, O_RDWR)) < 0)
 		perror("[controld] " AVS_DEVICE);
