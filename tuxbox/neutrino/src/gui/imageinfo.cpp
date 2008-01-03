@@ -215,12 +215,14 @@ void CImageInfo::paintSupport(int y_startposition)
 	y_startposition += sheight;
 	frameBuffer->paintLine(xpos, y_startposition, max_width, y_startposition, COL_MENUCONTENT_PLUS_3);
 	
+#ifndef HAVE_DREAMBOX_HARDWARE	
 	y_startposition += hheight;
 	paintContent(font_info, xpos, y_startposition,g_Locale->getText(LOCALE_IMAGEINFO_NOTEFLASHTYPE));
 	
 	y_startposition += iheight;
 	paintContent(font_info, xpos, y_startposition, g_Locale->getText(LOCALE_IMAGEINFO_CHIPSET) );
 	paintContent(font_info, xpos+x_offset_large+60,y_startposition, getChipInfo().c_str());
+#endif
 }
 
 void CImageInfo::paintPartitions(int y_startposition)
