@@ -44,6 +44,7 @@ eSetupWindow::eSetupWindow( const char *title, int entries, int width )
 	:eListBoxWindow<eListBoxEntryMenu>(title, entries, width, true)
 {
 	addActionMap(&i_shortcutActions->map);
+	list.setFlags(eListBoxBase::flagHasShortcuts);
 }
 
 void eSetupWindow::sel_num(int n)

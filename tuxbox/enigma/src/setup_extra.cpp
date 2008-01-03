@@ -125,6 +125,7 @@ void eExpertSetup::init_eExpertSetup()
 	new eListBoxEntryCheck(&list, _("Hide error windows"), "/elitedvb/extra/hideerror", _("don't show zap error messages"));
 	new eListBoxEntryCheck(&list, _("Auto show Infobar"), "/ezap/osd/showOSDOnEITUpdate", _("always show infobar when new event info is avail"));
 	new eListBoxEntryCheck(&list, _("Show remaining Time"), "/ezap/osd/showCurrentRemaining", _("show event remaining time in the infobar"));
+	new eListBoxEntryCheck(&list, _("Hide shortcut icons"), "/ezap/osd/hideshortcuts", _("hide shortcut icons in menus"));
 	CONNECT((new eListBoxEntryCheck(&list, _("Use http authentification"), "/ezap/webif/lockWebIf", _("enables the http (user/password) authentification")))->selected, eExpertSetup::reinitializeHTTPServer );
 	CONNECT((new eListBoxEntryCheck(&list, _("Don't open serial port"), "/ezap/extra/disableSerialOutput", _("don't write debug messages to /dev/tts/0")))->selected, eExpertSetup::reinitializeHTTPServer );
 	new eListBoxEntryCheck(&list, _("Auto bouquet change"), "/elitedvb/extra/autobouquetchange", _("change into next bouquet when end of current bouquet is reached"));
