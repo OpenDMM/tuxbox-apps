@@ -767,6 +767,11 @@ void CSectionsdClient::freeMemory()
 	close_connection();
 }
 
+void CSectionsdClient::Restart()
+{
+	send(sectionsd::Restart);
+}
+
 void CSectionsdClient::readSIfromXML(const char * epgxmlname)
 {
 	send(sectionsd::readSIfromXML, (char*) epgxmlname, strlen(epgxmlname) + 1); // include '\0'

@@ -200,6 +200,8 @@ class CSectionsdClient : private CBasicClient
 //	void setSectionsdScanMode(const int scanMode);
 	
 	void freeMemory();
+
+	void Restart();
 	
 	void readSIfromXML(const char * epgxmlname);
 	

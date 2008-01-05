@@ -100,6 +100,7 @@ struct sectionsd
 		SetLanguageMode,
 		GetLanguageMode,
 		setConfig,
+		Restart,
 
 		numberOfCommands        // <- no actual command, end of command marker
 	};
