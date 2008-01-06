@@ -5928,6 +5928,7 @@ static int getscanType()
 				break;
 			}
 		}
+		fclose(scanconf);
 	}
 
 	return ret;
