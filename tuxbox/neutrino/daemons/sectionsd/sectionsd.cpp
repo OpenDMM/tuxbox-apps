@@ -4669,8 +4669,12 @@ static void commandRestart(int /*connfd*/, char * /*data*/, const unsigned /*dat
 		fprintf(stderr, "[sectionsd] commandRestart: cannot determine who i am\n");
 		return;
 	}
+	/* if we close filedescriptors here, the 2.4 kernel hangs hard when we
+	   close the two pipe fds probably created by the old threading
+	   implementation. We close them instead at startup.
 	for (int i = 3; i < 256; i++)
 		close(i);
+	 */
 	char *val = (char*)malloc(32);	// needed for SETENV?-macros
 	unlink(SECTIONSD_UDS_NAME);
 	SETENVI(auto_scanning);
@@ -7789,6 +7793,11 @@ int main(int argc, char **argv)
 				return EXIT_FAILURE;
 			}
 		}
+
+		/* close filedescriptors from stderr upwards */
+		for (i = 3; i < 256; i++)
+			close(i);
+
 		tzset(); // TZ auswerten
 
 		CBasicServer sectionsd_server;
