@@ -24,6 +24,8 @@
 #ifndef __imageinfo__
 #define __imageinfo__
 
+/* for uname(2) */
+#include <sys/utsname.h>
 #include <string>
 
 #include <configfile.h>
