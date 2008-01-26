@@ -36,6 +36,7 @@
 
 #include <driver/newclock.h>
 #include <lcddisplay/lcddisplay.h>
+#include <gui/widget/icons.h>
 
 #include <dbox/fp.h>
 #include <fcntl.h>
@@ -141,7 +142,7 @@ const char * const background_name[LCD_NUMBER_OF_BACKGROUNDS] = {
 };
 #define NUMBER_OF_PATHS 2
 const char * const background_path[NUMBER_OF_PATHS] = {
-	"/var/tuxbox/neutrino/lcd/",
+	NEUTRINO_ICON_VARPATH ,
 	DATADIR "/lcdd/icons/"
 };
 
