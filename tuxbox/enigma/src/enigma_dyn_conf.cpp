@@ -134,6 +134,7 @@ void activateSwapFile(eString swapFile)
 		cmd = "swapon " + swapFile;
 		system(cmd.c_str());
 	}
+	system("echo 0 > /proc/sys/vm/swappiness");
 }
 
 void setSwapFile(int nextswapfile, eString nextswapfilename)

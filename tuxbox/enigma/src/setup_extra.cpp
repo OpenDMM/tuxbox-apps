@@ -25,6 +25,7 @@
 #include <setupnetwork.h>
 #include <software_update.h>
 #include <setup_rc.h>
+#include <swapmanager.h>
 #include <lib/dvb/decoder.h>
 #include <lib/gui/emessage.h>
 #include <lib/system/info.h>
@@ -75,6 +76,11 @@ void eExpertSetup::init_eExpertSetup()
 		eConfig::getInstance()->setKey("/elitedvb/network/samba", startSamba);
 #endif
 	CONNECT((new eListBoxEntryMenu(&list, _("Remote Control"), eString().sprintf("(%d) %s", ++entry, _("open remote control setup")) ))->selected, eExpertSetup::rc_setup);
+#ifndef DISABLE_HDD
+#ifndef DISABLE_FILE
+	CONNECT((new eListBoxEntryMenu(&list, _("Swap Manager"), eString().sprintf("(%d) %s", ++entry, _("open swapspace setup")) ))->selected, eExpertSetup::swapmanager);
+#endif
+#endif
 	if ( eSystemInfo::getInstance()->getHwType() >= eSystemInfo::DM7000 )
 		CONNECT((new eListBoxEntryMenu(&list, _("Factory reset"), eString().sprintf("(%d) %s", ++entry, _("all settings will set to factory defaults")) ))->selected, eExpertSetup::factory_reset);
 	new eListBoxEntryMenuSeparator(&list, eSkin::getActive()->queryImage("listbox.separator"), 0, true );
@@ -345,6 +351,22 @@ void eExpertSetup::rc_setup()
 	setup.hide();
 	show();
 }
+#ifndef DISABLE_HDD
+#ifndef DISABLE_FILE
+void eExpertSetup::swapmanager()
+{
+	hide();
+	eSwapManager setup;
+#ifndef DISABLE_LCD
+	setup.setLCD(LCDTitle, LCDElement);
+#endif
+	setup.show();
+	setup.exec();
+	setup.hide();
+	show();
+}
+#endif
+#endif
 
 //implemented in upgrade.cpp
 extern bool erase(char mtd[30], const char *titleText);
