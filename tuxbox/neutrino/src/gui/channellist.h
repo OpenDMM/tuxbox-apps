@@ -59,6 +59,7 @@ class CChannelList
 				int         	number;
 				t_channel_id    channel_id;
 				CChannelEvent	currentEvent;
+				CChannelEvent	nextEvent;
 				inline const std::string & getName(void) const { return name; };
 
 				// flag that tells if channel is staticly locked by bouquet-locking
@@ -91,6 +92,7 @@ class CChannelList
 		int 			y;
 
 		bool historyMode;
+		bool displayNext;
 
 		void paintDetails(unsigned int index);
 		void clearItem2DetailsLine ();
@@ -123,9 +125,9 @@ class CChannelList
 		bool adjustToChannelID(const t_channel_id channel_id);
 		bool showInfo(int pos, int epgpos = 0);
 		void updateEvents(void);
-		int 	numericZap(int key);
-		int  	show();
-		int	exec();
+		int  numericZap(int key);
+		int  show();
+		int  exec();
 		void quickZap(int key);
 		int  hasChannel(int nChannelNr);
 		void setSelected( int nChannelNr); // for adjusting bouquet's channel list after numzap or quickzap
