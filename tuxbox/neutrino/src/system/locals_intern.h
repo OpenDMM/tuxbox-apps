@@ -236,6 +236,7 @@ const char * locale_real_names[] =
 	"channellist.head",
 	"channellist.nonefound",
 	"channellist.since",
+	"channellist.start",
 	"colorchooser.alpha",
 	"colorchooser.blue",
 	"colorchooser.green",
