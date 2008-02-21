@@ -43,7 +43,7 @@
 
 typedef struct fb_var_screeninfo t_fb_var_screeninfo;
 
-/** Ausf�hrung als Singleton */
+/** Ausfuehrung als Singleton */
 class CFrameBuffer
 {
 	private:
@@ -131,6 +131,7 @@ class CFrameBuffer
 			};
 		void paintPixel(int x, int y, const fb_pixel_t col);
 
+		void paintBoxRelSmooth(const int x, const int y, const int dx, const int dy, const int rad, const fb_pixel_t col); // rounded Corners
 		void paintBoxRel(const int x, const int y, const int dx, const int dy, const fb_pixel_t col);
 		inline void paintBox(int xa, int ya, int xb, int yb, const fb_pixel_t col) { paintBoxRel(xa, ya, xb - xa, yb - ya, col); }
 
