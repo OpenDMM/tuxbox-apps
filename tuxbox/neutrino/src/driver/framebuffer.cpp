@@ -649,7 +649,7 @@ void CFrameBuffer::paintPixel(const int x, const int y, const fb_pixel_t col)
 	*pos = col;
 }
 
-void CFrameBuffer::paintBoxRelSmooth(const int x, const int y, const int dx, const int dy, const int rad, const fb_pixel_t col)
+void CFrameBuffer::paintBoxRel(const int x, const int y, const int dx, const int dy, const int rad, const fb_pixel_t col)
 {
     int F,R=rad,sx,sy,dxx=dx,dyy=dy,rx,ry,wx,wy;
 
