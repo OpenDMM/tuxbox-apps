@@ -958,7 +958,7 @@ int CTimerList::modifyTimer()
 
 	CRecDirChooser recDirs(LOCALE_TIMERLIST_RECORDING_DIR,NEUTRINO_ICON_SETTINGS,NULL,timer->recordingDir);
 	bool recDirEnabled = (timer->eventType == CTimerd::TIMER_RECORD) && (g_settings.recording_type == RECORDING_FILE);
-	CMenuForwarder* m6 = new CMenuForwarder(LOCALE_TIMERLIST_RECORDING_DIR,recDirEnabled,timer->recordingDir, &recDirs);
+	CMenuForwarder* m6 = new CMenuForwarder(LOCALE_TIMERLIST_RECORDING_DIR,recDirEnabled,recDirEnabled ? timer->recordingDir : "", &recDirs);
 
 	timerSettings.addItem(GenericMenuSeparatorLine);
 	timerSettings.addItem(m3);
