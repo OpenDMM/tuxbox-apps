@@ -621,7 +621,7 @@ void CFrameBuffer::paintPixel(const int x, const int y, const fb_pixel_t col)
 
 void CFrameBuffer::paintBoxRel(const int x, const int y, const int dx, const int dy, const fb_pixel_t col, const int radius)
 {
-	int F,R=rad,sx,sy,dxx=dx,dyy=dy,rx,ry,wx,wy;
+	int F,R=radius,sx,sy,dxx=dx,dyy=dy,rx,ry,wx,wy;
 
 	if (!getActive())
 		return;
