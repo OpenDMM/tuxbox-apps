@@ -131,8 +131,7 @@ class CFrameBuffer
 			};
 		void paintPixel(int x, int y, const fb_pixel_t col);
 
-		void paintBoxRel(const int x, const int y, const int dx, const int dy, const int rad, const fb_pixel_t col); // rounded Corners
-		void paintBoxRel(const int x, const int y, const int dx, const int dy, const fb_pixel_t col);
+		void paintBoxRel(const int x, const int y, const int dx, const int dy, const fb_pixel_t col, const int radius = 0);
 		inline void paintBox(int xa, int ya, int xb, int yb, const fb_pixel_t col) { paintBoxRel(xa, ya, xb - xa, yb - ya, col); }
 
 		void paintLine(int xa, int ya, int xb, int yb, const fb_pixel_t col);
