@@ -41,6 +41,15 @@
 #define fb_pixel_t uint16_t
 #endif
 
+#define CORNER_TOP_LEFT		0x1
+#define CORNER_TOP_RIGHT	0x2
+#define CORNER_TOP			0x3
+#define CORNER_BOTTOM_RIGHT	0x4
+#define CORNER_RIGHT		0x6
+#define CORNER_BOTTOM_LEFT	0x8
+#define CORNER_LEFT			0x9
+#define CORNER_BOTTOM		0xC
+
 typedef struct fb_var_screeninfo t_fb_var_screeninfo;
 
 /** Ausfuehrung als Singleton */
@@ -131,7 +140,7 @@ class CFrameBuffer
 			};
 		void paintPixel(int x, int y, const fb_pixel_t col);
 
-		void paintBoxRel(const int x, const int y, const int dx, const int dy, const fb_pixel_t col, const int radius = 0);
+		void paintBoxRel(const int x, const int y, const int dx, const int dy, const fb_pixel_t col, const int radius = 0, const int corners = 0xf);
 		inline void paintBox(int xa, int ya, int xb, int yb, const fb_pixel_t col) { paintBoxRel(xa, ya, xb - xa, yb - ya, col); }
 
 		void paintLine(int xa, int ya, int xb, int yb, const fb_pixel_t col);
