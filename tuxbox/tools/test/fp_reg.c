@@ -62,6 +62,7 @@ int main(int argc, char **argv)
 		}
 	}
 
+#ifndef HAVE_DREAMBOX_HARDWARE
 	else {
 		val = strtoul(argv[2], NULL, 0) & 0xff;
 
@@ -70,7 +71,8 @@ int main(int argc, char **argv)
 		if (ioctl(fd, FP_IOCTL_SET_REGISTER, &foo) == -1)
 			perror("FP_IOCTL_SET_REGISTER");
 	}
-	
+#endif	
+
 	close(fd);
 	
 	return EXIT_SUCCESS;
