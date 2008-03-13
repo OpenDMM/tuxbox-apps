@@ -571,7 +571,7 @@ int CNeutrinoApp::loadSetup()
 
 	//Software-update
 	g_settings.softupdate_mode = configfile.getInt32( "softupdate_mode", 1 );
-	strcpy(g_settings.softupdate_url_file, configfile.getString("softupdate_url_file", "/etc/squashfs.urls").c_str());
+	strcpy(g_settings.softupdate_url_file, configfile.getString("softupdate_url_file", "/etc/update.urls").c_str());
 	strcpy(g_settings.softupdate_proxyserver, configfile.getString("softupdate_proxyserver", "" ).c_str());
 	strcpy(g_settings.softupdate_proxyusername, configfile.getString("softupdate_proxyusername", "" ).c_str());
 	strcpy(g_settings.softupdate_proxypassword, configfile.getString("softupdate_proxypassword", "" ).c_str());
