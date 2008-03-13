@@ -161,6 +161,9 @@ struct SNeutrinoSettings
 	unsigned char infobar_Text_red;
 	unsigned char infobar_Text_green;
 	unsigned char infobar_Text_blue;
+		
+	//corners
+	int rounded_corners;
 
 	//network
 #define NETWORK_NFS_NR_OF_ENTRIES 8
@@ -447,6 +450,11 @@ struct SNeutrinoSettings
 	std::string usermenu_text[BUTTON_MAX];
 	int usermenu[BUTTON_MAX][ITEM_MAX];  // (USER_ITEM)  [button][position in Menue] = feature item
 };
+
+// corners
+#define CORNER_RADIUS_LARGE		12
+#define CORNER_RADIUS_MID		6
+#define CORNER_RADIUS_SMALL		3
 
 /* some default Values */
 
