@@ -970,7 +970,7 @@ public:
 #ifndef DISABLE_FILE
 		if (!forceAll)
 		{
-			if (eDVB::getInstance()->recorder && !e.path && !e.flags)
+			if (eDVB::getInstance()->recorder && !eZapMain::getInstance()->isRecordingPermanentTimeshift() && !e.path && !e.flags)
 			{
 				if (!onSameTP(eDVB::getInstance()->recorder->recRef,(eServiceReferenceDVB&)e))
 					return;
