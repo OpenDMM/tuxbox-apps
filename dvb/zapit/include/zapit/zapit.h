@@ -37,6 +37,7 @@ void setVideoSystem_t(int video_system);
 void setIec(int);
 void setDemuxMode(int);
 #endif
+void setFastZap(int);
 
 #define PAL	0
 #define NTSC	1

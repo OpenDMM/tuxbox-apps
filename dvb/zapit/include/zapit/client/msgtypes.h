@@ -51,8 +51,10 @@ class CZapitMessages
 			CMD_ZAPTO_CHANNELNR                =  5,
 			CMD_ZAPTO_SERVICEID                =  6,
 			CMD_ZAPTO_SUBSERVICEID             =  7,
+#ifndef NO_DEPRECATED_ZAPTO_NOWAIT
 			CMD_ZAPTO_SERVICEID_NOWAIT         =  8,
 			CMD_ZAPTO_SUBSERVICEID_NOWAIT      =  9,
+#endif
 
 			CMD_STOP_VIDEO                     = 10,		// not supported yet
 			CMD_SET_MODE                       = 11,
@@ -135,6 +137,8 @@ class CZapitMessages
 			CMD_SCANSETTYPE                    = 79,
 			CMD_RELOAD_CURRENTSERVICES	   = 80,
 			CMD_SET_SUBTITLE                   = 81,
+
+			CMD_SET_FASTZAP			   = 82,
 		};
 
 	struct commandBoolean
@@ -172,6 +176,7 @@ class CZapitMessages
 	struct commandZaptoServiceID
 	{
 		t_channel_id channel_id;
+		bool nowait;
 	};
 
 	struct commandSetAudioChannel

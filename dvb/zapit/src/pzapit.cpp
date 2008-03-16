@@ -94,6 +94,7 @@ int main (int argc, char** argv)
 	int mute = -1;
 	int volume = -1;
 	int nvod = -1;
+	int fastzap = -1;
 	t_channel_id zapsid = 0;
 	const char * channelName = NULL;
 
@@ -352,6 +353,14 @@ int main (int argc, char** argv)
 				continue;
 			}
 		}
+		else if (!strncmp(argv[i], "--fastzap", 9))
+		{
+			if (i < argc - 1)
+			{
+				sscanf(argv[++i], "%d", &fastzap);
+				continue;
+			}
+		}
 		else if (!strncmp(argv[i], "--getpids", 9)) 
 		{
 			getpids = true;
@@ -394,6 +403,12 @@ int main (int argc, char** argv)
 	if (leaveStandby)
 	{
 		zapit.setStandby(false);
+		return 0;
+	}
+
+	if (fastzap > -1)
+	{
+		zapit.setFastZap(fastzap != 0);
 		return 0;
 	}
 
