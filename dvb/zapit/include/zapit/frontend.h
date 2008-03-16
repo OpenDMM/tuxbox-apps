@@ -58,7 +58,9 @@ class CFrontend
 		/* selects different software control modes for uncommitted switch */
 		int uncommitted_switch_mode;
 
+#if HAVE_DVB_API_VERSION >= 3
 		uint32_t			getDiseqcReply(const int timeout_ms) const;
+#endif
 		dvb_frontend_event	getEvent(void);
 		dvb_frontend_parameters	getFrontend(void) const;
 

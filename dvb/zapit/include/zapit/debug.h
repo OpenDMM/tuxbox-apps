@@ -106,6 +106,8 @@ extern int debug;
 	else { _r = secfd; } 					\
 	_r;							\
 })
+#else
+#define fop_sec fop
 #endif
 
 #define quiet_fop(cmd, args...) ({				\
