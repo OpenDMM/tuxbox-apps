@@ -228,6 +228,7 @@ class CAudioPlayerGui : public CMenuTarget
 	 */
 	bool askToOverwriteFile(const std::string& filename);
 	bool openFilebrowser(void);
+	bool openSCbrowser(void);
 	bool clearPlaylist(void);
 	bool shuffelPlaylist(void);	
 	bool playNext(bool allow_rotate = false);

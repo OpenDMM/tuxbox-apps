@@ -169,6 +169,7 @@ const char * locale_real_names[] =
 	"audiomenu.stereo",
 	"audiomenu.volumebar_audiosteps",
 	"audioplayer.add",
+	"audioplayer.add_sc",
 	"audioplayer.artist_title",
 	"audioplayer.building_search_index",
 	"audioplayer.button_select_title_by_id",
