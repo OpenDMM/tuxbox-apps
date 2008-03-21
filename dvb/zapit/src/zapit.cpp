@@ -2772,10 +2772,11 @@ int main(int argc, char **argv)
 	if (update_pmt) {
 		while (zapit_server.run(parse_command, CZapitMessages::ACTVERSION, true)) {
 			struct pollfd pfd;
-		 	if (check_lock && !standby && channel && time(NULL) > lastlockcheck) {
+		 	if (check_lock && !standby && channel && time(NULL) > lastlockcheck &&
+			    scan_runs == 0) {
 				DBG("checking for lock...");
 				if ((frontend->getStatus() & FE_HAS_LOCK) == 0) {
-					printf("[zapit] LOCK LOST! trying rezap...\n");
+					printf("[zapit] LOCK LOST! trying rezap... channel: '%s'\n", channel->getName().c_str());
 					tuned_transponder_id = TRANSPONDER_ID_NOT_TUNED;
 					zapit(channel->getChannelID(), current_is_nvod, 0);
 				}
