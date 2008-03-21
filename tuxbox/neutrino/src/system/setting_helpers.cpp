@@ -104,17 +104,28 @@ CTP_scanNotifier::CTP_scanNotifier(CMenuOptionChooser* i1, CMenuOptionChooser* i
 	toDisable3[0]=i5;
 }
 
-bool CTP_scanNotifier::changeNotify(const neutrino_locale_t, void *)
+bool CTP_scanNotifier::changeNotify(const neutrino_locale_t, void *Data)
 {
-	bool set_true_false=CNeutrinoApp::getInstance()->getScanSettings().TP_scan;
+//	bool set_true_false=CNeutrinoApp::getInstance()->getScanSettings().TP_scan;
+	bool set_true_false = true;
+
+	if ((*((int*) Data) == 0) || (*((int*) Data) == 2)) // all sats || one sat
+		set_true_false = false;
+
 	for (int i=0; i<2; i++)
 	{
 		if (toDisable1[i]) toDisable1[i]->setActive(set_true_false);
 		if (toDisable2[i]) toDisable2[i]->setActive(set_true_false);
 	}
 
-	if (toDisable3[0]) toDisable3[0]->setActive(set_true_false);
+	if (toDisable3[0]) {
+		if (*((int*) Data) == 0) // all sat
+			toDisable3[0]->setActive(false);
+		else
+			toDisable3[0]->setActive(true);
+	}
 	return true;
+
 }
 
 bool CScanSettingsSatManNotifier::changeNotify(const neutrino_locale_t, void *Data)

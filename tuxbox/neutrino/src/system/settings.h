@@ -515,6 +515,7 @@ class CScanSettings
 	int		TP_scan;
 	int		TP_fec;
 	int		TP_pol;
+	int		TP_mod;
 	char		TP_freq[10];
 	char		TP_rate[9];
 	char		TP_satname[30];
