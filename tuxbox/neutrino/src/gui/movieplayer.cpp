@@ -3344,15 +3344,16 @@ void CMoviePlayerGui::PlayFile (int parental)
 		if(open_filebrowser)
 		{
 			open_filebrowser    = false;
+			if (g_settings.streaming_show_tv_in_browser == true && 
+			    g_ZapitsetStandbyState == true &&
+			    g_playstate == CMoviePlayerGui::STOPPED)
+			{
+				g_Zapit->setStandby (false);
+				g_ZapitsetStandbyState = false;
+			}
 #ifdef MOVIEBROWSER  			
 			if(isMovieBrowser == true)
 			{
-				if (g_settings.streaming_show_tv_in_browser == true && 
-				    g_ZapitsetStandbyState == true)
-				{
-					g_Zapit->setStandby (false);
-					g_ZapitsetStandbyState = false;
-				}
 				// start the moviebrowser instead of the filebrowser
 				if(moviebrowser->exec(Path_local.c_str()))
 				{
@@ -3388,13 +3389,6 @@ void CMoviePlayerGui::PlayFile (int parental)
 			else
 #endif /* MOVIEBROWSER */
 			{ // MOVIEBROWSER added
-				if (g_settings.streaming_show_tv_in_browser == true && 
-				    g_ZapitsetStandbyState == true)
-				{
-					g_Zapit->setStandby (false);
-					g_ZapitsetStandbyState = false;
-				}
-
 				filebrowser->Filter = &tsfilefilter;
 				//-- play selected file or ... --
 				if(filebrowser->exec(Path_local.c_str()))
