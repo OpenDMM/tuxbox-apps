@@ -490,12 +490,16 @@ void CZapitClient::sendMotorCommand(uint8_t cmdtype, uint8_t address, uint8_t cm
 /***********************************************/
 
 /* start TS-Scan */
-bool CZapitClient::startScan(const bool  scan_mode)
-{	
-	bool reply = send(CZapitMessages::CMD_SCANSTART, (char*)&scan_mode, sizeof(scan_mode));
+bool CZapitClient::startScan(const bool  scan_mode, int8_t diseqc)
+{
+	CZapitMessages::startScan msg;
+
+	msg.scan_mode = scan_mode;
+	msg.diseqc = diseqc;
+
+	bool reply = send(CZapitMessages::CMD_SCANSTART, (char*)&msg, sizeof(msg));
 
 	close_connection();
-
 	return reply;
 }
 
@@ -914,11 +918,11 @@ int CZapitClient::IecState()
 {
 	send(CZapitMessages::CMD_GET_AE_IEC_STATE);
 
-        CZapitMessages::responseGeneralInteger response;
-        CBasicClient::receive_data((char* )&response, sizeof(response));
+	CZapitMessages::responseGeneralInteger response;
+	CBasicClient::receive_data((char* )&response, sizeof(response));
 
-        close_connection();
-        return response.number;
+	close_connection();
+	return response.number;
 }
 
 void CZapitClient::PlaybackSPTS()
@@ -937,11 +941,11 @@ int CZapitClient::PlaybackState()
 {
 	send(CZapitMessages::CMD_GET_AE_PLAYBACK_STATE);
 
-        CZapitMessages::responseGeneralInteger response;
-        CBasicClient::receive_data((char* )&response, sizeof(response));
+	CZapitMessages::responseGeneralInteger response;
+	CBasicClient::receive_data((char* )&response, sizeof(response));
 
-        close_connection();
-        return response.number;
+	close_connection();
+	return response.number;
 }
 #endif
 

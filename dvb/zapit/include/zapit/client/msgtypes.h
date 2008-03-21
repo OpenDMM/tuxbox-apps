@@ -338,6 +338,11 @@ class CZapitMessages
 		uint8_t param2;
 	};
 
+	struct startScan
+	{
+		bool    scan_mode;
+		int8_t  diseqc;
+	};
 
 };
 
