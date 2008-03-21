@@ -1659,11 +1659,11 @@ uint8_t *TPtrQueue::lockWriteSeg(void)
   //-----------------------------------
   for(;;)
   {
-	if (isTerminated) return NULL;  // abort
-	
 	//-- check low level ... --  
 	if ( level < 2 )
 	{	
+		if (isTerminated) return NULL;  // abort
+
 		//-- ... and freeze playback --
   		if (!freezed)
   		{
@@ -1679,6 +1679,8 @@ uint8_t *TPtrQueue::lockWriteSeg(void)
 	//-- in freezed state --
 	else if (freezed)
 	{
+		if (isTerminated) return NULL;  // abort
+
 		//-- wait for buffer filled or ... --
 		if ( level < nSegsOpt )
 		{
