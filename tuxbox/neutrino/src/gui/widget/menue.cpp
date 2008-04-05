@@ -1044,3 +1044,14 @@ int CLockedMenuForwarder::exec(CMenuTarget* parent)
 	Parent = NULL;
 	return CMenuForwarder::exec(parent);
 }
+
+
+int CMenuSelectorTarget::exec(CMenuTarget* parent, const std::string & actionKey)
+{
+//	printf("CMenuSelector: %s\n", actionKey.c_str());
+	if (actionKey != "")
+		*m_select = atoi(actionKey.c_str());
+	else
+		*m_select = -1;
+	return menu_return::RETURN_EXIT;
+}
