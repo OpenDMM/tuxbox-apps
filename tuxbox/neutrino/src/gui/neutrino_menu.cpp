@@ -383,9 +383,10 @@ const CMenuOptionChooser::keyval SATSETUP_SCANTP_POL[SATSETUP_SCANTP_POL_COUNT] 
 };
 
 
-#define CABLESETUP_SCANTP_MOD_COUNT 6
+#define CABLESETUP_SCANTP_MOD_COUNT 7
 const CMenuOptionChooser::keyval CABLESETUP_SCANTP_MOD[CABLESETUP_SCANTP_MOD_COUNT] =
 {
+	{0, LOCALE_SCANTP_MOD_QPSK     } ,
 	{1, LOCALE_SCANTP_MOD_QAM_16   } ,
 	{2, LOCALE_SCANTP_MOD_QAM_32   } ,
 	{3, LOCALE_SCANTP_MOD_QAM_64   } ,
@@ -1639,12 +1640,12 @@ void CNeutrinoApp::InitColorSettings(CMenuWidget &colorSettings, CMenuWidget &fo
 		colorSettings.addItem( new CMenuForwarder(LOCALE_COLORMENU_GTX_ALPHA, true, NULL, chAlphaSetup, NULL, CRCInput::RC_2));
 	}
 #endif
- 	bool mn_corner; // for testing	
- 	if (mn_corner ==  true)
- 	{
-	CMenuOptionChooser* ojc = new CMenuOptionChooser(LOCALE_COLORMENU_ROUNDED_CORNERS, &g_settings.rounded_corners, COLORMENU_CORNERSETTINGS_TYPE_OPTIONS, COLORMENU_CORNERSETTINGS_TYPE_OPTION_COUNT, true );
-	colorSettings.addItem(ojc);
- 	}
+	bool mn_corner; // for testing	
+	if (mn_corner ==  true)
+	{
+		CMenuOptionChooser* ojc = new CMenuOptionChooser(LOCALE_COLORMENU_ROUNDED_CORNERS, &g_settings.rounded_corners, COLORMENU_CORNERSETTINGS_TYPE_OPTIONS, COLORMENU_CORNERSETTINGS_TYPE_OPTION_COUNT, true );
+		colorSettings.addItem(ojc);
+	}
 }
 
 
