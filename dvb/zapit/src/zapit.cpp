@@ -157,8 +157,13 @@ extern std::map<t_satellite_position, uint8_t>::iterator mpos_it;
 extern std::map<string, t_satellite_position> satellitePositions;
 
 bool standby = true;
+
+#ifdef HAVE_DREAMBOX_HARDWARE
 /* on dreambox: use FASTZAP ioctl? */
 int fastzap = 1;
+#else
+int fastzap = 0;
+#endif
 
 uint32_t lastChannelRadio;
 uint32_t lastChannelTV;

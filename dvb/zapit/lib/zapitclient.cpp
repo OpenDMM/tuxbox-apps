@@ -176,13 +176,13 @@ unsigned int CZapitClient::zapTo_subServiceID(const t_channel_id channel_id, boo
 /* zaps to channel, does NOT wait for completion (uses event) */
 void CZapitClient::zapTo_serviceID_NOWAIT(const t_channel_id channel_id)
 {
-	(void)zapTo_serviceID(channel_id, false);
+	(void)zapTo_serviceID(channel_id, true);
 }
 
 /* zaps to subservice, does NOT wait for completion (uses event) */
 void CZapitClient::zapTo_subServiceID_NOWAIT(const t_channel_id channel_id)
 {
-	(void)zapTo_subServiceID(channel_id, false);
+	(void)zapTo_subServiceID(channel_id, true);
 }
 
 
