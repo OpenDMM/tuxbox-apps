@@ -49,6 +49,7 @@
 #include <gui/bookmarkmanager.h>
 #include <gui/timeosd.h>
 #include <gui/movieviewer.h>
+#include <gui/imageinfo.h>
 
 #include <gui/widget/buttons.h>
 #include <gui/widget/icons.h>
@@ -4440,8 +4441,16 @@ void checkAspectRatio (int vdec, bool init)
 #endif
 }
 
+/************************************************************************/
+std::string CMoviePlayerGui::getMoviePlayerVersion(void)
+{	
+	static CImageInfo imageinfo;
+	return imageinfo.getModulVersion("","$Revision$");
+}
+
 void CMoviePlayerGui::showHelpTS()
 {
+	std::string version = "Version: " + getMoviePlayerVersion();
 	Helpbox helpbox;
 	helpbox.addLine(NEUTRINO_ICON_BUTTON_RED, g_Locale->getText(LOCALE_MOVIEPLAYER_TSHELP17));
 	helpbox.addLine(NEUTRINO_ICON_BUTTON_GREEN, g_Locale->getText(LOCALE_MOVIEPLAYER_TSHELP2));
@@ -4465,7 +4474,7 @@ void CMoviePlayerGui::showHelpTS()
 	helpbox.addLine(NEUTRINO_ICON_BUTTON_DOWN, g_Locale->getText(LOCALE_MOVIEPLAYER_TSHELP21));
 	helpbox.addLine(NEUTRINO_ICON_BUTTON_OKAY, g_Locale->getText(LOCALE_MOVIEPLAYER_TSHELP20));
 	helpbox.addLine(g_Locale->getText(LOCALE_MOVIEPLAYER_TSHELP12));
-	helpbox.addLine("Version: $Revision$");
+	helpbox.addLine(version);
 	helpbox.addLine("Movieplayer (c) 2003, 2004 by gagga");
 	helpbox.addLine("wabber-edition: v1.2 (c) 2005 by gmo18t");
 	hide();
@@ -4474,6 +4483,7 @@ void CMoviePlayerGui::showHelpTS()
 
 void CMoviePlayerGui::showHelpVLC()
 {
+	std::string version = "Version: " + getMoviePlayerVersion();
 	Helpbox helpbox;
 	helpbox.addLine(NEUTRINO_ICON_BUTTON_RED, g_Locale->getText(LOCALE_MOVIEPLAYER_VLCHELP1));
 	helpbox.addLine(NEUTRINO_ICON_BUTTON_GREEN, g_Locale->getText(LOCALE_MOVIEPLAYER_VLCHELP2));
@@ -4491,7 +4501,7 @@ void CMoviePlayerGui::showHelpVLC()
 	helpbox.addLine(NEUTRINO_ICON_BUTTON_LEFT, g_Locale->getText(LOCALE_MOVIEPLAYER_VLCHELP16));
 	helpbox.addLine(NEUTRINO_ICON_BUTTON_OKAY, g_Locale->getText(LOCALE_MOVIEPLAYER_VLCHELP14));
 	helpbox.addLine(g_Locale->getText(LOCALE_MOVIEPLAYER_VLCHELP12));
-	helpbox.addLine("Version: $Revision$");
+	helpbox.addLine(version);
 	helpbox.addLine("Movieplayer (c) 2003, 2004 by gagga");
 	hide();
 	helpbox.show(LOCALE_MESSAGEBOX_INFO);

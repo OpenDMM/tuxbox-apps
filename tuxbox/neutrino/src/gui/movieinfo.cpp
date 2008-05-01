@@ -430,7 +430,7 @@ void CMovieInfo::showMovieInfo(const char* filename)
 ************************************************************************/
 void CMovieInfo::showMovieInfo(MI_MOVIE_INFO& movie_info)
 {
-     std::string print_buffer; 
+    std::string print_buffer; 
 	tm* date_tm;
 	char date_char[100];			
     // prepare print buffer  
@@ -979,4 +979,3 @@ bool CMovieInfo::saveFile_vlc(const CFile& file,const char* text, const int text
 	fclose(in);
  * 
  * */
-

@@ -65,6 +65,7 @@ struct SNeutrinoSettings
 	int virtual_zap_mode;
 	int infobar_show;
 	int show_mute_icon;
+	int channellist_epgtext_align_right;
 
 	// EPG
 	std::string epg_cache;
@@ -453,8 +454,11 @@ struct SNeutrinoSettings
 
 // corners
 #define CORNER_RADIUS_LARGE		12
-#define CORNER_RADIUS_MID		6
-#define CORNER_RADIUS_SMALL		3
+#define CORNER_RADIUS_MID		9
+#define CORNER_RADIUS_SMALL		4
+
+// shadow
+#define SHADOW_OFFSET			6
 
 /* some default Values */
 

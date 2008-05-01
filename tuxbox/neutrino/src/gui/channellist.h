@@ -100,6 +100,7 @@ class CChannelList
 		void paintItem(int pos);
 		void paint();
 		void paintHead();
+		void paintFoot();
 		void hide();
 
 	public:

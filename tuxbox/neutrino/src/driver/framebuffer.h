@@ -106,7 +106,10 @@ class CFrameBuffer
 		~CFrameBuffer();
 
 		static CFrameBuffer* getInstance();
-
+	
+		int getIconWidth(const char * const filename);	// infos about icon dimensions
+		int getIconHeight(const char * const filename);
+	
 		void init(const char * const fbDevice = "/dev/fb/0");
 		int setMode(unsigned int xRes, unsigned int yRes, unsigned int bpp);
 
@@ -141,7 +144,7 @@ class CFrameBuffer
 		void paintPixel(int x, int y, const fb_pixel_t col);
 
 		void paintBoxRel(const int x, const int y, const int dx, const int dy, const fb_pixel_t col, const int radius = 0, const int corners = 0xf);
-		inline void paintBox(int xa, int ya, int xb, int yb, const fb_pixel_t col) { paintBoxRel(xa, ya, xb - xa, yb - ya, col); }
+		inline void paintBox(int xa, int ya, int xb, int yb, const fb_pixel_t col, const int radius = 0, const int corners = 0xf) { paintBoxRel(xa, ya, xb - xa, yb - ya, col, radius, corners); }
 
 		void paintLine(int xa, int ya, int xb, int yb, const fb_pixel_t col);
 
