@@ -209,6 +209,7 @@ struct SNeutrinoSettings
 	int personalize_reload;
 	int personalize_getplugins;
 	int personalize_restart;
+	int personalize_epgrestart;
 	int personalize_ucodecheck;
 	int personalize_imageinfo;
 	int personalize_update;

@@ -1092,6 +1092,7 @@ const char * locale_real_names[] =
 	"sectionsd.scanmode",
 	"servicemenu.chan_epg_stat",
 	"servicemenu.chan_epg_stat_epg_stat",
+	"servicemenu.epgrestart",
 	"servicemenu.getplugins",
 	"servicemenu.getplugins_hint",
 	"servicemenu.head",
