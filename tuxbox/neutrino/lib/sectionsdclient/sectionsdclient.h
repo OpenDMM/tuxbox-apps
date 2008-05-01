@@ -222,6 +222,8 @@ class CSectionsdClient : private CBasicClient
 	void setConfig(const epg_config config);
 
 	std::string getStatusinformation(void);
+
+	void RegisterNeutrino();
 };
 
 class CEPGData

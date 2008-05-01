@@ -862,3 +862,17 @@ std::string CSectionsdClient::getStatusinformation(void)
 	
 	return ret;
 }
+
+#ifndef NEUTRINO_UDS_NAME
+#define NEUTRINO_UDS_NAME "/tmp/neutrino.sock"
+#endif
+/* this is ugly as hell, and it does not belong here.
+   OTOH, all this event stuff in neutrino is horribly broken anyway, so who cares */
+void CSectionsdClient::RegisterNeutrino()
+{
+	registerEvent(CSectionsdClient::EVT_TIMESET, 222, NEUTRINO_UDS_NAME);
+	registerEvent(CSectionsdClient::EVT_GOT_CN_EPG, 222, NEUTRINO_UDS_NAME);
+	registerEvent(CSectionsdClient::EVT_SERVICES_UPDATE, 222, NEUTRINO_UDS_NAME);
+	registerEvent(CSectionsdClient::EVT_BOUQUETS_UPDATE, 222, NEUTRINO_UDS_NAME);
+	registerEvent(CSectionsdClient::EVT_WRITE_SI_FINISHED, 222, NEUTRINO_UDS_NAME);
+}
