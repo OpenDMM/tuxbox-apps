@@ -101,6 +101,7 @@ struct sectionsd
 		GetLanguageMode,
 		setConfig,
 		Restart,
+		ping,
 
 		numberOfCommands        // <- no actual command, end of command marker
 	};

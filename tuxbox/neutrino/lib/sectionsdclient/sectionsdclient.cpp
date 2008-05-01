@@ -1,5 +1,5 @@
 /*
-  Client-Interface für zapit  -   DBoxII-Project
+  Client-Interface fuer sectionsd  -   DBoxII-Project
 
   $Id$
 
@@ -120,6 +120,14 @@ bool CSectionsdClient::getIsTimeSet()
 	}
 }
 
+bool CSectionsdClient::ping()
+{
+	if (send(sectionsd::ping))
+	{
+		return true;
+	}
+	return false;
+}
 
 #if 0
 void CSectionsdClient::setEventsAreOldInMinutes(const unsigned short minutes)
@@ -769,7 +777,20 @@ void CSectionsdClient::freeMemory()
 
 void CSectionsdClient::Restart()
 {
+	int count = 0;
 	send(sectionsd::Restart);
+	readResponse();
+	close_connection();
+	while (1)
+	{
+		usleep (200000);
+		if (ping())
+			break;
+		if (count++ > 25) {
+			fprintf(stderr, "[sectionsdclient.cpp] sectionsd did not reappear after 5 seconds!\n");
+			break;
+		}
+	}
 }
 
 void CSectionsdClient::readSIfromXML(const char * epgxmlname)
@@ -827,7 +848,7 @@ std::string CSectionsdClient::getStatusinformation(void)
 				/* receive_data might have timed out etc. */
 				delete[] pData;
 				close_connection();
-				return false;
+				return ret; // still empty.
 			}
 
 			ret = pData; 

@@ -35,6 +35,7 @@ void usage(void) {
 	printf("        sectionsdcontrol --repg <epgdir> read epgfiles from dir\n");
 	printf("        sectionsdcontrol --freemem       unloads all events\n");
 	printf("        sectionsdcontrol --restart       restart sectionsd\n");
+	printf("        sectionsdcontrol --ping          ping sectionsd\n");
 }
 
 int main(int argc, char** argv)
@@ -93,6 +94,8 @@ int main(int argc, char** argv)
 			printf("restarting sectionsd\n");
 			client.Restart();
 		}
+		else if (!strcmp(argv[i], "--ping"))
+			printf("sectionsd %s\n", client.ping() ? "running" : "dead");
 	}
 
 	return 0;

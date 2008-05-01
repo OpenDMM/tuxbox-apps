@@ -4658,15 +4658,19 @@ static void commandGetLanguageMode(int connfd, char* /* data */, const unsigned 
 	if (setenv("SD_"#var, ((std::string)var).c_str(), 1)< 0) \
 	perror("SETENVS("#var") "); }
 // restart sectionsd....
-static void commandRestart(int /*connfd*/, char * /*data*/, const unsigned /*dataLength*/)
+static void commandRestart(int connfd, char * /*data*/, const unsigned /*dataLength*/)
 {
+	struct sectionsd::msgResponseHeader responseHeader;
+	responseHeader.dataLength = 0;
 	char * buf = (char*)malloc(64);
+	char *val = (char*)malloc(32);	// needed for SETENV?-macros
 	int count;
-	if (buf && (count = readlink("/proc/self/exe", buf, 63)) >= 0) {
+	if (val && buf && (count = readlink("/proc/self/exe", buf, 63)) >= 0) {
 		buf[count] = '\0';
 		printf("re-starting %s\n", buf);
         } else {
 		fprintf(stderr, "[sectionsd] commandRestart: cannot determine who i am\n");
+		writeNbytes(connfd, (const char *)&responseHeader, sizeof(responseHeader), WRITE_TIMEOUT_IN_SECONDS);
 		return;
 	}
 	/* if we close filedescriptors here, the 2.4 kernel hangs hard when we
@@ -4675,8 +4679,6 @@ static void commandRestart(int /*connfd*/, char * /*data*/, const unsigned /*dat
 	for (int i = 3; i < 256; i++)
 		close(i);
 	 */
-	char *val = (char*)malloc(32);	// needed for SETENV?-macros
-	unlink(SECTIONSD_UDS_NAME);
 	SETENVI(auto_scanning);
 	SETENVL(secondsToCache);
 	SETENVL(oldEventsAre);
@@ -4689,6 +4691,8 @@ static void commandRestart(int /*connfd*/, char * /*data*/, const unsigned /*dat
 	SETENVB(update_eit);
 	SETENVB(bTimeCorrect);
 	SETENVB(debug);
+	writeNbytes(connfd, (const char *)&responseHeader, sizeof(responseHeader), WRITE_TIMEOUT_IN_SECONDS);
+	unlink(SECTIONSD_UDS_NAME);
 	char* const p[3] = { buf, "-p", NULL };
 	fprintf(stderr,"[sectionsd] starting '%s'\n",buf);
 	execv(buf, p);
@@ -4749,7 +4753,8 @@ static s_cmd_table connectionCommands[sectionsd::numberOfCommands] = {
 {	commandSetLanguageMode,                 "commandSetLanguageMode"		},
 {	commandGetLanguageMode,                 "commandGetLanguageMode"		},
 {	commandSetConfig,			"commandSetConfig"			},
-{	commandRestart,				"commandRestart"			}
+{	commandRestart,				"commandRestart"			},
+{	commandDummy1,				"commandPing"				}
 };
 
 //static void *connectionThread(void *conn)

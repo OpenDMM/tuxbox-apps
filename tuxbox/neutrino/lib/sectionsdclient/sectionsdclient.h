@@ -173,6 +173,8 @@ class CSectionsdClient : private CBasicClient
 
 	bool getIsTimeSet();
 
+	bool ping();
+
 //	void setEventsAreOldInMinutes(const unsigned short minutes);
 	
 	void setPauseScanning(const bool doPause);
