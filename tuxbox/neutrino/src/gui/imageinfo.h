@@ -62,8 +62,8 @@ class CImageInfo : public CMenuTarget
 		int startX, startY; //boxposition
 		int endX, endY;
 	
-		int max_height;	// Frambuffer 0.. max
-		int max_width;
+		//~ int max_height;	// Frambuffer 0.. max
+		//~ int max_width;
 		
 		int pigw; //picbox dimensions
 		int pigh;

@@ -75,11 +75,8 @@ CImageInfo::CImageInfo()
 	endX 	= 720-startX;
 	endY 	= 572-startY;
 	
-	width  	= w_max (endX, 5);
-	height 	= h_max (endY, 5);
-
-	max_width 	= endX-startX;
-	max_height 	= endY-startY;
+	width 	= endX-startX;
+	height 	= endY-startY;
 	
 	pigw = 215;
 	pigh = 170;
@@ -171,7 +168,7 @@ void CImageInfo::hide()
 
 void CImageInfo::clearContentBox()
 {
-	frameBuffer->paintBoxRel(xpos, iheight*10+6, max_width-10, endY-(iheight*10+6)-32, COL_MENUCONTENT_PLUS_0 );
+	frameBuffer->paintBoxRel(xpos, iheight*10+6, width-10, endY-(iheight*10+6)-32, COL_MENUCONTENT_PLUS_0 );
 }
 
 void CImageInfo::paint_pig(int x, int y, int w, int h)
@@ -225,7 +222,7 @@ void CImageInfo::paintSupport(int y_startposition)
 	
 #ifndef HAVE_DREAMBOX_HARDWARE	
 	y_startposition += ssheight/2;
-	frameBuffer->paintLine(xpos, y_startposition, max_width, y_startposition, COL_GRAY);	
+	frameBuffer->paintLine(xpos, y_startposition, width, y_startposition, COL_GRAY);	
 		
 	y_startposition += ssheight+ ssheight/2;
 	paintContent(font_info, xpos, y_startposition,g_Locale->getText(LOCALE_IMAGEINFO_NOTEFLASHTYPE));
@@ -494,7 +491,7 @@ const char* CImageInfo::getImageInfo (int InfoType)
 void CImageInfo::paintHead(int x, int y, const char *localetext)
 {
 	int headheight = hheight;
-	frameBuffer->paintBoxRel(x, y, max_width, headheight + 4, COL_MENUHEAD, g_settings.rounded_corners ? CORNER_RADIUS_MID : 0 , CORNER_TOP);
+	frameBuffer->paintBoxRel(x, y, width, headheight + 4, COL_MENUHEAD, g_settings.rounded_corners ? CORNER_RADIUS_MID : 0 , CORNER_TOP);
 	g_Font[font_head]->RenderString(x+5, y + headheight + 4, width, localetext, COL_MENUHEAD, 0, true);}
 	
 const struct button_label CImageInfoButtons[5] =
@@ -509,8 +506,8 @@ const struct button_label CImageInfoButtons[5] =
 void CImageInfo::paintFoot(int x, int y)
 {
 	int ButtonHeight = ssheight;
-	frameBuffer->paintBoxRel(x, y, max_width, ButtonHeight, COL_INFOBAR_SHADOW_PLUS_1, g_settings.rounded_corners ? CORNER_RADIUS_MID : 0 , CORNER_BOTTOM);
-	::paintButtons(frameBuffer, g_Font[SNeutrinoSettings::FONT_TYPE_INFOBAR_SMALL], g_Locale, x + 5, y, max_width/6, 5, CImageInfoButtons, width);
+	frameBuffer->paintBoxRel(x, y, width, ButtonHeight, COL_INFOBAR_SHADOW_PLUS_1, g_settings.rounded_corners ? CORNER_RADIUS_MID : 0 , CORNER_BOTTOM);
+	::paintButtons(frameBuffer, g_Font[SNeutrinoSettings::FONT_TYPE_INFOBAR_SMALL], g_Locale, x + 5, y, width/6, 5, CImageInfoButtons, width);
 }	
 
 void CImageInfo::paint()
@@ -526,7 +523,7 @@ void CImageInfo::paint()
 	paintHead (startX, startY, head_string);
 	
 	//paint main window
-	frameBuffer->paintBoxRel(startX, startY+hheight+4, max_width, max_height-hheight-ssheight-4, COL_MENUCONTENT_PLUS_0);
+	frameBuffer->paintBoxRel(startX, startY+hheight+4, width, height-hheight-ssheight-4, COL_MENUCONTENT_PLUS_0);
 
 	ypos += hheight;
 	ypos += (iheight >>1);
@@ -567,7 +564,7 @@ void CImageInfo::paint()
 	paintLicense(ypos);
 
 	//paint foot		
-	paintFoot(startX, startY+max_height-ssheight);
+	paintFoot(startX, startY+height-ssheight);
 		
 }
 

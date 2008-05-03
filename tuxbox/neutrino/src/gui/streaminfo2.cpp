@@ -67,26 +67,16 @@ CStreamInfo2::CStreamInfo2()
 	
 	c_rad_mid = g_settings.rounded_corners ? CORNER_RADIUS_MID : 0;
 
-	if (w_max (710, 5) < 540)	{
-		width = 540;
-	}
-	else	{
-		width = w_max (710, 5);
-	}
+	x 	= 60; //mainwindow position
+	y 	= 45;
+	endX 	= 720-x;
+	endY 	= 572-y;
 	
-	if (h_max (560, 5) < 485)	{
-		height = 486;
-	}
-	else	{
-		height = h_max (560, 5);
-	}
+	width 	= endX-x-10;
+	height 	= endY-y;
 
 	max_height = SCREEN_Y-1;
 	max_width  = SCREEN_X-1;
-
-
-	x=(((g_settings.screen_EndX- g_settings.screen_StartX)-width) / 2) + g_settings.screen_StartX;
-	y=(((g_settings.screen_EndY- g_settings.screen_StartY)-height) / 2) + g_settings.screen_StartY;
 	
 	old_x = 0;
 	old_y = 0;
@@ -440,7 +430,7 @@ void CStreamInfo2::paint(int mode)
 		// paint backround, title pig, etc.
 		int background_x = xpos-10;
 		int background_w = width+10; 
-		int background_h = height-(y + hheight) ;
+		int background_h = height-hheight-sheight ;
 		int pigboxes_x = xpos+width-260;
 		
 		frameBuffer->paintBoxRel(background_x, y, background_w, hheight, COL_MENUHEAD_PLUS_0, c_rad_mid, CORNER_TOP);
