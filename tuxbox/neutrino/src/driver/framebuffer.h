@@ -154,9 +154,6 @@ class CFrameBuffer
 		void paintHLine(int xa, int xb, int y, const fb_pixel_t col);
 		void paintHLineRel(int x, int dx, int y, const fb_pixel_t col);
 
-		void paintCircle(int sx, int sy, int radius, const fb_pixel_t col, int type);
-		void paintCircleFilled(int sx, int sy, int radius, const fb_pixel_t col, int type);
-
 		void setIconBasePath(const std::string & iconPath);
 
 		bool paintIcon (const char * const filename, const int x, const int y, const unsigned char offset = 1);
