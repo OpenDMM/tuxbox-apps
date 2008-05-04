@@ -318,7 +318,7 @@ void CImageInfo::paintRevisionInfos(int y_startposition)
 	paintContent(font_info, xpos+x_offset_large, y_startposition, pv.getPictureViewerVersion().c_str());
 	
 	y_startposition += iheight;
-	static CStreamInfo2 si;
+	static CStreamInfo2Misc si;
 	paintContent(font_info, xpos, y_startposition, "Streaminfo:", COL_MENUCONTENTINACTIVE );
 	paintContent(font_info, xpos+x_offset_large, y_startposition, si.getStreamInfoVersion().c_str());
 	

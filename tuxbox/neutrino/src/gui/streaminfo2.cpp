@@ -766,7 +766,7 @@ void CStreamInfo2::paint_techinfo(int xpos, int ypos)
 }
 
 /************************************************************************/
-std::string CStreamInfo2::getStreamInfoVersion(void)
+std::string CStreamInfo2Misc::getStreamInfoVersion(void)
 {	
 	static CImageInfo imageinfo;
 	return imageinfo.getModulVersion("","$Revision$");
