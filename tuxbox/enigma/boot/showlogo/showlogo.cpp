@@ -102,7 +102,7 @@ int getKey(eString findkey)
 				break;
 			if (strlen(buffer) < 4)
 				break;
-			if (buffer[0] == 'i')
+			if (buffer[0] == 'u')
 			{
 				eString b = eString(buffer);
 				b = b.right(b.length() - 2);
