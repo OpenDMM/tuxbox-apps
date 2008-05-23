@@ -67,7 +67,7 @@ void paintButtons(CFrameBuffer * const frameBuffer, Font * const font,
 		const char * icon = content[i].button ? content[i].button : "";
 		
 		// real rendered textwidth		
-		unsigned int real_textwidth = font->getRenderWidth(buttontext);
+		unsigned int real_textwidth = font->getRenderWidth(buttontext, true);
 		
 		// get height/width of icon
 		iconh =  frameBuffer->getIconHeight(icon);

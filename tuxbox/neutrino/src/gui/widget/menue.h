@@ -122,7 +122,8 @@ class CMenuSeparator : public CMenuItem
 		    STRING =	2,
 		    ALIGN_CENTER = 4,
 		    ALIGN_LEFT =   8,
-		    ALIGN_RIGHT = 16
+		    ALIGN_RIGHT = 16,
+			SUB_HEAD = 32
 		};
 
 

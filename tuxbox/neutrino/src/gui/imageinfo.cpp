@@ -517,7 +517,8 @@ void CImageInfo::paint()
 
 	LoadImageInfo();
 	const char *head_string = g_Locale->getText(LOCALE_IMAGEINFO_HEAD);
-	CLCD::getInstance()->setMode(CLCD::MODE_MENU_UTF8, head_string);
+	CLCD::getInstance()->setMode(CLCD::MODE_INFOBOX, head_string);
+
 	
 	//paint head
 	paintHead (startX, startY, head_string);
@@ -541,6 +542,16 @@ void CImageInfo::paint()
 	ypos += iheight;
 	paintLine(xpos    , font_info, g_Locale->getText(LOCALE_IMAGEINFO_DATE), COL_MENUCONTENTINACTIVE);
 	paintLine(xpos + x_offset_large, font_info, imagedate.c_str()); //date of generation 
+
+
+	//LCD view
+	std::string lcdinfo = (std::string)getImageInfo(IMAGENAME) + "\n" +
+									(std::string)getImageInfo(SUBVERSION) + "\n" +
+									imagetype + "\n" +
+									imagedate.substr(0,11) + "\n" +
+									imagedate.substr(11) +" by " + getImageInfo(CREATOR);
+	CLCD::getInstance()->showInfoBox("Image-Info", lcdinfo.c_str() );
+
 	
 	//paint creator, cvslevel, info, comment only if present in /.version
 	ypos += iheight;

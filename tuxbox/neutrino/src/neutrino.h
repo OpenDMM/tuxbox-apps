@@ -226,7 +226,14 @@ class CNeutrinoApp : public CMenuTarget, CChangeObserver
 		void InitScreenSettings(CMenuWidget &);
 		void InitAudioplPicSettings(CMenuWidget &);
 		void InitDriverSettings(CMenuWidget &);
-		void InitMiscSettings(CMenuWidget &);
+		void InitMiscSettings(CMenuWidget &miscSettings,
+								CMenuWidget &miscSettingsGeneral,
+								CMenuWidget &miscSettingsOSDExtras,
+								CMenuWidget &miscSettingsInfobar,
+								CMenuWidget &miscSettingsChannellist,
+								CMenuWidget &miscSettingsEPGSettings,
+								CMenuWidget &miscSettingsRemoteControl,
+								CMenuWidget &miscSettingsFilebrowser);
 		void InitScanSettings(CMenuWidget &);
 		void InitParentalLockSettings(CMenuWidget &);
 		void CNeutrinoApp::InitMainMenu(CMenuWidget &mainMenu,
