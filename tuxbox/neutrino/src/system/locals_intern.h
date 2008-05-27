@@ -474,6 +474,7 @@ const char * locale_real_names[] =
 	"imageinfo.supporthere",
 	"imageinfo.version",
 	"inetradio.name",
+	"infoviewer.channellogo_off",
 	"infoviewer.channellogo_show_as_channelname",
 	"infoviewer.channellogo_show_beside_channelname",
 	"infoviewer.channellogo_show_in_numberbox",

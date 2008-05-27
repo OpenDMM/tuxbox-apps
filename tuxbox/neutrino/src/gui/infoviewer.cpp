@@ -308,12 +308,16 @@ void CInfoViewer::showTitle(const int ChanNum, const std::string & Channel, cons
 	// paint channel number
 	char strChanNum[10];
 	sprintf((char*) strChanNum, "%d", ChanNum);
-	int ChannelLogoMode = showChannelLogo(channel_id);
+
+	if (g_settings.show_channel_logo) {// do paint logo
+		int ChannelLogoMode = showChannelLogo(channel_id);
 	
-	if (ChannelLogoMode != 1) // show logo in numberbox
-	{
+		if (ChannelLogoMode != 1) // show logo in numberbox
+		{
+			g_Font[SNeutrinoSettings::FONT_TYPE_INFOBAR_NUMBER]->RenderString(BoxStartX + ((ChanWidth - g_Font[SNeutrinoSettings::FONT_TYPE_INFOBAR_NUMBER]->getRenderWidth(strChanNum))>>1), ChanNumYPos, ChanWidth, strChanNum, col_NumBoxText);
+		}
+	} else
 		g_Font[SNeutrinoSettings::FONT_TYPE_INFOBAR_NUMBER]->RenderString(BoxStartX + ((ChanWidth - g_Font[SNeutrinoSettings::FONT_TYPE_INFOBAR_NUMBER]->getRenderWidth(strChanNum))>>1), ChanNumYPos, ChanWidth, strChanNum, col_NumBoxText);
-	}
 	
 	// channel name  with or without channel logo
 	ChanNameW = BoxEndX- (ChanNameX+ 20)- time_width- 15;
@@ -1203,7 +1207,7 @@ Note: this is a kind of funstuff ;-)
 		icon_w = frameBuffer->getIconWidth(strIconName.c_str());
 		icon_h = frameBuffer->getIconHeight(strIconName.c_str());
 		
-		if (g_settings.show_channel_logo == 0) // paint logo in numberbox
+		if (g_settings.show_channel_logo == 1) // paint logo in numberbox
 		{
 			// calculate mid of numberbox
 			int satNameHeight = g_settings.infobar_sat_display ? 6 : 0; // consider sat display and set an offset for y if exists
@@ -1224,7 +1228,7 @@ Note: this is a kind of funstuff ;-)
 				res =  1;
 			}
 		}
-		else if (g_settings.show_channel_logo == 1) // paint logo in place of channel name
+		else if (g_settings.show_channel_logo == 2) // paint logo in place of channel name
 		{
 				// check logo dimensions
 				if (icon_w > ChanNameW)
@@ -1243,7 +1247,7 @@ Note: this is a kind of funstuff ;-)
 					res =  2;
 				}
 		}
-		else if (g_settings.show_channel_logo == 2) // paint logo beside channel name
+		else if (g_settings.show_channel_logo == 3) // paint logo beside channel name
 		{
 				// check logo dimensions
 				int Logo_max_width = ChanNameW - icon_w;
