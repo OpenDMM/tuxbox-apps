@@ -1076,7 +1076,7 @@ void CNeutrinoApp::InitDriverSettings(CMenuWidget &driverSettings)
 		else
 			g_settings.misc_option[i] = 0;
 		
-			if ((driver_setting_files[i].filename == "/var/etc/.philips_rc_patch") && (boxtype !=2)) // Philips only
+			if ((driver_setting_files[i].filename == "/var/etc/.philips_rc_patch") && (boxtype ==1)) // usefully for Philips RC and sometimes for Sagem RC
 			{
 				item_enabled[i] = false;
 			}
