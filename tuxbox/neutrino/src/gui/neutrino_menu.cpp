@@ -922,11 +922,11 @@ void CNeutrinoApp::InitMiscSettings(CMenuWidget &miscSettings,
 	// general  
 	miscSettings.addItem(new CMenuForwarder(LOCALE_MISCSETTINGS_GENERAL, true, NULL, &miscSettingsGeneral, NULL,  CRCInput::RC_red, NEUTRINO_ICON_BUTTON_RED));	
 	// OSD-specials
-	miscSettings.addItem(new CMenuForwarder(LOCALE_MISCSETTINGS_OSD_SPECIALS, true, NULL, &miscSettingsOSDExtras, NULL, CRCInput::RC_red, NEUTRINO_ICON_BUTTON_GREEN));
+	miscSettings.addItem(new CMenuForwarder(LOCALE_MISCSETTINGS_OSD_SPECIALS, true, NULL, &miscSettingsOSDExtras, NULL, CRCInput::RC_green, NEUTRINO_ICON_BUTTON_GREEN));
 	// infobar
-	miscSettings.addItem(new CMenuForwarder(LOCALE_MISCSETTINGS_INFOBAR, true, NULL, &miscSettingsInfobar, NULL, CRCInput::RC_red, NEUTRINO_ICON_BUTTON_YELLOW));
+	miscSettings.addItem(new CMenuForwarder(LOCALE_MISCSETTINGS_INFOBAR, true, NULL, &miscSettingsInfobar, NULL, CRCInput::RC_yellow, NEUTRINO_ICON_BUTTON_YELLOW));
 	// channellist
-	miscSettings.addItem(new CMenuForwarder(LOCALE_MISCSETTINGS_CHANNELLIST, true, NULL, &miscSettingsChannellist, NULL, CRCInput::RC_red, NEUTRINO_ICON_BUTTON_BLUE));
+	miscSettings.addItem(new CMenuForwarder(LOCALE_MISCSETTINGS_CHANNELLIST, true, NULL, &miscSettingsChannellist, NULL, CRCInput::RC_blue, NEUTRINO_ICON_BUTTON_BLUE));
 	miscSettings.addItem(GenericMenuSeparatorLine);
 	// epg settings
 	miscSettings.addItem(new CMenuForwarder(LOCALE_MISCSETTINGS_EPG_HEAD, true, NULL, &miscSettingsEPGSettings, NULL, CRCInput::convertDigitToKey(shortcut++)));
