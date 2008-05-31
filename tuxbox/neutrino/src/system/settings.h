@@ -414,11 +414,12 @@ struct SNeutrinoSettings
 	int filebrowser_denydirectoryleave;
 
 	//uboot
-	int	uboot_lcd_inverse;
-	int	uboot_lcd_contrast;
+	int	uboot_baudrate;
+	int	uboot_dbox_duplex;
 	int	uboot_console;
 	int	uboot_console_bak;
-	int	uboot_baudrate;
+	int	uboot_lcd_inverse;
+	int	uboot_lcd_contrast;
 
 	// USERMENU
 	typedef enum
