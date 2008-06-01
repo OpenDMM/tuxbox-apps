@@ -171,6 +171,7 @@ class CNeutrinoApp : public CMenuTarget, CChangeObserver
 		CIPChangeNotifier		*MyIPChanger;
 //		CVCRControl			*vcrControl;
 		CConsoleDestChangeNotifier	*ConsoleDestinationChanger;
+		CFdxChangeNotifier			*FdxSettingsChanger;
 		CRCLock				*rcLock;
 		CMenuTarget* 			moviePlayerGui;
 		bool 					parentallocked;

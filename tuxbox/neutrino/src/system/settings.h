@@ -416,6 +416,7 @@ struct SNeutrinoSettings
 	//uboot
 	int	uboot_baudrate;
 	int	uboot_dbox_duplex;
+	int uboot_dbox_duplex_bak;
 	int	uboot_console;
 	int	uboot_console_bak;
 	int	uboot_lcd_inverse;

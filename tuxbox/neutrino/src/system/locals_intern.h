@@ -303,6 +303,8 @@ const char * locale_real_names[] =
 	"driversettings.bootinfo",
 	"driversettings.driver_boot",
 	"driversettings.fb_destination",
+	"driversettings.fdx_force",
+	"driversettings.fdx_load",
 	"driversettings.head",
 	"driversettings.hwsections",
 	"driversettings.noaviawatchdog",

@@ -481,6 +481,13 @@ bool CConsoleDestChangeNotifier::changeNotify(const neutrino_locale_t, void * Da
 	return true;
 }
 
+bool CFdxChangeNotifier::changeNotify(const neutrino_locale_t, void * Data)
+{
+	g_settings.uboot_dbox_duplex = *(int *)Data;
+
+	return true;
+}
+
 bool CTimingSettingsNotifier::changeNotify(const neutrino_locale_t OptionName, void *)
 {
 	for (int i = 0; i < TIMING_SETTING_COUNT; i++)
@@ -809,7 +816,7 @@ int CUserMenuMenu::exec(CMenuTarget* parent, const std::string & actionKey)
 	menu.addItem(GenericMenuBack);
 	menu.addItem(GenericMenuSeparatorLine);
 	
-	CStringInputSMS name(LOCALE_USERMENU_NAME,    &g_settings.usermenu_text[button], 11, NONEXISTANT_LOCALE, NONEXISTANT_LOCALE, "ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyzäöüß/- ");
+	CStringInputSMS name(LOCALE_USERMENU_NAME,    &g_settings.usermenu_text[button], 11, NONEXISTANT_LOCALE, NONEXISTANT_LOCALE, "ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyzï¿½ï¿½ï¿½ï¿½/- ");
 	menu.addItem(new CMenuForwarder(LOCALE_USERMENU_NAME,    true, g_settings.usermenu_text[button],&name));
 	menu.addItem(GenericMenuSeparatorLine);
 	
