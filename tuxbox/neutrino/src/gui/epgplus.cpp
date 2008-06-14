@@ -917,8 +917,6 @@ void EpgPlus::Footer::paintButtons
 
   int buttonWidth =  40;
 
-  int buttonHeight = 16;
-
   this->frameBuffer->paintBoxRel(this->x, yPos, this->width, this->fontButtons->getHeight(), COL_INFOBAR_SHADOW_PLUS_1, g_settings.rounded_corners ? CORNER_RADIUS_MID : 0, CORNER_BOTTOM);
 
   ::paintButtons(this->frameBuffer, this->fontButtons, g_Locale, this->x +5, yPos , buttonWidth, numberOfButtons, buttonLabels,  this->width-25);
