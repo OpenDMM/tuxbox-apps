@@ -84,6 +84,7 @@ extern int pdaScreen;
 extern eString zap[5][5];
 extern eString getZapContent(eString path, int depth, bool addEPG, bool sortList, bool forceAll);
 extern bool playService(const eServiceReference& ref);
+extern eString XMLify(eString s, eString format);
 
 class myTimerEntry
 {
@@ -247,8 +248,8 @@ struct getEntryString
 		tmp.strReplace("#DURATION#", eString().sprintf("%d", se->duration));
 		tmp.strReplace("#DATE#", eString().sprintf("%02d.%02d.%04d", startTime.tm_mday, startTime.tm_mon + 1, startTime.tm_year + 1900));
 		tmp.strReplace("#TIME#", eString().sprintf("%02d:%02d", startTime.tm_hour, startTime.tm_min));
-		tmp.strReplace("#CHANNEL#", channel);
-		tmp.strReplace("#DESCRIPTION#", description);
+		tmp.strReplace("#CHANNEL#", XMLify(channel,format));
+		tmp.strReplace("#DESCRIPTION#", XMLify(description,format));
 		if (se->type & ePlaylistEntry::SwitchTimerEntry)
 			tmp.strReplace("#ACTION#", "ZAP");
 		else
