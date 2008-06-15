@@ -55,7 +55,7 @@ extern bool timeset;
 DMX::DMX(const unsigned short p, const unsigned short bufferSizeInKB)
 {
 	fd = -1;
-	lastChanged = 0;
+	lastChanged = time(NULL);
 	filter_index = 0;
 	pID = p;
 	dmxBufferSizeInKB = bufferSizeInKB;
