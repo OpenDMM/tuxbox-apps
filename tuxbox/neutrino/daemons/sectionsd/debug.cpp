@@ -29,7 +29,7 @@ bool debug = false;
 void printdate_ms(FILE *f) {
 	timeval now;
 	gettimeofday(&now, NULL);
-	struct tm *tm = gmtime(&now.tv_sec);
+	struct tm *tm = localtime(&now.tv_sec);
 	/* use strftime for that? */
 	fprintf(f, "%02d:%02d:%02d.%03ld ", tm->tm_hour, tm->tm_min, tm->tm_sec, now.tv_usec/1000);
 }
