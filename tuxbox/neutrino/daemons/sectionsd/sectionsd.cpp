@@ -6011,9 +6011,9 @@ static void *nitThread(void *)
 
 		for (;;)
 		{
-			zeit = time(NULL);
 			while (!scanning)
 				sleep(1);
+			zeit = time(NULL);
 
 			readLockMessaging();
 			if (messaging_zap_detected)
@@ -6223,9 +6223,9 @@ static void *sdtThread(void *)
 
 		for (;;)
 		{
-			zeit = time(NULL);
 			while (!scanning)
 				sleep(1);
+			zeit = time(NULL);
 
 			readLockMessaging();
 			if (messaging_zap_detected)
@@ -6777,9 +6777,9 @@ static void *eitThread(void *)
 
 		for (;;)
 		{
-			time_t zeit = time(NULL);
 			while (!scanning)
 				sleep(1);
+			time_t zeit = time(NULL);
 
 			buf = dmxEIT.getSection(timeoutInMSeconds, timeoutsDMX);
 #if 0
@@ -7105,9 +7105,9 @@ static void *cnThread(void *)
 
 		for (;;)
 		{
-			time_t zeit = time(NULL);
 			while (!scanning)
 				sleep(1);
+			time_t zeit = time(NULL);
 
 			buf = dmxCN.getSection(timeoutInMSeconds, timeoutsDMX);
 			if (update_eit) {
@@ -7453,6 +7453,9 @@ static void *pptThread(void *)
 				sleep(1);
 				continue;
 			}
+
+			if (!scanning)
+				continue; // go to sleep again...
 
 			if (pptpid != privatePid)
 			{
