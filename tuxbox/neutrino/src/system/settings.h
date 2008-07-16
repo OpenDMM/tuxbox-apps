@@ -66,7 +66,9 @@ struct SNeutrinoSettings
 	int infobar_show;
 	int show_mute_icon;
 	int channellist_epgtext_align_right;
-	int show_channel_logo;
+	char infobar_channel_logodir[100];
+	int infobar_show_channellogo;
+	int infobar_channellogo_background;
 
 	// EPG
 	std::string epg_cache;
