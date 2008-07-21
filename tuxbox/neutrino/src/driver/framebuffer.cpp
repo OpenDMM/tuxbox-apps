@@ -454,16 +454,23 @@ void CFrameBuffer::setIconBasePath(const std::string & iconPath)
 }
 
 const char  *CFrameBuffer::getIconFilePath(const std::string & filename)
-{
-	std::string defaultIconPath = iconBasePath + filename,
-	alterIconPath = NEUTRINO_ICON_VARPATH + filename;
+/*    	
+ *  	filename can be a single filename eg. "<filename>" 
+ *  	or absolute path eg. "var/dir/<filename>" 
+ */
+{	
+	std::string 	res,
+						defaultIconPath = iconBasePath + filename,
+						alterIconPath = (access(filename.c_str(), 0 ) != -1) ? filename : NEUTRINO_ICON_VARPATH + filename;
 
 	if ((access(alterIconPath.c_str(), 0 ) != -1))	{
-			return alterIconPath.c_str();
+			res = alterIconPath;
 		}
-		else	{
-			return defaultIconPath.c_str();
-		}		
+	else
+		res = defaultIconPath;
+		
+		
+	return res.c_str();		
 }	
 
 int CFrameBuffer::getIconHeight(const char * const filename)
