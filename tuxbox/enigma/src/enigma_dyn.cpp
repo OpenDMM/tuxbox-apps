@@ -2014,6 +2014,9 @@ static eString getvideom3u()
 
 static eString videom3u(eString request, eString dirpath, eString opts, eHTTPConnection *content)
 {
+#ifndef DISABLE_FILE
+	eZapMain::getInstance()->stopPermanentTimeshift();
+#endif
 	eProcessUtils::killProcess("streamts");
 	
 	content->local_header["Content-Type"] = "video/mpegfile";
