@@ -1352,6 +1352,8 @@ void CInfoViewer::showLcdPercentOver()
 		{
 			if (jetzt < info_CurrentNext.current_zeit.startzeit)
 				runningPercent = 0;
+			else if (jetzt > info_CurrentNext.current_zeit.startzeit + info_CurrentNext.current_zeit.dauer)
+				runningPercent = -2; /* overtime */
 			else
 				runningPercent=MIN((jetzt-info_CurrentNext.current_zeit.startzeit) * 100 /
 					            info_CurrentNext.current_zeit.dauer ,100);
