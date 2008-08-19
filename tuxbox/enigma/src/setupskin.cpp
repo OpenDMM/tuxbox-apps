@@ -26,7 +26,6 @@
 #include <lib/gui/ebutton.h>
 #include <lib/gui/emessage.h>
 #include <lib/system/econfig.h>
-#include <lib/system/econfig.h>
 #include <lib/gdi/epng.h>
 #include <lib/gdi/gfbdc.h>
 
