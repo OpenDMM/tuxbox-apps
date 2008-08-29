@@ -16,6 +16,9 @@ $Id$
  
 
 $Log$
+Revision 1.5  2008/08/29 20:00:05  obi
+decode NorDig logic(al) channel descriptor (e.g. used by unitymedia)
+
 Revision 1.4  2005/12/29 02:43:38  rasc
 gcc fixes, man page update
 
@@ -80,9 +83,11 @@ typedef struct _PRIVATE_PROVIDER_FUNC {
 // -- provider names in lowercase!!
 //
 
+#include "nordig.org/nordig_org.h"
 #include "premiere.de/premiere_de.h"
 
 static PRIV_PROVIDER_FUNC ppf[] = {
+	{ "nordig.org",		getPrivate_NordigORG },
 	{ "premiere.de",	getPrivate_PremiereDE },
 	{ NULL,			NULL }
 };
