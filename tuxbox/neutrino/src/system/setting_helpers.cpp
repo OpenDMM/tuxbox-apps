@@ -65,7 +65,7 @@ extern "C" int pinghost( const char *hostname );
 extern "C" int  tuxtxt_stop();
 extern "C" void tuxtxt_close();
 extern "C" int  tuxtxt_init();
-extern "C" void tuxtxt_start(int tpid);
+extern "C" int  tuxtxt_start(int tpid);
 #endif
 
 bool CSatDiseqcNotifier::changeNotify(const neutrino_locale_t, void * Data)

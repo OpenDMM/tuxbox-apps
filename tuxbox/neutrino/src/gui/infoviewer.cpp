@@ -75,7 +75,7 @@ extern CRemoteControl * g_RemoteControl; /* neutrino.cpp */
 #define LCD_UPDATE_TIME_TV_MODE (60 * 1000 * 1000)
 
 #ifndef TUXTXT_CFG_STANDALONE
-extern "C" void tuxtxt_start(int tpid);
+extern "C" int  tuxtxt_start(int tpid);
 extern "C" int  tuxtxt_stop();
 #endif
 
