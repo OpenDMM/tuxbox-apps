@@ -385,7 +385,7 @@ void CLCD::showVolume(const char vol, const bool perform_update)
 	{
 		display.draw_fill_rect (11,53,73,61, CLCDDisplay::PIXEL_OFF);
 		//strichlin
-		if (muted)
+		if ((muted) || (volume==0))
 		{
 			display.draw_line (12,55,72,59, CLCDDisplay::PIXEL_ON);
 		}
