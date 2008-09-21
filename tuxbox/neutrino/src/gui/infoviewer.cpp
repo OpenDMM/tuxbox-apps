@@ -178,7 +178,7 @@ void CInfoViewer::showRecordIcon(const bool show)
 		}
 		else
 		{
-			frameBuffer->paintBoxRel(rec_icon_x, BoxStartY+10, 20, 20, 255);
+			frameBuffer->paintBackgroundBoxRel(rec_icon_x, BoxStartY+10, 20, 20);
 		}
 	}
 }
