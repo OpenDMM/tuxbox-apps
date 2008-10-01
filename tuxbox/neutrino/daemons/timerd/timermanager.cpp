@@ -96,7 +96,9 @@ void* CTimerManager::timerThread(void *arg)
 				dprintf("waiting for time to be set\n");
 				wait.tv_sec = time(NULL) + 5 ;
 				wait.tv_nsec = 0;
+				pthread_mutex_lock(&dummy_mutex);
 				pthread_cond_timedwait(&dummy_cond, &dummy_mutex, &wait);
+				pthread_mutex_unlock(&dummy_mutex);
 			}
 		}
 		else
@@ -186,7 +188,10 @@ void* CTimerManager::timerThread(void *arg)
 
 			wait.tv_sec = (((time(NULL) / sleeptime) * sleeptime) + sleeptime);
 			wait.tv_nsec = 0;
+
+			pthread_mutex_lock(&dummy_mutex);
 			pthread_cond_timedwait(&dummy_cond, &dummy_mutex, &wait);
+			pthread_mutex_unlock(&dummy_mutex);
 		}
 	}
 	return 0;
