@@ -1632,6 +1632,7 @@ int EpgPlus::exec
 					this->createChannelEntries(selectedChannelEntryIndex);
 
 					this->paint();
+					g_RCInput->clearRCMsg();
 				}
 				else
 				{
@@ -1659,6 +1660,7 @@ int EpgPlus::exec
 					this->createChannelEntries(selectedChannelEntryIndex);
 
 					this->paint();
+					g_RCInput->clearRCMsg();
 				}
 				else
 				{
@@ -1738,6 +1740,8 @@ int EpgPlus::exec
 							    this->createChannelEntries(this->selectedChannelEntry->index);
 
 							    this->paint();
+							g_RCInput->clearRCMsg();
+							
 						    }
               }
             }
@@ -1798,6 +1802,7 @@ int EpgPlus::exec
 						    this->createChannelEntries(this->selectedChannelEntry->index);
 
 						    this->paint();
+						g_RCInput->clearRCMsg();
 					    }
 				    }
             break;
