@@ -1956,7 +1956,7 @@ void CAudioPlayerGui::rev(unsigned int seconds)
 }
 //------------------------------------------------------------------------
 
-void CAudioPlayerGui::play(int pos)
+void CAudioPlayerGui::play(unsigned int pos)
 {
 	//printf("AudioPlaylist: play %d/%d\n",pos,playlist.size());
 	unsigned int old_current = m_current;
@@ -1972,7 +1972,7 @@ void CAudioPlayerGui::play(int pos)
 		if(!m_screensaver)
 			paint();
 	}
-	else if(m_liststart - m_selected < 0 && g_settings.audioplayer_follow)
+	else if(m_liststart < m_selected && g_settings.audioplayer_follow)
 	{
 		m_liststart = m_selected - m_listmaxshow + 1;
 		if(!m_screensaver)
@@ -1980,19 +1980,19 @@ void CAudioPlayerGui::play(int pos)
 	}
 	else
 	{
-		if(old_current - m_liststart >=0 && old_current - m_liststart < m_listmaxshow)
+		if(old_current >= m_liststart && old_current - m_liststart < m_listmaxshow)
 		{
 			if(!m_screensaver)
 				paintItem(old_current - m_liststart);
 		}
-		if(pos - m_liststart >=0 && pos - m_liststart < m_listmaxshow)
+		if(pos >= m_liststart && pos - m_liststart < m_listmaxshow)
 		{
 			if(!m_screensaver)
 				paintItem(pos - m_liststart);
 		}
 		if(g_settings.audioplayer_follow)
 		{
-			if(old_selected - m_liststart >=0 && old_selected - m_liststart < m_listmaxshow)
+			if(old_selected >= m_liststart && old_selected - m_liststart < m_listmaxshow)
 				if(!m_screensaver)
 					paintItem(old_selected - m_liststart);
 		}

@@ -154,7 +154,7 @@ class CAudioPlayerGui : public CMenuTarget
 	CFileFilter audiofilefilter;
 	void paintItemID3DetailsLine (int pos);
 	void clearItemID3DetailsLine ();
-	void play(int pos);
+	void play(unsigned int pos);
 	void stop();
 	void pause();
 	void ff(unsigned int seconds=0);
