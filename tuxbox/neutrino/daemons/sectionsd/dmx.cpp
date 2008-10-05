@@ -659,8 +659,8 @@ int DMX::unpause(void)
 
 const char *dmx_filter_types [] = {
 			"dummy filter",
-			"other transport stream, now/next",
 			"actual transport stream, scheduled",
+			"other transport stream, now/next",
 			"actual transport stream, scheduled2",
 //			"other transport stream, scheduled"
 			"other transport stream, scheduled 1/2",

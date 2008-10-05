@@ -6974,8 +6974,8 @@ static void *eitThread(void *)
 	 */
 	// -- set EIT filter  0x4e-0x6F
 	dmxEIT.addfilter(0x00, 0x00); //0 dummy filter
-	dmxEIT.addfilter(0x4f, 0xff); //1  other TS, current/next
-	dmxEIT.addfilter(0x50, 0xff); //2  actual TS, scheduled
+	dmxEIT.addfilter(0x50, 0xff); //1  actual TS, scheduled
+	dmxEIT.addfilter(0x4f, 0xff); //2  other TS, current/next
 	dmxEIT.addfilter(0x50, 0xf0); //3  actual TS, scheduled later
 //	dmxEIT.addfilter(0x60, 0xf0); //4  other TS, scheduled
 	dmxEIT.addfilter(0x60, 0xf1); //4a other TS, scheduled, even
