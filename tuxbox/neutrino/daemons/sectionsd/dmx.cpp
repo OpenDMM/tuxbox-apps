@@ -514,6 +514,8 @@ int DMX::immediate_start(void)
 		closefd();
 		return 4;
 	}
+	/* this is for dmxCN only... */
+	eit_version = 0xff;
 	return 0;
 }
 
@@ -935,11 +937,6 @@ int DMX::dropCachedSectionIDs()
 	unlock();
 
 	return 0;
-}
-
-void DMX::reset_eit_version()
-{
-	eit_version = 0xff;
 }
 
 unsigned char DMX::get_eit_version()

@@ -97,7 +97,6 @@ class DMX
 	int setCurrentService(int new_current_service);
 	int dropCachedSectionIDs();
 
-	void reset_eit_version(void);
 	unsigned char get_eit_version(void);
 	// was useful for debugging...
 	unsigned int get_current_service(void);
