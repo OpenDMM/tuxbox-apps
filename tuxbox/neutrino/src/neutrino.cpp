@@ -1695,7 +1695,7 @@ bool CNeutrinoApp::doGuiRecord(char * preselectedDir, bool addTimer)
 					if( recDir != "")
 					{
 						int nfs_nr = getNFSIDOfDir(recDir.c_str());
-				        if(nfs_nr != -1)
+						if(nfs_nr != -1)
 						{
 							recDir = g_settings.network_nfs_local_dir[nfs_nr];
 							if (!CFSMounter::isMounted(g_settings.network_nfs_local_dir[nfs_nr]))
@@ -1719,8 +1719,8 @@ bool CNeutrinoApp::doGuiRecord(char * preselectedDir, bool addTimer)
 								}
 							}
 						}
-      				}
-      				else
+					}
+					else
 					{
 						doRecord = false;
 					}
