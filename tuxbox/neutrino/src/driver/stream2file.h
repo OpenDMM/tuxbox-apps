@@ -48,6 +48,7 @@ struct stream2file_status2_t
 {
 	stream2file_status_t status;
 	char dir[100];
+	char filename[512];
 };
 
 stream2file_error_msg_t start_recording(const char * const filename,
