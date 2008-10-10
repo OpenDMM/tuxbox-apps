@@ -464,7 +464,7 @@ struct SNeutrinoSettings
 #define CORNER_RADIUS_SMALL		4
 
 // shadow
-#define SHADOW_OFFSET			6
+#define SHADOW_OFFSET			4
 
 /* some default Values */
 
