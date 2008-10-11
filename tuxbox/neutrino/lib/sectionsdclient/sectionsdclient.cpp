@@ -139,16 +139,6 @@ void CSectionsdClient::setEventsAreOldInMinutes(const unsigned short minutes)
 }
 #endif
 
-void CSectionsdClient::setPauseSorting(const bool doPause)
-{
-	int PauseIt = (doPause) ? 1 : 0;
-
-	send(sectionsd::pauseSorting, (char*)&PauseIt, sizeof(PauseIt));
-
-	readResponse();
-	close_connection();
-}
-
 void CSectionsdClient::setPauseScanning(const bool doPause)
 {
 	int PauseIt = (doPause) ? 1 : 0;

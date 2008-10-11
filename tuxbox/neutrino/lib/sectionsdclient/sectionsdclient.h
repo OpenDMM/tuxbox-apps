@@ -181,8 +181,6 @@ class CSectionsdClient : private CBasicClient
 
 	bool getIsScanningActive();
 
-	void setPauseSorting(const bool doPause);
-
 	void setServiceChanged(const t_channel_id channel_id, const bool requestEvent);
 
 	CChannelEventList getChannelEvents(const bool tv_mode = true, t_channel_id* = NULL, int size = 0);
