@@ -138,7 +138,7 @@ void CInfoViewer::paintTime( bool show_dot, bool firstPaint )
 		struct timeb tm;
 
 		ftime(&tm);
-		strftime((char*) &timestr, 20, "%H:%M", localtime(&tm.time) );
+		strftime((char*) &timestr, 10, "%H:%M", localtime(&tm.time) );
 
 		if ( ( !firstPaint ) && ( strcmp( timestr, old_timestr ) == 0 ) )
 		{
