@@ -107,7 +107,6 @@ void eSkinSetup::accept()
 void eSkinSetup::skinchanged(eListBoxEntrySkin *skin)
 {
         eString icon;
-        eString command;
         eString iconname; 
         eString finalname;
         int len;
@@ -116,8 +115,8 @@ void eSkinSetup::skinchanged(eListBoxEntrySkin *skin)
         len = iconname.find(".esml");
         finalname= iconname.substr(0,len)+ ".png";
 
-        system(command.c_str());
         lb3->clear();
+
         gPixmap *img = 0;
         img = loadPNG(finalname.c_str());
         if(img)
