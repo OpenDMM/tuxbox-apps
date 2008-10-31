@@ -362,6 +362,8 @@ void CInfoViewer::showTitle(const int ChanNum, const std::string & Channel, cons
 	}
 
 	info_CurrentNext = getEPG(channel_id);
+	if (!calledFromNumZap)
+		CLCD::getInstance()->setEPGTitle(info_CurrentNext.current_name);
 
 	if (!evtlist.empty()) {
 		if (new_chan) {
@@ -787,6 +789,7 @@ int CInfoViewer::handleMsg(const neutrino_msg_t msg, neutrino_msg_data_t data)
 		{
 			CSectionsdClient::CurrentNextInfo info = getEPG( *(t_channel_id *)data );
 			info_CurrentNext = info;
+			CLCD::getInstance()->setEPGTitle(info.current_name);
 			if ( is_visible )
 				show_Data( true );
 			showLcdPercentOver();
@@ -856,6 +859,7 @@ int CInfoViewer::handleMsg(const neutrino_msg_t msg, neutrino_msg_data_t data)
 		}
 		showLcdPercentOver();
 		eventname	= info_CurrentNext.current_name;
+		CLCD::getInstance()->setEPGTitle(eventname);
 		return messages_return::handled;
 	}
 	else if (msg == NeutrinoMessages::EVT_ZAP_FAILED)
