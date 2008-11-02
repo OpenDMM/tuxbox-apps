@@ -546,7 +546,7 @@ int main (int argc, char** argv)
 
 		std::vector<CZapitClient::responseGetSatelliteList>::const_iterator rI;
 		for (i = 0, rI = satelliteList.begin(); rI != satelliteList.end(); i++, rI++)
-			std::cout << (1 << i) << ": " << rI->satName << std::endl;
+			std::cout << (1 + i) << ": " << rI->satName << std::endl;
 
 		return 0;
 	}
