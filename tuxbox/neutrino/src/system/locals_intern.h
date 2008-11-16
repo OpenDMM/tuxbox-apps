@@ -243,6 +243,7 @@ const char * locale_real_names[] =
 	"cablesetup.provider",
 	"channellist.epgtext_align_left",
 	"channellist.epgtext_align_right",
+	"channellist.extended",
 	"channellist.head",
 	"channellist.nonefound",
 	"channellist.since",
