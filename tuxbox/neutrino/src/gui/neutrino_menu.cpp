@@ -1996,7 +1996,7 @@ void CNeutrinoApp::InitKeySettings(CMenuWidget &keySettings)
 	keySettings.addItem(new CMenuForwarder(LOCALE_USERMENU_BUTTON_YELLOW, true, NULL, new CUserMenuMenu(LOCALE_USERMENU_BUTTON_YELLOW,2), NULL, CRCInput::RC_yellow,NEUTRINO_ICON_BUTTON_YELLOW));
 	keySettings.addItem(new CMenuForwarder(LOCALE_USERMENU_BUTTON_BLUE, true, NULL, new CUserMenuMenu(LOCALE_USERMENU_BUTTON_BLUE,3), NULL, CRCInput::RC_blue,NEUTRINO_ICON_BUTTON_BLUE));
 
-	int * keyvalue_p[] =
+	neutrino_msg_t * keyvalue_p[] =
 		{
 			&g_settings.key_tvradio_mode,
 			&g_settings.key_channelList_pageup,

@@ -754,7 +754,7 @@ int CEpgData::show(const t_channel_id channel_id, unsigned long long a_id, time_
 
 				default:
 					// konfigurierbare Keys handlen...
-					if (msg == (neutrino_msg_t)g_settings.key_channelList_cancel)
+					if (msg == g_settings.key_channelList_cancel)
 						loop = false;
 					else
 					{

@@ -547,10 +547,10 @@ requests to sectionsd.
 					res = messages_return::cancel_info;
 				}
 			}
-			else if ( ( msg == (neutrino_msg_t)g_settings.key_quickzap_up  ) ||
-				    ( msg == (neutrino_msg_t)g_settings.key_quickzap_down) ||
-				    ( msg == CRCInput::RC_0 ) ||
-				    ( msg == NeutrinoMessages::SHOW_INFOBAR ) )
+			else if (msg == g_settings.key_quickzap_up ||
+				 msg == g_settings.key_quickzap_down ||
+				 msg == CRCInput::RC_0 ||
+				 msg == NeutrinoMessages::SHOW_INFOBAR)
 			{
 				hideIt = false;
 				g_RCInput->postMsg( msg, data );
