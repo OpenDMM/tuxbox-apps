@@ -1328,8 +1328,7 @@ void updateLcd(const std::string & sel_filename)
 			StrSearchReplace(lcd,"_", " ");
 			break;
 	}
-
-	CLCD::getInstance()->showServicename(lcd);
+	CLCD::getInstance()->showMoviename(lcd);
 }
 
 // GMO snip start ...

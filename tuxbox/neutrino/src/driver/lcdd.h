@@ -123,8 +123,9 @@ class CLCD
 		             const char * fontfile3=NULL, const char * fontname3=NULL);
 		void setlcdparameter(int dimm, int contrast, int power, int inverse);
 		void displayUpdate();
-	public:
+		void showServiceAndEpg(const std::string & big, const std::string & small, int showmode, bool perform_wakeup);
 
+	public:
 		void setlcdparameter(void);
 
 		static CLCD* getInstance();
@@ -135,6 +136,7 @@ class CLCD
 		void setMode(const MODES m, const char * const title = "");
 
 		void showServicename(const std::string & name, const bool perform_wakeup = true); // UTF-8
+		void showMoviename(const std::string & name); // UTF-8
 		void setEPGTitle(const std::string & title);
 		void showTime();
 		/** blocks for duration seconds */
