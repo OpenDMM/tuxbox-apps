@@ -65,7 +65,7 @@ CStreamInfo2::CStreamInfo2()
 	iheight     = g_Font[font_info]->getHeight();
 	sheight     = g_Font[font_small]->getHeight();
 	
-	c_rad_mid = g_settings.rounded_corners ? CORNER_RADIUS_MID : 0;
+	c_rad_mid = RADIUS_MID;
 
 	x 	= 60; //mainwindow position
 	y 	= 45;

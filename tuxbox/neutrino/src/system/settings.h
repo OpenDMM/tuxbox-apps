@@ -464,6 +464,11 @@ struct SNeutrinoSettings
 #define CORNER_RADIUS_MID		9
 #define CORNER_RADIUS_SMALL		4
 
+// convenience macros
+#define RADIUS_LARGE	(g_settings.rounded_corners ? CORNER_RADIUS_LARGE : 0)
+#define RADIUS_MID	(g_settings.rounded_corners ? CORNER_RADIUS_MID : 0)
+#define RADIUS_SMALL	(g_settings.rounded_corners ? CORNER_RADIUS_SMALL : 0)
+
 // shadow
 #define SHADOW_OFFSET			4
 

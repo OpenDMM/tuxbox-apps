@@ -141,7 +141,7 @@ void CProgressWindow::hide()
 void CProgressWindow::paint()
 {
 	int ypos=y;
-	int c_rad_mid = g_settings.rounded_corners ? CORNER_RADIUS_MID : 0;
+	int c_rad_mid = RADIUS_MID;
 	
 	frameBuffer->paintBoxRel(x, ypos, width, hheight, COL_MENUHEAD_PLUS_0, c_rad_mid, CORNER_TOP);
 	if (caption != NONEXISTANT_LOCALE)

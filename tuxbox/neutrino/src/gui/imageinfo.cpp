@@ -491,7 +491,7 @@ const char* CImageInfo::getImageInfo (int InfoType)
 void CImageInfo::paintHead(int x, int y, const char *localetext)
 {
 	int headheight = hheight;
-	frameBuffer->paintBoxRel(x, y, width, headheight + 4, COL_MENUHEAD, g_settings.rounded_corners ? CORNER_RADIUS_MID : 0 , CORNER_TOP);
+	frameBuffer->paintBoxRel(x, y, width, headheight + 4, COL_MENUHEAD, RADIUS_MID, CORNER_TOP);
 	g_Font[font_head]->RenderString(x+5, y + headheight + 4, width, localetext, COL_MENUHEAD, 0, true);}
 	
 const struct button_label CImageInfoButtons[5] =
@@ -506,7 +506,7 @@ const struct button_label CImageInfoButtons[5] =
 void CImageInfo::paintFoot(int x, int y)
 {
 	int ButtonHeight = ssheight;
-	frameBuffer->paintBoxRel(x, y, width, ButtonHeight, COL_INFOBAR_SHADOW_PLUS_1, g_settings.rounded_corners ? CORNER_RADIUS_MID : 0 , CORNER_BOTTOM);
+	frameBuffer->paintBoxRel(x, y, width, ButtonHeight, COL_INFOBAR_SHADOW_PLUS_1, RADIUS_MID, CORNER_BOTTOM);
 	::paintButtons(frameBuffer, g_Font[SNeutrinoSettings::FONT_TYPE_INFOBAR_SMALL], g_Locale, x + 5, y, width/6, 5, CImageInfoButtons, width);
 }	
 

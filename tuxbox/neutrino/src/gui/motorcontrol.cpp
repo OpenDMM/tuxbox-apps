@@ -386,7 +386,7 @@ void CMotorControl::paint()
 void CMotorControl::paintHead()
 {
 	ypos = y;
-	frameBuffer->paintBoxRel(x, ypos, width, head_height, COL_MENUHEAD_PLUS_0, g_settings.rounded_corners ? CORNER_RADIUS_MID : 0, CORNER_TOP);
+	frameBuffer->paintBoxRel(x, ypos, width, head_height, COL_MENUHEAD_PLUS_0, RADIUS_MID, CORNER_TOP);
 	g_Font[SNeutrinoSettings::FONT_TYPE_MENU_TITLE]->RenderString(x + 10, ypos + head_height-2, width, g_Locale->getText(LOCALE_MOTORCONTROL_HEAD), COL_MENUHEAD, 0, true); // UTF-8
 }
 
@@ -504,7 +504,7 @@ void CMotorControl::paintMenu()
 
 	// rc menue background
 	ypos_menue += mheight;
-	frameBuffer->paintBoxRel(x, ypos_menue , width, menue_height-mheight, COL_INFOBAR_SHADOW_PLUS_1, g_settings.rounded_corners ? CORNER_RADIUS_MID : 0, CORNER_BOTTOM);
+	frameBuffer->paintBoxRel(x, ypos_menue , width, menue_height-mheight, COL_INFOBAR_SHADOW_PLUS_1, RADIUS_MID, CORNER_BOTTOM);
 	
 	// paint 0/OK and menue caption user menue usr installer menue
 	CMotorControlMenueButtons1[1].locale = (installerMenue ? LOCALE_MOTORCONTROL_USER_MENUE : LOCALE_MOTORCONTROL_INSTALLER_MENUE);
