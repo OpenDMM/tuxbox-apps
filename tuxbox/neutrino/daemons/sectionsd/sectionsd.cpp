@@ -338,6 +338,11 @@ inline bool waitForTimeset(void)
 	while(!timeset)
 		pthread_cond_wait(&timeIsSetCond, &timeIsSetMutex);
 	pthread_mutex_unlock(&timeIsSetMutex);
+	/* we have time synchronization issues, at least on kernel 2.4, so
+	   sometimes the time in the threads is still 1.1.1970, even after
+	   waitForTimeset() returns. Let's hope that we work around this issue
+	   with this sleep */
+	sleep(1);
 	writeLockMessaging();
 	messaging_last_requested = time(NULL);
 	unlockMessaging();
