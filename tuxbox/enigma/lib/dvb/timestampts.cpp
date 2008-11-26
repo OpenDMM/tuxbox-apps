@@ -204,9 +204,14 @@ int eTimeStampParserTS::processPacket(const unsigned char *pkt)
 			time_t t1 = mktime(&movie_begin);
 			time_t t2 = mktime(&tt);
 			int duration = t2 - t1; 
-			int min1 = duration / 60;
-			duration %=60;
-			currentTime = eString().sprintf("%02d:%02d", min1, duration);
+			if (duration < 0)
+				currentTime="";
+			else
+			{
+				int min1 = duration / 60;
+				duration %=60;			
+				currentTime = eString().sprintf("%02d:%02d", min1, duration);
+			}
 		}
 
 		if ( MovieCurrentTime && MovieEndTime )
@@ -217,9 +222,14 @@ int eTimeStampParserTS::processPacket(const unsigned char *pkt)
 			time_t t1 = mktime(&tt);
 			time_t t2 = mktime(&movie_current);
 			int duration = t1 - t2; 
-			int min1 = duration / 60;
-			duration %=60;
-			remainTime = eString().sprintf("%02d:%02d", min1, duration);
+			if (duration < 0)
+				remainTime="";
+			else
+			{
+				int min1 = duration / 60;
+				duration %=60;
+				remainTime = eString().sprintf("%02d:%02d", min1, duration);
+			}
 		}
 		if (MovieBeginTime && MovieEndTime && !MovieDuration )
 		{
@@ -230,12 +240,17 @@ int eTimeStampParserTS::processPacket(const unsigned char *pkt)
 			time_t t1 = mktime(&tt);
 			time_t t2 = mktime(&movie_begin);
 			int duration = t1 - t2; 
-			int min1 = duration / 60;
-			duration %=60;
-			if ( min1 != 0 )
-				durationTime = eString().sprintf("%02d min", min1);
+			if (duration < 0)
+				remainTime="";
 			else
-				durationTime = eString().sprintf("%02d sec", duration);
+			{
+				int min1 = duration / 60;
+				duration %=60;
+				if ( min1 != 0 )
+					durationTime = eString().sprintf("%02d min", min1);
+				else
+					durationTime = eString().sprintf("%02d sec", duration);
+			}
 		}
 	}
 	return 0;
