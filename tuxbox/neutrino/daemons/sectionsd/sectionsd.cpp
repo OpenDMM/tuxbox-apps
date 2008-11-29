@@ -5332,12 +5332,16 @@ xmlNodePtr getProviderFromSatellitesXML(xmlNodePtr node, const int position) {
 		if (xmlGetSignedNumericAttribute(satellite, "position", 16) == position) {
 			while (node) {
 				if (!strcmp(xmlGetAttribute(satellite, "name"), xmlGetAttribute(node, "name")))
+				{
+					xmlFreeDoc(satellites_parser);
 					return node;
+				}
 				node = node->xmlNextNode;
 			}
 		}
 		satellite = satellite->xmlNextNode;
 	}
+	xmlFreeDoc(satellites_parser);
 	return NULL;
 }
 
