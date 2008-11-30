@@ -645,11 +645,8 @@ static void addEvent(const SIevent &evt, const unsigned table_id, const time_t z
 	}
 
 	if (cn) { // current-next => fill current or next event...
-		t_channel_id evt_channel_id = ((t_channel_id)evt.transport_stream_id << 32)|
-					      ((t_channel_id)evt.original_network_id << 16)|
-					      ((t_channel_id)evt.service_id);
 		readLockMessaging();
-		if (evt_channel_id == messaging_current_servicekey && // but only if it is the current channel...
+		if (evt.get_channel_id() == messaging_current_servicekey && // but only if it is the current channel...
 		    (messaging_got_CN != 0x03)) { // ...and if we don't have them already.
 			unlockMessaging();
 			SIevent *eptr = new SIevent(evt);
