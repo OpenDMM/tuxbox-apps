@@ -589,7 +589,7 @@ void CFlashExpert::writemtd(const std::string & filename, int mtdNumber)
 	CLCD::getInstance()->setMode(CLCD::MODE_PROGRESSBAR2);
 #endif // LCD_UPDATE
 
-	setTitle(LOCALE_FLASHUPDATE_GLOBALPROGRESS);
+	setTitle(LOCALE_FLASHUPDATE_TITLEWRITEFLASH);
 	paint();
 	showGlobalStatus(0);
 	CFlashTool ft;
