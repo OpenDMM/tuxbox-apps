@@ -65,9 +65,9 @@ void CProgressWindow::setTitle(const neutrino_locale_t title)
 {
 	caption = title;
 
-#ifdef LCD_UPDATE
-	CLCD::getInstance()->showProgressBar2(-1,NULL,-1,g_Locale->getText(caption)); // set global text in LCD
-#endif // LCD_UPDATE
+//~ #ifdef LCD_UPDATE
+	//~ CLCD::getInstance()->showProgressBar2(-1,NULL,-1,g_Locale->getText(caption)); // set global text in LCD
+//~ #endif // LCD_UPDATE
 }
 
 
