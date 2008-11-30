@@ -3809,6 +3809,7 @@ int CNeutrinoApp::exec(CMenuTarget* parent, const std::string & actionKey)
 		g_Sectionsd->Restart();
 		g_Sectionsd->RegisterNeutrino();
 		g_Sectionsd->setPauseScanning(false);
+		g_Sectionsd->setServiceChanged(g_RemoteControl->current_channel_id, false);
 		SendSectionsdConfig();
 	}
 	
