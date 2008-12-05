@@ -270,6 +270,7 @@ const CBookmark * CBookmarkManager::getBookmark(CMenuTarget* parent)
 			paint();
 		}
 		g_RCInput->getMsgAbsoluteTimeout( &msg, &data, &timeoutEnd );
+		neutrino_msg_t msg_repeatok = msg & ~CRCInput::RC_Repeat;
 
 		if( msg <= CRCInput::RC_MaxRC )
 			timeoutEnd = CRCInput::calcTimeoutEnd(g_settings.timing[SNeutrinoSettings::TIMING_MENU]);
@@ -280,7 +281,7 @@ const CBookmark * CBookmarkManager::getBookmark(CMenuTarget* parent)
 			res = -1;
 			loop=false;
 		}
-		else if ((msg == CRCInput::RC_up) && !(bookmarks.empty()))
+		else if ((msg_repeatok == CRCInput::RC_up) && !(bookmarks.empty()))
 		{
 			int prevselected=selected;
 			if(selected==0)
@@ -301,7 +302,7 @@ const CBookmark * CBookmarkManager::getBookmark(CMenuTarget* parent)
 				paintItem(selected - liststart);
 			}
 		}
-		else if ((msg == CRCInput::RC_down) && !(bookmarks.empty()))
+		else if ((msg_repeatok == CRCInput::RC_down) && !(bookmarks.empty()))
 		{
 			int prevselected=selected;
 			selected = (selected+1)%bookmarks.size();

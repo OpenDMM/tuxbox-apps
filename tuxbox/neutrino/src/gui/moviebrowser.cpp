@@ -43,6 +43,12 @@
 		based on code of Steffen Hehn 'McClean'
 
 	$Log$
+	Revision 1.20  2008/12/05 22:06:19  seife
+	Rework neutrino's RC input routines, making it possible to use "key repeat"
+	and "key release" flags in the future.
+	Probably some fallout which will have to be fixed later will happen.
+	Might break the dreambox.
+	
 	Revision 1.19  2008/11/16 21:46:40  seife
 	improve the readability of the rounded corners code with a few macros
 	
@@ -1749,6 +1755,7 @@ bool CMovieBrowser::onButtonPress(neutrino_msg_t msg)
 {
 //	TRACE("[mb]->onButtonPress %d\r\n",msg);
 	bool result = false;
+	neutrino_msg_t msg_repeatok = msg & ~CRCInput::RC_Repeat;
 	
 	result = onButtonPressMainFrame(msg);
 	if(result == false)
@@ -1757,16 +1764,16 @@ bool CMovieBrowser::onButtonPress(neutrino_msg_t msg)
 		switch(m_windowFocus)
 		{
 			case MB_FOCUS_BROWSER:
-			 	result = onButtonPressBrowserList(msg);		
+			 	result = onButtonPressBrowserList(msg_repeatok);
 				break;
 			case MB_FOCUS_LAST_PLAY:
-			 	result = onButtonPressLastPlayList(msg);		
+			 	result = onButtonPressLastPlayList(msg_repeatok);
 				break;
 			case MB_FOCUS_LAST_RECORD:
-			 	result = onButtonPressLastRecordList(msg);		
+			 	result = onButtonPressLastRecordList(msg_repeatok);
 				break;
 			case MB_FOCUS_MOVIE_INFO:
-			 	result = onButtonPressMovieInfoList(msg);		
+			 	result = onButtonPressMovieInfoList(msg_repeatok);
 				break;
 			case MB_FOCUS_FILTER:
 			 	result = onButtonPressFilterList(msg);		
@@ -2041,20 +2048,21 @@ bool CMovieBrowser::onButtonPressFilterList(neutrino_msg_t msg)
 {
 	//TRACE("[mb]->onButtonPressFilterList %d,%d\r\n",msg,m_settings.filter.item);
 	bool result = true;
+	neutrino_msg_t msg_repeatok = msg & ~CRCInput::RC_Repeat;
 
-	if(msg==CRCInput::RC_up)
+	if (msg_repeatok == CRCInput::RC_up)
 	{
 		m_pcFilter->scrollLineUp(1);
 	}
-	else if (msg == CRCInput::RC_down)
+	else if (msg_repeatok == CRCInput::RC_down)
 	{
 		m_pcFilter->scrollLineDown(1);
 	}
-	else if (msg == CRCInput::RC_page_up)
+	else if (msg_repeatok == CRCInput::RC_page_up)
 	{
 		m_pcFilter->scrollPageUp(1);
 	}
-	else if (msg == CRCInput::RC_page_down)
+	else if (msg_repeatok == CRCInput::RC_page_down)
 	{
 		m_pcFilter->scrollPageDown(1);
 	}
@@ -2091,11 +2099,11 @@ bool CMovieBrowser::onButtonPressFilterList(neutrino_msg_t msg)
 			}
 		}
 	}
-	else if (msg == CRCInput::RC_left)
+	else if (msg_repeatok == CRCInput::RC_left)
 	{
 		m_pcFilter->scrollPageUp(1);
 	}
-	else if (msg == CRCInput::RC_right)
+	else if (msg_repeatok == CRCInput::RC_right)
 	{
 		m_pcFilter->scrollPageDown(1);
 	}

@@ -647,6 +647,7 @@ int CEpgData::show(const t_channel_id channel_id, unsigned long long a_id, time_
 					break;
 
 				case CRCInput::RC_down:
+				case CRCInput::RC_down|CRCInput::RC_Repeat:
 					if(showPos+scrollCount<textCount)
 					{
 						showPos += scrollCount;
@@ -655,6 +656,7 @@ int CEpgData::show(const t_channel_id channel_id, unsigned long long a_id, time_
 					break;
 
 				case CRCInput::RC_up:
+				case CRCInput::RC_up|CRCInput::RC_Repeat:
 					showPos -= scrollCount;
 					if(showPos<0)
 						showPos = 0;

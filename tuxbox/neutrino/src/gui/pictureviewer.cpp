@@ -226,6 +226,7 @@ int CPictureViewerGui::show()
 				timeout=1;
 		}
 		g_RCInput->getMsg( &msg, &data, timeout );
+		neutrino_msg_t msg_repeatok = msg & ~CRCInput::RC_Repeat;
 
 		if( msg == CRCInput::RC_home)
 		{ //Exit after cancel key
@@ -282,7 +283,7 @@ int CPictureViewerGui::show()
 				view(next);
 			}
 		}
-		else if (msg == CRCInput::RC_up)
+		else if (msg_repeatok == CRCInput::RC_up)
 		{
 			if ((m_state == MENU) && (!playlist.empty()))
 			{
@@ -306,7 +307,7 @@ int CPictureViewerGui::show()
 				}
 			}
 		}
-		else if (msg == CRCInput::RC_down)
+		else if (msg_repeatok == CRCInput::RC_down)
 		{
 			if ((m_state == MENU) && (!playlist.empty()))
 			{
