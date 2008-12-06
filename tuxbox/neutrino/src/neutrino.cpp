@@ -2481,8 +2481,8 @@ int CNeutrinoApp::handleMsg(const neutrino_msg_t m, neutrino_msg_data_t data)
 					while(true)
 					{
 						g_RCInput->getMsg_ms(&msg, &data, timeout);
-
-						if (msg == CRCInput::RC_timeout)
+						/* if the power key gets released, then get out of here */
+						if (msg == (CRCInput::RC_standby | CRCInput::RC_Release))
 							break;
 
 						gettimeofday(&endtime, NULL);
