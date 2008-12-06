@@ -449,8 +449,7 @@ bool CAudioSetupNotifier2::changeNotify(const neutrino_locale_t, void *)
 
 bool CKeySetupNotifier::changeNotify(const neutrino_locale_t, void *)
 {
-	g_RCInput->repeat_block = atoi(g_settings.repeat_blocker)* 1000;
-	g_RCInput->repeat_block_generic = atoi(g_settings.repeat_genericblocker)* 1000;
+	g_RCInput->setRepeat(atoi(g_settings.repeat_blocker), atoi(g_settings.repeat_genericblocker));
 	return false;
 }
 
