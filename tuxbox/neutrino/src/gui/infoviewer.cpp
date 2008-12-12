@@ -413,9 +413,11 @@ void CInfoViewer::showTitle(const int ChanNum, const std::string & Channel, cons
 				}
 				--eli;
 			}
+			if (info_CurrentNext.flags)
+				info_CurrentNext.flags |= CSectionsdClient::epgflags::has_anything;
 		}
 	}
-	
+
 	if (!(info_CurrentNext.flags & (CSectionsdClient::epgflags::has_anything | CSectionsdClient::epgflags::not_broadcast)))
 	{
 		// nicht gefunden / noch nicht geladen
