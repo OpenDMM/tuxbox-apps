@@ -2431,18 +2431,7 @@ int CNeutrinoApp::handleMsg(const neutrino_msg_t m, neutrino_msg_data_t data)
 	}
 
 	if (!waitforshutdown) {
-	if( msg == NeutrinoMessages::EVT_VCRCHANGED )
-	{
-		if (g_settings.vcr_AutoSwitch)
-		{
-			if( data != VCR_STATUS_OFF )
-				g_RCInput->postMsg( NeutrinoMessages::VCR_ON, 0 );
-			else
-				g_RCInput->postMsg( NeutrinoMessages::VCR_OFF, 0 );
-		}
-		return messages_return::handled | messages_return::cancel_info;
-	}
-	else if (msg == CRCInput::RC_standby)
+	if (msg == CRCInput::RC_standby)
 	{
 		if (data == 0)
 		{
@@ -2536,6 +2525,27 @@ int CNeutrinoApp::handleMsg(const neutrino_msg_t m, neutrino_msg_data_t data)
 			AudioMute( !current_muted );
 		}
 		return messages_return::handled;	
+	}
+
+	/* HACK: mark all key-repeat and key-release events as "handled" in order not to
+	   screw up all the menus and hintboxes that do not yet handle them correctly */
+	if (msg <= CRCInput::RC_MaxRC)
+		if (repeat || (msg & CRCInput::RC_Release))
+			return messages_return::handled;
+		else
+			return messages_return::unhandled;
+	/* no remotecontrol/keyboard events below here... */
+
+	if (msg == NeutrinoMessages::EVT_VCRCHANGED)
+	{
+		if (g_settings.vcr_AutoSwitch)
+		{
+			if (data != VCR_STATUS_OFF)
+				g_RCInput->postMsg(NeutrinoMessages::VCR_ON, 0);
+			else
+				g_RCInput->postMsg(NeutrinoMessages::VCR_OFF, 0);
+		}
+		return messages_return::handled | messages_return::cancel_info;
 	}
 	else if( msg == NeutrinoMessages::EVT_MUTECHANGED )
 	{
