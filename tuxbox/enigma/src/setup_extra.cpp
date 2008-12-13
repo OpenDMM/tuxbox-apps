@@ -165,6 +165,10 @@ void eExpertSetup::init_eExpertSetup()
 	
 	CONNECT(list.selchanged, eExpertSetup::timerenddefaultactionChanged );
 	new eListBoxEntryMenuSeparator(&list, eSkin::getActive()->queryImage("listbox.separator"), 0, true );
+	new eListBoxEntryCheck(&list, _("disable AC3 recording"), "/enigma/noac3recording", _("don't record AC3 audio track"));
+	new eListBoxEntryCheck(&list, _("disable teletext recording"), "/enigma/nottxrecording", _("don't record teletext track"));
+	new eListBoxEntryCheck(&list, _("disable timestamp detection"), "/enigma/notimestampdetect", _("don't try to detect duration from DVB timestamps when replaying recordings"));
+	new eListBoxEntryMenuSeparator(&list, eSkin::getActive()->queryImage("listbox.separator"), 0, true );
 #endif
 	if ( eSystemInfo::getInstance()->getHwType() >= eSystemInfo::DM7000 )
 		CONNECT((new eListBoxEntryCheck(&list,_("Enable fast zapping"),"/elitedvb/extra/fastzapping",_("enables faster zapping.. but with visible sync")))->selected, eExpertSetup::fastZappingChanged );
