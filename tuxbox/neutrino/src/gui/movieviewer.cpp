@@ -281,7 +281,7 @@ void CMovieViewer::exec()
 			paintTime( show_dot, false );
 			show_dot = !show_dot;
 		}
-		else
+		else if ((msg & ~(CRCInput::RC_Repeat | CRCInput::RC_Release)) != CRCInput::RC_help)
 		{
 			// raus hier und im Hauptfenster behandeln...
 			g_RCInput->postMsg(  msg, data );
