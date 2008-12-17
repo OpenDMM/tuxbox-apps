@@ -456,12 +456,12 @@ void CFrameBuffer::setIconBasePath(const std::string & iconPath)
 const char  *CFrameBuffer::getIconFilePath(const std::string & filename)
 /*    	
  *  	filename can be a single filename eg. "<filename>" 
- *  	or absolute path eg. "var/dir/<filename>" 
+ *  	or absolute path eg. "/var/dir/<filename>" 
  */
 {	
 	std::string 	res,
 						defaultIconPath = iconBasePath + filename,
-						alterIconPath = (access(filename.c_str(), 0 ) != -1) ? filename : NEUTRINO_ICON_VARPATH + filename;
+						alterIconPath = (access(filename.c_str(), 0 ) != -1) ? filename : (std::string)NEUTRINO_ICON_VARPATH + filename;
 
 	if ((access(alterIconPath.c_str(), 0 ) != -1))	{
 			res = alterIconPath;

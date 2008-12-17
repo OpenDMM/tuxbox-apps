@@ -142,7 +142,7 @@ const char * const background_name[LCD_NUMBER_OF_BACKGROUNDS] = {
 };
 #define NUMBER_OF_PATHS 2
 const char * const background_path[NUMBER_OF_PATHS] = {
-	"var/share/tuxbox/neutrino/lcdd/" ,
+	LCDDIR_VAR ,
 	DATADIR "/lcdd/icons/"
 };
 
