@@ -281,7 +281,10 @@ void CMovieViewer::exec()
 			paintTime( show_dot, false );
 			show_dot = !show_dot;
 		}
-		else if ((msg & ~(CRCInput::RC_Repeat | CRCInput::RC_Release)) != CRCInput::RC_help)
+		/* this is ugly: we need to special case all the keys that can invoke the info bar */
+		else if ((msg & ~(CRCInput::RC_Repeat|CRCInput::RC_Release)) != CRCInput::RC_help &&
+			 (msg != (CRCInput::RC_yellow|CRCInput::RC_Release)) &&
+			 (msg != (CRCInput::RC_yellow|CRCInput::RC_Repeat)))
 		{
 			// raus hier und im Hauptfenster behandeln...
 			g_RCInput->postMsg(  msg, data );
