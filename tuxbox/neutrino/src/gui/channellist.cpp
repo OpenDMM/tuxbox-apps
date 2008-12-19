@@ -853,7 +853,7 @@ void CChannelList::virtual_zap_mode(bool up)
 			}
 			break;
 		}
-		else if ( msg == CRCInput::RC_left )
+		else if (msg_repeatok == CRCInput::RC_left)
 		{
 			if ( chn == 1 )
 				chn = chanlist.size();
@@ -865,7 +865,7 @@ void CChannelList::virtual_zap_mode(bool up)
 					chn = (int)chanlist.size();
 			}
 		}
-		else if ( msg == CRCInput::RC_right )
+		else if (msg_repeatok == CRCInput::RC_right)
 		{
 			chn++;
 
