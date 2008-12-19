@@ -841,7 +841,7 @@ void CChannelList::virtual_zap_mode(bool up)
 			lastchan= chn;
 		}
 		epgpos = 0;
-		g_RCInput->getMsg( &msg, &data, 15*10 ); // 15 seconds, not user changable
+		g_RCInput->getMsg( &msg, &data, atoi(g_settings.timing_string[3])*10 ); // virtual zap timout = TIMING_INFOBAR
 		neutrino_msg_t msg_repeatok = msg & ~CRCInput::RC_Repeat;
 		//printf("########### %u ### %u #### %u #######\n", msg, NeutrinoMessages::EVT_TIMER, CRCInput::RC_timeout);
 
