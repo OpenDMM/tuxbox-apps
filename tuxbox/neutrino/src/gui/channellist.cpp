@@ -609,6 +609,7 @@ void CChannelList::zapTo(int pos, bool forceStoreToLastChannels)
 		}
 #endif
 		tuned = pos;
+		CLCD::getInstance()->showServicename(chan->name);
 		g_RemoteControl->zapTo_ChannelID(chan->channel_id, chan->name, !chan->bAlwaysLocked); // UTF-8
 	}
 	g_RCInput->postMsg( NeutrinoMessages::SHOW_INFOBAR, 0 );
