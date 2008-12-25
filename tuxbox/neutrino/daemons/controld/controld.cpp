@@ -955,7 +955,7 @@ bool parse_command(CBasicMessage::Header &rmsg, int connfd)
 		if (msg_commandVolume.type == CControld::TYPE_UNKNOWN)
 			msg_commandVolume.type = settings.volume_type;
 		else
-			settings.volume_type = msg_commandVolume.type;			
+			settings.volume_type = msg_commandVolume.type;
 			
 		if (msg_commandVolume.type == CControld::TYPE_OST)
 		{
@@ -1030,10 +1030,10 @@ bool parse_command(CBasicMessage::Header &rmsg, int connfd)
 		if (msg_responseVolume.type == CControld::TYPE_UNKNOWN)
 			msg_responseVolume.type = settings.volume_type;
 		if (msg_responseVolume.type == CControld::TYPE_OST)
-			msg_responseVolume.volume = settings.volume;
+			msg_responseVolume.volume = (unsigned char)settings.volume;
 #ifndef HAVE_DREAMBOX_HARDWARE
 		else if (msg_responseVolume.type == CControld::TYPE_AVS)
-			msg_responseVolume.volume = settings.volume_avs;
+			msg_responseVolume.volume = (unsigned char)settings.volume_avs;
 		else if (msg_responseVolume.type == CControld::TYPE_LIRC)
 			msg_responseVolume.volume = 50; //we donnot really know...
 #else
@@ -1088,7 +1088,7 @@ bool parse_command(CBasicMessage::Header &rmsg, int connfd)
 		break;
 	case CControldMsg::CMD_GETSCARTMODE:
 		//printf("[controld] get scartmode\n");
-		CControldMsg::commandScartMode msg51;
+		CControldMsg::responseScartMode msg51;
 		msg51.mode = vcr;
 		CBasicServer::send_data(connfd, &msg51, sizeof(CControldMsg::responseScartMode));
 		break;
