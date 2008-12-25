@@ -505,9 +505,6 @@ int main(int argc, char **argv)
 
 	CBasicServer timerd_server;
 
-	if (!timerd_server.prepare(TIMERD_UDS_NAME))
-		return -1;
-
 	if(do_fork)
 	{
 		switch(fork())
@@ -526,6 +523,9 @@ int main(int argc, char **argv)
 			return EXIT_FAILURE;
 		}
 	}
+
+	if (!timerd_server.prepare(TIMERD_UDS_NAME))
+		return -1;
 
 	//catch all signals
 	signal(SIGHUP, signalHandler);

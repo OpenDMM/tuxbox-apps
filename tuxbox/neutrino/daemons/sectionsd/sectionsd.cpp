@@ -8145,9 +8145,6 @@ int main(int argc, char **argv)
 		readEPGFilter();
 		readBouquetFilter();
 
-		if (!sectionsd_server.prepare(SECTIONSD_UDS_NAME))
-			return EXIT_FAILURE;
-
 		if (!debug) {
 			switch (fork()) { // switching to background
 			case -1:
@@ -8164,6 +8161,9 @@ int main(int argc, char **argv)
 				return EXIT_FAILURE;
 			}
 		}
+
+		if (!sectionsd_server.prepare(SECTIONSD_UDS_NAME))
+			return EXIT_FAILURE;
 
 		// from here on forked
 		signal(SIGHUP, signalHandler);

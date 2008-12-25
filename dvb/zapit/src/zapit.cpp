@@ -2747,9 +2747,6 @@ int main(int argc, char **argv)
 
 	CBasicServer zapit_server;
 
-	if (!zapit_server.prepare(ZAPIT_UDS_NAME))
-		return -1;
-
 	if (!debug)
 		switch (fork()) {
 		case -1: /* can't fork */
@@ -2764,6 +2761,9 @@ int main(int argc, char **argv)
 		default: /* parent returns to calling process */
 			return 0;
 		}
+
+	if (!zapit_server.prepare(ZAPIT_UDS_NAME))
+		return -1;
 
 	save_audioPIDs = config.getBool("saveAudioPIDs", false);
 	if (save_audioPIDs) {

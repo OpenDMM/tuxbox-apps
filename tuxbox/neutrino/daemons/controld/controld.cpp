@@ -1216,9 +1216,6 @@ int main(int argc, char **argv)
 		}
 	}
 
-	if (!controld_server.prepare(CONTROLD_UDS_NAME))
-		return -1;
-
 	if (!debug)
 	{
 		switch (fork())
@@ -1238,6 +1235,9 @@ int main(int argc, char **argv)
 			return EXIT_FAILURE;
 		}
 	}
+
+	if (!controld_server.prepare(CONTROLD_UDS_NAME))
+		return -1;
 
 	eventServer = new CEventServer;
 
