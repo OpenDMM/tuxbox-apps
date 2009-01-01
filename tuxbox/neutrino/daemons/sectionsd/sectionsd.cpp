@@ -5403,7 +5403,6 @@ static bool updateTP(const int scanType)
 		else
 			provider = NULL;
 
-		current_parser = NULL;
 		tmp = fopen(CURRENTSERVICES_XML, "r");
 		if (tmp) {
 			fclose(tmp);
@@ -5457,6 +5456,7 @@ static bool updateTP(const int scanType)
 		}
 		if (current_parser != NULL)
 			xmlFreeDoc(current_parser);
+		current_parser = NULL;
 
 		i++;
 	}
@@ -6010,8 +6010,9 @@ static bool updateBouquets()
 						addBouquetToCurrentXML(xmlDocGetRootElement(current_parser)->xmlChildrenNode, bouquet_id);
 					else
 						addBouquetToCurrentXML(NULL, bouquet_id);
-					xmlFreeDoc(current_parser);
 					rename(CURRENTBOUQUETS_TMP, CURRENTBOUQUETS_XML);
+					if (current_parser != NULL)
+						xmlFreeDoc(current_parser);
 					current_parser= parseXmlFile(CURRENTBOUQUETS_XML);
 				}
 			}
@@ -7808,6 +7809,8 @@ static void *houseKeepingThread(void *)
 						readLockMessaging();
 						if (!messaging_zap_detected) {
 							unlockMessaging();
+							if (current_parser)
+								xmlFreeDoc(current_parser);
 							current_parser =
 								parseXmlFile(CURRENTBOUQUETS_XML);
 						}
