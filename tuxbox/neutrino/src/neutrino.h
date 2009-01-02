@@ -300,7 +300,7 @@ class CNeutrinoApp : public CMenuTarget, CChangeObserver
 		int recordingstatus;
 		void SendSectionsdConfig(void);
 		
-		bool execute_start_file(const char *filename);
+		bool execute_start_file(const char *filename, const bool blocking = true);
 		bool execute_sys_command(const char *command);
 };
 
