@@ -270,7 +270,11 @@ void CStreamInfo2::hide()
 
 void CStreamInfo2::paint_pig(int x, int y, int w, int h)
 {
+#if HAVE_DVB_API_VERSION < 3
+	frameBuffer->paintBackgroundBoxRel(x, y, w, h);
+#else
 	frameBuffer->paintBoxRel(x,y,w,h, COL_BLACK); //black
+#endif
 	pig->show (x,y,w,h);
 }
 
@@ -439,7 +443,12 @@ void CStreamInfo2::paint(int mode)
 		ypos = y+hheight+8;
 
 		// paint PIG
+#ifndef HAVE_DREAMBOX_DM500
 		paint_pig( pigboxes_x,  ypos , 240, 190);
+#else
+		// the dm500 seems to like only half / quarter resolution...
+		paint_pig(pigboxes_x + 60,  ypos, 180, 144);
+#endif
 
 		// Info Output
 		paint_techinfo ( xpos, ypos );

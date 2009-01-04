@@ -78,8 +78,13 @@ CImageInfo::CImageInfo()
 	width 	= endX-startX;
 	height 	= endY-startY;
 	
+#ifndef HAVE_DREAMBOX_DM500
 	pigw = 215;
 	pigh = 170;
+#else
+	pigw = 180;
+	pigh = 144;
+#endif
 	
 	x = endX - pigw -16;
 	y = startY + hheight +16;
@@ -154,8 +159,8 @@ int CImageInfo::exec(CMenuTarget* parent, const std::string &)
 		}
 	}
 
-	delete pig;
 	hide();
+	delete pig;
 
 	return menu_return::RETURN_REPAINT;
 }
@@ -175,7 +180,11 @@ void CImageInfo::paint_pig(int x, int y, int w, int h)
 {
 	int xPig = x; //picture position
 	int yPig = y; //+ hheight +16;
+#if HAVE_DVB_API_VERSION < 3
+	frameBuffer->paintBackgroundBoxRel(xPig, yPig, w, h);
+#else
 	frameBuffer->paintBoxRel(xPig, yPig, w, h, COL_MENUCONTENT_PLUS_0);
+#endif
 	pig->show (xPig, yPig, w, h);
 }
 
