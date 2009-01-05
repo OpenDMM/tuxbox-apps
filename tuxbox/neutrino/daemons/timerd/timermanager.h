@@ -214,6 +214,7 @@ private:
 	CEventServer		*eventServer;
 	CTimerEventMap		events;
 	pthread_t			thrTimer;
+	bool              timer_wakeup;
 	bool              m_saveEvents;
 	bool              m_isTimeSet;
 	int               m_extraTimeStart;
@@ -245,6 +246,7 @@ public:
 	void getRecordingSafety(int &pre, int &post){pre=m_extraTimeStart;post=m_extraTimeEnd;}
 	void setRecordingSafety(int pre, int post);  
 	void loadRecordingSafety();
+	void clearWakeup() { timer_wakeup = false; }
 };
 
 #endif
