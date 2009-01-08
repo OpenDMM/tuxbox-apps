@@ -27,7 +27,9 @@
 
 #include <gui/imageinfo.h>
 
+#ifndef MOVIEPLAYER2
 #define MOVIEBROWSER
+#endif
 #ifdef MOVIEBROWSER
 #include <gui/moviebrowser.h>
 #endif /* MOVIEBROWSER */
