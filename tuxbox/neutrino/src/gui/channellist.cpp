@@ -6,6 +6,8 @@
 	Copyright (C) 2001 Steffen Hehn 'McClean'
 	Homepage: http://dbox.cyberphoria.org/
 
+	Copyright (C) 2007-2009 Stefan Seyfried
+
 	Kommentar:
 
 	Diese GUI wurde von Grund auf neu programmiert und sollte nun vom
@@ -609,6 +611,13 @@ void CChannelList::zapTo(int pos, bool forceStoreToLastChannels)
 		}
 #endif
 		tuned = pos;
+		if (g_settings.lcd_setting[SNeutrinoSettings::LCD_EPGMODE] & 0x02)
+		{	/* microoptimization: only poll sectionsd if epg title display is configured
+			   not sure if this is necessary, but the extra check won't hurt... */
+			CSectionsdClient::CurrentNextInfo info;
+			g_Sectionsd->getCurrentNextServiceKey(chan->channel_id, info);
+			CLCD::getInstance()->setEPGTitle(info.current_name);
+		}
 		CLCD::getInstance()->showServicename(chan->name);
 		g_RemoteControl->zapTo_ChannelID(chan->channel_id, chan->name, !chan->bAlwaysLocked); // UTF-8
 	}
