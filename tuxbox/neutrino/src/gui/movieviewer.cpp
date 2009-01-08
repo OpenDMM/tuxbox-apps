@@ -40,6 +40,7 @@
 #endif
 
 #include <gui/movieviewer.h>
+#include <gui/movieinfo.h>
 
 #include <gui/widget/icons.h>
 #include <gui/widget/hintbox.h>
