@@ -2067,7 +2067,6 @@ int CNeutrinoApp::run(int argc, char **argv)
 					miscSettings,
 					driverSettings,
 					service,
-					fontSettings,
 					audioplPicSettings,
 					streamingSettings,
 					moviePlayer);

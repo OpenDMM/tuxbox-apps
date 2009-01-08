@@ -253,7 +253,6 @@ class CNeutrinoApp : public CMenuTarget, CChangeObserver
 								CMenuWidget &miscSettings,
 								CMenuWidget &driverSettings,
 								CMenuWidget &service,
-								CMenuWidget &fontSettings,
 								CMenuWidget &audiopl_picSettings,
 								CMenuWidget &streamingSettings,
 								CMenuWidget &moviePlayer);

@@ -6,6 +6,8 @@
 	Copyright (C) 2001 Steffen Hehn 'McClean'
 	Homepage: http://dbox.cyberphoria.org/
 
+	Copyright (C) 2008, 2009 Stefan Seyfried
+
 	Kommentar:
 
 	Diese GUI wurde von Grund auf neu programmiert und sollte nun vom
@@ -106,7 +108,6 @@ void CNeutrinoApp::InitMainMenu(CMenuWidget &mainMenu,
 								CMenuWidget &miscSettings,
 								CMenuWidget &driverSettings,
 								CMenuWidget &service,
-								CMenuWidget &fontSettings,
 								CMenuWidget &audiopl_picSettings,
 								CMenuWidget &streamingSettings,
 								CMenuWidget &moviePlayer)
@@ -2152,7 +2153,7 @@ bool CNeutrinoApp::showUserMenu(int button)
 						sprintf(id, "%d", count);
 						menu_items++;
 						menu_prev = SNeutrinoSettings::ITEM_VTXT;
-						keyhelper.get(&key, &icon, cnt == 0 ? CRCInput::RC_blue : 0);
+						keyhelper.get(&key, &icon, cnt == 0 ? CRCInput::RC_blue : CRCInput::RC_nokey);
 						menu_item = new CMenuForwarderNonLocalized(g_PluginList->getName(count), true, NULL, StreamFeaturesChanger, id, key, icon);
 						menu->addItem(menu_item, (cnt == 0));
 						cnt++;
@@ -2169,7 +2170,7 @@ bool CNeutrinoApp::showUserMenu(int button)
 						sprintf(id, "%d", count);
 						menu_items++;
 						menu_prev = SNeutrinoSettings::ITEM_PLUGIN;
-						keyhelper.get(&key, &icon, cnt == 0 ? CRCInput::RC_blue : 0);
+						keyhelper.get(&key, &icon, cnt == 0 ? CRCInput::RC_blue : CRCInput::RC_nokey);
 						menu_item = new CMenuForwarderNonLocalized(g_PluginList->getName(count), true, NULL, StreamFeaturesChanger, id, key, icon);
 						menu->addItem(menu_item, (cnt == 0));
 						cnt++;
