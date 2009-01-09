@@ -3243,6 +3243,12 @@ void CNeutrinoApp::setVolume(const neutrino_msg_t key, const bool bDoPaint)
 		x = (((g_settings.screen_EndX- g_settings.screen_StartX)- dx) / 2) + g_settings.screen_StartX;
 		y = g_settings.screen_EndY - bwbot-140;
 	}
+	else
+	{
+		// center default
+		x = (((g_settings.screen_EndX- g_settings.screen_StartX)- dx) / 2) + g_settings.screen_StartX;
+		y = g_settings.screen_EndY - bwbot;
+	}
 
 	fb_pixel_t * pixbuf = NULL;
 
