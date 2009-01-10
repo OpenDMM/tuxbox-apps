@@ -455,6 +455,7 @@ CURLcode sendGetRequest (const std::string & url, std::string & response)
 	CURLcode httpres;
 
 	curl = curl_easy_init();
+	curl_easy_setopt(curl, CURLOPT_CONNECTTIMEOUT, 15); // "15 seconds should be enough for everyone"
 	curl_easy_setopt(curl, CURLOPT_URL, url.c_str());
 	curl_easy_setopt(curl, CURLOPT_WRITEFUNCTION, curl_dummywrite);
 	curl_easy_setopt(curl, CURLOPT_FILE, (void *)&response);
@@ -631,6 +632,7 @@ ReceiveStreamThread (void *mrl)
 	CURLcode httpres = sendGetRequest(statusurl, response);
 	if (httpres != 0)
 	{
+		hintBox->hide();
 		DisplayErrorMessage(g_Locale->getText(LOCALE_MOVIEPLAYER_NOSTREAMINGSERVER));	// UTF-8
 		g_playstate = CMoviePlayerGui::STOPPED;
 		pthread_exit(NULL);
