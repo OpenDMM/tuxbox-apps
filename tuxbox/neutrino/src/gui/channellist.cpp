@@ -1274,7 +1274,7 @@ struct button_label CChannelListButtons[] =
 	{ NEUTRINO_ICON_BUTTON_RED, LOCALE_INFOVIEWER_EVENTLIST},
 	{ NEUTRINO_ICON_BUTTON_BLUE, LOCALE_INFOVIEWER_NEXT},
 	{ NEUTRINO_ICON_BUTTON_HELP_SMALL, LOCALE_EPGMENU_EVENTINFO},
-	{ "", } // icon for bouquet list button
+	{ "", LOCALE_GENERIC_EMPTY } // icon for bouquet list button
 };
 
 void CChannelList::paintFoot()
