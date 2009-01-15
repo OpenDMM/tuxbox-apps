@@ -27,6 +27,7 @@
 
 
 #include <algorithm>
+#include <cstring> // memset
 #include <endian.h>
 
 #include <sectionsdclient/sectionsdMsg.h>

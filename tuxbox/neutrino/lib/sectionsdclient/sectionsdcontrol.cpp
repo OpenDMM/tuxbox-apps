@@ -23,6 +23,7 @@
  *
  */
 
+#include <cstring>
 #include <sectionsdclient/sectionsdclient.h>
 
 CSectionsdClient client;

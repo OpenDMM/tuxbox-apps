@@ -35,6 +35,7 @@
 #include <sys/poll.h>
 
 #include <string>
+#include <cstring>
 #include <map>
 
 /**/

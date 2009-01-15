@@ -21,7 +21,8 @@
 
 */
 
-#include <stdio.h>
+#include <cstdio>
+#include <cstring>
 
 #include <eventserver.h>
 
@@ -448,6 +449,7 @@ bool CSectionsdClient::getEventsServiceKeySearchAdd(CChannelEventList& eList,con
 
 		if( nBufSize > 0)
 		{
+			char* dp;
 			char* pData = new char[nBufSize];
 			if (!receive_data(pData, nBufSize))
 			{
@@ -455,7 +457,7 @@ bool CSectionsdClient::getEventsServiceKeySearchAdd(CChannelEventList& eList,con
 				goto out_pData;
 			}
 
-			char* dp = pData;
+			dp = pData;
 
 //			int a = eList.size();
 

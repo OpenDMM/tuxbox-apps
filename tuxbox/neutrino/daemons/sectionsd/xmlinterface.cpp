@@ -22,7 +22,7 @@
  */
 
 #include <cstdio>
-
+#include <cstdlib>
 #include <zapit/debug.h>
 #include <zapit/xmlinterface.h>
 

@@ -28,6 +28,7 @@
 #include <sstream>
 #include <signal.h>
 #include <unistd.h> /* fork */
+#include <cstdlib>
 
 #include <timermanager.h>
 #include <debug.h>

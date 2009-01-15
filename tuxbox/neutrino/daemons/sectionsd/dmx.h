@@ -25,6 +25,8 @@
 #define __sectionsd__dmx_h__
 
 #include <pthread.h>
+#include <stdint.h>
+#include <sys/types.h>
 #include <vector>
 
 typedef uint64_t sections_id_t;
