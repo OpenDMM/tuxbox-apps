@@ -25,7 +25,7 @@
 #include <zapit/frontend.h>
 #include <zapit/getservices.h>
 #include <zapit/settings.h>
-#include <zapit/xmlinterface.h>
+#include <xmltree/xmlinterface.h>
 #include <configfile.h>
 #include <sys/stat.h>
 

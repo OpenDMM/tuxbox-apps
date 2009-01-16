@@ -101,7 +101,7 @@ extern "C" {
 }
 
 #include <system/helper.h>
-#include <system/xmlinterface.h>
+#include <xmltree/xmlinterface.h>
 
 #include <gui/movieplayer.h>
 #include <gui/timeosd.h>

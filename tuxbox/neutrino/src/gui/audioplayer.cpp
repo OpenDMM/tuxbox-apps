@@ -68,7 +68,7 @@
 #include <gui/widget/stringinput_ext.h>
 
 #include <system/settings.h>
-#include <system/xmlinterface.h>
+#include <xmltree/xmlinterface.h>
 
 #include <irsend/irsend.h>
 

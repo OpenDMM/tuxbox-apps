@@ -63,7 +63,7 @@
 #include <connection/basicsocket.h>
 #include <connection/basicserver.h>
 
-#include <zapit/xmlinterface.h>
+#include <xmltree/xmlinterface.h>
 #include <zapit/settings.h>
 #include <zapit/frontend.h>
 #include <configfile.h>

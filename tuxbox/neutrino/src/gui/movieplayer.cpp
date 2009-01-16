@@ -39,7 +39,7 @@
 #include <daemonc/remotecontrol.h>
 #include <system/settings.h>
 #include <system/helper.h>
-#include <system/xmlinterface.h>
+#include <xmltree/xmlinterface.h>
 #include <gui/plugins.h>
 
 #include <gui/eventlist.h>

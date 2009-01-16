@@ -35,7 +35,7 @@
 #include <zapit/scan.h>
 #include <zapit/sdt.h>
 #include <zapit/settings.h>
-#include <zapit/xmlinterface.h>
+#include <xmltree/xmlinterface.h>
 
 #if HAVE_DVB_API_VERSION < 3
 #define frequency Frequency

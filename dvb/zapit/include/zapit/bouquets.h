@@ -17,7 +17,7 @@
 #include <zapit/client/zapitclient.h>
 
 #include "channel.h"
-#include "xmlinterface.h"
+#include <xmltree/xmlinterface.h>
 
 using namespace std;
 

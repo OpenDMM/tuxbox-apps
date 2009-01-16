@@ -39,7 +39,7 @@
 #include "gui/filebrowser.h"
 #include "gui/widget/menue.h"
 
-#include <system/xmlinterface.h>
+#include <xmltree/xmlinterface.h>
 
 #include <string>
 #include <set>

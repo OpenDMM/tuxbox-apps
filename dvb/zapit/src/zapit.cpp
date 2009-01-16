@@ -71,7 +71,7 @@
 #include <zapit/scan.h>
 #include <zapit/settings.h>
 #include <zapit/video.h>
-#include <zapit/xmlinterface.h>
+#include <xmltree/xmlinterface.h>
 #include <zapit/zapit.h>
 
 /* the conditional access module */

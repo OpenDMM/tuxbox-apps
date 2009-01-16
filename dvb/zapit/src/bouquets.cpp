@@ -37,8 +37,8 @@
 #include <zapit/getservices.h> /* LoadServices */
 #include <zapit/sdt.h>
 #include <zapit/settings.h>
-#include <zapit/xmlinterface.h>
 #include <zapit/frontend.h>
+#include <xmltree/xmlinterface.h>
 
 extern tallchans allchans;   //  defined in zapit.cpp
 extern CConfigFile config;   //  defined in zapit.cpp
