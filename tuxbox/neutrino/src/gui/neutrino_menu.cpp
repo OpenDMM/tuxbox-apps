@@ -85,6 +85,10 @@
 #include "gui/experimental_menu.h"
 #endif
 
+#ifndef MOVIEPLAYER2
+#define MOVIEBROWSER
+#endif
+
 CZapitClient::SatelliteList satList;
 static CTimingSettingsNotifier timingsettingsnotifier;
 
