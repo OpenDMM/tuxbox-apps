@@ -533,7 +533,7 @@ int box2box_request_stream(const char *fn)
 		// usleep(250000); should not be necessary, since the zapto is (or should be) blocking
 		struct sockaddr_in ads;
 		socklen_t ads_len = sizeof(sockaddr_in);
-		bzero((char *)&ads, ads_len);
+		memset((char *)&ads, 0, ads_len);
 		ads.sin_family = AF_INET;
 		ads.sin_addr.s_addr = inet_addr(ip);
 		ads.sin_port = htons(port);
