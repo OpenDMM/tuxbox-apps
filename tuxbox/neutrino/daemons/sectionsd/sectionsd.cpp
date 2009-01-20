@@ -3130,7 +3130,7 @@ static void commandCurrentNextInfoChannelID(int connfd, char *data, const unsign
 	/* ...and the one after that. */
 	if (nextEvt.times.size() > 1) {
 		for (SItimes::iterator t = nextEvt.times.begin(); t != nextEvt.times.end(); ++t) {
-			if ((long)(time_cur.startzeit + time_cur.dauer) < (long)(t->startzeit)) {
+			if ((long)(time_cur.startzeit + time_cur.dauer) <= (long)(t->startzeit)) { // TODO: it's not "long", it's "time_t"
 				time_nxt.startzeit = t->startzeit;
 				time_nxt.dauer =t->dauer;
 				break;
