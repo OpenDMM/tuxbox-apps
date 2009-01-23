@@ -2481,10 +2481,12 @@ CMoviePlayerGui::PlayStream(int streamtype)
 			if (g_settings.streaming_show_tv_in_browser == true &&
 			    g_ZapitsetStandbyState == true)
 			{
-				while (g_output_thread)
+				if (g_output_thread) // the output thread is using the devices
 				{
 					INFO("waiting for output thread to terminate...\n");
-					usleep(250000);
+					pthread_join(rct, NULL);
+					g_output_thread = false;
+					INFO("done\n");
 				}
 				g_Zapit->setStandby(false);
 				g_ZapitsetStandbyState = false;
