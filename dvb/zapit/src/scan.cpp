@@ -3,6 +3,8 @@
  *
  * (C) 2002-2003 Andreas Oberritter <obi@tuxbox.org>
  *
+ * (C) 2007, 2009 Stefan Seyfried
+ *
  * This program is free software; you can redistribute it and/or modify
  * it under the terms of the GNU General Public License as published by
  * the Free Software Foundation; either version 2 of the License, or
@@ -560,12 +562,14 @@ int scan_transponder(xmlNodePtr transponder, const t_satellite_position satellit
 		feparams.u.ofdm.guardInterval = GUARD_INTERVAL_1_32;
 		feparams.u.ofdm.HierarchyInformation = HIERARCHY_NONE;
 #else
+		/* TODO: xmlinterface.cpp does not allow an easy check for "not present" attributes, so there
+		   are no defaults / fallbacks yet. Suitable fallbacks would be the various AUTO parameters */
 		feparams.u.ofdm.bandwidth = (fe_bandwidth_t) xmlGetNumericAttribute(transponder, "bandwidth", 0);
-		feparams.u.ofdm.code_rate_HP = FEC_AUTO;
-		feparams.u.ofdm.code_rate_LP = FEC_AUTO;
-		feparams.u.ofdm.constellation = QAM_AUTO;
-		feparams.u.ofdm.transmission_mode = TRANSMISSION_MODE_AUTO;
-		feparams.u.ofdm.guard_interval = GUARD_INTERVAL_AUTO;
+		feparams.u.ofdm.code_rate_HP = (fe_code_rate_t) xmlGetNumericAttribute(transponder, "code_rate_HP", 0);
+		feparams.u.ofdm.code_rate_LP = (fe_code_rate_t) xmlGetNumericAttribute(transponder, "code_rate_LP", 0);
+		feparams.u.ofdm.constellation = (fe_modulation_t) xmlGetNumericAttribute(transponder, "constellation", 0);
+		feparams.u.ofdm.transmission_mode = (fe_transmit_mode_t) xmlGetNumericAttribute(transponder, "transmission_mode", 0);
+		feparams.u.ofdm.guard_interval = (fe_guard_interval_t) xmlGetNumericAttribute(transponder, "guard_interval", 0);
 		feparams.u.ofdm.hierarchy_information = HIERARCHY_AUTO;
 #endif
 	}
