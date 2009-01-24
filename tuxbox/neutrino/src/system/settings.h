@@ -315,12 +315,14 @@ struct SNeutrinoSettings
 	int screen_EndX;
 	int screen_EndY;
 
+#ifndef DISABLE_INTERNET_UPDATE
 	//Software-update
 	int softupdate_mode;
 	char softupdate_url_file[31];
 	char softupdate_proxyserver[31];
 	char softupdate_proxyusername[31];
 	char softupdate_proxypassword[31];
+#endif
 
 	//BouquetHandling
 	int bouquetlist_mode;
