@@ -5,6 +5,8 @@
  *
  * (C) 2003 by thegoodguy <thegoodguy@berlios.de>
  *
+ * (C) 2008-2009 Stefan Seyfried
+ *
  * License: GPL
  *
  * This program is free software; you can redistribute it and/or modify
@@ -105,6 +107,11 @@ int main(int argc, char** argv)
 		}
 		else if (!strcmp(argv[i], "--ping"))
 			printf("sectionsd %s\n", client.ping() ? "running" : "dead");
+		else
+		{
+			usage();
+			return 1;
+		}
 	}
 
 	return 0;
