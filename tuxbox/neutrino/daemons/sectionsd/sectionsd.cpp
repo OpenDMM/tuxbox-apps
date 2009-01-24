@@ -5326,13 +5326,14 @@ bool updateCurrentXML(xmlNodePtr provider, xmlNodePtr tp_node, const int scanTyp
 	return is_needed;
 }
 
-xmlNodePtr getProviderFromSatellitesXML(xmlNodePtr node, const int position) {
+xmlNodePtr getProviderFromSatellitesXML(xmlNodePtr node, const int position)
+{
 	struct stat buf;
-	std::string filename = (std::string)ZAPITCONFIGDIR + "/" + SATELLITES_XML;
-	if ((stat(filename.c_str(), &buf) == -1) && (errno == ENOENT))
-		filename = (std::string)DATADIR + "/" + SATELLITES_XML;
+	const char *filename = ZAPITCONFIGDIR "/" SATELLITES_XML;
+	if ((stat(filename, &buf) == -1) && (errno == ENOENT))
+		filename = DATADIR "/" SATELLITES_XML;
 
-	xmlDocPtr satellites_parser = parseXmlFile(filename.c_str());
+	xmlDocPtr satellites_parser = parseXmlFile(filename);
 	if (satellites_parser == NULL)
 		return NULL;
 	xmlNodePtr satellite = xmlDocGetRootElement(satellites_parser)->xmlChildrenNode;
@@ -6595,6 +6596,9 @@ static void *timeThread(void *)
 
 	try
 	{
+		while (!scanning)
+			sleep(1);
+
 		dprintf("[%sThread] pid %d (%lu) start\n", "time", getpid(), pthread_self());
 
 		while(1)
@@ -7802,6 +7806,8 @@ static void *houseKeepingThread(void *)
 				
 					if (!bouquet_parser) {
 						if (!access(CURRENTBOUQUETS_XML, R_OK)) {
+							if (current_parser)
+								xmlFreeDoc(current_parser);
 							current_parser =
 								parseXmlFile(CURRENTBOUQUETS_XML);
 						}
@@ -8238,13 +8244,6 @@ int main(int argc, char **argv)
 			fprintf(stderr, "[sectionsd] failed to create houskeeping-thread (rc=%d)\n", rc);
 			return EXIT_FAILURE;
 		}
-
-		/* now set the priority for the mainloop */
-		memset(&parm, 0, sizeof(parm));
-		parm.sched_priority = 1;
-		rc = pthread_setschedparam(pthread_self(), SCHED_RR, &parm);
-		if (rc)
-			printf("pthread_setschedparam: %d\n", rc);
 
 		if (debug) {
 			int policy;
