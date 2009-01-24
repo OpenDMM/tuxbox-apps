@@ -3308,8 +3308,9 @@ void CNeutrinoApp::setVolume(const neutrino_msg_t key, const bool bDoPaint)
 						current_volume = 0;
 				}
 			}
-			else if (msg != (CRCInput::RC_minus|CRCInput::RC_Release) &&
-				 msg != (CRCInput::RC_plus|CRCInput::RC_Release))
+			else if (msg != (CRCInput::RC_minus|CRCInput::RC_Release) &&	// ignore release of all the keys
+				 msg != (CRCInput::RC_plus|CRCInput::RC_Release) &&	// that have triggered setVolume()
+				 msg != (CRCInput::RC_ok|CRCInput::RC_Release))		// "OK" triggers in ost/lirc/avs settings
 			{
 				g_RCInput->postMsg(msg, data);
 				break;
