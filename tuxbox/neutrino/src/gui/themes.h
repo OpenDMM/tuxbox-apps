@@ -19,6 +19,7 @@
 
 	$Id$ 
 
+	Copyright (C) 2007, 2008, 2009 (flasher) Frank Liebelt
 */
 
 #ifndef __cthemes__
