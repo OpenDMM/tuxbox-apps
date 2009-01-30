@@ -43,6 +43,9 @@
 		based on code of Steffen Hehn 'McClean'
 
 	$Log$
+	Revision 1.22  2009/01/30 23:05:27  dbt
+	removed last useless patch
+	
 	Revision 1.21  2009/01/24 17:12:47  dbt
 	fix broken statusbar in lcd, hope it works now correct see: http://tuxbox-forum.dreambox-fan.de/forum/viewtopic.php?f=2&t=48312&start=0
 	
@@ -1160,8 +1163,6 @@ int CMovieBrowser::exec(const char* path)
 
 	saveSettings(&m_settings);	// might be better done in ~CMovieBrowser, but for any reason this does not work if MB is killed by neutrino shutdown
 	
-	CLCD::getInstance()->setMode(CLCD::MODE_TVRADIO);
-
 	// make stale if we should reload the next time, but not if movie has to be played
 	if(m_settings.reload == true && res == false)
 	{
