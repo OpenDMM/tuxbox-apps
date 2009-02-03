@@ -107,6 +107,10 @@ void ePictureViewer::showNameOnLCD(const eString& filename)
 ePictureViewer::ePictureViewer(const eString &filename)
 	:eWidget(0, 1), slideshowTimer(eApp), filename(filename)
 {
+	init_ePictureViewer();
+}
+void ePictureViewer::init_ePictureViewer()
+{
 //	eDebug("[PICTUREVIEWER] Constructor...");
 
 	addActionMap(&i_cursorActions->map);

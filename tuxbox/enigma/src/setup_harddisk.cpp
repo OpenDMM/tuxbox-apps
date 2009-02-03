@@ -185,6 +185,10 @@ eString getPartFS(int dev, eString mp="")
 eHarddiskSetup::eHarddiskSetup()
 : eListBoxWindow<eListBoxEntryText>(_("Harddisk Setup"), 5, 420)
 {
+	init_eHarddiskSetup();
+}
+void eHarddiskSetup::init_eHarddiskSetup()
+{
 	nr=0;
 	
 	move(ePoint(150, 136));
@@ -507,6 +511,10 @@ void eHarddiskMenu::hddstandby()
 
 eHarddiskMenu::eHarddiskMenu(int dev): dev(dev), restartNet(false)
 {
+	init_eHarddiskMenu();
+}
+void eHarddiskMenu::init_eHarddiskMenu()
+{
 	visible=0;
 	status=new eLabel(this); status->setName("status");
 	model=new eLabel(this); model->setName("model");
@@ -569,6 +577,10 @@ eHarddiskMenu::eHarddiskMenu(int dev): dev(dev), restartNet(false)
 
 ePartitionCheck::ePartitionCheck( int dev )
 :eWindow(1), dev(dev), fsck(0)
+{
+	void init_ePartitionCheck();
+}
+void ePartitionCheck::init_ePartitionCheck()
 {
 	lState = new eLabel(this);
 	lState->setName("state");

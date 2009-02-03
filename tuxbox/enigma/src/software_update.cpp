@@ -28,6 +28,10 @@
 eSoftwareUpdate::eSoftwareUpdate()
 	:eSetupWindow(_("Software Update"), 6, 400)
 {
+	init_eSoftwareUpdate();
+}
+void eSoftwareUpdate::init_eSoftwareUpdate()
+{
 	move(ePoint(140, 100));
 #ifndef DISABLE_NETWORK
 	int entry=0;

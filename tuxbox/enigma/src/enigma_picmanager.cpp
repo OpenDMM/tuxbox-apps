@@ -34,6 +34,10 @@
 
 ePicViewerSettings::ePicViewerSettings():eWindow(0)
 {
+	init_ePicViewerSettings();
+}
+void ePicViewerSettings::init_ePicViewerSettings()
+{
 	int slideshowtimeout = 5;
 	eConfig::getInstance()->getKey("/picviewer/slideshowtimeout", slideshowtimeout);
 	int includesubdirs = 0;

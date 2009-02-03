@@ -39,6 +39,7 @@ private:
 	void fieldSelected(int *number);
 	void okPressed();
 	void abortPressed();
+	void init_ePicViewerSettings();
 public:
 	ePicViewerSettings();
 	~ePicViewerSettings();

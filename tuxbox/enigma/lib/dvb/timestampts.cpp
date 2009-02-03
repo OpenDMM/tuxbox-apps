@@ -33,6 +33,10 @@
 eTimeStampParserTS::eTimeStampParserTS(eString _filename): pktptr(0), pid(-1), needNextPacket(0), skip(0), MovieCurrentTime(0),
 	MovieBeginTime(0), MovieEndTime(0),MovieDuration(0),filelength(-1),sec_duration(-1),sec_currentpos(-1), type(0)
 {
+	init_eTimeStampParserTS(_filename);
+}
+void eTimeStampParserTS::init_eTimeStampParserTS(eString _filename)
+{
 	// VPID ermitteln
 	int fd=open(_filename.c_str(), O_RDONLY|O_LARGEFILE);
 	if (fd >= 0)

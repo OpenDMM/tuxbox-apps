@@ -41,6 +41,10 @@ eZapScan::eZapScan()
 	eSystemInfo::getInstance()->getFEType()
 		== eSystemInfo::feSatellite ? 9 : 7, 400)
 {
+	init_eZapScan();
+}
+void eZapScan::init_eZapScan()
+{
 	int entry=0;
 	move(ePoint(160, 130));
 	if ( eSystemInfo::getInstance()->getFEType() == eSystemInfo::feSatellite )  // only when a sat box is avail we shows a satellite config
@@ -196,6 +200,10 @@ void eZapScan::sel_rotorConfig()
 
 eLNBSelector::eLNBSelector()
 	:eListBoxWindow<eListBoxEntryText>(_("Select LNB"), 5, 300, true)
+{
+	init_eLNBSelector();
+}
+void eLNBSelector::init_eLNBSelector()
 {
 	move(ePoint(140, 156));
 	int cnt=0;

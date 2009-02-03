@@ -33,6 +33,7 @@ class eFlashtoolMain: public eListBoxWindow<eListBoxEntryText>
 {
 private:
 	void sel_item(eListBoxEntryText *sel);
+	void init_eFlashtoolMain();
 public:
 	eFlashtoolMain();
 	~eFlashtoolMain();

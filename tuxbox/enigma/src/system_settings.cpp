@@ -36,6 +36,10 @@
 eSystemSettings::eSystemSettings()
 	:eSetupWindow(_("System Settings"), 10, 350)
 {
+	init_eSystemSettings();
+}
+void eSystemSettings::init_eSystemSettings()
+{
 	move(ePoint(180, 100));
 	int entry=0;
 	CONNECT((new eListBoxEntryMenu(&list, _("Time Settings"), eString().sprintf("(%d) %s", ++entry, _("open time settings")) ))->selected, eSystemSettings::time_settings);

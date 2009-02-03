@@ -120,6 +120,10 @@ void killThreads()
 
 eMoviePlayer::eMoviePlayer(): messages(this, 1)
 {
+	init_eMoviePlayer();
+}
+void eMoviePlayer::init_eMoviePlayer()
+{
 	if (!instance)
 		instance = this;
 		

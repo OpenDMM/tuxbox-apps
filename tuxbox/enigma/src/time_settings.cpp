@@ -31,6 +31,10 @@
 eTimeSettings::eTimeSettings()
 	:eSetupWindow(_("Time Settings"), 5, 350)
 {
+	init_eTimeSettings();
+}
+void eTimeSettings::init_eTimeSettings()
+{
 	move(ePoint(130, 135));
 	int entry=0;
 	CONNECT((new eListBoxEntryMenu(&list, _("Timezone Configuration"), eString().sprintf("(%d) %s", ++entry, _("open timezone selector")) ))->selected, eTimeSettings::time_zone);

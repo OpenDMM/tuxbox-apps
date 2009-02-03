@@ -69,6 +69,7 @@ class eMoviePlayer: public eMainloop, private eThread, public Object
 	int requestStream();
 	int playStream(eString mrl);
 	void setErrorStatus();
+	void init_eMoviePlayer();
 public:
 	eMoviePlayer();
 	~eMoviePlayer();

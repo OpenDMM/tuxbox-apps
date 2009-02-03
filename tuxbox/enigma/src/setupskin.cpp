@@ -168,6 +168,10 @@ void eSkinSetup::skinSelected(eListBoxEntrySkin *skin)
 
 eSkinSetup::eSkinSetup()
 {
+	init_eSkinSetup();
+}
+void eSkinSetup::init_eSkinSetup()
+{
         lb3     = new eLabel(this);
         move(ePoint(50,50));
         cresize(eSize(590,376));

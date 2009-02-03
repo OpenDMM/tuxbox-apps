@@ -75,6 +75,10 @@ int bidirpipe(int pfd[], char *cmd , char *argv[])
 eConsoleAppContainer::eConsoleAppContainer( const eString &cmd )
 :pid(-1), killstate(0)
 {
+	init_eConsoleAppContainer(cmd);
+}
+void eConsoleAppContainer::init_eConsoleAppContainer( const eString &cmd )
+{
 //	eDebug("cmd = %s", cmd.c_str() );
 	for (int i=0; i < 3; ++i)
 		fd[i]=-1;

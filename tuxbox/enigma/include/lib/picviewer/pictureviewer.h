@@ -57,6 +57,7 @@ class ePictureViewer: public eWidget
 	bool DisplayNextImage();
 	bool showBusySign;
 	bool switchto43;
+	void init_ePictureViewer();
 	int format169;
 //#ifndef DISABLE_LCD
 	eZapLCD* pLCD;
