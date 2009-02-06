@@ -272,7 +272,6 @@ int CMenuWidget::exec(CMenuTarget* parent, const std::string &)
 					break;
 
 				case (CRCInput::RC_timeout):
-					retval = menu_return::RETURN_EXIT_ALL;
 					break;
 
 				//close any menue on dbox-key
