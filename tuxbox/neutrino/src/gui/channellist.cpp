@@ -1264,8 +1264,25 @@ void CChannelList::paintItem(int pos)
 
 void CChannelList::paintHead()
 {
+	int timestr_len = 0;
+	char *timestr = new char[10];
+	time_t now = time(NULL);
+	struct tm *tm = localtime(&now);
+
+	bool gotTime = g_Sectionsd->getIsTimeSet();
+
+	if(gotTime){
+		strftime(timestr, 10, "%H:%M", tm);
+		timestr_len = g_Font[SNeutrinoSettings::FONT_TYPE_MENU_TITLE]->getRenderWidth(timestr, true); // UTF-8
+	}
+
 	frameBuffer->paintBoxRel(x,y, width,theight+0, COL_MENUHEAD_PLUS_0, RADIUS_MID, CORNER_TOP);
-	g_Font[SNeutrinoSettings::FONT_TYPE_MENU_TITLE]->RenderString(x+10,y+theight+0, width- 65, name, COL_MENUHEAD, 0, true); // UTF-8
+	g_Font[SNeutrinoSettings::FONT_TYPE_MENU_TITLE]->RenderString(x+10,y+theight+0, width-10-timestr_len-10, name, COL_MENUHEAD, 0, true); // UTF-8
+
+	if (gotTime){
+		g_Font[SNeutrinoSettings::FONT_TYPE_MENU_TITLE]->RenderString(x+width-10-timestr_len, y+theight+0, timestr_len+1, timestr, COL_MENUHEAD, 0, true); // UTF-8
+	}
+
 	paintFoot();
 }
 
