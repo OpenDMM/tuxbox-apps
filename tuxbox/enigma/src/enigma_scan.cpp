@@ -143,10 +143,7 @@ eLNB* eZapScan::getRotorLNB(int silent)
 	}
 	if ( c > 1 )  // we have more than one LNBs with DiSEqC 1.2
 	{
-		eMessageBox mb(_("DiSEqC 1.2 is enabled on more than one LNB, please select the LNB the motor is connected to"), _("Info"), eMessageBox::iconWarning|eMessageBox::btOK );
-		mb.show();
-		mb.exec();
-		mb.hide();
+		eMessageBox::ShowBox(_("DiSEqC 1.2 is enabled on more than one LNB, please select the LNB the motor is connected to"), _("Info"), eMessageBox::iconWarning|eMessageBox::btOK );
 		eLNBSelector sel;
 		sel.show();
 		int ret = sel.exec();
@@ -157,10 +154,7 @@ eLNB* eZapScan::getRotorLNB(int silent)
 	{
 		if (!silent)
 		{
-			eMessageBox mb( _("Found no LNB with DiSEqC 1.2 enabled,\nplease goto Satellite Config first, and enable DiSEqC 1.2"), _("Warning"), eMessageBox::iconWarning|eMessageBox::btOK );
-			mb.show();
-			mb.exec();
-			mb.hide();
+			eMessageBox::ShowBox( _("Found no LNB with DiSEqC 1.2 enabled,\nplease goto Satellite Config first, and enable DiSEqC 1.2"), _("Warning"), eMessageBox::iconWarning|eMessageBox::btOK );
 		}
 		return 0;
 	}

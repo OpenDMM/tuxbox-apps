@@ -127,10 +127,7 @@ void eSystemSettings::harddisc_setup()
 #endif
 	if (!setup.getNr())
 	{
-		eMessageBox msg(_("sorry, no harddisks found!"), _("Harddisk setup..."));
-		msg.show();
-		msg.exec();
-		msg.hide();
+		eMessageBox::ShowBox(_("sorry, no harddisks found!"), _("Harddisk setup..."));
 	} else
 	{
 		setup.show();

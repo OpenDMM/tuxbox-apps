@@ -56,10 +56,7 @@ void eSkinSetup::loadSkins()
 			if (i)
 			{
 				eDebug("error reading skin directory");
-				eMessageBox msg("error reading skin directory", "error");
-				msg.show();
-				msg.exec();
-				msg.hide();
+				eMessageBox::ShowBox("error reading skin directory", "error");
 			}
 			continue;
 		}

@@ -73,10 +73,7 @@ void eTimeSettings::time_correction()
 	else
 	{
 		hide();
-		eMessageBox mb( _("To change time correction you must tune first to any transponder"), _("time correction change error"), eMessageBox::btOK|eMessageBox::iconInfo );
-		mb.show();
-		mb.exec();
-		mb.hide();
+		eMessageBox::ShowBox( _("To change time correction you must tune first to any transponder"), _("time correction change error"), eMessageBox::btOK|eMessageBox::iconInfo );
 		show();
 	}
 }

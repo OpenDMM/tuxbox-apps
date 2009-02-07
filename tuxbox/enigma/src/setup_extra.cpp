@@ -421,7 +421,7 @@ extern bool erase(char mtd[30], const char *titleText);
 void eExpertSetup::factory_reset()
 {
 	hide();
-	eMessageBox mb(
+	int ret = eMessageBox::ShowBox(
 		_("When you do a factory reset, you will lose ALL your configuration data\n"
 			"(including bouquets, services, satellite data ...)\n"
 			"After completion of factory reset, your receiver will restart automatically!\n\n"
@@ -429,9 +429,6 @@ void eExpertSetup::factory_reset()
 		_("Factory reset"),
 		eMessageBox::btYes|eMessageBox::btNo|eMessageBox::iconQuestion,
 		eMessageBox::btNo );
-	mb.show();
-	int ret = mb.exec();
-	mb.hide();
 	if ( ret == eMessageBox::btYes ) 
 	{
 		switch( eSystemInfo::getInstance()->getHwType() )
