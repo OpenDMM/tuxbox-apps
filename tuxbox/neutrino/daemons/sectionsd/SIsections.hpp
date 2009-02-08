@@ -26,6 +26,8 @@
 //
 
 #include <endian.h>
+#include "SInetworks.hpp"
+#include "SIbouquets.hpp"
 
 struct SI_section_SDT_header {
 	unsigned table_id			: 8;
