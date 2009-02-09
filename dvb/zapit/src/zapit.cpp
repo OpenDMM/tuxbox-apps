@@ -1485,6 +1485,18 @@ bool parse_command(CBasicMessage::Header &rmsg, int connfd)
 		break;
 	}
 
+	case CZapitMessages::CMD_REZAP:
+	{
+		CZapitMessages::responseZapComplete msgResponseZapComplete;
+		if (cc)
+			msgResponseZapComplete.zapStatus = zapTo_ChannelID(cc->getChannelID(), false);
+		else
+			msgResponseZapComplete.zapStatus = 0;
+
+		CBasicServer::send_data(connfd, &msgResponseZapComplete, sizeof(msgResponseZapComplete));
+		break;
+	}
+
 	case CZapitMessages::CMD_RELOAD_CURRENTSERVICES:
 	{
 		CZapitMessages::responseCmd response;

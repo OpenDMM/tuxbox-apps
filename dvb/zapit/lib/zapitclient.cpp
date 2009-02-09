@@ -5,6 +5,8 @@
  *
  * (C) 2002 by thegoodguy <thegoodguy@berlios.de> & the DBoxII-Project
  *
+ * (C) 2007, 2008, 2009 Stefan Seyfried
+ *
  * License: GPL
  *
  * This program is free software; you can redistribute it and/or modify
@@ -136,6 +138,18 @@ void CZapitClient::setAudioChannel(const unsigned int channel)
 	send(CZapitMessages::CMD_SET_AUDIOCHAN, (const char *) & msg, sizeof(msg));
 
 	close_connection();
+}
+
+unsigned int CZapitClient::ReZap(void)
+{
+	send(CZapitMessages::CMD_REZAP);
+
+	CZapitMessages::responseZapComplete response;
+	CBasicClient::receive_data((char* )&response, sizeof(response));
+
+	close_connection();
+
+	return response.zapStatus;
 }
 
 /* zaps to onid_sid, returns the "zap-status" */

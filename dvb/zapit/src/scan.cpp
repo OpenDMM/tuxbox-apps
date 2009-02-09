@@ -781,6 +781,7 @@ abort_scan:
 	myZapitClient.reinitChannels();
 
 	stop_scan(true);
+	myZapitClient.ReZap();
 	pthread_exit(0);
 }
 

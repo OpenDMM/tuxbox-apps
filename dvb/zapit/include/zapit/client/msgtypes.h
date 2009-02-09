@@ -139,6 +139,7 @@ class CZapitMessages
 			CMD_SET_SUBTITLE                   = 81,
 
 			CMD_SET_FASTZAP			   = 82,
+			CMD_REZAP			   = 83,
 		};
 
 	struct commandBoolean
