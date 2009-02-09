@@ -80,8 +80,7 @@ class RandomNumber
 
 	int operator()(int n)
 	{
-		return static_cast<int>(static_cast<double>(n) * rand() /
-								(RAND_MAX + 1.0));
+		return ((long long)n * rand() / RAND_MAX);
 	}
 };
 
