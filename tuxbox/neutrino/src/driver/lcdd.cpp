@@ -405,7 +405,7 @@ void CLCD::showTextScreen(const std::string & big, const std::string & small, co
 	if (eventlines > 0 && namelines > 0 && showmode & 4)
 	{
 		y++;
-		display.draw_line(1, y, 119, y, CLCDDisplay::PIXEL_ON);
+		display.draw_line(0, y, 119, y, CLCDDisplay::PIXEL_ON);
 	}
 	if (eventlines > 0)
 	{
