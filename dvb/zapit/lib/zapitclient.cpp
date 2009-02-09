@@ -850,10 +850,18 @@ void CZapitClient::setStandby(const bool enable)
 {
 	CZapitMessages::commandBoolean msg;
 	msg.truefalse = enable;
-	send(CZapitMessages::CMD_SET_STANDBY, (char*)&msg, sizeof(msg));
 	CZapitMessages::responseCmd response;
-	CBasicClient::receive_data((char* )&response, sizeof(response));
-
+	// this can take some time, because zapit saves channel lists etc. on standby...
+	send(CZapitMessages::CMD_SET_STANDBY, (char*)&msg, sizeof(msg));
+	if (!CBasicClient::receive_data((char* )&response, sizeof(response)))
+	{
+		/* ...which might actually exceed the 7 seconds timeout of the basicsocket.
+		   One alternative would be to use the MAX_TIMEOUT feature, but 300 seconds are
+		   probably too much... */
+		printf("CZapitClient::setStandby: first try failed, no need to worry, retrying...\n");
+		send(CZapitMessages::CMD_SET_STANDBY, (char*)&msg, sizeof(msg));
+		CBasicClient::receive_data((char* )&response, sizeof(response));
+	}
 	close_connection();
 }
 
