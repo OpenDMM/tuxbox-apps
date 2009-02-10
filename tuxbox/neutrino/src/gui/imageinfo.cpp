@@ -225,7 +225,7 @@ void CImageInfo::paintSupport(int y_startposition)
 	
 	y_startposition += iheight;
 	paintContent(font_info, xpos, y_startposition,g_Locale->getText(LOCALE_IMAGEINFO_DOKUMENTATION), COL_MENUCONTENTINACTIVE);
-	paintContent(font_info, xpos+x_offset_large, y_startposition, "http://wiki.dbox2-tuning.net");
+	paintContent(font_info, xpos+x_offset_large, y_startposition, "http://wiki.tuxbox.org");
 	
 	y_startposition += iheight;
 	paintContent(font_info, xpos, y_startposition,g_Locale->getText(LOCALE_IMAGEINFO_FORUM), COL_MENUCONTENTINACTIVE);
