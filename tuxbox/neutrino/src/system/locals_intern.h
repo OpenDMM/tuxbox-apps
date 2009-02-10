@@ -567,6 +567,8 @@ const char * locale_real_names[] =
 	"lcdmenu.epg.name",
 	"lcdmenu.epg.name.sepline.title",
 	"lcdmenu.epg.name.title",
+	"lcdmenu.epg.nameshort.sepline.title",
+	"lcdmenu.epg.nameshort.title",
 	"lcdmenu.epg.title",
 	"lcdmenu.head",
 	"lcdmenu.inverse",
