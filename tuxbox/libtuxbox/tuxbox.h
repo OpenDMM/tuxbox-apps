@@ -39,6 +39,8 @@ tuxbox_submodel_t tuxbox_get_submodel (void);
 const char *tuxbox_get_submodel_str (void);
 tuxbox_vendor_t tuxbox_get_vendor (void);
 const char *tuxbox_get_vendor_str (void);
+const char *tuxbox_get_tuner (void);
+const char *tuxbox_get_chipinfo (void);
 
 #ifdef __cplusplus
 }
