@@ -906,7 +906,6 @@ const char * locale_real_names[] =
 	"nfs.umount",
 	"nfs.umounterror",
 	"nfs.username",
-	"nfsmenu.head",
 	"nvod.percentage",
 	"nvod.starting",
 	"nvodselector.directormode",
