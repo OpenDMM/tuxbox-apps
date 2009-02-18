@@ -1760,7 +1760,7 @@ TODO: OTOH, if we only have an AC3 stream there will be no sound.
 				{
 					if (!found_aid[id] && !resync) //only if we are in sync...
 					{
-						if (g_numpida < MAX_APIDS);
+						if (g_numpida < MAX_APIDS)
 							g_apids[g_numpida++] = id;
 						INFO("found aid: %02x\n", id);
 						found_aid[id] = 1;
