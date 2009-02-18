@@ -257,7 +257,8 @@ const CBookmark * CBookmarkManager::getBookmark(CMenuTarget* parent)
 	int res = -1;
 
 	unsigned long long timeoutEnd = CRCInput::calcTimeoutEnd(g_settings.timing[SNeutrinoSettings::TIMING_MENU]);
-	uint msg; uint data;
+	neutrino_msg_t msg;
+	neutrino_msg_data_t data;
 
 	bool loop=true;
 	bool update=true;
