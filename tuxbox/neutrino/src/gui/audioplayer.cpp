@@ -2281,7 +2281,7 @@ void CAudioPlayerGui::GetMetaData(CAudiofileExt &File)
 }
 //------------------------------------------------------------------------
 
-bool CAudioPlayerGui::getNumericInput(neutrino_msg_data_t& msg, int& val) {
+bool CAudioPlayerGui::getNumericInput(neutrino_msg_t& msg, int& val) {
 
 	neutrino_msg_data_t data;
 	int x1 = (g_settings.screen_EndX - g_settings.screen_StartX) / 2 + g_settings.screen_StartX - 50;
