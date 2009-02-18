@@ -30,6 +30,8 @@
  */
 
 #include <cstdio>
+#include <cstdlib>
+#include <cstring>
 
 #include "xmlinterface.h"
 

@@ -41,6 +41,7 @@
 #include <linux/kd.h>
 
 #include <stdint.h>
+#include <cstdlib>
 #ifndef HAVE_DREAMBOX_HARDWARE
 #include <dbox/fb.h>
 #endif

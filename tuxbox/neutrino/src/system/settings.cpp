@@ -26,6 +26,7 @@
 
 #include <zapit/settings.h>
 
+#include <cstring>
 
 const int default_timing[TIMING_SETTING_COUNT] =
 {

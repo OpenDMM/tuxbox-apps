@@ -30,8 +30,8 @@
 #include <zapit/client/zapittypes.h>
 #include <sectionsdclient/sectionsdtypes.h>
 
+#include <sys/types.h>
 #include <vector>
-
 
 #define REMINDER_MESSAGE_MAXLEN 31
 #define EXEC_PLUGIN_NAME_MAXLEN 31

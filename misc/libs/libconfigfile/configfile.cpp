@@ -28,6 +28,7 @@
 #include <iostream>
 #include <sstream>
 #include <string>
+#include <cstdlib> // atoi...
 
 #include <sys/stat.h>
 

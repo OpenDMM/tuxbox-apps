@@ -27,6 +27,7 @@
 #include "basicsocket.h"
 
 #include <cstdio>
+#include <cstdlib> // malloc...
 
 #include <inttypes.h>
 #include <sys/poll.h>

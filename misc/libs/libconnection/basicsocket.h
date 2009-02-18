@@ -26,6 +26,7 @@
 #ifndef __basicsocket__
 #define __basicsocket__
 
+#include <sys/types.h>
 #include <sys/time.h>
 
 bool send_data(int fd, const void * data, const size_t size, const timeval timeout);

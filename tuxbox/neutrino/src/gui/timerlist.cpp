@@ -71,6 +71,7 @@
 #include <zapit/client/zapittools.h>
 
 #include <string.h>
+#include <algorithm>
 
 #define info_height 60
 

@@ -35,6 +35,8 @@
 #include <config.h>
 #endif
 
+#include <algorithm>
+
 #include <gui/epgview.h>
 
 #include <gui/widget/hintbox.h>

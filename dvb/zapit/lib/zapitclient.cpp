@@ -26,6 +26,7 @@
  */
 
 #include <cstdio>
+#include <cstring>
 
 /* libevent */
 #include <eventserver.h>

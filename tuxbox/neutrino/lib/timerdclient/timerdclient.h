@@ -28,6 +28,7 @@
 #define __timerdclient__
 
 #include <string>
+#include <cstring>
 
 #include <connection/basicclient.h>
 
