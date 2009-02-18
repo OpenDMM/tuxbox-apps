@@ -332,7 +332,7 @@ class CPINProtection
 	protected:
 		char* validPIN;
 		bool check();
-		virtual CMenuTarget* getParent() = NULL;
+		virtual CMenuTarget* getParent() = 0;
 	public:
 		CPINProtection( char* validpin){ validPIN = validpin;};
 		virtual ~CPINProtection(){}
