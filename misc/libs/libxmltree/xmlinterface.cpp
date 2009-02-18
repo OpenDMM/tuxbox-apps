@@ -44,7 +44,7 @@
 #endif /* USE_LIBXML */
 
 
-unsigned long xmlGetNumericAttribute(const xmlNodePtr node, char *name, const int base)
+unsigned long xmlGetNumericAttribute(const xmlNodePtr node, const char *name, const int base)
 {
 	char *ptr = xmlGetAttribute(node, name);
 
@@ -54,7 +54,7 @@ unsigned long xmlGetNumericAttribute(const xmlNodePtr node, char *name, const in
 	return strtoul(ptr, 0, base);
 }
 
-long xmlGetSignedNumericAttribute(const xmlNodePtr node, char *name, const int base)
+long xmlGetSignedNumericAttribute(const xmlNodePtr node, const char *name, const int base)
 {
 	char *ptr = xmlGetAttribute(node, name);
 

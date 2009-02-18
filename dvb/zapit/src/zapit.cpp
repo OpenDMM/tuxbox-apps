@@ -170,7 +170,7 @@ uint32_t lastChannelRadio;
 uint32_t lastChannelTV;
 
 //stolen from scan.cpp - check how to include
-void cpy(char * from, char * to)
+void cpy(const char *from, const char *to)
 {
 	char cmd[256] = "cp -f ";
 	strcat(cmd, from);

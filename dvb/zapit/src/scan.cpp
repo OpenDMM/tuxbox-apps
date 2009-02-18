@@ -148,7 +148,7 @@ t_satellite_position driveMotorToSatellitePosition(const char * const providerNa
 	return satellite_position;
 }
 
-void cp(char * from, char * to)
+void cp(const char *from, const char *to)
 {
 	char cmd[256] = "cp -f ";
 	strcat(cmd, from);

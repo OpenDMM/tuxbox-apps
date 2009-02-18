@@ -52,14 +52,14 @@ typedef XMLTreeNode*   xmlNodePtr;
 #define xmlNextNode     GetNext()
 inline xmlNodePtr xmlDocGetRootElement(xmlDocPtr  doc)                 { return doc->RootNode(); };
 inline void       xmlFreeDoc          (xmlDocPtr  doc)                 { delete doc; };
-inline char*      xmlGetAttribute     (xmlNodePtr cur, char * s)       { return cur->GetAttributeValue(s); };
+inline char*      xmlGetAttribute     (xmlNodePtr cur, const char *s)  { return cur->GetAttributeValue(s); };
 inline char*      xmlGetName          (xmlNodePtr cur)                 { return cur->GetType();  };
 inline char*      xmlGetData          (xmlNodePtr cur)                 { return cur->GetData();  };
 #endif /* USE_LIBXML */
 
 
-unsigned long xmlGetNumericAttribute  (const xmlNodePtr node, char *name, const int base);
-long xmlGetSignedNumericAttribute     (const xmlNodePtr node, char *name, const int base);
+unsigned long xmlGetNumericAttribute  (const xmlNodePtr node, const char *name, const int base);
+long xmlGetSignedNumericAttribute     (const xmlNodePtr node, const char *name, const int base);
 xmlNodePtr xmlGetNextOccurence        (xmlNodePtr cur, const char * s);
 
 std::string Unicode_Character_to_UTF8(const int character);
