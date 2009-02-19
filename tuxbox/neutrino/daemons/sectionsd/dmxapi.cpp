@@ -116,6 +116,7 @@ bool getUTC(UTC_t * const UTC, const bool TDT)
 	{
 		printf("[sectionsd] getUTC: invalid %s section received: %02x %02x %02x %02x %02x\n", 
 			TDT ? "TDT" : "TOT", cUTC[0], cUTC[1], cUTC[2], cUTC[3], cUTC[4]);
+		::close(fd);
 		return false;
 	}
 
