@@ -109,12 +109,11 @@ void eTimeStampParserTS::init_eTimeStampParserTS(eString _filename)
 				skip= 0;
 				off64_t posbegin=::lseek64(fd_end,0, SEEK_END);
 				::lseek64(fd_end, posbegin - (off64_t)654240, SEEK_SET);
-				int d1 = dup(fd_end);
 				char p[65424];
 				int rd =1;
 				while ( rd > 0 )
 				{
-					rd = ::read(d1, p, 65424);
+					rd = ::read(fd_end, p, 65424);
 					parseData(p,rd);
 				}
 				close(fd_end);
