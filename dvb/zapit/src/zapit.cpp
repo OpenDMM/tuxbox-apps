@@ -813,6 +813,12 @@ int zapit(const t_channel_id channel_id, bool in_nvod, transponder_id_t transpon
 	transponder_id_t current_transponder_id;
 	remember_selected_audio();
 
+	if (pmt_update_fd >= 0)
+	{
+		pmt_stop_update_filter(&pmt_update_fd);
+		pmt_update_fd = -1;
+	}
+
 #ifndef SKIP_CA_STATUS
 	eventServer->sendEvent(CZapitClient::EVT_ZAP_CA_CLEAR, CEventServer::INITID_ZAPIT);
 //	INFO("Event: CA_CLEAR send");
