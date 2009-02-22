@@ -2394,18 +2394,17 @@ int startPlayBack(CZapitChannel *thisChannel)
 		if (videoDemux->start() < 0)
 			return -1;
 	}
+#ifdef HAVE_DBOX_HARDWARE
+/* AFAIK only the dbox2 can reinsert telextext... */
 	if (have_teletext) {
-#ifdef HAVE_DREAMBOX_HARDWARE
-		printf("[zapit] no teletextDemux on dreambox \n");
-#else
 		if (!teletextDemux)
 			teletextDemux = new CDemux();
 		if (teletextDemux->pesFilter(thisChannel->getTeletextPid(), DMX_OUT_DECODER, DMX_PES_TELETEXT) < 0)
 			return -1;
 		if (teletextDemux->start() < 0)
 			return -1;
-#endif
 	}
+#endif
 
 	/* start video */
 	if (have_video) {

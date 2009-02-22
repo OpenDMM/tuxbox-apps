@@ -67,7 +67,7 @@ int usage (const char * basename)
 		  << "\t--pal\t\t\tswitch to PAL mode" << std::endl
 		  << "\t-m <cmdtype> <addr> <cmd> <number or params> <param1> <param2>" << std::endl
 		  << "\t\t\t\tsend DiSEqC 1.2 motor command" << std::endl
-#ifndef HAVE_DREAMBOX_HARDWARE
+#ifdef HAVE_DBOX_HARDWARE
 		  << "    those require the aviaEXT driver:" << std::endl
 		  << "\t--iecon\t\t\tactivate IEC" << std::endl
 		  << "\t--iecoff\t\tdeactivate IEC" << std::endl
@@ -116,7 +116,7 @@ int main (int argc, char** argv)
 	bool enterStandby = false;
 	bool leaveStandby = false;
 	bool sendMotorCommand = false;
-#ifndef HAVE_DREAMBOX_HARDWARE
+#ifdef HAVE_DBOX_HARDWARE
 	bool Iecon = false;
 	bool Iecoff = false;
 	bool Iecstate = false;
@@ -322,7 +322,7 @@ int main (int argc, char** argv)
 			mute = 0;
 			continue;
 		}
-#ifndef HAVE_DREAMBOX_HARDWARE
+#ifdef HAVE_DBOX_HARDWARE
                 else if (!strncmp(argv[i], "--iecon", 7))
                 {
                         Iecon = true;
@@ -467,7 +467,7 @@ int main (int argc, char** argv)
 		return 0;
 	}
 
-#ifndef HAVE_DREAMBOX_HARDWARE
+#ifdef HAVE_DBOX_HARDWARE
 	if (Iecon)
 	{
 		std::cout << "Iec on" << std::endl;
