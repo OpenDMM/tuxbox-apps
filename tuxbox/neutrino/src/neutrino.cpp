@@ -2447,8 +2447,6 @@ void CNeutrinoApp::RealRun(CMenuWidget &mainMenu)
 					// Scart-Mode verlassen
 					scartMode( false );
 				}
-				else
-					handleMsg( msg, data );
 			}
 			else
 			{
@@ -2491,9 +2489,7 @@ int CNeutrinoApp::handleMsg(const neutrino_msg_t m, neutrino_msg_data_t data)
 	}
 
 	if (!waitforshutdown) {
-		if ((msg == CRCInput::RC_home || msg == CRCInput::RC_ok) && mode == mode_standby && data == 0)
-			g_RCInput->postMsg( NeutrinoMessages::STANDBY_OFF, 0 );
-		else if (msg == CRCInput::RC_standby)
+		if (msg == CRCInput::RC_standby)
 		{
 			if (data == 0)
 			{
