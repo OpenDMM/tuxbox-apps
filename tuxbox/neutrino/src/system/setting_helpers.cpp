@@ -307,7 +307,7 @@ bool CPauseSectionsdNotifier::changeNotify(const neutrino_locale_t, void * Data)
 	return true;
 }
 
-#ifndef HAVE_DREAMBOX_HARDWARE
+#ifdef HAVE_DBOX_HARDWARE
 bool CSPTSNotifier::changeNotify(const neutrino_locale_t, void *)
 {
 	if (g_settings.misc_spts)
@@ -575,7 +575,7 @@ int CMoviePluginChangeExec::exec(CMenuTarget* parent, const std::string & action
 	return menu_return::RETURN_EXIT;
 }
 
-#ifndef HAVE_DREAMBOX_HARDWARE
+#ifdef HAVE_DBOX_HARDWARE
 int CUCodeCheckExec::exec(CMenuTarget* parent, const std::string & actionKey)
 {
 	std::stringstream text;

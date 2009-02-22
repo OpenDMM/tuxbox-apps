@@ -934,7 +934,7 @@ bool CZapitClient::isRecordModeActive()
 	return response.activated;
 }
 
-#ifndef HAVE_DREAMBOX_HARDWARE
+#ifdef HAVE_DBOX_HARDWARE
 void CZapitClient::IecOn()
 {
 	send(CZapitMessages::CMD_SET_AE_IEC_ON);

@@ -154,7 +154,7 @@ class CPauseSectionsdNotifier : public CChangeObserver
 		bool changeNotify(const neutrino_locale_t, void * Data);
 };
 
-#ifndef HAVE_DREAMBOX_HARDWARE
+#ifdef HAVE_DBOX_HARDWARE
 class CSPTSNotifier : public CChangeObserver
 {
 	public:

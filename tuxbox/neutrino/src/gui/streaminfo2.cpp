@@ -102,7 +102,7 @@ CStreamInfo2::CStreamInfo2()
 	if (!g_Zapit->isRecordModeActive())
 		if (mode == 1) { 
 			current_apid = -1;		
-#ifndef HAVE_DREAMBOX_HARDWARE
+#ifdef HAVE_DBOX_HARDWARE
 			actmode = g_Zapit->PlaybackState();
 			if (actmode == 0) { //PES Mode aktiv
 				CZapitClient::responseGetPIDs allpids;
@@ -134,7 +134,7 @@ CStreamInfo2::CStreamInfo2()
 
 CStreamInfo2::~CStreamInfo2()
 {
-#ifndef HAVE_DREAMBOX_HARDWARE
+#ifdef HAVE_DBOX_HARDWARE
 	if (!g_Zapit->isRecordModeActive()) {
 		if (actmode == 0) {
 			g_Zapit->PlaybackPES();
