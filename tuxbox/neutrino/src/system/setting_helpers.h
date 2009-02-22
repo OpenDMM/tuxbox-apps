@@ -39,6 +39,8 @@
 
 #include <string>
 
+#include <config.h>
+
 unsigned long long getcurrenttime();
 
 class CSatDiseqcNotifier : public CChangeObserver
