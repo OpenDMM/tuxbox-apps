@@ -1136,7 +1136,7 @@ void unsetRecordMode(void)
 	eventServer->sendEvent(CZapitClient::EVT_RECORDMODE_DEACTIVATED, CEventServer::INITID_ZAPIT );
 }
 
-int prepare_channels(fe_type_t frontendType, diseqc_t diseqcType)
+int prepare_channels(fe_type_t frontendType, diseqc_t dType)
 {
 	// for the case this function is NOT called for the first time (by main())
 	// we clear all cannel lists, they are refilled
@@ -1144,7 +1144,7 @@ int prepare_channels(fe_type_t frontendType, diseqc_t diseqcType)
 	transponders.clear();
 	bouquetManager->clearAll();
 	allchans.clear();  // <- this invalidates all bouquets, too!
-	if (LoadServices(frontendType, diseqcType, false) < 0)
+	if (LoadServices(frontendType, dType, false) < 0)
 		return -1;
 
 	INFO("LoadServices: success");
