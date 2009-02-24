@@ -28,7 +28,7 @@
 
 void StrSearchReplace( std::string &s, const std::string &to_find, const std::string& repl_with )
 {
-	unsigned int location = s.find(to_find);
+	std::string::size_type location = s.find(to_find);
 	if ( location == std::string::npos )
 	{
 		return;

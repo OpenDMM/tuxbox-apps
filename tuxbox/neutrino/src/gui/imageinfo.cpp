@@ -247,7 +247,7 @@ void CImageInfo::paintSupport(int y_startposition)
 
 void CImageInfo::paintPartitions(int y_startposition)
 {
-	unsigned int spos, rpos;
+	std::string::size_type spos, rpos;
 	int readlen;
 
 	clearContentBox();
@@ -409,7 +409,7 @@ string CImageInfo::getSysInfo(string infotag, bool reverse)
 
 string CImageInfo::getChipInfo()
 {
-	unsigned int spos, rpos;
+	std::string::size_type spos, rpos;
 	string line;
 
 	chiptype=g_Locale->getText(LOCALE_FLASHUPDATE_GETINFOFILEERROR);
