@@ -30,12 +30,12 @@
 #include <sectionsdclient/sectionsdMsg.h>
 
 
-const unsigned char   CSectionsdClient::getVersion   () const
+unsigned char CSectionsdClient::getVersion() const
 {
 	return sectionsd::ACTVERSION;
 }
 
-const          char * CSectionsdClient::getSocketName() const
+const char * CSectionsdClient::getSocketName() const
 {
 	return SECTIONSD_UDS_NAME;
 }

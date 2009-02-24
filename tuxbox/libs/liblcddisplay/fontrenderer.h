@@ -82,7 +82,7 @@ class LcdFontRenderClass
 	FT_Error getGlyphBitmap(FTC_Image_Desc *font, FT_ULong glyph_index, FTC_SBit *sbit);
 
 	public:
-		const char * const AddFont(const char * const filename);
+		const char * AddFont(const char * const filename);
 		void InitFontCache();
 
 		FT_Error FTC_Face_Requester(FTC_FaceID  face_id,

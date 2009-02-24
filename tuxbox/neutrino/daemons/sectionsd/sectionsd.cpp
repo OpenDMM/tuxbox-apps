@@ -1742,7 +1742,7 @@ static const SIevent& findNextSIeventForServiceUniqueKey(const t_channel_id serv
 	return nullEvt;
 }
 
-static const bool ServiceUniqueKeyHasCurrentNext(const t_channel_id serviceUniqueKey)
+static bool ServiceUniqueKeyHasCurrentNext(const t_channel_id serviceUniqueKey)
 {
 	time_t azeit = time(NULL);
 	time_t nextstart = time(NULL);

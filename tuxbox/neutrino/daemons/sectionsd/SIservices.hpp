@@ -100,7 +100,7 @@ public:
 			*(t_transport_stream_id *)p = transport_stream_id;		p += sizeof(t_transport_stream_id);
 		}
 
-	const t_service_id getServiceID() const
+	t_service_id getServiceID() const
 		{
 			return service_id;
 		}

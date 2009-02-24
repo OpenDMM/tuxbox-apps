@@ -35,8 +35,8 @@ class CBasicClient
 	int sock_fd;
 
  protected:
-	virtual const unsigned char   getVersion   () const = 0;
-	virtual const          char * getSocketName() const = 0;
+	virtual unsigned char   getVersion   () const = 0;
+	virtual const    char * getSocketName() const = 0;
 
 	bool open_connection();
 	bool send_data(const char * data, const size_t size);

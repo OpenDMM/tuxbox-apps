@@ -122,7 +122,7 @@ FT_Error LcdFontRenderClass::getGlyphBitmap(FTC_Image_Desc *font, FT_ULong glyph
 	return FTC_SBit_Cache_Lookup(sbitsCache, font, glyph_index, sbit);
 }
 
-const char * const LcdFontRenderClass::AddFont(const char * const filename)
+const char * LcdFontRenderClass::AddFont(const char * const filename)
 {
 	printf("[LCDFONT] adding font %s...", filename);
 	fflush(stdout);

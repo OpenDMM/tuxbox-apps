@@ -522,7 +522,7 @@ public:
 		return evts;
 	}
 
-	const int is_parsed(void) const {
+	int is_parsed(void) const {
 		return parsed;
 	}
 
@@ -616,7 +616,7 @@ public:
 		return evts;
 	}
 
-	const int is_parsed(void) const {
+	int is_parsed(void) const {
 		return parsed;
 	}
 

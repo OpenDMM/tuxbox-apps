@@ -100,7 +100,7 @@ class CFrontend
 		uint32_t			getUncorrectedBlocks(void) const;
 
 
-		const int32_t 			getCurrentSatellitePosition() { return currentSatellitePosition; }
+		int32_t				getCurrentSatellitePosition() { return currentSatellitePosition; }
 
 		void				setDiseqcRepeats(const uint8_t repeats)	{ diseqcRepeats = repeats; }
 		void				setDiseqcType(const diseqc_t type);
