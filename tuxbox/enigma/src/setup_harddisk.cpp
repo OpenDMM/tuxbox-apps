@@ -563,7 +563,7 @@ void eHarddiskMenu::init_eHarddiskMenu()
 ePartitionCheck::ePartitionCheck( int dev )
 :eWindow(1), dev(dev), fsck(0)
 {
-	void init_ePartitionCheck();
+	init_ePartitionCheck();
 }
 void ePartitionCheck::init_ePartitionCheck()
 {
