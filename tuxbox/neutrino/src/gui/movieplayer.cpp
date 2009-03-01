@@ -1281,6 +1281,9 @@ PlayStreamThread (void *mrl)
 	pthread_join (rcst, NULL);
 	printf ("[movieplayer.cpp] Seems that RCST was stopped succesfully\n");
 
+	// empty VLC playlist, otherwise it is not possible to watch another movie via VLC
+	sendGetRequest(baseurl+"requests/status.xml?command=pl_empty",response);
+
 	// Some memory clean up
 	ringbuffer_free(ringbuf);
 	delete bufferingBox;
@@ -2780,7 +2783,7 @@ if(g_settings.streaming_use_buffer)
 					sprintf
 					(
 						ctx->tmpBuf,
-						"GET /control/zapto?0x%llx HTTP/1.0\r\n",
+						"GET /control/zapto?0x%llx HTTP/1.0\r\nHost: 127.0.0.1\r\n",
 						lstIt->zapid
 					);
 
@@ -4010,8 +4013,9 @@ CMoviePlayerGui::PlayStream (int streamtype)
 
 	if(streamtype == STREAMTYPE_DVD)
 	{
-		strcpy (mrl, "dvdsimple:");
+		strcpy (mrl, "dvd://");
 		strcat (mrl, g_settings.streaming_server_cddrive);
+		strcat (mrl, "@1");
 		printf ("[movieplayer.cpp] Generated MRL: %s\n", mrl);
 		sel_filename = "DVD";
 		open_filebrowser = false;
