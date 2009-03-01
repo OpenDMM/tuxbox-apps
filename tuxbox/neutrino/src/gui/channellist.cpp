@@ -327,7 +327,7 @@ int CChannelList::show()
 			selected += step;
 
 			if(selected >= chanlist.size())
-				selected = 0;
+				selected = ((step==listmaxshow)&&(selected<(((chanlist.size()/listmaxshow)+1)*listmaxshow)))?(chanlist.size()-1):0;
 
 			paintItem(prev_selected - liststart);
 			unsigned int oldliststart = liststart;
