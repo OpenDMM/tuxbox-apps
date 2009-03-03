@@ -1283,6 +1283,7 @@ void CChannelList::paintHead()
 		g_Font[SNeutrinoSettings::FONT_TYPE_MENU_TITLE]->RenderString(x+width-10-timestr_len, y+theight+0, timestr_len+1, timestr, COL_MENUHEAD, 0, true); // UTF-8
 	}
 
+	delete[] timestr;
 	paintFoot();
 }
 
