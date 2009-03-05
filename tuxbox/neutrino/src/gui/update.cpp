@@ -652,6 +652,7 @@ void CFlashExpert::showMTDSelector(const std::string & actionkey)
 		mtdselector->addItem(new CMenuForwarderNonLocalized(mtdInfo->getMTDName(x).c_str(), true, NULL, this, sActionKey));
 	}
 	mtdselector->exec(NULL,"");
+	delete mtdselector;
 }
 
 void CFlashExpert::showFileSelector(const std::string & actionkey)
@@ -687,6 +688,7 @@ void CFlashExpert::showFileSelector(const std::string & actionkey)
 		free(namelist);
 	}
 	fileselector->exec(NULL,"");
+	delete fileselector;
 }
 
 

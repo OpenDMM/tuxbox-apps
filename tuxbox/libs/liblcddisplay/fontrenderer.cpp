@@ -133,6 +133,7 @@ const char * LcdFontRenderClass::AddFont(const char * const filename)
 	if ((error=FT_New_Face(library, filename, 0, &face)))
 	{
 		printf(" failed: %i\n", error);
+		delete n;
 		return NULL;
 	}
 	n->filename = strdup(filename);
