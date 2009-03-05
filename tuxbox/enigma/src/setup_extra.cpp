@@ -174,6 +174,7 @@ void eExpertSetup::init_eExpertSetup()
 		CONNECT((new eListBoxEntryCheck(&list,_("Enable fast zapping"),"/elitedvb/extra/fastzapping",_("enables faster zapping.. but with visible sync")))->selected, eExpertSetup::fastZappingChanged );
 	CONNECT((new eListBoxEntryCheck(&list, _("Use http authentification"), "/ezap/webif/lockWebIf", _("enables the http (user/password) authentification")))->selected, eExpertSetup::reinitializeHTTPServer );
 	CONNECT((new eListBoxEntryCheck(&list, _("Don't open serial port"), "/ezap/extra/disableSerialOutput", _("don't write debug messages to /dev/tts/0")))->selected, eExpertSetup::reinitializeHTTPServer );
+	new eListBoxEntryCheck(&list, _("Use EPG cache for Infobar"), "/ezap/osd/useEPGCache", _("use the EPG cache for the infobar if the EIT is unavailable"));
 	new eListBoxEntryCheck(&list, _("Auto bouquet change"), "/elitedvb/extra/autobouquetchange", _("change into next bouquet when end of current bouquet is reached"));
 	new eListBoxEntryCheck(&list, _("Auto reconnect cahandler"), "/elitedvb/extra/cahandlerReconnect", _("try to reconnect when an external cahandler connection was lost"));
 #ifndef DISABLE_NETWORK
