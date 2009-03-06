@@ -55,52 +55,51 @@ struct sectionsd
 	{
 		//actualEPGchannelName=0,
 		dummy1,
-		actualEventListTVshort,
+		dummy3, //actualEventListTVshort,		// commandEventListTV
 		//currentNextInformation,
 		dummy2,
-		dumpStatusinformation,
+		dumpStatusinformation,		// commandDumpStatusInformation
 		//allEventsChannelName,
-		allEventsChannelIDSearch,
-		setHoursToCache,
-		setHoursExtendedCache,
-		setEventsAreOldInMinutes,
-		dumpAllServices,
-		actualEventListRadioshort,
-		getNextEPG,
-		getNextShort,
-		pauseScanning, // for the grabbers ;)
-		getIsScanningActive,
-		actualEPGchannelID,
-		actualEventListTVshortIDs,
-		actualEventListRadioShortIDs,
-		currentNextInformationID,
-		epgEPGid,
-		epgEPGidShort,
-		ComponentTagsUniqueKey,
-		allEventsChannelID_,
-		timesNVODservice,
-		getEPGPrevNext,
-		getIsTimeSet,
-		serviceChanged,
-		LinkageDescriptorsUniqueKey,
-		pauseSorting,
-		CMD_registerEvents,
-		CMD_unregisterEvents,
-		setPrivatePid,
-		setSectionsdScanMode,
-		
-		freeMemory,
-		readSIfromXML,
-		writeSI2XML,
+		allEventsChannelIDSearch,	// commandAllEventsChannelIDSearch
+		dummy4, // setHoursToCache,
+		dummy5, // setHoursExtendedCache,
+		dummy6, // setEventsAreOldInMinutes,
+		dummy7, // dumpAllServices,		// commandDumpAllServices
+		dummy8, // actualEventListRadioshort,	// commandEventListRadio
+		dummy9, // getNextEPG,			// commandGetNextEPG
+		dummy10,// getNextShort,			// commandGetNextShort
+		pauseScanning, 			// commandPauseScanning // for the grabbers ;)
+		getIsScanningActive,		// commandGetIsScanningActive
+		actualEPGchannelID,		// commandActualEPGchannelID
+		actualEventListTVshortIDs,	// commandEventListTVids
+		actualEventListRadioShortIDs,	// commandEventListRadioIDs
+		currentNextInformationID,	// commandCurrentNextInfoChannelID
+		epgEPGid,			// commandEPGepgID
+		epgEPGidShort,			// commandEPGepgIDshort
+		ComponentTagsUniqueKey,		// commandComponentTagsUniqueKey
+		allEventsChannelID_,		// commandAllEventsChannelID
+		timesNVODservice,		// commandTimesNVODservice
+		getEPGPrevNext,			// commandGetEPGPrevNext
+		getIsTimeSet,			// commandGetIsTimeSet
+		serviceChanged,			// commandserviceChanged
+		LinkageDescriptorsUniqueKey,	// commandLinkageDescriptorsUniqueKey
+		pauseSorting,			// commandPauseSorting
+		CMD_registerEvents,		// commandRegisterEventClient
+		CMD_unregisterEvents,		// commandUnRegisterEventClient
+		setPrivatePid,			// commandSetPrivatePid
+		setSectionsdScanMode,		// commandSetSectionsdScanMode
+		freeMemory,			// commandFreeMemory
+		readSIfromXML,			// commandReadSIfromXML
+		writeSI2XML,			// commandWriteSI2XML
  		
-		LoadLanguages,
-		SaveLanguages,
-		SetLanguages,
-		GetLanguages,
-		SetLanguageMode,
-		GetLanguageMode,
-		setConfig,
-		Restart,
+		LoadLanguages,			// commandLoadLanguages
+		SaveLanguages,			// commandSaveLanguages
+		SetLanguages,			// commandSetLanguages
+		GetLanguages,			// commandGetLanguages
+		SetLanguageMode,		// commandSetLanguageMode
+		GetLanguageMode,		// commandGetLanguageMode
+		setConfig,			// commandSetConfig
+		Restart,			// commandRestart
 		ping,
 
 		numberOfCommands        // <- no actual command, end of command marker
