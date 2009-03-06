@@ -261,7 +261,7 @@ void CBouquetManager::saveBouquets(bool includeBouquetOthers)
 	chmod(BOUQUETS_XML, S_IRUSR | S_IWUSR | S_IRGRP | S_IROTH);
 }
 
-void CBouquetManager::saveBouquets(const CZapitClient::bouquetMode bouquetMode, const char * const providerName)
+void CBouquetManager::saveBouquets(const CZapitClient::bouquetMode bouquetMode)
 {
 /* //	printf("[zapit] b size %d\n", Bouquets.size());
 	if (bouquetMode == CZapitClient::BM_CREATESATELLITEBOUQUET)

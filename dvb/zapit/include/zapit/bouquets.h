@@ -111,7 +111,7 @@ class CBouquetManager
 		BouquetList Bouquets;
 
 		void saveBouquets(bool includeBouquetOthers = false);
-		void saveBouquets(const CZapitClient::bouquetMode bouquetMode, const char * const providerName);
+		void saveBouquets(const CZapitClient::bouquetMode bouquetMode);
 		void loadBouquets(bool ignoreBouquetFile = false);
 		void renumServices();
 
