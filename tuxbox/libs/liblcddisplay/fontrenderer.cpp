@@ -150,9 +150,9 @@ const char * LcdFontRenderClass::AddFont(const char * const filename)
 
 LcdFontRenderClass::fontListEntry::~fontListEntry()
 {
-	delete[] filename;
-	delete[] family;
-	delete[] style;
+	free(filename);
+	free(family);
+	free(style);
 }
 
 LcdFont *LcdFontRenderClass::getFont(const char *family, const char *style, int size)
