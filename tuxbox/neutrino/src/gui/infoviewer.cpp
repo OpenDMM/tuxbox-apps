@@ -1187,7 +1187,7 @@ CSectionsdClient::CurrentNextInfo CInfoViewer::getEPG(const t_channel_id for_cha
 				msg = NeutrinoMessages::EVT_CURRENTEPG;
 			else
 				msg = NeutrinoMessages::EVT_NEXTEPG;
-			g_RCInput->postMsg(msg, (neutrino_msg_data_t)_info, false );
+			g_RCInput->postMsg(msg, (const neutrino_msg_data_t)_info, false );
 		}
 		else
 		{
