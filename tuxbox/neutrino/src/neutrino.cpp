@@ -2472,11 +2472,15 @@ int CNeutrinoApp::handleMsg(const neutrino_msg_t m, neutrino_msg_data_t data)
 	res = res | g_InfoViewer->handleMsg(msg, data);
 	res = res | channelList->handleMsg(msg, data);
 
-	if ( res != messages_return::unhandled )
+	if (res != messages_return::unhandled)
 	{
-		if( ( msg>= CRCInput::RC_WithData ) && ( msg< CRCInput::RC_WithData+ 0x10000000 ) )
-			delete (unsigned char*) data;
-		return( res & ( 0xFFFFFFFF - messages_return::unhandled ) );
+		if (msg >= CRCInput::RC_WithData && msg < CRCInput::RC_WithData+ 0x10000000)
+			/* BEWARE! the data behind the pointer must have been allocated with
+			   "new char[...]", otherwise we'll leak memory.
+			   Only debuggable with valgrind */
+			delete [] (unsigned char *)data;
+
+		return res & (0xFFFFFFFF - messages_return::unhandled);
 	}
 
 	if (msg <= CRCInput::RC_MaxRC)
