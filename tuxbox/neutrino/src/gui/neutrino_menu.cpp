@@ -1166,6 +1166,7 @@ void CNeutrinoApp::InitLanguageSettings(CMenuWidget &languageSettings)
 					oj->addOption(locale);
 					languageSettings.addItem( oj );
 				}
+				free(namelist[count]);
 			}
 			free(namelist);
 		}
