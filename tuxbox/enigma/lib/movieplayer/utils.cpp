@@ -56,7 +56,7 @@ int tcpOpen(eString serverIP, int serverPort, int i)
 	int rc = -1;
 	int retry = 0;
 
-	bzero((char *)&ads, sizeof(ads));
+	memset((char *)&ads, 0, sizeof(ads));
 	ads.sin_family = AF_INET;
 	ads.sin_addr.s_addr = inet_addr(serverIP.c_str());
 	ads.sin_port = htons(serverPort);

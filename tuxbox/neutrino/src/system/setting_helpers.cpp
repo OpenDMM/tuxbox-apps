@@ -649,7 +649,7 @@ long CNetAdapter::mac_addr_sys ( u_char *addr) //only for function getMacAddr()
 	close(s);
 	if (ok)
 	{
-		bcopy( ifr.ifr_hwaddr.sa_data, addr, 6);
+		memmove(addr, ifr.ifr_hwaddr.sa_data, 6);
 	}
 	else
 	{

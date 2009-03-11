@@ -596,7 +596,7 @@ void CWebserverRequest::SendError()
 
 void CWebserverRequest::printf ( const char *fmt, ... )
 {
-	bzero(outbuf,OUTBUFSIZE);
+	memset(outbuf, 0, OUTBUFSIZE);
 	va_list arglist;
 	va_start( arglist, fmt );
 	vsnprintf( outbuf,OUTBUFSIZE, fmt, arglist );

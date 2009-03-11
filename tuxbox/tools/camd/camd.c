@@ -733,7 +733,7 @@ int main(int argc, char **argv)
 		return 1;
 	}
 
-	bzero(&dsfp, sizeof(struct dmx_sct_filter_params));
+	memset(&dsfp, 0, sizeof(struct dmx_sct_filter_params));
 	dsfp.filter.filter[0] = 0x01;	/* table_id */
 	dsfp.filter.filter[3] = 0x01;	/* current_next_indicator */
 	dsfp.filter.filter[4] = 0x00;	/* section_number */
