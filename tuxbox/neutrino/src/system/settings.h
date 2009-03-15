@@ -277,6 +277,7 @@ struct SNeutrinoSettings
 	int streaming_resolution;
 	int streaming_use_buffer;
 	int streaming_buffer_segment_size;
+	int streaming_stopsectionsd;
 	int streaming_show_tv_in_browser;
 	int streaming_allow_multiselect;
 
