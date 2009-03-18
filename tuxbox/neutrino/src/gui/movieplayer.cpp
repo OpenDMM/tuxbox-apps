@@ -208,7 +208,9 @@ bool get_movie_info_apid_name(int apid,MI_MOVIE_INFO* movie_info,std::string* ap
        if( movie_info->audioPids[i].epgAudioPid == apid && 
           !movie_info->audioPids[i].epgAudioPidName.empty())
        {
-            *apidtitle = movie_info->audioPids[i].epgAudioPidName;
+            char show_pid_number[4];
+            sprintf(show_pid_number, "%u", apid);
+            *apidtitle = movie_info->audioPids[i].epgAudioPidName + " [" + show_pid_number + "]";
             return true;
        }
     }
