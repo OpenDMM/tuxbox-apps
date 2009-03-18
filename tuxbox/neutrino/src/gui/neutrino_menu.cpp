@@ -1157,7 +1157,7 @@ void CNeutrinoApp::InitLanguageSettings(CMenuWidget &languageSettings)
 		{
 			for(int count=0;count<n;count++)
 			{
-				char * locale = namelist[count]->d_name;
+				char * locale = strdup(namelist[count]->d_name);
 				char * pos = strstr(locale, ".locale");
 				if(pos != NULL)
 				{
@@ -1166,6 +1166,9 @@ void CNeutrinoApp::InitLanguageSettings(CMenuWidget &languageSettings)
 					oj->addOption(locale);
 					languageSettings.addItem( oj );
 				}
+				else
+					free(locale);
+				free(namelist[count]);
 			}
 			free(namelist);
 		}
