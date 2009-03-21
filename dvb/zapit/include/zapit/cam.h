@@ -35,6 +35,7 @@ class CCam : public CBasicClient
 
 	public:
 		bool setCaPmt(CCaPmt * const caPmt);
+		virtual ~CCam(void);
 };
 
 #endif /* __cam_h__ */

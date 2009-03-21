@@ -25,6 +25,10 @@
 #include <zapit/settings.h> /* CAMD_UDS_NAME         */
 #include <messagetools.h>   /* get_length_field_size */
 
+CCam::~CCam(void)
+{
+	close_connection();
+}
 
 unsigned char CCam::getVersion(void) const
 {
