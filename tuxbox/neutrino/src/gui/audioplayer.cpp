@@ -675,7 +675,7 @@ int CAudioPlayerGui::show()
 					}
 					update=true;
 				}
-				else if ( shuffelPlaylist() )
+				else if ( shufflePlaylist() )
 				{
 					update = true;
 				}
@@ -889,7 +889,7 @@ bool CAudioPlayerGui::clearPlaylist(void)
 	return(result);
 }
 
-bool CAudioPlayerGui::shuffelPlaylist(void)
+bool CAudioPlayerGui::shufflePlaylist(void)
 {	
 	RandomNumber rnd;
 	bool result = false;

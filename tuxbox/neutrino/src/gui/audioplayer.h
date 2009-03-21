@@ -241,7 +241,7 @@ class CAudioPlayerGui : public CMenuTarget
 	bool openFilebrowser(void);
 	bool openSCbrowser(void);
 	bool clearPlaylist(void);
-	bool shuffelPlaylist(void);	
+	bool shufflePlaylist(void);
 	bool playNext(bool allow_rotate = false);
 	bool playPrev(bool allow_rotate = false);
 	
