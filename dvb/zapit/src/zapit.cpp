@@ -1195,6 +1195,7 @@ bool parse_command(CBasicMessage::Header &rmsg, int connfd)
 			(rmsg.cmd != CZapitMessages::CMD_MUTE) &&
 /* without SET_DISPLAY_FORMAT, controld cannot correct the aspect ratio in movieplayer */
 			(rmsg.cmd != CZapitMessages::CMD_SET_DISPLAY_FORMAT) &&
+			(rmsg.cmd != CZapitMessages::CMD_SB_GET_PLAYBACK_ACTIVE) &&
 #endif
 			(rmsg.cmd != CZapitMessages::CMD_GETPIDS))) {
 		fprintf(stderr, "[zapit] cmd %d refused in standby mode\n", rmsg.cmd);
@@ -1669,7 +1670,7 @@ bool parse_command(CBasicMessage::Header &rmsg, int connfd)
 	case CZapitMessages::CMD_SB_GET_PLAYBACK_ACTIVE:
 	{
 		CZapitMessages::responseGetPlaybackState msgGetPlaybackState;
-		if (videoDecoder->getPlayState() == VIDEO_PLAYING)
+		if (videoDecoder && videoDecoder->getPlayState() == VIDEO_PLAYING)
 			msgGetPlaybackState.activated = 1;
 		else
 			msgGetPlaybackState.activated = 0;
