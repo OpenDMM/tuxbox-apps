@@ -51,6 +51,8 @@ class CVideo
 		/* cropping mode */
 		video_displayformat_t getCroppingMode(void);
 		int setCroppingMode(video_displayformat_t format);
+		/* video format (auto/16:9/4:3LB/4:3PS) */
+		void setVideoFormat(int format);
 
 		/* stream source */
 		video_stream_source_t getSource(void);

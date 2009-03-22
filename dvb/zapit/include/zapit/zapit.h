@@ -32,7 +32,6 @@ void sendAPIDs(int connfd);
 void sendSubPIDs(int connfd);
 void enterStandby(void);
 void leaveStandby(void);
-void setVideoSystem_t(int video_system);
 #ifndef HAVE_DREAMBOX_HARDWARE
 void setIec(int);
 void setDemuxMode(int);

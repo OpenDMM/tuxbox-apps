@@ -38,7 +38,7 @@
 class CZapitMessages
 {
  public:
-	static const char ACTVERSION = 7;
+	static const char ACTVERSION = 8;
 
 	enum commands
 		{

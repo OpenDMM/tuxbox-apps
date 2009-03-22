@@ -899,14 +899,6 @@ bool CZapitClient::isPlayBackActive()
 	return response.activated;
 }
 
-void CZapitClient::setDisplayFormat(const video_display_format_t format)
-{
-	CZapitMessages::commandInt msg;
-	msg.val = format;
-	send(CZapitMessages::CMD_SET_DISPLAY_FORMAT, (char*)&msg, sizeof(msg));
-	close_connection();
-}
-
 void CZapitClient::setAudioMode(const int mode)
 {
 	CZapitMessages::commandInt msg;

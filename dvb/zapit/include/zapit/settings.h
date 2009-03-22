@@ -62,6 +62,8 @@
 #define FRONTEND_DEVICE 	"/dev/dvb/adapter0/frontend0"
 #define VIDEO_DEVICE    	"/dev/dvb/adapter0/video0"
 #endif
+#define AVS_DEVICE		"/dev/dbox/avs0"
+#define SAA7126_DEVICE		"/dev/dbox/saa0"
 
 #define CAMD_UDS_NAME  		"/tmp/camd.socket"
 
