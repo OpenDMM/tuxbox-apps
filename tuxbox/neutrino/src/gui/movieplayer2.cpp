@@ -2560,8 +2560,9 @@ CMoviePlayerGui::PlayStream(int streamtype)
 						char *ext;
 						ext = strrchr(filename, '.');	// FOO-xxx-2007-12-31.001.ts <- the dot before "ts"
 										// 001.vdr <- the dot before "vdr"
-						if (((ext - 7 >= filename) && (*(ext - 4) == '.') && !strcmp(ext, ".ts")) ||
-						    ((ext - 4 >= filename) && !strcmp(ext, ".vdr")))
+						if (ext &&
+						    ((ext - 7 >= filename && *(ext - 4) == '.' && !strcmp(ext, ".ts")) ||
+						     (ext - 4 >= filename &&                      !strcmp(ext, ".vdr"))))
 						{
 							int num = 0;
 							CFile *file = new CFile;
