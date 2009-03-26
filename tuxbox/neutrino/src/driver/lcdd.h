@@ -138,10 +138,10 @@ class CLCD
 
 		void setMode(const MODES m, const char * const title = "");
 
-		void showServicename(const std::string & name, const bool perform_wakeup = true); // UTF-8
-		void showMoviename(const std::string & name); // UTF-8
-		void setEPGTitle(const std::string & title);
-		void setMovieInfo(const std::string & big, const std::string & small);
+		void showServicename(const std::string name, const bool perform_wakeup = true); // UTF-8
+		void showMoviename(const std::string name); // UTF-8
+		void setEPGTitle(const std::string title);
+		void setMovieInfo(const std::string big, const std::string small);
 		void showTime();
 		/** blocks for duration seconds */
 		void showRCLock(int duration = 2);
