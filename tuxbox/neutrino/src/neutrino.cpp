@@ -1963,6 +1963,7 @@ int CNeutrinoApp::run(int argc, char **argv)
 	CmdParser(argc, argv);
 
 	prepareEnviroment();
+	current_muted = false;
 	int loadSettingsErg = loadSetup();
 	
 	/* load locales before setting up any fonts to determine whether we need a true unicode font */
@@ -2081,6 +2082,8 @@ int CNeutrinoApp::run(int argc, char **argv)
 	CMenuWidget    moviePlayer         (LOCALE_MOVIEPLAYER_HEAD              , "streaming.raw"       );
 	
 
+	// needs to run before initMainMenu()
+	firstChannel();
 
 	InitMainMenu(	mainMenu,
 					mainSettings,

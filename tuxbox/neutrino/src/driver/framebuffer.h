@@ -91,7 +91,7 @@ class CFrameBuffer
 		__u16 red[256], green[256], blue[256], trans[256];
 
 		void paletteFade(int i, __u32 rgb1, __u32 rgb2, int level);
-		const char  * getIconFilePath(const std::string & filename); //return alternatively or default path for user-defined icons
+		std::string getIconFilePath(const std::string & filename); //return alternatively or default path for user-defined icons
 
 		int 	kd_mode;
 		struct	vt_mode vt_mode;

@@ -63,6 +63,10 @@ CLCD::CLCD()
 	m_progressGlobal = 0;
 	m_progressLocal = 0;
 #endif // LCD_UPDATE
+	muted = false;
+	percentOver = 0;
+	volume = 0;
+	timeout_cnt = 0;
 }
 
 CLCD* CLCD::getInstance()
