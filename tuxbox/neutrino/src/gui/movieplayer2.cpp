@@ -2365,7 +2365,7 @@ OutputThread(void *arg)
 void updateLcd(const std::string &s)
 {
 	static int  l_playstate = -1;
-	std::string lcd;
+	std::string lcd = "";
 
 	if (l_playstate == g_playstate)
 		return;
@@ -2373,10 +2373,10 @@ void updateLcd(const std::string &s)
 	switch (g_playstate)
 	{
 	case CMoviePlayerGui::PAUSE:
-		lcd = "|| ";
+		CLCD::getInstance()->showAudioPlayMode(CLCD::AUDIO_MODE_PAUSE);
 		break;
 	default:
-		lcd = "> ";
+		CLCD::getInstance()->showAudioPlayMode(CLCD::AUDIO_MODE_PLAY);
 		break;
 	}
 	lcd += s;
@@ -2863,6 +2863,7 @@ CMoviePlayerGui::PlayStream(int streamtype)
 			if (g_currentapid == -1) // exit if inital pid is not selected
 				g_playstate = CMoviePlayerGui::STOPPED;
 			g_showaudioselectdialog = false;
+			updateLcd(title);
 		}
 
 		g_RCInput->getMsg(&msg, &data, 10);	// 1 secs..
