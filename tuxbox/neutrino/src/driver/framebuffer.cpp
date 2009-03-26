@@ -1061,6 +1061,17 @@ void CFrameBuffer::paintBackgroundBoxRel(int x, int y, int dx, int dy)
 	if (!getActive())
 		return;
 
+	if (x + dx > xRes)
+	{
+		fprintf(stderr, "%s:%d invalid x (%d), dx (%d), sum = %d > xRes (%d)\n", __FUNCTION__, __LINE__, x, dx, x+dx, xRes);
+		dx = xRes - x;
+	}
+	if (y + dy > yRes)
+	{
+		fprintf(stderr, "%s:%d invalid y (%d), dy (%d), sum = %d > yRes (%d)\n", __FUNCTION__, __LINE__, y, dy, y+dy, yRes);
+		dy = yRes - y;
+	}
+
 	if(!useBackgroundPaint)
 	{
 		paintBoxRel(x, y, dx, dy, backgroundColor);
