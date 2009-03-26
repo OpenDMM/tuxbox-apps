@@ -256,6 +256,7 @@ class CNeutrinoApp : public CMenuTarget, CChangeObserver
 				  CMenuWidget &audiopl_picSettings,
 				  CMenuWidget &streamingSettings,
 				  CMenuWidget &moviePlayer);
+		void addMenueIntroItems(CMenuWidget &item);
 
 		void SetupTiming();
 		void SetupFrameBuffer();
