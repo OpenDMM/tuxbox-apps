@@ -2729,6 +2729,8 @@ CMoviePlayerGui::PlayStream(int streamtype)
 			}
 			APIDSelector.exec(NULL, ""); // otherwise use Dialog
 			delete APIDChanger;
+			if (g_currentapid == -1) // exit if inital pid is not selected
+				g_playstate = CMoviePlayerGui::STOPPED;
 			g_showaudioselectdialog = false;
 		}
 
@@ -2908,7 +2910,10 @@ CMoviePlayerGui::PlayStream(int streamtype)
 			g_InfoViewer->showMovieTitle(g_playstate, title, sub_title, g_percent, ac3state, g_numpida);
 		}
 		else if (msg == CRCInput::RC_ok)
-			showHelpVLC();
+		{
+			if (bufferfilled)
+				showHelpVLC();
+		}
 		else if (msg == CRCInput::RC_left || msg == CRCInput::RC_right)
 		{
 			if (msg == CRCInput::RC_left)
