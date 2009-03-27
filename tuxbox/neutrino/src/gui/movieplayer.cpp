@@ -657,7 +657,9 @@ bool VlcRequestStream(char* mrl, int  transcodeVideo, int transcodeAudio)
 		}
 		souturl += "}:";
 	}
-	souturl += "std{access=http,mux=ts,dst=:";
+	souturl += "std{access=http,mux=ts,dst=";
+	souturl += g_settings.streaming_server_ip;
+	souturl += ':';
 	souturl += g_settings.streaming_server_port;
 	souturl += "/dboxstream}";
 	
