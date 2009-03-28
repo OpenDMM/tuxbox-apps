@@ -50,10 +50,8 @@ bool send_data(int fd, const void * data, const size_t size, const timeval timeo
 		if (rc == -1)
 		{
 			olderr = errno;
-			perror("[basicsocket] send_data");
-/* It seems perror is changing errno so if broken pipe -> exit!
-			if (errno == EPIPE)
-*/
+			if (errno != EAGAIN) // this is "write would block...", which is not an error
+				fprintf(stderr,"[basicsocket] send_data: %m (n = %d/%d, pid = %d)\n", n, size, getpid());
 			if (olderr == EPIPE)
 				return false;
 
