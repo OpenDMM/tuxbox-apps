@@ -3958,7 +3958,7 @@ int CNeutrinoApp::exec(CMenuTarget* parent, const std::string & actionKey)
 *          changeNotify - features menu recording start / stop                        *
 *                                                                                     *
 **************************************************************************************/
-bool CNeutrinoApp::changeNotify(const neutrino_locale_t OptionName, void *data)
+bool CNeutrinoApp::changeNotify(const neutrino_locale_t OptionName, void *)
 {
 	if ((ARE_LOCALES_EQUAL(OptionName, LOCALE_MAINMENU_RECORDING_START)) || (ARE_LOCALES_EQUAL(OptionName, LOCALE_MAINMENU_RECORDING)))
 	{
