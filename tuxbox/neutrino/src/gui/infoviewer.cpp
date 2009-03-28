@@ -1787,7 +1787,7 @@ void CInfoViewer::showEpgInfo()   //message on event change
 //  -- (2004-03-06 rasc)
 // 
 
-int CInfoViewerHandler::exec(CMenuTarget* parent, const std::string &actionkey)
+int CInfoViewerHandler::exec(CMenuTarget* parent, const std::string &)
 {
 	int           res = menu_return::RETURN_EXIT_ALL;
 	CChannelList  *channelList;

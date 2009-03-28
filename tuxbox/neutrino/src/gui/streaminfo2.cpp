@@ -419,7 +419,7 @@ const struct button_label StreamInfoButtons[2] =
 	{ NEUTRINO_ICON_BUTTON_HOME , LOCALE_STREAMINFO_CLOSE	}
 };
 
-void CStreamInfo2::paint(int mode)
+void CStreamInfo2::paint(int/*mode*/)
 {
 	const char * head_string;
 	int ypos = y+5;
@@ -781,7 +781,7 @@ std::string CStreamInfo2Misc::getStreamInfoVersion(void)
 	return imageinfo.getModulVersion("","$Revision$");
 }
 
-int CStreamInfo2Handler::exec(CMenuTarget* parent, const std::string &actionkey)
+int CStreamInfo2Handler::exec(CMenuTarget* parent, const std::string &)
 {
 	int res = menu_return::RETURN_EXIT_ALL;
 	if (parent)

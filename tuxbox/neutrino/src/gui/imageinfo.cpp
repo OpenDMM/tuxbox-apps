@@ -601,7 +601,7 @@ void CImageInfo::paint()
  * 	getModulVersion("v.","$Revision$")			 returns "v.1.153"
  *  	getModulVersion("","$Revision$")		 		 returns "1.153"
  */
- std::string CImageInfo::getModulVersion(const std::string &prefix_string, std::string ID_string)
+std::string CImageInfo::getModulVersion(const std::string &/*prefix_string*/, std::string ID_string)
 {
 	string revstr = ID_string;
 	while (revstr.find("$") !=string::npos)

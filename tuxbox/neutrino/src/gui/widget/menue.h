@@ -57,7 +57,7 @@ class CChangeObserver
 {
 	public:
 		virtual ~CChangeObserver(){}
-		virtual bool changeNotify(const neutrino_locale_t OptionName, void *Data)
+		virtual bool changeNotify(const neutrino_locale_t /*OptionName*/, void * /*Data*/)
 		{
 			return false;
 		}
@@ -101,7 +101,7 @@ class CMenuItem
 			return false;
 		}
 
-		virtual int exec(CMenuTarget* parent)
+		virtual int exec(CMenuTarget* /*parent*/)
 		{
 			return 0;
 		}

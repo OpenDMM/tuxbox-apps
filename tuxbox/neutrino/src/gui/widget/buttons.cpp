@@ -77,7 +77,7 @@ void paintButtons(CFrameBuffer * const frameBuffer, Font * const font,
 		max_iconw = max_iconw>iconw ? max_iconw : iconw; 
 	
 		// get width of  buttontext
-		unsigned int fwidth = ((max_iconw+2*space+real_textwidth) > (maxButtonwidth)) ? maxButtonwidth : real_textwidth;
+		fwidth = ((max_iconw+2*space+real_textwidth) > (maxButtonwidth)) ? maxButtonwidth : real_textwidth;
 		
 		// calculate finally buttonwidth
 		bwidth = max_iconw + 2*space + fwidth;	
