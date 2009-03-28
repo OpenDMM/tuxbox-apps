@@ -70,7 +70,7 @@ video_format_t CVideo::getAspectRatio(void)
 int CVideo::setCroppingMode(video_displayformat_t format)
 {
 	const char *format_string[] = { "panscan", "letterbox", "center_cutout", "unknown" };
-	printf("[CVideo::%s] setting to %s\n", __FUNCTION__, format_string[format]);
+	DBG("setting cropping mode to %s", format_string[format]);
 	return fop(ioctl, VIDEO_SET_DISPLAY_FORMAT, format);
 }
 
@@ -106,7 +106,7 @@ void CVideo::setVideoFormat(int format)
 
 	if (format == 0) // automatic switch
 	{
-		printf("[CVideo::%s] setting VideoFormat to auto\n", __FUNCTION__);
+		DBG("setting VideoFormat to auto");
 		int activeAspectRatio;
 		if (settings.vcr)
 			activeAspectRatio = settings.aspectRatio_vcr;
