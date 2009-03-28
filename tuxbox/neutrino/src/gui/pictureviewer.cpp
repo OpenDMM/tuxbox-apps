@@ -114,7 +114,7 @@ CPictureViewerGui::~CPictureViewerGui()
 }
 
 //------------------------------------------------------------------------
-int CPictureViewerGui::exec(CMenuTarget* parent, const std::string & actionKey)
+int CPictureViewerGui::exec(CMenuTarget* parent, const std::string & /*actionKey*/)
 {
 	struct stat sFileInfo;
 	selected = 0;
