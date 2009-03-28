@@ -220,7 +220,7 @@ CAudioPlayerGui::~CAudioPlayerGui()
 }
 
 //------------------------------------------------------------------------
-int CAudioPlayerGui::exec(CMenuTarget* parent, const std::string & actionKey)
+int CAudioPlayerGui::exec(CMenuTarget* parent, const std::string &)
 {
 	CAudioPlayer::getInstance()->init();
 	m_state = CAudioPlayerGui::STOP;
