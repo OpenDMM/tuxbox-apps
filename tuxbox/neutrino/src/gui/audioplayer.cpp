@@ -362,7 +362,7 @@ int CAudioPlayerGui::show()
 	neutrino_msg_t      msg;
 	neutrino_msg_data_t data;
 
-	int res = -1;
+	int ret = -1;
 
 	CLCD::getInstance()->setMode(CLCD::MODE_AUDIO);
 	paintLCD();
@@ -832,7 +832,7 @@ int CAudioPlayerGui::show()
 	if(m_state != CAudioPlayerGui::STOP)
 		stop();
 
-	return(res);
+	return ret;
 }
 
 bool CAudioPlayerGui::playNext(bool allow_rotate)
