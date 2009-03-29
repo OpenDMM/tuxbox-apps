@@ -802,7 +802,6 @@ requests to sectionsd.
 
 void CInfoViewer::showSubchan()
 {
-	CFrameBuffer *frameBuffer = CFrameBuffer::getInstance();
 	CNeutrinoApp *neutrino = CNeutrinoApp::getInstance();
 
 	std::string subChannelName; 	// holds the name of the subchannel/audio channel
