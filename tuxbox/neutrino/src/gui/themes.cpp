@@ -110,8 +110,8 @@ void CThemes::readThemes(CMenuWidget &themes)
 		{
 			for(int count=0;count<n;count++)
 			{
-				char * themefile = themelist[count]->d_name;
-				char * pos = strstr(themefile, ".theme");
+				char *file = themelist[count]->d_name;
+				char *pos = strstr(file, ".theme");
 				if(pos != NULL)
 				{
 					if ( p == 0 && hasCVSThemes == false ) {
@@ -123,10 +123,10 @@ void CThemes::readThemes(CMenuWidget &themes)
 					}
 					*pos = '\0';
 					if ( p == 1 ) {
-						userThemeFile = "{U}" + (std::string)themefile;
-						oj = new CMenuForwarderNonLocalized((char*)themefile, true, "", this, userThemeFile.c_str());
+						userThemeFile = "{U}" + (std::string)file;
+						oj = new CMenuForwarderNonLocalized((char*)file, true, "", this, userThemeFile.c_str());
 					} else
-						oj = new CMenuForwarderNonLocalized((char*)themefile, true, "", this, themefile);
+						oj = new CMenuForwarderNonLocalized((char*)file, true, "", this, file);
 					themes.addItem( oj );
 				}
 			}
