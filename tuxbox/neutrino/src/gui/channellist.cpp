@@ -82,7 +82,7 @@ CChannelList::CChannel::CChannel(const int _key, const int _number, const std::s
 }
 
 
-CChannelList::CChannelList(const char * const Name, bool historyMode)
+CChannelList::CChannelList(const char * const Name, bool hMode)
 {
 	frameBuffer = CFrameBuffer::getInstance();
 	name = Name;
@@ -93,7 +93,7 @@ CChannelList::CChannelList(const char * const Name, bool historyMode)
 	liststart = 0;
 	tuned=0xfffffff;
 	zapProtection = NULL;
-	this->historyMode = historyMode;
+	this->historyMode = hMode;
 }
 
 CChannelList::~CChannelList()
@@ -191,9 +191,9 @@ void CChannelList::updateEvents(void)
 }
 
 
-void CChannelList::addChannel(int key, int number, const std::string& name, const t_satellite_position satellitePosition, t_channel_id ids)
+void CChannelList::addChannel(int key, int number, const std::string& _name, const t_satellite_position satellitePosition, t_channel_id ids)
 {
-	chanlist.push_back(new CChannel(key, number, name, satellitePosition, ids));
+	chanlist.push_back(new CChannel(key, number, _name, satellitePosition, ids));
 }
 
 void CChannelList::addChannel(CChannelList::CChannel* chan)
