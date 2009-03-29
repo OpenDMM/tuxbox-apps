@@ -178,10 +178,8 @@ void CImageInfo::clearContentBox()
 	frameBuffer->paintBoxRel(xpos, iheight*10+6, width-10, endY-(iheight*10+6)-32, COL_MENUCONTENT_PLUS_0 );
 }
 
-void CImageInfo::paint_pig(int x, int y, int w, int h)
+void CImageInfo::paint_pig(int xPig, int yPig, int w, int h)
 {
-	int xPig = x; //picture position
-	int yPig = y; //+ hheight +16;
 #if HAVE_DVB_API_VERSION < 3
 	frameBuffer->paintBackgroundBoxRel(xPig, yPig, w, h);
 #else
@@ -190,9 +188,9 @@ void CImageInfo::paint_pig(int x, int y, int w, int h)
 	pig->show (xPig, yPig, w, h);
 }
 
-void CImageInfo::paintLine(int xpos, int font, const char* text, uint8_t    color = COL_MENUCONTENT )
+void CImageInfo::paintLine(int xp, int font, const char* text, uint8_t color = COL_MENUCONTENT )
 {
-	g_Font[font]->RenderString(xpos, ypos, width-10, text, color, 0, true);
+	g_Font[font]->RenderString(xp, ypos, width-10, text, color, 0, true);
 }
 
 void CImageInfo::paintContent(int fontSize, int xposC, int yposC, const char *text, uint8_t    color = COL_MENUCONTENT)
@@ -499,11 +497,11 @@ const char* CImageInfo::getImageInfo (int InfoType)
   }
 }
 
-void CImageInfo::paintHead(int x, int y, const char *localetext)
+void CImageInfo::paintHead(int xh, int yh, const char *localetext)
 {
 	int headheight = hheight;
-	frameBuffer->paintBoxRel(x, y, width, headheight + 4, COL_MENUHEAD, RADIUS_MID, CORNER_TOP);
-	g_Font[font_head]->RenderString(x+5, y + headheight + 4, width, localetext, COL_MENUHEAD, 0, true);}
+	frameBuffer->paintBoxRel(xh, yh, width, headheight + 4, COL_MENUHEAD, RADIUS_MID, CORNER_TOP);
+	g_Font[font_head]->RenderString(xh + 5, yh + headheight + 4, width, localetext, COL_MENUHEAD, 0, true);}
 	
 const struct button_label CImageInfoButtons[5] =
 {
@@ -514,12 +512,12 @@ const struct button_label CImageInfoButtons[5] =
 	{ NEUTRINO_ICON_BUTTON_HOME, LOCALE_IMAGEINFO_EXIT }
 };
 
-void CImageInfo::paintFoot(int x, int y)
+void CImageInfo::paintFoot(int xf, int yf)
 {
 	int ButtonHeight = ssheight;
-	frameBuffer->paintBoxRel(x, y, width, ButtonHeight, COL_INFOBAR_SHADOW_PLUS_1, RADIUS_MID, CORNER_BOTTOM);
-	::paintButtons(frameBuffer, g_Font[SNeutrinoSettings::FONT_TYPE_INFOBAR_SMALL], g_Locale, x + 5, y, width/6, 5, CImageInfoButtons, width);
-}	
+	frameBuffer->paintBoxRel(xf, yf, width, ButtonHeight, COL_INFOBAR_SHADOW_PLUS_1, RADIUS_MID, CORNER_BOTTOM);
+	::paintButtons(frameBuffer, g_Font[SNeutrinoSettings::FONT_TYPE_INFOBAR_SMALL], g_Locale, xf + 5, yf, width/6, 5, CImageInfoButtons, width);
+}
 
 void CImageInfo::paint()
 {
