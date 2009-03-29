@@ -445,13 +445,13 @@ bool CSectionsdClient::getEventsServiceKeySearchAdd(CChannelEventList& eList,con
 	
 	if (send(sectionsd::allEventsChannelIDSearch, pSData, nBufSize))
 	{
-		int nBufSize = readResponse();
+		int respSize = readResponse();
 
-		if( nBufSize > 0)
+		if (respSize > 0)
 		{
 			char* dp;
-			char* pData = new char[nBufSize];
-			if (!receive_data(pData, nBufSize))
+			char* pData = new char[respSize];
+			if (!receive_data(pData, respSize))
 			{
 				/* receive_data might have timed out etc. */
 				goto out_pData;
@@ -461,7 +461,7 @@ bool CSectionsdClient::getEventsServiceKeySearchAdd(CChannelEventList& eList,con
 
 //			int a = eList.size();
 
-			while(dp < pData + nBufSize)
+			while (dp < pData + respSize)
 			{
 				CChannelEvent aEvent;
 
