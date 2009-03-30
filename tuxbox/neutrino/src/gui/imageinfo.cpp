@@ -229,7 +229,7 @@ void CImageInfo::paintSupport(int y_startposition)
 	paintContent(font_info, xpos, y_startposition,g_Locale->getText(LOCALE_IMAGEINFO_FORUM), COL_MENUCONTENTINACTIVE);
 	paintContent(font_info, xpos+x_offset_large, y_startposition, "http://forum.tuxbox.org");
 	
-#ifndef HAVE_DREAMBOX_HARDWARE	
+#ifdef HAVE_DBOX_HARDWARE
 	y_startposition += ssheight/2;
 	frameBuffer->paintLine(xpos, y_startposition, width, y_startposition, COL_GRAY);	
 		

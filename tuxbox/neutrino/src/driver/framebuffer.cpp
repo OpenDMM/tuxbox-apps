@@ -42,7 +42,7 @@
 
 #include <stdint.h>
 #include <cstdlib>
-#ifndef HAVE_DREAMBOX_HARDWARE
+#ifdef HAVE_DBOX_HARDWARE
 #include <dbox/fb.h>
 #endif
 

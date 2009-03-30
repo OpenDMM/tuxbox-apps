@@ -64,7 +64,7 @@ CTimerManager::CTimerManager()
 	{
 		timer_wakeup = !!wakeup;
 		printf("[timerd] woke up from timer? %s!\n", timer_wakeup ? "true" : "false");
-#ifndef HAVE_DREAMBOX_HARDWARE
+#ifdef HAVE_DBOX_HARDWARE
 		// clear wakeup event...
 		if (ioctl(fd, FP_IOCTL_CLEAR_WAKEUP_TIMER) < 0)
 			perror("[timerd] FP_IOCTL_CLEAR_WAKEUP_TIMER");

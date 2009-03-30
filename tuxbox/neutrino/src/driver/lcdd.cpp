@@ -921,7 +921,7 @@ int CLCD::getInverse()
 
 void CLCD::setAutoDimm(int autodimm)
 {
-#ifndef HAVE_DREAMBOX_HARDWARE
+#ifdef HAVE_DBOX_HARDWARE
 	int fd;
 	g_settings.lcd_setting[SNeutrinoSettings::LCD_AUTODIMM] = autodimm;
 
