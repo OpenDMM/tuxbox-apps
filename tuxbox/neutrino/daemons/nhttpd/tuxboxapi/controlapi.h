@@ -24,7 +24,7 @@ private:
 		TyFunc pfunc;
 		const char *mime_type;
 	} TyCgiCall;
-	const static TyCgiCall yCgiCallList[];
+	static const TyCgiCall yCgiCallList[];
 
 	int rc_send(int ev, unsigned int code, unsigned int value);
 

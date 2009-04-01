@@ -26,7 +26,7 @@ private:
 		const char *func_name;
 		TyFunc pfunc;
 	} TyFuncCall;
-	const static TyFuncCall yFuncCallList[];
+	static const TyFuncCall yFuncCallList[];
 	
 	// func TUXBOX
 	std::string func_mount_get_list(CyhookHandler *hh, std::string para);

@@ -53,7 +53,7 @@ private:
 		TyCGIFunc pfunc;
 		const char *mime_type;
 	} TyCgiCall;
-	const static TyCgiCall yCgiCallList[];
+	static const TyCgiCall yCgiCallList[];
 
 	// func dispatcher Array
 	typedef std::string (CyParser::*TyFunc)(CyhookHandler *hh, std::string para);
@@ -62,7 +62,7 @@ private:
 		const char *func_name;
 		TyFunc pfunc;
 	} TyFuncCall;
-	const static TyFuncCall yFuncCallList[];
+	static const TyFuncCall yFuncCallList[];
 
 	// local Session vars
 	CStringList ycgi_vars;	//ycgi session vars
