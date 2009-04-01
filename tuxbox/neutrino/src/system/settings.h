@@ -199,6 +199,7 @@ struct SNeutrinoSettings
 	int personalize_games;
 	int personalize_audioplayer;
 	int personalize_inetradio;
+	int personalize_esound;
 	int personalize_movieplayer;
 	int personalize_pictureviewer;
 	int personalize_upnpbrowser;
