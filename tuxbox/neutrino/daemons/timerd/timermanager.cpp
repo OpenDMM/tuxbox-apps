@@ -712,7 +712,6 @@ bool CTimerManager::shutdown()
 			}
 		}
 	}
-	int erg;
 
 	if(nextAnnounceTime!=0)
 	{
@@ -721,16 +720,10 @@ bool CTimerManager::shutdown()
 			minutes=1; //1 minute is minimum
 
 		int fd = open("/dev/dbox/fp0", O_RDWR);
-		if((erg=ioctl(fd, FP_IOCTL_SET_WAKEUP_TIMER, &minutes))<0)
+		if (ioctl(fd, FP_IOCTL_SET_WAKEUP_TIMER, &minutes) < 0)
 		{
-			if(erg==-1)	// Wakeup not supported
-			{
-				dprintf("Wakeup not supported (%d min.)\n",minutes);
-			}
-			else
-			{
-				dprintf("Error setting wakeup (%d)\n",erg);
-			}
+			// Wakeup not supported
+			printf("[timerd] Wakeup not supported (%d min.), errno=%d\n",minutes,errno);
 		}
 		else
 		{
