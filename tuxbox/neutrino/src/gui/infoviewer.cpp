@@ -907,27 +907,27 @@ void CInfoViewer::showSubchan()
 			neutrino_msg_t      msg;
 			neutrino_msg_data_t data;
 	
-				while ( ! ( res & ( messages_return::cancel_info | messages_return::cancel_all ) ) )
+			while (!(res & (messages_return::cancel_info | messages_return::cancel_all)))
+			{
+				g_RCInput->getMsgAbsoluteTimeout(&msg, &data, &timeoutEnd);
+
+				if (msg == CRCInput::RC_timeout)
 				{
-					g_RCInput->getMsgAbsoluteTimeout( &msg, &data, &timeoutEnd );
-		
-					if ( msg == CRCInput::RC_timeout )
+					res = messages_return::cancel_info;
+				}
+				else
+				{
+					res = neutrino->handleMsg(msg, data);
+
+					if (res & messages_return::unhandled)
 					{
+						// raus hier und im Hauptfenster behandeln...
+						g_RCInput->postMsg(msg, data);
 						res = messages_return::cancel_info;
 					}
-					else
-					{
-						res = neutrino->handleMsg(msg, data);
-		
-						if ( res & messages_return::unhandled )
-						{
-							// raus hier und im Hauptfenster behandeln...
-							g_RCInput->postMsg(  msg, data );
-							res = messages_return::cancel_info;
-						}
-					}
 				}
-		
+			}
+
 			frameBuffer->RestoreScreen(x- borderwidth, y- borderwidth, dx+ 2* borderwidth, dy+ 2* borderwidth, pixbuf);
 			}
 		}
