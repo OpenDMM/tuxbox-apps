@@ -458,6 +458,8 @@ void CImageInfo::LoadImageInfo(void)
 	
 	releaseCycle 	= versionInfo.getReleaseCycle();
 	imagedate 	= (std::string)versionInfo.getDate() + " " + versionInfo.getTime();
+	if (imagedate == " ")	// make sure that we don't crash later in the LCD info routine
+		imagedate = "Unknown    ";
 	imagetype 	= versionInfo.getType();
 }
 
