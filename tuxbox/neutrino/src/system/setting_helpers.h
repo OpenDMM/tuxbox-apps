@@ -35,11 +35,10 @@
 */
 
 
+#include <config.h>
 #include <gui/widget/menue.h>
 
 #include <string>
-
-#include <config.h>
 
 unsigned long long getcurrenttime();
 
