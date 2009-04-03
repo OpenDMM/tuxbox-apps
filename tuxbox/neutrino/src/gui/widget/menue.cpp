@@ -302,7 +302,8 @@ int CMenuWidget::exec(CMenuTarget* parent, const std::string &)
 	while ( msg!=CRCInput::RC_timeout );
 
 	hide();
-	CLCD::getInstance()->setMode(oldlcdmode);
+	if (CLCD::getInstance()->getMode() != CLCD::MODE_STANDBY)
+		CLCD::getInstance()->setMode(oldlcdmode);
 
 	return retval;
 }

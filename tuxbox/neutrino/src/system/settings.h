@@ -50,6 +50,7 @@ struct SNeutrinoSettings
 	unsigned char video_csync;
 
 	//misc
+	int standby_save_power;
 	int shutdown_real;
 	int shutdown_real_rcdelay;
 	char shutdown_count[4];
