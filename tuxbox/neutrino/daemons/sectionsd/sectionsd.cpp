@@ -7209,6 +7209,7 @@ static void *cnThread(void *)
 						eit_waiting_since = zeit;
 						writeLockMessaging();
 						messaging_need_eit_version = true;
+						sendToSleepNow = false; // reset after channel change
 					}
 					unlockMessaging();
 					if (zeit - eit_waiting_since > TIME_EIT_VERSION_WAIT) {
