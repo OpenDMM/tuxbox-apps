@@ -89,11 +89,19 @@ CFrontend::~CFrontend(void)
 	if (diseqcType > MINI_DISEQC)
 		sendDiseqcStandby();
 
-	close(fd);
+	/* tested on dm500, VOLTAGE_OFF switched into passthrough mode,
+	   FE_POWER_OFF does something else to save some power...
+	   It does no harm on dbox2, at least not on philips sat
+	   enigma does exactly the same it its savePower() function
+	 */
+	secSetVoltage(SEC_VOLTAGE_OFF, 1);
+	secSetTone(SEC_TONE_OFF, 1);
 #if HAVE_DVB_API_VERSION < 3
+	fop(ioctl, FE_SET_POWER_STATE, FE_POWER_OFF);
 	if (secfd >= 0)
 		close(secfd);
 #endif
+	close(fd);
 }
 
 void CFrontend::reset(void)
