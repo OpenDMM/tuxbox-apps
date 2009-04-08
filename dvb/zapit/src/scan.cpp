@@ -750,7 +750,7 @@ void *start_scanthread(void *imsg)
 		 */
 		if (!(fd = fopen(SERVICES_XML, "w")))
 		{
-			WARN("unable to open %s for writing", SERVICES_XML);
+			WARN("unable to open %s for writing\n", SERVICES_XML);
 			goto abort_scan;
 		}
 		write_xml_header(fd);
