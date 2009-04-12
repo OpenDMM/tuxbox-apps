@@ -294,6 +294,7 @@ struct SNeutrinoSettings
 	neutrino_msg_t key_channelList_pagedown;
 	neutrino_msg_t key_channelList_cancel;
 	neutrino_msg_t key_channelList_sort;
+	neutrino_msg_t key_channelList_search;
 	neutrino_msg_t key_channelList_addrecord;
 	neutrino_msg_t key_channelList_addremind;
 	neutrino_msg_t key_channelList_reload;

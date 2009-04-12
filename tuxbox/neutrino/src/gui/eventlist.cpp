@@ -562,7 +562,7 @@ int EventList::exec(const t_channel_id channel_id, const std::string& channelnam
 				}
 			}
 		}
-		else if ( msg==CRCInput::RC_green )
+		else if (msg == g_settings.key_channelList_search)
 		{
 			findEvents();
 			timeoutEnd = CRCInput::calcTimeoutEnd(g_settings.timing[SNeutrinoSettings::TIMING_CHANLIST]);
@@ -770,10 +770,11 @@ void  EventList::showFunctionBar (bool show)
 		bx += cellwidth;
 	}
 
-	if (1)
+	// Button: Event Search
+	if (g_settings.key_channelList_search != CRCInput::RC_nokey)
 	{
 
-		keyhelper.get(&dummy, &icon, CRCInput::RC_green);
+		keyhelper.get(&dummy, &icon, g_settings.key_channelList_search);
 		
 		btncaption = g_Locale->getText(LOCALE_EVENTFINDER_SEARCH);
 		
