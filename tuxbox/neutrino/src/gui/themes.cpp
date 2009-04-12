@@ -160,6 +160,7 @@ void CThemes::Show()
 		themes.addItem(GenericMenuSeparatorLine);
 		themes.addItem(m1);
 	} else {
+		delete m1;
 		printf("[neutrino theme] error accessing %s\n", USERDIR);
 	}
 
