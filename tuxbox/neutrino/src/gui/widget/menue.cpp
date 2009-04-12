@@ -145,8 +145,8 @@ int CMenuWidget::exec(CMenuTarget* parent, const std::string &)
 	neutrino_msg_data_t data;
 
 	// paint() changes the mode...
-	CLCD::MODES oldlcdmode;
-	oldlcdmode = CLCD::getInstance()->getMode();
+	CLCD::MODES oldLcdMode = CLCD::getInstance()->getMode();
+	std::string oldLcdMenutitle = CLCD::getInstance()->getMenutitle();
 
 	int pos;
 
@@ -303,7 +303,7 @@ int CMenuWidget::exec(CMenuTarget* parent, const std::string &)
 
 	hide();
 	if (CLCD::getInstance()->getMode() != CLCD::MODE_STANDBY)
-		CLCD::getInstance()->setMode(oldlcdmode);
+		CLCD::getInstance()->setMode(oldLcdMode,oldLcdMenutitle.c_str());
 
 	return retval;
 }

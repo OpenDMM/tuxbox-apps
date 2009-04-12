@@ -759,6 +759,7 @@ void CLCD::showAudioProgress(const char perc, bool isMuted)
 void CLCD::setMode(const MODES m, const char * const title)
 {
 	mode = m;
+	menutitle = title;
 	setlcdparameter();
 
 	switch (m)
