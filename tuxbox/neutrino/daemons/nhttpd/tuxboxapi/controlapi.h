@@ -57,6 +57,7 @@ private:
 	void ExecCGI(CyhookHandler *hh);
 	void SystemCGI(CyhookHandler *hh);
 	void StandbyCGI(CyhookHandler *hh);
+	void EsoundCGI(CyhookHandler *hh);
 	void RCCGI(CyhookHandler *hh);
 	void GetDateCGI(CyhookHandler *hh);
 	void GetTimeCGI(CyhookHandler *hh);
