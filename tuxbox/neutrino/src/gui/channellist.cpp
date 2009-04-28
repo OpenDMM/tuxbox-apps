@@ -1291,18 +1291,16 @@ void CChannelList::paintHead()
 				sprintf(provstr,"%s", satList_it->satName);
 			break;
 			}
+		provstr_len = g_Font[SNeutrinoSettings::FONT_TYPE_CHANNELLIST]->getRenderWidth(provstr, true); // UTF-8
 	}
-	else
-	{
-		CZapitClient::CCurrentServiceInfo si = g_Zapit->getCurrentServiceInfo();
-		sprintf(provstr,"%s",CNeutrinoApp::getInstance()->getScanSettings().satOfDiseqc(si.diseqc));
-	}
-	provstr_len = g_Font[SNeutrinoSettings::FONT_TYPE_CHANNELLIST]->getRenderWidth(provstr, true); // UTF-8
 
 	frameBuffer->paintBoxRel(x,y, width,theight+0, COL_MENUHEAD_PLUS_0, RADIUS_MID, CORNER_TOP);
 	g_Font[SNeutrinoSettings::FONT_TYPE_MENU_TITLE]->RenderString(x+10,y+theight+0, width-10-timestr_len-10, name, COL_MENUHEAD, 0, true); // UTF-8
 	
-	g_Font[SNeutrinoSettings::FONT_TYPE_CHANNELLIST]->RenderString(x+width-10-timestr_len-10-provstr_len-10,y+fheight+5, provstr_len+1, provstr, COL_MENUHEAD, 0, true); // UTF-8
+	if (g_info.delivery_system == 1)
+	{
+		g_Font[SNeutrinoSettings::FONT_TYPE_CHANNELLIST]->RenderString(x+width-10-timestr_len-10-provstr_len-10,y+fheight+5, provstr_len+1, provstr, COL_MENUHEAD, 0, true); // UTF-8
+	}
 
 	if (gotTime){
 		g_Font[SNeutrinoSettings::FONT_TYPE_MENU_TITLE]->RenderString(x+width-10-timestr_len, y+theight+0, timestr_len+1, timestr, COL_MENUHEAD, 0, true); // UTF-8
