@@ -3,7 +3,7 @@
 
 /* $Id$ */
 
-#include <linux/types.h>
+#include <stdint.h>
 
 extern const uint32_t crc32_table[256];
 
