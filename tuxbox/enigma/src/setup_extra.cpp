@@ -219,7 +219,7 @@ void eExpertSetup::init_eExpertSetup()
 		eConfig::getInstance()->setKey("/ezap/extra/autoplay", autoplay);
 	new eListBoxEntryCheck(&list, _("Enable Filemode Autoplay"), "/ezap/extra/autoplay", _("continue playing last selected movie when entering Filemode"));
 #endif
-#ifndef HAVE_DREAMBOX_HARDWARE
+#ifdef HAVE_DBOX_HARDWARE
 	new eListBoxEntryMenuSeparator(&list, eSkin::getActive()->queryImage("listbox.separator"), 0, true );
 //Boot-info
 	int bootInfo = 0;

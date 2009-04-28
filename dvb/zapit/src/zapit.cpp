@@ -3003,7 +3003,7 @@ int main(int argc, char **argv)
 	leaveStandby();
 
 	/* this was done by controld before, but now needs to come after leaveStandby() */
-#ifndef HAVE_DREAMBOX_HARDWARE
+#ifdef HAVE_DBOX_HARDWARE
 	/* make sure that both volume settings are initialized */
 	audioDecoder->setVolume(settings.volume, (int)CControld::TYPE_OST);
 	if (settings.volume_type == CControld::TYPE_AVS)

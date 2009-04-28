@@ -62,7 +62,7 @@ int main(int argc, char **argv)
 		}
 	}
 
-#ifndef HAVE_DREAMBOX_HARDWARE
+#ifdef HAVE_DBOX_HARDWARE
 	else {
 		val = strtoul(argv[2], NULL, 0) & 0xff;
 

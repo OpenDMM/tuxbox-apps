@@ -377,7 +377,7 @@ void eHarddiskMenu::s_format()
 #endif
 		fclose(f);
 /*Set up Swapspace*/
-#ifndef HAVE_DREAMBOX_HARDWARE
+#ifdef HAVE_DBOX_HARDWARE
 		system(eString().sprintf("/sbin/mkswap /dev/ide/host%d/bus%d/target%d/lun0/part1", host, bus, target).c_str());
 #endif
 

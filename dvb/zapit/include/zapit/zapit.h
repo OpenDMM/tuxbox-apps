@@ -32,7 +32,7 @@ void sendAPIDs(int connfd);
 void sendSubPIDs(int connfd);
 void enterStandby(void);
 void leaveStandby(void);
-#ifndef HAVE_DREAMBOX_HARDWARE
+#ifdef HAVE_DBOX_HARDWARE
 void setIec(int);
 void setDemuxMode(int);
 #endif
