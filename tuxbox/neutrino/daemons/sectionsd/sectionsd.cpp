@@ -7330,6 +7330,9 @@ static void *cnThread(void *)
 #ifdef PAUSE_EQUALS_STOP
 					dmxCN.real_unpause();
 #endif
+#if HAVE_IPBOX_HARDWARE
+					dmxCN.change(0);
+#endif
 				}
 				else
 				{
