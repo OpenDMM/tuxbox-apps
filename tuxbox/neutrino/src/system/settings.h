@@ -53,6 +53,7 @@ struct SNeutrinoSettings
 	int standby_save_power;
 	int shutdown_real;
 	int shutdown_real_rcdelay;
+	int standby_off_with;
 	char shutdown_count[4];
 	int volumebar_disp_pos;
 	char record_safety_time_before[3];

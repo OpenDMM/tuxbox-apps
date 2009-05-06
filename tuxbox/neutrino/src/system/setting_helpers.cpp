@@ -282,11 +282,12 @@ bool CRecordingSafetyNotifier::changeNotify(const neutrino_locale_t, void *)
 	return true;
 }
 
-CMiscNotifier::CMiscNotifier( CMenuItem* i1, CMenuItem* i2, CMenuItem* i3)
+CMiscNotifier::CMiscNotifier( CMenuItem* i1, CMenuItem* i2, CMenuItem* i3, CMenuItem* i4)
 {
 	toDisable[0]=i1;
 	toDisable[1]=i2;
 	toDisable[2]=i3;
+	toDisable[3]=i4;
 }
 
 bool CMiscNotifier::changeNotify(const neutrino_locale_t, void *)
@@ -294,6 +295,7 @@ bool CMiscNotifier::changeNotify(const neutrino_locale_t, void *)
 	toDisable[0]->setActive(!g_settings.shutdown_real);
 	toDisable[1]->setActive(!g_settings.shutdown_real);
 	toDisable[2]->setActive(!g_settings.shutdown_real);
+	toDisable[3]->setActive(!g_settings.shutdown_real);
 	return true;
 }
 
