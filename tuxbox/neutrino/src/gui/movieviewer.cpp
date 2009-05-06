@@ -554,10 +554,10 @@ void CMovieViewer::paintTime( bool show_dot, bool firstPaint )
 /************************************************************************
  
 ************************************************************************/
-void CMovieViewer::showRecordIcon(const bool show)
+void CMovieViewer::showRecordIcon(const bool _show)
 {
 	int ChanNameX = BoxStartX + ChanWidth + 20;
-	if(show)
+	if(_show)
 	{
 		frameBuffer->paintIcon(NEUTRINO_ICON_BUTTON_RED, ChanNameX, BoxStartY+10 );
 	}
