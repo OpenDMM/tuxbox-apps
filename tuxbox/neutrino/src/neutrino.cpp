@@ -2355,7 +2355,7 @@ void CNeutrinoApp::RealRun(CMenuWidget &mainMenu)
 					channelList->exec();
 				}
 			}
-#ifdef HAVE_DREAMBOX_HARDWARE
+#if defined HAVE_DREAMBOX_HARDWARE || defined HAVE_IPBOX_HARDWARE
 			// support for additional buttons on Dreambox Remote
 			else if( msg == CRCInput::RC_tv )
 			{

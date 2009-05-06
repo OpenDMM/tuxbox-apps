@@ -302,7 +302,7 @@ void CFrontend::setFrontend(const dvb_frontend_parameters *feparams)
 
 	while ((errno == 0) || (errno == EOVERFLOW))
 		quiet_fop(ioctl, FE_GET_EVENT, &event);
-#ifdef HAVE_DREAMBOX_HARDWARE
+#if HAVE_DVB_API_VERSION < 3
 	dvb_frontend_parameters feparams2;
 	memcpy(&feparams2, feparams, sizeof(dvb_frontend_parameters));
 	/* the dreambox cable driver likes to get the frequency in kHz */
