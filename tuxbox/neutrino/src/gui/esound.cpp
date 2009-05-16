@@ -117,8 +117,8 @@ int CEsoundGui::exec(CMenuTarget* parent, const std::string &)
 		parent->hide();
 	}
 
-	if(g_settings.video_Format != CControldClient::VIDEOFORMAT_4_3)
-		g_Controld->setVideoFormat(CControldClient::VIDEOFORMAT_4_3);
+	if(g_settings.video_Format != g_settings.video_backgroundFormat)
+		g_Controld->setVideoFormat(g_settings.video_backgroundFormat);
 
 	bool usedBackground = m_frameBuffer->getuseBackground();
 	if (usedBackground)

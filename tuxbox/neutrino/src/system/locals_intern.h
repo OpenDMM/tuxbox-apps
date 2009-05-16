@@ -1338,6 +1338,7 @@ const char * locale_real_names[] =
 	"videomenu.videoformat_43",
 	"videomenu.videoformat_431",
 	"videomenu.videoformat_autodetect",
+	"videomenu.videoformat_bg",
 	"videomenu.videosignal",
 	"videomenu.videosignal_composite",
 	"videomenu.videosignal_rgb",
