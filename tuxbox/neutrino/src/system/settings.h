@@ -422,6 +422,9 @@ struct SNeutrinoSettings
 	int   audioplayer_show_playlist;
 	int   audioplayer_enable_sc_metadata;
 
+	//Esound
+	char  esound_port[6];
+
 	//Filebrowser
 	int filebrowser_showrights;
 	int filebrowser_sortmethod;

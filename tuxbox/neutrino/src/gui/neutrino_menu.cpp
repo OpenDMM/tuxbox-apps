@@ -837,6 +837,10 @@ void CNeutrinoApp::InitAudioplPicSettings(CMenuWidget &audioplPicSettings)
 	audioplPicSettings.addItem(new CMenuForwarder(LOCALE_AUDIOPLAYER_DEFDIR, true, g_settings.network_nfs_audioplayerdir, this, "audioplayerdir"));
 	audioplPicSettings.addItem(new CMenuOptionChooser(LOCALE_AUDIOPLAYER_ENABLE_SC_METADATA, &g_settings.audioplayer_enable_sc_metadata, MESSAGEBOX_NO_YES_OPTIONS, MESSAGEBOX_NO_YES_OPTION_COUNT, true ));
 
+	audioplPicSettings.addItem(new CMenuSeparator(CMenuSeparator::LINE | CMenuSeparator::STRING, LOCALE_ESOUND_NAME));
+	CStringInput * audioplPicSettings_EsoundPort= new CStringInput(LOCALE_ESOUND_PORT, g_settings.esound_port, 5, NONEXISTANT_LOCALE, NONEXISTANT_LOCALE, "0123456789 ");
+	audioplPicSettings.addItem(new CMenuForwarder(LOCALE_ESOUND_PORT, true, g_settings.esound_port, audioplPicSettings_EsoundPort));
+
 }
 
 /* for misc settings menu */

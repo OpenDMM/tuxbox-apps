@@ -330,6 +330,7 @@ const char * locale_real_names[] =
 	"epgviewer.notfound",
 	"esound.info",
 	"esound.name",
+	"esound.port",
 	"eventfinder.head",
 	"eventfinder.keyword",
 	"eventfinder.search",
