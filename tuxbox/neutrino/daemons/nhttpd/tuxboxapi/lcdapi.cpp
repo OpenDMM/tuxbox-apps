@@ -36,7 +36,6 @@
 
 #include <lcddisplay/lcddisplay.h>
 
-#include <dbox/fp.h>
 #include <fcntl.h>
 #include <unistd.h>
 
