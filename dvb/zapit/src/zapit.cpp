@@ -683,10 +683,12 @@ void saveSettings(bool write)
 		int c = ((currentMode & RADIO_MODE) ? bouquetManager->radioChannelsBegin() : bouquetManager->tvChannelsBegin()).getLowestChannelNumberWithChannelID(cc->getChannelID());
 
 		if (c >= 0)
+		{
 			if ((currentMode & RADIO_MODE))
 				lastChannelRadio = c;
 			else
 				lastChannelTV = c;
+		}
 	}
 
 	if (write) {
