@@ -27,8 +27,10 @@
 #include <zapit/debug.h>
 #include <zapit/settings.h>
 #include <zapit/video.h>
+#if defined HAVE_DBOX_HARDWARE || defined HAVE_DREAMBOX_HARDWARE || defined HAVE_IPBOX_HARDWARE
 #include <dbox/avs_core.h>
 #include <dbox/saa7126_core.h>
+#endif
 
 extern struct Ssettings settings;
 
@@ -93,6 +95,7 @@ video_displayformat_t CVideo::getCroppingMode(void)
    format == -1 disables 12V on SCART pin 8 */
 void CVideo::setVideoFormat(int format)
 {
+#if defined HAVE_DREAMBOX_HARDWARE || defined HAVE_DBOX_HARDWARE || defined HAVE_IPBOX_HARDWARE
 	video_displayformat_t videoDisplayFormat;
 	int _fd;
 	int avsiosfncFormat;
@@ -217,6 +220,7 @@ void CVideo::setVideoFormat(int format)
 			break;
 		}
 	}
+#endif
 #endif
 }
 

@@ -24,8 +24,10 @@
 #define __zapit_audio_h__
 
 #ifndef HAVE_TRIPLEDRAGON
+#if defined HAVE_DBOX_HARDWARE || defined HAVE_DREAMBOX_HARDWARE || defined HAVE_IPBOX_HARDWARE
 #include <dbox/avs_core.h>
 #define AVS_DEVICE "/dev/dbox/avs0"
+#endif
 #if HAVE_DVB_API_VERSION < 3
 #include <ost/audio.h>
 #define audio_stream_source_t	audioStreamSource_t
