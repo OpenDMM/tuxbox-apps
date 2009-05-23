@@ -7283,7 +7283,7 @@ static void *cnThread(void *)
 				sendToSleepNow = false;
 
 				dmxCN.real_pause();
-				printdate_ms(stderr);fprintf(stderr,"dmxCN: going to sleep...\n");
+				dprintf("dmxCN: going to sleep...\n");
 
 				writeLockMessaging();
 				messaging_eit_is_busy = false;
@@ -7306,7 +7306,7 @@ static void *cnThread(void *)
 
 				if (rs == 0)
 				{
-					printdate_ms(stderr); fprintf(stderr,"dmxCN: waking up again - requested from .change()\n");
+					dprintf("dmxCN: waking up again - requested from .change()\n");
 					dmxCN.real_unpause();
 #if HAVE_IPBOX_HARDWARE
 					dmxCN.change(0);
