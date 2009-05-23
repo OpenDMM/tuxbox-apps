@@ -601,7 +601,6 @@ const char *dmx_filter_types [] = {
 			"dummy filter",
 			"actual transport stream, scheduled",
 			"other transport stream, now/next",
-			"actual transport stream, scheduled2",
 #ifdef HAVE_DBOX_HARDWARE
 			"other transport stream, scheduled 1/2",
 			"other transport stream, scheduled 2/2"
