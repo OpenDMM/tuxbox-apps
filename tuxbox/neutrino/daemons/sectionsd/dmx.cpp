@@ -602,9 +602,12 @@ const char *dmx_filter_types [] = {
 			"actual transport stream, scheduled",
 			"other transport stream, now/next",
 			"actual transport stream, scheduled2",
-//			"other transport stream, scheduled"
+#ifdef HAVE_DBOX_HARDWARE
 			"other transport stream, scheduled 1/2",
 			"other transport stream, scheduled 2/2"
+#else
+			"other transport stream, scheduled"
+#endif
 };
 
 int DMX::change(const int new_filter_index)

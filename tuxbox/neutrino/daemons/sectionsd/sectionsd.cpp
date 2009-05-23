@@ -6809,9 +6809,12 @@ static void *eitThread(void *)
 	dmxEIT.addfilter(0x50, 0xff); //1  actual TS, scheduled
 	dmxEIT.addfilter(0x4f, 0xff); //2  other TS, current/next
 	dmxEIT.addfilter(0x50, 0xf0); //3  actual TS, scheduled later
-//	dmxEIT.addfilter(0x60, 0xf0); //4  other TS, scheduled
+#ifdef HAVE_DBOX_HARDWARE
 	dmxEIT.addfilter(0x60, 0xf1); //4a other TS, scheduled, even
 	dmxEIT.addfilter(0x61, 0xf1); //4b other TS, scheduled, odd
+#else
+	dmxEIT.addfilter(0x60, 0xf0); //4  other TS, scheduled
+#endif
 
 	if (debug) {
 		int policy;
