@@ -443,11 +443,11 @@ void CStreamInfo2::paint(int/*mode*/)
 		ypos = y+hheight+8;
 
 		// paint PIG
-#ifndef HAVE_DREAMBOX_DM500
-		paint_pig( pigboxes_x,  ypos , 240, 190);
-#else
+#ifdef BOXMODEL_DM500
 		// the dm500 seems to like only half / quarter resolution...
 		paint_pig(pigboxes_x + 60,  ypos, 180, 144);
+#else
+		paint_pig( pigboxes_x,  ypos , 240, 190);
 #endif
 
 		// Info Output

@@ -80,12 +80,12 @@ CImageInfo::CImageInfo()
 	width 	= endX-startX;
 	height 	= endY-startY;
 	
-#ifndef HAVE_DREAMBOX_DM500
-	pigw = 215;
-	pigh = 170;
-#else
+#ifdef BOXMODEL_DM500
 	pigw = 180;
 	pigh = 144;
+#else
+	pigw = 215;
+	pigh = 170;
 #endif
 	
 	x = endX - pigw -16;

@@ -3566,7 +3566,7 @@ void CNeutrinoApp::scartMode( bool bOnOff )
 void CNeutrinoApp::standbyMode( bool bOnOff )
 {
 	//printf( ( bOnOff ) ? "mode: standby on\n" : "mode: standby off\n" );
-#ifdef HAVE_DREAMBOX_DM500
+#ifdef BOXMODEL_DM500
 	int fd = open("/dev/dbox/fp0", O_RDWR);
 	if (fd != -1) {
 		int standby = bOnOff?1:0;
