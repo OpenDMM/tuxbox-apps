@@ -84,7 +84,7 @@ class DMX
 	int request_pause(void);
 	int request_unpause(void);
 
-	int change(const int new_filter_index); // locks while changing
+	int change(const int new_filter_index, const int new_current_service = -1); // locks while changing
 
 	void lock(void);
 	void unlock(void);
