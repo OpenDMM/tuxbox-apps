@@ -3590,7 +3590,11 @@ void CNeutrinoApp::standbyMode( bool bOnOff )
 		CLCD::getInstance()->setMode(CLCD::MODE_STANDBY);
 		g_Controld->videoPowerDown(true);
 		if (g_settings.standby_save_power)
+		{
 			g_Zapit->setStandby(true);
+			g_Sectionsd->setPauseScanning(true);
+			CLCD::getInstance()->setEPGTitle("");
+		}
 
 		execute_start_file(NEUTRINO_ENTER_STANDBY_SCRIPT);
 
@@ -3608,7 +3612,10 @@ void CNeutrinoApp::standbyMode( bool bOnOff )
 
 		CLCD::getInstance()->setMode(CLCD::MODE_TVRADIO);
 		if (g_settings.standby_save_power)
+		{
 			g_Zapit->setStandby(false);
+			g_Sectionsd->setPauseScanning(false);
+		}
 		g_Controld->videoPowerDown(false);
 
 		execute_start_file(NEUTRINO_LEAVE_STANDBY_SCRIPT);
