@@ -29,7 +29,7 @@ extern int fh_png_getsize(const char *, int *, int *, int, int);
 extern int fh_png_load(const char *, unsigned char *, int, int);
 extern int fh_png_id(const char *);
 
-stmenu *stmenu::instance;
+stmenu *stmenu::instance = 0;
 bool doexit = false;
 
 stmenu::stmenu()
