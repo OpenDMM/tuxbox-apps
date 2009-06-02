@@ -443,7 +443,7 @@ void CStreamInfo2::paint(int/*mode*/)
 		ypos = y+hheight+8;
 
 		// paint PIG
-#ifdef BOXMODEL_DM500
+#if defined BOXMODEL_DM500 || defined HAVE_IPBOX_HARDWARE
 		// the dm500 seems to like only half / quarter resolution...
 		paint_pig(pigboxes_x + 60,  ypos, 180, 144);
 #else

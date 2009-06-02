@@ -80,7 +80,7 @@ CImageInfo::CImageInfo()
 	width 	= endX-startX;
 	height 	= endY-startY;
 	
-#ifdef BOXMODEL_DM500
+#if defined BOXMODEL_DM500 || defined HAVE_IPBOX_HARDWARE
 	pigw = 180;
 	pigh = 144;
 #else
