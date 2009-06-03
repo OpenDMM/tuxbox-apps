@@ -531,6 +531,7 @@ void CLCDMenu::exec()
 		<< " was not found, not exec-ing\n";
     }
 
+    alarm(0);
     execl(execfilename.c_str(), execfilename.c_str(), NULL);
   }
 }
