@@ -83,6 +83,9 @@
 #define DVR	ADAP "/dvr0"
 #endif
 
+#define ESOUNDSERVER_START_SCRIPT CONFIGDIR "/esoundserver.start"
+#define ESOUNDSERVER_END_SCRIPT CONFIGDIR "/esoundserver.end"
+
 bool esound_active = false;
 
 CEsoundGui::CEsoundGui()
@@ -182,6 +185,10 @@ int CEsoundGui::exec(CMenuTarget* parent, const std::string &)
 	CIRSend irs("esoundon");
 	irs.Send();
 
+	puts("[esound.cpp] executing " ESOUNDSERVER_START_SCRIPT "."); 
+	if (system(ESOUNDSERVER_START_SCRIPT) != 0) 
+		perror("Datei " ESOUNDSERVER_START_SCRIPT " fehlt.Bitte erstellen, wenn gebraucht.\nFile " ESOUNDSERVER_START_SCRIPT " not found. Please create if needed.\n");
+
 #ifdef HAVE_DBOX_HARDWARE
 	// disable iec aka digi out
 	g_Zapit->IecOff();
@@ -218,6 +225,10 @@ int CEsoundGui::exec(CMenuTarget* parent, const std::string &)
 	//Send ir
 	CIRSend irs2("esoundoff");
 	irs2.Send();
+
+	puts("[esound.cpp] executing " ESOUNDSERVER_END_SCRIPT "."); 
+	if (system(ESOUNDSERVER_END_SCRIPT) != 0) 
+		perror("Datei " ESOUNDSERVER_END_SCRIPT " fehlt. Bitte erstellen, wenn gebraucht.\nFile " ESOUNDSERVER_END_SCRIPT " not found. Please create if needed.\n");
 
 	// Start Sectionsd
 	g_Sectionsd->setPauseScanning(false);
