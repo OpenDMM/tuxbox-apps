@@ -557,6 +557,7 @@ int EventList::exec(const t_channel_id channel_id, const std::string& channelnam
 					}
 
 					paintHead();
+					UpdateTimerList();
 					paint();
 					showFunctionBar(true);
 				}
