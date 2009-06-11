@@ -3589,14 +3589,15 @@ void CNeutrinoApp::standbyMode( bool bOnOff )
 
 		CLCD::getInstance()->setMode(CLCD::MODE_STANDBY);
 		g_Controld->videoPowerDown(true);
+
+		execute_start_file(NEUTRINO_ENTER_STANDBY_SCRIPT);
+
 		if (g_settings.standby_save_power)
 		{
 			g_Zapit->setStandby(true);
 			g_Sectionsd->setPauseScanning(true);
 			CLCD::getInstance()->setEPGTitle("");
 		}
-
-		execute_start_file(NEUTRINO_ENTER_STANDBY_SCRIPT);
 
 		standbyAfterRecord = false; // reset
 		lastMode = mode;
