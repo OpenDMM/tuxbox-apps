@@ -243,6 +243,8 @@ int CMenuWidget::exec(CMenuTarget* parent, const std::string &)
 				case (CRCInput::RC_ok):
 					{
 						//exec this item...
+						if ( hasItem() )
+						{
 						CMenuItem* item = items[selected];
 						int rv = item->exec( this );
 						switch ( rv )
@@ -256,6 +258,12 @@ int CMenuWidget::exec(CMenuTarget* parent, const std::string &)
 							case menu_return::RETURN_REPAINT:
 								paint();
 								break;
+						}
+					}
+						else
+						{
+							msg = CRCInput::RC_timeout;
+							break;
 						}
 					}
 					break;
