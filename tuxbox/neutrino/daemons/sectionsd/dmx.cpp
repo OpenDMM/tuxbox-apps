@@ -787,7 +787,7 @@ int DMX::dropCachedSectionIDs()
         lock();
 
 /* i think that those checks are wrong for dropCachedSectionIDs(), since
-   this is called from the houskeeping thread while sectionsd might be
+   this is called from the housekeeping thread while sectionsd might be
    idle waiting for the EIT update filter to trigger -- seife
  */
 #if 0

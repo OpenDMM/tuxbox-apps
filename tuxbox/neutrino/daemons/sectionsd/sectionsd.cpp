@@ -8230,7 +8230,7 @@ int main(int argc, char **argv)
 		rc = pthread_create(&threadHouseKeeping, 0, houseKeepingThread, 0);
 
 		if (rc) {
-			fprintf(stderr, "[sectionsd] failed to create houskeeping-thread (rc=%d)\n", rc);
+			fprintf(stderr, "[sectionsd] failed to create housekeeping-thread (rc=%d)\n", rc);
 			return EXIT_FAILURE;
 		}
 
