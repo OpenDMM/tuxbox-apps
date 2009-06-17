@@ -4909,7 +4909,7 @@ bool parse_command(CBasicMessage::Header &rmsg, int connfd)
 				}
 			}
 			else
-				dputs("Unknow format or version of request!");
+				dputs("Unknown format or version of request!");
 		}
 	} // try
 	catch (std::exception& e)
