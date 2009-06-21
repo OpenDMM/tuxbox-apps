@@ -155,7 +155,7 @@ public:
 		// check if directory is available, delete it and recreate it
 		if (access(imageDir.c_str(), W_OK) == 0)
 			system(eString("rm -rf " + imageDir).c_str());
-		system(eString("mkdir " + imageDir + " --mode=777 --parents").c_str());
+		system(eString("mkdir " + imageDir + " -m777 -p").c_str());
 		if (access(imageDir.c_str(), W_OK) != 0)
 			return -3;
 	
