@@ -1408,7 +1408,7 @@ int EpgPlus::exec
 			if ( msg <= CRCInput::RC_MaxRC )
 				timeoutEnd = CRCInput::calcTimeoutEnd(g_settings.timing[SNeutrinoSettings::TIMING_CHANLIST]);
 
-			if (msg == g_settings.key_channelList_pagedown || msg == CRCInput::RC_yellow)
+			if (msg == CRCInput::RC_yellow)
 			{
 				if (this->channelList->getSize() > 0 )
 					{
@@ -1462,7 +1462,7 @@ int EpgPlus::exec
 						}
 					}
 			}
-			else if (msg == g_settings.key_channelList_pageup || msg == CRCInput::RC_green)
+			else if (msg == CRCInput::RC_green)
 			{
 				if (this->channelList->getSize() > 0 )
 				{
