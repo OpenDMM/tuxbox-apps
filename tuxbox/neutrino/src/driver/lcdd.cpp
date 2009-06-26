@@ -511,7 +511,7 @@ void CLCD::showTime()
 		{
 			display.draw_fill_rect(-1, -1, 120, 64, CLCDDisplay::PIXEL_OFF); // clear lcd
 
-			ShowNewClock(&display, t->tm_hour, t->tm_min, t->tm_wday, t->tm_mday, t->tm_mon);
+			ShowNewClock(&display, t->tm_hour, t->tm_min, t->tm_sec, t->tm_wday, t->tm_mday, t->tm_mon);
 		}
 		else
 		{
