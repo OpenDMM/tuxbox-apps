@@ -2764,7 +2764,10 @@ void leaveStandby(void)
 	else	// reopen the device...
 		audioDecoder->openDevice();
 
-	audioDecoder->unmute();
+	if (settings.mute)
+		audioDecoder->mute();
+	else
+		audioDecoder->unmute();
 
 	if (!videoDecoder)
 		videoDecoder = new CVideo();
