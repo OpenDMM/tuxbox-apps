@@ -323,7 +323,7 @@ int CChannelList::show()
 		}
 		else if (msg_repeatok == CRCInput::RC_down || msg_repeatok == g_settings.key_channelList_pagedown)
 		{
-			int step = 0;
+			unsigned int step = 0;
 			int prev_selected = selected;
 
 			step = (msg_repeatok == g_settings.key_channelList_pagedown) ? listmaxshow : 1;  // browse or step 1
