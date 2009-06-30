@@ -329,9 +329,12 @@ int CChannelList::show()
 			step = (msg_repeatok == g_settings.key_channelList_pagedown) ? listmaxshow : 1;  // browse or step 1
 			selected += step;
 
-			if(selected >= chanlist.size()) {
-				selected = ((step == listmaxshow) && (selected < (((chanlist.size()/listmaxshow)+1)*listmaxshow))) ? (chanlist.size()-1) : 0;
-			}
+			if(selected >= chanlist.size())
+				if (((chanlist.size() / listmaxshow) + 1) * listmaxshow == chanlist.size() + listmaxshow) // last page has full entries
+					selected = 0;
+				else
+					selected = ((step == listmaxshow) && (selected < (((chanlist.size() / listmaxshow)+1) * listmaxshow))) ? (chanlist.size() - 1) : 0;
+
 			paintItem(prev_selected - liststart);
 			unsigned int oldliststart = liststart;
 			liststart = (selected/listmaxshow)*listmaxshow;
