@@ -1694,7 +1694,11 @@ bool parse_command(CBasicMessage::Header &rmsg, int connfd)
 	{
 		CZapitMessages::responseZapComplete msgResponseZapComplete;
 		if (cc)
+		{
+			/* force a full tuning cycle */
+			tuned_transponder_id = TRANSPONDER_ID_NOT_TUNED;
 			msgResponseZapComplete.zapStatus = zapTo_ChannelID(cc->getChannelID(), false);
+		}
 		else
 			msgResponseZapComplete.zapStatus = 0;
 
