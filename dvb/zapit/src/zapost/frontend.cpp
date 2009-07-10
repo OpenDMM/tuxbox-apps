@@ -728,10 +728,7 @@ int CFrontend::setParameters(TP_params *TP)
 		}
 
 		TP->feparams.frequency -= freq_offset;
-#if HAVE_DVB_API_VERSION >= 3
-		// for the dreambox, we do this further down...
 		setSec(TP->diseqc, TP->polarization, high_band, TP->feparams.frequency);
-#endif
 	}
 
 	/*
@@ -755,21 +752,6 @@ int CFrontend::setParameters(TP_params *TP)
 	{
 		do
 		{
-#if HAVE_DVB_API_VERSION < 3
-			/* i have no idea why, but dreamboxen seem to like this ioctl
-			   very much and refuse to work without it... */
-			if (!tuned) {
-				fop(ioctl, FE_SET_POWER_STATE, FE_POWER_ON);
-				// usleep(150000);
-				/* after returning from standby, i need two tries, regardless
-				   of the usleep, so i can as well just skip it :-( */
-			}
-			/* setSec again for each retry, just to make sure, my dreambox needs this
-			   since dreamdriver_dm500_20071022.tar.bz2 */
-			if (info.type == FE_QPSK)
-				setSec(TP->diseqc, TP->polarization, high_band, TP->feparams.frequency);
-#endif
-
 			tuned = false;
 			setFrontend (&TP->feparams);
 			event = getEvent();	/* check if tuned */
