@@ -784,13 +784,13 @@ void *start_scanthread(void *imsg)
 abort_scan:
 	/* report status */
 	INFO("found %d transponders and %d channels", found_transponders, found_channels);
+	stop_scan(true);
 
 	/* load new services */
 	CZapitClient myZapitClient;
 	myZapitClient.reinitChannels();
-
-	stop_scan(true);
 	myZapitClient.ReZap();
+
 	pthread_exit(0);
 }
 
