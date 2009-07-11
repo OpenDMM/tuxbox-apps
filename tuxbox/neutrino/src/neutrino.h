@@ -143,7 +143,8 @@ class CNeutrinoApp : public CMenuTarget, CChangeObserver
 
 		int					mode;
 		int					lastMode;
-		int					mode_beforeScart;
+		int					tunerMode;
+		bool					wakeupfromScart;
 		bool					standbyAfterRecord;
 		bool					softupdate;
 		bool					fromflash;
