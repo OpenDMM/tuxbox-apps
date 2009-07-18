@@ -393,14 +393,6 @@ int parse_pmt(CZapitChannel * const channel)
 				break;
 			}
 
-	//Quick&Dirty Hack to support Premiere's EPG not only on the portal but on the subchannels as well 
-	if (channel->getOriginalNetworkId() == 0x0085) {
-		if (channel->getTransportStreamId() ==0x0003)
-			channel->setPrivatePid(0x0b12);
-		if (channel->getTransportStreamId() ==0x0004)
-			channel->setPrivatePid(0x0b11);
-	}
-
 	/* pmt */
 	for (i = 12 + program_info_length; i < section_length - 1; i += ES_info_length + 5)
 		ES_info_length = parse_ES_info(buffer + i, channel, caPmt);

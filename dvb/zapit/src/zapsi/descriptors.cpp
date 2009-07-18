@@ -433,9 +433,9 @@ void service_descriptor(const unsigned char * const buffer, const t_service_id s
 		providerName = "Chambre des D\xC3\xA9" "put\xC3\xA9" "es";
 		in_blacklist = true;
 	}
-	else if (providerName == "PREMIERE")
+	else if (providerName == "SKY")
 	{
-		providerName = "Premiere"; // well the name PREMIERE itself is not a problem
+		providerName = "Sky"; // well the name SKY itself is not a problem
 		in_blacklist = true;
 	}
 	else if((check_blacklisted_digital_plus(original_network_id, transport_stream_id)))
