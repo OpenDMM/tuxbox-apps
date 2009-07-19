@@ -90,6 +90,7 @@ in_plugin_config.mnu_einfuegen --> den Inhalt in /var/tuxbox/config/flexinc/plug
 #include <sys/socket.h>
 #include <time.h>
 #include <unistd.h>
+#include <linux/version.h>
 
 #include <dbox/saa7126_core.h>
 
@@ -108,7 +109,11 @@ in_plugin_config.mnu_einfuegen --> den Inhalt in /var/tuxbox/config/flexinc/plug
 #define P_VERSION "1.2"		// ??? - Barf
 
 #if HAVE_DVB_API_VERSION >= 3
+#if LINUX_VERSION_CODE < KERNEL_VERSION(2,5,0)
 #include <linux/dvb/avia/avia_gt_capture.h>
+#else
+#include <../dvb/drivers/media/dvb/avia/avia_gt_capture.h>
+#endif
 #else
 #include <dbox/avia_gt_capture.h>
 #endif
