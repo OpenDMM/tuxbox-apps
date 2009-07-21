@@ -134,6 +134,18 @@ class CNeutrinoApp : public CMenuTarget, CChangeObserver
 			init_mode_switch 	= 3,
 		};
 
+	enum
+		{
+			STARTMODE_UNKNOWN	= -1,
+			STARTMODE_TV	 	= 0,
+			STARTMODE_RADIO	 	= 1,
+			STARTMODE_SCART	 	= 2,
+			STARTMODE_AUDIOPLAYER 	= 3,
+			STARTMODE_INETRADIO 	= 4,
+			STARTMODE_ESOUND 	= 5,
+			STARTMODE_STANDBY 	= 6,
+		};
+
 		CConfigFile				configfile;
 		CScanSettings			scanSettings;
 		int					network_dhcp;

@@ -671,6 +671,7 @@ const char * locale_real_names[] =
 	"miscsettings.shutdown_real",
 	"miscsettings.shutdown_real_rcdelay",
 	"miscsettings.standby_save_power",
+	"miscsettings.startmode",
 	"miscsettings.tuxtxt_cache",
 	"miscsettings.virtual_zap_mode",
 	"miscsettings.volumebar_disp_pos",

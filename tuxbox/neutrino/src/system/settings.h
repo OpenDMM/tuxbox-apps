@@ -73,6 +73,7 @@ struct SNeutrinoSettings
 	char infobar_channel_logodir[100];
 	int infobar_show_channellogo;
 	int infobar_channellogo_background;
+	int startmode;
 
 	// EPG
 	std::string epg_cache;
