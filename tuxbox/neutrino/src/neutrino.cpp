@@ -2334,7 +2334,11 @@ void CNeutrinoApp::RealRun(CMenuWidget &mainMenu)
 		}
 	}
 
-	if(g_settings.startmode == STARTMODE_RADIO)
+	if(g_settings.startmode == STARTMODE_TV)
+	{
+		tvMode();
+	}
+	else if(g_settings.startmode == STARTMODE_RADIO)
 	{
 		radioMode();
 	}
