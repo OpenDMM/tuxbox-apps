@@ -258,6 +258,17 @@ eString getConfigSettings(void)
 		free(epgcachepath);
 	}
 	result.strReplace("#EPGCACHEPATH#", rpl);
+	
+	char *epgfilename=NULL;
+	eConfig::getInstance()->getKey("/extras/epgfile", epgfilename);
+	rpl = "epg.dat";
+	if ( epgfilename )
+	{
+		rpl = epgfilename;
+		free(epgfilename);
+	}
+	result.strReplace("#EPGFILENAME#", rpl);
+	
 	return result;
 }
 
@@ -276,8 +287,10 @@ eString setConfigSettings(eString request, eString dirpath, eString opts, eHTTPC
 	eString audiochannelspriority = opt["audiochannelspriority"];
 	eString trustedhosts = opt["trustedhosts"];
 	eString epgcachepath = opt["epgcachepath"];
+	eString epgfilename = opt["epgfilename"];
 	eConfig::getInstance()->setKey("/ezap/webif/trustedhosts", trustedhosts.c_str());
 	eConfig::getInstance()->setKey("/extras/epgcachepath", epgcachepath.c_str());
+	eConfig::getInstance()->setKey("/extras/epgfile", epgfilename.c_str());
 
 	int oldti = 0;
 	eConfig::getInstance()->getKey("/extras/hdparm-s", oldti);
