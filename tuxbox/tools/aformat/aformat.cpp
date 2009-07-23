@@ -339,6 +339,17 @@ int main(int argc, char **argv)
 	signal(SIGUSR1, signal_handler);
 	signal(SIGUSR2, signal_handler);
 
+	// Normally, this fails leaving f == NULL.
+	// Otherwise, refuse to run.
+	FILE *f = fopen(PID_FILE, "r");
+	int existing_pid;
+	if (f != 0) {
+		fscanf(f, "%d", &existing_pid);
+		fprintf(stderr,
+			"Es scheint schon ein aformat-Instanz mit PID %d zu laufen.\n"
+			"Falls nicht, loesche %s.\n", existing_pid,  PID_FILE);
+		exit(EXIT_FAILURE);
+	}
 	if (!debug) {
 		pid_t pid = fork();
 		switch (pid) {
