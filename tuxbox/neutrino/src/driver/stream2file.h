@@ -53,6 +53,7 @@ struct stream2file_status2_t
 
 stream2file_error_msg_t start_recording(const char * const filename,
 					const char * const info,
+					int mode,
 					const bool with_o_sync,
 					const bool with_fdatasync,
 					const unsigned long long splitsize,
