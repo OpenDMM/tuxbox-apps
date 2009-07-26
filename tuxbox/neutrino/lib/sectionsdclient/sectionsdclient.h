@@ -195,7 +195,9 @@ class CSectionsdClient : private CBasicClient
 
 	bool getEPGidShort(const event_id_t eventid, CShortEPGData * epgdata);
 
+#ifdef ENABLE_PPT
 	void setPrivatePid(const unsigned short pid);
+#endif
 
 //	void setSectionsdScanMode(const int scanMode);
 	

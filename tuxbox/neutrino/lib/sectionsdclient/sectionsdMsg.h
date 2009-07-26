@@ -86,7 +86,9 @@ struct sectionsd
 		pauseSorting,			// commandPauseSorting
 		CMD_registerEvents,		// commandRegisterEventClient
 		CMD_unregisterEvents,		// commandUnRegisterEventClient
+#ifdef ENABLE_PPT
 		setPrivatePid,			// commandSetPrivatePid
+#endif
 		setSectionsdScanMode,		// commandSetSectionsdScanMode
 		freeMemory,			// commandFreeMemory
 		readSIfromXML,			// commandReadSIfromXML
