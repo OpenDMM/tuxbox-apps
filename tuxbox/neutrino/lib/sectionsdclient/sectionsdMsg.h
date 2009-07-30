@@ -88,6 +88,8 @@ struct sectionsd
 		CMD_unregisterEvents,		// commandUnRegisterEventClient
 #ifdef ENABLE_PPT
 		setPrivatePid,			// commandSetPrivatePid
+#else
+		dummy11_setPrivatePid,
 #endif
 		setSectionsdScanMode,		// commandSetSectionsdScanMode
 		freeMemory,			// commandFreeMemory
