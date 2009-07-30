@@ -4935,6 +4935,8 @@ static s_cmd_table connectionCommands[sectionsd::numberOfCommands] = {
 {	commandUnRegisterEventClient,           "commandUnRegisterEventClient"		},
 #ifdef ENABLE_PPT
 {	commandSetPrivatePid,                   "commandSetPrivatePid"			},
+#else
+{	commandDummy2,                          "commandSetPrivatePid"			},
 #endif
 {	commandSetSectionsdScanMode,            "commandSetSectionsdScanMode"		},
 {	commandFreeMemory,			"commandFreeMemory"			},
