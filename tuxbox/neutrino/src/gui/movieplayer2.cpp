@@ -2661,8 +2661,12 @@ CMoviePlayerGui::PlayStream(int streamtype)
 						    filelist[0].getFileName() == "index.vdr")
 						{
 							std::string fn = filelist[0].getPath() + "001.vdr";
-							if (!access(fn.c_str(), R_OK)) // file does exist
+							struct stat s;
+							if (!stat(fn.c_str(), &s)) // file does exist
+							{
 								filelist[0].Name = fn;
+								filelist[0].Size = s.st_size;
+							}
 						}
 					}
 					filename = filelist[0].Name.c_str();
