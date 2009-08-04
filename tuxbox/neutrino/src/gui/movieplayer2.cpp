@@ -2632,8 +2632,13 @@ CMoviePlayerGui::PlayStream(int streamtype)
 			if (stream)
 				filebrowser->Filter = &vlcfilefilter;
 			else
+			{
 				filebrowser->Filter = &tsfilefilter;
-			
+				// TODO: this is probably better fixed in the filebrowser class
+				if (access(Path.c_str(), R_OK)) // Path does not (no longer?) exist
+					Path = Path_local;
+			}
+
 			if (filebrowser->exec(Path.c_str()))
 			{
 				Path = filebrowser->getCurrentDir();
