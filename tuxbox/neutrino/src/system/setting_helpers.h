@@ -155,6 +155,14 @@ class CPauseSectionsdNotifier : public CChangeObserver
 		bool changeNotify(const neutrino_locale_t, void * Data);
 };
 
+#ifdef ENABLE_RADIOTEXT
+class CRadiotextNotifier : public CChangeObserver
+{
+	public:
+		bool changeNotify(const neutrino_locale_t, void * Data);
+};
+#endif
+
 #ifdef HAVE_DBOX_HARDWARE
 class CSPTSNotifier : public CChangeObserver
 {

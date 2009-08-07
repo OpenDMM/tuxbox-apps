@@ -74,6 +74,7 @@ struct SNeutrinoSettings
 	int infobar_show_channellogo;
 	int infobar_channellogo_background;
 	int startmode;
+	int radiotext_enable;
 
 	// EPG
 	std::string epg_cache;

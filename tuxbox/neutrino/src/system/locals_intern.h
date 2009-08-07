@@ -656,6 +656,7 @@ const char * locale_real_names[] =
 	"miscsettings.infobar_sat_display",
 	"miscsettings.infobar_show",
 	"miscsettings.osd_specials",
+	"miscsettings.radiotext",
 	"miscsettings.rc_standby_off_with",
 	"miscsettings.rc_standby_off_with_power",
 	"miscsettings.rc_standby_off_with_power_home",
