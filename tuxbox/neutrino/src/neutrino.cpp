@@ -3052,6 +3052,7 @@ int CNeutrinoApp::handleMsg(const neutrino_msg_t m, neutrino_msg_data_t data)
 			}
 			return messages_return::handled;
 		}
+#ifdef ENABLE_ESD
 		else if( msg == NeutrinoMessages::ESOUND_ON )
 		{
 			CEsoundGui::CEsoundGui tmpEsoundGui;
@@ -3059,6 +3060,7 @@ int CNeutrinoApp::handleMsg(const neutrino_msg_t m, neutrino_msg_data_t data)
 			g_RCInput->clearRCMsg();
 			return messages_return::handled;
 		}
+#endif
 		else if (msg == NeutrinoMessages::EVT_POPUP)
 		{
 			if (mode != mode_scart)
