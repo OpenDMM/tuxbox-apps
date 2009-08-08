@@ -100,7 +100,26 @@ CLCDMenu::CLCDMenu (std::string configFilename)
 
 	} else {
 	  for (unsigned int i = 0; i < entries.size(); i++) {
-	    if (stat(entries_files[i].c_str(), buf)) {
+	    // find out if it exists
+	    bool found = false;
+	    // If absolut name (name with directory), check for its presence
+	    if ((entries_files[i].find_first_of('/')) != string::npos)
+	      found = stat(entries_files[i].c_str(), buf) == 0;
+	    else {
+	      // otherwise look for it in PATH.
+	      std::string search_path = getenv("PATH");
+	      while (!found && !search_path.empty()) {
+		unsigned int n = search_path.find_first_of(':');
+		std::string path = search_path.substr(0,n) + "/" + entries_files[i];
+		found = stat(path.c_str(), buf) == 0;
+		search_path = n != std::string::npos ? search_path.substr(n+1) : "";
+#ifdef DEBUG
+		std::cerr << path + " was " + (found ? "found\n" : "not found\n");
+#endif
+	      }
+	    }
+
+	    if (!found) {
 	      std::cout << "[lcdmenu] " << entries_files[i] << " was not found, entry " << entries[i] << " discarded\n";
 	    } else {
 	      real_entries.push_back(entries[i]);
