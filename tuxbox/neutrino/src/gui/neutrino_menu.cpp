@@ -86,10 +86,6 @@
 #include "gui/experimental_menu.h"
 #endif
 
-#ifndef MOVIEPLAYER2
-#define MOVIEBROWSER
-#endif
-
 CZapitClient::SatelliteList satList;
 static CTimingSettingsNotifier timingsettingsnotifier;
 
@@ -182,12 +178,12 @@ void CNeutrinoApp::InitMainMenu(CMenuWidget &mainMenu,
 
 	moviePlayer.addItem(new CMenuForwarder(LOCALE_MOVIEPLAYER_TSPLAYBACK, true, NULL, moviePlayerGui, "tsplayback", CRCInput::RC_green, NEUTRINO_ICON_BUTTON_GREEN));
 	moviePlayer.addItem(new CMenuForwarder(LOCALE_MOVIEPLAYER_TSPLAYBACK_PC, true, NULL, moviePlayerGui, "tsplayback_pc", CRCInput::RC_1));
-#ifdef MOVIEBROWSER
+#ifdef ENABLE_MOVIEBROWSER
 	moviePlayer.addItem(new CMenuForwarder(LOCALE_MOVIEBROWSER_HEAD, true, NULL, moviePlayerGui, "tsmoviebrowser", CRCInput::RC_2));
 	moviePlayer.addItem(new CMenuForwarder(LOCALE_MOVIEPLAYER_BOOKMARK, true, NULL, moviePlayerGui, "bookmarkplayback", CRCInput::RC_3));
 #else
 	moviePlayer.addItem(new CMenuForwarder(LOCALE_MOVIEPLAYER_BOOKMARK, true, NULL, moviePlayerGui, "bookmarkplayback", CRCInput::RC_2));
-#endif /* MOVIEBROWSER */
+#endif /* ENABLE_MOVIEBROWSER */
 	moviePlayer.addItem(GenericMenuSeparatorLine);
 	moviePlayer.addItem(new CMenuForwarder(LOCALE_MOVIEPLAYER_FILEPLAYBACK, true, NULL, moviePlayerGui, "fileplayback", CRCInput::RC_red, NEUTRINO_ICON_BUTTON_RED));
 	moviePlayer.addItem(new CMenuForwarder(LOCALE_MOVIEPLAYER_DVDPLAYBACK, true, NULL, moviePlayerGui, "dvdplayback", CRCInput::RC_yellow, NEUTRINO_ICON_BUTTON_YELLOW));

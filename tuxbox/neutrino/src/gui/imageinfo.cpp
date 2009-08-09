@@ -27,12 +27,9 @@
 
 #include <gui/imageinfo.h>
 
-#ifndef MOVIEPLAYER2
-#define MOVIEBROWSER
-#endif
-#ifdef MOVIEBROWSER
+#ifdef ENABLE_MOVIEBROWSER
 #include <gui/moviebrowser.h>
-#endif /* MOVIEBROWSER */
+#endif /* ENABLE_MOVIEBROWSER */
 #include <gui/pictureviewer.h>
 #include <gui/streaminfo2.h>
 
@@ -314,12 +311,12 @@ void CImageInfo::paintRevisionInfos(int y_startposition)
 	paintContent(font_info, xpos, y_startposition, "Imageinfo:", COL_MENUCONTENTINACTIVE );
 	paintContent(font_info, xpos+x_offset_large, y_startposition, getModulVersion("","$Revision$").c_str());
 	
-#ifdef MOVIEBROWSER
+#ifdef ENABLE_MOVIEBROWSER
 	y_startposition += iheight;
 	static CMovieBrowser mb;
 	paintContent(font_info, xpos, y_startposition, "Moviebrowser:", COL_MENUCONTENTINACTIVE );
 	paintContent(font_info, xpos+x_offset_large, y_startposition, mb.getMovieBrowserVersion().c_str());
-#endif /* MOVIEBROWSER */
+#endif /* ENABLE_MOVIEBROWSER */
 
 	y_startposition += iheight;
 	static CPictureViewerGui pv;
