@@ -206,12 +206,18 @@ void CPersonalizeGui::ShowMainMenuOptions()
 	pMMMenu->addItem(new CMenuOptionChooser(LOCALE_MAINMENU_GAMES, (int *)&g_settings.personalize_games, PERSONALIZE_STD_OPTIONS, PERSONALIZE_STD_OPTION_COUNT, true, NULL, CRCInput::RC_blue, NEUTRINO_ICON_BUTTON_BLUE));
 	pMMMenu->addItem(GenericMenuSeparatorLine);
 
+#ifdef ENABLE_AUDIOPLAYER
 	pMMMenu->addItem(new CMenuOptionChooser(LOCALE_MAINMENU_AUDIOPLAYER, (int *)&g_settings.personalize_audioplayer,PERSONALIZE_STD_OPTIONS, PERSONALIZE_STD_OPTION_COUNT, true, NULL, CRCInput::convertDigitToKey(shortcut++)));
+#ifdef ENABLE_INTERNETRADIO
 	pMMMenu->addItem(new CMenuOptionChooser(LOCALE_INETRADIO_NAME, (int *)&g_settings.personalize_inetradio,PERSONALIZE_STD_OPTIONS, PERSONALIZE_STD_OPTION_COUNT, true, NULL, CRCInput::convertDigitToKey(shortcut++)));
-	//check if esound is available	
+#endif
+#endif
+#ifdef ENABLE_ESD
+	//check if esound is available
 	if (access("/bin/esd", X_OK) == 0 || access("/var/bin/esd", X_OK) == 0) {
 		pMMMenu->addItem(new CMenuOptionChooser(LOCALE_ESOUND_NAME, (int *)&g_settings.personalize_esound,PERSONALIZE_STD_OPTIONS, PERSONALIZE_STD_OPTION_COUNT, true, NULL, CRCInput::convertDigitToKey(shortcut++)));
-	}	
+	}
+#endif
 	pMMMenu->addItem(new CMenuOptionChooser(LOCALE_MAINMENU_MOVIEPLAYER, (int *)&g_settings.personalize_movieplayer, PERSONALIZE_STD_OPTIONS, PERSONALIZE_STD_OPTION_COUNT, true, NULL, CRCInput::convertDigitToKey(shortcut++)));
 	pMMMenu->addItem(new CMenuOptionChooser(LOCALE_MAINMENU_PICTUREVIEWER, (int *)&g_settings.personalize_pictureviewer, PERSONALIZE_STD_OPTIONS, PERSONALIZE_STD_OPTION_COUNT, true, NULL, CRCInput::convertDigitToKey(shortcut++)));
 #ifdef ENABLE_UPNP
