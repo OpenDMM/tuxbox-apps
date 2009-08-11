@@ -269,7 +269,9 @@ class CNeutrinoApp : public CMenuTarget, CChangeObserver
 				  CMenuWidget &miscSettings,
 				  CMenuWidget &driverSettings,
 				  CMenuWidget &service,
+#if defined(ENABLE_AUDIOPLAYER) || defined(ENABLE_PICTUREVIEWER) || defined(ENABLE_ESD)
 				  CMenuWidget &audiopl_picSettings,
+#endif
 				  CMenuWidget &streamingSettings,
 				  CMenuWidget &moviePlayer);
 		void addMenueIntroItems(CMenuWidget &item);

@@ -318,10 +318,12 @@ void CImageInfo::paintRevisionInfos(int y_startposition)
 	paintContent(font_info, xpos+x_offset_large, y_startposition, mb.getMovieBrowserVersion().c_str());
 #endif /* ENABLE_MOVIEBROWSER */
 
+#ifdef ENABLE_PICTUREVIEWER
 	y_startposition += iheight;
 	static CPictureViewerGui pv;
 	paintContent(font_info, xpos, y_startposition, "Pictureviewer:", COL_MENUCONTENTINACTIVE );
 	paintContent(font_info, xpos+x_offset_large, y_startposition, pv.getPictureViewerVersion().c_str());
+#endif
 	
 	y_startposition += iheight;
 	static CStreamInfo2Misc si;
