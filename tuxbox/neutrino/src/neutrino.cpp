@@ -2335,6 +2335,9 @@ void CNeutrinoApp::RealRun(CMenuWidget &mainMenu)
 
 	dprintf(DEBUG_NORMAL, "initialized everything\n");
 
+	CIRSend irs("neutrinoon");
+	irs.Send();
+
 	if (g_settings.vcr_AutoSwitch)
 	{
 		int val = 0;
@@ -3292,6 +3295,9 @@ void CNeutrinoApp::ExitRun(const bool write_si)
 				if (g_RCInput != NULL)
 					delete g_RCInput;
 
+				CIRSend irs("neutrinooff");
+				irs.Send();
+
 				exit(0);
 
 			}
@@ -3300,6 +3306,9 @@ void CNeutrinoApp::ExitRun(const bool write_si)
 			g_Timerd->shutdown();
 			if (g_RCInput != NULL)
 				delete g_RCInput;
+
+			CIRSend irs("neutrinooff");
+			irs.Send();
 
 			exit(0);
 
