@@ -54,15 +54,14 @@
 #include <gui/widget/hintbox.h>
 
 #include <system/flashtool.h>
+#include <sectionsdclient/sectionsdclient.h>
 #ifndef DISABLE_INTERNET_UPDATE
 #include <system/httptool.h>
-#endif
-
-#include <sectionsdclient/sectionsdclient.h>
 
 #include <curl/curl.h>
 #include <curl/types.h>
 #include <curl/easy.h>
+#endif
 
 #include <stdio.h>
 #include <unistd.h>

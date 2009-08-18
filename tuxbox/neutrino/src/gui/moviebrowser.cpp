@@ -43,6 +43,9 @@
 		based on code of Steffen Hehn 'McClean'
 
 	$Log$
+	Revision 1.25  2009/08/18 11:51:59  rhabarber1848
+	Neutrino: new configure option --disable-movieplayer: http://tuxbox-forum.dreambox-fan.de/forum/viewtopic.php?p=369382#p369382
+	
 	Revision 1.24  2009/05/06 19:48:20  houdini
 	fixed some warnings about shadowed variables
 	
@@ -2688,20 +2691,24 @@ bool CMovieBrowser::delFile(CFile& file)
 	{
 		result = delFile_std(file);
 	}
+#ifdef ENABLE_MOVIEPLAYER_VLC
 	else
 	{
 		result = delFile_vlc(file);
 	}
+#endif
 	return(result);
 }
 /************************************************************************
 
 ************************************************************************/
+#ifdef ENABLE_MOVIEPLAYER_VLC
 bool CMovieBrowser::delFile_vlc(CFile& file)
 {
 	bool result = false;
 	return(result);
 }
+#endif
 /************************************************************************
 
 ************************************************************************/

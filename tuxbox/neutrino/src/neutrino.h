@@ -191,7 +191,9 @@ class CNeutrinoApp : public CMenuTarget, CChangeObserver
 		CConsoleDestChangeNotifier	*ConsoleDestinationChanger;
 		CFdxChangeNotifier			*FdxSettingsChanger;
 		CRCLock				*rcLock;
+#ifdef ENABLE_MOVIEPLAYER
 		CMenuTarget* 			moviePlayerGui;
+#endif
 		bool 					parentallocked;
 		CFontSizeNotifier 		*fontsizenotifier;
 		bool 					waitforshutdown;
@@ -268,12 +270,14 @@ class CNeutrinoApp : public CMenuTarget, CChangeObserver
 				  CMenuWidget &languageSettings,
 				  CMenuWidget &miscSettings,
 				  CMenuWidget &driverSettings,
-				  CMenuWidget &service,
 #if defined(ENABLE_AUDIOPLAYER) || defined(ENABLE_PICTUREVIEWER) || defined(ENABLE_ESD)
 				  CMenuWidget &audiopl_picSettings,
 #endif
+#ifdef ENABLE_MOVIEPLAYER
 				  CMenuWidget &streamingSettings,
-				  CMenuWidget &moviePlayer);
+				  CMenuWidget &moviePlayer,
+#endif
+				  CMenuWidget &service);
 		void addMenueIntroItems(CMenuWidget &item);
 
 		void SetupTiming();
