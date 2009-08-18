@@ -230,6 +230,11 @@ bool CFrameBuffer::getActive() const
 	return (active || (virtual_fb != NULL));
 }
 
+bool CFrameBuffer::getActiveReally() const
+{
+	return active;
+}
+
 t_fb_var_screeninfo *CFrameBuffer::getScreenInfo()
 {
 	return &screeninfo;

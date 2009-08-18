@@ -120,6 +120,7 @@ class CFrameBuffer
 		fb_pixel_t * getFrameBufferPointer() const; // pointer to framebuffer
 		unsigned int getStride() const;             // size of a single line in the framebuffer (in bytes)
 		bool getActive() const;                     // is framebuffer active?
+		bool getActiveReally() const;
 
 #ifdef HAVE_DBOX_HARDWARE
 		void setTransparency( int tr = 0 );
