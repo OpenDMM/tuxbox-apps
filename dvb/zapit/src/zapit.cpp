@@ -1229,8 +1229,7 @@ bool parse_command(CBasicMessage::Header &rmsg, int connfd)
 					controldconfig->setInt32("volume_avs", settings.volume);
 				audioDecoder->setVolume(msg_commandVolume.volume);
 			}
-#ifdef HAVE_DBOX_HARDWARE
-/* only the dbox2 has IR send, AFAIK */
+#ifdef ENABLE_LIRC
 			else if (msg_commandVolume.type == CControld::TYPE_LIRC)
 			{
 				if (msg_commandVolume.volume > 50)
@@ -1268,7 +1267,7 @@ bool parse_command(CBasicMessage::Header &rmsg, int connfd)
 				else
 					audioDecoder->unmute();
 			}
-#ifdef HAVE_DBOX_HARDWARE
+#ifdef ENABLE_LIRC
 			else if (msg_commandMute.type == CControld::TYPE_LIRC)
 			{
 				CIRSend irs("mute");
@@ -1288,7 +1287,7 @@ bool parse_command(CBasicMessage::Header &rmsg, int connfd)
 				msg_responseVolume.type = settings.volume_type;
 			if (msg_responseVolume.type != CControld::TYPE_LIRC)
 				msg_responseVolume.volume = (unsigned char)settings.volume;
-#ifdef HAVE_DBOX_HARDWARE
+#ifdef ENABLE_LIRC
 			else if (msg_responseVolume.type == CControld::TYPE_LIRC)
 				msg_responseVolume.volume = 50; //we donnot really know...
 #else
@@ -1305,7 +1304,7 @@ bool parse_command(CBasicMessage::Header &rmsg, int connfd)
 				msg_responseMute.type = settings.volume_type;
 			if (msg_responseMute.type != CControld::TYPE_LIRC)
 				msg_responseMute.mute = settings.mute;
-#ifdef HAVE_DBOX_HARDWARE
+#ifdef ENABLE_LIRC
 			else if (msg_responseMute.type == CControld::TYPE_LIRC)
 				msg_responseMute.mute = false; //we donnot really know...
 #else
