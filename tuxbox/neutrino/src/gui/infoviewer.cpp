@@ -1558,6 +1558,10 @@ void CInfoViewer::show_Data(bool calledFromEvent)
 	{
 		// no EPG available
 		display_Info(NULL, g_Locale->getText(gotTime ? LOCALE_INFOVIEWER_NOEPG : LOCALE_INFOVIEWER_WAITTIME));
+		/* send message. Parental pin check gets triggered on EPG events... */
+		char *p = new char[sizeof(t_channel_id)];
+		memcpy(p, &channel_id, sizeof(t_channel_id));
+		g_RCInput->postMsg(NeutrinoMessages::EVT_NOEPG_YET, (const neutrino_msg_data_t)p, false); // data is pointer to allocated memory
 		return;
 	}
 
