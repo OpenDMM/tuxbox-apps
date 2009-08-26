@@ -282,8 +282,28 @@ bool CFlashUpdate::checkVersion4Update()
 
 		CFileFilter UpdatesFilter;
 		UpdatesFilter.addFilter(FILEBROWSER_UPDATE_FILTER);
-		UpdatesFilter.addFilter(FILEBROWSER_UPDATE_FILTER_ALT);
+#ifdef HAVE_DBOX_HARDWARE
+		/* try to make sure we only flash a similar (LZMA / no LZMA)
+		   update image like the one that's already installed, to
+		   avoid compatibility problems*/
+		FILE *f;
+		char s[128];
 
+		f = fopen("/proc/mtd", "r");
+		while (fgets(s, 128, f))
+		{
+			if (strstr(s, "\"root (squashfs)\"")) {
+				UpdatesFilter.addFilter("squashfs_nolzma");
+				break;
+			} else if (strstr(s, "\"root (squashfs+lzma)\"")) {
+				UpdatesFilter.addFilter("squashfs");
+				break;
+			}
+		}
+		fclose(f);
+#else
+		UpdatesFilter.addFilter(FILEBROWSER_UPDATE_FILTER_ALT);
+#endif
 		UpdatesBrowser.Filter = &UpdatesFilter;
 
 		CFile * CFileSelected = NULL;
