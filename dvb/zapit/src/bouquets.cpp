@@ -378,13 +378,14 @@ void CBouquetManager::parseBouquetsXml(const xmlNodePtr root)
 				newBouquet = Bouquets[bnum];
 			else
 			{
-				newBouquet = addBouquet(xmlGetAttribute(search, "name"));
+				newBouquet = addBouquet(name);
 				char* hidden = xmlGetAttribute(search, "hidden");
 				char* locked = xmlGetAttribute(search, "locked");
 				newBouquet->type = xmlGetNumericAttribute(search, "type", 16);
 				newBouquet->bouquet_id = xmlGetNumericAttribute(search, "bouquet_id", 16);
 				newBouquet->bHidden = hidden ? (strcmp(hidden, "1") == 0) : false;
 				newBouquet->bLocked = locked ? (strcmp(locked, "1") == 0) : false;
+				bnum = Bouquets.size() - 1;
 			}
 
 			channel_node = search->xmlChildrenNode;
