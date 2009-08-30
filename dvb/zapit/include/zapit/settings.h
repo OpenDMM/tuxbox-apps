@@ -40,6 +40,7 @@
 #define STATICPIDS_XML		ZAPITCONFIGDIR "/staticpids.xml"
 #define SERVICES_TMP    	"/tmp/services.tmp"
 #define BOUQUETS_XML    	ZAPITCONFIGDIR "/bouquets.xml"
+#define UBOUQUETS_XML		ZAPITCONFIGDIR "/ubouquets.xml"
 #define BOUQUETS_TMP    	"/tmp/bouquets.tmp"
 #define CURRENTSERVICES_XML	"/tmp/currentservices.xml"
 #define CURRENTSERVICES_TMP	"/tmp/currentservices.tmp"
