@@ -2777,19 +2777,19 @@ void leaveStandby(void)
 
 	switch (frontend->getInfo()->type) {
 		case FE_QPSK:
-	frontend->setCurrentSatellitePosition(config.getInt32("lastSatellitePosition", 192));
-	frontend->setDiseqcRepeats(config.getInt32("diseqcRepeats", 0));
-	motorRotationSpeed = config.getInt32("motorRotationSpeed", 18); // default: 1.8 degrees per second
-	diseqcType = (diseqc_t)config.getInt32("diseqcType", NO_DISEQC);
-	frontend->setDiseqcType(diseqcType);
+			frontend->setCurrentSatellitePosition(config.getInt32("lastSatellitePosition", 192));
+			frontend->setDiseqcRepeats(config.getInt32("diseqcRepeats", 0));
+			motorRotationSpeed = config.getInt32("motorRotationSpeed", 18); // default: 1.8 degrees per second
+			diseqcType = (diseqc_t)config.getInt32("diseqcType", NO_DISEQC);
+			frontend->setDiseqcType(diseqcType);
 
-	for (unsigned int i = 0; i < MAX_LNBS; i++) {
-		char tmp[17]; // "lnb63_OffsetHigh\0"
-		sprintf(tmp, "lnb%d_OffsetLow", i);
-		frontend->setLnbOffset(false, i, config.getInt32(tmp, 9750000));
-		sprintf(tmp, "lnb%d_OffsetHigh", i);
-		frontend->setLnbOffset(true, i, config.getInt32(tmp, 10600000));
-	}
+			for (unsigned int i = 0; i < MAX_LNBS; i++) {
+				char tmp[17]; // "lnb63_OffsetHigh\0"
+				sprintf(tmp, "lnb%d_OffsetLow", i);
+				frontend->setLnbOffset(false, i, config.getInt32(tmp, 9750000));
+				sprintf(tmp, "lnb%d_OffsetHigh", i);
+				frontend->setLnbOffset(true, i, config.getInt32(tmp, 10600000));
+			}
 			break;
 
 		default:
