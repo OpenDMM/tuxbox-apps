@@ -2775,6 +2775,8 @@ void leaveStandby(void)
 	if (!videoDecoder)
 		videoDecoder = new CVideo();
 
+	switch (frontend->getInfo()->type) {
+		case FE_QPSK:
 	frontend->setCurrentSatellitePosition(config.getInt32("lastSatellitePosition", 192));
 	frontend->setDiseqcRepeats(config.getInt32("diseqcRepeats", 0));
 	motorRotationSpeed = config.getInt32("motorRotationSpeed", 18); // default: 1.8 degrees per second
@@ -2787,6 +2789,11 @@ void leaveStandby(void)
 		frontend->setLnbOffset(false, i, config.getInt32(tmp, 9750000));
 		sprintf(tmp, "lnb%d_OffsetHigh", i);
 		frontend->setLnbOffset(true, i, config.getInt32(tmp, 10600000));
+	}
+			break;
+
+		default:
+			break;
 	}
 
 	if (cc)
