@@ -12,6 +12,7 @@
 
   $Id$
 
+
   License: GPL
 
   This program is free software; you can redistribute it and/or modify
@@ -3231,12 +3232,12 @@ static void checkAspectRatio (int /*vdec*/, bool /*init*/)
 std::string CMoviePlayerGui::getMoviePlayerVersion(void)
 {
 	static CImageInfo imageinfo;
-	return imageinfo.getModulVersion("","$Revision$");
+	return imageinfo.getModulVersion("Movieplayer2 ","$Revision$");
 }
 
 void CMoviePlayerGui::showHelpVLC()
 {
-	std::string version = "Movieplayer2 Version: " + getMoviePlayerVersion();
+	std::string version = "Version: " + getMoviePlayerVersion();
 	Helpbox helpbox;
 	helpbox.addLine(NEUTRINO_ICON_BUTTON_HOME, g_Locale->getText(LOCALE_MOVIEPLAYER_VLCHELP1));
 	helpbox.addLine(NEUTRINO_ICON_BUTTON_RED, g_Locale->getText(LOCALE_MOVIEPLAYER_VLCHELP2));
