@@ -247,12 +247,14 @@ class CNeutrinoApp : public CMenuTarget, CChangeObserver
 		void InitScreenSettings(CMenuWidget &);
 		void InitAudioplPicSettings(CMenuWidget &);
 		void InitDriverSettings(CMenuWidget &);
+		void InitZapitSettings(CMenuWidget &miscSettingsZapitSettings);
 		void InitMiscSettings(CMenuWidget &miscSettings,
 								CMenuWidget &miscSettingsGeneral,
 								CMenuWidget &miscSettingsOSDExtras,
 								CMenuWidget &miscSettingsInfobar,
 								CMenuWidget &miscSettingsChannellist,
 								CMenuWidget &miscSettingsEPGSettings,
+								CMenuWidget &miscSettingsZapitSettings,
 								CMenuWidget &miscSettingsRemoteControl,
 								CMenuWidget &miscSettingsFilebrowser);
 		void InitScanSettings(CMenuWidget &);

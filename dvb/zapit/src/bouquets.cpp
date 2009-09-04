@@ -536,7 +536,7 @@ void CBouquetManager::renumServices()
 	deleteBouquet(remainChannels);
 	remainChannels = NULL;
 	
-	if (config.getBool("makeRemainingChannelsBouquet", true)) {
+	if (remainingChannelsBouquet) {
 		makeRemainingChannelsBouquet();
 	}
 }

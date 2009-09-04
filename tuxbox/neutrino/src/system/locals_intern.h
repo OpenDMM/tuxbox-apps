@@ -1354,6 +1354,12 @@ const char * locale_real_names[] =
 	"zapit.scantype.radio",
 	"zapit.scantype.tv",
 	"zapit.scantype.tvradio",
+	"zapitconfig.head",
+	"zapitconfig.remaining_bouquet",
+	"zapitconfig.save_audio_pid",
+	"zapitconfig.save_last_channel",
+	"zapitconfig.start_radio",
+	"zapitconfig.start_tv",
 	"zaptotimer.announce",
 };
 #endif

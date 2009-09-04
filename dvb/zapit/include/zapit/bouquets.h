@@ -126,6 +126,8 @@ class CBouquetManager
 
 		CZapitChannel* findChannelByChannelID(const t_channel_id channel_id);
 
+		bool remainingChannelsBouquet;
+
 };
 
 #endif /* __bouquets_h__ */

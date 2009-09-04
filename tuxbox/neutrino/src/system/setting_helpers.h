@@ -37,6 +37,7 @@
 
 #include <config.h>
 #include <gui/widget/menue.h>
+#include <zapit/client/zapitclient.h>
 
 #include <string>
 
@@ -208,6 +209,23 @@ class CAudioSetupNotifier2 : public CChangeObserver
 		CAudioSetupNotifier2( CMenuItem* );
 		bool changeNotify(const neutrino_locale_t, void *);
 };
+
+class CZapitSetupNotifier : public CChangeObserver
+{
+	private:
+		CMenuForwarder* toDisable[2];
+	public:
+		CZapitSetupNotifier(CMenuForwarder*, CMenuForwarder*);
+		bool changeNotify(const neutrino_locale_t OptionName, void * data);
+};
+
+class CZapitChannelExec : public CMenuTarget
+{
+	public:
+		int exec(CMenuTarget* parent, const std::string & actionKey);
+};
+
+void InitZapitChannelHelper(CZapitClient::channelsMode mode);
 
 class CKeySetupNotifier : public CChangeObserver
 {
