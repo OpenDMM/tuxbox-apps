@@ -321,10 +321,13 @@ void CImageInfo::paintRevisionInfos(int y_startposition)
 	paintContent(font_info, xpos+x_offset_large, y_startposition, mb.getMovieBrowserVersion().c_str());
 #endif /* ENABLE_MOVIEBROWSER */
 
+
+#ifdef ENABLE_MOVIEPLAYER
 	y_startposition += iheight;
 	static CMoviePlayerGui mp;
 	paintContent(font_info, xpos, y_startposition, "Movieplayer:", COL_MENUCONTENTINACTIVE );
 	paintContent(font_info, xpos+x_offset_large, y_startposition, mp.getMoviePlayerVersion().c_str());
+#endif
 
 #ifdef ENABLE_PICTUREVIEWER
 	y_startposition += iheight;
