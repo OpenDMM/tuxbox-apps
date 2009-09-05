@@ -226,7 +226,7 @@ class CNeutrinoApp : public CMenuTarget, CChangeObserver
 		void AudioMute( bool newValue, bool isEvent= false );
 		void paintMuteIcon( bool is_visible = true );
 		
-		void ExitRun(const bool write_si);
+		
 		void RealRun(CMenuWidget &mainSettings);
 		void InitZapper();
 		void InitKeySettings(CMenuWidget &);
@@ -323,9 +323,9 @@ class CNeutrinoApp : public CMenuTarget, CChangeObserver
 		bool isMuted() {return current_muted;}
 		int recordingstatus;
 		void SendSectionsdConfig(void);
-		
-		bool execute_start_file(const char *filename, const bool blocking = true);
-		bool execute_sys_command(const char *command);
+		void ExitRun(const bool write_si);
+		bool execute_start_file(const char *filename, const bool blocking = true, const bool verbose = false);
+		int execute_sys_command(const char *command);
 };
 
 
