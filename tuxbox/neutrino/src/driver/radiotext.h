@@ -107,6 +107,7 @@ public:
 
 private:
 	bool enabled;
+	bool have_radiotext;
 	char *imagepath;
 	bool imageShown;
 	int imagedelay;
@@ -146,6 +147,7 @@ public:
 //	s_rt_thread& getThreadParams(void) { return rt; }
 	pthread_t getThread(void) { return threadRT; }
 	void radiotext_stop(void);
+	bool haveRadiotext(void) {return have_radiotext; }
 
 	s_rt_thread rt;
 
