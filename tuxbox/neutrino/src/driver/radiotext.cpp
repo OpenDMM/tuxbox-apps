@@ -2464,7 +2464,7 @@ void CRadioText::setPid(uint inPid)
 		Rass_Show = -1;		// -1=No, 0=Yes, 1=display
 		Rass_Archiv = -1;	// -1=Off, 0=Index, 1000-9990=Slidenr.
 #endif
-		RT_MsgShow = true; // clear entries from old channel
+		RT_MsgShow = false; // clear entries from old channel
 
 		rc = pthread_create(&threadRT, 0, RadioTextThread, (void *) &rt);
 
