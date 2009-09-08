@@ -208,7 +208,7 @@ class CNeutrinoApp : public CMenuTarget, CChangeObserver
 #ifdef HAVE_DBOX_HARDWARE
 		bool ucodes_available(void);
 #endif
-		void firstChannel();
+		void firstChannel(bool initrun = false);
 		void setupColors_neutrino();
 		void setupNetwork( bool force= false );
 		void setupNFS();
@@ -218,8 +218,8 @@ class CNeutrinoApp : public CMenuTarget, CChangeObserver
 
 		int loadSetup();
 
-		void tvMode( bool rezap = true );
-		void radioMode( bool rezap = true );
+		void tvMode( bool rezap = true, bool initrun = false );
+		void radioMode( bool rezap = true, bool initrun = false );
 		void scartMode( bool bOnOff );
 		void standbyMode( bool bOnOff );
 		void setVolume(const neutrino_msg_t key, const bool bDoPaint = true);

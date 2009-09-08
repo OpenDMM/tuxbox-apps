@@ -734,10 +734,7 @@ CZapitClient::responseGetLastChannel load_settings(void)
 	else
 		lastchannel.mode = 't';
 
-	if (saveLastChannel)
-		lastchannel.channelNumber = (currentMode & RADIO_MODE) ? lastChannelRadio : lastChannelTV;
-	else
-		lastchannel.channelNumber = (currentMode & RADIO_MODE) ? startChannelRadio : startChannelTV;
+	lastchannel.channelNumber = (currentMode & RADIO_MODE) ? lastChannelRadio : lastChannelTV;
 
 	return lastchannel;
 }
