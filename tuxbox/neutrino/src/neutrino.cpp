@@ -1260,7 +1260,7 @@ void CNeutrinoApp::saveSetup()
 void CNeutrinoApp::firstChannel(bool initrun)
 {
 	g_Zapit->getLastChannel(firstchannel.channelNumber, firstchannel.mode);
-	if (initrun)
+	if ((initrun) && !g_Zapit->getSaveLastChannel())
 	{
 		if (firstchannel.mode == 't')
 			firstchannel.channelNumber = g_Zapit->getStartChannelTV();
