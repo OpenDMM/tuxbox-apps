@@ -323,6 +323,7 @@ class CNeutrinoApp : public CMenuTarget, CChangeObserver
 		int getLastMode() {return lastMode;}
 		bool isMuted() {return current_muted;}
 		int recordingstatus;
+		bool zapto_on_init_done;
 		void SendSectionsdConfig(void);
 
 		bool execute_start_file(const char *filename, const bool blocking = true, const bool verbose = false);

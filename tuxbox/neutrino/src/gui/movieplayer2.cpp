@@ -363,7 +363,10 @@ CMoviePlayerGui::exec(CMenuTarget *parent, const std::string &actionKey)
 	// tell neutrino we're in ts_mode
 	CNeutrinoApp::getInstance()->handleMsg(NeutrinoMessages::CHANGEMODE, NeutrinoMessages::mode_ts);
 	// remember last mode
-	m_LastMode = (CNeutrinoApp::getInstance()->getLastMode() | NeutrinoMessages::norezap);
+	if (CNeutrinoApp::getInstance()->zapto_on_init_done)
+		m_LastMode = (CNeutrinoApp::getInstance()->getLastMode() | NeutrinoMessages::norezap);
+	else
+		m_LastMode = (CNeutrinoApp::getInstance()->getLastMode());
 
 	// Stop sectionsd
 	g_Sectionsd->setPauseScanning(true);
