@@ -314,6 +314,7 @@ const char * locale_real_names[] =
 	"driversettings.noenxwatchdog",
 	"driversettings.philipsrcpatch",
 	"driversettings.pmtupdate",
+	"driversettings.sptsfix",
 	"driversettings.sptsmode",
 	"driversettings.startbhdriver",
 	"epgextended.actors",

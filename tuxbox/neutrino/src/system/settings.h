@@ -397,9 +397,9 @@ struct SNeutrinoSettings
 #define DRIVER_SETTING_FILES_COUNT 2
 #else
 #if HAVE_DVB_API_VERSION == 1
-#define DRIVER_SETTING_FILES_COUNT 7
+#define DRIVER_SETTING_FILES_COUNT 8
 #else
-#define DRIVER_SETTING_FILES_COUNT 6
+#define DRIVER_SETTING_FILES_COUNT 7
 #endif
 #endif
 
