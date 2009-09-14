@@ -7565,12 +7565,6 @@ static void *cnThread(void *)
 						messaging_need_eit_version = false;
 						unlockMessaging();
 						sendToSleepNow = true;
-					} else if (timeoutsDMX >= TIMEOUTS_EIT_VERSION_WAIT) {
-						dprintf("more than %d EIT DMX timeouts - bail out...\n", TIMEOUTS_EIT_VERSION_WAIT);
-						writeLockMessaging();
-						messaging_need_eit_version = false;
-						unlockMessaging();
-						sendToSleepNow = true;
 					}
 				}
 
@@ -7594,7 +7588,6 @@ static void *cnThread(void *)
 			{
 				unlockMessaging();
 				sendToSleepNow = true;
-				timeoutsDMX = 0;
 			}
 			else {
 				unlockMessaging();
@@ -7633,17 +7626,6 @@ static void *cnThread(void *)
 			}
 			else {
 #endif
-				if (timeoutsDMX > 0)
-					usleep(timeoutsDMX*1000);
-//			}
-
-			if (timeoutsDMX >= CHECK_RESTART_DMX_AFTER_TIMEOUTS && scanning)
-			{
-				dprintf("timeoutsDMX (%d) >= CHECK_RESTART_DMX_AFTER_TIMEOUTS (%d) && scanning => sendtosleepnow=true\n",
-					timeoutsDMX, CHECK_RESTART_DMX_AFTER_TIMEOUTS);
-				sendToSleepNow = true;
-				timeoutsDMX = 0;
-			}
 
 			if (sendToSleepNow && !messaging_need_eit_version || channel_is_blacklisted)
 			{
