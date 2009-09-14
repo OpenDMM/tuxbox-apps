@@ -1356,7 +1356,7 @@ void CInfoViewer::getEPG(const t_channel_id for_channel_id, CSectionsdClient::Cu
 
 	g_Sectionsd->getCurrentNextServiceKey(for_channel_id, info );
 
-	if (info.current_uniqueKey != oldinfo.current_uniqueKey && info.next_uniqueKey != oldinfo.next_uniqueKey)
+	if (info.current_uniqueKey != oldinfo.current_uniqueKey || info.next_uniqueKey != oldinfo.next_uniqueKey)
 	{
 		char *p = new char[sizeof(t_channel_id)];
 		memcpy(p, &for_channel_id, sizeof(t_channel_id));
