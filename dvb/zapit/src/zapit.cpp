@@ -1532,7 +1532,7 @@ bool parse_command(CBasicMessage::Header &rmsg, int connfd)
 		CZapitMessages::commandSetSubtitle msgSetSubtitle;
 		CBasicServer::receive_data(connfd, &msgSetSubtitle, sizeof(msgSetSubtitle));
 		change_subtitle(msgSetSubtitle.index);
-
+		break;
 	}
 	case CZapitMessages::CMD_SET_MODE:
 	{
