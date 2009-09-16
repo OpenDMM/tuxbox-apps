@@ -676,6 +676,13 @@ requests to sectionsd.
 				}
 			}
 #endif
+#ifdef ENABLE_RADIOTEXT
+			if (g_settings.radiotext_enable)
+			{
+				if (((CNeutrinoApp::getInstance()->getMode()) == NeutrinoMessages::mode_radio) && (( msg == CRCInput::RC_up ) | ( msg == CRCInput::RC_down )))
+					killRadiotext();
+			}
+#endif
 			if ( msg == CRCInput::RC_help )
 			{
 				g_RCInput->postMsg( NeutrinoMessages::SHOW_EPG, 0 );
