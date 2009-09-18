@@ -3033,7 +3033,8 @@ int CNeutrinoApp::handleMsg(const neutrino_msg_t m, neutrino_msg_data_t data)
 				if(recordingstatus==0)
 				{
 					t_channel_id channel_id=((CTimerd::RecordingInfo*)data)->channel_id;
-					g_Zapit->zapTo_serviceID_NOWAIT(channel_id);
+					if(g_Zapit->getCurrentServiceID() != channel_id)
+						g_Zapit->zapTo_serviceID_NOWAIT(channel_id);
 				}
 			}
 			delete [] (unsigned char*) data;
