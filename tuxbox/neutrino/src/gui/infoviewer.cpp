@@ -675,13 +675,7 @@ requests to sectionsd.
 				}
 			}
 #endif
-#ifdef ENABLE_RADIOTEXT
-			if (g_settings.radiotext_enable)
-			{
-				if (CNeutrinoApp::getInstance()->getMode() == NeutrinoMessages::mode_radio && (msg == CRCInput::RC_up || msg == CRCInput::RC_down || msg == CRCInput::RC_0))
-					killRadiotext();
-			}
-#endif
+
 			if ( msg == CRCInput::RC_help )
 			{
 				g_RCInput->postMsg( NeutrinoMessages::SHOW_EPG, 0 );
@@ -744,10 +738,15 @@ requests to sectionsd.
 			}
 			else if (msg_repeatok == g_settings.key_quickzap_up ||
 				 msg_repeatok == g_settings.key_quickzap_down ||
-				 msg == CRCInput::RC_0 ||
+				/*msg == CRCInput::RC_0 ||*/
 				 msg == NeutrinoMessages::SHOW_INFOBAR)
 			{
-				hideIt = tsmode; // in movieplayer mode, hide infobar
+#ifdef ENABLE_RADIOTEXT
+				if ((g_settings.radiotext_enable) && (CNeutrinoApp::getInstance()->getMode() == NeutrinoMessages::mode_radio))
+					hideIt =  true;
+				else
+#endif
+					hideIt = tsmode; // in movieplayer mode, hide infobar
 				g_RCInput->postMsg( msg, data );
 				res = messages_return::cancel_info;
 			}
@@ -769,9 +768,8 @@ requests to sectionsd.
 				show_dot = !show_dot;
 
 #ifdef ENABLE_RADIOTEXT
-				if ((g_settings.radiotext_enable) && (CNeutrinoApp::getInstance()->getMode() == 2)) {
+				if ((g_settings.radiotext_enable) && (CNeutrinoApp::getInstance()->getMode() == NeutrinoMessages::mode_radio))
 					showRadiotext();
-				}
 #endif
 			}
 			else if (!tsmode && g_settings.virtual_zap_mode &&
