@@ -1488,8 +1488,8 @@ off_t mf_getsize(void)
 
 off_t mf_lseek(off_t pos)
 {
-	off_t offset = 0, lpos = pos;
-	int fileno, ret;
+	off_t offset = 0, lpos = pos, ret;
+	int fileno;
 	for (fileno = 0; fileno < (int)(*g_f).size(); fileno++)
 	{
 		if (lpos < (*g_f)[fileno].Size)
