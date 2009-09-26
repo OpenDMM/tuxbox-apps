@@ -62,7 +62,9 @@
 #include <gui/widget/dirchooser.h>
 
 #include <system/settings.h>
+#ifdef ENABLE_GUI_MOUNT
 #include <system/fsmounter.h>
+#endif
 
 #include <global.h>
 #include <neutrino.h>

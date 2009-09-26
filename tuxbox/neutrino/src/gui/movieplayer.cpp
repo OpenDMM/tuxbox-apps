@@ -45,7 +45,9 @@
 #include <gui/eventlist.h>
 #include <gui/color.h>
 #include <gui/infoviewer.h>
+#ifdef ENABLE_GUI_MOUNT
 #include <gui/nfs.h>
+#endif
 #include <gui/bookmarkmanager.h>
 #include <gui/timeosd.h>
 #include <gui/movieviewer.h>

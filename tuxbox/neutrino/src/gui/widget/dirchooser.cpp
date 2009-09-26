@@ -35,7 +35,9 @@
 
 #include <driver/fontrenderer.h>
 #include <driver/rcinput.h>
+#ifdef ENABLE_GUI_MOUNT
 #include <system/fsmounter.h>
+#endif
 //#include <system/ping.h>
 extern "C" int pingthost ( const char *hostname, int t );
 #include <gui/filebrowser.h>
@@ -169,6 +171,7 @@ void CRecDirChooser::initMenu(void)
 					dirOptionText[i] = g_Locale->getText(LOCALE_RECDIRCHOOSER_SERVER_DOWN); 
 					get_size = false;
 				}
+#ifdef ENABLE_GUI_MOUNT
 				else if (retvalue == 1)//LOCALE_PING_OK
 				{
 					// check if we can get more dir informations
@@ -178,6 +181,7 @@ void CRecDirChooser::initMenu(void)
 						get_size = false;
 					}
 				}
+#endif
 			}
 			if(get_size)
 			{
@@ -329,6 +333,7 @@ int getFirstFreeRecDirNr(int min_free_gb)
 			{
 				printf(",Server down ");
 			}
+#ifdef ENABLE_GUI_MOUNT
 			else if (retvalue == 1) //LOCALE_PING_OK
 			{
 				if(CFSMounter::isMounted (g_settings.network_nfs_local_dir[nfs_id]) == 0)
@@ -356,6 +361,7 @@ int getFirstFreeRecDirNr(int min_free_gb)
 					printf(",mounted");
 				}
 			}
+#endif
 		}
 		if(loop) // if we should still process the loop
 		{
