@@ -3342,17 +3342,23 @@ void CMoviePlayerGui::showFileInfoVLC()
 			}
 			while (element)
 			{
-				helpbox.addLine(NEUTRINO_ICON_BUTTON_RED, xmlGetAttribute(element, "name"));
+				char *data = xmlGetAttribute(element, "name");
+				if (data)
+					helpbox.addLine(NEUTRINO_ICON_BUTTON_RED, data);
 				xmlNodePtr element1 = element->xmlChildrenNode;
 				while (element1)
 				{
 					char tmp[50] = "-- ";
-					strcat(tmp, xmlGetAttribute(element1, "name"));
-					strcat(tmp, " : ");
-					char* data = xmlGetData(element1);
-					if (data != NULL)
+					data = xmlGetAttribute(element1, "name");
+					if (data)
+					{
 						strcat(tmp, data);
-					helpbox.addLine(tmp);
+						strcat(tmp, " : ");
+						data = xmlGetData(element1);
+						if (data)
+							strcat(tmp, data);
+						helpbox.addLine(tmp);
+					}
 					element1 = element1->xmlNextNode;
 				}
 				element = element->xmlNextNode;
