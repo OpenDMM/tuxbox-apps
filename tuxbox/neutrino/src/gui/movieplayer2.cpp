@@ -834,6 +834,8 @@ ReceiveStreamThread(void *arg)
 			else
 				transcodeAudio = 1;
 		}
+		if (sMRL.find("vlc://") == 0)
+			sMRL = sMRL.substr(6);
 		VlcRequestStream(sMRL, transcodeVideo, transcodeAudio);
 
 		// TODO: Better way to detect if http://<server>:8080/dboxstream is already alive. For example repetitive checking for HTTP 404.
