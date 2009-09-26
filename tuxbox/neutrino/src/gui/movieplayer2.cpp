@@ -2544,6 +2544,9 @@ CMoviePlayerGui::PlayStream(int streamtype)
 		mrl_str += g_settings.streaming_server_cddrive;
 		mrl_str += "@1";
 		INFO("Generated MRL: %s\n", mrl_str.c_str());
+		CFile file;
+		file.Name = mrl_str;
+		filelist.push_back(file);
 		sel_filename = "DVD";
 		open_filebrowser = false;
 		start_play = true;
@@ -2554,6 +2557,9 @@ CMoviePlayerGui::PlayStream(int streamtype)
 		mrl_str = "vcd:";
 		mrl_str += g_settings.streaming_server_cddrive;
 		INFO("Generated MRL: %s\n", mrl_str.c_str());
+		CFile file;
+		file.Name = mrl_str;
+		filelist.push_back(file);
 		sel_filename = "(S)VCD";
 		open_filebrowser = false;
 		start_play = true;
@@ -2806,7 +2812,7 @@ CMoviePlayerGui::PlayStream(int streamtype)
 			//TODO: Add Dialog (Remove Dialog later)
 			hintBox->paint();
 			buffer_time=0;
-			if (autoplaylist)
+			if (autoplaylist || cdDvd)
 				outArg = &filelist;
 			else
 			{
