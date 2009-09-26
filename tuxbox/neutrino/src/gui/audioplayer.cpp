@@ -816,7 +816,7 @@ int CAudioPlayerGui::show()
 		}
 
 #ifdef ENABLE_GUI_MOUNT
-		else if(msg == CRCInput::RC_setup)
+		else if((msg == CRCInput::RC_setup) && !m_inetmode)
 		{
 			CNFSSmallMenu nfsMenu;
 			nfsMenu.exec(this, "");
@@ -1584,7 +1584,8 @@ void CAudioPlayerGui::paintHead()
 	if(m_theight > 26)
 		ypos = (m_theight - 26) / 2 + m_y + m_title_height;
 #ifdef ENABLE_GUI_MOUNT
-	m_frameBuffer->paintIcon(NEUTRINO_ICON_BUTTON_DBOX, m_x + m_width - 30, ypos);
+	if (!m_inetmode)
+		m_frameBuffer->paintIcon(NEUTRINO_ICON_BUTTON_DBOX, m_x + m_width - 30, ypos);
 #endif
 	if( CNeutrinoApp::getInstance()->isMuted() )
 	{
