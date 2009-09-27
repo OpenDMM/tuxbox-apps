@@ -357,6 +357,9 @@ CMoviePlayerGui::exec(CMenuTarget *parent, const std::string &actionKey)
 	
 	filebrowser->Multi_Select = !!g_settings.streaming_allow_multiselect;
 
+	// tell neutrino we're in ts_mode
+	CNeutrinoApp::getInstance()->handleMsg(NeutrinoMessages::CHANGEMODE, NeutrinoMessages::mode_ts);
+
 	/* remember last mode,
 	   needs to be done while zapit is still not paused */
 	CZapitClient::responseGetLastChannel firstchannel;
@@ -387,9 +390,6 @@ CMoviePlayerGui::exec(CMenuTarget *parent, const std::string &actionKey)
 	system(MOVIEPLAYER_START_SCRIPT);
 	startBox->hide();
 	delete startBox;
-
-	// tell neutrino we're in ts_mode
-	CNeutrinoApp::getInstance()->handleMsg(NeutrinoMessages::CHANGEMODE, NeutrinoMessages::mode_ts);
 
 	// Stop sectionsd
 	g_Sectionsd->setPauseScanning(true);
