@@ -37,6 +37,8 @@
 
 #define CONFIGFILE CONFIGDIR "/timerd.conf"
 
+extern char *config_file_name;
+
 class CTimerEvent
 {
  public:

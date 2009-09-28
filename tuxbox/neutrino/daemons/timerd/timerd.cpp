@@ -38,6 +38,7 @@
 #include <timerdclient/timerdmsg.h>
 
 int timerd_debug = 0;
+char *config_file_name = CONFIGFILE;
 
 static void signalHandler(int /*signum*/)
 {
@@ -468,9 +469,10 @@ void usage(FILE *dest)
 {
 	fprintf(dest, "timerd\n");
 	fprintf(dest, "command line parameters:\n");
-	fprintf(dest, "-d, --debug    enable debugging code (implies -f)\n");
-	fprintf(dest, "-f, --fork     do not fork\n");
-	fprintf(dest, "-h, --help     display this text and exit\n\n");
+	fprintf(dest, "-c, --config=<file>  use alternative timerd.conf\n");
+	fprintf(dest, "-d, --debug          enable debugging code (implies -f)\n");
+	fprintf(dest, "-f, --fork           do not fork\n");
+	fprintf(dest, "-h, --help           display this text and exit\n\n");
 }
 
 int main(int argc, char **argv)
@@ -494,6 +496,11 @@ int main(int argc, char **argv)
 		{
 			usage(stdout);
 			return EXIT_SUCCESS;
+		}
+		else if ((!strncmp(argv[i], "-c", 2)) || (!strncmp(argv[i], "--config", 8)))
+		{
+			config_file_name = strtok( argv[i],"=" );
+			config_file_name = strtok( NULL, "=" );
 		}
 		else
 		{
