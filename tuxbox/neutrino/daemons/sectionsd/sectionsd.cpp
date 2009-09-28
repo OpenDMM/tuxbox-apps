@@ -2532,7 +2532,7 @@ static void commandDumpStatusInformation(int connfd, char* /*data*/, const unsig
 
 	snprintf(stati, MAX_SIZE_STATI,
 		"$Id$\n"
-		"Current time: %s"
+		"%sCurrent time: %s"
 		"Hours to cache: %ld\n"
 		"Hours to cache extended text: %ld\n"
 		"Events are old %ldmin after their end time\n"
@@ -2546,6 +2546,12 @@ static void commandDumpStatusInformation(int connfd, char* /*data*/, const unsig
 		"handed out by malloc: %d (%dkb)\n"
 		"Total bytes memory allocated with `sbrk' by malloc,\n"
 		"in bytes: %d (%dkb)\n",
+#ifdef ENABLE_FREESATEPG
+		"FreeSat enabled\n"
+#else
+		""
+#endif
+		,
 		ctime(&zeit),
 		secondsToCache / (60*60L), secondsExtendedTextCache / (60*60L), oldEventsAre / 60, anzServices, anzNVODservices, anzEvents, anzNVODevents, anzMetaServices,
 		//    resourceUsage.ru_maxrss, resourceUsage.ru_ixrss, resourceUsage.ru_idrss, resourceUsage.ru_isrss,
@@ -8475,6 +8481,9 @@ int main(int argc, char **argv)
 	struct sched_param parm;
 
 	printf("$Id$\n");
+#ifdef ENABLE_FREESATEPG
+	printf("[sectionsd] FreeSat enabled\n");
+#endif
 
 	SIlanguage::loadLanguages();
 
