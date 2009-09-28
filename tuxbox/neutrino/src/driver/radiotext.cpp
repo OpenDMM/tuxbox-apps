@@ -2389,6 +2389,7 @@ CRadioText::CRadioText(void)
 	RT_Replay 	= false;
 	RT_ReOpen 	= false;
 	for (int i=0; i<5; i++) strcpy(RT_Text[i], "");
+	strcpy(RDS_PTYN, "");
 	have_radiotext	= false;
 }
 
@@ -2468,7 +2469,8 @@ void CRadioText::setPid(uint inPid)
 		RT_PlusShow = false;
 		RT_Replay = false;
 		RT_ReOpen = false;
-		for (int i=0; i<5; i++) strcpy(g_Radiotext->RT_Text[i], "");
+		for (int i=0; i<5; i++) strcpy(RT_Text[i], "");
+		strcpy(RDS_PTYN, "");
 
 #if ENABLE_RASS
 		// Rass ...
