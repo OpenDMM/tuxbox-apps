@@ -3209,7 +3209,7 @@ int CNeutrinoApp::handleMsg(const neutrino_msg_t m, neutrino_msg_data_t data)
 #ifdef ENABLE_RADIOTEXT
 			if((data & mode_mask) != mode_radio)
 			{
-				if (lastMode == mode_radio && g_settings.radiotext_enable && g_Radiotext != NULL)
+				if (g_Radiotext)
 				{
 					delete g_Radiotext;
 					g_Radiotext = NULL;
