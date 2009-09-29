@@ -4069,8 +4069,8 @@ int CNeutrinoApp::exec(CMenuTarget* parent, const std::string & actionKey)
 		g_Zapit->reinitChannels();
 
 		int result = system(mode == mode_radio
-				    ? "wget -q -O /dev/null http://127.0.0.1/control/setmode?radio > /dev/null 2>&1"
-				    : "wget -q -O /dev/null http://127.0.0.1/control/setmode?tv > /dev/null 2>&1");
+				    ? "wget -t 1 -T 5 -q -O /dev/null http://127.0.0.1/control/setmode?radio > /dev/null 2>&1"
+				    : "wget -t 1 -T 5 -q -O /dev/null http://127.0.0.1/control/setmode?tv > /dev/null 2>&1");
 		if (result)
 			perror("Kicking nhttpd failed");
 
