@@ -195,6 +195,7 @@ int CPictureViewerGui::exec(CMenuTarget* parent, const std::string & /*actionKey
 	
 	// Restore last mode
 	CNeutrinoApp::getInstance()->handleMsg( NeutrinoMessages::CHANGEMODE , m_LastMode );
+	g_RCInput->postMsg( NeutrinoMessages::SHOW_INFOBAR, 0 );
 
 	// always exit all	
 	return menu_return::RETURN_EXIT_ALL;

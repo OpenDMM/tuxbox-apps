@@ -3206,13 +3206,29 @@ int CNeutrinoApp::handleMsg(const neutrino_msg_t m, neutrino_msg_data_t data)
 		}
 		else if( msg == NeutrinoMessages::CHANGEMODE )
 		{
+#ifdef ENABLE_RADIOTEXT
+			if((data & mode_mask) != mode_radio)
+			{
+				if (lastMode == mode_radio && g_settings.radiotext_enable && g_Radiotext != NULL)
+				{
+					delete g_Radiotext;
+					g_Radiotext = NULL;
+				}
+			}
+#endif
 			if((data & mode_mask)== mode_radio)
 			{
 				if( mode != mode_radio )
+				{
 					if((data & norezap)==norezap)
 						radioMode(false);
 					else
 						radioMode(true);
+#ifdef ENABLE_RADIOTEXT
+					if (g_settings.radiotext_enable)
+						g_Radiotext->setPid(g_RemoteControl->current_PIDs.APIDs[g_RemoteControl->current_PIDs.PIDs.selected_apid].pid);
+#endif
+				}
 			}
 			if((data & mode_mask)== mode_tv)
 			{
