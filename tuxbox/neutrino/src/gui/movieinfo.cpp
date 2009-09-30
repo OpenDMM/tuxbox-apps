@@ -336,7 +336,7 @@ bool CMovieInfo::loadMovieInfo( MI_MOVIE_INFO* movie_info, CFile* file )
 /************************************************************************
 
 ************************************************************************/
-bool CMovieInfo::parseXmlTree (char* text, MI_MOVIE_INFO* movie_info)
+bool CMovieInfo::parseXmlTree (char* /*text*/, MI_MOVIE_INFO* /*movie_info*/)
 {
 #ifndef XMLTREE_LIB
 	return (false); // no XML lib available return false
