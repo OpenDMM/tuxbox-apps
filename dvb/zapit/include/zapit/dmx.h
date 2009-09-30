@@ -44,6 +44,8 @@ struct dmx_pes_filter_params
         uint16_t                     port;
 };
 
+#elif defined(HAVE_TRIPLEDRAGON)
+#include "td-demux-compat.h"
 #else /* HAVE_OST_DMX_H */
 
 #include <linux/dvb/dmx.h>

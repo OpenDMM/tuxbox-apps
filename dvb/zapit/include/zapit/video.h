@@ -22,6 +22,10 @@
 #ifndef __zapit_video_h__
 #define __zapit_video_h__
 
+#ifdef HAVE_TRIPLEDRAGON
+#include <zapit/td-video-compat.h>
+#include <clip/clipinfo.h>
+#else
 #if HAVE_DVB_API_VERSION < 3
 #include <ost/video.h>
 #define video_format_t videoFormat_t
@@ -31,7 +35,8 @@
 #define video_status		videoStatus
 #else
 #include <linux/dvb/video.h>
-#endif
+#endif /* HAVE_DVB_API_VERSION */
+#endif /* !HAVE_TRIPLEDRAGON */
 
 class CVideo
 {

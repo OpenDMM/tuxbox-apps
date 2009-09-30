@@ -5,7 +5,9 @@
 #ifndef __scan_h__
 #define __scan_h__
 
-#if HAVE_DVB_API_VERSION < 3
+#ifdef HAVE_TRIPLEDRAGON
+#include "td-frontend-compat.h"
+#elif HAVE_DVB_API_VERSION < 3
 #include <ost/frontend.h>
 #else
 #include <linux/dvb/frontend.h>

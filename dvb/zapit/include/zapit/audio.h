@@ -23,7 +23,12 @@
 #ifndef __zapit_audio_h__
 #define __zapit_audio_h__
 
-#ifndef HAVE_TRIPLEDRAGON
+#ifdef HAVE_TRIPLEDRAGON
+#include <zapit/td-audio-compat.h>
+#include <avs/avs_inf.h>
+#include <tddevices.h>
+#define AVS_DEVICE "/dev/" DEVICE_NAME_AVS
+#else /* dbox and dreambox */
 #if defined HAVE_DBOX_HARDWARE || defined HAVE_DREAMBOX_HARDWARE || defined HAVE_IPBOX_HARDWARE
 #include <dbox/avs_core.h>
 #define AVS_DEVICE "/dev/dbox/avs0"
