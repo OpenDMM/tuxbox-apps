@@ -38,7 +38,12 @@ void setDemuxMode(int);
 #endif
 void setFastZap(int);
 
+#ifdef HAVE_TRIPLEDRAGON
+#define PAL	1
+#define NTSC	0
+#else
 #define PAL	0
 #define NTSC	1
+#endif
 
 #endif /* __zapit_h__ */

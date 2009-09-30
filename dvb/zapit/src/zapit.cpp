@@ -1451,6 +1451,11 @@ bool parse_command(CBasicMessage::Header &rmsg, int connfd)
 //			(rmsg.cmd != CZapitMessages::CMD_SET_DISPLAY_FORMAT) &&
 			(rmsg.cmd != CZapitMessages::CMD_SB_GET_PLAYBACK_ACTIVE) &&
 #endif
+#ifdef HAVE_TRIPLEDRAGON
+			(rmsg.cmd != CZapitMessages::CMD_VID_IOCTL) &&
+			(rmsg.cmd != CZapitMessages::CMD_SET_ZOOMLEVEL) &&
+			(rmsg.cmd != CZapitMessages::CMD_GET_ZOOMLEVEL) &&
+#endif
 			(rmsg.cmd != CZapitMessages::CMD_GETPIDS))) {
 		fprintf(stderr, "[zapit] cmd %d refused in standby mode\n", rmsg.cmd);
 		return true;
@@ -2426,7 +2431,46 @@ bool parse_command(CBasicMessage::Header &rmsg, int connfd)
 		break;
 	}
 #endif
-
+#ifdef HAVE_TRIPLEDRAGON
+	case CZapitMessages::CMD_SET_ZOOMLEVEL:
+	{
+		CZapitMessages::commandInt msg;
+		CBasicServer::receive_data(connfd, &msg, sizeof(msg));
+		if (videoDecoder)
+			videoDecoder->setZoom(msg.val);
+		break;
+	}
+	case CZapitMessages::CMD_GET_ZOOMLEVEL:
+	{
+		CZapitMessages::responseGeneralInteger responseInteger;
+		if (videoDecoder)
+			responseInteger.number = videoDecoder->getZoom();
+		else
+			responseInteger.number = 0;
+		CBasicServer::send_data(connfd, &responseInteger, sizeof(responseInteger));
+		break;
+	}
+	case CZapitMessages::CMD_SET_PIG:
+	{
+		CZapitMessages::commandPig msg;
+		CBasicServer::receive_data(connfd, &msg, sizeof(msg));
+		if (videoDecoder)
+			videoDecoder->setPig(msg.x, msg.y, msg.w, msg.h, msg.aspect);
+		break;
+	}
+	case CZapitMessages::CMD_VID_IOCTL:
+	{
+		CZapitMessages::commandIoctl msg;
+		CZapitMessages::responseGeneralInteger responseInteger;
+		CBasicServer::receive_data(connfd, &msg, sizeof(msg));
+		if (videoDecoder)
+			responseInteger.number = videoDecoder->VdecIoctl(msg.request, msg.arg);
+		else
+			responseInteger.number = -ENODEV;
+		CBasicServer::send_data(connfd, &responseInteger, sizeof(responseInteger));
+		break;
+	}
+#endif
 	default:
 		WARN("unknown command %d (version %d)", rmsg.cmd, CZapitMessages::ACTVERSION);
 		break;
@@ -3165,7 +3209,7 @@ int main(int argc, char **argv)
 	leaveStandby();
 
 	/* this was done by controld before, but now needs to come after leaveStandby() */
-#ifdef HAVE_DBOX_HARDWARE
+#if defined HAVE_DBOX_HARDWARE || defined HAVE_TRIPLEDRAGON
 	/* make sure that both volume settings are initialized */
 	audioDecoder->setVolume(settings.volume, (int)CControld::TYPE_OST);
 	if (settings.volume_type == CControld::TYPE_AVS)
