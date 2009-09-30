@@ -2751,6 +2751,9 @@ int startPlayBack(CZapitChannel *thisChannel)
 #ifdef HAVE_TRIPLEDRAGON
 	/* start video */
 	if (have_video) {
+#ifdef HAVE_TRIPLEDRAGON
+		videoDecoder->setBlank(true);
+#endif
 		videoDecoder->setSource(VIDEO_SOURCE_DEMUX);
 		videoDecoder->start();
 	}
