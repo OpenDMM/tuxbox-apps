@@ -36,6 +36,11 @@
 #include <zapit/client/zapitclient.h>
 extern CEventServer *eventServer;
 
+#ifdef HAVE_TRIPLEDRAGON
+#ifdef _DVBDMX_H_
+#error HAVE_TRIPLEDRAGON && _DVBDMX_H_
+#endif
+#endif
 /*
  * Stream types
  * ------------
@@ -423,6 +428,7 @@ int pmt_set_update_filter(CZapitChannel * const channel, int *fd)
 	}
 
 	memset(&dsfp, 0, sizeof(struct dmx_sct_filter_params));
+#ifndef HAVE_TRIPLEDRAGON
 	dsfp.filter.filter[0] = 0x02;	/* table_id */
 	dsfp.filter.filter[1] = channel->getServiceId() >> 8;
 	dsfp.filter.filter[2] = channel->getServiceId();
@@ -442,6 +448,21 @@ int pmt_set_update_filter(CZapitChannel * const channel, int *fd)
 	dsfp.filter.mask[1] = 0xFF;
 	dsfp.filter.mask[2] = 0xFF;
 	dsfp.filter.mask[4] = 0xFF;
+#else
+	dsfp.filter[0] = 0x02; /* table_id */
+	dsfp.filter[3] = channel->getServiceId() >> 8;
+	dsfp.filter[4] = channel->getServiceId();
+	dsfp.filter[5] = (channel->getCaPmt()->version_number << 1) | 0x01;
+	dsfp.filter[6] = 0x00;	/* section_number */
+	dsfp.mask[0] = 0xFF;
+	dsfp.mask[3] = 0xFF;
+	dsfp.mask[4] = 0xFF;
+	dsfp.mask[5] = (0x1F << 1) | 0x01;
+	dsfp.positive[5] = 0x1F << 1;
+	dsfp.mask[6] = 0xFF;
+	dsfp.flags = DMX_IMMEDIATE_START;
+	dsfp.filter_length = 7;
+#endif // TRIPLEDRAGON
 	dsfp.pid = channel->getPmtPid();
 	dsfp.timeout = 0;
 

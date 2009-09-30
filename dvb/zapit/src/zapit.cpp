@@ -171,6 +171,11 @@ int fastzap = 1;
 #else
 int fastzap = 0;
 #endif
+#ifdef HAVE_TRIPLEDRAGON
+int finetune = 2;
+#else
+int finetune = 0;
+#endif
 
 uint32_t lastChannelRadio;
 uint32_t lastChannelTV;
@@ -2883,7 +2888,7 @@ void leaveStandby(void)
 		cam = new CCam();
 	}
 	if (!frontend) {
-		frontend = new CFrontend(config.getInt32("uncommitted_switch_mode", 0), (int)auto_fec);
+		frontend = new CFrontend(config.getInt32("uncommitted_switch_mode", 0), (int)auto_fec + finetune);
 	}
 #ifdef HAVE_DBOX_HARDWARE
 	if (!aviaExtDriver) {
@@ -3031,7 +3036,11 @@ int main(int argc, char **argv)
 			printf("[zapit] PMT update enabled\n");
 			break;
 		case 'n':
+#ifdef HAVE_TRIPLEDRAGON
+			finetune = 0;
+#else
 			fastzap = 0;
+#endif
 			break;
 		case 'l':
 			printf("[zapit] lock loss check disabled\n");
@@ -3046,6 +3055,9 @@ int main(int argc, char **argv)
 				"-l : disable checking for lost lock\n"
 #if HAVE_DVB_API_VERSION < 3
 				"-n : disable FASTZAP\n"
+#endif
+#ifdef HAVE_TRIPLEDRAGON
+				"-n : disable finetuning\n"
 #endif
 				"\n"
 				"Keys in config file "	CONFIGFILE ":\n"
@@ -3094,7 +3106,7 @@ int main(int argc, char **argv)
 		setTVMode();
 
 	if (!frontend)
-		frontend = new CFrontend(config.getInt32("uncommitted_switch_mode", 0), (int)auto_fec);
+		frontend = new CFrontend(config.getInt32("uncommitted_switch_mode", 0), (int)auto_fec + finetune);
 
 	diseqcType = (diseqc_t)config.getInt32("diseqcType", NO_DISEQC);
 	if (prepare_channels(frontend->getInfo()->type, diseqcType) < 0)
