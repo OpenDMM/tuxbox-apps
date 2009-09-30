@@ -27,10 +27,6 @@
 #include <zapit/debug.h>
 #include <zapit/settings.h>
 #include <zapit/video.h>
-#if defined HAVE_DBOX_HARDWARE || defined HAVE_DREAMBOX_HARDWARE || defined HAVE_IPBOX_HARDWARE
-#include <dbox/avs_core.h>
-#include <dbox/saa7126_core.h>
-#endif
 
 #ifdef HAVE_TRIPLEDRAGON
 #include <avs/avs_inf.h>
