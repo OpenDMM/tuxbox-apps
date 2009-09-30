@@ -3316,6 +3316,8 @@ int main(int argc, char **argv)
 	if (scanInputParser)
 		xmlFreeDoc(scanInputParser);
 
+	/* TODO: the destructor of bouquetManager should actually do that */
+	bouquetManager->clearAll();
 	delete bouquetManager;
 	delete eventServer;
 

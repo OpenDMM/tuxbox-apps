@@ -111,6 +111,7 @@ void CZapitChannel::resetPids(void)
 	privatePid = 0;
 
 	pidsFlag = false;
+	pidsUpdated = false;
 }
 
 void CZapitChannel::addTTXSubtitle ( const unsigned int pid, const std::string langCode, const unsigned char magazine_number, const unsigned char page_number, const bool impaired )
