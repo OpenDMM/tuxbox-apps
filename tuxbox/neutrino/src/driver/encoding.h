@@ -28,4 +28,7 @@
 
 std::string Latin1_to_UTF8(const std::string & s);
 
+bool isUTF8(const char* text, int len);
+bool isUTF8(const std::string &s);
+
 #endif /* __neutrino__encoding_h__ */
