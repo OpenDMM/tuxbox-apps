@@ -697,7 +697,7 @@ bool VlcRequestStream(std::string mrl, int transcodeVideo, int transcodeAudio)
 	
 	std::string url = baseurl;
 	url += "requests/status.xml?command=in_play&input=";
-	url += mrl;
+	url += url_escape(mrl.c_str());
 	url += "%20%3Asout%3D";
 	url += url_escape(souturl.c_str());
 	printf("[movieplayer.cpp] URL(enc) : %s\n", url.c_str());
