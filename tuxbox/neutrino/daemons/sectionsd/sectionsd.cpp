@@ -7023,11 +7023,6 @@ static void *fseitThread(void *)
 				messaging_zap_detected = false;
 				unlockMessaging();
 
-				if (auto_scanning) {
-					pthread_mutex_unlock( &dmxNIT.start_stop_mutex );
-					dmxNIT.change( 0 );
-				}
-
 				int rs;
 				do {
 					struct timespec abs_wait;
