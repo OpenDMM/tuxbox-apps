@@ -4010,8 +4010,8 @@ int CNeutrinoApp::exec(CMenuTarget* parent, const std::string & actionKey)
 	else if(actionKey=="network")
 	{
 		networkConfig.automatic_start = (network_automatic_start == 1);
-		networkConfig.commitConfig();
 		networkConfig.stopNetwork();
+		networkConfig.commitConfig();
 		networkConfig.startNetwork();
 	}
 	else if(actionKey=="networktest")
