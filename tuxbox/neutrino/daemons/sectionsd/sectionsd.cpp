@@ -2153,6 +2153,21 @@ static void commandPauseScanning(int connfd, char *data, const unsigned dataLeng
 #ifdef ENABLE_PPT
 		dmxPPT.request_unpause();
 #endif
+		// trigger rescan for current/next...
+		writeLockEvents();
+		if (myCurrentEvent) {
+			delete myCurrentEvent;
+			myCurrentEvent = NULL;
+		}
+		if (myNextEvent) {
+			delete myNextEvent;
+			myNextEvent = NULL;
+		}
+		unlockEvents();
+		writeLockMessaging();
+		messaging_have_CN = 0x00;
+		messaging_got_CN = 0x00;
+		unlockMessaging();
 		scanning = 1;
 		dmxCN.change(0);
 		dmxEIT.change(0);
