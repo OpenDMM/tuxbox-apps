@@ -2166,7 +2166,7 @@ int CNeutrinoApp::run(int argc, char **argv)
 	CMenuWidget    driverSettings      (LOCALE_DRIVERSETTINGS_HEAD           , NEUTRINO_ICON_SETTINGS);
 	CMenuWidget    miscSettings        (LOCALE_MISCSETTINGS_HEAD             , NEUTRINO_ICON_SETTINGS, 500);
 #if defined(ENABLE_AUDIOPLAYER) || defined(ENABLE_PICTUREVIEWER) || defined(ENABLE_ESD)
-	CMenuWidget    audioplPicSettings  (LOCALE_AUDIOPLAYERPICSETTINGS_GENERAL, NEUTRINO_ICON_SETTINGS);
+	CMenuWidget    audioplPicSettings  (LOCALE_AUDIOPLAYERESOUNDPICSETTINGS_MENU, NEUTRINO_ICON_SETTINGS);
 #endif
 	CMenuWidget    scanSettingsMenu    (LOCALE_SERVICEMENU_SCANTS            , NEUTRINO_ICON_SETTINGS);
 	CMenuWidget    service             (LOCALE_SERVICEMENU_HEAD              , NEUTRINO_ICON_SETTINGS);
