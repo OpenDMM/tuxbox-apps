@@ -6903,7 +6903,7 @@ static void *fseitThread(void *)
 	unsigned timeoutInMSeconds = EIT_READ_TIMEOUT;
 	bool sendToSleepNow = false;
 
-	dmxFSEIT.addfilter(0x60, 0xff); //other TS, scheduled, freesat epg is only broadcast using table_ids 0x60 (scheduled) and 0x61 (scheduled later)
+	dmxFSEIT.addfilter(0x60, 0xfe); //other TS, scheduled, freesat epg is only broadcast using table_ids 0x60 (scheduled) and 0x61 (scheduled later)
 	
 	if (debug) {
 		int policy;
