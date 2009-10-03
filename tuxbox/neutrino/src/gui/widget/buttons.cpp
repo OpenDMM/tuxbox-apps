@@ -90,7 +90,7 @@ void paintButtons(CFrameBuffer * const frameBuffer, Font * const font,
 		// paint icon and text
 		frameBuffer->paintIcon(icon, xstart , yicon_start);
 		int xbuttontext = xstart + max_iconw + space;
-		font->RenderString(xbuttontext, ytext_start, bwidth, buttontext, COL_INFOBAR_SHADOW_PLUS_1, 0, true); // UTF-8
+		font->RenderString(xbuttontext, ytext_start, bwidth, buttontext, COL_INFOBAR_SHADOW + 1, 0, true); // UTF-8
 		
 		/* 	set next startposition x, if text is length=0 then offset is =renderwidth of icon, 
  		* 		for generating buttons without captions, 

@@ -22,13 +22,14 @@
  * Foundation, Inc., 675 Mass Ave, Cambridge, MA 02139, USA.
  *
  */
+#include <stdint.h>
 
 class CFBWindow
 {
  public:
-	typedef unsigned short color_t;
-	typedef void *         font_t;
-	typedef void *         private_data_t;
+	typedef uint32_t color_t;
+	typedef void *   font_t;
+	typedef void *   private_data_t;
 
  private:
 	private_data_t private_data;

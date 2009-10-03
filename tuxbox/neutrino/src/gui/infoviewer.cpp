@@ -1422,7 +1422,7 @@ void CInfoViewer::display_Info(const char *current, const char *next,
 			pb_p = pb_w;
 		CProgressBar pb;
 		pb.paintProgressBar(BoxEndX - pb_w - SHADOW_OFFSET, BoxStartY + 12, pb_w, pb_h, pb_p, pb_w,
-				    0, 0, COL_SILVER, COL_INFOBAR_SHADOW, "", COL_INFOBAR);
+				    0, 0, COL_INFOBAR_PLUS_0, COL_INFOBAR_SHADOW_PLUS_0, "", COL_INFOBAR);
 	}
 
 	int currTimeW = 0;

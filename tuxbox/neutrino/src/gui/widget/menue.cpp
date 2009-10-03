@@ -952,7 +952,8 @@ int CMenuSeparator::paint(bool selected)
 	int height;
 	CFrameBuffer * frameBuffer = CFrameBuffer::getInstance();
 	height = getHeight();
-	uint8_t color, bgcolor0;
+	uint8_t    color;
+	fb_pixel_t bgcolor0;
 	
 	if ((type & SUB_HEAD))
 	{
