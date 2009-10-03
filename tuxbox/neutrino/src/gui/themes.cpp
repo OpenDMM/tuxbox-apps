@@ -95,7 +95,7 @@ void CThemes::readThemes(CMenuWidget &themes)
 {
 	struct dirent **themelist;
 	int n;
-	char *pfade[] = {THEMEDIR,USERDIR};
+	const char *pfade[] = {THEMEDIR, USERDIR};
 	bool hasCVSThemes, hasUserThemes;
 	hasCVSThemes = hasUserThemes = false;
 	std::string userThemeFile = "";

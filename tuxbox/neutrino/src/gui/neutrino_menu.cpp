@@ -1275,7 +1275,7 @@ void CNeutrinoApp::InitLanguageSettings(CMenuWidget &languageSettings)
 	int n;
 	//		printf("scanning locale dir now....(perhaps)\n");
 
-	char *pfad[] = {DATADIR "/neutrino/locale","/var/tuxbox/config/locale"};
+	const char *pfad[] = {DATADIR "/neutrino/locale","/var/tuxbox/config/locale"};
 
 	for(int p = 0;p < 2;p++)
 	{

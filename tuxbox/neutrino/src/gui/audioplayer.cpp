@@ -1104,7 +1104,8 @@ void CAudioPlayerGui::scanXmlFile(std::string filename)
 	scanXmlData(answer_parser, "name", "url");
 }
 
-void CAudioPlayerGui::scanXmlData(xmlDocPtr answer_parser, char *nametag, char *urltag, char *bitratetag, bool usechild)
+void CAudioPlayerGui::scanXmlData(xmlDocPtr answer_parser, const char *nametag, const char *urltag,
+				  const char *bitratetag, bool usechild)
 {
 #define IC_typetag "server_type"
 
