@@ -2612,7 +2612,6 @@ void CNeutrinoApp::ShowStreamFeatures()
 	StreamFeatureSelector->exec(NULL,"");
 
 	// restore mute symbol
-	AudioMute(current_muted, true);
 	delete StreamFeatureSelector;
 	delete tmpFavorites;
 	delete tmpTimerlist;
