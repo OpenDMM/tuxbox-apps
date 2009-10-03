@@ -2169,6 +2169,13 @@ static void commandPauseScanning(int connfd, char *data, const unsigned dataLeng
 		messaging_got_CN = 0x00;
 		unlockMessaging();
 		scanning = 1;
+		if (!bTimeCorrect && !ntpenable)
+		{
+			pthread_mutex_lock(&timeThreadSleepMutex);
+			// wake up time thread
+			pthread_cond_broadcast(&timeThreadSleepCond);
+			pthread_mutex_unlock(&timeThreadSleepMutex);
+		}
 		dmxCN.change(0);
 		dmxEIT.change(0);
 #ifdef ENABLE_FREESATEPG
@@ -6724,8 +6731,9 @@ static void *timeThread(void *)
 				pthread_cond_broadcast(&timeIsSetCond);
 				pthread_mutex_unlock(&timeIsSetMutex );
 				eventServer->sendEvent(CSectionsdClient::EVT_TIMESET, CEventServer::INITID_SECTIONSD, &actTime, sizeof(actTime) );
-			} else {
-				if (dvb_time_update) {
+			}
+			else if (scanning && dvb_time_update)
+			{
 				if (getUTC(&UTC, true)) // always use TDT, a lot of transponders don't provide a TOT
 				{
 					tim = changeUTCtoCtime((const unsigned char *) &UTC);
@@ -6755,7 +6763,6 @@ static void *timeThread(void *)
 					pthread_mutex_unlock(&timeIsSetMutex );
 					eventServer->sendEvent(CSectionsdClient::EVT_TIMESET, CEventServer::INITID_SECTIONSD, &tim, sizeof(tim));
 				}
-				}
 			}
 
 			if (timeset && dvb_time_update) {
@@ -6765,7 +6772,7 @@ static void *timeThread(void *)
 				if(time_ntp){
 					xprintf("[%sThread] Time set via NTP, going to sleep for %d seconds.\n", "time", seconds);
 				}
-				else {
+				else if (scanning) {
 					xprintf("[%sThread] Time set via DVB, going to sleep for %d seconds.\n", "time", seconds);
 				}
 			}
