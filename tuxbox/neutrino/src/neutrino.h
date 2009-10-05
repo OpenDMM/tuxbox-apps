@@ -175,6 +175,7 @@ class CNeutrinoApp : public CMenuTarget, CChangeObserver
 		int					tunerMode;
 		bool					wakeupfromScart;
 		bool					standbyAfterRecord;
+		bool					obeyStartMode;
 		bool					softupdate;
 		bool					fromflash;
 		int					recording_id;
