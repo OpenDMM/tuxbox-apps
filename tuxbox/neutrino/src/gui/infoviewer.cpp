@@ -160,7 +160,7 @@ void CInfoViewer::paintTime( bool show_dot, bool firstPaint )
 			if ( !firstPaint ) // background
 			{
 				// must also be painted with rounded corner on top right, if infobar have also a rounded corner on top right
-				frameBuffer->paintBoxRel(BoxEndX- time_width- 10, ChanNameY, time_width+ 10, time_height, COL_INFOBAR_PLUS_0, CORNER_RADIUS_LARGE, CORNER_TOP_RIGHT);
+				frameBuffer->paintBoxRel(BoxEndX- time_width- 10, ChanNameY, time_width+ 10, time_height, COL_INFOBAR_PLUS_0, RADIUS_LARGE, CORNER_TOP_RIGHT);
 			}
 
 			timestr[2]= 0;
