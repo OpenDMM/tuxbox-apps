@@ -72,10 +72,11 @@
 #define NEUTRINO_ICON_SETTINGS		"settings.raw"
 #define NEUTRINO_ICON_SHELL		"shell.raw"
 #define NEUTRINO_ICON_UPNP		"upnp.raw"
-#define NEUTRINO_ICON_PROTECTING		"protecting.raw"
+#define NEUTRINO_ICON_PROTECTING	"protecting.raw"
 #define NEUTRINO_ICON_EPGINFO		"epginfo.raw"
+#define NEUTRINO_ICON_UPDATE		"softupdate.raw"
 
-#define DUMMY_ICON		"dummy.raw"
+#define DUMMY_ICON			"dummy.raw"
 
 
 /* icon widths */
