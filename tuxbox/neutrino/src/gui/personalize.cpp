@@ -431,18 +431,18 @@ void CPersonalizeGui::SaveAndRestart()
 }
 
 /*adds a personalized menue entry to menue, based upon menue widget class/structur, expands with personalizing parameters*/
-int CPersonalizeGui::addItem(	CMenuWidget &item, 			
-				const neutrino_locale_t Text, 		
-				bool isActiv,				
-				const char * const Option, 		
-				CMenuTarget* Target, 			
-				const char * const ActionKey, 		
-				neutrino_msg_t DirectKey, 		
-				const char * const IconName, 		
-				const bool defaultselected, 		
-				const int & personalize_mode, 		
-				const int & personalize_protect_mode, 
-				const bool alwaysAsk)			
+int CPersonalizeGui::addItem(	CMenuWidget &item, 
+				const neutrino_locale_t Text,
+				bool isActiv,
+				const char * const Option,
+				CMenuTarget* Target,
+				const char * const ActionKey,
+				neutrino_msg_t DirectKey,
+				const char * const IconName,
+				const bool defaultselected,
+				const int & personalize_mode,
+				const int & personalize_protect_mode,
+				const bool alwaysAsk)
 {
 	int ret = 1;
 

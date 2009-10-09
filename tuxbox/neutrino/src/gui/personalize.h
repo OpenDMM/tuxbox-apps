@@ -80,18 +80,19 @@ void ShowServiceOptions();
 void ShowPersonalizationMenu();
 void SaveAndRestart();
 
-int addItem(	CMenuWidget &item, 
-		const neutrino_locale_t Text, 
+int addItem(	CMenuWidget &item,
+		const neutrino_locale_t Text,
 		bool isActiv = PERSONALIZE_MODE_ENABLED,
-		const char * const Option = NULL, 
-		CMenuTarget* Target = NULL, 
-		const char * const ActionKey = NULL, 
-		neutrino_msg_t DirectKey = NULL, 
-		const char * const IconName = NULL, 
+		const char * const Option = NULL,
+		CMenuTarget* Target = NULL,
+		const char * const ActionKey = NULL,
+		neutrino_msg_t DirectKey = NULL,
+		const char * const IconName = NULL,
 		const bool defaultselected = false,
-		const int & personalize_mode = PERSONALIZE_MODE_VISIBLE, 
+		const int & personalize_mode = PERSONALIZE_MODE_VISIBLE,
 		const int & personalize_protect_mode = PROTECT_MODE_NOT_PROTECTED, 
 		const bool alwaysAsk = true);
+
 neutrino_msg_t	setShortcut(const int & shortcut_num, neutrino_msg_t alternate_rc_key = CRCInput::RC_nokey);
 
 };
