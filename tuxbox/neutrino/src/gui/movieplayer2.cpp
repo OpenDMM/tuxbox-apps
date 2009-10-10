@@ -3429,9 +3429,9 @@ static inline int get_pts(char *p, bool pes)
 			return -1;
 	}
 
-	// if ((p[7] & 0x80) == 0) // packets with both pts, don't care for dts
+	if ((p[7] & 0x80) == 0) // packets with both pts, don't care for dts
 	// if ((p[7] & 0xC0) != 0x80) // packets with only pts
-	if ((p[7] & 0xC0) != 0xC0) // packets with pts and dts
+	// if ((p[7] & 0xC0) != 0xC0) // packets with pts and dts
 		return -1;
 	if (p[8] < 5)
 		return -1;
