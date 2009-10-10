@@ -210,6 +210,9 @@ class CNeutrinoApp : public CMenuTarget, CChangeObserver
 		CRCLock				*rcLock;
 #ifdef ENABLE_MOVIEPLAYER
 		CMenuTarget* 			moviePlayerGui;
+#ifdef ENABLE_MOVIEBROWSER
+		CMenuTarget*			movieBrowser;
+#endif
 #endif
 		bool 				parentallocked;
 		CFontSizeNotifier 		*fontsizenotifier;
