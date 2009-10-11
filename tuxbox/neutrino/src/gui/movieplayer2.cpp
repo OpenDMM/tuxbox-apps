@@ -449,6 +449,7 @@ CMoviePlayerGui::exec(CMenuTarget *parent, const std::string &actionKey)
 		}
 
 		startfilename = actionKey.substr(7, spos - 7);
+		CLCD::getInstance()->setMode(CLCD::MODE_MOVIE);
 		PlayFile();
 	}
 
