@@ -2239,7 +2239,11 @@ bool CNeutrinoApp::showUserMenu(int button)
 				menu_items++;
 				menu_prev = SNeutrinoSettings::ITEM_MOVIEPLAYER_MB;
 				keyhelper.get(&key,&icon,CRCInput::RC_green);
+#ifndef ENABLE_MOVIEPLAYER2
 				menu_item = new CMenuForwarder(LOCALE_MOVIEBROWSER_HEAD, true, NULL, this->moviePlayerGui, "tsmoviebrowser", key, icon);
+#else
+				menu_item = new CMenuForwarder(LOCALE_MOVIEBROWSER_HEAD, true, NULL, movieBrowser, "run", key, icon);
+#endif
 				menu->addItem(menu_item, false);
 				break;
 #endif
