@@ -3166,19 +3166,37 @@ CMoviePlayerGui::PlayStream(int streamtype)
 				if (sub_title.empty())
 					sub_title = sel_filename;
 			}
-			int ac3state = 0;
+
+			int elapsed_time, remaining_time;
+			if (stream)
+			{
+				elapsed_time = VlcGetStreamTime() - buffer_time;
+				remaining_time = VlcGetStreamLength() - elapsed_time;
+			}
+			else
+			{
+				elapsed_time = get_filetime();
+				remaining_time = get_filetime(true);
+			}
+
+			int ac3state = CInfoViewer::NO_AC3;
 			if (g_currentac3)
-				ac3state = 2;
+				ac3state = CInfoViewer::AC3_ACTIVE;
 			else
 			{
 				for (int i = 0; i < g_numpida; i++)
 					if (g_ac3flags[i] == 1) // AC3
 					{
-						ac3state = 1;
+						ac3state = CInfoViewer::AC3_AVAILABLE;
 						break;
 					}
 			}
-			g_InfoViewer->showMovieTitle(g_playstate, title, sub_title, g_percent, ac3state, g_numpida);
+
+			g_InfoViewer->showMovieTitle(g_playstate, title, sub_title,
+					g_percent, elapsed_time, remaining_time,
+					ac3state, g_numpida > 1,
+					g_Locale->getText(LOCALE_INFOVIEWER_LANGUAGES),
+					g_Locale->getText(LOCALE_MOVIEPLAYER_TSHELP16));
 		}
 		else if (msg == CRCInput::RC_ok)
 		{
