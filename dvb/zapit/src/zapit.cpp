@@ -1112,6 +1112,8 @@ void setTVMode(void)
 
 int getMode(void)
 {
+	if (standby)
+		return CZapitClient::MODE_STANDBY;
 	if (currentMode & TV_MODE)
 		return CZapitClient::MODE_TV;
 	if (currentMode & RADIO_MODE)
@@ -1465,6 +1467,7 @@ bool parse_command(CBasicMessage::Header &rmsg, int connfd)
 			(rmsg.cmd != CZapitMessages::CMD_SET_ZOOMLEVEL) &&
 			(rmsg.cmd != CZapitMessages::CMD_GET_ZOOMLEVEL) &&
 #endif
+			(rmsg.cmd != CZapitMessages::CMD_GET_MODE) &&
 			(rmsg.cmd != CZapitMessages::CMD_GETPIDS))) {
 		fprintf(stderr, "[zapit] cmd %d refused in standby mode\n", rmsg.cmd);
 		return true;
