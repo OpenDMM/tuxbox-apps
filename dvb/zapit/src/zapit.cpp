@@ -88,7 +88,7 @@
 /* the conditional access module */
 CCam *cam = NULL;
 /* the configuration file */
-CConfigFile config(',');
+CConfigFile config(',', false);
 /* the event server */
 CEventServer *eventServer = NULL;
 /* the dvb audio device */
