@@ -721,7 +721,7 @@ int CEpgData::show(const t_channel_id channel_id, unsigned long long a_id, time_
 						timerdclient.addZaptoTimerEvent(channel_id,
 																  epgData.epg_times.startzeit,
 																  epgData.epg_times.startzeit - ANNOUNCETIME, 0,
-																  epgData.eventID, epgData.epg_times.startzeit, 0);
+																  epgData.eventID, epgData.epg_times.startzeit, 0, true);
 						ShowLocalizedMessage(LOCALE_TIMER_EVENTTIMED_TITLE, LOCALE_TIMER_EVENTTIMED_MSG, CMessageBox::mbrBack, CMessageBox::mbBack, "info.raw");
 					}
 					else

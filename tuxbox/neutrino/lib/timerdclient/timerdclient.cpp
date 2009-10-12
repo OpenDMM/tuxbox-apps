@@ -430,6 +430,33 @@ void CTimerdClient::getRecordingSafety(int &pre, int &post)
 		post = 0;
 	}
 }
+//-------------------------------------------------------------------------
+void CTimerdClient::setZaptoSafety(int pre)
+{
+	CTimerdMsg::commandZaptoSafety data;
+	data.pre = pre;
+	send(CTimerdMsg::CMD_SETZAPTOSAFETY, (char*) &data, sizeof(data)); 
+	close_connection();
+}
+
+//-------------------------------------------------------------------------
+void CTimerdClient::getZaptoSafety(int &pre)
+{
+	send(CTimerdMsg::CMD_GETZAPTOSAFETY);
+	CTimerdMsg::commandZaptoSafety data;
+
+	bool success = receive_data((char*)&data, sizeof(data));
+	close_connection();
+	if (success)
+	{
+		pre = data.pre;
+	}
+	else
+	{
+		/* fill with default values (cf. timermanager.cpp) */
+		pre  = 0;
+	}
+}
 
 //-------------------------------------------------------------------------
 void CTimerdClient::getWeekdaysFromStr(int *rep, const char* str)

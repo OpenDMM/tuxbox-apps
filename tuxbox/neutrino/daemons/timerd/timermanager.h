@@ -221,6 +221,7 @@ private:
 	bool              m_isTimeSet;
 	int               m_extraTimeStart;
 	int               m_extraTimeEnd;
+	int               m_zaptoExtraTimeStart;
 	
 	CTimerManager();
 	static void* timerThread(void *arg);
@@ -248,6 +249,9 @@ public:
 	void getRecordingSafety(int &pre, int &post){pre=m_extraTimeStart;post=m_extraTimeEnd;}
 	void setRecordingSafety(int pre, int post);  
 	void loadRecordingSafety();
+	void getZaptoSafety(int &pre){pre=m_zaptoExtraTimeStart;};
+	void setZaptoSafety(int pre);
+	void loadZaptoSafety();
 	void clearWakeup() { timer_wakeup = false; }
 };
 

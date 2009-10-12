@@ -118,6 +118,12 @@ class CRecordingSafetyNotifier : public CChangeObserver
 		bool changeNotify(const neutrino_locale_t, void *);
 };
 
+class CZaptoSafetyNotifier : public CChangeObserver
+{
+	public:
+		bool changeNotify(const neutrino_locale_t, void *);
+};
+
 class CRecordingNotifier2 : public CChangeObserver
 {
 	private:

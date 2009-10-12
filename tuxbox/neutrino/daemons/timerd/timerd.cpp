@@ -338,6 +338,13 @@ bool parse_command(CBasicMessage::Header &rmsg, int connfd)
 					CBasicServer::receive_data(connfd, &evInfo, sizeof(CTimerd::TransferEventInfo));
 					if(evInfo.channel_id > 0)
 					{
+						if(evInfo.recordingSafety)
+						{
+							int pre;
+							CTimerManager::getInstance()->getZaptoSafety(pre);
+							msgAddTimer.announceTime -= pre;
+							msgAddTimer.alarmTime -= pre;
+						}
 						event = new CTimerEvent_Zapto(
 							msgAddTimer.announceTime,
 							msgAddTimer.alarmTime,
@@ -456,6 +463,20 @@ bool parse_command(CBasicMessage::Header &rmsg, int connfd)
 			{
 				CTimerdMsg::commandRecordingSafety data;
 				CTimerManager::getInstance()->getRecordingSafety(data.pre , data.post);
+				CBasicServer::send_data(connfd, &data, sizeof(data));
+			}
+			break;
+		case CTimerdMsg::CMD_SETZAPTOSAFETY:				  // umschaltkorrektur setzen
+			{
+				CTimerdMsg::commandZaptoSafety data;
+				CBasicServer::receive_data(connfd,&data, sizeof(data));
+				CTimerManager::getInstance()->setZaptoSafety(data.pre);
+			}
+			break;
+		case CTimerdMsg::CMD_GETZAPTOSAFETY:				  // umschaltkorrektur lesen
+			{
+				CTimerdMsg::commandZaptoSafety data;
+				CTimerManager::getInstance()->getZaptoSafety(data.pre);
 				CBasicServer::send_data(connfd, &data, sizeof(data));
 			}
 			break;

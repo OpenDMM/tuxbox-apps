@@ -1635,7 +1635,7 @@ int EpgPlus::MenuTargetAddReminder::exec(CMenuTarget*, const std::string&)
 							0,
 							(*It)->channelEvent.eventID,
 							(*It)->channelEvent.startTime,
-							0);
+							0, true);
 			ShowLocalizedMessage(LOCALE_TIMER_EVENTTIMED_TITLE, LOCALE_TIMER_EVENTTIMED_MSG, CMessageBox::mbrBack, CMessageBox::mbBack, "info.raw");
 		}
 		else

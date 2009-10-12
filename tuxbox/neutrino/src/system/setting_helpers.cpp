@@ -282,6 +282,12 @@ bool CRecordingSafetyNotifier::changeNotify(const neutrino_locale_t, void *)
 	return true;
 }
 
+bool CZaptoSafetyNotifier::changeNotify(const neutrino_locale_t, void *)
+{
+	g_Timerd->setZaptoSafety(atoi(g_settings.zapto_safety_time_before)*60);
+	return true;
+}
+
 CMiscNotifier::CMiscNotifier( CMenuItem* i1, CMenuItem* i2, CMenuItem* i3, CMenuItem* i4)
 {
 	toDisable[0]=i1;

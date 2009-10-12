@@ -498,7 +498,7 @@ int EventList::exec(const t_channel_id channel_id, const std::string& channelnam
 				timerdclient.addZaptoTimerEvent(GET_CHANNEL_ID_FROM_EVENT_ID(evtlist[selected].eventID),
 								evtlist[selected].startTime,
 								evtlist[selected].startTime - ANNOUNCETIME, 0,
-								evtlist[selected].eventID, evtlist[selected].startTime, 0);
+								evtlist[selected].eventID, evtlist[selected].startTime, 0, true);
 				UpdateTimerList();
 				paintItem(selected - liststart);
 				showFunctionBar(true);

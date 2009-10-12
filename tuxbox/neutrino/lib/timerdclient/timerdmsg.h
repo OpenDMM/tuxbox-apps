@@ -57,7 +57,9 @@ class CTimerdMsg : public CBasicMessage
 			CMD_SETAPID,
 			CMD_GETRECSAFETY,
 			CMD_SETRECSAFETY,
-			CMD_STOPTIMER
+			CMD_STOPTIMER,
+			CMD_GETZAPTOSAFETY,
+			CMD_SETZAPTOSAFETY
 		};
 
 
@@ -122,6 +124,11 @@ class CTimerdMsg : public CBasicMessage
 	{
 		int pre;
 		int post;
+	};
+
+	struct commandZaptoSafety
+	{
+		int pre;
 	};
 
 
