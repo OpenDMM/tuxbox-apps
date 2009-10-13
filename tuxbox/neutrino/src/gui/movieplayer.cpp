@@ -306,8 +306,8 @@ CMoviePlayerGui::CMoviePlayerGui()
 	frameBuffer = CFrameBuffer::getInstance();
 	bookmarkmanager=0;
 
-	if(strlen (g_settings.network_nfs_moviedir) != 0)
-		Path_local = g_settings.network_nfs_moviedir;
+	if(g_settings.streaming_moviedir.length() != 0)
+		Path_local = g_settings.streaming_moviedir;
 	else
 		Path_local = "/";
 	Path_vlc  = "vlc://";
