@@ -591,7 +591,11 @@ stream2file_error_msg_t start_recording(const char * const filename,
 		DEC_BUSY_COUNT;
 	}
 
-	time(&record_start_time);
+	/* this is set to 0 on program start and during stop_recording().
+	   done this way, because stop_recording() is only called on a regular
+	   stopped recording. */
+	if (record_start_time == 0)
+		time(&record_start_time);
 	return STREAM2FILE_OK;
 }
 
@@ -609,12 +613,18 @@ stream2file_error_msg_t stop_recording(void)
 		movieinfo.file.Name = myfilename;
 		movieinfo.file.Name += ".ts";
 		mi.loadMovieInfo(&movieinfo);
-		movieinfo.rec_length = record_end_time-record_start_time;
+		movieinfo.rec_length += record_end_time - record_start_time;
 		mi.saveMovieInfo(movieinfo);
 
+		/* reset record_start_time, so that we know the recording was not
+		   aborted abnormally */
+		record_start_time = 0;
 		exit_flag = STREAM2FILE_STATUS_IDLE;
 		return STREAM2FILE_OK;
 	}
 	else
+	{
+		record_start_time = 0;
 		return STREAM2FILE_RECORDING_THREADS_FAILED;
+	}
 }
