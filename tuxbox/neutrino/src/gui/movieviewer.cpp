@@ -308,7 +308,7 @@ void CMovieViewer::exec()
 /************************************************************************
  
 ************************************************************************/
-int CMovieViewer::handleMsg(const neutrino_msg_t msg, neutrino_msg_data_t data)
+int CMovieViewer::handleMsg(const neutrino_msg_t msg, neutrino_msg_data_t /*data*/)
 {
 
 	if ( msg == NeutrinoMessages::EVT_TIMER )
