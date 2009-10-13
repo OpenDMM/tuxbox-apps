@@ -75,6 +75,7 @@
 #define NEUTRINO_ICON_PROTECTING	"protecting.raw"
 #define NEUTRINO_ICON_EPGINFO		"epginfo.raw"
 #define NEUTRINO_ICON_UPDATE		"softupdate.raw"
+#define NEUTRINO_ICON_FEATURES		"features.raw"
 
 #define DUMMY_ICON			"dummy.raw"
 
