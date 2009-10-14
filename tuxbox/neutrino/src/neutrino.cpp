@@ -1942,7 +1942,7 @@ void CNeutrinoApp::InitZapper()
 	// EPG-Config
 	SendSectionsdConfig();
 
-	if (g_settings.epg_dir.length() != 0)
+	if (!g_settings.epg_dir.empty())
 		g_Sectionsd->readSIfromXML(g_settings.epg_dir.c_str());
 
 #ifndef TUXTXT_CFG_STANDALONE
@@ -3358,7 +3358,7 @@ void CNeutrinoApp::ExitRun(const bool write_si)
 			if (frameBuffer != NULL)
 				delete frameBuffer;
 
-			if (g_settings.epg_dir.length() != 0) {
+			if (!g_settings.epg_dir.empty()) {
 				waitforshutdown = true;
 				AudioMute(true);
 				g_Sectionsd->writeSI2XML(g_settings.epg_dir.c_str());
