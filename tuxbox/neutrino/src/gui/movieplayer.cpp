@@ -935,6 +935,7 @@ ReceiveStreamThread (void *mrl)
 				lseek(fd, 0, SEEK_SET);
 				ac3 = (is_audio_ac3(fd) > 0);
 				close (fd);
+				CLCD::getInstance()->setMovieAudio(ac3);
 				printf ("[movieplayer.cpp] ReceiveStreamThread: while streaming found pida: 0x%04X ; pidv: 0x%04X ; ac3: %d\n",
 						  pida, pidv, ac3);
 				avpids_found = true;
@@ -1323,41 +1324,31 @@ PlayStreamThread (void *mrl)
 void updateLcd(const std::string & sel_filename)
 {
 	static int   l_playstate = -1;
-	char         tmp[20];
-	std::string  lcd;
+	std::string  lcd = sel_filename;
+	CLCD::AUDIOMODES playmode;
 
 	if(l_playstate == g_playstate) return;
 
 	switch(g_playstate)
 	{
 		case CMoviePlayerGui::PAUSE:
-			lcd = "|| (";
-			lcd += sel_filename;
-			lcd += ')';
-			StrSearchReplace(lcd,"_", " ");
+			playmode = CLCD::AUDIO_MODE_PAUSE;
 			break;
 
 		case CMoviePlayerGui::REW:
-			sprintf(tmp, "%dx<< ", g_speed);
-			lcd = tmp;
-			lcd += sel_filename;
-			StrSearchReplace(lcd,"_", " ");
+			playmode = CLCD::AUDIO_MODE_REV;
 			break;
 
 		case CMoviePlayerGui::FF:
-			sprintf(tmp, "%dx>> ", g_speed);
-			lcd = tmp;
-			lcd += sel_filename;
-			StrSearchReplace(lcd,"_", " ");
+			playmode = CLCD::AUDIO_MODE_FF;
 			break;
 
 		default:
-			lcd = "> ";
-			lcd += sel_filename;
-			StrSearchReplace(lcd,"_", " ");
+			playmode = CLCD::AUDIO_MODE_PLAY;
 			break;
 	}
-	CLCD::getInstance()->setMovieInfo("", lcd);
+	StrSearchReplace(lcd, "_", " ");
+	CLCD::getInstance()->setMovieInfo(playmode, "", lcd, false);
 }
 
 // GMO snip start ...
@@ -2399,6 +2390,7 @@ else
         	mp_selectAudio(ctx);
 			mp_bufferReset(ctx);
 }
+			CLCD::getInstance()->setMovieAudio(ctx->ac3);
 			fprintf(stderr, "[mp] using pida: 0x%04X ; pidv: 0x%04X ; ac3: %d\n",
 					  ctx->pida, ctx->pidv, ctx->ac3);
 
@@ -2900,6 +2892,9 @@ void *mp_playFileMain(void *filename)
 				g_startposition = 0;
 			}
 		}
+
+		//-- lcd audio type --
+		CLCD::getInstance()->setMovieAudio(ctx->ac3);
 
 		fprintf
 		(
