@@ -183,8 +183,10 @@ class CFrameBuffer
 
 		void setIconBasePath(const std::string & iconPath);
 
-		bool paintIcon (const char * const filename, const int x, const int y, const unsigned char offset = 1);
-		bool paintIcon (const std::string & filename, const int x, const int y, const unsigned char offset = 1);
+		bool paintIcon (const char * const filename, const int x, const int y,
+				const unsigned char offset = 1, const int max_w = -1, const int max_h = -1);
+		bool paintIcon (const std::string & filename, const int x, const int y,
+				const unsigned char offset = 1, const int max_w = -1, const int max_h = -1);
 		bool paintIcon8(const std::string & filename, const int x, const int y, const unsigned char offset = 0);
 		void loadPal   (const std::string & filename, const unsigned char offset = 0, const unsigned char endidx = 255);
 

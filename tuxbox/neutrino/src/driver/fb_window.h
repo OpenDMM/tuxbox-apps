@@ -33,10 +33,10 @@ class CFBWindow
 
  private:
 	private_data_t private_data;
-
- public:
 	int x, y;   /* upper left corner */
 	int dx, dy; /* dimension         */
+
+ public:
 
 	CFBWindow(const int _x, const int _y, const int _dx, const int _dy);
 	virtual~CFBWindow();
