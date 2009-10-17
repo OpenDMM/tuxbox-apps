@@ -86,6 +86,14 @@ typedef struct font_sizes_groups
 	const char * const                          actionkey;
 } font_sizes_groups_struct;
 
+template <class T>
+	void swap(T& a, T& b)
+	{
+		T temp = a;
+		a = b;
+		b = temp;
+	}
+
 #define FONT_STYLE_REGULAR 0
 #define FONT_STYLE_BOLD    1
 #define FONT_STYLE_ITALIC  2
@@ -106,7 +114,13 @@ class CNeutrinoApp : public CMenuTarget, CChangeObserver
 			RECORDING_VCR    = 2,
 			RECORDING_FILE   = 3
 		};
-		
+
+	enum
+		{
+			DIRECTORMODE_PORTAL	= -3,
+			DIRECTORMODE_TOGGLE	= -2
+		};
+
 		void saveSetup();
 
  private:

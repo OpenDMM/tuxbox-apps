@@ -308,6 +308,7 @@ struct SNeutrinoSettings
 	neutrino_msg_t key_bouquet_down;
 	neutrino_msg_t key_subchannel_up;
 	neutrino_msg_t key_subchannel_down;
+	neutrino_msg_t key_subchannel_toggle;
 	neutrino_msg_t key_zaphistory;
 	neutrino_msg_t key_lastchannel;
 
