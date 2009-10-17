@@ -1161,6 +1161,7 @@ const char * locale_real_names[] =
 	"servicemenu.restart_failed",
 	"servicemenu.restart_hint",
 	"servicemenu.restart_refused_recording",
+	"servicemenu.scanmodes",
 	"servicemenu.scants",
 	"servicemenu.ucodecheck",
 	"servicemenu.update",
