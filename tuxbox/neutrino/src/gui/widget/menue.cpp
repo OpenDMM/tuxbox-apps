@@ -700,7 +700,7 @@ int CMenuOptionStringChooser::paint( bool selected )
 		bgcolor = COL_MENUCONTENTINACTIVE_PLUS_0;
 	}
 
-	CFrameBuffer::getInstance()->paintBoxRel(x, y, dx, height, bgcolor);
+	CFrameBuffer::getInstance()->paintBoxRel(x, y, dx, height, bgcolor, RADIUS_SMALL);
 
 	int stringwidth = g_Font[SNeutrinoSettings::FONT_TYPE_MENU]->getRenderWidth(optionValue);
 	int stringstartposName = x + offx + 10;
