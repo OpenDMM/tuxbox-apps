@@ -94,6 +94,7 @@
 #ifdef ENABLE_GUI_MOUNT
 #include "gui/nfs.h"
 #endif
+#include "gui/scan_setup.h"
 #include "gui/screensetup.h"
 #include "gui/esound.h"
 #include "gui/personalize.h"
@@ -2346,6 +2347,10 @@ int CNeutrinoApp::run(int argc, char **argv)
 		configfile.setModifiedFlag(true);
 		saveSetup();
 	}
+
+	//init scan settings
+	CScanSetup scansetup;
+	scansetup.initScanSettings();
 
 	//init programm
 	InitZapper();
