@@ -93,6 +93,10 @@ void DMX::closefd(void)
 {
 	if (isOpen())
 	{
+		// maybe this helps with kernel crashes on TD...
+		if (ioctl(fd, DMX_STOP) < 0)
+			xprintf("DMX_STOP: %m\n");
+
 		close(fd);
 		fd = -1;
 	}
@@ -110,7 +114,7 @@ int DMX::immediate_stop(void)
 {
 	if (!isOpen())
 		return 1;
-	
+
 	closefd();
 	
 	return 0;
