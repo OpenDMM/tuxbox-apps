@@ -121,7 +121,7 @@ void* CLCD::TimeThread(void *)
 	int old_led = 0;
 	int led_fd = open("/dev/dbox/fp0", O_RDWR);
 
-	if (led_fd != -1)
+	if (led_fd < 0)
 	{
 		perror("CLCD::TimeThread: /dev/dbox/fp0");
 		return NULL;
