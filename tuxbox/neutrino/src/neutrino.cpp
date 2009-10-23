@@ -2477,7 +2477,6 @@ void CNeutrinoApp::RealRun(CMenuWidget &mainMenu)
 			else if( msg == CRCInput::RC_setup )
 			{
 				mainMenu.exec(NULL, "");
-				// restore mute symbol
 			}
 			else if(msg == CRCInput::RC_ok)
 			{
