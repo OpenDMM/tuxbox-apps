@@ -86,14 +86,6 @@ typedef struct font_sizes_groups
 	const char * const                          actionkey;
 } font_sizes_groups_struct;
 
-template <class T>
-	void swap(T& a, T& b)
-	{
-		T temp = a;
-		a = b;
-		b = temp;
-	}
-
 #define FONT_STYLE_REGULAR 0
 #define FONT_STYLE_BOLD    1
 #define FONT_STYLE_ITALIC  2
