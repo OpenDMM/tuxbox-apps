@@ -276,7 +276,6 @@ class CNeutrinoApp : public CMenuTarget, CChangeObserver
 				  CMenuWidget &colorSettings,
 				  CMenuWidget &lcdSettings,
 				  CMenuWidget &keySettings,
-				  CMenuWidget &videoSettings,
 				  CMenuWidget &languageSettings,
 				  CMenuWidget &miscSettings,
 				  CMenuWidget &driverSettings,
