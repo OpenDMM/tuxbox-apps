@@ -36,6 +36,9 @@
 #include <linux/input.h>
 #include <error.h>
 
+/* if you want use HAVE_XX_HARDWARE, better include config.h :-) */
+#include "config.h"
+
 #ifdef HAVE_DBOX_HARDWARE
 #define EVENTDEV "/dev/input/event0"
 #else
