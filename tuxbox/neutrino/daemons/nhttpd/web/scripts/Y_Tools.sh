@@ -573,13 +573,6 @@ case "$1" in
 		klack_url=`echo "$klack_url&secCode=$securitycode"`
 		wget -O /tmp/klack.xml "$klack_url" 2>&1 ;;
 
-	restart_sectionsd)
-		killall sectionsd
-		sectionsd >/dev/null 2>&1
-		msg="sectionsd reboot. ok."
-		y_format_message_html
-		;;
-
 	get_synctimer_channels)
 		if [ -e "$y_path_config/channels.txt" ]
 		then
