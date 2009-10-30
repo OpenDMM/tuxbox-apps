@@ -43,6 +43,9 @@
 		based on code of Steffen Hehn 'McClean'
 
 	$Log$
+	Revision 1.33  2009/10/30 21:05:49  seife
+	moviebrowser: fix ignored NULL-check due to superfluous semicolon
+	
 	Revision 1.32  2009/10/28 20:48:42  seife
 	moviebrowser: fix segfault on "OK" with empty TS archive
 	
@@ -1943,7 +1946,7 @@ bool CMovieBrowser::onButtonPressMainFrame(neutrino_msg_t msg)
 	}
 	else if (msg == CRCInput::RC_setup) 
 	{
-		if(m_movieSelectionHandler != NULL);
+		if(m_movieSelectionHandler != NULL)
 			showMenu(m_movieSelectionHandler);
 	}
 #ifdef MOVEMANAGER	
