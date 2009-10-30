@@ -1676,7 +1676,7 @@ void CInfoViewer::showInfoFile()
 	xStart = BoxStartX + ChanWidth + 40;	// right of record icon
 	xEnd   = BoxEndX - 125;			// left of progressbar
 	height = g_Font[SNeutrinoSettings::FONT_TYPE_INFOBAR_INFO]->getHeight() + 2;
-	r = height / 3;
+	r = RADIUS_SMALL;
 	// background
 	frameBuffer->paintBox(xStart, BoxStartY, xEnd, BoxStartY + height, COL_INFOBAR_PLUS_0, r);
 
