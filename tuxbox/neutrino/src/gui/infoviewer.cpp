@@ -286,6 +286,9 @@ void CInfoViewer::showMovieTitle(const int playstate, const std::string &title, 
 #ifdef HAVE_DREAMBOX_HARDWARE
 		usleep(100000);	// otherwise, the fade-in-effect is flashing on the dreambox :-(
 #endif
+#ifdef HAVE_TRIPLEDRAGON
+		usleep(20000);	// this sucks bigtime!
+#endif
 	}
 
 	ChanInfoX = BoxStartX + (ChanWidth / 3);
@@ -416,6 +419,9 @@ void CInfoViewer::showTitle(const int ChanNum, const std::string & Channel, cons
 		frameBuffer->paletteSet();
 #ifdef HAVE_DREAMBOX_HARDWARE
 		usleep(100000);	// otherwise, the fade-in-effect is flashing on the dreambox :-(
+#endif
+#ifdef HAVE_TRIPLEDRAGON
+		usleep(20000);	// this sucks bigtime!
 #endif
 	}
 

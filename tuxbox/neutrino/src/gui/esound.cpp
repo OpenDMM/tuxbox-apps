@@ -161,7 +161,7 @@ int CEsoundGui::exec(CMenuTarget* parent, const std::string &)
 	m_frameBuffer->useBackground(m_frameBuffer->loadBackground("radiomode.raw"));// set useBackground true or false
 	m_frameBuffer->paintBackground();
 
-#ifdef HAVE_DBOX_HARDWARE
+#if defined HAVE_DBOX_HARDWARE || defined HAVE_TRIPLEDRAGON
 	// If Audiomode is OST then save setting and switch to AVS-Mode
 	if(g_settings.audio_avs_Control == CControld::TYPE_OST)
 	{
@@ -229,7 +229,7 @@ int CEsoundGui::exec(CMenuTarget* parent, const std::string &)
 
 	// Restore last mode
 	g_Zapit->setStandby(false);
-#ifdef HAVE_DBOX_HARDWARE
+#if defined HAVE_DBOX_HARDWARE || defined HAVE_TRIPLEDRAGON
 	if(m_vol_ost)
 	{
 		char tmpvol;
