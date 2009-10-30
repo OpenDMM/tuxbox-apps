@@ -78,6 +78,7 @@ class CMenuItem
 {
 	protected:
 		int x, y, dx, offx;
+		bool used;
 	public:
 		bool           active;
 		neutrino_msg_t directKey;
@@ -87,8 +88,14 @@ class CMenuItem
 		{
 			directKey = CRCInput::RC_nokey;
 			iconName = "";
+			used = false;
 		}
 		virtual ~CMenuItem(){}
+
+		virtual void isUsed(void)
+		{
+			used = true;
+		}
 
 		virtual void init(const int X, const int Y, const int DX, const int OFFX);
 
