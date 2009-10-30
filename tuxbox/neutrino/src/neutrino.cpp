@@ -2710,7 +2710,23 @@ int CNeutrinoApp::handleMsg(const neutrino_msg_t m, neutrino_msg_data_t data)
 			setVolume(msg, (mode != mode_scart));
 			return messages_return::handled;
 		}
-
+#ifdef HAVE_TRIPLEDRAGON
+		else if(msg == CRCInput::RC_zoomin)
+		{
+			g_Zapit->setZoom(g_Zapit->getZoom() + 2);
+			return messages_return::handled;
+		}
+		else if(msg == CRCInput::RC_zoomout)
+		{
+			g_Zapit->setZoom(g_Zapit->getZoom() - 2);
+			return messages_return::handled;
+		}
+		else if(msg == CRCInput::RC_zoomoff)
+		{
+			g_Zapit->setZoom(100);
+			return messages_return::handled;
+		}
+#endif
 		/* HACK: mark all key-repeat and key-release events as "handled" in order not to
 		   screw up all the menus and hintboxes that do not yet handle them correctly */
 		if (msg <= CRCInput::RC_MaxRC)
