@@ -3736,12 +3736,12 @@ void CNeutrinoApp::standbyMode( bool bOnOff )
 #endif
 
 		CLCD::getInstance()->setMode(CLCD::MODE_TVRADIO);
-		g_Controld->videoPowerDown(false);
 		if (g_settings.standby_save_power)
 		{
 			g_Zapit->setStandby(false);
 			g_Sectionsd->setPauseScanning(false);
 		}
+		g_Controld->videoPowerDown(false);
 
 		execute_start_file(NEUTRINO_LEAVE_STANDBY_SCRIPT);
 
