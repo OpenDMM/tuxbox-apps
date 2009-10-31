@@ -46,17 +46,6 @@
 #ifndef __RADIO_AUDIO_H
 #define __RADIO_AUDIO_H
 
-
-#if HAVE_DVB_API_VERSION >= 3
-#include <linux/dvb/audio.h>
-#include <linux/dvb/dmx.h>
-#include <linux/dvb/video.h>
-#else
-#include <ost/audio.h>
-#include <ost/dmx.h>
-#include <ost/video.h>
-#endif
-
 #include <driver/framebuffer.h>
 #include <driver/fontrenderer.h>
 

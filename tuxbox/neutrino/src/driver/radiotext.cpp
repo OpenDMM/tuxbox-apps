@@ -59,7 +59,11 @@
 #include <ctype.h>
 #include <config.h>
 
-#if HAVE_DVB_API_VERSION < 3
+#ifdef HAVE_TRIPLEDRAGON
+#include <zapit/td-demux-compat.h>
+#include <tddevices.h>
+#define DMXDEV	"/dev/" DEVICE_NAME_DEMUX "1"
+#elif HAVE_DVB_API_VERSION < 3
 #include <ost/dmx.h>
 #define DMXDEV  "/dev/dvb/card0/demux0"
 #define DVRDEV  "/dev/dvb/card0/dvr0"
@@ -2297,15 +2301,20 @@ printf("in RadioTextThread fd = %d\n", fd);
 
 //	while (1) 
 	{
-			printf("Thread Setting PID 0x%x\n", rt->getPid());
+			fprintf(stderr, "Thread Setting PID 0x%x\n", rt->getPid());
 			ioctl(fd, DMX_SET_BUFFER_SIZE, 128*1024);
 	
 			flt.pid = rt->getPid();
-			flt.input = DMX_IN_FRONTEND;
-			flt.output = DMX_OUT_TAP;
 			flt.pes_type = DMX_PES_OTHER;
 			flt.flags = DMX_IMMEDIATE_START;
-
+#ifndef HAVE_TRIPLEDRAGON
+			flt.input = DMX_IN_FRONTEND;
+			flt.output = DMX_OUT_TAP;
+#else
+			flt.output = OUT_MEMORY;
+			flt.unloader.unloader_type = UNLOADER_TYPE_PAYLOAD;
+			flt.unloader.threshold     = 64;
+#endif
 			if (ioctl(fd, DMX_SET_PES_FILTER, &flt) < 0) {
 				perror("DMX_SET_PES_FILTER");
 				pthread_exit(NULL);
