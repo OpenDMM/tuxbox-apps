@@ -461,6 +461,13 @@ int CChannelList::show()
 		}
 		else
 		{
+			if (msg == NeutrinoMessages::EVT_SERVICES_UPD)
+			{
+				/* need to make sure that channel list is closed,
+				   because entries might not be valid anymore */
+				loop = false;
+				res = -2;
+			}
 			if ( CNeutrinoApp::getInstance()->handleMsg( msg, data ) & messages_return::cancel_all )
 			{
 				loop = false;
