@@ -483,6 +483,10 @@ bool CZapitSetupNotifier::changeNotify(const neutrino_locale_t OptionName, void 
 	{
 		g_Zapit->setSaveAudioPIDs((*((int *)data)) != 0);
 	}
+	else if (ARE_LOCALES_EQUAL(OptionName, LOCALE_ZAPITCONFIG_UNCOMMITTED_SWITCH))
+	{
+		g_Zapit->setUncommittedSwitchMode(*(int *)data);
+	}
 	return true;
 }
 

@@ -1379,6 +1379,9 @@ const char * locale_real_names[] =
 	"zapitconfig.save_last_channel",
 	"zapitconfig.start_radio",
 	"zapitconfig.start_tv",
+	"zapitconfig.uncommitted_switch",
+	"zapitconfig.uncommitted_switch_mode1",
+	"zapitconfig.uncommitted_switch_mode2",
 	"zaptotimer.announce",
 };
 #endif

@@ -218,6 +218,28 @@ bool CZapitClient::getRemainingChannelsBouquet(void)
 	return msg.truefalse;
 }
 
+void CZapitClient::setUncommittedSwitchMode(int mode)
+{
+	CZapitMessages::commandInt msg;
+
+	msg.val = mode;
+
+	send(CZapitMessages::CMD_SET_UNCOMMITTED_SWITCH_MODE, (const char *) & msg, sizeof(msg));
+
+	close_connection();
+}
+
+int CZapitClient::getUncommittedSwitchMode()
+{
+	send(CZapitMessages::CMD_GET_UNCOMMITTED_SWITCH_MODE);
+
+	CZapitMessages::responseGeneralInteger response;
+	CBasicClient::receive_data((char* )&response, sizeof(response));
+
+	close_connection();
+	return response.number;
+}
+
 int32_t CZapitClient::getCurrentSatellitePosition(void)
 {
 	send(CZapitMessages::CMD_GET_CURRENT_SATELLITE_POSITION);

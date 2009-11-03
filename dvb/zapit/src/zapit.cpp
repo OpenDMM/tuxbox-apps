@@ -713,9 +713,18 @@ void saveSettings(bool write)
 		config.setBool("saveAudioPIDs", save_audioPIDs);
 		config.setBool("makeRemainingChannelsBouquet", bouquetManager->remainingChannelsBouquet);
 
-		config.setInt32("lastSatellitePosition", frontend->getCurrentSatellitePosition());
-		config.setInt32("diseqcRepeats", frontend->getDiseqcRepeats());
-		config.setInt32("diseqcType", frontend->getDiseqcType());
+
+		switch (frontend->getInfo()->type) {
+			case FE_QPSK:
+				config.setInt32("lastSatellitePosition", frontend->getCurrentSatellitePosition());
+				config.setInt32("diseqcRepeats", frontend->getDiseqcRepeats());
+				config.setInt32("diseqcType", frontend->getDiseqcType());
+				config.setInt32("uncommitted_switch_mode", frontend->getUncommittedSwitchMode());
+				break;
+
+			default:
+				break;
+		}
 
 		if (config.getModifiedFlag())
 			config.saveConfig(CONFIGFILE);
@@ -1813,6 +1822,22 @@ bool parse_command(CBasicMessage::Header &rmsg, int connfd)
 		CZapitMessages::commandBoolean msg;
 		msg.truefalse = bouquetManager->remainingChannelsBouquet;
 		CBasicServer::send_data(connfd, &msg, sizeof(msg));
+		break;
+	}
+
+	case CZapitMessages::CMD_SET_UNCOMMITTED_SWITCH_MODE:
+	{
+		CZapitMessages::commandInt msg;
+		CBasicServer::receive_data(connfd, &msg, sizeof(msg));
+		frontend->setUncommittedSwitchMode(msg.val);
+		break;
+	}
+
+	case CZapitMessages::CMD_GET_UNCOMMITTED_SWITCH_MODE:
+	{
+		CZapitMessages::responseGeneralInteger responseInteger;
+		responseInteger.number = frontend->getUncommittedSwitchMode();
+		CBasicServer::send_data(connfd, &responseInteger, sizeof(responseInteger));
 		break;
 	}
 
