@@ -3144,6 +3144,14 @@ CMoviePlayerGui::PlayStream(int streamtype)
 				DisplayErrorMessage(g_Locale->getText(LOCALE_MOVIEPLAYER_TOOMANYBOOKMARKS)); // UTF-8
 			}
 		}
+		else if (msg == CRCInput::RC_left)
+		{
+			skip(-15, stream, false);
+		}
+		else if (msg == CRCInput::RC_right)
+		{
+			skip(15, stream, false);
+		}
 		else if (msg == CRCInput::RC_1 || msg == CRCInput::RC_prev)
 		{
 			skip(-60, stream, false);
