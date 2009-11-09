@@ -76,6 +76,8 @@
 #define NEUTRINO_ICON_EPGINFO		"epginfo.raw"
 #define NEUTRINO_ICON_UPDATE		"softupdate.raw"
 #define NEUTRINO_ICON_FEATURES		"features.raw"
+#define NEUTRINO_ICON_LOCK		"lock.raw"
+#define NEUTRINO_ICON_QUESTION		"question.raw"
 
 #define DUMMY_ICON			"dummy.raw"
 
