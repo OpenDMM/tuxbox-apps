@@ -139,7 +139,7 @@ void CThemes::Show()
 {
 	std::string file_name = "";
 
-	CMenuWidget themes (LOCALE_COLORTHEMEMENU_HEAD2, "settings.raw", 500);
+	CMenuWidget themes (LOCALE_COLORTHEMEMENU_HEAD2, NEUTRINO_ICON_SETTINGS, 500);
 	themes.addItem(GenericMenuSeparator);
 	themes.addItem(GenericMenuBack);
 
@@ -172,7 +172,7 @@ void CThemes::Show()
 	}
 
 	if (hasThemeChanged) {
-		if (ShowLocalizedMessage(LOCALE_MESSAGEBOX_INFO, LOCALE_COLORTHEMEMENU_QUESTION, CMessageBox::mbrYes, CMessageBox::mbYes | CMessageBox::mbNo, "settings.raw") != CMessageBox::mbrYes)
+		if (ShowLocalizedMessage(LOCALE_MESSAGEBOX_INFO, LOCALE_COLORTHEMEMENU_QUESTION, CMessageBox::mbrYes, CMessageBox::mbYes | CMessageBox::mbNo, NEUTRINO_ICON_SETTINGS) != CMessageBox::mbrYes)
 			rememberOldTheme( false );
 		else
 			hasThemeChanged = false;

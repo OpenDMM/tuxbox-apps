@@ -2083,12 +2083,12 @@ int CNeutrinoApp::run(int argc, char **argv)
 	CMenuWidget    mainMenu            (LOCALE_MAINMENU_HEAD                 , "mainmenue.raw"       );
 	CMenuWidget    mainSettings        (LOCALE_MAINSETTINGS_HEAD             , NEUTRINO_ICON_SETTINGS);
 	CMenuWidget    languageSettings    (LOCALE_LANGUAGESETUP_HEAD            , "language.raw"        );
-	CMenuWidget    networkSettings     (LOCALE_NETWORKMENU_HEAD              , "network.raw"         , 430);
-	CMenuWidget    recordingSettings   (LOCALE_RECORDINGMENU_HEAD            , "recording.raw"       );
-	CMenuWidget    colorSettings       (LOCALE_COLORMENU_HEAD                , "colors.raw"          );
-	CMenuWidget    fontSettings        (LOCALE_FONTMENU_HEAD                 , "colors.raw"          );
+	CMenuWidget    networkSettings     (LOCALE_NETWORKMENU_HEAD              , NEUTRINO_ICON_STREAMING, 430);
+	CMenuWidget    recordingSettings   (LOCALE_RECORDINGMENU_HEAD            , NEUTRINO_ICON_RECORDING);
+	CMenuWidget    colorSettings       (LOCALE_COLORMENU_HEAD                , NEUTRINO_ICON_COLORS  );
+	CMenuWidget    fontSettings        (LOCALE_FONTMENU_HEAD                 , NEUTRINO_ICON_COLORS  );
 	CMenuWidget    lcdSettings         (LOCALE_LCDMENU_HEAD                  , "lcd.raw"             , 500);
-	CMenuWidget    keySettings         (LOCALE_KEYBINDINGMENU_HEAD           , "keybinding.raw"      , 450);
+	CMenuWidget    keySettings         (LOCALE_KEYBINDINGMENU_HEAD           , NEUTRINO_ICON_KEYBINDING, 450);
 	CMenuWidget    driverSettings      (LOCALE_DRIVERSETTINGS_HEAD           , NEUTRINO_ICON_SETTINGS);
 	CMenuWidget    miscSettings        (LOCALE_MISCSETTINGS_HEAD             , NEUTRINO_ICON_SETTINGS, 500);
 	CMenuWidget    scanSettingsMenu    (LOCALE_SERVICEMENU_SCANTS            , NEUTRINO_ICON_SETTINGS);
@@ -3783,7 +3783,7 @@ void CNeutrinoApp::radioMode( bool rezap)
 		g_Controld->setVideoFormat(g_settings.video_backgroundFormat);
 
 	frameBuffer->loadPal("radiomode.pal", 18, COL_MAXFREE);
-	frameBuffer->useBackground(frameBuffer->loadBackground("radiomode.raw"));// set useBackground true or false
+	frameBuffer->useBackground(frameBuffer->loadBackground(NEUTRINO_ICON_RADIOMODE));// set useBackground true or false
 	frameBuffer->paintBackground();
 
 	g_RemoteControl->radioMode();

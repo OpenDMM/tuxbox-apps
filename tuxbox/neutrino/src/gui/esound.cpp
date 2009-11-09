@@ -158,7 +158,7 @@ int CEsoundGui::exec(CMenuTarget* parent, const std::string &)
 	if (usedBackground)
 		m_frameBuffer->saveBackgroundImage();
 	m_frameBuffer->loadPal("radiomode.pal", 18, COL_MAXFREE);
-	m_frameBuffer->useBackground(m_frameBuffer->loadBackground("radiomode.raw"));// set useBackground true or false
+	m_frameBuffer->useBackground(m_frameBuffer->loadBackground(NEUTRINO_ICON_RADIOMODE));// set useBackground true or false
 	m_frameBuffer->paintBackground();
 
 #if defined HAVE_DBOX_HARDWARE || defined HAVE_TRIPLEDRAGON

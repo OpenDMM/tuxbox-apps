@@ -181,8 +181,8 @@ void CRGBCSyncControler::paintSlider(int _x, int _y, unsigned int spos, int fact
 	char wert[5];
 
 	frameBuffer->paintBoxRel(_x + startx, _y, 120, mheight, COL_MENUCONTENT_PLUS_0);
-	frameBuffer->paintIcon("volumebody.raw", _x + startx, _y+2+mheight/4);
-	frameBuffer->paintIcon(selected ? "volumeslider2blue.raw" : "volumeslider2.raw", (int)(_x + (startx+3)+(100*spos / factor)), _y+mheight/4);
+	frameBuffer->paintIcon(NEUTRINO_ICON_VOLUMEBODY, _x + startx, _y+2+mheight/4);
+	frameBuffer->paintIcon(selected ? NEUTRINO_ICON_VOLUMESLIDER2BLUE : NEUTRINO_ICON_VOLUMESLIDER2, (int)(_x + (startx+3)+(100*spos / factor)), _y+mheight/4);
 
 	g_Font[SNeutrinoSettings::FONT_TYPE_MENU]->RenderString(_x, _y+mheight, width, g_Locale->getText(text), COL_MENUCONTENT, 0, true); // UTF-8
 	sprintf(wert, "%3d", spos); // UTF-8 encoded

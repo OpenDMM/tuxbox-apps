@@ -107,7 +107,7 @@ void CBEBouquetWidget::paintItem(int pos)
 	{
 		if (Bouquets[liststart+pos].locked)
 		{
-			frameBuffer->paintIcon("lock.raw", x + 7, ypos);
+			frameBuffer->paintIcon(NEUTRINO_ICON_LOCK, x + 7, ypos);
 		}
 		if (Bouquets[liststart+pos].hidden)
 		{

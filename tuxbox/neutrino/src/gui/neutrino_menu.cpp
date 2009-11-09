@@ -873,7 +873,7 @@ void CNeutrinoApp::InitRecordingSettings(CMenuWidget &recordingSettings)
 	CMenuForwarder *mf14 = new CMenuForwarder(LOCALE_TIMERSETTINGS_ZAPTO_SAFETY_TIME_BEFORE, true, g_settings.zapto_safety_time_before, timerSettings_zapto_safety_time_before );
 
 	// default recording audio pids
-	CMenuWidget *apidRecordingSettings = new CMenuWidget(LOCALE_RECORDINGMENU_APIDS, "audio.raw");
+	CMenuWidget *apidRecordingSettings = new CMenuWidget(LOCALE_RECORDINGMENU_APIDS, NEUTRINO_ICON_AUDIO);
 	CMenuForwarder* mf13 = new CMenuForwarder(LOCALE_RECORDINGMENU_APIDS ,true, NULL, apidRecordingSettings);
 	g_settings.recording_audio_pids_std = ( g_settings.recording_audio_pids_default & TIMERD_APIDS_STD ) ? 1 : 0 ;
 	g_settings.recording_audio_pids_alt = ( g_settings.recording_audio_pids_default & TIMERD_APIDS_ALT ) ? 1 : 0 ;
@@ -1095,7 +1095,7 @@ void CNeutrinoApp::InitFontSettings(CMenuWidget &fontSettings)
 
 	for (int i = 0; i < 5; i++)
 	{
-		CMenuWidget * fontSettingsSubMenu = new CMenuWidget(font_sizes_groups[i].groupname, "colors.raw");
+		CMenuWidget * fontSettingsSubMenu = new CMenuWidget(font_sizes_groups[i].groupname, NEUTRINO_ICON_COLORS);
 		fontSettingsSubMenu->addItem(GenericMenuSeparator);
 		fontSettingsSubMenu->addItem(GenericMenuBack);
 		fontSettingsSubMenu->addItem(GenericMenuSeparatorLine);
@@ -1512,7 +1512,7 @@ bool CNeutrinoApp::showUserMenu(int button)
 		if( txt.empty() )
 			txt = g_Locale->getText(LOCALE_INFOVIEWER_STREAMINFO);
 	}
-	CMenuWidget *menu = new CMenuWidget(txt.c_str() , "features.raw", 400);
+	CMenuWidget *menu = new CMenuWidget(txt.c_str() , NEUTRINO_ICON_FEATURES, 400);
 	if (menu == NULL) 
 		return 0;
 	menu->addItem(GenericMenuSeparator);
@@ -1687,7 +1687,7 @@ bool CNeutrinoApp::showUserMenu(int button)
 				if (!(g_RemoteControl->subChannels.empty()))
 				{
 					// NVOD/SubService- Kanal!
-					tmpNVODSelector = new CMenuWidget(g_RemoteControl->are_subchannels ? LOCALE_NVODSELECTOR_SUBSERVICE : LOCALE_NVODSELECTOR_HEAD, "video.raw", 350);
+					tmpNVODSelector = new CMenuWidget(g_RemoteControl->are_subchannels ? LOCALE_NVODSELECTOR_SUBSERVICE : LOCALE_NVODSELECTOR_HEAD, NEUTRINO_ICON_VIDEO, 350);
 					if(getNVODMenu(tmpNVODSelector))
 					{
 						menu_items++;
@@ -1769,7 +1769,7 @@ void CNeutrinoApp::ShowStreamFeatures()
 	char id[5];
 	int cnt = 0;
 	int enabled_count = 0;
-	CMenuWidget *StreamFeatureSelector = new CMenuWidget(LOCALE_STREAMFEATURES_HEAD, "features.raw", 350);
+	CMenuWidget *StreamFeatureSelector = new CMenuWidget(LOCALE_STREAMFEATURES_HEAD, NEUTRINO_ICON_FEATURES, 350);
 	if (StreamFeatureSelector == NULL) return;
 
 	StreamFeatureSelector->addItem(GenericMenuSeparator);
@@ -1849,7 +1849,7 @@ void CNeutrinoApp::SelectNVOD()
 	if (!(g_RemoteControl->subChannels.empty()))
 	{
 		// NVOD/SubService- Kanal!
-		CMenuWidget NVODSelector(g_RemoteControl->are_subchannels ? LOCALE_NVODSELECTOR_SUBSERVICE : LOCALE_NVODSELECTOR_HEAD, "video.raw", 350);
+		CMenuWidget NVODSelector(g_RemoteControl->are_subchannels ? LOCALE_NVODSELECTOR_SUBSERVICE : LOCALE_NVODSELECTOR_HEAD, NEUTRINO_ICON_VIDEO, 350);
 		if(getNVODMenu(&NVODSelector))
 			NVODSelector.exec(NULL, "");
 	}

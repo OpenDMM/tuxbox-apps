@@ -384,9 +384,9 @@ void CMovieViewer::show()
 	bool res;
 	const char * dd_icon;
 	if (  player_mode == CMoviePlayerGui::PAUSE )
-		dd_icon = "pause.raw";
+		dd_icon = NEUTRINO_ICON_PAUSE;
 	else 
-		dd_icon = "play.raw";
+		dd_icon = NEUTRINO_ICON_PLAY;
 	/* calculating play state icon position, usefully for using customized icons with other sizes */
 	int dd_icon_h = frameBuffer->getIconHeight(dd_icon);
 	int dd_icon_w = frameBuffer->getIconWidth(dd_icon);
@@ -574,11 +574,11 @@ void CMovieViewer::showIcon_Audio()
 {
 	const char * dd_icon;
 	if (  is_ac3 )
-		dd_icon = "dd.raw";
+		dd_icon = NEUTRINO_ICON_DD;
 	else if ( has_ac3 )
-		dd_icon = "dd_avail.raw";
+		dd_icon = NEUTRINO_ICON_DD_AVAIL;
 	else
-		dd_icon = "dd_gray.raw";
+		dd_icon = NEUTRINO_ICON_DD_GREY;
 
 	frameBuffer->paintIcon(dd_icon, BoxEndX - (ICON_LARGE_WIDTH + 2 + ICON_SMALL_WIDTH + 2), BoxEndInfoY + InfoHeightY_Info - ((InfoHeightY_Info + 16) >> 1));
 }
@@ -588,7 +588,7 @@ void CMovieViewer::showIcon_Audio()
 ************************************************************************/
 void CMovieViewer::showIcon_16_9() const
 {
-	frameBuffer->paintIcon((aspectRatio != 0) ? "16_9.raw" : "16_9_gray.raw", BoxEndX - (ICON_LARGE_WIDTH + 2 + ICON_LARGE_WIDTH + 2 + ICON_SMALL_WIDTH + 2), BoxEndInfoY + InfoHeightY_Info - ((InfoHeightY_Info + 16) >> 1));
+	frameBuffer->paintIcon((aspectRatio != 0) ? NEUTRINO_ICON_16_9 : NEUTRINO_ICON_16_9_GREY, BoxEndX - (ICON_LARGE_WIDTH + 2 + ICON_LARGE_WIDTH + 2 + ICON_SMALL_WIDTH + 2), BoxEndInfoY + InfoHeightY_Info - ((InfoHeightY_Info + 16) >> 1));
 }
 
 /************************************************************************
@@ -597,7 +597,7 @@ void CMovieViewer::showIcon_16_9() const
 void CMovieViewer::showIcon_VTXT() const
 {
 	int vtpid=g_RemoteControl->current_PIDs.PIDs.vtxtpid;
-	frameBuffer->paintIcon((vtpid != 0) ? "vtxt.raw" : "vtxt_gray.raw", BoxEndX - (ICON_SMALL_WIDTH + 2), BoxEndInfoY + InfoHeightY_Info - ((InfoHeightY_Info + 16) >> 1));
+	frameBuffer->paintIcon((vtpid != 0) ? NEUTRINO_ICON_VTXT : NEUTRINO_ICON_VTXT_GREY, BoxEndX - (ICON_SMALL_WIDTH + 2), BoxEndInfoY + InfoHeightY_Info - ((InfoHeightY_Info + 16) >> 1));
 }
 
 

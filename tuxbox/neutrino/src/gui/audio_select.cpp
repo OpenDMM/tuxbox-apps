@@ -84,7 +84,7 @@ int CAudioSelectMenuHandler::exec(CMenuTarget* parent, const std::string &)
 
 int CAudioSelectMenuHandler::doMenu ()
 {
-	CMenuWidget AudioSelector(LOCALE_AUDIOSELECTMENUE_HEAD, "audio.raw", 360);
+	CMenuWidget AudioSelector(LOCALE_AUDIOSELECTMENUE_HEAD, NEUTRINO_ICON_AUDIO, 360);
 
 
 	// -- setup menue due to Audio PIDs

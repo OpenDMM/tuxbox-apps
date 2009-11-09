@@ -301,9 +301,9 @@ void CInfoViewer::showMovieTitle(const int playstate, const std::string &title, 
 	//paint play state icon
 	const char *icon;
 	if (playstate == 4) // CMoviePlayerGui::PAUSE
-		icon = "pause.raw";
+		icon = NEUTRINO_ICON_PAUSE;
 	else 
-		icon = "play.raw";
+		icon = NEUTRINO_ICON_PLAY;
 	/* calculate play state icon position, useful for using customized icons with other sizes */
 	int icon_h = frameBuffer->getIconHeight(icon);
 	int icon_w = frameBuffer->getIconWidth(icon);
@@ -993,7 +993,7 @@ void CInfoViewer::showIcon_16_9() const
 #ifdef ENABLE_RADIOTEXT
 	if (g_Zapit->getMode() !=2)
 #endif
-	frameBuffer->paintIcon((aspectRatio != 0) ? "16_9.raw" : "16_9_gray.raw",
+	frameBuffer->paintIcon((aspectRatio != 0) ? NEUTRINO_ICON_16_9 : NEUTRINO_ICON_16_9_GREY,
 				BoxEndX - (ICON_LARGE_WIDTH + 2 + ICON_LARGE_WIDTH + 2 + ICON_SMALL_WIDTH + 2 + ICON_SMALL_WIDTH + 6),
 				BoxEndY + (InfoHeightY_Info - ICON_HEIGHT) / 2);
 }
@@ -1001,7 +1001,7 @@ void CInfoViewer::showIcon_16_9() const
 void CInfoViewer::showIcon_VTXT() const
 {
 	int vtpid=g_RemoteControl->current_PIDs.PIDs.vtxtpid;
-	frameBuffer->paintIcon((vtpid != 0) ? "vtxt.raw" : "vtxt_gray.raw",
+	frameBuffer->paintIcon((vtpid != 0) ? NEUTRINO_ICON_VTXT : NEUTRINO_ICON_VTXT_GREY,
 				BoxEndX - (ICON_SMALL_WIDTH + 2 + ICON_SMALL_WIDTH + 6),
 				BoxEndY + (InfoHeightY_Info - ICON_HEIGHT) / 2);
 #ifndef TUXTXT_CFG_STANDALONE
@@ -1042,14 +1042,14 @@ void CInfoViewer::showIcon_Audio(const int ac3state) const
 	switch (ac3state)
 	{
 		case AC3_ACTIVE:
-			dd_icon = "dd.raw";
+			dd_icon = NEUTRINO_ICON_DD;
 			break;
 		case AC3_AVAILABLE:
-			dd_icon = "dd_avail.raw";
+			dd_icon = NEUTRINO_ICON_DD_AVAIL;
 			break;
 		case NO_AC3:
 		default:
-			dd_icon = "dd_gray.raw";
+			dd_icon = NEUTRINO_ICON_DD_GREY;
 			break;
 	}
 

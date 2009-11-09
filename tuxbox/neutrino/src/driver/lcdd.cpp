@@ -692,7 +692,7 @@ void CLCD::showPercentOver(const unsigned char perc, const bool perform_update, 
 
 				const char * icon;
 				if (is_ac3)
-					icon = DATADIR "/lcdd/icons/dd.raw";
+					icon = DATADIR "/lcdd/icons/" NEUTRINO_ICON_DD;
 				else
 					icon = DATADIR "/lcdd/icons/stereo.raw";
 

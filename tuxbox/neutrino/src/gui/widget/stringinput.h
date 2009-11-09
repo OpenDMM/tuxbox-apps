@@ -37,6 +37,7 @@
 
 #include <driver/framebuffer.h>
 #include <system/localize.h>
+#include <gui/widget/icons.h>
 
 #include <string>
 
@@ -126,7 +127,7 @@ class CPINInput : public CStringInput
 		virtual void paintChar(int pos);
 	public:
 		CPINInput(const neutrino_locale_t Name, char* Value, int Size, const neutrino_locale_t Hint_1 = NONEXISTANT_LOCALE, const neutrino_locale_t Hint_2 = NONEXISTANT_LOCALE, const char* Valid_Chars= "0123456789", CChangeObserver* Observ = NULL)
-		 : CStringInput(Name, Value, Size, Hint_1, Hint_2, Valid_Chars, Observ, "lock.raw") {};
+		 : CStringInput(Name, Value, Size, Hint_1, Hint_2, Valid_Chars, Observ, NEUTRINO_ICON_LOCK) {};
 
 		 int exec( CMenuTarget* parent, const std::string & actionKey );
 };

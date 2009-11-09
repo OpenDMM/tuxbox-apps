@@ -572,11 +572,11 @@ int CEpgData::show(const t_channel_id channel_id, unsigned long long a_id, time_
 		{
 			if( tags[i].streamContent == 1 && (tags[i].componentType == 2 || tags[i].componentType == 3) )
 			{
-				frameBuffer->paintIcon("16_9.raw", ox + sx - (ICON_LARGE_WIDTH + 2 ) - (ICON_LARGE_WIDTH + 2) - 4, sy + oy + 7);
+				frameBuffer->paintIcon(NEUTRINO_ICON_16_9, ox + sx - (ICON_LARGE_WIDTH + 2 ) - (ICON_LARGE_WIDTH + 2) - 4, sy + oy + 7);
 			}
 			else if( tags[i].streamContent == 2 && tags[i].componentType == 5 )
 			{
-				frameBuffer->paintIcon("dd.raw", ox + sx - (ICON_LARGE_WIDTH + 2) - 4, sy + oy + 7);
+				frameBuffer->paintIcon(NEUTRINO_ICON_DD, ox + sx - (ICON_LARGE_WIDTH + 2) - 4, sy + oy + 7);
 			}
 		}
 	}
@@ -679,7 +679,7 @@ int CEpgData::show(const t_channel_id channel_id, unsigned long long a_id, time_
 							if ((recDir == "") && (RECORDING_FILE == g_settings.recording_type))
 							{
 								printf("set zapto timer failed, no record directory...\n");
-								ShowLocalizedMessage(LOCALE_TIMER_EVENTRECORD_TITLE, LOCALE_EPGLIST_ERROR_NO_RECORDDIR_MSG, CMessageBox::mbrBack, CMessageBox::mbBack, "error.raw");
+								ShowLocalizedMessage(LOCALE_TIMER_EVENTRECORD_TITLE, LOCALE_EPGLIST_ERROR_NO_RECORDDIR_MSG, CMessageBox::mbrBack, CMessageBox::mbBack, NEUTRINO_ICON_ERROR);
 							}
 								
 							if ((recDir != "") || (RECORDING_FILE != g_settings.recording_type))
@@ -700,10 +700,10 @@ int CEpgData::show(const t_channel_id channel_id, unsigned long long a_id, time_
 														 epgData.eventID, epgData.epg_times.startzeit,
 														 epgData.epg_times.startzeit - (ANNOUNCETIME + 120 ),
 														 TIMERD_APIDS_CONF, true, recDir, true);
-										ShowLocalizedMessage(LOCALE_TIMER_EVENTRECORD_TITLE, LOCALE_TIMER_EVENTRECORD_MSG, CMessageBox::mbrBack, CMessageBox::mbBack, "info.raw");
+										ShowLocalizedMessage(LOCALE_TIMER_EVENTRECORD_TITLE, LOCALE_TIMER_EVENTRECORD_MSG, CMessageBox::mbrBack, CMessageBox::mbBack, NEUTRINO_ICON_INFO);
 									}
 								} else {
-									ShowLocalizedMessage(LOCALE_TIMER_EVENTRECORD_TITLE, LOCALE_TIMER_EVENTRECORD_MSG, CMessageBox::mbrBack, CMessageBox::mbBack, "info.raw");
+									ShowLocalizedMessage(LOCALE_TIMER_EVENTRECORD_TITLE, LOCALE_TIMER_EVENTRECORD_MSG, CMessageBox::mbrBack, CMessageBox::mbBack, NEUTRINO_ICON_INFO);
 								}
 							}
 						}
@@ -722,7 +722,7 @@ int CEpgData::show(const t_channel_id channel_id, unsigned long long a_id, time_
 																  epgData.epg_times.startzeit,
 																  epgData.epg_times.startzeit - ANNOUNCETIME, 0,
 																  epgData.eventID, epgData.epg_times.startzeit, 0, true);
-						ShowLocalizedMessage(LOCALE_TIMER_EVENTTIMED_TITLE, LOCALE_TIMER_EVENTTIMED_MSG, CMessageBox::mbrBack, CMessageBox::mbBack, "info.raw");
+						ShowLocalizedMessage(LOCALE_TIMER_EVENTTIMED_TITLE, LOCALE_TIMER_EVENTTIMED_MSG, CMessageBox::mbrBack, CMessageBox::mbBack, NEUTRINO_ICON_INFO);
 					}
 					else
 						printf("timerd not available\n");

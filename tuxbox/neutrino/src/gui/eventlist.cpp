@@ -421,7 +421,7 @@ int EventList::exec(const t_channel_id channel_id, const std::string& channelnam
 					if ((recDir == "") && (RECORDING_FILE == g_settings.recording_type))
 					{
 						printf("set zapto timer failed, no record directory...\n");
-						ShowLocalizedMessage(LOCALE_TIMER_EVENTRECORD_TITLE, LOCALE_EPGLIST_ERROR_NO_RECORDDIR_MSG, CMessageBox::mbrBack, CMessageBox::mbBack, "error.raw");
+						ShowLocalizedMessage(LOCALE_TIMER_EVENTRECORD_TITLE, LOCALE_EPGLIST_ERROR_NO_RECORDDIR_MSG, CMessageBox::mbrBack, CMessageBox::mbBack, NEUTRINO_ICON_ERROR);
 					}
 
 					if ((recDir != "") || (RECORDING_FILE != g_settings.recording_type))
@@ -444,7 +444,7 @@ int EventList::exec(const t_channel_id channel_id, const std::string& channelnam
 									 evtlist[selected].eventID, evtlist[selected].startTime,
 									 evtlist[selected].startTime - (ANNOUNCETIME + 120),
 									 TIMERD_APIDS_CONF, true, recDir,true);
-								//ShowLocalizedMessage(LOCALE_TIMER_EVENTRECORD_TITLE, LOCALE_TIMER_EVENTRECORD_MSG, CMessageBox::mbrBack, CMessageBox::mbBack, "info.raw");
+								//ShowLocalizedMessage(LOCALE_TIMER_EVENTRECORD_TITLE, LOCALE_TIMER_EVENTRECORD_MSG, CMessageBox::mbrBack, CMessageBox::mbBack, NEUTRINO_ICON_INFO);
 								// delete zapto timer if any
 								if(is_timer & EventList::TIMER_ZAPTO)
 								{
@@ -502,7 +502,7 @@ int EventList::exec(const t_channel_id channel_id, const std::string& channelnam
 				UpdateTimerList();
 				paintItem(selected - liststart);
 				showFunctionBar(true);
-				//ShowLocalizedMessage(LOCALE_TIMER_EVENTTIMED_TITLE, LOCALE_TIMER_EVENTTIMED_MSG, CMessageBox::mbrBack, CMessageBox::mbBack, "info.raw");
+				//ShowLocalizedMessage(LOCALE_TIMER_EVENTTIMED_TITLE, LOCALE_TIMER_EVENTTIMED_MSG, CMessageBox::mbrBack, CMessageBox::mbBack, NEUTRINO_ICON_INFO);
 			}
 			else if(timerdclient.isTimerdAvailable())
 			{

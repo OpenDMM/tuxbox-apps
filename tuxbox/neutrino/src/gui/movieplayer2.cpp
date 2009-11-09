@@ -2956,7 +2956,7 @@ CMoviePlayerGui::PlayStream(int streamtype)
 
 		if (g_showaudioselectdialog)
 		{
-			CMenuWidget APIDSelector(LOCALE_APIDSELECTOR_HEAD, "audio.raw", 400);
+			CMenuWidget APIDSelector(LOCALE_APIDSELECTOR_HEAD, NEUTRINO_ICON_AUDIO, 400);
 			APIDSelector.addItem(GenericMenuSeparator);
 			g_apidchanged = false;
 			pidt = 0;
