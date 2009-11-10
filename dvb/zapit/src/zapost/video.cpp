@@ -503,6 +503,15 @@ int CVideo::setZoom(int zoom)
 		{
 			s.src.hori_size = 720;
 			s.des.hori_size = 720 * 3/4 * zoom / 100;
+			if (s.des.hori_size > 720)
+			{
+				/* the destination exceeds the screen size.
+				   TODO: decrease source size to allow higher
+				   zoom factors (is this useful ?) */
+				s.des.hori_size = 720;
+				zoom = 133; // (720*4*100)/(720*3)
+				*zoomvalue = zoom;
+			}
 		}
 		else
 		{
