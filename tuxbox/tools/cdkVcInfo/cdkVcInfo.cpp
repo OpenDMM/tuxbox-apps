@@ -23,6 +23,8 @@
 
 #include <stdio.h>
 #include <string>
+#include <string.h>
+#include <stdlib.h>
 
 #define CONSOLE "/dev/vc/0"
 #define VERSION_FILE "/.version"

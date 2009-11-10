@@ -29,6 +29,7 @@
 #include <errno.h>
 #include <sys/types.h>
 #include <sys/wait.h>
+#include <string.h>
 
 int bidirpipe(int pfd[], char *cmd , char *argv[])
 {
