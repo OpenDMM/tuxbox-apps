@@ -30,9 +30,6 @@
 class ePicViewerSettings: public eWindow
 {
 private:
-
-	eButton *ok, *abort;
-	eStatusBar *statusbar;
 	eCheckbox *subdirs, *busy, *format_169;
 	eListBox<eListBoxEntryText> *timeout;
 
