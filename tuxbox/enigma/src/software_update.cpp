@@ -62,7 +62,7 @@ void eSoftwareUpdate::manual_update()
 	hide();
 	int ret = eMessageBox::ShowBox(_("Upload your Image via FTP or Samba to the '/tmp' folder."
 										"Then rename it to 'root.cramfs' and press ok."
-										"In the upcomming list select 'manual update' and follow the instructions."), _("Manual update"), eMessageBox::iconInfo|eMessageBox::btOK );
+										"In the following list select 'manual update' and follow the instructions."), _("Manual update"), eMessageBox::iconInfo|eMessageBox::btOK );
 	if ( ret == eMessageBox::btOK )
 	{
 		eUpgrade up(true);
