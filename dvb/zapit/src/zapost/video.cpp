@@ -182,7 +182,9 @@ void CVideo::setVideoFormat(int format)
 	vidDispMode_t videoDisplayFormat;
 #endif
 
+#if defined HAVE_DREAMBOX_HARDWARE || defined HAVE_DBOX_HARDWARE || defined HAVE_IPBOX_HARDWARE || defined HAVE_TRIPLEDRAGON
 	int _fd;
+#endif
 	const char *format_string[] = { "auto", "16:9", "4:3(LB)", "4:3(PS)" };
 	/*
 	  16:9 : fnc 1
@@ -219,7 +221,7 @@ void CVideo::setVideoFormat(int format)
 	else
 		printf("unknown (%d)\n", format);
 
-#ifndef HAVE_TRIPLEDRAGON
+#if defined HAVE_DREAMBOX_HARDWARE || defined HAVE_DBOX_HARDWARE || defined HAVE_IPBOX_HARDWARE
 	if ((_fd = open(AVS_DEVICE, O_RDWR)) < 0)
 		perror("[CVideo] " AVS_DEVICE);
 	else
@@ -278,7 +280,8 @@ void CVideo::setVideoFormat(int format)
 
 		close(_fd);
 	}
-#else
+#endif
+#ifdef HAVE_TRIPLEDRAGON
 	unsigned int volt = 12;
 	switch(format)
 	{

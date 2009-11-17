@@ -2898,9 +2898,11 @@ void setFastZap(int mode)
 	int mpeg_fd = open("/dev/video", O_WRONLY);
 	if (mpeg_fd > -1) {
 		printf("[zapit] set VIDEO_SET_FASTZAP %d\n", mode);
+#ifndef HAVE_COOL_HARDWARE
 		if (ioctl(mpeg_fd, VIDEO_SET_FASTZAP, mode) < 0)
 			perror("zapit: VIDEO_SET_FASTZAP");
 		close(mpeg_fd);
+#endif
 	} else
 		perror("zapit: open /dev/video");
 
