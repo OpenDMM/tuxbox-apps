@@ -43,6 +43,9 @@
 		based on code of Steffen Hehn 'McClean'
 
 	$Log$
+	Revision 1.36  2009/11/20 22:31:25  dbt
+	stdlib.h as system file
+	
 	Revision 1.35  2009/11/09 21:38:24  rhabarber1848
 	Remove unused Neutrino icons, use defines instead of strings for icon filenames: http://tuxbox-forum.dreambox-fan.de/forum/viewtopic.php?p=372058#p372058
 	
@@ -209,7 +212,7 @@
 
 #include <algorithm>
 
-#include "stdlib.h"
+#include <stdlib.h>
 #include <gui/moviebrowser.h>
 #include <gui/movieplayer.h>
 #include <gui/filebrowser.h>
