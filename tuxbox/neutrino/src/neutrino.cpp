@@ -229,7 +229,6 @@ CNeutrinoApp::CNeutrinoApp()
 	channelListRecord = NULL;
 	bouquetListRecord = NULL;
 	nextRecordingInfo = NULL;
-	networksetup      = NULL;
 	skipShutdownTimer = false;
 	parentallocked    = false;
 	waitforshutdown   = false;
@@ -2068,7 +2067,6 @@ int CNeutrinoApp::run(int argc, char **argv)
 	fontsizenotifier		= new CFontSizeNotifier;
 
 	rcLock				= new CRCLock();
-	networksetup			= new CNetworkSetup();
 	//USERMENU
 	Timerlist			= new CTimerList;
 
@@ -2083,8 +2081,6 @@ int CNeutrinoApp::run(int argc, char **argv)
 	CMenuWidget    mainMenu            (LOCALE_MAINMENU_HEAD                 , "mainmenue.raw"       );
 	CMenuWidget    mainSettings        (LOCALE_MAINSETTINGS_HEAD             , NEUTRINO_ICON_SETTINGS);
 	CMenuWidget    languageSettings    (LOCALE_LANGUAGESETUP_HEAD            , "language.raw"        );
-	CMenuWidget    networkSettings     (LOCALE_NETWORKMENU_HEAD              , NEUTRINO_ICON_STREAMING, 430);
-	CMenuWidget    recordingSettings   (LOCALE_RECORDINGMENU_HEAD            , NEUTRINO_ICON_RECORDING);
 	CMenuWidget    colorSettings       (LOCALE_COLORMENU_HEAD                , NEUTRINO_ICON_COLORS  );
 	CMenuWidget    fontSettings        (LOCALE_FONTMENU_HEAD                 , NEUTRINO_ICON_COLORS  );
 	CMenuWidget    lcdSettings         (LOCALE_LCDMENU_HEAD                  , "lcd.raw"             , 500);
@@ -2100,7 +2096,6 @@ int CNeutrinoApp::run(int argc, char **argv)
 
 	InitMainMenu(	mainMenu,
 					mainSettings,
-					recordingSettings,
 					colorSettings,
 					lcdSettings,
 					keySettings,
@@ -2237,9 +2232,6 @@ int CNeutrinoApp::run(int argc, char **argv)
 
 	//init programm
 	InitZapper();
-
-	//Recording Setup
-	InitRecordingSettings(recordingSettings);
 
 	//font Setup
 	InitFontSettings(fontSettings);
@@ -3903,11 +3895,7 @@ int CNeutrinoApp::exec(CMenuTarget* parent, const std::string & actionKey)
 	//	printf("ac: %s\n", actionKey.c_str());
 	int returnval = menu_return::RETURN_REPAINT;
 
-	if(actionKey == "help_recording")
-	{
-		ShowLocalizedMessage(LOCALE_SETTINGS_HELP, LOCALE_RECORDINGMENU_HELP, CMessageBox::mbrBack, CMessageBox::mbBack);
-	}
-	else if(actionKey=="shutdown")
+	if(actionKey=="shutdown")
 	{
 		ExitRun(true);
 		returnval = menu_return::RETURN_NONE;
@@ -3939,18 +3927,13 @@ int CNeutrinoApp::exec(CMenuTarget* parent, const std::string & actionKey)
 		setupColors_neutrino();
 		colorSetupNotifier->changeNotify(NONEXISTANT_LOCALE, NULL);
 	}
-	else if (actionKey=="show_network_dialog")
-	{
-		networksetup->showNetworkSetup();
-	}
-	
 	else if(actionKey=="savesettings")
 	{
 		CHintBox * hintBox = new CHintBox(LOCALE_MESSAGEBOX_INFO, g_Locale->getText(LOCALE_MAINSETTINGS_SAVESETTINGSNOW_HINT)); // UTF-8
 		hintBox->paint();
 
  		g_Controld->saveSettings();
-		networksetup->saveNetworkSettings();
+
  		saveSetup();
 
 		/* send motor position list to zapit */
@@ -3970,10 +3953,6 @@ int CNeutrinoApp::exec(CMenuTarget* parent, const std::string & actionKey)
 
 		hintBox->hide();
 		delete hintBox;
-	}
-	else if(actionKey=="recording")
-	{
-		setupRecordingDevice();
 	}
 	else if(actionKey=="reloadchannels")
 	{
