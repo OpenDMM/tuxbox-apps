@@ -27,6 +27,10 @@
 	Foundation, Inc., 675 Mass Ave, Cambridge, MA 02139, USA.
 
 	$Log$
+	Revision 1.2  2009/11/20 22:44:19  dbt
+	reworked network_setup
+	fix: netmask and broadcoast menue entries
+	
 	Revision 1.1  2009/11/09 13:05:09  dbt
 	menue cleanup:
 	parentallock, movieplayer_menue and network-setup for it's own modules
@@ -51,8 +55,7 @@ class CNetworkSetup : public CMenuTarget, CChangeObserver
 {
 	private:
 		CFrameBuffer *frameBuffer;
-		CIPChangeNotifier *MyIPChanger;
-		CNetworkConfig  networkConfig;
+ 		CNetworkConfig  *networkConfig;
 						
 		int x, y, width, height, hheight, mheight;
 
@@ -80,7 +83,7 @@ class CNetworkSetup : public CMenuTarget, CChangeObserver
 
 		bool checkForIP();
 		bool settingsChanged();
-
+				
 	public:	
 		enum NETWORK_DHCP_MODE
 		{
@@ -109,6 +112,7 @@ class CNetworkSetup : public CMenuTarget, CChangeObserver
 		void saveNetworkSettings(bool show_message = false);
 		
 		int exec(CMenuTarget* parent, const std::string & actionKey);
+ 		virtual bool changeNotify(const neutrino_locale_t, void * Data);
 };
 
 

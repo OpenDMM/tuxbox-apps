@@ -147,10 +147,9 @@ CDHCPNotifier::CDHCPNotifier( CMenuForwarder* a1, CMenuForwarder* a2, CMenuForwa
 
 bool CDHCPNotifier::changeNotify(const neutrino_locale_t, void * data)
 {
-	CNetworkConfig networkConfig;
-	networkConfig.inet_static = ((*(int*)(data)) == 0);
+	CNetworkConfig::getInstance()->inet_static = ((*(int*)(data)) == 0);
 	for(int x=0;x<5;x++)
-		toDisable[x]->setActive(networkConfig.inet_static);
+		toDisable[x]->setActive(CNetworkConfig::getInstance()->inet_static);	
 	return true;
 }
 
@@ -606,21 +605,6 @@ bool CKeySetupNotifier::changeNotify(const neutrino_locale_t, void *)
 bool CShutdownCountNotifier::changeNotify(const neutrino_locale_t, void *)
 {
 	printf("[neutrino] shutdown counter changed to %d minutes\n", atoi(g_settings.shutdown_count));
-	return true;
-}
-
-bool CIPChangeNotifier::changeNotify(const neutrino_locale_t, void * Data)
-{
-	CNetworkConfig networkConfig;
-	char ip[16];
-	unsigned char _ip[4];
-	sscanf((char*) Data, "%hhu.%hhu.%hhu.%hhu", &_ip[0], &_ip[1], &_ip[2], &_ip[3]);
-
-	sprintf(ip, "%hhu.%hhu.%hhu.255", _ip[0], _ip[1], _ip[2]);
-	networkConfig.broadcast = ip;
-
-	networkConfig.netmask = (_ip[0] == 10) ? "255.0.0.0" : "255.255.255.0";
-
 	return true;
 }
 

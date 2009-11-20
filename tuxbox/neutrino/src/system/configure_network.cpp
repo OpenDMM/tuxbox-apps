@@ -33,6 +33,23 @@ CNetworkConfig::CNetworkConfig(void)
 	copy_to_orig();
 }
 
+CNetworkConfig* CNetworkConfig::getInstance()
+{
+	static CNetworkConfig* network_config = NULL;
+
+	if(!network_config)
+	{
+		network_config = new CNetworkConfig();
+		printf("[network config] Instance created\n");
+	}
+	return network_config;
+}
+
+CNetworkConfig::~CNetworkConfig()
+{
+
+}
+
 void CNetworkConfig::copy_to_orig(void)
 {
 	orig_automatic_start = automatic_start;
@@ -88,3 +105,4 @@ void CNetworkConfig::stopNetwork(void)
 {
 	system("ifdown eth0");
 }
+

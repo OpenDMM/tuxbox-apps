@@ -245,12 +245,6 @@ class CShutdownCountNotifier : public CChangeObserver
 		bool changeNotify(const neutrino_locale_t, void *);
 };
 
-class CIPChangeNotifier : public CChangeObserver
-{
-	public:
-		bool changeNotify(const neutrino_locale_t, void * Data);
-};
-
 class CConsoleDestChangeNotifier : public CChangeObserver
 {
 	public:

@@ -36,7 +36,6 @@ class CNetworkConfig
 	bool        orig_inet_static;
 
 	void copy_to_orig(void);
-	bool modified_from_orig(void);
 
  public:
 	bool        automatic_start;
@@ -47,7 +46,11 @@ class CNetworkConfig
 	std::string nameserver;
 	bool        inet_static;
 
-	CNetworkConfig(void);
+	CNetworkConfig();
+	~CNetworkConfig();
+
+	static CNetworkConfig* getInstance();
+	bool modified_from_orig(void);
 
 	void commitConfig(void);
 
