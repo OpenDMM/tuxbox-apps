@@ -27,6 +27,9 @@
 	Foundation, Inc., 675 Mass Ave, Cambridge, MA 02139, USA.
 
 	$Log$
+	Revision 1.4  2009/11/21 19:37:03  rhabarber1848
+	Neutrino: beautify log message, requested by mb405: http://www.dbox2-tuning.net/forum/viewtopic.php?p=372377#p372377
+	
 	Revision 1.3  2009/11/20 22:44:19  dbt
 	reworked network_setup
 	fix: netmask and broadcoast menue entries
@@ -136,7 +139,7 @@ int CNetworkSetup::exec(CMenuTarget* parent, const std::string &actionKey)
 		return res;
 	}
 
-	printf("[network setup] init network setup...\n");
+	printf("[neutrino] init network setup...\n");
 	showNetworkSetup();
 	
 	return res;
