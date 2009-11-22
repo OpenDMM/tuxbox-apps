@@ -12,19 +12,6 @@ $Id$
 
  -- TV-Anytime Strings
 
-
-
-
-$Log$
-Revision 1.2  2006/01/02 18:24:32  rasc
-just update copyright and prepare for a new public tar ball
-
-Revision 1.1  2004/08/06 22:21:38  rasc
-New: TV-Anytime (TS 102 323) RNT descriptors 0x40 - 0x42
-
-
-
-
 */
 
 

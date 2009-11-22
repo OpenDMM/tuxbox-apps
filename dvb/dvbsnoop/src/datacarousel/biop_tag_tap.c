@@ -17,27 +17,7 @@ $Id$
  -- ATSC A95
  -- ATSC A47
 
-
-
-
-$Log$
-Revision 1.2  2006/03/06 20:25:37  rasc
-DSM-CC Carousell, lots of Bugfixes, BIOP::Message not yet decodable (ddb has to collect Modules)
-
-Revision 1.1  2006/03/06 00:04:49  rasc
-More DSM-CC stuff: BIOP::FileMessage, BIOP::DirectoryMessage,
-BIOP::Stream::BIOP::StreamEvent, BIOP::ServiceGateway, DSM-TAPs, etc.
-this is a preparation for a patch sent in by Richard Case (DSMCC-Save).
-Attention: Code is still untested and may considered to be buggy (some teststreams are needed)...
-
-
-
-
-
 */
-
-
-
 
 #include "dvbsnoop.h"
 #include "biop_tag_tap.h"
@@ -49,8 +29,6 @@ Attention: Code is still untested and may considered to be buggy (some teststrea
 #include "misc/output.h"
 #include "misc/hexprint.h"
 #include "strings/dsmcc_str.h"
-
-
 
 
 /*

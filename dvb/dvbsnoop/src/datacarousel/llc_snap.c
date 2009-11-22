@@ -9,33 +9,6 @@ $Id$
 
  (c) 2001-2006   Rainer.Scherg@gmx.de (rasc)
 
-
-
-
-$Log$
-Revision 1.6  2006/01/02 18:23:47  rasc
-just update copyright and prepare for a new public tar ball
-
-Revision 1.5  2004/01/25 21:37:27  rasc
-bugfixes, minor changes & enhancments
-
-Revision 1.4  2004/01/01 20:09:16  rasc
-DSM-CC INT/UNT descriptors
-PES-sync changed, TS sync changed,
-descriptor scope
-other changes
-
-Revision 1.3  2003/12/26 23:27:39  rasc
-DSM-CC  UNT section
-
-Revision 1.2  2003/11/26 20:31:50  rasc
-no message
-
-Revision 1.1  2003/11/26 20:02:31  rasc
-LLC-SNAP
-
-
-
 */
 
 
@@ -44,11 +17,6 @@ LLC-SNAP
 #include "strings/dsmcc_str.h"
 #include "misc/hexprint.h"
 #include "misc/output.h"
-
-
-
-
-
 
 /*
   -- decode LLC/SNAP

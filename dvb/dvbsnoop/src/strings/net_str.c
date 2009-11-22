@@ -12,29 +12,11 @@ $Id$
 
  -- Network strings  (IP, UDP, ICMP)
 
-
-
-
-
-$Log$
-Revision 1.1  2006/09/07 13:39:12  rasc
-net string module
-
-
-
-
 */
-
-
 
 #include "dvbsnoop.h"
 #include "net_str.h"
 #include "strtable_misc.h"
-
-
-
-
-
 
 /*
   -- Assigned Internet Protocol Numbers

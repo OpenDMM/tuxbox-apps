@@ -13,23 +13,6 @@ $Id$
   -- Private Data Structures for:
   -- Premiere.de 
 
-
-
-$Log$
-Revision 1.3  2006/01/02 18:24:16  rasc
-just update copyright and prepare for a new public tar ball
-
-Revision 1.2  2005/08/10 21:28:19  rasc
-New: Program Stream handling  (-s ps)
-
-Revision 1.1  2004/11/03 21:01:02  rasc
- - New: "premiere.de" private tables and descriptors (tnx to Peter.Pavlov, Premiere)
- - New: cmd option "-privateprovider <provider name>"
- - New: Private provider sections and descriptors decoding
- - Changed: complete restructuring of private descriptors and sections
-
-
-
 */
 
 

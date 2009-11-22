@@ -26,10 +26,6 @@
 	along with this program; if not, write to the Free Software
 	Foundation, Inc., 675 Mass Ave, Cambridge, MA 02139, USA.
 
-	$Log$
-	Revision 1.1  2009/10/13 19:17:46  dbt
-	init esd_setup for it's own file
-	
 */
 
 #ifndef __esd_setup__

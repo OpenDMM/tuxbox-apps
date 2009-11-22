@@ -26,10 +26,6 @@
 	along with this program; if not, write to the Free Software
 	Foundation, Inc., 675 Mass Ave, Cambridge, MA 02139, USA.
 
-	$Log$
-	Revision 1.1  2009/10/13 19:19:01  dbt
-	init movieplayer_setup for it's own file
-	
 */
 
 #ifndef __movieplayer_setup__

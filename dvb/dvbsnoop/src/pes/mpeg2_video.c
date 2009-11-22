@@ -12,22 +12,6 @@ $Id$
 
  ISO 13818-2  MPEG-2  Video
 
-
-
-$Log$
-Revision 1.3  2005/12/27 23:30:29  rasc
-PS MPEG-2 Extension data packets, MPEG-2 decoding
-
-Revision 1.2  2005/11/23 23:06:10  rasc
-ISO13818-2  MPEG2 sequence header
-
-Revision 1.1  2005/11/10 00:07:18  rasc
- - New: PS MPEG2 UserData + GOP, DVB-S2 fix
-
-
-
-
-
 */
 
 

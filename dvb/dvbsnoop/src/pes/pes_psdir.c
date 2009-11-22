@@ -12,24 +12,6 @@ $Id$
 
  -- PES PSD (Program Stream Directory) ISO/IEC 13818-1 ITU H.222.0, 2.5.5
 
-
-
-$Log$
-Revision 1.4  2007/02/08 19:17:41  rasc
-Bugfix on PS Program Stream Map  - tnx to "jack" for reporting
-
-Revision 1.3  2006/01/02 18:24:12  rasc
-just update copyright and prepare for a new public tar ball
-
-Revision 1.2  2005/11/10 00:05:45  rasc
- - New: PS MPEG2 UserData + GOP, DVB-S2 fix
-
-Revision 1.1  2004/01/11 21:01:32  rasc
-PES stream directory, PES restructured
-
-
-
-
 */
 
 

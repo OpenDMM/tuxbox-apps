@@ -12,21 +12,6 @@ $Id$
 
  -- simple error output for DMX & file I/O
 
-
-
-
-$Log$
-Revision 1.3  2005/12/27 23:30:27  rasc
-PS MPEG-2 Extension data packets, MPEG-2 decoding
-
-Revision 1.2  2004/01/25 22:36:52  rasc
-minor changes & enhancments
-
-Revision 1.1  2004/01/02 00:00:37  rasc
-error output for buffer overflow
-
-
-
 */
 
 

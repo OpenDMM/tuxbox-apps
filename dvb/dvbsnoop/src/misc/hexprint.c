@@ -9,49 +9,6 @@ $Id$
 
  (c) 2001-2007   Rainer.Scherg@gmx.de (rasc)
 
-
-
-
-$Log$
-Revision 1.10  2007/10/18 20:49:50  rasc
-Mpeg NTP descriptor bugfix, minor changes
-
-Revision 1.9  2006/01/02 18:24:04  rasc
-just update copyright and prepare for a new public tar ball
-
-Revision 1.8  2005/09/12 20:56:16  rasc
-Make dvbsnoop compile on Cygwin / Windows
-
-Revision 1.7  2004/03/09 20:59:23  rasc
-VPS decoding (someone check the NPP & PTY code output please...)
-
-Revision 1.6  2004/02/20 22:18:40  rasc
-DII complete (hopefully)
-BIOP::ModuleInfo  (damned, who is spreading infos over several standards???)
-maybe someone give me a hint on the selector_byte info!!!
-some minor changes...
-
-Revision 1.5  2004/01/01 20:09:26  rasc
-DSM-CC INT/UNT descriptors
-PES-sync changed, TS sync changed,
-descriptor scope
-other changes
-
-Revision 1.4  2003/12/17 23:57:29  rasc
-add. hexdump mode, different layout for some purpose
-option:  -ph 4
-
-Revision 1.3  2003/11/26 16:27:46  rasc
-- mpeg4 descriptors
-- simplified bit decoding and output function
-
-Revision 1.2  2001/10/06 18:19:18  Toerli
-Steuerzeichen entfernt. rasc wuerdest du mal bitte nen gescheiten unix-konformen Editor verwenden... windows editoren sind ungeeignet
-
-Revision 1.1  2001/09/30 13:05:20  rasc
-dvbsnoop v0.7  -- Commit to CVS
-
-
 */
 
 

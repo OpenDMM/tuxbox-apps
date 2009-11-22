@@ -13,18 +13,6 @@ $Id$
 
  -- Transport Stream misc routines
 
-   
-
-
-$Log$
-Revision 1.2  2006/07/19 20:05:46  rasc
-Special handling for null packets
-
-Revision 1.1  2006/02/12 23:17:13  rasc
-TS 101 191 MIP - Mega-Frame Initialization Packet for DVB-T/H  (TS Pid 0x15)
-
-
-
 */
 
 

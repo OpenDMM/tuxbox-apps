@@ -12,15 +12,6 @@ $Id$
 
  -- Network strings  (IP, UDP, ICMP)
 
-
-
-
-$Log$
-Revision 1.1  2006/09/07 13:39:12  rasc
-net string module
-
-
-
 */
 
 
@@ -29,9 +20,6 @@ net string module
 
 
 char *netStr_RFC790_protocol_nr (u_int i);
-
-
-
 
 
 #endif

@@ -26,10 +26,6 @@
 	along with this program; if not, write to the Free Software
 	Foundation, Inc., 675 Mass Ave, Cambridge, MA 02139, USA.
 
-	$Log$
-	Revision 1.1  2009/10/13 19:17:10  dbt
-	init audioplayer_setup for it's own file
-	
 */
 
 #ifndef __audioplayer_setup__

@@ -12,40 +12,13 @@ $Id$
  -- dsmcc GroupInfoIndication()
  -- (e.g. part of DSI private data)
 
-
-
-$Log$
-Revision 1.4  2008/01/24 07:32:37  obi
-fix segfault. this doesn't match EN 301 192 1.4.1, but rather what's being broadcasted.
-
-Revision 1.3  2006/01/02 18:23:47  rasc
-just update copyright and prepare for a new public tar ball
-
-Revision 1.2  2004/03/06 22:33:11  rasc
-no message
-
-Revision 1.1  2004/02/24 23:14:35  rasc
-DSI:: DSMCC::GroupInfoIndication
-
-
-
-
-
-
 */
-
-
-
 
 #include "dvbsnoop.h"
 #include "dsmcc_grpinfind.h"
 #include "dsmcc_misc.h"
 #include "misc/output.h"
 #include "misc/hexprint.h"
-
-
-
-
 
 /*
  * ISO/IEC 13818-6

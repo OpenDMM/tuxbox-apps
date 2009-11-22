@@ -9,27 +9,6 @@ $Id$
 
  (c) 2001-2006   Rainer.Scherg@gmx.de (rasc)
 
-
-
-
-$Log$
-Revision 1.4  2006/01/02 18:23:47  rasc
-just update copyright and prepare for a new public tar ball
-
-Revision 1.3  2004/02/15 01:01:01  rasc
-DSM-CC  DDB (DownloadDataBlock Message)
-DSM-CC  U-N-Message  started
-Carousel Descriptors completed
-
-Revision 1.2  2004/02/12 21:21:19  rasc
-MHP AIT descriptors
-some smaller changes
-
-Revision 1.1  2004/02/10 22:57:52  rasc
-MHP descriptor, missing DVB descriptor done
-
-
-
 */
 
 

@@ -18,22 +18,6 @@ $Id$
 
  IP & UDP header code provided by Stéphane Esté-Gracias
 
-
-
-$Log$
-Revision 1.4  2006/09/08 16:04:04  rasc
-remember for next time: do commit last version.
-
-Revision 1.3  2006/09/07 13:39:12  rasc
-net string module
-
-Revision 1.2  2006/09/04 20:25:18  rasc
-no message
-
-Revision 1.1  2006/09/04 15:26:48  rasc
-New: DVB-Net  IP, UDP decoding (RFC791, RFC2460)  (Stéphane Esté-Gracias)
-
-
 */
 
 

@@ -13,18 +13,6 @@ $Id$
 
  -- Transport Stream  continuity counter check
 
-   
-
-
-$Log$
-Revision 1.2  2006/01/02 18:24:34  rasc
-just update copyright and prepare for a new public tar ball
-
-Revision 1.1  2005/09/09 14:21:12  rasc
-TS continuity sequence check (cc verbose output)
-
-
-
 */
 
 

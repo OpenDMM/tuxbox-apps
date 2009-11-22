@@ -13,25 +13,6 @@ $Id$
  --  MPE_FEC Section
  --  EN 301 192  v1.4.1
 
-
-
-$Log$
-Revision 1.3  2006/01/02 18:23:47  rasc
-just update copyright and prepare for a new public tar ball
-
-Revision 1.2  2004/10/17 22:20:35  rasc
-section decoding functions renamed due to preparation of private structures
-
-Revision 1.1  2004/07/24 11:47:08  rasc
-EN 301 192 update
- - New: ECM_repetition_rate_descriptor (EN 301 192 v1.4.1)
- - New: time_slice_fec_identifier_descriptor (EN 301 192 v1.4.1)
- - New: Section MPE_FEC  EN 301 192 v1.4
- - Bugfixes
-
-
-
-
 */
 
 

@@ -13,18 +13,6 @@ $Id$
  -- Handle Kill/Interrupt Signals from User/OS
  -- (e.g. Kill -1)
 
-
-
-
-$Log$
-Revision 1.2  2006/01/02 18:24:04  rasc
-just update copyright and prepare for a new public tar ball
-
-Revision 1.1  2005/09/06 23:39:04  rasc
-catch OS signals (kill ...) for smooth program termination
-
-
-
 */
 
 

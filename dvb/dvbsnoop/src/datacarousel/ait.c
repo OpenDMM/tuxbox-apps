@@ -14,33 +14,6 @@ $Id$
  --  MHP Application Information Section
  --  TS 102 812
 
-
-
-$Log$
-Revision 1.6  2006/01/02 18:23:47  rasc
-just update copyright and prepare for a new public tar ball
-
-Revision 1.5  2004/10/17 22:20:35  rasc
-section decoding functions renamed due to preparation of private structures
-
-Revision 1.4  2004/02/12 21:21:19  rasc
-MHP AIT descriptors
-some smaller changes
-
-Revision 1.3  2004/02/10 22:57:52  rasc
-MHP descriptor, missing DVB descriptor done
-
-Revision 1.2  2004/02/09 21:24:57  rasc
-AIT descriptors
-minor redesign on output routines
-
-Revision 1.1  2004/02/07 01:28:00  rasc
-MHP Application  Information Table
-some AIT descriptors
-
-
-
-
 */
 
 

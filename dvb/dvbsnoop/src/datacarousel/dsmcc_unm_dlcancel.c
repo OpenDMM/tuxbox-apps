@@ -12,19 +12,6 @@ $Id$
  -- dsmcc download Cancel
  -- to be called from U-N-Message
 
-
-
-$Log$
-Revision 1.2  2006/01/02 18:23:47  rasc
-just update copyright and prepare for a new public tar ball
-
-Revision 1.1  2004/02/15 18:58:28  rasc
-DSM-CC  data/object carousell continued   (DSI, DII, DDB, DCancel)
-
-
-
-
-
 */
 
 

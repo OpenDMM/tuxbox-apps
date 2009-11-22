@@ -27,10 +27,6 @@
 	along with this program; if not, write to the Free Software
 	Foundation, Inc., 675 Mass Ave, Cambridge, MA 02139, USA.
 
-	$Log$
-	Revision 1.1  2009/11/20 22:21:13  dbt
-	init recordig setup for it's own modul
-	
 */
 
 #ifndef __record_setup__

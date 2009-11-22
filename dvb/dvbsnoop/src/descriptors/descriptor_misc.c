@@ -13,18 +13,6 @@ $Id$
 
  -- Descriptors  misc. routines, helpers, etc.
 
-
-
-
-$Log$
-Revision 1.2  2006/01/02 18:23:58  rasc
-just update copyright and prepare for a new public tar ball
-
-Revision 1.1  2004/01/18 00:30:48  rasc
-no message
-
-
-
 */
 
 
