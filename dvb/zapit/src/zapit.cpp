@@ -2940,7 +2940,7 @@ void enterStandby(void)
 		delete videoDemux;
 		videoDemux = NULL;
 	}
-#ifndef HAVE_DREAMBOX_HARDWARE
+#ifdef HAVE_DBOX_HARDWARE
 	/* on the dreambox (dm500 tested) we need the audio device for setting
 	   the volume and it can be opened multiple times. Other drivers (dbox)
 	   do not allow multiple open() of the audio device */
