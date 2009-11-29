@@ -67,7 +67,7 @@ CEsdSetup::~CEsdSetup()
 
 }
 
-int CEsdSetup::exec(CMenuTarget* parent, const std::string &actionKey)
+int CEsdSetup::exec(CMenuTarget* parent, const std::string &/*actionKey*/)
 {
 	dprintf(DEBUG_DEBUG, "init esd setup\n");
 	int   res = menu_return::RETURN_REPAINT;
