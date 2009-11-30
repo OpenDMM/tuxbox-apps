@@ -6909,7 +6909,9 @@ int eit_set_update_filter(int *fd)
 		close(*fd);
 		return -1;
 	}
-#if defined(HAVE_DREAMBOX_HARDWARE) && HAVE_DVB_API_VERSION < 3
+#if HAVE_DVB_API_VERSION < 3
+	/* only the dreambox drivers have this ioctl, but apparently it does
+	   not hurt on IPbox, and we certainly need to start the DMX */
 #define DMX_SET_NEGFILTER_MASK   _IOW('o',48,uint8_t *)
 	if (ioctl(*fd, DMX_SET_NEGFILTER_MASK, mode) < 0)
 		perror("DMX_SET_NEGFILTER_MASK");
