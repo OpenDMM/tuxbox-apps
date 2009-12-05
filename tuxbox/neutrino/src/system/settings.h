@@ -397,9 +397,9 @@ struct SNeutrinoSettings
 
 #ifdef HAVE_DBOX_HARDWARE
 #if HAVE_DVB_API_VERSION == 1
-#define DRIVER_SETTING_FILES_COUNT 8
+#define DRIVER_SETTING_FILES_COUNT 9
 #else
-#define DRIVER_SETTING_FILES_COUNT 7
+#define DRIVER_SETTING_FILES_COUNT 8
 #endif
 #else /* not dbox */
 #define DRIVER_SETTING_FILES_COUNT 2
