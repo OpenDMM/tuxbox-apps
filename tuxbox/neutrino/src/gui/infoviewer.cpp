@@ -846,7 +846,7 @@ void CInfoViewer::showSubchan()
 	if (!(subChannelName.empty()))
 	{
 		char text[100];
-		if(subchannel == 0 && g_RemoteControl->are_subchannels)
+		if(subchannel == 0 && !g_RemoteControl->subChannels.empty())
 			sprintf( text, "%s - %s", "  ", subChannelName.c_str() );
 		else
 			sprintf( text, "%d - %s", subchannel, subChannelName.c_str() );
@@ -909,7 +909,7 @@ void CInfoViewer::showSubchan()
 			{			
 			// show default small infobar for subchannel
 			frameBuffer->paintBoxRel(x, y, dx, dy, COL_MENUCONTENT_PLUS_0, RADIUS_SMALL);
-			if (subchannel == 0 && g_RemoteControl->are_subchannels)
+			if (subchannel == 0 && !g_RemoteControl->subChannels.empty())
 				frameBuffer->paintIcon(NEUTRINO_ICON_BUTTON_BLUE, x+ 8, y+ 8 );
 			g_Font[SNeutrinoSettings::FONT_TYPE_INFOBAR_INFO]->RenderString(x+10, y+ 30, dx-20, text, COL_MENUCONTENT, 0, subChannelNameIsUTF); // UTF-8
 			
