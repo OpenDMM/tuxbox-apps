@@ -41,11 +41,11 @@
 #include "lcd.h"
 
 #define PACKAGE 	"lcshot"
-#define VERSION 	"1.3"
+#define VERSION 	"1.5"
 #define MAINTAINER_NAME "SnowHead"
 #define MAINTAINER_ADDR "SnowHead@gmx.net"
 
-#define X_RES 121
+#define X_RES 120
 #define Y_RES 64
 
 //#define DEBUG
