@@ -84,7 +84,7 @@ int main()
 	  "\t\t\t  Creation Date     : %d-%02d-%02d\n"
 	  "\t\t\t  Creation Time     : %d:%02d\n"
 	  "\t\t\t  Creator           : %s\n"
-	  "\t\t\t  Image name        : %s\n"
+	  "\t\t\t  Image Name        : %s\n"
 	  "\n\n\t\t\t\tLoading....\n",
 	  imageversion, imagesubver, 
 	  release_type == 0    ? "Release" 
