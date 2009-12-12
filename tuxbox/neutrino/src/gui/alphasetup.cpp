@@ -92,7 +92,6 @@ int CAlphaSetup::exec(CMenuTarget* parent, const std::string &)
 	unsigned char alpha1_alt= *alpha1;
 	unsigned char alpha2_alt= *alpha2;
 
-	frameBuffer->setBlendLevel(*alpha1, *alpha2);
 	paint();
 
 	int selected = 0;
@@ -212,6 +211,7 @@ int CAlphaSetup::exec(CMenuTarget* parent, const std::string &)
 				// sonst abbruch...
 				*alpha1 = alpha1_alt;
 				*alpha2 = alpha2_alt;
+				frameBuffer->setBlendLevel(*alpha1, *alpha2);
 				loop = false;
 				break;
 			case CRCInput::RC_ok:
