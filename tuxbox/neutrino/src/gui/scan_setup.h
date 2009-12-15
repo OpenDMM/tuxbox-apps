@@ -52,6 +52,7 @@ class CScanSetup : public CMenuTarget
 		~CScanSetup();
 		int exec(CMenuTarget* parent, const std::string & actionKey);
 		void initScanSettings();
+		std::string getScanModeString(const int& scan_type);
 };
 
 
