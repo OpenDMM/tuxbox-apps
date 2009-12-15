@@ -102,6 +102,7 @@
 #define NEUTRINO_ICON_VOLUMESLIDER2RED		"volumeslider2red.raw"
 #define NEUTRINO_ICON_VTXT		"vtxt.raw"
 #define NEUTRINO_ICON_VTXT_GREY		"vtxt_gray.raw"
+#define NEUTRINO_ICON_PARTITION		"partition.raw"
 
 #define DUMMY_ICON			"dummy.raw"
 

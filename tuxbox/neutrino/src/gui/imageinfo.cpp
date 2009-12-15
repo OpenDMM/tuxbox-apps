@@ -33,6 +33,12 @@
 #include "movieplayer.h"
 #include "pictureviewer.h"
 #include "streaminfo2.h"
+#ifndef ENABLE_KERNEL26 //TODO: k26 support
+#ifdef ENABLE_DRIVE_GUI
+#include "drive_setup.h"
+#endif /* ENABLE_DRIVE_GUI */
+#endif /*ENABLE_KERNEL26*/
+
 
 #include <gui/widget/icons.h>
 #include <gui/widget/buttons.h>
@@ -91,7 +97,7 @@ CImageInfo::CImageInfo()
 	x = endX - pigw -16;
 	y = startY + hheight +16;
 	
-	x_offset_large	= 135;
+	x_offset_large	= 140;
 	x_offset_small	= 7;
 
 	// read partition info
@@ -335,6 +341,15 @@ void CImageInfo::paintRevisionInfos(int y_startposition)
 	paintContent(font_info, xpos, y_startposition, "Pictureviewer:", COL_MENUCONTENTINACTIVE );
 	paintContent(font_info, xpos+x_offset_large, y_startposition, pv.getPictureViewerVersion().c_str());
 #endif
+
+#ifndef ENABLE_KERNEL26 //TODO: k26 support
+#ifdef ENABLE_DRIVE_GUI
+	y_startposition += iheight;
+	static CDriveSetup ide;
+	paintContent(font_info, xpos, y_startposition, "IDE/MMC:", COL_MENUCONTENTINACTIVE );
+	paintContent(font_info, xpos+x_offset_large, y_startposition, ide.getDriveSetupVersion().c_str());
+#endif /*ENABLE_DRIVE_GUI*/
+#endif /*ENABLE_KERNEL26*/
 	
 	y_startposition += iheight;
 	static CStreamInfo2Misc si;
