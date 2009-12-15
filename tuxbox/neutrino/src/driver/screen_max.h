@@ -25,7 +25,8 @@
 
 int w_max (int w_size, int w_add);
 int h_max (int h_size, int h_add);
-
+int getScreenStartX(int width);
+int getScreenStartY(int height);
 
 
 #endif

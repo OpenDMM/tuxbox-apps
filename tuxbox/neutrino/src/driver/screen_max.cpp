@@ -57,5 +57,20 @@ int h_max (int h_size, int h_add)
 	 return ret;
 }
 
+//some helpers to get x and y screen values vor menus and windows
+int getScreenStartX (int width)
+{
+	int w = width;
+	return (((g_settings.screen_EndX- g_settings.screen_StartX)-w) / 2) + g_settings.screen_StartX;
+	
+}
+
+int getScreenStartY (int height)
+{
+	int y = height;
+	return (((g_settings.screen_EndY- g_settings.screen_StartY)-y) / 2) + g_settings.screen_StartY;
+	
+}
+
 
 
