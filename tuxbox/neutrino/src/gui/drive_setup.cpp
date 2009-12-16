@@ -2154,7 +2154,7 @@ bool CDriveSetup::mkFstab(bool write_defaults_only)
 	}
 	str_fstab.close();
 
-	cout<<"[drive setup] "<<__FUNCTION__ <<": wrtiing "<<fstab<< "...ok"<<endl;
+	cout<<"[drive setup] "<<__FUNCTION__ <<": writing "<<fstab<< "...ok"<<endl;
 
 	return true;
 }
