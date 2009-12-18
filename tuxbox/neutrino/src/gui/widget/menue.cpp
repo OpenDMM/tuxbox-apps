@@ -914,7 +914,7 @@ int CMenuForwarder::paint(bool selected)
 	frameBuffer->paintBoxRel(x, y, dx, height, bgcolor, RADIUS_SMALL);
 	g_Font[SNeutrinoSettings::FONT_TYPE_MENU]->RenderString(stringstartposX, y+ height, dx- (stringstartposX - x), l_text, color, 0, true); // UTF-8
 
-	if (!iconName.empty())
+	if (!iconName.empty() && active)
 	{
 		frameBuffer->paintIcon(iconName, x + 10, y+ ((height- 20)>>1) );
 	}
