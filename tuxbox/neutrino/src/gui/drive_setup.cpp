@@ -683,30 +683,23 @@ void CDriveSetup::showHddSetupSub()
 	if ((part_count[current_device] < MAXCOUNT_PARTS) && (ll_free_part_size > 0xA00000)) 
 	{ // disable entry if we have no free partition or not enough size
 		add_activate = true;
-		add_icon = NEUTRINO_ICON_BUTTON_RED;
 	}
 	else 
 	{
 		add_activate = false;
-		add_icon = NULL;
 	}
 	next_part_number = getFirstUnusedPart(current_device); //also used from swap_add
- 	CMenuForwarder *part_add = new CMenuForwarder(LOCALE_DRIVE_SETUP_HDD_ADD_PARTITION, add_activate, NULL, sub_add, NULL/*"add_partition"*/, CRCInput::RC_red, add_icon);
+ 	CMenuForwarder *part_add = new CMenuForwarder(LOCALE_DRIVE_SETUP_HDD_ADD_PARTITION, add_activate, NULL, sub_add, NULL/*"add_partition"*/, CRCInput::RC_red, NEUTRINO_ICON_BUTTON_RED);
 
 	//menue sub: prepare item: add swap
 	bool add_swap_active;
 	const char* add_swap_icon;
-	if ((!haveSwap()) && (add_activate)) 
-	{ // disable item if we have already a swap or no free partition or not enough size
+	if ((!haveSwap()) && (add_activate)) // disable add item if we have already a swap, no free partition or not enough size
 		add_swap_active = true;
-		add_swap_icon = NEUTRINO_ICON_BUTTON_GREEN;
-	}
 	else 
-	{
 		add_swap_active = false;
-		add_swap_icon = NULL;
-	}
-	CMenuForwarder *swap_add = new CMenuForwarder(LOCALE_DRIVE_SETUP_HDD_ADD_SWAP_PARTITION, add_swap_active, NULL, sub_add_swap, NULL/*"add_swap_partition"*/, CRCInput::RC_green, add_swap_icon);
+	
+	CMenuForwarder *swap_add = new CMenuForwarder(LOCALE_DRIVE_SETUP_HDD_ADD_SWAP_PARTITION, add_swap_active, NULL, sub_add_swap, NULL/*"add_swap_partition"*/, CRCInput::RC_green, NEUTRINO_ICON_BUTTON_GREEN);
 
 	//menue add: prepare subhead: add part
 	string add_subhead_txt = dev_name + " >> " + iToString(next_part_number+1) + ". " + g_Locale->getText(LOCALE_DRIVE_SETUP_HDD_ADD_PARTITION);
@@ -728,7 +721,7 @@ void CDriveSetup::showHddSetupSub()
 	//menue sub: set mountstatus of devices for enable/disable menue items
 	bool have_mounts = haveMounts(current_device);
 	bool have_parts = haveActiveParts(current_device);
-
+	
 	//menue sub: prepare item: mount all partitions
  	CMenuForwarder *mount_all =  new CMenuForwarder(LOCALE_DRIVE_SETUP_PARTITION_MOUNT_NOW_DEVICE, (!have_mounts ? have_parts:false), NULL, this, "mount_device_partitions", CRCInput::RC_yellow, NEUTRINO_ICON_BUTTON_YELLOW);
 
