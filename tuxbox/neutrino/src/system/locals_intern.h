@@ -370,6 +370,8 @@ const char * locale_real_names[] =
 	"drive_setup.partition_size_help",
 	"drive_setup.partition_size_std",
 	"drive_setup.partition_start_cylinder",
+	"drive_setup.partition_unmount_now",
+	"drive_setup.partition_unmount_now_device",
 	"drive_setup.savesettings",
 	"drive_setup.select",
 	"driversettings.bootinfo",
