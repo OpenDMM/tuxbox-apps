@@ -363,6 +363,8 @@ const char * locale_real_names[] =
 	"drive_setup.partition_mount_now",
 	"drive_setup.partition_mount_now_device",
 	"drive_setup.partition_mountpoint",
+	"drive_setup.partition_nfs",
+	"drive_setup.partition_nfs_host_ip",
 	"drive_setup.partition_not_active",
 	"drive_setup.partition_not_created",
 	"drive_setup.partition_number",
