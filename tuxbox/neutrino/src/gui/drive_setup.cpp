@@ -3546,14 +3546,14 @@ void CDriveSetup::loadDriveSettings()
 	d_settings.drive_use_fstab = configfile.getInt32("drive_use_fstab", YES);
 	d_settings.drive_mount_mtdblock_partitions = configfile.getInt32("drive_mount_mtdblock_partitions", NO);
 
-	char mountpoint_opt[28];
-	char spindown_opt[14];
-	char partsize_opt[22];
-	char fstype_opt[24];
-	char write_cache_opt[17];
-	char partition_activ_opt[23];
-	char partition_nfs_opt[23];
-	char partition_nfs_host_ip_opt[31];
+	char mountpoint_opt[31];
+	char spindown_opt[17];
+	char partsize_opt[25];
+	char fstype_opt[27];
+	char write_cache_opt[20];
+	char partition_activ_opt[26];
+	char partition_nfs_opt[24];
+	char partition_nfs_host_ip_opt[32];
 	for(unsigned int i = 0; i < MAXCOUNT_DRIVE; i++) 
 	{
 		// d_settings.drive_spindown
@@ -3610,14 +3610,14 @@ bool CDriveSetup::writeDriveSettings()
 	configfile.setInt32	( "drive_use_fstab", d_settings.drive_use_fstab );
 	configfile.setInt32	( "drive_mount_mtdblock_partitions", d_settings.drive_mount_mtdblock_partitions );
 
-	char mountpoint_opt[28];
-	char spindown_opt[14];
-	char partsize_opt[22];
-	char fstype_opt[24];
-	char write_cache_opt[17];
-	char partition_activ_opt[23];
-	char partition_nfs_opt[23];
-	char partition_nfs_host_ip[31];
+	char mountpoint_opt[31];
+	char spindown_opt[17];
+	char partsize_opt[25];
+	char fstype_opt[27];
+	char write_cache_opt[20];
+	char partition_activ_opt[26];
+	char partition_nfs_opt[24];
+	char partition_nfs_host_ip_opt[32];
 	for(int i = 0; i < MAXCOUNT_DRIVE; i++) 
 	{
 		// d_settings.drive_spindown
@@ -3651,8 +3651,8 @@ bool CDriveSetup::writeDriveSettings()
 			configfile.setBool(partition_nfs_opt, d_settings.drive_partition_nfs[i/*MASTER||SLAVE*/][ii]);
 
 			// d_settings.drive_partition_nfs_host_ip
-			sprintf(partition_nfs_host_ip, "drive_%d_partition_%d_nfs_host_ip", i, ii);
-			configfile.setString( partition_nfs_host_ip, d_settings.drive_partition_nfs_host_ip[i/*MASTER||SLAVE*/][ii]);
+			sprintf(partition_nfs_host_ip_opt, "drive_%d_partition_%d_nfs_host_ip", i, ii);
+			configfile.setString( partition_nfs_host_ip_opt, d_settings.drive_partition_nfs_host_ip[i/*MASTER||SLAVE*/][ii]);
 		}
 	}
 	
