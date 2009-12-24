@@ -388,9 +388,17 @@ class CDriveSetup : public CMenuTarget
 class CDriveSetupFsNotifier : public CChangeObserver
 {
 	private:
-		CMenuForwarder* toDisable;
+
+		CMenuForwarder* toDisable[2];
+#ifdef ENABLE_NFSSERVER
+		CMenuOptionChooser* toDisableOj;
+#endif
 	public:
-		CDriveSetupFsNotifier( CMenuForwarder* );
+#ifdef ENABLE_NFSSERVER
+		CDriveSetupFsNotifier( CMenuForwarder*, CMenuForwarder*, CMenuOptionChooser* );
+#else
+		CDriveSetupFsNotifier( CMenuForwarder*, CMenuForwarder*);
+#endif
 		bool changeNotify(const neutrino_locale_t, void * Data);
 };
 
