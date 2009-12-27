@@ -1285,8 +1285,6 @@ int EpgPlus::exec(CChannelList* _channelList, int selectedChannelIndex, CBouquet
 							std::cout << "this->startTime += this->duration" << std::endl;
 #endif
 							startTime += duration;
-							createChannelEntries(selectedChannelEntry->index);
-
 							selectedTime = startTime;
 							createChannelEntries(selectedChannelEntry->index);
 
