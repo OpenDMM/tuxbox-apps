@@ -618,8 +618,8 @@ EpgPlus::~EpgPlus()
 
 void EpgPlus::createChannelEntries(int selectedChannelEntryIndex)
 {
-	// TODO: is this correct?
-	for (TChannelEntries::iterator It = displayedChannelEntries.begin(); It != displayedChannelEntries.begin() ; ++It)
+	for (TChannelEntries::iterator It = displayedChannelEntries.begin();
+	     It != displayedChannelEntries.end(); ++It)
 		delete *It;
 
 	displayedChannelEntries.clear();
@@ -1397,12 +1397,13 @@ int EpgPlus::exec(CChannelList* _channelList, int selectedChannelIndex, CBouquet
 
 		hide();
 
-		// TODO: is this correct?
-		for (TChannelEntries::iterator It = displayedChannelEntries.begin();
-		     It != displayedChannelEntries.begin(); ++It)
-			delete *It;
 	}
 	while (refreshAll);
+
+	for (TChannelEntries::iterator It = displayedChannelEntries.begin();
+	     It != displayedChannelEntries.end(); ++It)
+		delete *It;
+	displayedChannelEntries.clear();
 
 	return res;
 }
