@@ -307,6 +307,7 @@ const char * locale_real_names[] =
 	"drive_setup.advanced_settings",
 	"drive_setup.fstab",
 	"drive_setup.fstab_use",
+	"drive_setup.fstab_use_auto_fs",
 	"drive_setup.hdd_add_partition",
 	"drive_setup.hdd_add_swap_partition",
 	"drive_setup.hdd_cache",
