@@ -204,6 +204,13 @@ CDriveSetup::CDriveSetup():configfile('\t')
 	msg_timeout 	= g_settings.timing[SNeutrinoSettings::TIMING_INFOBAR];
 	msg_icon 	= NEUTRINO_ICON_PARTITION;
 
+	//generate action key strings for device selection
+	for (int i = 0; i < MAXCOUNT_DRIVE; i++)
+	{
+		string s_i = iToString(i);
+		sel_device_num_actionkey[i] = "sel_device_" + s_i;
+	}
+
 	//generate action key strings for partition operations
 	for (int i = 0; i<MAXCOUNT_PARTS; i++)
 	{ 
