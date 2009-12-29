@@ -286,6 +286,7 @@ struct SNeutrinoSettings
 	int streaming_stopsectionsd;
 	int streaming_show_tv_in_browser;
 	int streaming_allow_multiselect;
+	int streaming_use_reclength;
 	std::string streaming_moviedir;
 
 	int filesystem_is_utf8;
