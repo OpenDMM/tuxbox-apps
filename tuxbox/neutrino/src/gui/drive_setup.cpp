@@ -135,11 +135,6 @@ TODO:
 #define M_MMC2		"mmc2"
 #define M_MMCCOMBO	"mmccombo"
 
-// mmc modul files
-#define MF_MMC		M_MMC M_TYPE
-#define MF_MMC2		M_MMC2 M_TYPE
-#define MF_MMCCOMBO	M_MMCCOMBO M_TYPE
-
 // proc devices
 #define IDE0HDA		"/proc/ide/ide0/hda"
 #define IDE0HDB		"/proc/ide/ide0/hdb"
