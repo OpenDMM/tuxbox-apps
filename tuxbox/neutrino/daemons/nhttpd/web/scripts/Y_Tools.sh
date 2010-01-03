@@ -441,6 +441,18 @@ wol()
 	y_format_message_html
 }
 # -----------------------------------------------------------
+# lcd shot
+# $1= optionen | leer
+# -----------------------------------------------------------
+do_lcshot()
+{
+	if [ -e "/var/bin/lcshot" ]; then
+		/var/bin/lcshot $*
+	else
+		/bin/lcshot $*
+	fi
+}
+# -----------------------------------------------------------
 # osd shot
 # $1= fb | dbox bzw. leer
 # -----------------------------------------------------------
@@ -544,6 +556,7 @@ case "$1" in
 	ext_installer)	shift 1; do_ext_installer $* 2>&1 ;;
 	proc)			shift 1; proc $* ;;
 	wol)			shift 1; wol $* ;;
+	lcshot)			shift 1; do_lcshot $* ;;
 	fbshot)			shift 1; do_fbshot $* ;;
 	fbshot_clear)		do_fbshot_clear ;;
 	get_update_version)	wget -O /tmp/version.txt "http://www.yjogol.com/download/Y_Version.txt" ;;
