@@ -1673,25 +1673,32 @@ bool CDriveSetup::initModulDeps(const string& modulname)
 }
 
 //helper: get init string for any modulename depends of it's path in root or var
+//default paths are in /lib/modules/[KERNEL_NAME]/kernel/fs/ and /lib/modules/[KERNEL_NAME]/kernel/misc
+//the default command string for these paths is insmod [modulname] or modprobe [modulname] but the
+//prefered path is /var/lib/modules/
+//if we found a module in the prefered path, than returns load command with full path else returns the default load command string
 string CDriveSetup::getInitModulLoadStr(const string& modul_name)
 {
 	string k_name;
 	struct utsname u;
 	if (!uname(&u))
 		k_name = u.release;
-
-	string modulname;
-	string modulname_var = "/var/lib/modules/" + modul_name + M_TYPE;
-	string modulname_misc = "lib/modules/" + k_name + "misc/" + modul_name + M_TYPE;
 	
-	if (access(modulname_var.c_str(), R_OK)==0)
-		modulname = modulname_var;
-	else if (access(modulname_misc.c_str(), R_OK)==0)
-		modulname = modulname_misc;
-	else
-		modulname = modul_name;
+	string modul_path[] = {	"/var/lib/modules/" + modul_name + M_TYPE, 
+				"lib/modules/" + k_name + "misc/" + modul_name + M_TYPE}; 
 
-	string 	load_str =  LOAD + modulname;
+	string load_str;
+	for (uint i=0; i<(sizeof(modul_path) / sizeof(modul_path[0])) ; i++)
+	{
+ 		if (access(modul_path[i].c_str(), R_OK)==0)
+		{
+ 			load_str = LOAD + modul_path[i];
+			return load_str;
+		}
+		else
+			load_str = LOAD + modul_name;
+			
+	}
 	
 	return load_str;
 }
