@@ -529,6 +529,9 @@ void CDriveSetup::showHddSetupMain()
 		// show mmc options
 		m->addItem (m7);
 	}
+	else
+		strcpy(d_settings.drive_mmc_module_name, g_Locale->getText(LOCALE_OPTIONS_OFF));
+		
 
 	m->addItem(GenericMenuSeparatorLine);
 
