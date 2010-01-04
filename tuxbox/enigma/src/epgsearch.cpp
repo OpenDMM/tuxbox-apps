@@ -137,7 +137,7 @@ void eEPGSearch::init_eEPGSearch(eServiceReference& ref, const eString& CurrentE
 	chkCurrentService = CreateSkinnedCheckbox("CurrentService");
 	CONNECT(chkCurrentService->checked, eEPGSearch::chkCurrentServiceStateChanged);
 	
-	chkAllServices = CreateSkinnedCheckbox("AllServices");
+	chkAllServices = CreateSkinnedCheckbox("AllServices",1);
 	CONNECT(chkAllServices->checked, eEPGSearch::chkAllServicesStateChanged);
 	
 	chkExactMatch = CreateSkinnedCheckbox("ExactMatch");
