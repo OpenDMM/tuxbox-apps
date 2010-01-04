@@ -50,6 +50,7 @@ struct videoTypeParms
 	bool transcodeVideo;
 	bool transcodeAudio;
 	eString fps;
+	bool soutadd;
 };
 
 struct codecs
