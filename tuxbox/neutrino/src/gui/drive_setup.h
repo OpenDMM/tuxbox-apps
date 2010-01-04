@@ -61,10 +61,11 @@ struct SDriveSettings
 	int 	drive_activate_ide;
 	int 	drive_write_cache[MAXCOUNT_DRIVE];
 	int 	drive_partition_activ[MAXCOUNT_DRIVE][MAXCOUNT_PARTS];
-	char	drive_partition_fstype[MAXCOUNT_DRIVE][MAXCOUNT_PARTS][8/*chars*/];
-	char 	drive_spindown[MAXCOUNT_DRIVE][3/*chars*/];
-	char 	drive_partition_size[MAXCOUNT_DRIVE][MAXCOUNT_PARTS][8/*chars*/];
+	char	drive_partition_fstype[MAXCOUNT_DRIVE][MAXCOUNT_PARTS][8];
+	char 	drive_spindown[MAXCOUNT_DRIVE][3];
+	char 	drive_partition_size[MAXCOUNT_DRIVE][MAXCOUNT_PARTS][8];
 	char 	drive_mmc_module_name[10];
+	char	drive_swap_size[3];
 
 #ifdef ENABLE_NFSSERVER
 	std::string 	drive_partition_nfs_host_ip[MAXCOUNT_DRIVE][MAXCOUNT_PARTS];
