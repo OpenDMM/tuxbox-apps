@@ -3230,8 +3230,11 @@ bool CDriveSetup::mkExports()
 
 	else
 	{
-		if (unlink(exports.c_str()) != 0)
-			cerr << "[drive setup] "<<__FUNCTION__ <<": delete "<<exports<<" ..." << strerror(errno)<<endl;
+		if (access(exports.c_str(), R_OK) == 0)
+		{
+			if (unlink(exports.c_str()) != 0)
+				cerr << "[drive setup] "<<__FUNCTION__ <<": delete "<<exports<<" ..." << strerror(errno)<<endl;
+		}	
 	}
 
 	return true;
