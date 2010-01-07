@@ -272,6 +272,7 @@ class CDriveSetup : public CMenuTarget
 #endif
 		bool haveSwap();
 		bool isMmcActive();
+		bool isMmcEnabled();
 		bool isIdeInterfaceActive();
 		bool linkInitFiles();
 		bool haveActiveParts(const int& device_num);

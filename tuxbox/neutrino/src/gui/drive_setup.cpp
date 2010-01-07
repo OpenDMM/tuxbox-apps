@@ -1802,6 +1802,7 @@ bool CDriveSetup::saveHddSetup()
 	if (!unmountAll())
 		res = false;
 
+	//ide
 	if (d_settings.drive_activate_ide == IDE_ACTIVE) 
 		ide_disabled = (!initIdeDrivers() ? true : false);
 	
@@ -1811,19 +1812,16 @@ bool CDriveSetup::saveHddSetup()
 	if (d_settings.drive_activate_ide == IDE_OFF) 
 		ide_disabled = unloadIdeDrivers();
 
+
 	// hdparm
 	if (ide_disabled)
 	{
 		if (!loadHddParams(true/*reset*/))
 			res = false;
-		if (!unloadFsDrivers())
-			res = false;
 	}
 	else 
 	{
 		if (!loadHddParams(false))
-			res = false;
-		if (!initFsDrivers())
 			res = false;
 	}
 
@@ -1831,16 +1829,10 @@ bool CDriveSetup::saveHddSetup()
 		res = true;
 
 	// mmc stuff
-	if ((string)d_settings.drive_mmc_module_name != g_Locale->getText(LOCALE_OPTIONS_OFF)) 
-	{
+	if (isMmcEnabled())
+	{ 
 		if (!initMmcDriver()) 
-		{
 			res = false;
-		}
-		if (!initFsDrivers(false)) 
-		{
-			res = false;
-		}
 	}
 	else 
 	{
@@ -1848,6 +1840,18 @@ bool CDriveSetup::saveHddSetup()
 			res = false;
 	}
 
+	//fs modules
+	if (ide_disabled || !isMmcEnabled())
+	{
+		if (!unloadFsDrivers())
+			res = false;
+	}
+	else
+	{
+		if (!initFsDrivers())
+			res = false;
+	}
+	
 	//mount all parts
 	mkMounts();
 
@@ -1886,7 +1890,7 @@ bool CDriveSetup::saveHddSetup()
 
 		neutrino_locale_t msg_locale;
 
-		if ((ide_disabled) && (!device_isActive[MMCARD]))
+		if (ide_disabled && !isMmcActive())
 			msg_locale = LOCALE_DRIVE_SETUP_MSG_SAVED_DISABLED;
 		else
 			msg_locale = LOCALE_DRIVE_SETUP_MSG_SAVED;
@@ -1929,9 +1933,7 @@ bool CDriveSetup::writeInitFile(const bool clear)
 		initfile[i] << getInitFileHeader(init_file[i]) <<endl;
 	}	
 
-	bool mmc_enabled = (string)d_settings.drive_mmc_module_name != g_Locale->getText(LOCALE_OPTIONS_OFF) ? true : false;
-
-	if (clear && !mmc_enabled) 
+	if (clear && !isMmcEnabled()) 
 	{ // interface is disabled 
 		initfile[INIT_FILE_MODULES] << "echo "<<char(34)<<"ide-interface/mmc disabled"<<char(34)<<endl; // write disable tag
 
@@ -3516,6 +3518,12 @@ bool CDriveSetup::isMmcActive()
 		return true;
 	else
 		return false;
+}
+
+//return true if mmc is enabled
+bool CDriveSetup::isMmcEnabled()
+{
+	return ((string)d_settings.drive_mmc_module_name != g_Locale->getText(LOCALE_OPTIONS_OFF));
 }
 
 // returns status of ide interface, returns true if is active
