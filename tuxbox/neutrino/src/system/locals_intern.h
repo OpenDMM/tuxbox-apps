@@ -340,6 +340,7 @@ const char * locale_real_names[] =
 	"drive_setup.msg_error_save_cannot_make_exports",
 	"drive_setup.msg_error_save_cannot_make_fstab",
 	"drive_setup.msg_error_save_cannot_mount_drives",
+	"drive_setup.msg_error_save_cannot_unmount_drives",
 	"drive_setup.msg_error_save_configfile_failed",
 	"drive_setup.msg_error_save_failed",
 	"drive_setup.msg_partition_check",
