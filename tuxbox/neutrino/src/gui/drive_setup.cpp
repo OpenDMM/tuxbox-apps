@@ -1801,8 +1801,12 @@ bool CDriveSetup::saveHddSetup()
 	if (!writeDriveSettings())
 		return false;
 
+	//unmount first
 	if (!unmountAll())
+	{
+		ShowLocalizedHint(LOCALE_MESSAGEBOX_ERROR, LOCALE_DRIVE_SETUP_MSG_ERROR_SAVE_CANNOT_UNMOUNT_DRIVES, width, msg_timeout, NEUTRINO_ICON_ERROR);
 		return false;
+	}
 
 	//ide
 	if (d_settings.drive_activate_ide == IDE_ACTIVE) 
@@ -1841,7 +1845,7 @@ bool CDriveSetup::saveHddSetup()
 	}
 
 	//fs modules
-	if (ide_disabled || !isMmcEnabled())
+	if (ide_disabled && !isMmcEnabled())
 	{
 		if (!unloadFsDrivers())
 			return false;
