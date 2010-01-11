@@ -53,6 +53,7 @@
 struct SDriveSettings
 {
 	std::string 	drive_partition_mountpoint[MAXCOUNT_DRIVE][MAXCOUNT_PARTS];
+	std::string 	drive_advanced_modul_load_options;
 
 	int 	drive_use_fstab;
 	int	drive_use_fstab_auto_fs;
