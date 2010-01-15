@@ -3306,7 +3306,7 @@ bool CDriveSetup::chkFs(const int& device_num /*MASTER||SLAVE*/, const int& part
 	else if (fs_name=="vfat")
 		chkfs_cmd = "fsck.vfat -y ";
 	else if (fs_name=="xfs")
-		chkfs_cmd = "xfs_repair -v";
+		chkfs_cmd = "fsck.xfs -v";
 	else if (fs_name=="swap")
 		return true; // skip swap check
 
