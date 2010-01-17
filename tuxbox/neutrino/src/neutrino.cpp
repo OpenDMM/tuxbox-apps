@@ -2718,7 +2718,14 @@ int CNeutrinoApp::handleMsg(const neutrino_msg_t m, neutrino_msg_data_t data)
 			if (g_settings.vcr_AutoSwitch)
 			{
 				if (data != VCR_STATUS_OFF)
+				{
+					/* clear remote control queue to avoid changing to soft standby
+					   when a device connected to the scart socket is turned on several
+					   seconds after Neutrino started */
+					g_RCInput->clearRCMsg();
+
 					g_RCInput->postMsg(NeutrinoMessages::VCR_ON, 0);
+				}
 				else
 					g_RCInput->postMsg(NeutrinoMessages::VCR_OFF, 0);
 			}
