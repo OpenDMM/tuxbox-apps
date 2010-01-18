@@ -21,6 +21,8 @@
 
 #ifndef __IO_H__
 
+#include "config.h"
+
 #define __IO_H__
 
 //rc codes
