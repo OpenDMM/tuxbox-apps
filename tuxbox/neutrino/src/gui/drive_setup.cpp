@@ -2249,13 +2249,22 @@ bool CDriveSetup::loadHddParams(const bool do_reset)
 				if (cmd_res !=0)
 				{ 
 					string cerr_content = "[drive setup] " + (string)__FUNCTION__  + ": executing " + str_hdparm_cmd[i] + " ...failed! ";
+					string 	err_msg = g_Locale->getText(LOCALE_DRIVE_SETUP_MSG_ERROR_SAVE_CANNOT_HDPARM);
+						err_msg += "\nError: ";
 	
-					if (cmd_res == 127) 
+					if (cmd_res == 127)
+					{ 
 						cerr<<cerr_content<<HDPARM" not installed"<<endl;
+						err_msg += HDPARM;
+						err_msg += g_Locale->getText(LOCALE_DRIVE_SETUP_MMC_MODUL_NOT_INSTALLED);
+					}
 					else
+					{
 						cerr<<cerr_content<<endl;
+						err_msg += iToString(cmd_res);
+					}
 
- 					ShowLocalizedHint(LOCALE_MESSAGEBOX_ERROR, LOCALE_DRIVE_SETUP_MSG_ERROR_SAVE_CANNOT_HDPARM, width, msg_timeout, NEUTRINO_ICON_ERROR);
+					DisplayErrorMessage(err_msg.c_str());
 					return false;
 				}
 			}
