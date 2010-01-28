@@ -459,15 +459,14 @@ void * DMXThread(void * v_arg)
 						todo -= r;
 					}
 				}
+#ifdef HAVE_TRIPLEDRAGON
 				if (r < 0 && errno != EAGAIN)
 				{
-					fprintf(stderr, "[stream2file] read DMX: %m (%d)", errno);
-#ifdef HAVE_TRIPLEDRAGON
-/* at least the dbox seems to return errors that we can safely ignore. The TD doesn't */
+					perror("[stream2file] read DMX");
 					exit_flag = STREAM2FILE_STATUS_READ_FAILURE;
 					break;
-#endif
 				}
+#endif
 			}
 			else if (!pres){
 				printf ("[stream2file]: timeout reading from demux\n");
