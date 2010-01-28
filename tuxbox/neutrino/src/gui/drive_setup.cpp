@@ -3091,6 +3091,11 @@ bool CDriveSetup::mkPartition(const int& device_num /*MASTER||SLAVE*/, const int
 			prepare <<part_n<<endl;
 			prepare <<start_cyl<<endl;
 			prepare <<end_cyl<<endl;
+			if ((string)d_settings.drive_partition_fstype[device_num][part_number] == "swap") //setting system id
+			{
+				prepare <<"t"<<endl;
+				prepare <<"82"<<endl;
+			}
 			break;
 		case DELETE:
 			if (!unmountPartition(device_num, part_number))
