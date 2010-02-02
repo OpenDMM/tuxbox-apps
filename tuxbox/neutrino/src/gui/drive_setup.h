@@ -303,7 +303,6 @@ class CDriveSetup : public CMenuTarget
 		void loadPartlist(const int& device_num = -1);
 		void loadFdiskData();
 		void loadDriveTemps();
-		void mkDefaultMountpoints();
 						
 		void showHddSetupMain();
 		void showHddSetupSub();
