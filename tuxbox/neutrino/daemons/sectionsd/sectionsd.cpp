@@ -859,6 +859,11 @@ static void addEvent(const SIevent &evt, const unsigned table_id, const time_t z
 		}
 
 		SIeventPtr e(eptr);
+
+		// If new extended event descriptor is empty use old one, if applicable
+		if ((e->getExtendedText().length() == 0) && (si != mySIeventsOrderUniqueKey.end()) &&
+		   (SIlanguage::getMode() == CSectionsdClient::LANGUAGE_MODE_OFF))
+			e->setExtendedText("OFF",si->second->getExtendedText());
 	
 		//Strip ExtendedDescription if too far in the future
 		if ((e->times.begin()->startzeit > zeit + secondsExtendedTextCache) &&
