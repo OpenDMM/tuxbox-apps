@@ -916,7 +916,8 @@ int CMenuForwarder::paint(bool selected)
 
 	if (!iconName.empty() && active)
 	{
-		frameBuffer->paintIcon(iconName, x + 10, y+ ((height- 20)>>1) );
+		int icon_x = (x+(stringstartposX-x)/2) - (frameBuffer->getIconWidth(iconName.c_str())/2);
+		frameBuffer->paintIcon(iconName, icon_x, y+ ((height/2- frameBuffer->getIconHeight(iconName.c_str())/2)) );
 	}
 	else if (CRCInput::isNumeric(directKey))
 	{
@@ -987,9 +988,9 @@ const char * CMenuSeparator::getString(void)
 		return g_Locale->getText(text);
 }
 
-void CMenuSeparator::setString(const std::string& text)
+void CMenuSeparator::setString(const std::string& s_text)
 {
-	separator_text = text;
+	separator_text = s_text;
 }
 
 
