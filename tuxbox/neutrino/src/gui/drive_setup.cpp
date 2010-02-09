@@ -309,6 +309,8 @@ int CDriveSetup::exec(CMenuTarget* parent, const string &actionKey)
 	
 			for (unsigned int i = 0; i < 4; i++) 
 				(*this.*pMember[i])();
+
+			configfile.clear();
 	
 			Init();
 	
@@ -3882,7 +3884,7 @@ void CDriveSetup::loadDriveSettings()
 	d_settings.drive_activate_ide = configfile.getInt32("drive_activate_ide", IDE_OFF);
 	strcpy(d_settings.drive_mmc_module_name, configfile.getString("drive_mmc_module_name", "").c_str());
 	d_settings.drive_use_fstab = configfile.getInt32("drive_use_fstab", YES);
-	d_settings.drive_use_fstab_auto_fs = configfile.getInt32("drive_use_fstab_auto_fs", YES);
+	d_settings.drive_use_fstab_auto_fs = configfile.getInt32("drive_use_fstab_auto_fs", NO);
 	strcpy(d_settings.drive_swap_size, configfile.getString("drive_swap_size", "128").c_str());
 	d_settings.drive_advanced_modul_command_load_options = configfile.getString("drive_advanced_modul_command_load_options", "");
 	d_settings.drive_modul_dir = configfile.getString("drive_modul_dir", VAR_MOUDULDIR);
