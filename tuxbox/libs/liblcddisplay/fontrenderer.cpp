@@ -120,6 +120,11 @@ FTC_FaceID LcdFontRenderClass::getFaceID(const char *family, const char *style)
 		if ((!strcmp(f->family, family)) && (!strcmp(f->style, style)))
 			return (FTC_FaceID)f;
 	}
+	for (fontListEntry *f=font; f; f=f->next)
+	{
+		if (!strcmp(f->family, family))
+			return (FTC_FaceID)f;
+	}
 	return 0;
 }
 
