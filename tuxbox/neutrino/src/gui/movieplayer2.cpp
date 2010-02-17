@@ -3526,12 +3526,18 @@ static inline int get_filetime(bool remaining)
 {
 	int filetime;
 	if (remaining)
+	{
 		filetime = g_endpts - g_pts;
+		if (g_pts < g_startpts)
+			filetime -= (int)(0x1ffffffffLL / 90);
+	}
 	else
+	{
 		filetime = g_pts - g_startpts;
+		if (filetime < 0)
+			filetime += (int)(0x1ffffffffLL / 90);
+	}
 
-	if (filetime < 0)
-		filetime += (int)(0x1ffffffffLL / 90);
 	filetime /= 1000;
 	return filetime;
 }
