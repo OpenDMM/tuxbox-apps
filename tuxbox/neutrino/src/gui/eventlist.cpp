@@ -36,6 +36,7 @@
 #endif
 
 #include <gui/eventlist.h>
+#include <gui/epgplus.h>
 #include <gui/timerlist.h>
 
 #include <gui/widget/icons.h>
@@ -536,7 +537,13 @@ int EventList::exec(const t_channel_id channel_id, const std::string& channelnam
 		{
 			loop= false;
 		}
-
+		else if (msg == CRCInput::RC_epg)
+		{
+			hide();
+			CEPGplusHandler eplus;
+			eplus.exec(NULL, "");
+			loop = false;
+		}
 		else if (msg==CRCInput::RC_help || msg==CRCInput::RC_right || msg==CRCInput::RC_ok)
 		{
 			if ( evtlist[selected].eventID != 0 )

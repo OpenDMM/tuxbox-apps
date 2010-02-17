@@ -2509,6 +2509,11 @@ void CNeutrinoApp::RealRun(CMenuWidget &mainMenu)
 				//numeric zap
 				channelList->numericZap( msg );
 			}
+			else if (msg == CRCInput::RC_epg)
+			{
+				CEventListHandler elist;
+				elist.exec(NULL, "");
+			}
 			else
 			{     // turn on LCD display by kicking it
 				if (msg == CRCInput::RC_home)
