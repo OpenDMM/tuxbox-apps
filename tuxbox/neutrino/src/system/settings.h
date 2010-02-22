@@ -88,6 +88,9 @@ struct SNeutrinoSettings
 	std::string network_ntpserver;
 	std::string network_ntprefresh;
 	int network_ntpenable;
+#ifdef ENABLE_SAMBASERVER
+	int network_samba;
+#endif
 
 	//audio
 	int audio_AnalogMode;
