@@ -47,7 +47,7 @@ class CSoftwareUpdate : public CMenuTarget
 		void showSoftwareUpdate();
 		void showSoftwareUpdateExpert();
 		void showSoftwareUpdateImageinfo(CMenuWidget * entry);
-		void showSoftwareUpdateProxySetup(CMenuWidget * entry);
+// 		void showSoftwareUpdateProxySetup(CMenuWidget * entry);
 	
 	public:	
 		CSoftwareUpdate();
