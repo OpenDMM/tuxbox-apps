@@ -358,6 +358,7 @@ const char * locale_real_names[] =
 	"drive_setup.msg_error_save_cannot_mount_swap",
 	"drive_setup.msg_error_save_cannot_unmount_device",
 	"drive_setup.msg_error_save_cannot_unmount_partition",
+	"drive_setup.msg_error_save_cannot_unmount_partition_busy",
 	"drive_setup.msg_error_save_cannot_unmount_swap",
 	"drive_setup.msg_error_save_configfile_failed",
 	"drive_setup.msg_error_save_failed",

@@ -1550,12 +1550,25 @@ bool CDriveSetup::unmountPartition(const int& device_num /*MASTER||SLAVE||MMCARD
 		else if (isMountedPartition(partname)) 
 		{ // unmount partition
 			string mp = getMountInfo(partname, MOUNTPOINT);
-			if (umount(mp.c_str()) !=0) 
-			{
+
+			if (umount(mp.c_str()) !=0)
+			{ 
 				cerr<<"[drive setup] "<<__FUNCTION__ <<": error while unmount "<<partname<<" "<< strerror(errno)<< endl;
+				char msg[255];
+				switch (errno)
+				{
+					case 16 /*EBUSY*/:
+						sprintf(msg, "%s", g_Locale->getText(LOCALE_DRIVE_SETUP_MSG_ERROR_SAVE_CANNOT_UNMOUNT_PARTITION_BUSY));
+						break;
+					default: 
+						sprintf(msg, "%s\n%s: %s", g_Locale->getText(LOCALE_DRIVE_SETUP_MSG_ERROR_SAVE_CANNOT_UNMOUNT_PARTITION), g_Locale->getText(LOCALE_MESSAGEBOX_ERROR),  strerror(errno));
+						break;		
+				}
+
 				char err_msg[255];
-				sprintf(err_msg, "%d. %s\n%s: %s", part_number+1, g_Locale->getText(LOCALE_DRIVE_SETUP_MSG_ERROR_SAVE_CANNOT_UNMOUNT_PARTITION), 		g_Locale->getText(LOCALE_MESSAGEBOX_ERROR),  strerror(errno)); 
+				sprintf(err_msg, "%d %s", part_number+1, msg); 
 				err[ERR_UNMOUNT_PARTITION] = err_msg;
+
 				return false;
 			}
 			else 
