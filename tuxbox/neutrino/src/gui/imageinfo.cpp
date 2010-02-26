@@ -181,7 +181,7 @@ void CImageInfo::hide()
 
 void CImageInfo::clearContentBox()
 {
-	frameBuffer->paintBoxRel(xpos, iheight*10+6, width-10, endY-(iheight*10+6)-32, COL_MENUCONTENT_PLUS_0 );
+	frameBuffer->paintBoxRel(startX, y+pigh, width, startY+height-ssheight-(y+pigh), COL_MENUCONTENT_PLUS_0);
 }
 
 void CImageInfo::paint_pig(int xPig, int yPig, int w, int h)
