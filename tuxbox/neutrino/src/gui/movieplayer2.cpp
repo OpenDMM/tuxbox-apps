@@ -2432,7 +2432,7 @@ void updateLcd(const std::string &s)
 		break;
 	}
 	StrSearchReplace(lcd,"_", " ");
-	CLCD::getInstance()->setMovieInfo(playmode, "", lcd, false);
+	CLCD::getInstance()->setMovieInfo(playmode, "", lcd);
 }
 
 //== seek to pos with sync to next proper TS packet ==

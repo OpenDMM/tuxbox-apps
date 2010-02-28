@@ -387,6 +387,7 @@ struct SNeutrinoSettings
 		LCD_AUTODIMM           ,
 		LCD_EPGMODE            ,
 		LCD_BIAS               ,
+		LCD_EPGALIGN           ,
 
 		LCD_SETTING_COUNT
 	};
@@ -522,6 +523,7 @@ extern const neutrino_locale_t timing_setting_name[TIMING_SETTING_COUNT];
 #define DEFAULT_LCD_SHOW_VOLUME			0x01
 #define DEFAULT_LCD_EPGMODE			0x01	/* 0x1 = name 0x2 = epgtitle 0x4 = separator */
 #define DEFAULT_LCD_BIAS			0x00	/* 0x0 = default for philips rev 2, 0x1 = default for all others */
+#define DEFAULT_LCD_EPGALIGN		0x00
 
 /* end default values */
 
