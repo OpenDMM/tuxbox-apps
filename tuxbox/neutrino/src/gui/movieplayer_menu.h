@@ -36,9 +36,6 @@
 #include <driver/framebuffer.h>
 
 #include "movieplayer.h"
-#ifdef ENABLE_MOVIEBROWSER
-#include "moviebrowser.h"
-#endif
 
 #include <string>
 
@@ -53,9 +50,6 @@ class CMoviePlayerMenue : public CMenuTarget
 		void showMoviePlayerMenue();
 
 		CMenuTarget* 			moviePlayerGui;
-#ifdef ENABLE_MOVIEBROWSER
-		CMenuTarget*			movieBrowser;
-#endif
 
 	public:	
 		CMoviePlayerMenue();
