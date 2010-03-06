@@ -320,6 +320,8 @@ void CInfoViewer::showMovieTitle(const int playstate, const std::string &title, 
 	paintTime(false, true);
 	showInfoFile();
 
+	sec_timer_id = g_RCInput->addTimer(1000000, false); //need for blinking dot in time
+
 	frameBuffer->paintBoxRel(ChanInfoX, BoxEndY + BOTTOM_BAR_OFFSET,
 				 BoxEndX - ChanInfoX, InfoHeightY_Info - BOTTOM_BAR_OFFSET,
 				 COL_INFOBAR_BUTTONS_BACKGROUND, c_rad_large, CORNER_BOTTOM);
