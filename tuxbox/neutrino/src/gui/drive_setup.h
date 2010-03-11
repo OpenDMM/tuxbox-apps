@@ -385,7 +385,7 @@ class CDriveSetup : public CMenuTarget
 
 		//helper
 		std::string iToString(int int_val);
-		int getPid(std::string& proc_name);
+
 
 		int exec(CMenuTarget* parent, const std::string & actionKey);
 
