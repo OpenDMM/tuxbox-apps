@@ -537,6 +537,7 @@ int EventList::exec(const t_channel_id channel_id, const std::string& channelnam
 		{
 			loop= false;
 		}
+#ifdef ENABLE_EPGPLUS
 		else if (msg == CRCInput::RC_epg)
 		{
 			hide();
@@ -544,6 +545,7 @@ int EventList::exec(const t_channel_id channel_id, const std::string& channelnam
 			eplus.exec(NULL, "");
 			loop = false;
 		}
+#endif
 		else if (msg==CRCInput::RC_help || msg==CRCInput::RC_right || msg==CRCInput::RC_ok)
 		{
 			if ( evtlist[selected].eventID != 0 )
