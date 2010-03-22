@@ -490,17 +490,17 @@ void CDriveSetup::Init()
 	if (pixbuf != NULL)
 		frameBuffer->SaveScreen(pb_x, pb_y, pb_w, pb_h, pixbuf);
 
- 	void (CDriveSetup::*pMember[COUNT_INIT_MEMBERS])(void) = {	&CDriveSetup::loadPartitions,
-									&CDriveSetup::loadDriveSettings,
-									&CDriveSetup::loadModulDirs,
-									&CDriveSetup::loadHddCount,
-									&CDriveSetup::loadHddModels,
-									&CDriveSetup::calPartCount,
-									&CDriveSetup::loadFsModulList,
-									&CDriveSetup::loadMmcModulList,
-									&CDriveSetup::loadFdiskData,
-									&CDriveSetup::loadDriveTemps,
-									&CDriveSetup::showHddSetupMain};
+ 	void (CDriveSetup::*pMember[])(void) = {	&CDriveSetup::loadPartitions,
+							&CDriveSetup::loadDriveSettings,
+							&CDriveSetup::loadModulDirs,
+							&CDriveSetup::loadHddCount,
+							&CDriveSetup::loadHddModels,
+							&CDriveSetup::calPartCount,
+							&CDriveSetup::loadFsModulList,
+							&CDriveSetup::loadMmcModulList,
+							&CDriveSetup::loadFdiskData,
+							&CDriveSetup::loadDriveTemps,
+							&CDriveSetup::showHddSetupMain};
 
 	frameBuffer->paintBoxRel(pb_x, pb_y, pb_w, pb_h, COL_MENUCONTENT_PLUS_0, RADIUS_MID);
 
