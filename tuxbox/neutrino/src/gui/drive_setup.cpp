@@ -504,7 +504,7 @@ void CDriveSetup::Init()
 
 	frameBuffer->paintBoxRel(pb_x, pb_y, pb_w, pb_h, COL_MENUCONTENT_PLUS_0, RADIUS_MID);
 
-	int max_members = (sizeof(pMember) / sizeof(pMember[0]));
+	unsigned int max_members = (sizeof(pMember) / sizeof(pMember[0]));
 
 	for (unsigned int i = 0; i < max_members; i++) 
 	{
