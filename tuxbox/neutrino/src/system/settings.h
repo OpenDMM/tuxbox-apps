@@ -89,7 +89,11 @@ struct SNeutrinoSettings
 	std::string network_ntprefresh;
 	int network_ntpenable;
 #ifdef ENABLE_SAMBASERVER
-	int network_samba;
+	// samba
+	int smb_setup_samba_on_off;
+	std::string smb_setup_samba_installdir;
+	std::string smb_setup_samba_conf_path;
+	std::string smb_setup_samba_workgroup;
 #endif
 
 	//audio
