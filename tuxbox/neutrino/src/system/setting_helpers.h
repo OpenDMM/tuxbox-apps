@@ -42,6 +42,9 @@
 #include <string>
 
 unsigned long long getcurrenttime();
+std::string getPidof(const std::string& process_name);
+std::string getFileEntryString(const char* filename, const std::string& filter_entry, const int& column_num);
+std::string getInterface();
 
 class CSatDiseqcNotifier : public CChangeObserver
 {
@@ -317,7 +320,6 @@ class CDVBInfoExec : public CMenuTarget
 
 void testNetworkSettings(const char* ip, const char* netmask, const char* broadcast, const char* gateway, const char* nameserver, bool ip_static);
 void showCurrentNetworkSettings();
-
 class CNetAdapter
 {
 	private:
