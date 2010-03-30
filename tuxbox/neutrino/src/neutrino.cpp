@@ -525,7 +525,7 @@ int CNeutrinoApp::loadSetup()
 	g_settings.smb_setup_samba_on_off = configfile.getInt32("smb_setup_samba_on_off", CSambaSetup::OFF); // OFF
 
 	g_settings.smb_setup_samba_installdir = configfile.getString( "smb_setup_samba_installdir", "/bin" );
-	g_settings.smb_setup_samba_conf_path = configfile.getString( "smb_setup_samba_conf_path", "/etc/smb.conf" );
+	g_settings.smb_setup_samba_conf_path = configfile.getString( "smb_setup_samba_conf_path", (access("/etc/smb.conf", W_OK) ==0) ? "/etc/smb.conf" : "/var/etc/smb.conf"); 
 	g_settings.smb_setup_samba_workgroup = configfile.getString( "smb_setup_samba_workgroup", "WORKGROUP" );
 #endif
 
