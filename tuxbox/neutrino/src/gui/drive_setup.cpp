@@ -543,6 +543,17 @@ void CDriveSetup::Init()
 		delete[] pixbuf;
 	}
 
+	//unload unused modules on left menu
+	for (unsigned int i = 0; i < v_fs_modules.size(); i++) 
+	{
+		if (getFileEntryString(PROC_MODULES, v_fs_modules[i], 4)== "(unused)")
+			if (!unloadModul(v_fs_modules[i]))
+			{
+				cerr<<"[drive setup] "<<__FUNCTION__ <<": "<<err[ERR_UNLOAD_MODUL]<<endl;
+				DisplayErrorMessage(err[ERR_UNLOAD_MODUL].c_str());
+			}
+	}
+
 }
 
 typedef struct mn_data_t
