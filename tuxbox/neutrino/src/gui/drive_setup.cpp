@@ -2322,7 +2322,7 @@ bool CDriveSetup::saveHddSetup()
 		if (!mkExports())
 		{
 			v_errors.push_back(err[ERR_MK_EXPORTS]);
-			return false;
+			ret = false;
 		}
 	}
 #endif
@@ -2334,12 +2334,12 @@ bool CDriveSetup::saveHddSetup()
 		if (!mkSmbConf())
 		{
 			v_errors.push_back(err[ERR_MK_SMBCONF]);
-			return false;
+			ret = false;
 		}
 		if (!mkSambaInitFile())
 		{
 			v_errors.push_back(err[ERR_MK_SMBINITFILE]);
-			return false;
+			ret = false;
 		}
 	}
 #endif
