@@ -473,14 +473,14 @@ class CDriveSetupFsNotifier : public CChangeObserver
 {
 	private:
 
-	#ifdef ENABLE_NFSSERVER
+	#if defined ENABLE_NFSSERVER || defined ENABLE_SAMBASERVER
 		CMenuForwarder* toDisable[3];
 	#else
 		CMenuForwarder* toDisable[2];
 	#endif
 	public:
 		CDriveSetupFsNotifier( 	
-					#ifdef ENABLE_NFSSERVER
+					#if defined ENABLE_NFSSERVER || defined ENABLE_SAMBASERVER
 						CMenuForwarder*, 
 						CMenuForwarder*, 
 						CMenuForwarder*);
