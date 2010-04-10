@@ -697,7 +697,7 @@ int CChannelList::numericZap(neutrino_msg_t key)
 	if (key == g_settings.key_zaphistory) {
 
 		if (this->lastChList.size() > 1) {
-			CChannelList channelList("Channel history", true);
+			CChannelList channelList(g_Locale->getText(LOCALE_CHANNELLIST_HISTORY), true);
 
 			for ( unsigned int i = 1 ; i < this->lastChList.size() ; ++i) {
 				int channelnr = this->lastChList.getlast(i);

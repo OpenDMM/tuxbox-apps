@@ -249,6 +249,7 @@ const char * locale_real_names[] =
 	"channellist.epgtext_align_right",
 	"channellist.extended",
 	"channellist.head",
+	"channellist.history",
 	"channellist.nonefound",
 	"channellist.since",
 	"channellist.start",
