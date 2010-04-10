@@ -585,6 +585,7 @@ void CFlashExpert::writemtd(const std::string & filename, int mtdNumber)
 	const char* mtdtarget = CMTDInfo::getInstance()->getMTDName(mtdNumber).c_str();
 	const char* imagefile = FILESYSTEM_ENCODING_TO_UTF8_STRING(filename).c_str();	
 
+#ifdef HAVE_DBOX_HARDWARE
 	if (mtdNumber >3) 
 	{
 		sprintf(message,
@@ -593,6 +594,7 @@ void CFlashExpert::writemtd(const std::string & filename, int mtdNumber)
 		imagefile, mtdtarget);
 	}
 	else
+#endif
 	{	
 		sprintf(message,
 		g_Locale->getText(LOCALE_FLASHUPDATE_REALLYFLASHMTD),
