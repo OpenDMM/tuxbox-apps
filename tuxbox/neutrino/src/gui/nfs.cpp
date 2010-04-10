@@ -200,7 +200,6 @@ int CNFSMountGui::menu()
 	return ret;
 }
 
-#warning MESSAGEBOX_NO_YES_XXX is defined in neutrino.cpp, too!
 #define MESSAGEBOX_NO_YES_OPTION_COUNT 2
 const CMenuOptionChooser::keyval MESSAGEBOX_NO_YES_OPTIONS[MESSAGEBOX_NO_YES_OPTION_COUNT] =
 {
