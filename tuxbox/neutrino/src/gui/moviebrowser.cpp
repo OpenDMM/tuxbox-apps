@@ -3830,7 +3830,7 @@ std::string CMovieBrowser::getMovieBrowserVersion(void)
 /************************************************************************/
 {	
 	static CImageInfo imageinfo;
-	return imageinfo.getModulVersion("","$Revision 1.25$");
+	return imageinfo.getModulVersion("","$Revision$");
 }
 
 /************************************************************************/

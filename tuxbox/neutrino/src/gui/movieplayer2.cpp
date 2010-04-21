@@ -3454,7 +3454,7 @@ static void checkAspectRatio (int /*vdec*/, bool /*init*/)
 std::string CMoviePlayerGui::getMoviePlayerVersion(void)
 {
 	static CImageInfo imageinfo;
-	return imageinfo.getModulVersion("Movieplayer2 ","$Revision$");
+	return imageinfo.getModulVersion("2.","$Revision$");
 }
 
 void CMoviePlayerGui::showFileInfoVLC()
