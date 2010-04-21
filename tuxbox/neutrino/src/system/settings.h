@@ -91,8 +91,6 @@ struct SNeutrinoSettings
 #ifdef ENABLE_SAMBASERVER
 	// samba
 	int smb_setup_samba_on_off;
-	std::string smb_setup_samba_installdir;
-	std::string smb_setup_samba_conf_path;
 	std::string smb_setup_samba_workgroup;
 #endif
 
