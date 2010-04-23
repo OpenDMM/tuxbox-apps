@@ -2010,9 +2010,6 @@ int CNeutrinoApp::run(int argc, char **argv)
 	if (g_Zapit->getMode() == CZapitClient::MODE_STANDBY)
 		g_Zapit->setStandby(false);
 
-	/* unpause sectionsd, needed if Neutrino restarts after segfault */
-	g_Sectionsd->setPauseScanning(false);
-
 	int loadSettingsErg = loadSetup();
 	
 	/* load locales before setting up any fonts to determine whether we need a true unicode font */
@@ -2076,6 +2073,9 @@ int CNeutrinoApp::run(int argc, char **argv)
 #endif
 	g_PluginList 	= new CPlugins;
 	g_PluginList->setPluginDir(PLUGINDIR);
+
+	/* unpause sectionsd, needed if Neutrino restarts after segfault */
+	g_Sectionsd->setPauseScanning(false);
 
 #ifdef ENABLE_GUI_MOUNT
 	// mount shares before scanning for plugins
