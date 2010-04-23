@@ -216,8 +216,9 @@ bool CSambaSetup::haveSambaSupport()
 	{
 		string smb_bin = "/bin/" + smb_cmd[i].bin;
 		string smb_def_bin = "/var/bin/" + smb_cmd[i].bin;
+		string smb_hdd_bin = "/hdd/bin/" + smb_cmd[i].bin;
 		
-		if(access(smb_bin.c_str(), R_OK) !=0 && access(smb_def_bin.c_str(), R_OK) !=0) 
+		if(access(smb_bin.c_str(), X_OK) !=0 && access(smb_def_bin.c_str(), X_OK) !=0 && access(smb_hdd_bin.c_str(), X_OK) !=0) 
 		{
 			cerr << "[samba setup] "<<__FUNCTION__ <<":  can't found "<<smb_cmd[i].bin<<endl;
 			return false;
