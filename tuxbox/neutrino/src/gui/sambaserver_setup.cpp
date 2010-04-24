@@ -220,7 +220,7 @@ bool CSambaSetup::haveSambaSupport()
 		
 		if(access(smb_bin.c_str(), X_OK) !=0 && access(smb_def_bin.c_str(), X_OK) !=0 && access(smb_hdd_bin.c_str(), X_OK) !=0) 
 		{
-			cerr << "[samba setup] "<<__FUNCTION__ <<":  can't found "<<smb_cmd[i].bin<<endl;
+			cerr << "[samba setup] "<<smb_cmd[i].bin<<" "<< strerror(errno) <<endl;
 			return false;
 		}
 	}
