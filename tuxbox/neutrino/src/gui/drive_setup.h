@@ -350,7 +350,6 @@ class CDriveSetup : public CMenuTarget
 		bool mkExports();
 	#endif
 	#ifdef ENABLE_SAMBASERVER
-		bool mkSmbConf();
 		bool mkSambaInitFile();
 		bool unlinkSmbInitLinks();
 		bool linkSmbInitFiles();
@@ -493,15 +492,19 @@ class CDriveSetup : public CMenuTarget
 			MB
 		};
 		
-		CDriveSetup();
+ 		CDriveSetup();
 		~CDriveSetup();
+
+		static CDriveSetup* getInstance();
 
 		std::string getHddTemp(const int& device_num /*MASTER || SLAVE || MMCARD*/); //hdd temperature
 		std::string getModelName(const std::string& mountpoint);
 		std::string getDriveSetupVersion();
+		std::string CDriveSetup::getErrMsg();
 	#ifdef ENABLE_SAMBASERVER
 		std::string getSmbConfFilePath();
 		bool haveMountedSmbShares();
+		bool mkSmbConf();
 	#endif
 
 };
