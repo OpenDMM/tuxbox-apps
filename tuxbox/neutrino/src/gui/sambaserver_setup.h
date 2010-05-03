@@ -45,6 +45,7 @@
 #define SAMBA_MARKER	VAR_ETC_DIR "/.sambaserver"
 #define SMB_PRIVAT_DIR	ETC_DIR	"/samba/private"
 
+
 class CSambaSetup : public CMenuTarget
 {
 	private:
@@ -93,10 +94,7 @@ class CSambaOnOffNotifier : public CChangeObserver
 		std::string err_msg;
 
 	public:
-		inline CSambaOnOffNotifier(const char * file_to_modify)
-		{
-			filename = file_to_modify;
-		};
+		inline CSambaOnOffNotifier(const char * file_to_modify);
 		bool changeNotify(const neutrino_locale_t, void * data);
 };
 
