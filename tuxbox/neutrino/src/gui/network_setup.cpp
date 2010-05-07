@@ -45,7 +45,8 @@
 #include "gui/nfs.h"
 #endif /*ENABLE_GUI_MOUNT*/
 
-#if defined ENABLE_DRIVE_GUI && defined ENABLE_SAMBASERVER
+// TODO: k26 support for ENABLE_DRIVE_GUI, it's disabled with -enable-kernel26 yet
+#if defined ENABLE_DRIVE_GUI && defined ENABLE_SAMBASERVER 
 #include "gui/sambaserver_setup.h"
 #endif /*ENABLE_DRIVE_GUI && defined ENABLE_SAMBASERVER*/
 

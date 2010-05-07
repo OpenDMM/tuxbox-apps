@@ -112,11 +112,11 @@
 #include "gui/experimental_menu.h"
 #endif
 
-#ifndef ENABLE_KERNEL26 //TODO: k26 support
+// TODO: k26 support for ENABLE_DRIVE_GUI, it's disabled with -enable-kernel26 yet
 #if ENABLE_DRIVE_GUI
 #include "gui/drive_setup.h"
 #endif /*ENABLE_DRIVE_GUI*/
-#endif /*ENABLE_KERNEL26*/
+
 
 static CTimingSettingsNotifier timingsettingsnotifier;
 
