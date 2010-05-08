@@ -260,12 +260,10 @@ void CNetworkSetup::showNetworkSetup()
  	#endif 
 	#endif
 
-	#ifndef ENABLE_KERNEL26
 	#if defined ENABLE_DRIVE_GUI && defined ENABLE_SAMBASERVER
 		//sambaserver, only active if samba binaries are available
 		CSambaSetup smb;
 		networkSettings->addItem(new CMenuForwarder(LOCALE_NETWORKMENU_SAMBA, smb.haveSambaSupport(), NULL, new CSambaSetup(LOCALE_MAINSETTINGS_NETWORK), NULL, CRCInput::RC_1, NEUTRINO_ICON_BUTTON_1));
-	#endif
 	#endif
 
 		networkSettings->exec(NULL, "");

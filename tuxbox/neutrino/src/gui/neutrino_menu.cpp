@@ -352,12 +352,9 @@ void CNeutrinoApp::InitServiceSettings(CMenuWidget &service)
 	shortcut3 += personalize->addItem(service, LOCALE_SERVICEMENU_UCODECHECK, true, NULL, UCodeChecker, NULL, CRCInput::convertDigitToKey(shortcut3), NULL, false, g_settings.personalize_ucodecheck);
 #endif
 
-//TODO it's not ready yet, replacing to settings menue, support for K26
-#ifndef ENABLE_KERNEL26
 #ifdef ENABLE_DRIVE_GUI 
  	service.addItem(new CMenuForwarder(LOCALE_DRIVE_SETUP_HEAD, true, NULL, new CDriveSetup(), NULL, CRCInput::convertDigitToKey(shortcut3++)));
 #endif /*ENABLE_DRIVE_GUI*/
-#endif /*ENABLE_KERNEL26*/
 
 	// epg status
 	shortcut3 += personalize->addItem(service, LOCALE_SERVICEMENU_CHAN_EPG_STAT, true, NULL, DVBInfo, NULL, CRCInput::convertDigitToKey(shortcut3), NULL, false, g_settings.personalize_chan_epg_stat);
