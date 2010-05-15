@@ -221,7 +221,7 @@ int main (int argc, char **argv)
 
   FILE* fv6 = fopen(MOUNTS_FILE, "r"); //Root-Server IP ermitteln, falls yadd
   if (fv6) {
-    while (fgets(buf, BUFFERSIZE, fv1)!=NULL) {
+    while (fgets(buf, BUFFERSIZE, fv6)!=NULL) {
       sscanf(buf, "/dev/root / nfs rw,v2,rsize=4096,wsize=4096,hard,udp,nolock,addr= %s", (char *) &root);
     }
     fclose(fv6);
@@ -229,7 +229,7 @@ int main (int argc, char **argv)
   
   FILE* fv7 = fopen(VERSION_FILE2, "r"); //Versionsdatei (/proc/version) auswerten
   if (fv7) {
-    while (fgets(buf, BUFFERSIZE, fv2)!=NULL) {
+    while (fgets(buf, BUFFERSIZE, fv7)!=NULL) {
       sscanf(buf, "Linux version %s%s%s%s%s", (char *) &linuxversion, (char *) &userpc, (char *) &gccversion, (char *) &gccversion, (char *) &gccversion);
     }
     fclose(fv7);
