@@ -353,7 +353,7 @@ void CNeutrinoApp::InitServiceSettings(CMenuWidget &service)
 #endif
 
 #ifdef ENABLE_DRIVE_GUI 
- 	service.addItem(new CMenuForwarder(LOCALE_DRIVE_SETUP_HEAD, true, NULL, new CDriveSetup(), NULL, CRCInput::convertDigitToKey(shortcut3++)));
+ 	service.addItem(new CMenuForwarder(LOCALE_DRIVE_SETUP_HEAD, true, NULL, CDriveSetup::getInstance(), NULL, CRCInput::convertDigitToKey(shortcut3++)));
 #endif /*ENABLE_DRIVE_GUI*/
 
 	// epg status
