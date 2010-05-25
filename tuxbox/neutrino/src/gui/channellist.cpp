@@ -279,6 +279,7 @@ int CChannelList::show()
 	y=(((g_settings.screen_EndY- g_settings.screen_StartY)-( height+ info_height) ) / 2) + g_settings.screen_StartY;
 
 	displayNext = false;
+	alreadyPainted = false;
 	paintHead();
 //	updateEvents();
 	paint();
@@ -1011,11 +1012,16 @@ void CChannelList::paintDetails(unsigned int index)
 	if (index >= chanlist.size() || p_event->description.empty())
 	{
 		frameBuffer->paintBackgroundBoxRel(x, y+ height, width, info_height);
+		alreadyPainted = false;
 	}
 	else
 	{
-		frameBuffer->paintBoxRel(x - 4, y + height,        20, info_height, COL_MENUCONTENT_PLUS_1, RADIUS_MID);
-		frameBuffer->paintBoxRel(x - 3, y + height, width + 3, info_height, COL_MENUCONTENT_PLUS_6, RADIUS_MID);
+		if (!alreadyPainted) //reduce flickering of infobox
+		{
+			frameBuffer->paintBoxRel(x - 4, y + height,        20, info_height, COL_MENUCONTENT_PLUS_1, RADIUS_MID);
+			frameBuffer->paintBoxRel(x - 3, y + height, width + 3, info_height, COL_MENUCONTENT_PLUS_6, RADIUS_MID);
+			alreadyPainted = true;		
+		}		
 		frameBuffer->paintBoxRel(x + 2, y + height + 2, width - 4, info_height - 4, COL_MENUCONTENTDARK_PLUS_0, RADIUS_MID);
 
 		char cNoch[50]; // UTF-8

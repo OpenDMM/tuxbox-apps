@@ -93,6 +93,7 @@ class CChannelList
 
 		bool historyMode;
 		bool displayNext;
+		bool alreadyPainted;
 
 		void paintDetails(unsigned int index);
 		void clearItem2DetailsLine ();

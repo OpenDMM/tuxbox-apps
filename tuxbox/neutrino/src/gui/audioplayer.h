@@ -120,6 +120,7 @@ class CAudioPlayerGui : public CMenuTarget
 	bool           m_show_playlist;
 
 	bool           m_playlistHasChanged;
+	bool           m_alreadyPainted;
 
 	CAudioPlayList      m_playlist;
 	CTitle2Pos     m_title2Pos;
