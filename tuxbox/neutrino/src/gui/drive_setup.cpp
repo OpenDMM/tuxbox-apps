@@ -5103,8 +5103,6 @@ void  CDriveSetup::handleSetting(int *setting)
 //handle/collects old char settings, Note: it's not necessary to observe partsize and fstype, this values come from system 
 void CDriveSetup::handleCharSettings()
 {
-	uint c = 0;
-
 	//mmc modul name
 	v_old_char_settings.push_back(static_cast <string> (d_settings.drive_mmc_module_name));
 	
