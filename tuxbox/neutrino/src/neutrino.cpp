@@ -1992,7 +1992,7 @@ void CNeutrinoApp::prepareEnviroment()
 
 int CNeutrinoApp::run(int argc, char **argv)
 {
-	/* Obey startmode setting for no longer than 180s uptime */
+	/* Obey startmode setting for no longer than 120s uptime */
 	struct sysinfo info;
 	long uptime;
 	sysinfo(&info);
