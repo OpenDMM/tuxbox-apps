@@ -3622,8 +3622,8 @@ typedef struct fstype_t
 
 const fstype_struct_t fstype[MAXCOUNT_FSTYPES] =
 {
-	{"ext2", 	"-T largefile -m0 -q -I 128", 	"-y -v"},
-	{"ext3",	"-T largefile -m0 -q -I 128", 	"-y -v"},
+	{"ext2", 	"-v -m0 -q -I 128", 	"-y -v"},
+	{"ext3",	"-v -m0 -q -I 128", 	"-y -v"},
 	{"msdos", 	"", 			"-y"},
 	{"vfat", 	"", 			"-y"},
 	{"reiserfs", 	"-f", 			"-f -y "},
