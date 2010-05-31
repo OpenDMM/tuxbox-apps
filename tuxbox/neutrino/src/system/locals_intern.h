@@ -365,6 +365,7 @@ const char * locale_real_names[] =
 	"drive_setup.msg_error_save_configfile_failed",
 	"drive_setup.msg_error_save_failed",
 	"drive_setup.msg_error_save_no_smb_share_definied",
+	"drive_setup.msg_mount",
 	"drive_setup.msg_partition_check",
 	"drive_setup.msg_partition_check_failed",
 	"drive_setup.msg_partition_check_ok",
