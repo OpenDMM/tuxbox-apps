@@ -5225,11 +5225,7 @@ bool  CDriveSetup::haveChangedSettings()
 	for(uint i = 0; i < MAXCOUNT_DRIVE; i++)
 	{
 		if (old_drive_spindown[i] != static_cast <string> (d_settings.drive_spindown[i]))
-		{
-			cout<<"old_drive_spindown["<<i<<"]"<<old_drive_spindown[i]<<"<<<<<<<<<>>>>>>>>>>"<<endl;
-			cout<<"d_settings.drive_spindown["<<i<<"]"<<d_settings.drive_spindown[i]<<"<<<<<<<<<>>>>>>>>>>"<<endl;
 			return true;
-		}
 	}
 
 	//checking fstab
