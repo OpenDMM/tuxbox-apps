@@ -428,3 +428,6 @@ void CThemes::setupDefaultColors()
 	g_settings.infobar_Text_green = 0x64;
 	g_settings.infobar_Text_blue  = 0x64;
 }
+
+
+
