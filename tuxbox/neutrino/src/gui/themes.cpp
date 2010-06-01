@@ -37,6 +37,7 @@
 #include <gui/widget/stringinput.h>
 #include <gui/widget/stringinput_ext.h>
 #include <gui/widget/messagebox.h>
+#include <driver/screen_max.h>
 
 #include <sys/stat.h>
 #include <sys/time.h>
@@ -51,12 +52,12 @@ CThemes::CThemes()
 : themefile('\t')
 {
 	frameBuffer = CFrameBuffer::getInstance();
-	width = 500;
+	width 	= w_max (550, 100);
 	hheight = g_Font[SNeutrinoSettings::FONT_TYPE_MENU_TITLE]->getHeight();
 	mheight = g_Font[SNeutrinoSettings::FONT_TYPE_MENU]->getHeight();
 	height = hheight+13*mheight+ 10;
-	x=(((g_settings.screen_EndX- g_settings.screen_StartX)-width) / 2) + g_settings.screen_StartX;
-	y=(((g_settings.screen_EndY- g_settings.screen_StartY)-height) / 2) + g_settings.screen_StartY;
+	x	= getScreenStartX (width);
+	y	= getScreenStartY (height);
 
 	hasThemeChanged = false;
 }
@@ -370,4 +371,60 @@ void CThemes::saveFile(char * themename)
 
 	if (!themefile.saveConfig(themename))
 		printf("[neutrino theme] %s write error\n", themename);
+}
+
+
+
+// setup default Color Sheme (Neutrino)
+void CThemes::setupDefaultColors()
+{
+	g_settings.menu_Head_alpha = 0x00;
+	g_settings.menu_Head_red   = 0x00;
+	g_settings.menu_Head_green = 0x0A;
+	g_settings.menu_Head_blue  = 0x19;
+
+	g_settings.menu_Head_Text_alpha = 0x00;
+	g_settings.menu_Head_Text_red   = 0x5f;
+	g_settings.menu_Head_Text_green = 0x46;
+	g_settings.menu_Head_Text_blue  = 0x00;
+
+	g_settings.menu_Content_alpha = 0x14;
+	g_settings.menu_Content_red   = 0x00;
+	g_settings.menu_Content_green = 0x0f;
+	g_settings.menu_Content_blue  = 0x23;
+
+	g_settings.menu_Content_Text_alpha = 0x00;
+	g_settings.menu_Content_Text_red   = 0x64;
+	g_settings.menu_Content_Text_green = 0x64;
+	g_settings.menu_Content_Text_blue  = 0x64;
+
+	g_settings.menu_Content_Selected_alpha = 0x14;
+	g_settings.menu_Content_Selected_red   = 0x19;
+	g_settings.menu_Content_Selected_green = 0x37;
+	g_settings.menu_Content_Selected_blue  = 0x64;
+
+	g_settings.menu_Content_Selected_Text_alpha  = 0x00;
+	g_settings.menu_Content_Selected_Text_red    = 0x00;
+	g_settings.menu_Content_Selected_Text_green  = 0x00;
+	g_settings.menu_Content_Selected_Text_blue   = 0x00;
+
+	g_settings.menu_Content_inactive_alpha = 0x14;
+	g_settings.menu_Content_inactive_red   = 0x00;
+	g_settings.menu_Content_inactive_green = 0x0f;
+	g_settings.menu_Content_inactive_blue  = 0x23;
+
+	g_settings.menu_Content_inactive_Text_alpha  = 0x00;
+	g_settings.menu_Content_inactive_Text_red    = 55;
+	g_settings.menu_Content_inactive_Text_green  = 70;
+	g_settings.menu_Content_inactive_Text_blue   = 85;
+
+	g_settings.infobar_alpha = 0x14;
+	g_settings.infobar_red   = 0x00;
+	g_settings.infobar_green = 0x0e;
+	g_settings.infobar_blue  = 0x23;
+
+	g_settings.infobar_Text_alpha = 0x00;
+	g_settings.infobar_Text_red   = 0x64;
+	g_settings.infobar_Text_green = 0x64;
+	g_settings.infobar_Text_blue  = 0x64;
 }

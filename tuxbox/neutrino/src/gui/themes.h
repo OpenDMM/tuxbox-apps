@@ -50,6 +50,7 @@ class CThemes : public CMenuTarget, CChangeObserver
 	public:
 		CThemes();
 		void hide();
+		void setupDefaultColors();
 		int exec(CMenuTarget* parent, const std::string & actionKey);
 };
 

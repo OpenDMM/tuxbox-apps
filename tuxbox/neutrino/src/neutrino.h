@@ -209,7 +209,6 @@ class CNeutrinoApp : public CMenuTarget, CChangeObserver
 		bool ucodes_available(void);
 #endif
 		void firstChannel();
-		void setupColors_neutrino();
 		void setupNetwork( bool force= false );
 		void setupNFS();
 
