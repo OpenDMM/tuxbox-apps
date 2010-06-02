@@ -1226,6 +1226,7 @@ const char * locale_real_names[] =
 	"sambaserver.setup_install_dir",
 	"sambaserver.setup_interface",
 	"sambaserver.setup_msg_missing_smbconf",
+	"sambaserver.setup_msg_not_installed",
 	"sambaserver.setup_msg_save",
 	"sambaserver.setup_server_off",
 	"sambaserver.setup_server_on",
