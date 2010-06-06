@@ -248,7 +248,7 @@ CTimerList::CTimerList()
 	theight = g_Font[SNeutrinoSettings::FONT_TYPE_MENU_TITLE]->getHeight();
 	fheight = g_Font[SNeutrinoSettings::FONT_TYPE_MENU]->getHeight();
 	x	= getScreenStartX (width);
-	y	= getScreenStartX (height+INFO_HEIGHT);
+	y	= getScreenStartY (height+INFO_HEIGHT);
 	liststart = 0;
 	Timer = new CTimerdClient();
 	skipEventID=0;
@@ -422,7 +422,7 @@ void CTimerList::updateEvents(void)
 	}
 
 	x	= getScreenStartX (width);
-	y	= getScreenStartX (height+INFO_HEIGHT);
+	y	= getScreenStartY (height+INFO_HEIGHT);
 }
 
 
