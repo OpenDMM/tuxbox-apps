@@ -481,6 +481,9 @@ int CFlashUpdate::exec(CMenuTarget* parent, const std::string &)
 		return menu_return::RETURN_REPAINT;
 	}
 
+	printf("[flashtool] stopping timerd\n");
+	g_Timerd->shutdown();
+
 	CSectionsdClient sd;
 	bool sd_scan = sd.getIsScanningActive();
 	// restart sectionsd, this frees up memory
@@ -626,6 +629,9 @@ void CFlashExpert::writemtd(const std::string & filename, int mtdNumber)
 		g_Radiotext = NULL;
 	}
 #endif
+
+	printf("[flashtool] stopping timerd\n");
+	g_Timerd->shutdown();
 
 	CSectionsdClient sd;
 	bool sd_scan = sd.getIsScanningActive();
