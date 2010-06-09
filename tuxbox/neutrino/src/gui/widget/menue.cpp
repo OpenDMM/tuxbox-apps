@@ -97,7 +97,7 @@ void CMenuItem::paintItemButton(const int startX, const int frame_height, const 
 #ifndef HAVE_DBOX_HARDWARE
 	if (icon_name.empty() && CRCInput::isNumeric(directKey))
 	{
-		char i_name[4];
+		char i_name[5];
 		sprintf(i_name, "%d.raw", CRCInput::getNumericValue(directKey));
 		icon_name = i_name;
 	}
