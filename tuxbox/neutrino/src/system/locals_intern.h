@@ -350,6 +350,7 @@ const char * locale_real_names[] =
 	"drive_setup.msg_error_fatal",
 	"drive_setup.msg_error_hdparm_not_compatible",
 	"drive_setup.msg_error_load_mmc_driver_failed",
+	"drive_setup.msg_error_no_fsdriver_found",
 	"drive_setup.msg_error_save_cannot_activate_interface",
 	"drive_setup.msg_error_save_cannot_hdparm",
 	"drive_setup.msg_error_save_cannot_make_exports",

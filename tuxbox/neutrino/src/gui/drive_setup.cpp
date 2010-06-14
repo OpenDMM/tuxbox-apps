@@ -618,6 +618,10 @@ const mn_data_struct_t mn_data[MAXCOUNT_DRIVE] =
 // shows the main drive setup menue
 void CDriveSetup::showHddSetupMain()
 {
+	// have no fsdrivers found
+	if (!have_fsdrivers)
+		DisplayErrorMessage(g_Locale->getText(LOCALE_DRIVE_SETUP_MSG_ERROR_NO_FSDRIVER_FOUND));
+
 	// mmc active ?
 	device_isActive[MMCARD] = isMmcActive();
 
@@ -2896,6 +2900,9 @@ void CDriveSetup::loadFsModulList()
 	//sort modules and remove possible double entries
 	sort(v_fs_modules.begin(), v_fs_modules.end());
 	v_fs_modules.resize(unique(v_fs_modules.begin(), v_fs_modules.end()) - v_fs_modules.begin());
+
+	//set status for available fsdriver
+ 	have_fsdrivers = v_fs_modules.size() == 0 ? false : true;
 	
 	// last fs must be swap
 	if (!haveSwap())

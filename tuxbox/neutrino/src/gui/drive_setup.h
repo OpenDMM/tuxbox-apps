@@ -314,6 +314,8 @@ class CDriveSetup : public CMenuTarget
 		} errnum_uint_t;
 		std::string err[ERROR_DESCRIPTIONS_NUM_COUNT];
 		bool have_apply_errors;
+	
+		bool have_fsdrivers;
 		
 		int current_device; 	//MASTER || SLAVE || MMCARD, current edit device
 		int hdd_count; 		// count of hdd drives
