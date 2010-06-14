@@ -386,6 +386,7 @@ const char * locale_real_names[] =
 	"drive_setup.msg_saved",
 	"drive_setup.msg_saved_disabled",
 	"drive_setup.msg_savesettings_found_changes",
+	"drive_setup.msg_warn_again",
 	"drive_setup.partition_activate",
 	"drive_setup.partition_activate_no",
 	"drive_setup.partition_activate_yes",

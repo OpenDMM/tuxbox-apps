@@ -79,6 +79,7 @@ struct SDriveSettings
 
 	int 	drive_use_fstab;
 	int	drive_use_fstab_auto_fs;
+	int	drive_warn_jffs;
 
 	int 	drive_activate_ide;
 	int 	drive_write_cache[MAXCOUNT_DRIVE];
