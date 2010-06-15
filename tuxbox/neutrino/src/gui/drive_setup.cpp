@@ -3599,7 +3599,7 @@ bool CDriveSetup::mkPartition(const int& device_num /*MASTER||SLAVE*/, const act
 		{
 			if (isActivePartition(partname)) 
 			{ // partition was deleted but part table is not current, reboot is requiered
-				bool reboot = (ShowLocalizedMessage(LOCALE_DRIVE_SETUP_HDD_EDIT_PARTITION, LOCALE_DRIVE_SETUP_MSG_REBOOT_REQUIERED, CMessageBox::mbrContinue, CMessageBox::mbYes | CMessageBox::mbContinue, NEUTRINO_ICON_INFO, width) == CMessageBox::mbrYes);
+				bool reboot = (ShowLocalizedMessage(LOCALE_DRIVE_SETUP_HDD_EDIT_PARTITION, LOCALE_DRIVE_SETUP_MSG_REBOOT_REQUIERED, CMessageBox::mbrNo, CMessageBox::mbYes | CMessageBox::mbNo, NEUTRINO_ICON_INFO, width) == CMessageBox::mbrYes);
 				if (reboot) 
 				{	
 					CNeutrinoApp::getInstance()->exec(NULL, "reboot");
