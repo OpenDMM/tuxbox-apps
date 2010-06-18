@@ -40,7 +40,7 @@ void paintButtons(CFrameBuffer * const frameBuffer,
 							const unsigned int buttonwidth, 
 							const unsigned int count, 
 							const struct button_label * const content, 
-							const unsigned int maxwitdth = 720,
+							const unsigned int maxwidth = 720,
 							bool vertical_paint = false);
 											
 					
