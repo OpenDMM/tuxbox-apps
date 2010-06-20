@@ -276,6 +276,8 @@ class CMovieBrowser : public CMenuTarget
 		//bool restart_mb_timeout;
 
 	public:  // Functions //////////////////////////////////////////////////////////7
+		static CMovieBrowser* getInstance();
+
 		CMovieBrowser(const char* path); //P1 
 		CMovieBrowser(); //P1 
 		~CMovieBrowser(); //P1 

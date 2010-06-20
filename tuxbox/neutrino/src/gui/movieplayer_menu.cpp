@@ -114,7 +114,7 @@ void CMoviePlayerMenue::showMoviePlayerMenue()
 	mpmenue->addItem(new CMenuForwarder(LOCALE_MOVIEBROWSER_HEAD, true, NULL, this->moviePlayerGui, "tsmoviebrowser", CRCInput::RC_2));
 #else
 	//moviebrowser init
-	mpmenue->addItem(new CMenuForwarder(LOCALE_MOVIEBROWSER_HEAD, true, NULL, g_MovieBrowser, "run", CRCInput::RC_2));
+	mpmenue->addItem(new CMenuForwarder(LOCALE_MOVIEBROWSER_HEAD, true, NULL, CMovieBrowser::getInstance(), "run", CRCInput::RC_2));
 #endif /* ENABLE_MOVIEPLAYER2 */
 	rc_msg = CRCInput::RC_3;
 #else

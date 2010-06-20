@@ -1451,7 +1451,7 @@ bool CNeutrinoApp::showUserMenu(int button)
 #ifndef ENABLE_MOVIEPLAYER2
 				menu_item = new CMenuForwarder(LOCALE_MOVIEBROWSER_HEAD, true, NULL, new CMoviePlayerGui(), "tsmoviebrowser", key, icon);
 #else
-				menu_item = new CMenuForwarder(LOCALE_MOVIEBROWSER_HEAD, true, NULL, g_MovieBrowser, "run", key, icon);
+				menu_item = new CMenuForwarder(LOCALE_MOVIEBROWSER_HEAD, true, NULL, CMovieBrowser::getInstance(), "run", key, icon);
 #endif
 				menu->addItem(menu_item, false);
 				break;

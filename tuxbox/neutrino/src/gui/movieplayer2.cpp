@@ -2385,15 +2385,15 @@ OutputThread(void *arg)
 	ioctl(adec, AUDIO_STOP);
 	ioctl(dmxv, DMX_STOP);
 	ioctl(dmxa, DMX_STOP);
-	if (dmxa > -1)
+	if (dmxa != -1)
 		close(dmxa);
-	if (dmxv > -1)
+	if (dmxv != -1)
 		close(dmxv);
-	if (dvr > -1)
+	if (dvr != -1)
 		close(dvr);
-	if (adec > -1)
+	if (adec != -1)
 		close(adec);
-	if (vdec > -1)
+	if (vdec != -1)
 		close(vdec);
 
 	// request reader termination
