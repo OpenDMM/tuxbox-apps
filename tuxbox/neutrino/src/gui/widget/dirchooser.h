@@ -68,8 +68,8 @@ class CRecDirChooser : public CMenuWidget
 		int selectedDir;
 
 	public:
-		CRecDirChooser(const neutrino_locale_t Name,  const std::string & Icon = "", int * chosenNfsIndex = NULL, char * chosenLocalDir = NULL, const char * const selectedLocalDir = "", const int mwidth = 400, const int mheight = 576);
-		CRecDirChooser(const neutrino_locale_t Name,  const std::string & Icon = "", int * chosenNfsIndex = NULL, std::string * chosenLocalDir = NULL, const char * const selectedLocalDir = "", const int mwidth = 400, const int mheight = 576);
+		CRecDirChooser(const neutrino_locale_t Name,  const std::string & Icon = "", int * chosenNfsIndex = NULL, char * chosenLocalDir = NULL, const char * const selectedLocalDir = "", const int mwidth = 450, const int mheight = 576);
+		CRecDirChooser(const neutrino_locale_t Name,  const std::string & Icon = "", int * chosenNfsIndex = NULL, std::string * chosenLocalDir = NULL, const char * const selectedLocalDir = "", const int mwidth = 450, const int mheight = 576);
 		void initMenu(void);
 		int exec(CMenuTarget* parent, const std::string & actionKey);
 		std::string get_selected_dir(void){return dir;};
