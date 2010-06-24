@@ -863,6 +863,7 @@ const char * locale_real_names[] =
 	"moviebrowser.error_no_movies",
 	"moviebrowser.foot_filter",
 	"moviebrowser.foot_play",
+	"moviebrowser.foot_select",
 	"moviebrowser.foot_sort",
 	"moviebrowser.head",
 	"moviebrowser.head_filter",
