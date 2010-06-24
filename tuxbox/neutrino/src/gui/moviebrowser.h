@@ -313,6 +313,7 @@ class CMovieBrowser : public CMenuTarget
 		void initDevelopment(void); //P1 for development testing only
 		void initRows(void);
 		void reinit(void); //P1
+		void initFonts(void);
 
 		///// MovieBrowser Main Window////////// 
 		int paint(void); //P1
