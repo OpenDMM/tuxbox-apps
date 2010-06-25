@@ -4294,8 +4294,8 @@ bool CDriveSetup::mountPartition(const int& device_num /*MASTER||SLAVE*/, const 
 			}
 			else
 			{	
-				char size_opt[4];
-				snprintf(size_opt, 4, "size=%sM", d_settings.drive_swap_size);
+				char size_opt[10];
+				snprintf(size_opt, 10, "size=%sM", d_settings.drive_swap_size);
 				if (mount("tmpfs", "/tmp" , NULL, MS_MGC_VAL | MS_REMOUNT, size_opt) !=0 )
 				{
 					cerr<<"[drive setup] "<<__FUNCTION__ <<":  mount: "<<strerror(errno)<<endl;
