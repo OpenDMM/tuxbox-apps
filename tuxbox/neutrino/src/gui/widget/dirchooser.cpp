@@ -197,7 +197,7 @@ void CRecDirChooser::initMenu(void)
 				dirOptionText[i]=tmp;
 			}
 			snprintf(indexStr,10,"MID:%d",i);
-			addItem(new CMenuForwarderNonLocalized(	g_settings.recording_dir[i].c_str(), true, dirOptionText[i], this, indexStr));
+			addItem(new CMenuForwarderNonLocalized(	g_settings.recording_dir[i].c_str(), true, dirOptionText[i], this, indexStr), i == 0 ? true:false); //firs
 		}
 	}
 	addItem(GenericMenuSeparatorLine);
