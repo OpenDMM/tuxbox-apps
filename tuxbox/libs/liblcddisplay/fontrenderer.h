@@ -105,6 +105,7 @@ class LcdFontRenderClass
 
 		//FT_Face getFace(const char *family, const char *style);
 		LcdFont *getFont(const char *family, const char *style, int size);
+		std::string getFamily(const char *const filename) const;
 		LcdFontRenderClass(CLCDDisplay *fb);
 		~LcdFontRenderClass();
 

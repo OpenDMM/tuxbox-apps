@@ -128,6 +128,16 @@ FTC_FaceID LcdFontRenderClass::getFaceID(const char *family, const char *style)
 	return 0;
 }
 
+std::string LcdFontRenderClass::getFamily(const char *const filename) const
+{
+	for (fontListEntry *f = font; f; f = f->next)
+	{
+		if (!strcmp(f->filename, filename))
+			return std::string(f->family);
+	}
+	return "";
+}
+
 #ifdef FT_NEW_CACHE_API
 FT_Error LcdFontRenderClass::getGlyphBitmap(FTC_ImageType font, FT_ULong glyph_index, FTC_SBit *sbit)
 {
