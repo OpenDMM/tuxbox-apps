@@ -266,9 +266,11 @@ bool CSambaSetup::killSamba()
 					cout << "[samba setup] killed "<< smb_cmd[i].bin << " pid: "<<pid<<endl;
 			}
 		}
-		
-		char pid_file[9];
-		sprintf( pid_file, "/tmp/%s.pid", smb_cmd[i].bin.c_str()); 
+		/* $ echo -n "/tmp/smbd.pid"|wc -c
+		 * 13
+		 * 15 should be enough */
+		char pid_file[15];
+		sprintf( pid_file, "/tmp/%s.pid", smb_cmd[i].bin.c_str());
 		if (ret)
 			remove(pid_file);
 		
