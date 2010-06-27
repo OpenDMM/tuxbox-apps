@@ -25,6 +25,7 @@
 #include <driver/fontrenderer.h>
 #include <driver/framebuffer.h>
 #include <system/localize.h>
+#include <gui/color.h>
 
 typedef struct button_label
 {
@@ -41,7 +42,8 @@ void paintButtons(CFrameBuffer * const frameBuffer,
 							const unsigned int count, 
 							const struct button_label * const content, 
 							const unsigned int maxwidth = 720,
-							bool vertical_paint = false);
+							bool vertical_paint = false,
+							const unsigned char bcolor = COL_INFOBAR_SHADOW_PLUS_1);
 											
 					
 #endif /* __gui_widget_buttons_h__ */
