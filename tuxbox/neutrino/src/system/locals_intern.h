@@ -753,6 +753,7 @@ const char * locale_real_names[] =
 	"mainsettings.video",
 	"mediaplayersettings.general",
 	"menu.back",
+	"menu.cancel",
 	"messagebox.back",
 	"messagebox.cancel",
 	"messagebox.continue",
