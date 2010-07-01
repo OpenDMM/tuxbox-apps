@@ -114,7 +114,7 @@ void CMenuItem::paintItemButton(const int startX, const int frame_height, const 
 	}
 #endif
 
-	if  (selected) 
+	if  (selected && offx > 0)
 	{
 		if (!selected_iconName.empty())
 		{
