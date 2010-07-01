@@ -52,9 +52,6 @@
 
 using namespace std;
 
-// extern char CstartChannelRadio[30]; /* defined in gui/neutrino_menu.cpp */
-// extern char CstartChannelTV[30];
-
 CZapitSetup::CZapitSetup(const neutrino_locale_t title, const char * const IconName)
 {
 	frameBuffer = CFrameBuffer::getInstance();
