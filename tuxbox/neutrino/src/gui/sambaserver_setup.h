@@ -43,7 +43,10 @@
 #define NMBD		"nmbd"
 #define SMBD		"smbd"
 #define SAMBA_MARKER	VAR_ETC_DIR "/.sambaserver"
-#define SMB_PRIVAT_DIR	ETC_DIR	"/samba/private"
+#define SMB_DIR		ETC_DIR	"/samba"
+#define SMB_VAR_DIR	VAR_ETC_DIR "/samba"
+#define SMB_PRIVAT_DIR		SMB_DIR	"/private"
+#define SMB_PRIVAT_VAR_DIR	SMB_VAR_DIR "/private"
 
 
 class CSambaSetup : public CMenuTarget
