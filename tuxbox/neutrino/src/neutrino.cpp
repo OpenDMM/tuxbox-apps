@@ -4092,19 +4092,7 @@ int CNeutrinoApp::exec(CMenuTarget* parent, const std::string & actionKey)
 		g_Sectionsd->setServiceChanged(g_RemoteControl->current_channel_id, false);
 		SendSectionsdConfig();
 	}
-/*	if(actionKey == "zapit_starttv")
-	{
-		parent->hide();
-		InitZapitChannelHelper(CZapitClient::MODE_TV);
-		return menu_return::RETURN_REPAINT;
-	}
-	else if(actionKey == "zapit_startradio")
-	{
-		parent->hide();
-		InitZapitChannelHelper(CZapitClient::MODE_RADIO);
-		return menu_return::RETURN_REPAINT;
-	}
-*/
+
 #ifdef ENABLE_MOVIEPLAYER2
 	else if (actionKey.find("mb.file://") == 0)
 	{

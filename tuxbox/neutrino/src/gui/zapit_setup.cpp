@@ -190,8 +190,8 @@ void CZapitSetup::showSetup()
 	delete z;
 }
 
-char CstartChannelRadio[30]; /* defined in gui/neutrino_menu.cpp */
-char CstartChannelTV[30];
+// char CstartChannelRadio[30];
+// char CstartChannelTV[30];
 
 void CZapitSetup::InitZapitChannelHelper(CZapitClient::channelsMode mode)
 {
@@ -223,7 +223,9 @@ void CZapitSetup::InitZapitChannelHelper(CZapitClient::channelsMode mode)
 				"ZC%c:%d,",
 				(mode==CZapitClient::MODE_TV)?'T':'R',
 				channel->nr);
-			mwtv->addItem(new CMenuForwarderNonLocalized(channel->name, true, NULL, ZapitChannelChooser, (std::string(cChannelId) + channel->name).c_str()));
+			CMenuForwarderNonLocalized * chan_item = new CMenuForwarderNonLocalized(channel->name, true, NULL, ZapitChannelChooser, (std::string(cChannelId) + channel->name).c_str());
+			chan_item->setItemButton(NEUTRINO_ICON_BUTTON_OKAY, true);
+			mwtv->addItem(chan_item);
 		}
 		if (!channellist.empty())
 			mctv.addItem(new CMenuForwarderNonLocalized(bouquet->name, true, NULL, mwtv));
