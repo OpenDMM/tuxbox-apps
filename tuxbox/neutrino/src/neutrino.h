@@ -240,14 +240,12 @@ class CNeutrinoApp : public CMenuTarget, CChangeObserver
 		void AddFontSettingItem(CMenuWidget &fontSettings, const SNeutrinoSettings::FONT_TYPES number_of_fontsize_entry);
 		void InitFontSettings(CMenuWidget &fontSettings);
 		void InitDriverSettings(CMenuWidget &);
-		void InitZapitSettings(CMenuWidget &miscSettingsZapitSettings);
 		void InitMiscSettings(CMenuWidget &miscSettings,
 								CMenuWidget &miscSettingsGeneral,
 								CMenuWidget &miscSettingsOSDExtras,
 								CMenuWidget &miscSettingsInfobar,
 								CMenuWidget &miscSettingsChannellist,
 								CMenuWidget &miscSettingsEPGSettings,
-								CMenuWidget &miscSettingsZapitSettings,
 								CMenuWidget &miscSettingsRemoteControl,
 								CMenuWidget &miscSettingsFilebrowser);
 
