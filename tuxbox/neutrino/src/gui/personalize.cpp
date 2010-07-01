@@ -161,7 +161,7 @@ void CPersonalizeGui::ShowPersonalizationMenu()
 	pMenu->addItem(new CMenuOptionChooser(LOCALE_INFOVIEWER_EVENTLIST, (int *)&g_settings.personalize_redbutton, PERSONALIZE_EOD_OPTIONS, PERSONALIZE_EOD_OPTION_COUNT, true, NULL, CRCInput::RC_3));
 
 	pMenu->addItem(GenericMenuSeparatorLine);
-	pMenu->addItem(new CMenuForwarder(LOCALE_PERSONALIZE_HELP, true, NULL, this, "personalize_help", CRCInput::RC_help, NEUTRINO_ICON_BUTTON_HELP_SMALL));
+	pMenu->addItem(new CMenuForwarder(LOCALE_PERSONALIZE_HELP, true, NULL, this, "personalize_help", CRCInput::RC_help, NEUTRINO_ICON_BUTTON_HELP));
 
 	pMenu->exec (NULL, "");
 	pMenu->hide ();

@@ -136,11 +136,11 @@ void CMoviePlayerMenue::showMoviePlayerMenue()
 	mpmenue->addItem(GenericMenuSeparatorLine);
 
 	//help
-	mpmenue->addItem(new CMenuForwarder(LOCALE_MAINMENU_SETTINGS, true, NULL, new CMoviePlayerSetup(), NULL, CRCInput::RC_help, NEUTRINO_ICON_BUTTON_HELP_SMALL));
+	mpmenue->addItem(new CMenuForwarder(LOCALE_MAINMENU_SETTINGS, true, NULL, new CMoviePlayerSetup(), NULL, CRCInput::RC_help, NEUTRINO_ICON_BUTTON_HELP));
 
 #ifdef ENABLE_GUI_MOUNT
 	//neutrino mount
-	mpmenue->addItem(new CMenuForwarder(LOCALE_NETWORKMENU_MOUNT, true, NULL, new CNFSSmallMenu(), NULL, CRCInput::RC_setup, NEUTRINO_ICON_BUTTON_DBOX_SMALL));
+	mpmenue->addItem(new CMenuForwarder(LOCALE_NETWORKMENU_MOUNT, true, NULL, new CNFSSmallMenu(), NULL, CRCInput::RC_setup, NEUTRINO_ICON_BUTTON_DBOX));
 #endif
 
 	mpmenue->exec(NULL, "");

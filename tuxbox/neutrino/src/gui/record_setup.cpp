@@ -290,7 +290,7 @@ void CRecordSetup::showRecordSetup()
 	recordingSettings->addItem(GenericMenuSeparatorLine);
 
 	recordingSettings->addItem(new CMenuForwarder(LOCALE_RECORDINGMENU_SETUPNOW, true, NULL, this, "recording", CRCInput::RC_red, NEUTRINO_ICON_BUTTON_RED));
-	recordingSettings->addItem(new CMenuForwarder(LOCALE_SETTINGS_HELP, true, NULL, this, "help_recording", CRCInput::RC_help, NEUTRINO_ICON_BUTTON_HELP_SMALL));
+	recordingSettings->addItem(new CMenuForwarder(LOCALE_SETTINGS_HELP, true, NULL, this, "help_recording", CRCInput::RC_help, NEUTRINO_ICON_BUTTON_HELP));
 	recordingSettings->addItem(GenericMenuSeparatorLine);
 	recordingSettings->addItem( oj1); //recording type (off, server, vcr, direct) 
 	recordingSettings->addItem(GenericMenuSeparatorLine);

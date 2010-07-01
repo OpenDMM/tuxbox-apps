@@ -30,16 +30,13 @@
 #define NEUTRINO_ICON_BUTTON_YELLOW	"gelb.raw"
 
 #define NEUTRINO_ICON_BUTTON_DBOX	"dbox.raw"
-#define NEUTRINO_ICON_BUTTON_DBOX_SMALL	"dbox_small.raw"
 #define NEUTRINO_ICON_BUTTON_HELP	"help.raw"
-#define NEUTRINO_ICON_BUTTON_HELP_SMALL	"help_small.raw"
 #define NEUTRINO_ICON_BUTTON_HOME	"home.raw"
 #define NEUTRINO_ICON_BUTTON_MUTE	"mute.raw"
 #define NEUTRINO_ICON_BUTTON_MUTE_SMALL	"mute_small.raw"
 #define NEUTRINO_ICON_BUTTON_POWER	"power.raw"
 
 #define NEUTRINO_ICON_BUTTON_OKAY	"ok.raw"
-#define NEUTRINO_ICON_BUTTON_OKAY_SMALL	"ok_small.raw"
 
 #define NEUTRINO_ICON_BUTTON_0		"0.raw"
 #define NEUTRINO_ICON_BUTTON_1		"1.raw"
@@ -53,10 +50,8 @@
 #define NEUTRINO_ICON_BUTTON_9		"9.raw"
 
 #define NEUTRINO_ICON_BUTTON_TOP	"up.raw"
-#define NEUTRINO_ICON_BUTTON_TOP_SMALL	"up_small.raw"
 #define NEUTRINO_ICON_BUTTON_RIGHT	"right.raw"
 #define NEUTRINO_ICON_BUTTON_DOWN	"down.raw"
-#define NEUTRINO_ICON_BUTTON_DOWN_SMALL	"down_small.raw"
 #define NEUTRINO_ICON_BUTTON_LEFT	"left.raw"
 
 #define NEUTRINO_ICON_BUTTON_PLUS	"plus.raw"

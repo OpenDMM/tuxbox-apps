@@ -203,7 +203,7 @@ void CNetworkSetup::showNetworkSetup()
 		networkSettings->addItem( m0 );
 	
 		networkSettings->addItem(new CMenuForwarder(LOCALE_NETWORKMENU_TEST, true, NULL, this, "networktest", CRCInput::RC_green, NEUTRINO_ICON_BUTTON_GREEN));
-		networkSettings->addItem(new CMenuForwarder(LOCALE_NETWORKMENU_SHOW, true, NULL, this, "networkshow", CRCInput::RC_help, NEUTRINO_ICON_BUTTON_HELP_SMALL));
+		networkSettings->addItem(new CMenuForwarder(LOCALE_NETWORKMENU_SHOW, true, NULL, this, "networkshow", CRCInput::RC_help, NEUTRINO_ICON_BUTTON_HELP));
 		networkSettings->addItem(GenericMenuSeparatorLine);
 	
 		networkSettings->addItem(o1);
