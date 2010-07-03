@@ -1654,6 +1654,9 @@ void CMovieBrowser::refreshFoot(void)
 	std::string filter_text = g_Locale->getText(LOCALE_MOVIEBROWSER_FOOT_FILTER);
 	filter_text += m_settings.filter.optionString;
 
+	//cut button caption for filter
+	filter_text = filter_text.length() < 24 ? filter_text : filter_text.substr( 0, 24 ) + "...";
+
 	std::string sort_text = g_Locale->getText(LOCALE_MOVIEBROWSER_FOOT_SORT);
 	sort_text += g_Locale->getText(m_localizedItemName[m_settings.sorting.item]);
 
