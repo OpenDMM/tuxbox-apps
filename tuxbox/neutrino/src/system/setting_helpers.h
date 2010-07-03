@@ -69,7 +69,7 @@ class CSatDiseqcNotifier : public CChangeObserver
 class CTP_scanNotifier : public CChangeObserver
 {
 	private:
-		CMenuOptionChooser* toDisable1[3];
+		CMenuOptionChooser* toDisable1[2];
 		CMenuForwarder* toDisable2[2];
 		CMenuOptionStringChooser* toDisable3[1];
 		CMenuForwarder* toModifi;
