@@ -226,6 +226,16 @@ class CAudioSetupNotifier2 : public CChangeObserver
 		bool changeNotify(const neutrino_locale_t, void *);
 };
 
+class CUserMenuNotifier : public CChangeObserver
+{
+	private:
+		CMenuForwarder *menuitem;
+	public:
+		CUserMenuNotifier(CMenuForwarder *item = NULL);
+		void setItem(CMenuForwarder *item);
+		bool changeNotify(const neutrino_locale_t, void *);
+};
+
 class CKeySetupNotifier : public CChangeObserver
 {
 	public:
