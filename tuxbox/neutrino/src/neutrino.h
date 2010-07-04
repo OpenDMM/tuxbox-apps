@@ -65,9 +65,9 @@
 
 typedef struct neutrino_font_descr
 {
-	const char * name;
-	const char * filename[3];
-	int          size_offset;
+	const char *filename[3]; /* name of regular, bold, italics font file */
+	int        size_offset;
+	int        is_unicode; /* -1 == don't know (external font), 0 == no, 1 == yes */
 } neutrino_font_descr_struct;
 
 typedef struct font_sizes
