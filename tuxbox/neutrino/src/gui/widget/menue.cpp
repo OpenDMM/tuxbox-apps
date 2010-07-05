@@ -868,11 +868,8 @@ int CMenuOptionLanguageChooser::paint( bool selected )
 //-------------------------------------------------------------------------------------------------------------------------------
 CMenuForwarder::CMenuForwarder(const neutrino_locale_t Text, const bool Active, const char * const Option, CMenuTarget* Target, const char * const ActionKey, neutrino_msg_t DirectKey, const char * const IconName)
 {
-	if (Option) {
-		strncpy(option, Option, CMF_OPTION_LEN);
-		option[CMF_OPTION_LEN - 1] = 0x0;
-	} else
-		option[0] = 0x0;
+	option = Option;
+	option_string = NULL;
 	text=Text;
 	active = Active;
 	jumpTarget = Target;
@@ -883,8 +880,8 @@ CMenuForwarder::CMenuForwarder(const neutrino_locale_t Text, const bool Active, 
 
 CMenuForwarder::CMenuForwarder(const neutrino_locale_t Text, const bool Active, const std::string &Option, CMenuTarget* Target, const char * const ActionKey, neutrino_msg_t DirectKey, const char * const IconName)
 {
-	strncpy(option, Option.c_str(), CMF_OPTION_LEN);
-	option[CMF_OPTION_LEN - 1] = 0x0;
+	option = NULL;
+	option_string = &Option;
 	text=Text;
 	active = Active;
 	jumpTarget = Target;
@@ -902,8 +899,7 @@ int CMenuForwarder::getHeight(void) const
 // Without this, the changeNotifiers would become machine-dependent.
 void CMenuForwarder::setOption(const std::string &Option)
 {
-	strncpy(option, Option.c_str(), CMF_OPTION_LEN);
-	option[CMF_OPTION_LEN - 1] = 0x0;
+	option = Option.c_str();
 
 	if (used && x != -1)
 		paint();
@@ -933,7 +929,13 @@ int CMenuForwarder::exec(CMenuTarget* parent)
 
 const char * CMenuForwarder::getOption(void)
 {
-	return option;
+	if (option)
+		return option;
+	else
+		if (option_string)
+			return option_string->c_str();
+		else
+			return NULL;
 }
 
 const char * CMenuForwarder::getName(void)

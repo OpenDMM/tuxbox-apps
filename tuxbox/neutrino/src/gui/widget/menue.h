@@ -153,8 +153,8 @@ class CMenuSeparator : public CMenuItem
 
 class CMenuForwarder : public CMenuItem
 {
-#define CMF_OPTION_LEN 128
-	char option[CMF_OPTION_LEN];
+	const char *        option;
+	const std::string * option_string;
 	CMenuTarget *       jumpTarget;
 	std::string         actionKey;
 
