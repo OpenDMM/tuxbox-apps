@@ -1665,6 +1665,8 @@ bool CNeutrinoApp::getNVODMenu(CMenuWidget* menu)
 		return false;
 		
 	menu->addItem(GenericMenuSeparator);
+	menu->addItem(GenericMenuCancel);
+	menu->addItem(GenericMenuSeparatorLine);
 
 	int count = 0;
 	char nvod_id[5];
