@@ -4518,40 +4518,52 @@ void CMoviePlayerGui::showHelpTS()
 	helpbox.show(LOCALE_MESSAGEBOX_INFO);
 }
 
-void CMoviePlayerGui::showFileInfoVLC() {
+void CMoviePlayerGui::showFileInfoVLC()
+{
 	Helpbox helpbox;
 	std::string url = "http://";
 	url += g_settings.streaming_server_ip;
 	url += ':';
 	url += g_settings.streaming_server_port;
 	url += "/requests/status.xml";
- 	std::string response = "";
+	std::string response = "";
 	CURLcode httpres = sendGetRequest(url, response);
 	
-	if(httpres == 0 && response.length() > 0) {
+	if (httpres == 0 && response.length() > 0)
+	{
 		xmlDocPtr answer_parser = parseXml(response.c_str());
-		if (answer_parser != NULL) {
+		if (answer_parser != NULL)
+		{
 			xmlNodePtr element = xmlDocGetRootElement(answer_parser);
 			element = element->xmlChildrenNode;
-			while (element) {
-				if (strcmp(xmlGetName(element), "information") == 0) {
+			while (element)
+			{
+				if (strcmp(xmlGetName(element), "information") == 0)
+				{
 					element = element->xmlChildrenNode;
 					break;
 				}
 				element = element->xmlNextNode;
 			}
-			while (element) {
-				helpbox.addLine(NEUTRINO_ICON_BUTTON_RED, xmlGetAttribute(element, "name") );
+			while (element)
+			{
+				char *data = xmlGetAttribute(element, "name");
+				if (data)
+					helpbox.addLine(NEUTRINO_ICON_BUTTON_RED, data);
 				xmlNodePtr element1 = element->xmlChildrenNode;
-				while (element1) {
+				while (element1)
+				{
 					char tmp[50] = "-- ";
-					strcat(tmp, xmlGetAttribute(element1, "name"));
-					strcat(tmp, " : ");
-					char* data = xmlGetData(element1);
-					if (data != NULL) {
+					data = xmlGetAttribute(element1, "name");
+					if (data)
+					{
 						strcat(tmp, data);
+						strcat(tmp, " : ");
+						data = xmlGetData(element1);
+						if (data)
+							strcat(tmp, data);
+						helpbox.addLine(tmp);
 					}
-					helpbox.addLine(tmp);
 					element1 = element1->xmlNextNode;
 				}
 				element = element->xmlNextNode;
@@ -4562,3 +4574,4 @@ void CMoviePlayerGui::showFileInfoVLC() {
 		}
 	}
 }
+
