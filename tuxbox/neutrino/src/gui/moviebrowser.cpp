@@ -3281,8 +3281,6 @@ int CMovieBrowser::showStartPosSelectionMenu(void) // P2
 	CMenuWidgetSelection startPosSelectionMenu(LOCALE_MOVIEBROWSER_START_HEAD , NEUTRINO_ICON_STREAMING);
 	
 	startPosSelectionMenu.addItem(GenericMenuSeparator);
-	startPosSelectionMenu.addItem(GenericMenuBack);
-	startPosSelectionMenu.addItem(GenericMenuSeparatorLine);		
 	
 	if( m_movieSelectionHandler->bookmarks.start != 0)
 	{
