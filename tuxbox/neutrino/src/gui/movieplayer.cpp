@@ -3759,9 +3759,7 @@ void CMoviePlayerGui::PlayFile (int parental)
 
 					g_InfoViewer->showMovieTitle(g_playstate, infobar_title, subtitle,
 							g_percent, g_fileposition / g_secondsize, (g_filesize - g_fileposition) / g_secondsize,
-							ac3state, g_numpida > 1,
-							g_Locale->getText(LOCALE_INFOVIEWER_LANGUAGES),
-							g_Locale->getText(LOCALE_TIMERLIST_PLUGIN));
+							ac3state, g_numpida > 1);
 				}
 				break;
 
@@ -4347,10 +4345,8 @@ CMoviePlayerGui::PlayStream (int streamtype)
 
 			g_InfoViewer->showMovieTitle(g_playstate, infobar_title, "",
 					g_percent, stream_time - buffer_time, stream_length - stream_time + buffer_time,
-					ac3state, true,
-					g_Locale->getText(LOCALE_MOVIEPLAYER_VLCHELP2),
-					g_Locale->getText(LOCALE_AUDIOPLAYER_STOP));
-		}
+					ac3state, true, CInfoViewer::VLC_MODE);  // VLC_MODE is optional and need for the infoviewer
+		}										// to show correct caption for the red and green button
 		else if(msg == CRCInput::RC_ok)
 		{
 			static CMovieBrowser mb;
