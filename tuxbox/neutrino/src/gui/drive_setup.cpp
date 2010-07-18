@@ -507,7 +507,7 @@ void CDriveSetup::hide()
 // init menue
 void CDriveSetup::Init()
 {
- 	cout<<"[drive_setup] " << getDriveSetupVersion()<<endl;
+ 	cout<<"[drive_setup] init drive setup " << getDriveSetupVersion()<<endl;
 		
 	CProgressBar pb;
 
@@ -4505,7 +4505,7 @@ string CDriveSetup::getTimeStamp()
 string CDriveSetup::getDriveSetupVersion()
 {
 	static CImageInfo imageinfo;
-	return imageinfo.getModulVersion("BETA! ","$Revision$");
+	return imageinfo.getModulVersion("","$Revision$");
 }
 
 // returns text for initfile headers
@@ -4825,6 +4825,9 @@ string CDriveSetup::iToString(int int_val)
 }
 
 //show helptext
+/**NOTE: Please don't remove this lines in your public distribution!
+that's important, for an effective feedback and bug fixes,
+otherwise it could be detrimental for your coming distributions*/
 void CDriveSetup::showHelp()
 {
 	Helpbox helpbox;
