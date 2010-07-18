@@ -103,14 +103,13 @@ bool CSatDiseqcNotifier::changeNotify(const neutrino_locale_t, void * Data)
 	return true;
 }
 
-CTP_scanNotifier::CTP_scanNotifier(CMenuOptionChooser* i1, CMenuOptionChooser* i2, CMenuForwarder* i3, CMenuForwarder* i4, CMenuOptionStringChooser* i5, CMenuForwarder* i6)
+CTP_scanNotifier::CTP_scanNotifier(CMenuOptionChooser* i1, CMenuOptionChooser* i2, CMenuForwarder* i3, CMenuForwarder* i4, CMenuOptionStringChooser* i5)
 {
 	toDisable1[0]=i1;
 	toDisable1[1]=i2;
 	toDisable2[0]=i3;
 	toDisable2[1]=i4;
 	toDisable3[0]=i5;
-	toModifi=i6;
 }
 
 bool CTP_scanNotifier::changeNotify(const neutrino_locale_t, void *Data)
@@ -133,9 +132,6 @@ bool CTP_scanNotifier::changeNotify(const neutrino_locale_t, void *Data)
 		else
 			toDisable3[0]->setActive(true);
 	}
-
- 	CScanSetup scs;
-	toModifi->setOption(scs.getScanModeString(tp_scan_mode));
 
 	return true;
 }

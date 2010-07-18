@@ -71,12 +71,9 @@ class CTP_scanNotifier : public CChangeObserver
 	private:
 		CMenuOptionChooser* toDisable1[2];
 		CMenuForwarder* toDisable2[2];
-		CMenuOptionStringChooser* toDisable3[1];
-		CMenuForwarder* toModifi;
-
-		
+		CMenuOptionStringChooser* toDisable3[1];		
 	public:
-		CTP_scanNotifier(CMenuOptionChooser*, CMenuOptionChooser*, CMenuForwarder*, CMenuForwarder*, CMenuOptionStringChooser*, CMenuForwarder*);
+		CTP_scanNotifier(CMenuOptionChooser*, CMenuOptionChooser*, CMenuForwarder*, CMenuForwarder*, CMenuOptionStringChooser*);
 		bool changeNotify(const neutrino_locale_t, void *);
 };
 
