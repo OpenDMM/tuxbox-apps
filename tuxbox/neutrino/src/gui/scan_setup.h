@@ -46,6 +46,7 @@ class CScanSetup : public CMenuTarget
 
 		void hide();
 		void showScanService();
+		void showScanModeMenue();
 
 	public:	
 		CScanSetup();
