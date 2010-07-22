@@ -230,6 +230,9 @@ struct SNeutrinoSettings
 	int personalize_imageinfo;
 	int personalize_update;
 	int personalize_chan_epg_stat;
+#ifdef ENABLE_DRIVE_GUI
+	int personalize_drive_setup_stat;
+#endif
 
 	int personalize_audio;
 	int personalize_video;
