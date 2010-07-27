@@ -228,7 +228,6 @@ class CNeutrinoApp : public CMenuTarget, CChangeObserver
 		
 		void RealRun(CMenuWidget &mainSettings);
 		void InitZapper();
-		void InitKeySettings(CMenuWidget &);
 		void InitServiceSettings(CMenuWidget &);
 		void InitColorSettingsMenuColors(CMenuWidget &);
 		void InitColorSettings(CMenuWidget &, CMenuWidget &);
@@ -254,7 +253,6 @@ class CNeutrinoApp : public CMenuTarget, CChangeObserver
 				  CMenuWidget &mainSettings,
 				  CMenuWidget &colorSettings,
 				  CMenuWidget &lcdSettings,
-				  CMenuWidget &keySettings,
 				  CMenuWidget &languageSettings,
 				  CMenuWidget &miscSettings,
 				  CMenuWidget &driverSettings,
