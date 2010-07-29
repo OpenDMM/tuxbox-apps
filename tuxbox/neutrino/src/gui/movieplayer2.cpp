@@ -3625,7 +3625,7 @@ int get_PES_PTS(ringbuffer_t *buf, off_t position, bool until_eof)
 			break;
 		}
 		ringbuffer_get_write_vector(buf, &vec_in);
-		if (vec_in.len != 0 && eof < 2);
+		if (vec_in.len != 0 && eof < 2)
 		{
 			rd = read(g_fd, vec_in.buf, vec_in.len);
 			if (rd > 0)
