@@ -897,9 +897,9 @@ int CMenuForwarder::getHeight(void) const
 
 // used gets set by the addItem() function. This is for set to paint Option string by just not calling the addItem() function.
 // Without this, the changeNotifiers would become machine-dependent.
-void CMenuForwarder::setOption(const std::string &Option)
+void CMenuForwarder::setOption(const char *Option)
 {
-	option = Option.c_str();
+	option = Option;
 
 	if (used && x != -1)
 		paint();

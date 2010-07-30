@@ -172,7 +172,7 @@ class CMenuForwarder : public CMenuItem
 
 	int paint(bool selected=false);
 	int getHeight(void) const;
-	void setOption(const std::string &Option);
+	void setOption(const char *Option);
 	void setTextLocale(const neutrino_locale_t Text);
 	int exec(CMenuTarget* parent);
 	bool isSelectable(void) const
