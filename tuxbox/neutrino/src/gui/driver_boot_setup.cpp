@@ -1,7 +1,7 @@
 /*
 	$Id$
 
-	lcd setup implementation - Neutrino-GUI
+	driver_boot_setup implementation - Neutrino-GUI
 
 	Copyright (C) 2001 Steffen Hehn 'McClean'
 	and some other guys
