@@ -35,6 +35,7 @@
 
 
 #include "gui/keybind_setup.h"
+#include "gui/user_menue_setup.h"
 
 #include <global.h>
 #include <neutrino.h>
@@ -151,10 +152,10 @@ void CKeybindSetup::showSetup()
 
 	//usermenue
 	CMenuSeparator * ks_um_sep 	= new CMenuSeparator(CMenuSeparator::LINE | CMenuSeparator::STRING, LOCALE_USERMENU_HEAD);
-	CMenuForwarder * ks_um_red 	= new CMenuForwarder(LOCALE_USERMENU_BUTTON_RED, 	true, NULL, 	new CUserMenuMenu(LOCALE_USERMENU_BUTTON_RED,0), 	NULL, CRCInput::RC_red,NEUTRINO_ICON_BUTTON_RED);
-	CMenuForwarder * ks_um_green 	= new CMenuForwarder(LOCALE_USERMENU_BUTTON_GREEN, 	true, NULL, 	new CUserMenuMenu(LOCALE_USERMENU_BUTTON_GREEN,1), 	NULL, CRCInput::RC_green,NEUTRINO_ICON_BUTTON_GREEN);
-	CMenuForwarder * ks_um_yellow 	= new CMenuForwarder(LOCALE_USERMENU_BUTTON_YELLOW, 	true, NULL, 	new CUserMenuMenu(LOCALE_USERMENU_BUTTON_YELLOW,2), 	NULL, CRCInput::RC_yellow,NEUTRINO_ICON_BUTTON_YELLOW);
-	CMenuForwarder * ks_um_blue 	= new CMenuForwarder(LOCALE_USERMENU_BUTTON_BLUE, 	true, NULL, 	new CUserMenuMenu(LOCALE_USERMENU_BUTTON_BLUE,3), 	NULL, CRCInput::RC_blue,NEUTRINO_ICON_BUTTON_BLUE);
+	CMenuForwarder * ks_um_red 	= new CMenuForwarder(LOCALE_USERMENU_BUTTON_RED, 	true, NULL, 	new CUserMenuSetup(LOCALE_USERMENU_BUTTON_RED,0), 	NULL, CRCInput::RC_red,NEUTRINO_ICON_BUTTON_RED);
+	CMenuForwarder * ks_um_green 	= new CMenuForwarder(LOCALE_USERMENU_BUTTON_GREEN, 	true, NULL, 	new CUserMenuSetup(LOCALE_USERMENU_BUTTON_GREEN,1), 	NULL, CRCInput::RC_green,NEUTRINO_ICON_BUTTON_GREEN);
+	CMenuForwarder * ks_um_yellow 	= new CMenuForwarder(LOCALE_USERMENU_BUTTON_YELLOW, 	true, NULL, 	new CUserMenuSetup(LOCALE_USERMENU_BUTTON_YELLOW,2), 	NULL, CRCInput::RC_yellow,NEUTRINO_ICON_BUTTON_YELLOW);
+	CMenuForwarder * ks_um_blue 	= new CMenuForwarder(LOCALE_USERMENU_BUTTON_BLUE, 	true, NULL, 	new CUserMenuSetup(LOCALE_USERMENU_BUTTON_BLUE,3), 	NULL, CRCInput::RC_blue,NEUTRINO_ICON_BUTTON_BLUE);
 
 	neutrino_msg_t * keyvalue_p[] =
 		{

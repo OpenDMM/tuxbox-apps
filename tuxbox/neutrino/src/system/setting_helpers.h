@@ -323,16 +323,7 @@ class CNetAdapter
 		std::string getMacAddr(void);
 };
 
-// USERMENU
- class CUserMenuMenu : public CMenuTarget
-{	
-	private:
-		int button;
-		neutrino_locale_t local;
-	public:
-		CUserMenuMenu(neutrino_locale_t _local, int _button){local = _local;button = _button;};
-		int exec(CMenuTarget* parent, const std::string & actionKey);
-};
+
 
 #endif
 #endif
