@@ -99,6 +99,7 @@ class CVideo
 		void setZoomAspect(int index);
 		void setPig(int x, int y, int w, int h, bool aspect);
 		int VdecIoctl(int request, int arg);
+		VIDEOINFO getVideoInfo(void);
 #endif
 };
 

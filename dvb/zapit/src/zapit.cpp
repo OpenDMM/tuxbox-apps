@@ -1475,6 +1475,7 @@ bool parse_command(CBasicMessage::Header &rmsg, int connfd)
 			(rmsg.cmd != CZapitMessages::CMD_VID_IOCTL) &&
 			(rmsg.cmd != CZapitMessages::CMD_SET_ZOOMLEVEL) &&
 			(rmsg.cmd != CZapitMessages::CMD_GET_ZOOMLEVEL) &&
+			(rmsg.cmd != CZapitMessages::CMD_GET_AVINFO) &&
 #endif
 			(rmsg.cmd != CZapitMessages::CMD_GET_MODE) &&
 			(rmsg.cmd != CZapitMessages::CMD_GETPIDS))) {
@@ -2505,6 +2506,17 @@ bool parse_command(CBasicMessage::Header &rmsg, int connfd)
 		else
 			responseInteger.number = -ENODEV;
 		CBasicServer::send_data(connfd, &responseInteger, sizeof(responseInteger));
+		break;
+	}
+	case CZapitMessages::CMD_GET_AVINFO:
+	{
+		CZapitMessages::responseAVInfo res;
+		memset(&res, 0, sizeof(res));
+		if (videoDecoder)
+			res.info.vinfo = videoDecoder->getVideoInfo();
+		if (audioDecoder)
+			audioDecoder->getAudioInfo(&res.info.atype, &res.info.astatus);
+		CBasicServer::send_data(connfd, &res, sizeof(res));
 		break;
 	}
 #endif

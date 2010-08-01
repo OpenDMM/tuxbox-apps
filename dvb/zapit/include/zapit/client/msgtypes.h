@@ -163,6 +163,7 @@ class CZapitMessages
 			CMD_GET_ZOOMLEVEL		   = 121,
 			CMD_SET_PIG			   = 122,
 			CMD_VID_IOCTL			   = 123,
+			CMD_GET_AVINFO			   = 124,
 #endif
 		};
 
@@ -393,6 +394,11 @@ class CZapitMessages
 	{
 		int request;
 		int arg;
+	};
+
+	struct responseAVInfo
+	{
+		AVInfo info;
 	};
 #endif
 };

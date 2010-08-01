@@ -88,6 +88,9 @@ class CAudio
 		/* select channels */
 		int setChannel(audio_channel_select_t channel);
 		audio_channel_select_t getChannel(void);
+#ifdef HAVE_TRIPLEDRAGON
+		void getAudioInfo(unsigned int *atype, scratchl2 *astatus);
+#endif
 };
 
 #endif /* __zapit_audio_h__ */

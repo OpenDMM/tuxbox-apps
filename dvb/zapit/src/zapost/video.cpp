@@ -594,4 +594,14 @@ int CVideo::VdecIoctl(int request, int arg)
 		return -errno;
 	return ret;
 }
+
+VIDEOINFO CVideo::getVideoInfo(void)
+{
+	VIDEOINFO ret;
+	memset(&ret, 0, sizeof(ret));
+	if (fd < 0)
+		return ret;
+	ioctl(fd, MPEG_VID_GET_V_INFO, &ret);
+	return ret;
+}
 #endif

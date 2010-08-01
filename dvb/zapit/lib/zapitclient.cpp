@@ -1149,6 +1149,15 @@ int CZapitClient::VdecIoctl(int request, int arg)
 	CBasicClient::receive_data((char*)&response, sizeof(response));
 	return response.number;
 }
+
+AVInfo CZapitClient::getAVInfo(void)
+{
+	CZapitMessages::responseAVInfo response;
+	send(CZapitMessages::CMD_GET_AVINFO);
+	CBasicClient::receive_data((char*)&response, sizeof(response));
+	close_connection();
+	return response.info;
+}
 #endif
 
 void CZapitClient::registerEvent(const unsigned int eventID, const unsigned int clientID, const char * const udsName)

@@ -279,3 +279,18 @@ unsigned char map_volume(const unsigned char volume, const bool /*to_AVS*/)
 	return vol;
 }
 #endif
+
+#ifdef HAVE_TRIPLEDRAGON
+void CAudio::getAudioInfo(unsigned int *atype, scratchl2 *astatus)
+{
+	*atype = (unsigned int)-1;
+	if (fd < 0)
+		return;
+	if (ioctl(fd, MPEG_AUD_GET_DECTYP, atype) < 0)
+	{
+		*atype = (unsigned int)-1;
+		return;
+	}
+	ioctl(fd, MPEG_AUD_GET_STATUS, astatus);
+}
+#endif
