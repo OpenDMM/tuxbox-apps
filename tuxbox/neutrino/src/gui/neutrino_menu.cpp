@@ -568,7 +568,10 @@ void CNeutrinoApp::InitMiscSettings(CMenuWidget &miscSettings,
 	CMenuOptionChooser *m2 = new CMenuOptionChooser(LOCALE_MISCSETTINGS_SHUTDOWN_REAL, &g_settings.shutdown_real, OPTIONS_OFF1_ON0_OPTIONS, OPTIONS_OFF1_ON0_OPTION_COUNT, true, miscNotifier);
 	miscSettingsGeneral.addItem(m6);
 	miscSettingsGeneral.addItem(m2);
+#ifndef HAVE_TRIPLEDRAGON
+	/* do not allow TD users to shoot themselves in the foot ;) */
 	miscSettingsGeneral.addItem(m3);
+#endif
 	miscSettingsGeneral.addItem(m4);
 	miscSettingsGeneral.addItem(m1);
 	miscSettingsGeneral.addItem(m5);
