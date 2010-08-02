@@ -370,6 +370,7 @@ int CTimerList::exec(CMenuTarget* parent, const std::string & actionKey)
 	}
 
 	int ret = show();
+	CLCD::getInstance()->setMode(CLCD::MODE_TVRADIO);
 
 	return ret;
 /*

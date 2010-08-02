@@ -2437,6 +2437,10 @@ void CNeutrinoApp::RealRun(CMenuWidget &mainMenu)
 			{
 				g_PluginList->startPlugin("tuxtxt");
 			}
+			else if(msg == CRCInput::RC_timer)
+			{
+				Timerlist->exec(NULL, "");
+			}
 			else if( msg == CRCInput::RC_audio )
 			{
 				// audio channel selection
