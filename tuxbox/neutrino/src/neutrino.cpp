@@ -825,7 +825,7 @@ int CNeutrinoApp::loadSetup()
 	if(fromflash)
 	{
 		g_settings.uboot_baudrate	= 9600;
-		g_settings.uboot_console	= 0;
+		g_settings.uboot_console	= 1;
 		g_settings.uboot_dbox_duplex	= 0;
 		g_settings.uboot_lcd_inverse	= -1;
 		g_settings.uboot_lcd_contrast	= -1;
