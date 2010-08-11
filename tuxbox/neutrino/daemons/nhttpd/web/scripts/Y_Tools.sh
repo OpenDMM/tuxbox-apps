@@ -104,7 +104,7 @@ flash_mtd()
 		if [ "$simulate" = "false" ]
 		then
 			umount /hdd #yet: fixed setting
-			fcp -v "$y_upload_file" /dev/mtd/$1 >/tmp/e.txt
+			fcp -v "$y_upload_file" /dev/mtd/$1 >/tmp/e.txt || flashcp -v "$y_upload_file" /dev/mtd/$1 >/tmp/e.txt
 		else #simulation/DEMO
 			i="0"
 			while test $i -le 10
