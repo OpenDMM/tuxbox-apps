@@ -240,7 +240,6 @@ struct SNeutrinoSettings
 	int personalize_network;
 	int personalize_recording;
 	int personalize_keybinding;
-	int personalize_language;
 	int personalize_colors;
 	int personalize_lcd;
 	int personalize_mediaplayer;

@@ -41,9 +41,6 @@
 #include <gui/widget/icons.h>
 #include <gui/widget/stringinput.h>
 
-
-#include "screensetup.h"
-
 #include <driver/screen_max.h>
 
 #include <system/debug.h>
@@ -186,10 +183,6 @@ void CVideoSetup::showVideoSetup()
 
 	//video vcr switch
 	videosetup->addItem(new CMenuOptionChooser(LOCALE_VIDEOMENU_VCRSWITCH, &g_settings.vcr_AutoSwitch, OPTIONS_OFF0_ON1_OPTIONS, OPTIONS_OFF0_ON1_OPTION_COUNT, true)); //video vcr switch
-
-	// TODO move osd setup to it's own menue with all the other typical osd settings
-	videosetup->addItem(new CMenuSeparator(CMenuSeparator::LINE | CMenuSeparator::STRING, LOCALE_VIDEOMENU_OSD));
-	videosetup->addItem(new CMenuForwarder(LOCALE_VIDEOMENU_SCREENSETUP, true, NULL, new CScreenSetup(), NULL, CRCInput::RC_green, NEUTRINO_ICON_BUTTON_GREEN)); //osd setup
 
 	videosetup->exec(NULL, "");
 	videosetup->hide();
