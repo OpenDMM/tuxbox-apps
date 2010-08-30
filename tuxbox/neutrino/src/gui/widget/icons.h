@@ -99,6 +99,7 @@
 #define NEUTRINO_ICON_VTXT_GREY		"vtxt_gray.raw"
 #define NEUTRINO_ICON_PARTITION		"partition.raw"
 #define NEUTRINO_ICON_LCD		"lcd.raw"
+#define NEUTRINO_ICON_VOLUME		"volume.raw"
 
 #define DUMMY_ICON			"dummy.raw"
 
