@@ -382,6 +382,7 @@ void COsdSetup::showOsdInfobarColorSetup()
 	delete ois;
 }
 
+
 /* OSD timeouts */
 void COsdSetup::showOsdTimeoutSetup()
 {
@@ -397,8 +398,8 @@ void COsdSetup::showOsdTimeoutSetup()
 
 	for (int i = 0; i < TIMING_SETTING_COUNT; i++)
 	{
-		CStringInput * colorSettings_timing_item = new CStringInput(timing_setting_name[i], g_settings.timing_string[i], 3, LOCALE_TIMING_HINT_1, LOCALE_TIMING_HINT_2, "0123456789 ", &timingsettingsnotifier);
-		ots->addItem(new CMenuForwarder(timing_setting_name[i], true, g_settings.timing_string[i], colorSettings_timing_item));
+		CStringInput * colorSettings_timing_item = new CStringInput(timing_setting[i].name, g_settings.timing_string[i], 3, LOCALE_TIMING_HINT_1, LOCALE_TIMING_HINT_2, "0123456789 ", &timingsettingsnotifier);
+		ots->addItem(new CMenuForwarder(timing_setting[i].name, true, g_settings.timing_string[i], colorSettings_timing_item));
 	}
 
 	ots->addItem(GenericMenuSeparatorLine);
