@@ -4024,15 +4024,6 @@ int CNeutrinoApp::exec(CMenuTarget* parent, const std::string & actionKey)
 
 		SetupTiming();
 	}
-	else if(actionKey == "channel_logodir")
-	{
-		parent->hide();
-		CFileBrowser b;
-		b.Dir_Mode=true;
-		if (b.exec(g_settings.infobar_channel_logodir))
-			strncpy(g_settings.infobar_channel_logodir, b.getSelectedFile()->Name.c_str(), sizeof(g_settings.infobar_channel_logodir)-1);
-		return menu_return::RETURN_REPAINT;
-	}
 	else if(actionKey == "epgdir")
 	{
 		parent->hide();
