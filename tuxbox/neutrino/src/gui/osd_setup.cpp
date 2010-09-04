@@ -201,6 +201,14 @@ int COsdSetup::exec(CMenuTarget* parent, const std::string &actionKey)
 			strncpy(g_settings.infobar_channel_logodir, b.getSelectedFile()->Name.c_str(), sizeof(g_settings.infobar_channel_logodir)-1);
 		return menu_return::RETURN_REPAINT;
 	}
+	else if(actionKey=="osd.def")
+	{
+		for (int i = 0; i < TIMING_SETTING_COUNT; i++)
+			g_settings.timing[i] = timing_setting[i].default_timing;
+
+		CNeutrinoApp::getInstance()->SetupTiming();
+		return menu_return::RETURN_REPAINT;
+	}
 
 	showOsdSetup();
 	
@@ -649,3 +657,4 @@ void COsdSetup::showOsdFontSizeSetup()
 	fontSettings->hide();
 	delete fontSettings;
 }
+

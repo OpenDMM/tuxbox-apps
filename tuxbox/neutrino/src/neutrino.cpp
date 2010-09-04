@@ -4017,13 +4017,6 @@ int CNeutrinoApp::exec(CMenuTarget* parent, const std::string & actionKey)
 			delete hintBox;
 		}
 	}
-	else if(actionKey=="osd.def")
-	{
-		for (int i = 0; i < TIMING_SETTING_COUNT; i++)
-			g_settings.timing[i] = timing_setting[i].default_timing;
-
-		SetupTiming();
-	}
 	else if(actionKey == "epgdir")
 	{
 		parent->hide();
