@@ -540,7 +540,7 @@ bool CTimingSettingsNotifier::changeNotify(const neutrino_locale_t OptionName, v
 {
 	for (int i = 0; i < TIMING_SETTING_COUNT; i++)
 	{
-		if (ARE_LOCALES_EQUAL(OptionName, timing_setting_name[i]))
+		if (ARE_LOCALES_EQUAL(OptionName, timing_setting[i].name))
 		{
 			g_settings.timing[i] = atoi(g_settings.timing_string[i]);
 			return true;
