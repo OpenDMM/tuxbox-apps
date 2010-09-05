@@ -52,7 +52,7 @@ CThemes::CThemes()
 : themefile('\t')
 {
 	frameBuffer = CFrameBuffer::getInstance();
-	width 	= w_max (550, 100);
+	width 	= w_max (500, 100);
 	hheight = g_Font[SNeutrinoSettings::FONT_TYPE_MENU_TITLE]->getHeight();
 	mheight = g_Font[SNeutrinoSettings::FONT_TYPE_MENU]->getHeight();
 	height = hheight+13*mheight+ 10;
@@ -140,7 +140,7 @@ void CThemes::Show()
 {
 	std::string file_name = "";
 
-	CMenuWidget themes (LOCALE_COLORTHEMEMENU_HEAD2, NEUTRINO_ICON_SETTINGS, 500);
+	CMenuWidget themes (LOCALE_COLORTHEMEMENU_HEAD2, NEUTRINO_ICON_SETTINGS, width);
 	themes.addItem(GenericMenuSeparator);
 	themes.addItem(GenericMenuBack);
 
