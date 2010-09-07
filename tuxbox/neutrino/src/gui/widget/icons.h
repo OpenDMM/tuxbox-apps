@@ -100,6 +100,7 @@
 #define NEUTRINO_ICON_PARTITION		"partition.raw"
 #define NEUTRINO_ICON_LCD		"lcd.raw"
 #define NEUTRINO_ICON_VOLUME		"volume.raw"
+#define NEUTRINO_ICON_MAIN		"mainmenue.raw"
 
 #define DUMMY_ICON			"dummy.raw"
 
