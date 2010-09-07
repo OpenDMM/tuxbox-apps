@@ -2116,33 +2116,16 @@ int CNeutrinoApp::run(int argc, char **argv)
 	//Main settings
 	CMenuWidget    mainMenu            (LOCALE_MAINMENU_HEAD                 , "mainmenue.raw"       );
 	CMenuWidget    mainSettings        (LOCALE_MAINSETTINGS_HEAD             , NEUTRINO_ICON_SETTINGS);
-	CMenuWidget    fontSettings        (LOCALE_FONTMENU_HEAD                 , NEUTRINO_ICON_COLORS  );
-	CMenuWidget    miscSettings        (LOCALE_MISCSETTINGS_HEAD             , NEUTRINO_ICON_SETTINGS, 500);
 	CMenuWidget    service             (LOCALE_SERVICEMENU_HEAD              , NEUTRINO_ICON_SETTINGS);
 	
 
 	// needs to run before initMainMenu()
 	firstChannel();
 
-	InitMainMenu(	mainMenu,
-					mainSettings,
- 					miscSettings,
-					service);
+	InitMainMenu(	mainMenu, mainSettings, service);
 
 	//service
 	InitServiceSettings(service);
-
-	// misc settings
-	CMenuWidget    miscSettingsGeneral        (LOCALE_MISCSETTINGS_HEAD             , NEUTRINO_ICON_SETTINGS, 500);
-	CMenuWidget    miscSettingsEPGSettings        (LOCALE_MISCSETTINGS_HEAD             , NEUTRINO_ICON_SETTINGS, 500);
-	CMenuWidget    miscSettingsRemoteControl        (LOCALE_MISCSETTINGS_HEAD             , NEUTRINO_ICON_SETTINGS, 500);
-	CMenuWidget    miscSettingsFilebrowser        (LOCALE_MISCSETTINGS_HEAD             , NEUTRINO_ICON_SETTINGS, 500);
-	
-	InitMiscSettings(miscSettings,
-							miscSettingsGeneral,
-							miscSettingsEPGSettings,
-							miscSettingsRemoteControl,
-							miscSettingsFilebrowser);	
 
 	dprintf( DEBUG_NORMAL, "registering as event client\n");
 
