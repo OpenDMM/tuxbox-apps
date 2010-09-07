@@ -36,6 +36,8 @@
 
 #include <driver/framebuffer.h>
 
+#include <system/setting_helpers.h>
+
 #include <string>
 
 
@@ -67,6 +69,7 @@ class CKeybindSetup : public CMenuTarget
 
 		
 		CFrameBuffer *frameBuffer;
+		CKeySetupNotifier      *keySetupNotifier;
 		
 		int x, y, width, height, menue_width, hheight, mheight;
 
