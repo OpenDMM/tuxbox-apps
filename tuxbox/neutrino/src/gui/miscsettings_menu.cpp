@@ -193,7 +193,7 @@ void CMiscMenue::showMenue()
 	// filebrowser
 	misc_menue->addItem(new CMenuForwarder(LOCALE_FILEBROWSER_HEAD, 		true, NULL, misc_menue_filebrowser, NULL, CRCInput::RC_blue, NEUTRINO_ICON_BUTTON_BLUE));
 
-	misc_menue->addItem(GenericMenuSeparator);
+	misc_menue->addItem(GenericMenuSeparatorLine);
 #ifndef TUXTXT_CFG_STANDALONE
 	//tutxt cache
 	CTuxtxtCacheNotifier *tuxtxtcacheNotifier = new CTuxtxtCacheNotifier;
