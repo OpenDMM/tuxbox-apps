@@ -3031,7 +3031,7 @@ void CMovieBrowser::showMovieInfoMenu(MI_MOVIE_INFO* movie_info)
 	CDateInput   dateUserDateInput(LOCALE_MOVIEBROWSER_INFO_LENGTH,        &movie_info->dateOfLastPlay, LOCALE_GENERIC_EMPTY, LOCALE_GENERIC_EMPTY);
 	CDateInput   recUserDateInput(LOCALE_MOVIEBROWSER_INFO_LENGTH,         &movie_info->file.Time, LOCALE_GENERIC_EMPTY, LOCALE_GENERIC_EMPTY);
 	CIntInput    lengthUserIntInput(LOCALE_MOVIEBROWSER_INFO_LENGTH,       (long&)movie_info->length, 3, LOCALE_GENERIC_EMPTY, LOCALE_GENERIC_EMPTY);
-	CStringInputSMS countryUserInput(LOCALE_MOVIEBROWSER_INFO_PRODCOUNTRY,    &movie_info->productionCountry, 11, LOCALE_GENERIC_EMPTY, LOCALE_GENERIC_EMPTY, "ABCDEFGHIJKLMNOPQRSTUVWXYZ ");
+	CStringInputSMS countryUserInput(LOCALE_MOVIEBROWSER_INFO_PRODCOUNTRY,    &movie_info->productionCountry, 11, LOCALE_GENERIC_EMPTY, LOCALE_GENERIC_EMPTY, "ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789-.: ");
 	CIntInput    yearUserIntInput(LOCALE_MOVIEBROWSER_INFO_PRODYEAR,       (long&)movie_info->productionDate, 4, LOCALE_GENERIC_EMPTY, LOCALE_GENERIC_EMPTY);
 
 	CMenuWidget movieInfoMenu (LOCALE_MOVIEBROWSER_INFO_HEAD, NEUTRINO_ICON_STREAMING,m_cBoxFrame.iWidth);
