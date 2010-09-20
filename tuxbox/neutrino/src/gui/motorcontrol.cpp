@@ -565,7 +565,9 @@ void CMotorControl::startSatFind(void)
 		case 0:
 			printf("[motorcontrol] starting satfind...\n");
 			if (execlp("/bin/satfind", "satfind", NULL) < 0)
-				printf("[motorcontrol] execlp satfind failed.\n");		
+				printf("[motorcontrol] execlp satfind failed.\n");
+			/* normally not reached */
+			_exit(0);
 			break;
 		} /* switch */
 }
