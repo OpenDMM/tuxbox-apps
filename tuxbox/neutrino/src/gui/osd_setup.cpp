@@ -113,6 +113,12 @@ font_sizes_groups font_sizes_groups[6] =
 COsdSetup::COsdSetup(const neutrino_locale_t title, const char * const IconName)
 {
 	frameBuffer = CFrameBuffer::getInstance();
+
+#ifdef HAVE_DBOX_HARDWARE
+	if (g_info.box_Type == CControld::TUXBOX_MAKER_NOKIA)
+		frameBuffer->setBlendLevel(g_settings.gtx_alpha1, g_settings.gtx_alpha2);
+#endif
+
 	colorSetupNotifier = new CColorSetupNotifier();
 	colorSetupNotifier->changeNotify(NONEXISTANT_LOCALE, NULL);
 
@@ -318,7 +324,7 @@ void COsdSetup::showOsdSetup()
 	else 
 	{
 		//GTX
-		CAlphaSetup* chAlphaSetup = (new CAlphaSetup(LOCALE_OSDSETTINGS_COLORMENU_GTX_ALPHA, &g_settings.gtx_alpha1, &g_settings.gtx_alpha2 ));
+		CAlphaSetup* chAlphaSetup = new CAlphaSetup(LOCALE_OSDSETTINGS_COLORMENU_GTX_ALPHA);
 		osd_setup->addItem(new CMenuForwarder(LOCALE_OSDSETTINGS_COLORMENU_GTX_ALPHA, true, NULL, chAlphaSetup, NULL, CRCInput::RC_5, NEUTRINO_ICON_BUTTON_5));
 	}
 #else 	
