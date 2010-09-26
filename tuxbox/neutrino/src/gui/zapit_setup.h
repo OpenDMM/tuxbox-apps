@@ -76,12 +76,4 @@ class CZapitSetupNotifier : public CChangeObserver
 		bool changeNotify(const neutrino_locale_t OptionName, void * data);
 };
 
-class CZapitChannelExec : public CZapitSetup
-{
-	public:
-		int exec(CMenuTarget* parent, const std::string & actionKey);
-};
-
-
-
 #endif
