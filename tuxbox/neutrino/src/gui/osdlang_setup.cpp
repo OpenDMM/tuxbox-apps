@@ -50,12 +50,9 @@
 
 
 
-COsdLangSetup::COsdLangSetup(const neutrino_locale_t title, const char * const IconName)
+COsdLangSetup::COsdLangSetup()
 {
 	frameBuffer = CFrameBuffer::getInstance();
-
-	menue_title = title != NONEXISTANT_LOCALE ? title : LOCALE_OSDSETTINGS_COLORMENU_HEAD;
-	menue_icon = IconName != NULL ? IconName : NEUTRINO_ICON_COLORS;
 
 	width = w_max (500, 100);
 	hheight = g_Font[SNeutrinoSettings::FONT_TYPE_MENU_TITLE]->getHeight();
@@ -91,14 +88,8 @@ int COsdLangSetup::exec(CMenuTarget* parent, const std::string &/*actionKey*/)
 
 void COsdLangSetup::showSetup()
 {
-	CMenuWidget *osdl_setup = new CMenuWidget(menue_title, menue_icon, width);
+	CMenuWidget *osdl_setup = new CMenuWidget(LOCALE_LANGUAGESETUP_HEAD, NEUTRINO_ICON_LANGUAGE, width);
 
-	//osd main settings, subhead
-	if (menue_title != NONEXISTANT_LOCALE)
-	{
-		CMenuSeparator * osdl_setup_subhead = new CMenuSeparator(CMenuSeparator::ALIGN_LEFT | CMenuSeparator::SUB_HEAD | CMenuSeparator::STRING, LOCALE_LANGUAGESETUP_HEAD);
-		osdl_setup->addItem(osdl_setup_subhead);
-	}
 	osdl_setup->addItem(GenericMenuSeparator);
 	osdl_setup->addItem(GenericMenuBack);
 	osdl_setup->addItem(GenericMenuSeparatorLine);
