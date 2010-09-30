@@ -395,7 +395,6 @@ void  CPersonalizeGui::manageSettings()
 {
 	//main menu settings
 	handleSetting(&g_settings.personalize_tvmode);
-	handleSetting(&g_settings.personalize_tvmode);
 	handleSetting(&g_settings.personalize_radiomode);
 	handleSetting(&g_settings.personalize_scartmode);
 	handleSetting(&g_settings.personalize_games);
