@@ -293,6 +293,7 @@ const char * locale_real_names[] =
 	"date.Wed",
 	"drive_setup.advanced_settings",
 	"drive_setup.advanced_settings_custom_moduldir",
+	"drive_setup.advanced_settings_format_options",
 	"drive_setup.advanced_settings_modul",
 	"drive_setup.advanced_settings_modul_loadcmd_options_entry",
 	"drive_setup.advanced_settings_modul_loadcmd_options_input",
