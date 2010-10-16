@@ -557,6 +557,7 @@ int CNeutrinoApp::loadSetup()
 #ifdef ENABLE_UPNP
  	g_settings.personalize_upnpbrowser = configfile.getInt32("personalize_upnpbrowser", CPersonalizeGui::PERSONALIZE_MODE_VISIBLE);
 #endif
+	g_settings.personalize_scripts = configfile.getInt32("personalize_scripts", CPersonalizeGui::PERSONALIZE_MODE_VISIBLE);
 	g_settings.personalize_settings = configfile.getInt32("personalize_settings", CPersonalizeGui::PROTECT_MODE_NOT_PROTECTED);
 	g_settings.personalize_service = configfile.getInt32("personalize_service", CPersonalizeGui::PROTECT_MODE_NOT_PROTECTED);
 
@@ -1102,6 +1103,7 @@ void CNeutrinoApp::saveSetup()
 #ifdef ENABLE_UPNP
  	configfile.setInt32 ( "personalize_upnpbrowser", g_settings.personalize_upnpbrowser );
 #endif
+	configfile.setInt32 ( "personalize_scripts", g_settings.personalize_scripts );
 	configfile.setInt32 ( "personalize_settings", g_settings.personalize_settings );
 	configfile.setInt32 ( "personalize_service", g_settings.personalize_service );
 	configfile.setInt32 ( "personalize_sleeptimer", g_settings.personalize_sleeptimer );

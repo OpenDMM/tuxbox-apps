@@ -1121,8 +1121,6 @@ const char * locale_real_names[] =
 	"personalize.pinstatus",
 	"personalize.saverestart",
 	"personalize.setupmenuwithpin",
-	"personalize.stprotect",
-	"personalize.svprotect",
 	"personalize.visible",
 	"pictureviewer.decode_server_ip",
 	"pictureviewer.decode_server_port",
