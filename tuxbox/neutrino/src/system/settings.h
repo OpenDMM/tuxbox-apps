@@ -213,9 +213,8 @@ struct SNeutrinoSettings
 	int personalize_esound;
 	int personalize_movieplayer;
 	int personalize_pictureviewer;
-#ifdef ENABLE_UPNP
 	int personalize_upnpbrowser;
-#endif
+
 	int personalize_scripts;
 	int personalize_settings;
 	int personalize_service;
