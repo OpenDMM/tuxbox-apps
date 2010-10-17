@@ -102,6 +102,7 @@
 #define NEUTRINO_ICON_VOLUME		"volume.raw"
 #define NEUTRINO_ICON_MAIN		"mainmenue.raw"
 #define NEUTRINO_ICON_LANGUAGE		"language.raw"
+#define NEUTRINO_ICON_RIGHT_MARKER	"right_marker.raw"
 
 #define DUMMY_ICON			"dummy.raw"
 
