@@ -132,7 +132,7 @@ void CMenuItem::paintItemButton(const int startX, const int frame_height, const 
 	int m_icon_w = frameBuffer->getIconWidth(NEUTRINO_ICON_RIGHT_MARKER);
 	int m_icon_h = frameBuffer->getIconHeight(NEUTRINO_ICON_RIGHT_MARKER);
 	
-	int icon_x;
+	int icon_x = 0;
 	int icon_space = (x+(startX-x)/2);
 
 	if (!icon_name.empty())
