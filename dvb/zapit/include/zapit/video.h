@@ -64,6 +64,10 @@ class CVideo
 		CVideo(void);
 		~CVideo(void);
 
+		/* claim and release the device */
+		int openDevice(void);
+		void closeDevice(void);
+
 		/* aspect ratio */
 		video_format_t getAspectRatio(void);
 		int setAspectRatio(video_format_t format);

@@ -2970,8 +2970,7 @@ void enterStandby(void)
 #ifdef HAVE_DBOX_HARDWARE
 	// needed in standby to correct aspect ration in movieplayer, but not on dbox...
 	if (videoDecoder) {
-		delete videoDecoder;
-		videoDecoder = NULL;
+		videoDecoder->closeDevice();
 	}
 #endif
 
@@ -3003,6 +3002,8 @@ void leaveStandby(void)
 
 	if (!videoDecoder)
 		videoDecoder = new CVideo();
+	else	// reopen the device...
+		videoDecoder->openDevice();
 
 	switch (frontend->getInfo()->type) {
 		case FE_QPSK:

@@ -36,8 +36,21 @@ extern struct Ssettings settings;
 
 CVideo::CVideo(void)
 {
-	if ((fd = open(VIDEO_DEVICE, O_RDWR)) < 0)
-		ERROR(VIDEO_DEVICE);
+	fd = -1;
+	openDevice();
+}
+
+CVideo::~CVideo(void)
+{
+	closeDevice();
+}
+
+int CVideo::openDevice(void)
+{
+	if (fd < 0)
+		if ((fd = open(VIDEO_DEVICE, O_RDWR)) < 0)
+			ERROR(VIDEO_DEVICE);
+
 #ifdef HAVE_TRIPLEDRAGON
 	playstate = VIDEO_STOPPED;
 	croppingMode = VID_DISPMODE_NORM;
@@ -81,9 +94,11 @@ CVideo::CVideo(void)
 	   on screen until the video starts. --seife */
 	setBlank(true);
 #endif
+
+	return fd;
 }
 
-CVideo::~CVideo(void)
+void CVideo::closeDevice(void)
 {
 #ifdef HAVE_TRIPLEDRAGON
 	playstate = VIDEO_STOPPED;
@@ -96,6 +111,7 @@ CVideo::~CVideo(void)
 #endif
 	if (fd >= 0)
 		close(fd);
+	fd = -1;
 }
 
 int CVideo::setAspectRatio(video_format_t format)
