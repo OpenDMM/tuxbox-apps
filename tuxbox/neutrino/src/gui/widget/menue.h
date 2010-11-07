@@ -175,6 +175,8 @@ class CMenuForwarder : public CMenuItem
 	void setOption(const char *Option);
 	void setTextLocale(const neutrino_locale_t Text);
 	neutrino_locale_t getTextLocale(){return text;};
+	CMenuTarget* getTarget(){return jumpTarget;};
+	std::string getActionKey(){return actionKey;};
 	int exec(CMenuTarget* parent);
 	bool isSelectable(void) const
 		{
