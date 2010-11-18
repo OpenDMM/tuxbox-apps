@@ -125,7 +125,8 @@ void CMediaPlayerSetup::showMediaPlayerSetup()
 #endif
 #ifdef ENABLE_ESD
 	// esound
-	mediaSetup->addItem(new CMenuForwarder(LOCALE_ESOUND_NAME, true, NULL, new CEsdSetup, NULL, CRCInput::RC_green, NEUTRINO_ICON_BUTTON_GREEN));
+	if (access("/bin/esd", X_OK) == 0 || access("/var/bin/esd", X_OK) == 0)
+		mediaSetup->addItem(new CMenuForwarder(LOCALE_ESOUND_NAME, true, NULL, new CEsdSetup, NULL, CRCInput::RC_green, NEUTRINO_ICON_BUTTON_GREEN));
 #endif
 #ifdef ENABLE_MOVIEPLAYER
 	// movieplayer

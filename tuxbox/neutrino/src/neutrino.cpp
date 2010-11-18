@@ -552,7 +552,7 @@ int CNeutrinoApp::loadSetup()
 	g_settings.personalize_games = configfile.getInt32("personalize_games", CPersonalizeGui::PERSONALIZE_MODE_VISIBLE);
 	g_settings.personalize_audioplayer = configfile.getInt32("personalize_audioplayer", CPersonalizeGui::PERSONALIZE_MODE_VISIBLE);
 	g_settings.personalize_inetradio = configfile.getInt32("personalize_inetradio", CPersonalizeGui::PERSONALIZE_MODE_NOTVISIBLE);
-	g_settings.personalize_esound = configfile.getInt32("personalize_esound", CPersonalizeGui::PERSONALIZE_MODE_NOTVISIBLE);
+	g_settings.personalize_esound = configfile.getInt32("personalize_esound", CPersonalizeGui::PERSONALIZE_MODE_VISIBLE);
 	g_settings.personalize_movieplayer = configfile.getInt32("personalize_movieplayer", CPersonalizeGui::PERSONALIZE_MODE_VISIBLE);
 	g_settings.personalize_pictureviewer = configfile.getInt32("personalize_pictureviewer", CPersonalizeGui::PERSONALIZE_MODE_VISIBLE);
 #ifdef ENABLE_UPNP
