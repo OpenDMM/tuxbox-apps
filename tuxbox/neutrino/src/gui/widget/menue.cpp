@@ -1184,12 +1184,12 @@ bool CZapProtection::check()
 int CLockedMenuForwarder::exec(CMenuTarget* parent)
 {
 	Parent = parent;
-	if( (g_settings.parentallock_prompt != PARENTALLOCK_PROMPT_NEVER) || AlwaysAsk )
-		if (!check())
-		{
-			Parent = NULL;
-			return menu_return::RETURN_REPAINT;
-		}
+
+	if (Ask && !check())
+	{
+		Parent = NULL;
+		return menu_return::RETURN_REPAINT;
+	}
 
 	Parent = NULL;
 	return CMenuForwarder::exec(parent);

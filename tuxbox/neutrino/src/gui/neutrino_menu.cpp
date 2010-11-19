@@ -288,13 +288,7 @@ void CNeutrinoApp::InitMenuSettings()
 	personalize->addItem(&menu, new CMenuForwarder(LOCALE_MAINSETTINGS_AUDIO, true, NULL, new CAudioSetup()), &g_settings.personalize_audio);
 	
 	// parental lock
-	CMenuItem *item_y_protect;
-	if (g_settings.parentallock_prompt)
-		item_y_protect = new CLockedMenuForwarder(LOCALE_PARENTALLOCK_PARENTALLOCK, g_settings.parentallock_pincode, true, true, NULL, new CParentalSetup());
-	else
-		item_y_protect = new CMenuForwarder(LOCALE_PARENTALLOCK_PARENTALLOCK, true, NULL, new CParentalSetup());
-
-	personalize->addItem(&menu, item_y_protect, &g_settings.personalize_youth);
+	personalize->addItem(&menu, new CLockedMenuForwarder(LOCALE_PARENTALLOCK_PARENTALLOCK, g_settings.parentallock_pincode, g_settings.parentallock_prompt, true, NULL, new CParentalSetup()), &g_settings.personalize_youth);
 
 	// network
 	if(networksetup == NULL)
