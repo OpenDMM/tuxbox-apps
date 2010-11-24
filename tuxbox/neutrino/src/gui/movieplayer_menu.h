@@ -49,8 +49,6 @@ class CMoviePlayerMenue : public CMenuTarget
 		void hide();
 		void showMoviePlayerMenue();
 
-		CMenuTarget* 			moviePlayerGui;
-
 	public:	
 		CMoviePlayerMenue();
 		~CMoviePlayerMenue();
