@@ -770,7 +770,7 @@ const struct button_label TimerListButtons[4] =
 	{ NEUTRINO_ICON_BUTTON_GREEN , LOCALE_TIMERLIST_NEW    },
 	{ NEUTRINO_ICON_BUTTON_YELLOW, LOCALE_TIMERLIST_RELOAD }
 };
-const struct button_label TimerListButtonOK[2] =
+const struct button_label TimerListButtonOK[1] =
 {
 	{ NEUTRINO_ICON_BUTTON_OKAY  , LOCALE_TIMERLIST_MODIFY }
 };
