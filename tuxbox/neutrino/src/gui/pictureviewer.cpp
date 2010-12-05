@@ -46,6 +46,7 @@
 
 #include <driver/fontrenderer.h>
 #include <driver/rcinput.h>
+#include <driver/screen_max.h>
 
 #ifdef ENABLE_GUI_MOUNT
 #include <gui/nfs.h>
@@ -120,7 +121,7 @@ int CPictureViewerGui::exec(CMenuTarget* parent, const std::string & /*actionKey
 {
 	struct stat sFileInfo;
 	selected = 0;
-	width = 710;
+	width = w_max (710, 30);
 	if((g_settings.screen_EndX- g_settings.screen_StartX) < width)
 		width=(g_settings.screen_EndX- g_settings.screen_StartX);
 	height = 570;
@@ -134,8 +135,8 @@ int CPictureViewerGui::exec(CMenuTarget* parent, const std::string & /*actionKey
 	listmaxshow = (height-theight-2*buttonHeight)/(fheight);
 	height = theight+2*buttonHeight+listmaxshow*fheight;	// recalc height
 
-	x=(((g_settings.screen_EndX- g_settings.screen_StartX)-width) / 2) + g_settings.screen_StartX;
-	y=(((g_settings.screen_EndY- g_settings.screen_StartY)-height)/ 2) + g_settings.screen_StartY;
+	x = getScreenStartX (width);
+	y = getScreenStartY (height);
 
 	m_viewer->SetScaling((CPictureViewer::ScalingMode)g_settings.picviewer_scaling);
 	m_viewer->SetVisible(g_settings.screen_StartX, g_settings.screen_EndX, g_settings.screen_StartY, g_settings.screen_EndY);
