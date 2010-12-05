@@ -41,7 +41,7 @@ class CSoftwareUpdate : public CMenuTarget
 {
 	private:
 		CFrameBuffer *frameBuffer;
-		int x, y, width, height, hheight, mheight;
+		int x, y, width, height, hheight, mheight, selected;
 
 		void hide();
 		void showSoftwareUpdate();

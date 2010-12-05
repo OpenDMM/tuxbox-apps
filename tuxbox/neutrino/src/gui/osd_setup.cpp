@@ -133,6 +133,8 @@ COsdSetup::COsdSetup(const neutrino_locale_t title, const char * const IconName)
 	height 	= hheight+13*mheight+ 10;
 	x	= getScreenStartX (width);
 	y	= getScreenStartY (height);
+
+	selected = -1;
 }
 
 COsdSetup::~COsdSetup()
@@ -254,6 +256,8 @@ void COsdSetup::showOsdSetup()
 {
 	//osd main settings
 	CMenuWidget *osd_setup 		= new CMenuWidget(menue_title, menue_icon, width);
+	osd_setup->setPreselected(selected);
+
 	//osd settings color sbubmenue
 	CMenuWidget *osd_setup_colors 	= new CMenuWidget(menue_title, menue_icon, width);
 
@@ -339,6 +343,7 @@ void COsdSetup::showOsdSetup()
 
 	osd_setup->exec(NULL, "");
 	osd_setup->hide();
+	selected = osd_setup->getSelected();
 	delete osd_setup;
 }
 

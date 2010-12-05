@@ -57,6 +57,8 @@ CParentalSetup::CParentalSetup()
 	height 	= hheight+13*mheight+ 10;
 	x	= getScreenStartX (width);
 	y	= getScreenStartY (height);
+
+	selected = -1;
 }
 
 CParentalSetup::~CParentalSetup()
@@ -113,6 +115,7 @@ void CParentalSetup::showParentalSetup()
 {
 	//menue init
 	CMenuWidget* plock = new CMenuWidget(LOCALE_MAINSETTINGS_HEAD, NEUTRINO_ICON_LOCK, width);
+	plock->setPreselected(selected);
 
 	//subhead
 	plock->addItem( new CMenuSeparator(CMenuSeparator::ALIGN_LEFT | CMenuSeparator::SUB_HEAD | CMenuSeparator::STRING, LOCALE_PARENTALLOCK_PARENTALLOCK));
@@ -131,5 +134,6 @@ void CParentalSetup::showParentalSetup()
 
 	plock->exec(NULL, "");
 	plock->hide();
+	selected = plock->getSelected();
 	delete plock;
 }

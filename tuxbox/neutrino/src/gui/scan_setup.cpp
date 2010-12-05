@@ -66,6 +66,7 @@ CScanSetup::CScanSetup()
 	x = getScreenStartX (width);
 	y = getScreenStartY (height);
 
+	selected = -1;
 	sat_list_size = 0;
 	provider_list_size = 0;
 }
@@ -211,6 +212,7 @@ void CScanSetup::showScanService()
 	
 	//menue init
 	CMenuWidget* scansetup = new CMenuWidget(LOCALE_SERVICEMENU_HEAD, NEUTRINO_ICON_SETTINGS, width);
+	scansetup->setPreselected(selected);
 
 	//subhead
 	scansetup->addItem( new CMenuSeparator(CMenuSeparator::ALIGN_LEFT | CMenuSeparator::SUB_HEAD | CMenuSeparator::STRING, LOCALE_SERVICEMENU_SCANTS));
@@ -388,6 +390,7 @@ void CScanSetup::showScanService()
 
 	scansetup->exec(NULL, "");
 	scansetup->hide();
+	selected = scansetup->getSelected();
 	delete scansetup;
 }
 

@@ -62,6 +62,8 @@ CSoftwareUpdate::CSoftwareUpdate()
 	height = hheight+13*mheight+ 10;
 	x	= getScreenStartX (width);
 	y	= getScreenStartY (height);
+
+	selected = -1;
 }
 
 CSoftwareUpdate::~CSoftwareUpdate()
@@ -104,6 +106,8 @@ void CSoftwareUpdate::showSoftwareUpdate()
 /* shows the menue and options for software update */
 {
 	CMenuWidget* softUpdate = new CMenuWidget(LOCALE_SERVICEMENU_UPDATE, NEUTRINO_ICON_UPDATE, width);
+	softUpdate->setPreselected(selected);
+
 	softUpdate->addItem(GenericMenuSeparator);
 	softUpdate->addItem(GenericMenuBack);
 	softUpdate->addItem(GenericMenuSeparatorLine);
@@ -135,8 +139,8 @@ void CSoftwareUpdate::showSoftwareUpdate()
 
 	softUpdate->exec (NULL, "");
 	softUpdate->hide ();
+	selected = softUpdate->getSelected();
 	delete softUpdate;
-
 }
 
 void CSoftwareUpdate::showSoftwareUpdateExpert()

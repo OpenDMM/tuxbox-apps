@@ -61,6 +61,7 @@ CMoviePlayerMenue::CMoviePlayerMenue()
 	x	= getScreenStartX (width);
 	y	= getScreenStartY (height);
 
+	selected = -1;
 }
 
 CMoviePlayerMenue::~CMoviePlayerMenue()
@@ -95,6 +96,7 @@ void CMoviePlayerMenue::showMoviePlayerMenue()
 
 	//init
 	CMenuWidget * mpmenue = new CMenuWidget(LOCALE_MAINMENU_MOVIEPLAYER, NEUTRINO_ICON_EPGINFO, width);
+	mpmenue->setPreselected(selected);
 
 	mpmenue->addItem(GenericMenuSeparator);
 	mpmenue->addItem(GenericMenuBack);
@@ -143,7 +145,7 @@ void CMoviePlayerMenue::showMoviePlayerMenue()
 
 	mpmenue->exec(NULL, "");
 	mpmenue->hide();
+	selected = mpmenue->getSelected();
 	delete mpmenue;
-
 }
 

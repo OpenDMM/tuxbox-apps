@@ -39,7 +39,7 @@ class CScanSetup : public CMenuTarget
 {
 	private:
 		CFrameBuffer *frameBuffer;
-		int x, y, width, height, menue_width, hheight, mheight;
+		int x, y, width, height, menue_width, hheight, mheight, selected;
 
 		uint sat_list_size;
 		uint provider_list_size;

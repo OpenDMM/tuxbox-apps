@@ -50,7 +50,7 @@ class CVideoSetup : public CMenuTarget, CChangeObserver
 		int video_out_signal;
 		int vcr_video_out_signal;
 				
-		int x, y, width, height, hheight, mheight;
+		int x, y, width, height, hheight, mheight, selected;
 
  		virtual bool changeNotify(const neutrino_locale_t OptionName, void *);
 

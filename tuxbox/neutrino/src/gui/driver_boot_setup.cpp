@@ -58,6 +58,8 @@ CDriverBootSetup::CDriverBootSetup(const neutrino_locale_t title, const char * c
 	height 	= hheight+13*mheight+ 10;
 	x	= getScreenStartX (width);
 	y	= getScreenStartY (height);
+
+	selected = -1;
 }
 
 CDriverBootSetup::~CDriverBootSetup()
@@ -136,6 +138,8 @@ void CDriverBootSetup::showSetup()
 {
 
 	CMenuWidget * dbs = new CMenuWidget(menue_title, menue_icon, width);
+	dbs->setPreselected(selected);
+
 	if (menue_title != NONEXISTANT_LOCALE)
 	{
 		CMenuSeparator * dbs_subhead = new CMenuSeparator(CMenuSeparator::ALIGN_LEFT | CMenuSeparator::SUB_HEAD | CMenuSeparator::STRING, LOCALE_DRIVERSETTINGS_DRIVER_BOOT);
@@ -200,6 +204,7 @@ void CDriverBootSetup::showSetup()
 
 	dbs->exec(NULL, "");
 	dbs->hide();
+	selected = dbs->getSelected();
 	delete dbs;
 }
 

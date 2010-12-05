@@ -49,7 +49,7 @@ class CPersonalizeGui : public CMenuTarget
 	private:
 		CFrameBuffer *frameBuffer;
 		
-		int x, y, width, height, hheight, mheight;
+		int x, y, width, height, hheight, mheight, selected;
 		void 	ShowHelpPersonalize();
 		
 		std::string action_key[3/*=CNeutrinoApp::MENU_MAX*/];

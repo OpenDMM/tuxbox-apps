@@ -57,6 +57,8 @@ CMiscMenue::CMiscMenue(const neutrino_locale_t title, const char * const IconNam
 	height 	= hheight+13*mheight+ 10;
 	x	= getScreenStartX (width);
 	y	= getScreenStartY (height);
+
+	selected = -1;
 }
 
 CMiscMenue::~CMiscMenue()
@@ -165,6 +167,8 @@ void CMiscMenue::showMenue()
 {
 	//misc settings
 	CMenuWidget *misc_menue 		= new CMenuWidget(menue_title, menue_icon, width);
+	misc_menue->setPreselected(selected);
+
 	//general
 	CMenuWidget *misc_menue_energy 	= new CMenuWidget(LOCALE_MISCSETTINGS_HEAD, menue_icon, width);
 	//epg
@@ -273,6 +277,7 @@ void CMiscMenue::showMenue()
 
 	misc_menue->exec(NULL, "");
 	misc_menue->hide();
+	selected = misc_menue->getSelected();
 	delete misc_menue;
 }
 

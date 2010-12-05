@@ -71,7 +71,7 @@ class CKeybindSetup : public CMenuTarget
 		CFrameBuffer *frameBuffer;
 		CKeySetupNotifier      *keySetupNotifier;
 		
-		int x, y, width, height, menue_width, hheight, mheight;
+		int x, y, width, height, menue_width, hheight, mheight, selected;
 
 		neutrino_locale_t menue_title;
 		std::string menue_icon;

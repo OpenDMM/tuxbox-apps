@@ -75,6 +75,8 @@ CNetworkSetup::CNetworkSetup()
 	x	= getScreenStartX (width);
 	y	= getScreenStartY (height);
 
+	selected = -1;
+
 	network_automatic_start = networkConfig->automatic_start;
 	network_dhcp 		= networkConfig->inet_static ? NETWORK_DHCP_OFF : NETWORK_DHCP_ON;
 	network_address		= networkConfig->address;
@@ -164,6 +166,7 @@ void CNetworkSetup::showNetworkSetup()
 	{		
 		//menue init
 		CMenuWidget* networkSettings = new CMenuWidget(LOCALE_MAINSETTINGS_HEAD, NEUTRINO_ICON_SETTINGS, width);
+		networkSettings->setPreselected(selected);
 
 		//subhead
 		networkSettings->addItem( new CMenuSeparator(CMenuSeparator::ALIGN_LEFT | CMenuSeparator::SUB_HEAD | CMenuSeparator::STRING, LOCALE_MAINSETTINGS_NETWORK));
@@ -266,6 +269,7 @@ void CNetworkSetup::showNetworkSetup()
 
 		networkSettings->exec(NULL, "");
 		networkSettings->hide();
+		selected = networkSettings->getSelected();
 		delete networkSettings;
 					
 		// Check for changes

@@ -60,6 +60,8 @@ CLcdSetup::CLcdSetup(const neutrino_locale_t title, const char * const IconName)
 	height 	= hheight+13*mheight+ 10;
 	x	= getScreenStartX (width);
 	y	= getScreenStartY (height);
+
+	selected = -1;
 }
 
 CLcdSetup::~CLcdSetup()
@@ -118,6 +120,8 @@ void CLcdSetup::showSetup()
 {
 
 	CMenuWidget * lcds = new CMenuWidget(menue_title, menue_icon, width);
+	lcds->setPreselected(selected);
+
 	if (menue_title != NONEXISTANT_LOCALE)
 	{
 		CMenuSeparator * lcds_subhead = new CMenuSeparator(CMenuSeparator::ALIGN_LEFT | CMenuSeparator::SUB_HEAD | CMenuSeparator::STRING, LOCALE_LCDMENU_HEAD);
@@ -192,6 +196,7 @@ void CLcdSetup::showSetup()
 
 	lcds->exec(NULL, "");
 	lcds->hide();
+	selected = lcds->getSelected();
 	delete lcds;
 }
 

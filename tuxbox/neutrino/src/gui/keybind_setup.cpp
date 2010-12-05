@@ -65,6 +65,8 @@ CKeybindSetup::CKeybindSetup(const neutrino_locale_t title, const char * const I
 	height 	= hheight+13*mheight+ 10;
 	x	= getScreenStartX (width);
 	y	= getScreenStartY (height);
+
+	selected = -1;
 }
 
 CKeybindSetup::~CKeybindSetup()
@@ -147,6 +149,8 @@ const CMenuOptionChooser::keyval KEYBINDINGMENU_BOUQUETHANDLING_OPTIONS[KEYBINDI
 void CKeybindSetup::showSetup()
 {
 	CMenuWidget * ks = new CMenuWidget(menue_title, menue_icon, width);
+	ks->setPreselected(selected);
+
 	if (menue_title != NONEXISTANT_LOCALE)
 	{
 		CMenuSeparator * ks_subhead = new CMenuSeparator(CMenuSeparator::ALIGN_LEFT | CMenuSeparator::SUB_HEAD | CMenuSeparator::STRING, LOCALE_MAINSETTINGS_KEYBINDING);
@@ -259,5 +263,6 @@ void CKeybindSetup::showSetup()
 
 	ks->exec(NULL, "");
 	ks->hide();
+	selected = ks->getSelected();
 	delete ks;
 }
