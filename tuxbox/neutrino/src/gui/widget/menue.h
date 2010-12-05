@@ -330,6 +330,7 @@ class CMenuWidget : public CMenuTarget
 		int         wanted_height;
 		int			x;
 		int			y;
+		int			preselected;
 		int			selected;
 		int 			iconOffset;
 		unsigned int         item_start_y;
@@ -349,6 +350,8 @@ class CMenuWidget : public CMenuTarget
 		virtual void hide();
 		virtual int exec(CMenuTarget* parent, const std::string & actionKey);
 		virtual std::string getName(){ return nameString;};
+		virtual void setPreselected(const int &Preselected){ preselected = Preselected; };
+		virtual int getSelected(){ return selected; };
 };
 
 class CPINProtection
