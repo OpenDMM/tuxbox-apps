@@ -3715,7 +3715,7 @@ int CMovieHelp::exec(CMenuTarget* /*parent*/, const std::string & /*actionKey*/)
 	helpbox.addLine(NEUTRINO_ICON_BUTTON_0, g_Locale->getText(LOCALE_MOVIEBROWSER_MENU_MARK_NOACTION));
 	
 	helpbox.show(LOCALE_MOVIEBROWSER_MENU_HELP_HEAD);
-	return(0);
+	return menu_return::RETURN_REPAINT;
 }
 
 
