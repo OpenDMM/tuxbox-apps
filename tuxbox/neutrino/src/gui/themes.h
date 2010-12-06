@@ -36,7 +36,7 @@ class CThemes : public CMenuTarget, CChangeObserver
 		CConfigFile themefile;
 		CColorSetupNotifier *notifier;
 
-		int x, y, width, height, hheight, mheight;
+		int x, y, width, height, hheight, mheight, selected;
 		int oldThemeValues[40];
 
 		bool hasThemeChanged;

@@ -59,6 +59,7 @@ CMoviePlayerSetup::CMoviePlayerSetup()
 	hheight = g_Font[SNeutrinoSettings::FONT_TYPE_MENU_TITLE]->getHeight();
 	mheight = g_Font[SNeutrinoSettings::FONT_TYPE_MENU]->getHeight();
 	height = hheight+13*mheight+ 10;
+	selected = -1;
 	x = getScreenStartX (width);
 	y = getScreenStartY (height);
 }
@@ -136,6 +137,7 @@ const CMenuOptionChooser::keyval STREAMINGMENU_STOPSECTIONSD_OPTIONS[STREAMINGME
 void CMoviePlayerSetup::showMoviePlayerSetup()
 {
 	CMenuWidget* mp_setup = new CMenuWidget(LOCALE_MAINMENU_SETTINGS, NEUTRINO_ICON_SETTINGS, width);
+	mp_setup->setPreselected(selected);
 	mp_setup->addItem( new CMenuSeparator(CMenuSeparator::ALIGN_LEFT | CMenuSeparator::SUB_HEAD | CMenuSeparator::STRING, LOCALE_MAINSETTINGS_STREAMING));
 
 	// intros
@@ -218,6 +220,7 @@ void CMoviePlayerSetup::showMoviePlayerSetup()
 
 	mp_setup->exec (NULL, "");
 	mp_setup->hide ();
+	selected = mp_setup->getSelected();
 	delete mp_setup;
 }
 

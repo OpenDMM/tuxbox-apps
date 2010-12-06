@@ -43,7 +43,7 @@ class CMoviePlayerSetup : public CMenuTarget, CChangeObserver
 	private:
 		CFrameBuffer *frameBuffer;
 		
-		int x, y, width, height, menue_width, hheight, mheight;
+		int x, y, width, height, menue_width, hheight, mheight, selected;
 
 		void hide();
 		void showMoviePlayerSetup();

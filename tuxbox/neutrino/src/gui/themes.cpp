@@ -56,6 +56,7 @@ CThemes::CThemes()
 	hheight = g_Font[SNeutrinoSettings::FONT_TYPE_MENU_TITLE]->getHeight();
 	mheight = g_Font[SNeutrinoSettings::FONT_TYPE_MENU]->getHeight();
 	height = hheight+13*mheight+ 10;
+	selected = -1;
 	x	= getScreenStartX (width);
 	y	= getScreenStartY (height);
 
@@ -141,6 +142,7 @@ void CThemes::Show()
 	std::string file_name = "";
 
 	CMenuWidget themes (LOCALE_COLORTHEMEMENU_HEAD2, NEUTRINO_ICON_SETTINGS, width);
+	themes.setPreselected(selected);
 	themes.addItem(GenericMenuSeparator);
 	themes.addItem(GenericMenuBack);
 
@@ -167,6 +169,7 @@ void CThemes::Show()
 
 	themes.exec(NULL, "");
 	themes.hide();
+	selected = themes.getSelected();
 
 	if (file_name.length() > 1) {
 		saveFile((char*)((std::string)USERDIR + file_name + FILE_PREFIX).c_str());
