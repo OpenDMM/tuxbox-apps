@@ -44,7 +44,7 @@
 
 		CFrameBuffer *frameBuffer;
 		
-		int x, y, width, height, menue_width, hheight, mheight;
+		int x, y, width, height, menue_width, hheight, mheight, selected;
 
 		int button;
 		neutrino_locale_t local;

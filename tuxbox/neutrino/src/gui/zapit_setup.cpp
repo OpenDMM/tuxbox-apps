@@ -66,6 +66,8 @@ CZapitSetup::CZapitSetup(const neutrino_locale_t title, const char * const IconN
 	x	= getScreenStartX (width);
 	y	= getScreenStartY (height);
 
+	selected = -1;
+
 	/* These variables need to be defined outside InitZapitSettings,
    	otherwise locale "INTERNAL ERROR - PLEASE REPORT" is displayed
    	instead of the option values */
@@ -154,6 +156,7 @@ void CZapitSetup::showSetup()
 {
 	//init
 	CMenuWidget * z = new CMenuWidget(menue_title, menue_icon, width);
+	z->setPreselected(selected);
 
 	//subhead
 	if (menue_title != NONEXISTANT_LOCALE)
@@ -205,6 +208,7 @@ void CZapitSetup::showSetup()
 
 	z->exec(NULL, "");
 	z->hide();
+	selected = z->getSelected();
 	delete z;
 }
 

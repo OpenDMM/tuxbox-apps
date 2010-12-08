@@ -40,7 +40,7 @@ class CZapitSetup : public CMenuTarget
 
 		CFrameBuffer *frameBuffer;
 
-		int x, y, width, height, hheight, mheight;
+		int x, y, width, height, hheight, mheight, selected;
 
 		neutrino_locale_t menue_title;
 		std::string menue_icon;
