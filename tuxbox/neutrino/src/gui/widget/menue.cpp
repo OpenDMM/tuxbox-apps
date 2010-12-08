@@ -115,17 +115,10 @@ void CMenuItem::paintItemButton(const int startX, const int frame_height, const 
 #endif
 
 	if  (selected && offx > 0)
-	{
 		if (!selected_iconName.empty())
-		{
 			icon_name = selected_iconName;
-		}
-		else
-		{
-		if ((CRCInput::isNumeric(directKey)) /*|| (directKey >= CRCInput::RC_red && directKey <= CRCInput::RC_blue)*/ || icon_name.empty())
+		else if (icon_name.empty() && !CRCInput::isNumeric(directKey))
 			icon_name = icon_Name;
-		}
-	}
 	
 	//paint icon
 	//get data for marker icon
