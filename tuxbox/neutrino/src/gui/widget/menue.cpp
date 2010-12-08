@@ -608,6 +608,8 @@ int CMenuOptionNumberChooser::paint(bool selected)
 
 	g_Font[SNeutrinoSettings::FONT_TYPE_MENU]->RenderString(stringstartposName,   y+height,dx- (stringstartposName - x), l_optionName, color, 0, true); // UTF-8
 	g_Font[SNeutrinoSettings::FONT_TYPE_MENU]->RenderString(stringstartposOption, y+height,dx- (stringstartposOption - x), l_option, color, 0, true); // UTF-8
+	
+	paintItemButton(stringstartposName, height, selected, NEUTRINO_ICON_BUTTON_OKAY);
 
 	if (selected)
 	{
