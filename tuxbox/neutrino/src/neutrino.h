@@ -242,9 +242,7 @@ class CNeutrinoApp : public CMenuTarget, CChangeObserver
 
 		void SetupFrameBuffer();
 		void SelectAPID();
-		void SelectNVOD();
 		void CmdParser(int argc, char **argv);
-		void ShowStreamFeatures();
 		bool doGuiRecord(char * preselectedDir, bool addTimer = false, char * filename = NULL);
 		bool doShowMuteIcon(void);
 		void prepareEnviroment();
