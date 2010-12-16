@@ -109,8 +109,9 @@ int CUserMenuSetup::exec(CMenuTarget* parent, const std::string &)
 
 void CUserMenuSetup::showSetup()
 {
-	CMenuWidget * ums = new CMenuWidget(local, NEUTRINO_ICON_KEYBINDING, width);
+	CMenuWidget * ums = new CMenuWidget(LOCALE_PERSONALIZE_HEAD, NEUTRINO_ICON_PROTECTING, width);
 	ums->setPreselected(selected);
+	ums->addItem(new CMenuSeparator(CMenuSeparator::ALIGN_LEFT | CMenuSeparator::SUB_HEAD | CMenuSeparator::STRING, local));
 
 	CUserMenuNotifier *notify = new CUserMenuNotifier();
 	CStringInputSMS name(LOCALE_USERMENU_NAME, &g_settings.usermenu_text[button], 11, NONEXISTANT_LOCALE, NONEXISTANT_LOCALE, "ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyzäöüß/- ", notify);
