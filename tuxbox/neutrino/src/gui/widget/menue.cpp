@@ -160,7 +160,7 @@ void CMenuItem::paintItemButton(const int startX, const int frame_height, const 
 	}
 	
 	//paint marker
-	if  (selected && directKey != CRCInput::RC_nokey)
+	if  (selected && directKey != CRCInput::RC_nokey && selected_iconName.empty())
 	{
 		int icon_offset = 2;
 		if (icon_painted)
