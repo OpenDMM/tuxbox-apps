@@ -3544,7 +3544,7 @@ bool CMovieBrowser::getMovieInfoItem(MI_MOVIE_INFO& movie_info, MB_INFO_ITEM ite
 #endif	// MB_INFO_AUDIO test
 			break;
 		case MB_INFO_LENGTH: 				// 		= 18,
-			snprintf(str_tmp,MAX_STR_TMP,"%4d",movie_info.length);
+			snprintf(str_tmp,MAX_STR_TMP,"%4d", movie_info.rec_length > 0 ? (movie_info.rec_length + 30) / 60 : movie_info.length);
 			*item_string = str_tmp;
 			break;
 		case MB_INFO_SIZE: 					// 		= 19, 
