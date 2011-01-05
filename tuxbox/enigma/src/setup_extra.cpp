@@ -116,9 +116,9 @@ void eExpertSetup::init_eExpertSetup()
 	}
 
 	// Timeroffset (Anfang)
-	timeroffsetstart = new eListBoxEntryMulti( &list, (_("Change timer offset [start] (left, right)")));
+	timeroffsetstart = new eListBoxEntryMulti( &list, eString().sprintf(_("Change timer offset [%s] (left, right)"),_("start")).c_str());
 	for (int i = 0; i <= 10; i++)
-	  timeroffsetstart->add( (eString)(i ? "  ":"< ") + eString().sprintf(_("Timer offset [start] %d min"), i) + (eString)(i < 10 ? " >":"  "), i);
+	  timeroffsetstart->add( (eString)(i ? "  ":"< ") + eString().sprintf(_("Timer offset [%s] %d min"),_("start"), i) + (eString)(i < 10 ? " >":"  "), i);
 	int offsetstart=0;
 	if (eConfig::getInstance()->getKey("/enigma/timeroffset", offsetstart) )
 		offsetstart=0; // 0 Minutes
@@ -127,9 +127,9 @@ void eExpertSetup::init_eExpertSetup()
 
 
 	// Timeroffset (Ende)
-	timeroffsetend = new eListBoxEntryMulti( &list, (_("Change timer offset [end] (left, right)")));
+	timeroffsetend = new eListBoxEntryMulti( &list, eString().sprintf(_("Change timer offset [%s] (left, right)"),_("end")).c_str());
 	for (int i = 0; i <= 10; i++)
-	  timeroffsetend->add( (eString)(i ? "  ":"< ") + eString().sprintf(_("Timer offset [end] %d min"), i) + (eString)(i < 10 ? " >":"  "), i);
+	  timeroffsetend->add( (eString)(i ? "  ":"< ") + eString().sprintf(_("Timer offset [%s] %d min"),_("end"), i) + (eString)(i < 10 ? " >":"  "), i);
 	int offsetend=0;
 	if (eConfig::getInstance()->getKey("/enigma/timeroffset2", offsetend) )
 		offsetend=0; // 0 Minutes
@@ -439,7 +439,7 @@ void eExpertSetup::factory_reset()
 			case eSystemInfo::DM5620:
 			case eSystemInfo::DM5600:
 			case eSystemInfo::TR_DVB272S:
-				erase("/dev/mtd/1", _("Factory reset..."));
+				erase("/dev/mtd/1", _("Factory reset"));
 				system("reboot");
 				break;
 			default: 

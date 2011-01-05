@@ -52,7 +52,7 @@ void eSystemSettings::init_eSystemSettings()
 #ifndef DISABLE_HDD
 #ifndef DISABLE_FILE
 	if ( eSystemInfo::getInstance()->hasHDD() )
-		CONNECT((new eListBoxEntryMenu(&list, _("Harddisc Setup"), eString().sprintf("(%d) %s", ++entry, _("open harddisc setup")) ))->selected, eSystemSettings::harddisc_setup);
+		CONNECT((new eListBoxEntryMenu(&list, _("Harddisk Setup"), eString().sprintf("(%d) %s", ++entry, _("open harddisc setup")) ))->selected, eSystemSettings::harddisc_setup);
 #endif
 #endif
 #ifdef ENABLE_KEYBOARD
@@ -127,7 +127,7 @@ void eSystemSettings::harddisc_setup()
 #endif
 	if (!setup.getNr())
 	{
-		eMessageBox::ShowBox(_("sorry, no harddisks found!"), _("Harddisk setup..."));
+		eMessageBox::ShowBox(_("sorry, no harddisks found!"), _("Harddisk Setup"));
 	} else
 	{
 		setup.show();

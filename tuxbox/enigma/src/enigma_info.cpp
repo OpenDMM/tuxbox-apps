@@ -36,7 +36,7 @@
 #include <lib/system/dmfp.h>
 
 eZapInfo::eZapInfo()
-	:eListBoxWindow<eListBoxEntryMenu>(_("Infos"), 7, 320)
+	:eListBoxWindow<eListBoxEntryMenu>(_("Information"), 7, 320)
 {
 	move(ePoint(150, 166));
 	CONNECT((new eListBoxEntryMenu(&list, _("Streaminfo"), _("open the Streaminfo")))->selected, eZapInfo::sel_streaminfo);
@@ -131,16 +131,16 @@ private:
 		switch (eSystemInfo::getInstance()->getFEType())
 		{
 			case eSystemInfo::feSatellite:
-				frontend->setText(_("Frontend: Satellite"));
+				frontend->setText(eString().sprintf("%s: %s",_("Frontend"),_("Satellite")));
 				break;
 			case eSystemInfo::feCable:
-				frontend->setText(_("Frontend: Cable"));
+				frontend->setText(eString().sprintf("%s: %s",_("Frontend"),_("Cable")));
 				break;
 			case eSystemInfo::feTerrestrial:
-				frontend->setText(_("Frontend: Terrestrial"));
+				frontend->setText(eString().sprintf("%s: %s",_("Frontend"),_("Terrestrial")));
 				break;
 			default:
-				frontend->setText(_("Frontend: Unknown"));
+				frontend->setText(eString().sprintf("%s: %s",_("Frontend"),_("unknown")));
 		}
 
 		eString sharddisks;

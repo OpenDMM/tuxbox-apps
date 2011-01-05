@@ -233,7 +233,7 @@ void eEPGSearch::Search()
 {
 	eString h;
 	if (chkAllServices->isChecked())
-		h = _("all services");
+		h = _("All services");
 	else
 		h = sServiceReferenceSearch;
 
@@ -247,8 +247,8 @@ void eEPGSearch::Search()
 	}
 	else
 	{
-		Anzeige = eString(_("Searching for ")) + eString(_("Genre:")) + cboGenre->getText() + "\nin " + h + "...";
-		SearchName = eString(_("Genre:")) + cboGenre->getText();
+		Anzeige = eString(_("Searching for ")) + eString(_("genre")) +eString(":") + cboGenre->getText() + "\nin " + h + "...";
+		SearchName = eString(_("genre")) +eString(":")+ cboGenre->getText();
 	}
 	//hide();
 	eMessageBox msg(Anzeige, _("EPG Search"), eMessageBox::iconInfo);
