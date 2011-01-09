@@ -60,7 +60,8 @@ stream2file_error_msg_t start_recording(const char * const filename,
 					const unsigned int numpids,
 					const unsigned short * const pids,
 					const bool write_ts = true,
-					const unsigned int ringbuffers = 20);
+					const unsigned int ringbuffers = 20,
+					const bool gen_psi = true);
 stream2file_error_msg_t stop_recording(void);
 
 #endif

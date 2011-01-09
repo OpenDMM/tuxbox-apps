@@ -278,6 +278,8 @@ struct SNeutrinoSettings
 
 #define MAX_RECORDING_DIR 10	
 	std::string recording_dir[MAX_RECORDING_DIR];
+	int recording_gen_psi;
+
 	//streaming
 	int  streaming_type;
 	std::string streaming_server_ip;

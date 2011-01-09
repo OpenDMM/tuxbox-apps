@@ -1185,6 +1185,7 @@ const char * locale_real_names[] =
 	"recordingmenu.filename_template",
 	"recordingmenu.filename_template_hint",
 	"recordingmenu.filesettings",
+	"recordingmenu.gen_psi",
 	"recordingmenu.head",
 	"recordingmenu.help",
 	"recordingmenu.no_scart",
