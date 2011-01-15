@@ -39,6 +39,9 @@
  */
 
 
+#ifdef HAVE_CONFIG_H
+#include <config.h>
+#endif
 #include <fcntl.h>
 #include <stdio.h>
 #include <stdlib.h>
@@ -47,9 +50,6 @@
 #include <sys/types.h>
 #include <time.h>
 #include <unistd.h>
-#ifdef HAVE_CONFIG_H
-#include <config.h>
-#endif
 #include <ctype.h>
 
 #if HAVE_DVB_API_VERSION < 3
@@ -455,7 +455,7 @@ main (int argc, char ** argv) {
 		}
 		tsfilelen = strlen(tsfile);
 		/* open ts file */
-		if ((dvrfd = open(tsfile, O_RDONLY)) < 0) {
+		if ((dvrfd = open(tsfile, O_RDONLY|O_LARGEFILE)) < 0) {
 			free(buf);
 			return EXIT_FAILURE;
 		}
