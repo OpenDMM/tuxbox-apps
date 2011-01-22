@@ -3101,6 +3101,9 @@ static void commandCurrentNextInfoChannelID(int connfd, char *data, const unsign
 			flag |= CSectionsdClient::epgflags::has_next; // aktuelles event da...
 			flag |= CSectionsdClient::epgflags::has_anything;
 		}
+		/* hack: if paused (!scanning), then current/next is not uptodate, so don't use it */
+		if (!scanning)
+			flag = CSectionsdClient::epgflags::not_broadcast;
 	}
 
 	//dprintf("flag: 0x%x, has_current: 0x%x has_next: 0x%x\n", flag, CSectionsdClient::epgflags::has_current, CSectionsdClient::epgflags::has_next); 
@@ -3288,7 +3291,7 @@ static void commandCurrentNextInfoChannelID(int connfd, char *data, const unsign
 	unlockEvents();
 
 	//dprintf("change: %s, messaging_eit_busy: %s, last_request: %d\n", change?"true":"false", messaging_eit_is_busy?"true":"false",(time(NULL) - messaging_last_requested));
-	if (change && !messaging_eit_is_busy && (time(NULL) - messaging_last_requested) < 11) {
+	if (change && scanning && !messaging_eit_is_busy && (time(NULL) - messaging_last_requested) < 11) {
 		/* restart dmxCN, but only if it is not already running, and only for 10 seconds */
 		dprintf("change && !messaging_eit_is_busy => dmxCN.change(0)\n");
 		dmxCN.change(0);
