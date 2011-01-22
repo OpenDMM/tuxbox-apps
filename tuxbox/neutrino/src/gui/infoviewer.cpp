@@ -1401,6 +1401,7 @@ int CInfoViewer::handleMsg(const neutrino_msg_t msg, neutrino_msg_data_t data)
 	}
 	else if (msg == NeutrinoMessages::EVT_ZAP_SUB_COMPLETE)
 	{
+		channel_id = (*(t_channel_id *)data);
 		//if ((*(t_channel_id *)data) == channel_id)
 		{
 			if ( is_visible && showButtonBar &&  ( !g_RemoteControl->are_subchannels ) )
