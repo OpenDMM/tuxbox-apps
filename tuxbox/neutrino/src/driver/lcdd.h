@@ -140,7 +140,8 @@ class CLCD
 
 		void showServicename(const std::string name, const bool perform_wakeup = true); // UTF-8
 		void setEPGTitle(const std::string title);
-		void setMovieInfo(const AUDIOMODES playmode, const std::string big, const std::string small);
+		void setMoviePlaymode(const AUDIOMODES playmode);
+		void setMovieInfo(const std::string big, const std::string small);
 		void setMovieAudio(const bool is_ac3);
 		std::string getMenutitle() { return menutitle; };
 		void showTime();
