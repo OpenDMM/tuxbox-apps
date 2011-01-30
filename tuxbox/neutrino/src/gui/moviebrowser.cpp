@@ -1311,7 +1311,10 @@ void CMovieBrowser::refreshMovieInfo(void)
 	}
 	else
 	{
-		m_pcInfo->setText(&m_movieSelectionHandler->epgInfo2);
+		if (m_movieSelectionHandler->epgInfo2.empty())
+			m_pcInfo->setText(&m_movieSelectionHandler->epgInfo1);
+		else
+			m_pcInfo->setText(&m_movieSelectionHandler->epgInfo2);
 	}
 }
 
