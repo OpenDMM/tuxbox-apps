@@ -776,7 +776,7 @@ int CNeutrinoApp::loadSetup()
 		"2,3,4,16",			// RED
 		"6",				// GREEN
 		"7",				// YELLOW
-		"8,9,1,15,1,10,11,13,1,14,5"	// BLUE
+		"9,8,1,15,1,10,11,13,1,14,5"	// BLUE
 	};
 	char txt1[81];
 	std::string txt2;
