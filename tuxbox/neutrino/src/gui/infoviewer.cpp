@@ -178,13 +178,14 @@ void CInfoViewer::showRecordIcon(const bool show)
 	if(recordModeActive)
 	{
 		int rec_icon_x = BoxStartX + ChanWidth + 20;
+		int rec_icon_y = BoxStartY + 10;
 		if(show)
 		{
-			frameBuffer->paintIcon(NEUTRINO_ICON_BUTTON_RED, rec_icon_x, BoxStartY+10 );
+			frameBuffer->paintIcon(NEUTRINO_ICON_REC, rec_icon_x, rec_icon_y);
 		}
 		else
 		{
-			frameBuffer->paintBackgroundBoxRel(rec_icon_x, BoxStartY+10, 20, 20);
+			frameBuffer->paintBackgroundBoxRel(rec_icon_x, rec_icon_y, 20, 20);
 		}
 	}
 }

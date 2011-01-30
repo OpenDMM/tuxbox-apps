@@ -81,6 +81,7 @@
 #define NEUTRINO_ICON_PROTECTING	"protecting.raw"
 #define NEUTRINO_ICON_QUESTION		"question.raw"
 #define NEUTRINO_ICON_RADIOMODE		"radiomode.raw"
+#define NEUTRINO_ICON_REC		"rec.raw"
 #define NEUTRINO_ICON_RECORDING		"recording.raw"
 #define NEUTRINO_ICON_SETTINGS		"settings.raw"
 #define NEUTRINO_ICON_SHELL		"shell.raw"
