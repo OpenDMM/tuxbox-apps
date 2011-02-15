@@ -4218,7 +4218,7 @@ CMoviePlayerGui::PlayStream (int streamtype)
 			StreamTime.hide();
 			g_RCInput->postMsg(NeutrinoMessages::SHOW_INFOBAR, data);
 		}
-		else if(msg == CRCInput::RC_green)
+		else if(msg == CRCInput::RC_green || msg == CRCInput::RC_0)
 		{
 			if(g_playstate == CMoviePlayerGui::PLAY) g_playstate = CMoviePlayerGui::RESYNC;
 			StreamTime.hide();
@@ -4283,7 +4283,7 @@ CMoviePlayerGui::PlayStream (int streamtype)
 			g_playstate = CMoviePlayerGui::SKIP;
 			StreamTime.hide();
 		}
-		else if(msg == CRCInput::RC_down)
+		else if(msg == CRCInput::RC_down || msg == CRCInput::RC_5)
 		{
 			char tmp[10+1];
 			bool cancel;
