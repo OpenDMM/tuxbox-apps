@@ -3354,12 +3354,13 @@ void CMoviePlayerGui::PlayFile (int parental)
 						p_movie_info = CMovieBrowser::getInstance()->getCurrentMovieInfo();
 
 						// get the start position for the movie
-						off_t secondoffset = (g_settings.streaming_use_reclength && p_movie_info->rec_length) ? ((file->Size / p_movie_info->rec_length) / SIZE_TS_PKT) * SIZE_TS_PKT : SECONDOFFSET;
-						g_startposition    = CMovieBrowser::getInstance()->getCurrentStartPos() * secondoffset;
-						TRACE("[mp] start pos %llu, %d s Name: %s\r\n", g_startposition, CMovieBrowser::getInstance()->getCurrentStartPos(), filename);
+						int currentStartPos = CMovieBrowser::getInstance()->getCurrentStartPos();
+						off_t secondoffset = (g_settings.streaming_use_reclength && p_movie_info != NULL && p_movie_info->rec_length) ? ((file->Size / p_movie_info->rec_length) / SIZE_TS_PKT) * SIZE_TS_PKT : SECONDOFFSET;
+						g_startposition = currentStartPos * secondoffset;
+						TRACE("[mp] start pos %llu, %d s Name: %s\r\n", g_startposition, currentStartPos, filename);
 
 						if(FileTime.IsVisible()) // update time if visible
-							FileTime.show(g_startposition / secondoffset);
+							FileTime.show(currentStartPos);
 					}
 				}
 			}
