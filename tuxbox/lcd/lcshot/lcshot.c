@@ -37,6 +37,7 @@
 
 #include <sys/vt.h>
 #include <png.h>
+#include <zlib.h>
 #include <linux/fb.h> 
 #include "lcd.h"
 
