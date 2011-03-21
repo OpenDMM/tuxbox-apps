@@ -3264,7 +3264,7 @@ int CMovieBrowser::showStartPosSelectionMenu(void) // P2
 	
 	char book[MI_MOVIE_BOOK_USER_MAX][20];
 
-	CMenuWidgetSelection startPosSelectionMenu(LOCALE_MOVIEBROWSER_START_HEAD , NEUTRINO_ICON_STREAMING);
+	CMenuWidget startPosSelectionMenu(LOCALE_MOVIEBROWSER_START_HEAD , NEUTRINO_ICON_STREAMING);
 	
 	startPosSelectionMenu.addItem(GenericMenuSeparator);
 	
@@ -3299,8 +3299,7 @@ int CMovieBrowser::showStartPosSelectionMenu(void) // P2
 
 	startPosSelectionMenu.exec(NULL, "12345");
 	/* check what menu item was ok'd  and set the appropriate play offset*/
-	//result = startPosSelectionMenu.getSelected();
-	result = startPosSelectionMenu.getSelectedLine();
+	result = startPosSelectionMenu.getSelected();
 	if(result != 0 && result <= MAX_NUMBER_OF_BOOKMARK_ITEMS)
 	{
 		result--;

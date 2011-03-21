@@ -428,14 +428,6 @@ class CMenuSelector : public CMenuItem
 		bool isSelectable(void) const {	return active;}
 };
 
-// CLass to get the menu line selected by the user. There might be better ways to do so.
-class CMenuWidgetSelection : public CMenuWidget
-{
-	public:
-		CMenuWidgetSelection(const neutrino_locale_t Name, const std::string & Icon = "", const int mwidth = 400, const int mheight = 576) : CMenuWidget( Name,Icon,mwidth, mheight){;};
-		int getSelectedLine(void){return selected;};
-};
-
 
 
 typedef enum
