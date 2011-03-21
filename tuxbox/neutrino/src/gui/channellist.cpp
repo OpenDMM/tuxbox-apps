@@ -1301,7 +1301,7 @@ void CChannelList::paintHead()
 			{
 				snprintf(provstr, 19, "%s", satList_it->satName);
 				provstr[19] = '\0';
-				provstr_len = g_Font[SNeutrinoSettings::FONT_TYPE_CHANNELLIST]->getRenderWidth(satList_it->satName, true); // UTF-8
+				provstr_len = g_Font[SNeutrinoSettings::FONT_TYPE_CHANNELLIST]->getRenderWidth(provstr, true); // UTF-8
 				break;
 			}
 		}
