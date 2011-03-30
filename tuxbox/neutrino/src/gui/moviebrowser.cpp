@@ -2142,13 +2142,14 @@ void CMovieBrowser::onDeleteFile(MI_MOVIE_INFO& movieSelectionHandler)
 		msg += g_Locale->getText(LOCALE_FILEBROWSER_DODELETE2);
 		if (ShowMsgUTF(LOCALE_FILEBROWSER_DELETE, msg, CMessageBox::mbrNo, CMessageBox::mbYes|CMessageBox::mbNo)==CMessageBox::mbrYes)
 		{
-			delFile(movieSelectionHandler.file);
-			
 			CFile file_xml  = movieSelectionHandler.file; 
 			if(m_movieInfo.convertTs2XmlName(&file_xml.Name) == true)  
 			{
 				delFile(file_xml);
 			}
+
+			delFile(movieSelectionHandler.file);
+
 			m_vMovieInfo.erase( (std::vector<MI_MOVIE_INFO>::iterator)&movieSelectionHandler);
 			updateSerienames();
 			refreshBrowserList();
