@@ -52,6 +52,7 @@ CVideoSetup::CVideoSetup()
 	frameBuffer = CFrameBuffer::getInstance();
 
 	SyncControlerForwarder = NULL;
+	RGBCSyncControler = NULL;
 	VcrVideoOutSignalOptionChooser = NULL;
 
 	width = w_max (500, 100);
@@ -69,6 +70,7 @@ CVideoSetup::CVideoSetup()
 CVideoSetup::~CVideoSetup()
 {
 	delete SyncControlerForwarder;
+	delete RGBCSyncControler;
 	delete VcrVideoOutSignalOptionChooser;
 }
 
@@ -155,7 +157,7 @@ void CVideoSetup::showVideoSetup()
 
 #ifdef HAVE_DBOX_HARDWARE
 	//rgb centering
-	CRGBCSyncControler * RGBCSyncControler = new CRGBCSyncControler(LOCALE_VIDEOMENU_RGB_CENTERING, &g_settings.video_csync);
+	RGBCSyncControler = new CRGBCSyncControler(LOCALE_VIDEOMENU_RGB_CENTERING, &g_settings.video_csync);
 	bool sc_active = ((video_out_signal == CControldClient::VIDEOOUTPUT_RGB) || (video_out_signal == CControldClient::VIDEOOUTPUT_YUV_VBS) || (video_out_signal ==  CControldClient::VIDEOOUTPUT_YUV_CVBS));
 	SyncControlerForwarder = new CMenuForwarder(LOCALE_VIDEOMENU_RGB_CENTERING, sc_active, NULL , RGBCSyncControler, NULL, CRCInput::RC_red, NEUTRINO_ICON_BUTTON_RED);
 #endif

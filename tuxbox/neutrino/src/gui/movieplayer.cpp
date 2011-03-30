@@ -334,10 +334,6 @@ CMoviePlayerGui::~CMoviePlayerGui ()
 	delete filebrowser;
 	if(bookmarkmanager)
 		delete bookmarkmanager;
-	CLCD::getInstance()->setMode(CLCD::MODE_TVRADIO);
-	g_Zapit->setStandby (false);
-	g_Sectionsd->setPauseScanning (false);
-
 }
 
 //------------------------------------------------------------------------

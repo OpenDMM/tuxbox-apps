@@ -334,10 +334,6 @@ CMoviePlayerGui::~CMoviePlayerGui ()
 		INFO("waiting for output thread to terminate...\n");
 		sleep(1);
 	}
-
-	CLCD::getInstance()->setMode(CLCD::MODE_TVRADIO);
-	g_Zapit->setStandby(false);
-	g_Sectionsd->setPauseScanning(false);
 }
 
 //------------------------------------------------------------------------

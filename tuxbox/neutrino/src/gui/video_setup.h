@@ -43,8 +43,9 @@ class CVideoSetup : public CMenuTarget, CChangeObserver
 {
 	private:
 		CFrameBuffer *frameBuffer;
-		
+
 		CMenuForwarder *   SyncControlerForwarder;
+		CRGBCSyncControler * RGBCSyncControler;
  		CMenuOptionChooser * VcrVideoOutSignalOptionChooser;
 
 		int video_out_signal;
