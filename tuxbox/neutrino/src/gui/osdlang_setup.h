@@ -43,7 +43,7 @@
 #include <string>
 
 
-class COsdLangSetup : public CMenuTarget, CChangeObserver
+class COsdLangSetup : public CMenuTarget
 {	
 	private:
 
@@ -60,15 +60,9 @@ class COsdLangSetup : public CMenuTarget, CChangeObserver
 		int exec(CMenuTarget* parent, const std::string & actionKey);
 };
 
-class COsdLangNotifier : public COsdLangSetup
+class COsdLangNotifier : public CChangeObserver
 {
-	private:
-
-		CMenuForwarder* toModifi;
-
 	public:
-		COsdLangNotifier();
-
 		bool changeNotify(const neutrino_locale_t, void * Data);
 };
 

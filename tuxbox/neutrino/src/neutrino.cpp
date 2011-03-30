@@ -1680,6 +1680,23 @@ const char* predefined_lcd_font[2][3] =
 	{FONTDIR "/md_khmurabi_10.ttf", NULL, NULL}
 };
 
+bool CNeutrinoApp::ChangeFonts(int unicode_locale)
+{
+	if (font.is_unicode == -1) /* user defined font, don't mess with that */
+		return false;
+	if (unicode_locale == CLocaleManager::NO_SUCH_LOCALE)	/* should not happen, but anyway.. */
+		return false;				/* avoid crash from negative array index */
+	if (font.is_unicode != unicode_locale)
+	{
+		font = predefined_font[unicode_locale];
+		CLCD::getInstance()->init(predefined_lcd_font[unicode_locale][0],
+		                          predefined_lcd_font[unicode_locale][1],
+		                          predefined_lcd_font[unicode_locale][2]);
+		SetupFonts();
+	}
+	return true;
+}
+
 void CNeutrinoApp::SetupFonts()
 {
 	const char * style[3];
@@ -4064,21 +4081,6 @@ bool CNeutrinoApp::changeNotify(const neutrino_locale_t OptionName, void *)
 	if ((ARE_LOCALES_EQUAL(OptionName, LOCALE_MAINMENU_RECORDING_START)) || (ARE_LOCALES_EQUAL(OptionName, LOCALE_MAINMENU_RECORDING)))
 	{
 		return doGuiRecord(NULL,ARE_LOCALES_EQUAL(OptionName, LOCALE_MAINMENU_RECORDING));
-	}
-
-	if (ARE_LOCALES_EQUAL(OptionName, LOCALE_LANGUAGESETUP_SELECT))
-	{
-		int unicode_locale = g_Locale->loadLocale(g_settings.language);
-		if (font.is_unicode != -1) /* user defined font, don't mess with that */
-			return false;
-		if (unicode_locale == CLocaleManager::NO_SUCH_LOCALE)	/* should not happen, but anyway.. */
-			return false;				/* avoid crash from negative array index */
-		if (font.is_unicode != unicode_locale)
-		{
-			font = predefined_font[unicode_locale];
-			SetupFonts();
-		}
-		return true;
 	}
 	return false;
 }

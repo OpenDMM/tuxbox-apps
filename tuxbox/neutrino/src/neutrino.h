@@ -249,6 +249,7 @@ class CNeutrinoApp : public CMenuTarget, CChangeObserver
 		CNeutrinoApp();
 
 	public:	
+		bool ChangeFonts(int unicode_locale);
 		void SetupFonts();
 		void SetupTiming();
 		~CNeutrinoApp();

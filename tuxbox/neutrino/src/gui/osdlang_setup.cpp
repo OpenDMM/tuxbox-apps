@@ -97,6 +97,8 @@ void COsdLangSetup::showSetup()
 	osdl_setup->addItem(GenericMenuBack);
 	osdl_setup->addItem(GenericMenuSeparatorLine);
 
+	COsdLangNotifier osdLangNotifier;
+
 	//search available languages....
 
 	struct dirent **namelist;
@@ -121,7 +123,7 @@ void COsdLangSetup::showSetup()
 				if(pos != NULL)
 				{
 					*pos = '\0';
-					CMenuOptionLanguageChooser* oj = new CMenuOptionLanguageChooser((char*)locale, new COsdLangNotifier());
+					CMenuOptionLanguageChooser* oj = new CMenuOptionLanguageChooser((char*)locale, &osdLangNotifier);
 					oj->addOption(locale);
 					osdl_setup->addItem( oj );
 				}
@@ -140,14 +142,13 @@ void COsdLangSetup::showSetup()
 }
 
 
-COsdLangNotifier::COsdLangNotifier()
-{
-
-}
-
 bool COsdLangNotifier::changeNotify(const neutrino_locale_t, void * /*Data*/)
 {
-	g_Locale->loadLocale(g_settings.language);
-	return true;
+	bool ret = false;
+
+	int unicode_locale = g_Locale->loadLocale(g_settings.language);
+	ret = CNeutrinoApp::getInstance()->ChangeFonts(unicode_locale);
+
+	return ret;
 }
 

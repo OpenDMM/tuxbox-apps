@@ -833,6 +833,7 @@ int CMenuOptionStringChooser::paint( bool selected )
 CMenuOptionLanguageChooser::CMenuOptionLanguageChooser(char* OptionValue, CChangeObserver* Observ)
 {
 	height      = g_Font[SNeutrinoSettings::FONT_TYPE_MENU]->getHeight();
+	active      = true;
 	optionValue = OptionValue;
 	observ      = Observ;
 
