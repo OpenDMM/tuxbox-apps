@@ -47,9 +47,8 @@ using namespace std;
 class CPersonalizeGui : public CMenuTarget
 {
 	private:
-		CFrameBuffer *frameBuffer;
-		
-		int x, y, width, height, hheight, mheight, selected;
+	
+		int width, selected;
 		void 	ShowHelpPersonalize();
 		
 		std::string action_key[3/*=CNeutrinoApp::MENU_MAX*/];
@@ -79,7 +78,6 @@ class CPersonalizeGui : public CMenuTarget
 		void 	ShowPersonalizationMenu();
 		void 	ShowMenuOptions(const int& menu);
 		
-		void 	hide();
 		void 	SaveAndRestart();
 		
 		neutrino_msg_t	getShortcut(const int & shortcut_num, neutrino_msg_t alternate_rc_key = CRCInput::RC_nokey);
