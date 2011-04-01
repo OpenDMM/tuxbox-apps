@@ -355,7 +355,6 @@ void CPersonalizeGui::ShowHelpPersonalize()
 	for (int i = (int)LOCALE_PERSONALIZE_HELP_LINE1; i<= (int)LOCALE_PERSONALIZE_HELP_LINE8; i++)
 		helpbox.addLine(g_Locale->getText((neutrino_locale_t)i));
 
-	hide();
 	helpbox.show(LOCALE_PERSONALIZE_HELP);
 }
 
