@@ -254,5 +254,4 @@ void CKeybindSetup::showSetup()
 	delete ks_rc;
 	for (int i = 0; i < MAX_NUM_KEYNAMES; i++)
 		delete keychooser[i];
-	delete[] keychooser;
 }
