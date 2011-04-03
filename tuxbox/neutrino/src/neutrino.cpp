@@ -98,6 +98,7 @@
 #ifdef ENABLE_GUI_MOUNT
 #include "gui/nfs.h"
 #endif
+#include "gui/personalize.h"
 #include "gui/scan_setup.h"
 #include "gui/esound.h"
 #include "gui/osd_setup.h"
@@ -2264,7 +2265,7 @@ int CNeutrinoApp::run(int argc, char **argv)
 
 	execute_start_file(NEUTRINO_INIT_END_SCRIPT, false);
 
-	RealRun(*menus[MENU_MAIN]);
+	RealRun(CPersonalizeGui::getInstance()->getWidget(0)/**main**/);
 
 	ExitRun(true);
 
