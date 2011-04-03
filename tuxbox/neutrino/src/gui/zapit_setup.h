@@ -31,21 +31,16 @@
 #include <gui/widget/menue.h>
 #include <gui/widget/icons.h>
 
-#include <driver/framebuffer.h>
 #include <zapit/client/zapitclient.h>
 
 class CZapitSetup : public CMenuTarget
 {
 	private:
-
-		CFrameBuffer *frameBuffer;
-
-		int x, y, width, height, hheight, mheight, selected;
+		int width, selected;
 
 		neutrino_locale_t menue_title;
 		std::string menue_icon;
 
-		void hide();
 		void showSetup();
 		void Init();
 
@@ -64,13 +59,13 @@ class CZapitSetup : public CMenuTarget
 
 		int exec(CMenuTarget* parent, const std::string & actionKey);
 		void InitZapitChannelHelper(CZapitClient::channelsMode mode);
-
 };
 
 class CZapitSetupNotifier : public CChangeObserver
 {
 	private:
 		CMenuForwarder* toDisable[2];
+
 	public:
 		CZapitSetupNotifier(CMenuForwarder*, CMenuForwarder*);
 		bool changeNotify(const neutrino_locale_t OptionName, void * data);

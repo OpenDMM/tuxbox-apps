@@ -34,12 +34,9 @@
 #include <gui/widget/menue.h>
 #include <gui/widget/icons.h>
 
-#include <driver/framebuffer.h>
-
 #include <system/setting_helpers.h>
 
 #include <string>
-
 
 class CKeybindSetup : public CMenuTarget
 {
@@ -67,26 +64,19 @@ class CKeybindSetup : public CMenuTarget
 			MAX_NUM_KEYNAMES
 		};
 
-		
-		CFrameBuffer *frameBuffer;
 		CKeySetupNotifier      *keySetupNotifier;
-		
-		int x, y, width, height, menue_width, hheight, mheight, selected;
+
+		int width, selected;
 
 		neutrino_locale_t menue_title;
 		std::string menue_icon;
 
-		void hide();
 		void showSetup();
 
-
 	public:	
-		
-		
 		CKeybindSetup(const neutrino_locale_t title = NONEXISTANT_LOCALE, const char * const IconName = NULL);
 		~CKeybindSetup();
 		int exec(CMenuTarget* parent, const std::string & actionKey);
 };
-
 
 #endif

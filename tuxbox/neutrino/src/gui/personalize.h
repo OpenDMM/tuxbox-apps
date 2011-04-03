@@ -38,7 +38,6 @@ Foundation, Inc., 675 Mass Ave, Cambridge, MA 02139, USA
 #include <string>
 #include <vector>
 #include <configfile.h>
-#include <driver/framebuffer.h>
 #include <system/lastchannel.h>
 #include <system/setting_helpers.h>
 

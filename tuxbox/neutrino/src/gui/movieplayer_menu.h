@@ -33,8 +33,6 @@
 
 #include <gui/widget/menue.h>
 
-#include <driver/framebuffer.h>
-
 #include "movieplayer.h"
 
 #include <string>
@@ -42,11 +40,8 @@
 class CMoviePlayerMenue : public CMenuTarget
 {
 	private:
-		CFrameBuffer *frameBuffer;
+		int width, selected;
 
-		int x, y, width, height, hheight, mheight, selected;
-
-		void hide();
 		void showMoviePlayerMenue();
 
 	public:	
@@ -54,6 +49,5 @@ class CMoviePlayerMenue : public CMenuTarget
 		~CMoviePlayerMenue();
 		int exec(CMenuTarget* parent, const std::string & actionKey);
 };
-
 
 #endif

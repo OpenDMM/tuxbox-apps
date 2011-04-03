@@ -36,22 +36,15 @@
 
 #include <gui/widget/menue.h>
 
-#include <driver/framebuffer.h>
-
 #include <system/setting_helpers.h>
 
 #include <string>
 
-
 class COsdLangSetup : public CMenuTarget
-{	
+{
 	private:
+		int width, selected;
 
-		CFrameBuffer *frameBuffer;
-		
-		int x, y, width, height, menue_width, hheight, mheight, selected;
-
-		void hide();
 		void showSetup();
 
 	public:

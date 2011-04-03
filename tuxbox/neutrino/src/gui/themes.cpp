@@ -51,14 +51,8 @@
 CThemes::CThemes()
 : themefile('\t')
 {
-	frameBuffer = CFrameBuffer::getInstance();
-	width 	= w_max (500, 100);
-	hheight = g_Font[SNeutrinoSettings::FONT_TYPE_MENU_TITLE]->getHeight();
-	mheight = g_Font[SNeutrinoSettings::FONT_TYPE_MENU]->getHeight();
-	height = hheight+13*mheight+ 10;
+	width = w_max (500, 100);
 	selected = -1;
-	x	= getScreenStartX (width);
-	y	= getScreenStartY (height);
 
 	hasThemeChanged = false;
 }
@@ -98,11 +92,6 @@ int CThemes::exec(CMenuTarget* parent, const std::string & actionKey)
 
 	Show();
 	return res;
-}
-
-void CThemes::hide()
-{
-	frameBuffer->paintBackgroundBoxRel(x, y, width, height);
 }
 
 void CThemes::readThemes(CMenuWidget &themes)

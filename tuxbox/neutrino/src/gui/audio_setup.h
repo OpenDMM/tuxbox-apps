@@ -33,26 +33,19 @@
 
 #include <gui/widget/menue.h>
 
-#include <driver/framebuffer.h>
-
 #include <string>
 
 class CAudioSetup : public CMenuTarget
 {
 	private:
-		CFrameBuffer *frameBuffer;
-				
-		int x, y, width, height, menue_width, hheight, mheight, selected;
+		int width, selected;
 
-		void hide();
 		void showAudioSetup();
-
 
 	public:	
 		CAudioSetup();
 		~CAudioSetup();
 		int exec(CMenuTarget* parent, const std::string & actionKey);
 };
-
 
 #endif

@@ -53,15 +53,8 @@
 
 CAudioPlayerSetup::CAudioPlayerSetup()
 {
-	frameBuffer = CFrameBuffer::getInstance();
-
 	width = w_max (500, 100);
-	hheight = g_Font[SNeutrinoSettings::FONT_TYPE_MENU_TITLE]->getHeight();
-	mheight = g_Font[SNeutrinoSettings::FONT_TYPE_MENU]->getHeight();
-	height = hheight+13*mheight+ 10;
 	selected = -1;
-	x = getScreenStartX (width);
-	y = getScreenStartY (height);
 }
 
 CAudioPlayerSetup::~CAudioPlayerSetup()
@@ -97,11 +90,6 @@ int CAudioPlayerSetup::exec(CMenuTarget* parent, const std::string &actionKey)
 	showAudioPlayerSetup();
 	
 	return res;
-}
-
-void CAudioPlayerSetup::hide()
-{
-	frameBuffer->paintBackgroundBoxRel(x,y, width,height);
 }
 
 #define MESSAGEBOX_NO_YES_OPTION_COUNT 2

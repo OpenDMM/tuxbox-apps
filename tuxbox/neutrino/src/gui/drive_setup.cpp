@@ -508,11 +508,6 @@ int CDriveSetup::exec(CMenuTarget* parent, const string &actionKey)
 	return res;
 }
 
-void CDriveSetup::hide()
-{
-	frameBuffer->paintBackgroundBoxRel(x,y, width,height);
-}
-
 // init menue
 void CDriveSetup::Init()
 {
@@ -4941,7 +4936,6 @@ void CDriveSetup::showHelp()
 		helpbox.addLine(lines[i]);
 	}
 
-	hide();
 	helpbox.show(LOCALE_SETTINGS_HELP);
 }
 

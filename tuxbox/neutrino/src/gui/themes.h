@@ -26,17 +26,15 @@
 #define __cthemes__
 #include <string>
 #include <configfile.h>
-#include <driver/framebuffer.h>
 #include <system/setting_helpers.h>
 
-class CThemes : public CMenuTarget, CChangeObserver
+class CThemes : public CMenuTarget
 {
 	private:
-		CFrameBuffer *frameBuffer;
 		CConfigFile themefile;
 		CColorSetupNotifier *notifier;
 
-		int x, y, width, height, hheight, mheight, selected;
+		int width, selected;
 		int oldThemeValues[40];
 
 		bool hasThemeChanged;
@@ -49,7 +47,6 @@ class CThemes : public CMenuTarget, CChangeObserver
 
 	public:
 		CThemes();
-		void hide();
 		void setupDefaultColors();
 		int exec(CMenuTarget* parent, const std::string & actionKey);
 };

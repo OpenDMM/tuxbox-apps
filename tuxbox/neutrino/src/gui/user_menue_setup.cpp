@@ -50,29 +50,16 @@
 
 CUserMenuSetup::CUserMenuSetup(neutrino_locale_t menue_title, int menue_button)
 {
-	frameBuffer = CFrameBuffer::getInstance();
-
 	local = menue_title;
 	button = menue_button;
 
 	width = w_max (500, 100);
-	hheight = g_Font[SNeutrinoSettings::FONT_TYPE_MENU_TITLE]->getHeight();
-	mheight = g_Font[SNeutrinoSettings::FONT_TYPE_MENU]->getHeight();
-	height 	= hheight+13*mheight+ 10;
-	x	= getScreenStartX (width);
-	y	= getScreenStartY (height);
-
 	selected = -1;
 }
 
 CUserMenuSetup::~CUserMenuSetup()
 {
 
-}
-
-void CUserMenuSetup::hide()
-{
-	frameBuffer->paintBackgroundBoxRel(x,y, width,height);
 }
 
 #define USERMENU_ITEM_OPTION_COUNT SNeutrinoSettings::ITEM_MAX

@@ -33,22 +33,16 @@
 
 #include <gui/widget/menue.h>
 
-#include <driver/framebuffer.h>
-
 #include <string>
 
- class CLcdSetup : public CMenuTarget
-{	
+class CLcdSetup : public CMenuTarget
+{
 	private:
-
-		CFrameBuffer *frameBuffer;
-		
-		int x, y, width, height, menue_width, hheight, mheight, selected;
+		int width, selected;
 
 		neutrino_locale_t menue_title;
 		std::string menue_icon;
 
-		void hide();
 		void showSetup();
 
 	public:
@@ -56,6 +50,5 @@
 		~CLcdSetup();
 		int exec(CMenuTarget* parent, const std::string & actionKey);
 };
-
 
 #endif

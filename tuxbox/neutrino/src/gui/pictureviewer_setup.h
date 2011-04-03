@@ -33,27 +33,19 @@
 
 #include <gui/widget/menue.h>
 
-#include <driver/framebuffer.h>
-
-
 #include <string>
 
 class CPictureViewerSetup : public CMenuTarget
 {
 	private:
-		CFrameBuffer *frameBuffer;
-		
-		int x, y, width, height, menue_width, hheight, mheight, selected;
+		int width, selected;
 
-		void hide();
 		void showPictureViewerSetup();
-
 
 	public:	
 		CPictureViewerSetup();
 		~CPictureViewerSetup();
 		int exec(CMenuTarget* parent, const std::string & actionKey);
 };
-
 
 #endif

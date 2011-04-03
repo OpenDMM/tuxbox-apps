@@ -29,33 +29,24 @@
 
 #include <gui/widget/menue.h>
 
-#include <driver/framebuffer.h>
-
 #include <system/settings.h>
 
 #include <string>
 
- class CMiscMenue : public CMenuTarget
-{	
+class CMiscMenue : public CMenuTarget
+{
 	private:
-
-		CFrameBuffer *frameBuffer;
-		
-		int x, y, width, height, menue_width, hheight, mheight, selected;
+		int width, selected;
 
 		neutrino_locale_t menue_title;
 		std::string menue_icon;
 
-		void hide();
 		void showMenue();
-
 
 	public:
 		CMiscMenue(const neutrino_locale_t title = NONEXISTANT_LOCALE, const char * const IconName = NULL);
 		~CMiscMenue();
 		int exec(CMenuTarget* parent, const std::string & actionKey);
-		
 };
-
 
 #endif

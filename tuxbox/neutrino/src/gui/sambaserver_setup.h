@@ -36,8 +36,6 @@
 #include <gui/widget/menue.h>
 #include <gui/widget/icons.h>
 
-#include <driver/framebuffer.h>
-
 #include <string>
 
 #define NMBD		"nmbd"
@@ -52,10 +50,7 @@
 class CSambaSetup : public CMenuTarget
 {
 	private:
-
-		CFrameBuffer *frameBuffer;
-
-		int x, y, width, height, hheight, mheight, selected;
+		int width, selected;
 
 		neutrino_locale_t menue_title;
 		std::string menue_icon;
@@ -65,7 +60,6 @@ class CSambaSetup : public CMenuTarget
 		//helper
 		std::string upperString(const std::string& to_upper_str);
 
-		void hide();
 		void showSambaSetup();
 		void Init();
 
@@ -87,7 +81,6 @@ class CSambaSetup : public CMenuTarget
 		bool killSamba();
 
 		std::string getErrMsg() {return err_msg;};
-
 };
 
 class CSambaOnOffNotifier : public CChangeObserver
@@ -100,6 +93,5 @@ class CSambaOnOffNotifier : public CChangeObserver
 		inline CSambaOnOffNotifier(const char * file_to_modify);
 		bool changeNotify(const neutrino_locale_t, void * data);
 };
-
 
 #endif
