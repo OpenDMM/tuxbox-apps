@@ -5008,7 +5008,7 @@ void CDriveSetup::loadDriveSettings()
 	{
 		//spindown
 		sprintf(c_opt[OPT_SPINDOWN], "drive_%d_spindown", i);
-		strcpy(d_settings.drive_spindown[i], configfile.getString(c_opt[OPT_SPINDOWN],"0").c_str());
+		strcpy(d_settings.drive_spindown[i], configfile.getString(c_opt[OPT_SPINDOWN],"300").c_str());
 		old_drive_spindown[i] = static_cast <string> (d_settings.drive_spindown[i]);
 
 		//write_cache
