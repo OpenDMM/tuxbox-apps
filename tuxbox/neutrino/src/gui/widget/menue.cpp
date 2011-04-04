@@ -475,7 +475,7 @@ void CMenuWidget::paint()
 	if(hheight+itemHeightTotal < height)
 		height=hheight+itemHeightTotal;
 
-	y= ( ( ( getEndY()- getStartY() ) - height) >> 1 ) + getStartY();
+	y= ( ( ( g_settings.screen_EndY- g_settings.screen_StartY ) - height) >> 1 ) + g_settings.screen_StartY;
 	x= ( ( ( g_settings.screen_EndX- g_settings.screen_StartX ) - width ) >> 1 ) + g_settings.screen_StartX;
 
 	int sb_width;
