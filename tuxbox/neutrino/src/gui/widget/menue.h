@@ -319,6 +319,7 @@ class CMenuOptionLanguageChooser : public CMenuItem
 class CMenuWidget : public CMenuTarget
 {
 	protected:
+		neutrino_locale_t name;
 		std::string		nameString;
 		CFrameBuffer		*frameBuffer;
 		std::vector<CMenuItem*>	items;
@@ -349,7 +350,7 @@ class CMenuWidget : public CMenuTarget
 		virtual void paint();
 		virtual void hide();
 		virtual int exec(CMenuTarget* parent, const std::string & actionKey);
-		virtual std::string getName(){ return nameString;};
+		virtual std::string getName();
 		virtual void setPreselected(const int &Preselected){ preselected = Preselected; };
 		virtual int getSelected(){ return selected; };
 };

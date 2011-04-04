@@ -134,6 +134,7 @@ class CLCD
 
 		static CLCD* getInstance();
 		void init(const char *fontfile, const char *fontfile2 = NULL, const char *fontfile3 = NULL);
+		void reinit(const char *fontfile, const char *fontfile2 = NULL, const char *fontfile3 = NULL);
 
 		void setMode(const MODES m, const char * const title = "");
 		MODES getMode() { return mode; };

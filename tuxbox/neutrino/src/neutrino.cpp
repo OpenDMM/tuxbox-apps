@@ -1690,9 +1690,9 @@ bool CNeutrinoApp::ChangeFonts(int unicode_locale)
 	if (font.is_unicode != unicode_locale)
 	{
 		font = predefined_font[unicode_locale];
-		CLCD::getInstance()->init(predefined_lcd_font[unicode_locale][0],
-		                          predefined_lcd_font[unicode_locale][1],
-		                          predefined_lcd_font[unicode_locale][2]);
+		CLCD::getInstance()->reinit(predefined_lcd_font[unicode_locale][0],
+		                            predefined_lcd_font[unicode_locale][1],
+		                            predefined_lcd_font[unicode_locale][2]);
 		SetupFonts();
 	}
 	return true;
