@@ -250,6 +250,11 @@ void CMenuWidget::resetWidget()
 	selected=-1;
 }
 
+void CMenuWidget::insertItem(const uint& item_id, CMenuItem* menuItem)
+{
+	items.insert(items.begin()+item_id, menuItem);
+}
+
 bool CMenuWidget::hasItem()
 {
 	return !items.empty();
