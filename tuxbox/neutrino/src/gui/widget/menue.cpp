@@ -243,6 +243,13 @@ void CMenuWidget::addItem(CMenuItem* menuItem, const bool defaultselected)
 	items.push_back(menuItem);
 }
 
+void CMenuWidget::resetWidget()
+{
+	items.clear();
+	page_start.clear();
+	selected=-1;
+}
+
 bool CMenuWidget::hasItem()
 {
 	return !items.empty();
@@ -512,7 +519,7 @@ void CMenuWidget::paintItems()
 	for (unsigned int count = 0; count < items.size(); count++)
 	{
 		CMenuItem* item = items[count];
-
+	
 		if ((count >= page_start[current_page]) &&
 		    (count < page_start[current_page + 1]))
 		{
