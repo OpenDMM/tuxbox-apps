@@ -346,6 +346,7 @@ class CMenuWidget : public CMenuTarget
 		~CMenuWidget();
 
 		virtual void addItem(CMenuItem* menuItem, const bool defaultselected = false);
+		virtual void addIntroItems(neutrino_locale_t subhead_text = NONEXISTANT_LOCALE, neutrino_locale_t section_text = NONEXISTANT_LOCALE);
 		bool hasItem();
 		virtual void paint();
 		virtual void hide();

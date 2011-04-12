@@ -131,8 +131,10 @@ class CPersonalizeGui : public CMenuTarget
 		void 	addWidgets(const struct mn_widget_t * const widget, const int& widget_count);
 		int 	getWidgetCount() {return widget_count;};
 		int 	getWidgetId(CMenuWidget *widget);
-		void 	addItem(CMenuWidget *menu, CMenuItem *menu_Item, const int *personalize_mode = NULL, const bool defaultselected = false, const int& item_mode = PERSONALIZE_SHOW_AS_ITEM_OPTION);
+		void 	addItem(CMenuWidget *widget, CMenuItem *menu_Item, const int *personalize_mode = NULL, const bool defaultselected = false, const int& item_mode = PERSONALIZE_SHOW_AS_ITEM_OPTION);
 		void 	addItem(const int& widget_id, CMenuItem *menu_Item, const int *personalize_mode = NULL, const bool defaultselected = false, const int& item_mode = PERSONALIZE_SHOW_AS_ITEM_OPTION);
+		void	addIntroItems(CMenuWidget *widget);
+		void	addIntroItems(const int& widget_id);
 		void 	addSeparator(CMenuWidget &menu, const neutrino_locale_t locale_text = NONEXISTANT_LOCALE, const int& item_mode = PERSONALIZE_SHOW_AS_ITEM_OPTION);
 		void 	addSeparator(const int& widget_id, const neutrino_locale_t locale_text = NONEXISTANT_LOCALE, const int& item_mode = PERSONALIZE_SHOW_AS_ITEM_OPTION);
 		void 	addPersonalizedItems();

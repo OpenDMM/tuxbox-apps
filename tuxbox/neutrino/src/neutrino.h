@@ -236,8 +236,6 @@ class CNeutrinoApp : public CMenuTarget, CChangeObserver
 		void InitMenuSettings();
 		void InitMenuService();
 
-		void addMenueIntroItems(CMenuWidget &item);
-
 		void SetupFrameBuffer();
 		void SelectAPID();
 		void CmdParser(int argc, char **argv);
