@@ -3476,7 +3476,8 @@ void CNeutrinoApp::setVolume(const neutrino_msg_t key, const bool bDoPaint)
 			frameBuffer->SaveScreen(x, y, dx, dy, pixbuf);
 		frameBuffer->paintBoxRel(           x,   y,  dx,     dy, COL_INFOBAR_PLUS_1, r);
 		frameBuffer->paintBoxRel(x+iw+r/2-b/2, y+b, w+b, dy-2*b, COL_SILVER);
-		int icon_h = frameBuffer->getIconHeight(NEUTRINO_ICON_VOLUME);	
+		int icon_w = 0, icon_h = 0;
+		frameBuffer->getIconSize(NEUTRINO_ICON_VOLUME, &icon_w, &icon_h);	
 		frameBuffer->paintIcon(NEUTRINO_ICON_VOLUME, x+b+r/2, y+(dy/2)-(icon_h/2), COL_INFOBAR);
 	}
 

@@ -1550,8 +1550,8 @@ void EpgPlus::paintHint()
 	std::string EPG_Plus;
 	EPG_Plus = g_Locale->getText(LOCALE_EPGPLUS_SHOW);
 
-	int iconh = frameBuffer->getIconHeight(NEUTRINO_ICON_BUTTON_DBOX);
-	int iconw = frameBuffer->getIconWidth(NEUTRINO_ICON_BUTTON_DBOX);	
+	int iconw = 0, iconh = 0;
+	frameBuffer->getIconSize(NEUTRINO_ICON_BUTTON_DBOX, &iconw, &iconh);	
 
 	int epgplus_len = header->font->getRenderWidth(EPG_Plus, true); // UTF-8
 	int theight     = std::max(iconh, header->font->getHeight()) + 2;

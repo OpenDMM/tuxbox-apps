@@ -72,9 +72,8 @@ void paintButtons(CFrameBuffer * const frameBuffer, Font * const font,
 		unsigned int real_textwidth = font->getRenderWidth(buttontext, true);
 		
 		// get height/width of icon
-		iconh =  frameBuffer->getIconHeight(icon);
-		iconw = frameBuffer->getIconWidth(icon);
-		
+		frameBuffer->getIconSize(icon, &iconw, &iconh);
+
 		// calculate maximal witdh of icons
 		max_iconw = max_iconw>iconw ? max_iconw : iconw; 
 	
