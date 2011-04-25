@@ -1081,8 +1081,27 @@ int CMovieBrowser::exec(const char* path)
 				CNeutrinoApp::getInstance()->exec(NULL, actionKey);
 				paint();
 
+				if (m_movieSelectionHandler != NULL)
+					m_movieInfo.loadMovieInfo(m_movieSelectionHandler);
+
+			 	m_prevBrowserSelection = m_currentBrowserSelection;
+				m_prevRecordSelection = m_currentRecordSelection;
+				m_prevPlaySelection = m_currentPlaySelection;
+
+				refreshBrowserList();	
+				refreshLastPlayList();	
+				refreshLastRecordList();
+
+			 	m_currentBrowserSelection = m_prevBrowserSelection;
+				m_currentRecordSelection = m_prevRecordSelection;
+				m_currentPlaySelection = m_prevPlaySelection;
+
+				m_pcBrowser->setSelectedLine(m_currentBrowserSelection);
+				m_pcLastRecord->setSelectedLine(m_currentRecordSelection);
+				m_pcLastPlay->setSelectedLine(m_currentPlaySelection);
+
+				refreshTitle();
 				onSetGUIWindow(m_settings.gui);
-				refresh();
 #endif
 			}
 			else if (msg == CRCInput::RC_home)
