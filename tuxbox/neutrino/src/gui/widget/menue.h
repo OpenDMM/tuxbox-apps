@@ -328,7 +328,7 @@ class CMenuWidget : public CMenuTarget
 
 		int			width;
 		int			height;
-		int         wanted_height;
+		int			wanted_height;
 		int			x;
 		int			y;
 		int			preselected;
@@ -350,6 +350,10 @@ class CMenuWidget : public CMenuTarget
 		bool hasItem();
 		void resetWidget();
 		void insertItem(const uint& item_id, CMenuItem* menuItem);
+		void removeItem(const uint& item_id);
+		int getItemId(CMenuItem* menuItem);
+		int getItemsCount(){return items.size();};
+
 		virtual void paint();
 		virtual void hide();
 		virtual int exec(CMenuTarget* parent, const std::string & actionKey);

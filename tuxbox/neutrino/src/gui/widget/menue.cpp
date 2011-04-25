@@ -254,9 +254,23 @@ void CMenuWidget::insertItem(const uint& item_id, CMenuItem* menuItem)
 	items.insert(items.begin()+item_id, menuItem);
 }
 
+void CMenuWidget::removeItem(const uint& item_id)
+{
+	items.erase(items.begin()+item_id);
+}
+
 bool CMenuWidget::hasItem()
 {
 	return !items.empty();
+}
+
+int CMenuWidget::getItemId(CMenuItem* menuItem)
+{
+	for (uint i= 0; i< items.size(); i++)
+	{
+		if (items[i] == menuItem)
+			return i;
+	}
 }
 
 std::string CMenuWidget::getName()
