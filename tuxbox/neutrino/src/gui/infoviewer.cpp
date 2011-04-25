@@ -718,14 +718,8 @@ requests to sectionsd.
 			}
 			else if ( msg == NeutrinoMessages::EVT_TIMESET )
 			{
-				// Handle anyway!
-				neutrino->handleMsg(msg, data);
-				if (!tsmode)
-				{
-					g_RCInput->postMsg( NeutrinoMessages::SHOW_INFOBAR, 0 );
-					hideIt = false;
-					res = messages_return::cancel_all;
-				}
+				/* handle timeset event in upper layer, ignore here */
+				res = neutrino->handleMsg (msg, data);
 			}
 			else if ( ( msg == NeutrinoMessages::EVT_TIMER ) && ( data == sec_timer_id ) )
 			{
