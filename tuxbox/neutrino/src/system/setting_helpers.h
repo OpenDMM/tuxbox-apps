@@ -1,6 +1,3 @@
-#ifndef __setting_helpers__
-#define __setting_helpers__
-
 /*
 	$Id$
 
@@ -326,4 +323,4 @@ class CNetAdapter
 
 
 #endif
-#endif
+
