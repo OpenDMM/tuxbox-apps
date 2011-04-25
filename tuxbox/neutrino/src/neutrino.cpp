@@ -3951,7 +3951,7 @@ void CNeutrinoApp::startNextRecording()
 *          CNeutrinoApp -  exec, menuitem callback (shutdown)                         *
 *                                                                                     *
 **************************************************************************************/
-int CNeutrinoApp::exec(CMenuTarget* parent, const std::string & actionKey)
+int CNeutrinoApp::exec(CMenuTarget* /*parent*/, const std::string & actionKey)
 {
 	//	printf("ac: %s\n", actionKey.c_str());
 	int returnval = menu_return::RETURN_REPAINT;
