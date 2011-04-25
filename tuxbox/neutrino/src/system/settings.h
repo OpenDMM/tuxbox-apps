@@ -248,7 +248,6 @@ struct SNeutrinoSettings
 	int personalize_mediaplayer;
 	int personalize_driver;
 	int personalize_misc;
-	int personalize;
 
 	//recording
 	int  recording_type;
