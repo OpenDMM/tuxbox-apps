@@ -355,6 +355,7 @@ class CMenuWidget : public CMenuTarget
 		void removeItem(const uint& item_id);
 		int getItemId(CMenuItem* menuItem);
 		int getItemsCount(){return items.size();};
+		CMenuItem* getItem(const uint& item_id);
 
 		virtual void paint();
 		virtual void hide();

@@ -275,6 +275,17 @@ int CMenuWidget::getItemId(CMenuItem* menuItem)
 	}
 }
 
+CMenuItem* CMenuWidget::getItem(const uint& item_id)
+{
+	for (uint i= 0; i< items.size(); i++)
+	{
+		if (i == item_id)
+			return items[i];
+	}
+	
+	return NULL;
+}
+
 std::string CMenuWidget::getName()
 {
 	if (name != NONEXISTANT_LOCALE)
