@@ -106,7 +106,9 @@ CInfoViewer::CInfoViewer()
 	frameBuffer      = CFrameBuffer::getInstance();
 
 	BoxStartX        = BoxStartY = BoxEndX = BoxEndY = 0;
+#ifdef ENABLE_RADIOTEXT
 	rt_x             = rt_y      = rt_w    = rt_h    = 0;
+#endif
 	recordModeActive = false;
 	is_visible       = false;
 	showButtonBar    = false;
