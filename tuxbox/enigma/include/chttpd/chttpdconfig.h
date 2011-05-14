@@ -26,6 +26,7 @@
 #include <sys/socket.h>
 #include <netinet/in.h>
 #include <config.h>
+#include <stdlib.h>
 #include <string>
 #include <configfile.h>
 

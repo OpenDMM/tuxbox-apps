@@ -159,7 +159,7 @@ extern unsigned char *proxyadress, *proxyuserpwd;
 extern struct fb_fix_screeninfo fix_screeninfo;
 extern struct fb_var_screeninfo var_screeninfo;
 
-#if HAVE_DVB_API_VERSION == 3
+#if HAVE_DVB_API_VERSION >= 3
 
 struct input_event ev;
 

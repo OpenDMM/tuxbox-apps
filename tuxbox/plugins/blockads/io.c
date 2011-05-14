@@ -22,7 +22,7 @@
 #include <stdio.h>
 #include "blockads.h"
 
-#if HAVE_DVB_API_VERSION == 3
+#if HAVE_DVB_API_VERSION >= 3
 
 int GetRCCode()
 {

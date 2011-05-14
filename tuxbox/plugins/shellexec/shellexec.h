@@ -211,7 +211,7 @@ extern int instance;
 int get_instance(void);
 void put_instance(int pval);
 
-#if HAVE_DVB_API_VERSION == 3
+#if HAVE_DVB_API_VERSION >= 3
 
 struct input_event ev;
 

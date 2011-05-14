@@ -305,7 +305,7 @@ int ControlDaemon(int command)
  \return 		: remote-control or keyboard-code
 */
 
-#if HAVE_DVB_API_VERSION == 3									// dBox
+#if HAVE_DVB_API_VERSION >= 3									// dBox
 
 int GetRCCode()
 {
@@ -2784,7 +2784,7 @@ void plugin_exec(PluginParam *par)
 
 	// remove last key & set rc to blocking mode
 	// dBox2 code
-#if HAVE_DVB_API_VERSION == 3
+#if HAVE_DVB_API_VERSION >= 3
 	read(rc, &ev, sizeof(ev));
 //	fcntl(rc, F_SETFL, fcntl(rc, F_GETFL) &~ O_NONBLOCK);
 	fcntl(rc, F_SETFL, fcntl(rc, F_GETFL) | O_NONBLOCK);

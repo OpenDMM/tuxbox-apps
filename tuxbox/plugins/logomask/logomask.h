@@ -143,7 +143,7 @@ struct fb_var_screeninfo var_screeninfo;
 int startx, starty, sx, ex, sy, ey;
 char online;
 
-#if HAVE_DVB_API_VERSION == 3
+#if HAVE_DVB_API_VERSION >= 3
 
 struct input_event ev;
 

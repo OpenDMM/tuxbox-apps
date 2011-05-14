@@ -91,6 +91,7 @@ void stmenu::rc_event(unsigned short key)
 {
 	CTimer::getInstance()->start(atoi(config->timeoutValue.c_str()));
 	eString skin, pic;
+	unsigned int pos = 0;
 
 	switch (key)
 	{
@@ -117,7 +118,7 @@ void stmenu::rc_event(unsigned short key)
 			if (skinIndex > skinMax)
 				skinIndex = 0;
 			skin = bmgr->skinList[skinIndex];
-			unsigned int pos = skin.find_last_of('/');
+			pos = skin.find_last_of('/');
 			config->skinName = skin.right(skin.length() - pos - 1);
 			config->skinPath = skin.left(pos);
 			loadSkin(skin);

@@ -409,7 +409,7 @@ bool ePictureViewer::ShowImage(const std::string& filename, bool unscaled)
 	{
 		fbClass::getInstance()->lock();
 		fbClass::getInstance()->SetMode(720, 576, 16);
-#if HAVE_DVB_API_VERSION == 3
+#if HAVE_DVB_API_VERSION >= 3
 		fbClass::getInstance()->setTransparency(0);
 #endif
 	}
@@ -457,7 +457,7 @@ int ePictureViewer::eventHandler(const eWidgetEvent &evt)
 				{
 					fbClass::getInstance()->lock();
 					fbClass::getInstance()->SetMode(720, 576, 16);
-#if HAVE_DVB_API_VERSION == 3
+#if HAVE_DVB_API_VERSION >= 3
 					fbClass::getInstance()->setTransparency(0);
 #endif
 				}

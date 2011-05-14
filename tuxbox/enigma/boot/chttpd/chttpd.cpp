@@ -26,6 +26,7 @@
 #include <signal.h>
 #include <sys/types.h>
 #include <stdio.h>
+#include <string.h>
 #include <config.h>
 #include "webserver.h"
 #include "debug.h"

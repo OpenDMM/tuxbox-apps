@@ -26,6 +26,7 @@
 #include <fcntl.h>
 #include <sys/sendfile.h>
 #include <sys/socket.h>
+#include <string.h>
 #include <unistd.h>
 #include "debug.h"
 #include "helper.h"

@@ -29,7 +29,7 @@ int RCTranslate(int code);
 time_t t1,t2;
 clock_t tk1=0, tk2;
 
-#if HAVE_DVB_API_VERSION == 3
+#if HAVE_DVB_API_VERSION >= 3
 __u16 rc_last_code = KEY_RESERVED;
 
 
@@ -173,7 +173,7 @@ int RCTranslate(int code)
 	
 }
 
-#if HAVE_DVB_API_VERSION == 3
+#if HAVE_DVB_API_VERSION >= 3
 int GetCode(void)
 {
 	if(!RCKeyPressed() || (get_instance()>instance))
