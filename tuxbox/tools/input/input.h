@@ -100,7 +100,7 @@ struct fb_fix_screeninfo fix_screeninfo;
 struct fb_var_screeninfo var_screeninfo;
 
 int startx, starty, sx, ex, sy, ey;
-extern unsigned sc[8], tc[8];
+static unsigned sc[8], tc[8];
 extern char *butmsg[3];
 extern int buttons,selection;
 

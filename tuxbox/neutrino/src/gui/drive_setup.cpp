@@ -185,7 +185,7 @@ typedef struct data_cyl_t
 
 struct data_cyl_t data_partition[MAXCOUNT_DRIVE][MAXCOUNT_PARTS] = 
 {
-	{ 0, 0, 0, 0 }, 
+	{ { 0, 0, 0, 0 } }
 };
 
 CDriveSetup::CDriveSetup():configfile('\t')
@@ -3603,6 +3603,7 @@ bool CDriveSetup::mkPartition(const int& device_num /*MASTER||SLAVE*/, const act
 	switch (action)
 	{
 		case ADD:
+			{
 			unsigned long long cyl_max = device_cylcount[device_num]; 		//requesting max cylinders of device
 			unsigned long long cyl = calcCyl(device_num, size);	//calc cylinders from user definied size
 			unsigned long long end_cyl;
@@ -3650,6 +3651,7 @@ bool CDriveSetup::mkPartition(const int& device_num /*MASTER||SLAVE*/, const act
 				s_out += "82\n";
 			}
 			break;
+			}
 		case DELETE:
 			if (!unmountPartition(device_num, part_number))
 			{

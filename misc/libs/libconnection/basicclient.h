@@ -46,6 +46,8 @@ class CBasicClient
 	void close_connection();
 	
 	CBasicClient();
+
+	virtual ~CBasicClient(){};
 };
 
 #endif

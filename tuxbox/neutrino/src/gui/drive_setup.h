@@ -554,7 +554,7 @@ class CDriveSetup : public CMenuTarget
 		std::string getHddTemp(const int& device_num /*MASTER || SLAVE || MMCARD*/); //hdd temperature
 		std::string getModelName(const std::string& mountpoint);
 		std::string getDriveSetupVersion();
-		std::string CDriveSetup::getErrMsg();
+		std::string getErrMsg();
 	#ifdef ENABLE_SAMBASERVER
 		std::string getSmbConfFilePath();
 		bool haveMountedSmbShares();

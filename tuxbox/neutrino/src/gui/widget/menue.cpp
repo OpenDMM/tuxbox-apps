@@ -388,9 +388,11 @@ int CMenuWidget::exec(CMenuTarget* parent, const std::string &)
 				}
 
 				case CRCInput::RC_right:
+				{
 					CMenuItem* sel_item = items[selected];
 					if(sel_item == GenericMenuBack || sel_item == GenericMenuCancel)
 						break;
+				}
 				case CRCInput::RC_ok:
 					//exec this item...
 					if (hasItem())
