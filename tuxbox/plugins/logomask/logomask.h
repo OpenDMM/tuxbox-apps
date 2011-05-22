@@ -43,6 +43,9 @@
 #include FT_FREETYPE_H
 #include FT_CACHE_H
 #include FT_CACHE_SMALL_BITMAPS_H
+#if (FREETYPE_MAJOR > 2 || (FREETYPE_MAJOR == 2 && (FREETYPE_MINOR > 1 || (FREETYPE_MINOR == 1 && FREETYPE_PATCH >= 8))))
+#define FT_NEW_CACHE_API
+#endif
 
 //rc codes
 
@@ -117,10 +120,10 @@ FT_Library		library;
 FTC_Manager		manager;
 FTC_SBitCache		cache;
 FTC_SBit		sbit;
-#if FREETYPE_MAJOR == 2 && FREETYPE_MINOR == 0
-FTC_Image_Desc		desc;
-#else
+#if FT_NEW_CACHE_API
 FTC_ImageTypeRec	desc;
+#else
+FTC_Image_Desc		desc;
 #endif
 FT_Face			face;
 FT_UInt			prev_glyphindex;
