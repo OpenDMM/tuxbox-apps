@@ -427,12 +427,16 @@ unsigned int alpha;
 
 		use_kerning = FT_HAS_KERNING(face);
 #ifdef FT_NEW_CACHE_API
-		desc.face_id = (char*)FONT;
-		desc.flags = FT_LOAD_MONOCHROME;
+	desc.face_id = (char*)FONT;
 #else
 		desc.font.face_id = FONT;
-		desc.image_type = ftc_image_mono;
 #endif
+#if FREETYPE_MAJOR == 2 && FREETYPE_MINOR == 0
+		desc.image_type = ftc_image_mono;
+#else
+		desc.flags = FT_LOAD_MONOCHROME;
+#endif
+
 	//init backbuffer
 
 		if(!(lbb = malloc(var_screeninfo.xres*var_screeninfo.yres)))

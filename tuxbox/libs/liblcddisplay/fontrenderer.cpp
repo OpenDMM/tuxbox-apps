@@ -35,6 +35,11 @@
 #include <ft2build.h>
 #include FT_FREETYPE_H
 
+/* tested with freetype 2.3.9, and 2.1.4 */
+#if FREETYPE_MAJOR >= 2 && FREETYPE_MINOR >= 3
+#define FT_NEW_CACHE_API
+#endif
+
 FT_Error LcdFontRenderClass::myFTC_Face_Requester(FTC_FaceID  face_id,
                             FT_Library  library,
                             FT_Pointer  request_data,
