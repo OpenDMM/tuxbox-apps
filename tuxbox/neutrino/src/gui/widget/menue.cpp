@@ -273,6 +273,8 @@ int CMenuWidget::getItemId(CMenuItem* menuItem)
 		if (items[i] == menuItem)
 			return i;
 	}
+	
+	return 0;
 }
 
 CMenuItem* CMenuWidget::getItem(const uint& item_id)
