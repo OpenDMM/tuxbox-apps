@@ -103,6 +103,7 @@ SIevent::SIevent(const SIevent &e)
 	ratings=e.ratings;
 	linkage_descs=e.linkage_descs;
 	running=e.running;
+	vps = e.vps;
 }
 
 int SIevent::saveXML(FILE *file, const char *serviceName) const
