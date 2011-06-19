@@ -6886,13 +6886,10 @@ int eit_set_update_filter(int *fd)
 	memset((void*)&dsfp, 0, sizeof(struct dmx_sct_filter_params));
 
 	unsigned char cur_eit = dmxCN.get_eit_version();
-	/* tone down to dprintf later */
-	printdate_ms(stderr);
-	fprintf(stderr, "eit_set_update_filter, servicekey = 0x"
-			PRINTF_CHANNEL_ID_TYPE_NO_LEADING_ZEROS
-			", current version %d\n",
-			messaging_current_servicekey,
-			cur_eit);
+	xprintf("eit_set_update_filter, servicekey = 0x"
+		PRINTF_CHANNEL_ID_TYPE_NO_LEADING_ZEROS
+		", current version 0x%x got events %d\n",
+		messaging_current_servicekey, cur_eit, messaging_have_CN);
 
 	if (cur_eit == 0xff) {
 		if (*fd >= 0)
