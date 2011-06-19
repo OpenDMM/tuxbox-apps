@@ -101,6 +101,7 @@
 //#define MAX_EVENTS 6000
 static unsigned int max_events;
 // sleep 5 minutes
+//#define HOUSEKEEPING_SLEEP (5 * 60)
 #define HOUSEKEEPING_SLEEP (30 * 60)
 // meta housekeeping after XX housekeepings - every 24h -
 #define META_HOUSEKEEPING (24 * 60 * 60) / HOUSEKEEPING_SLEEP
@@ -951,6 +952,7 @@ static void addEvent(const SIevent &evt, const unsigned table_id, const time_t z
 	unlockEvents();
 }
 
+#ifdef ENABLE_PPT
 // Fuegt zusaetzliche Zeiten in ein Event ein
 static void addEventTimes(const SIevent &evt, const unsigned table_id)
 {
@@ -990,6 +992,7 @@ static void addEventTimes(const SIevent &evt, const unsigned table_id)
 		}
 	}
 }
+#endif
 
 static void addNVODevent(const SIevent &evt)
 {
@@ -1816,6 +1819,7 @@ static const SIevent& findNextSIeventForServiceUniqueKey(const t_channel_id serv
 	return nullEvt;
 }
 
+#if 0
 static bool ServiceUniqueKeyHasCurrentNext(const t_channel_id serviceUniqueKey)
 {
 	time_t azeit = time(NULL);
@@ -1864,6 +1868,7 @@ static bool ServiceUniqueKeyHasCurrentNext(const t_channel_id serviceUniqueKey)
 
 	return false;
 }
+#endif
 
 /*
 static const SIevent &findActualSIeventForServiceName(const char * const serviceName, SItime& zeit)
@@ -3414,8 +3419,10 @@ static void sendEPG(int connfd, const SIevent& e, const SItime& t, int shortepg 
 
  out:
 	if (writeNbytes(connfd, (const char *)&responseHeader, sizeof(responseHeader), WRITE_TIMEOUT_IN_SECONDS))
+	{
 		if (responseHeader.dataLength)
 			writeNbytes(connfd, msgData, responseHeader.dataLength, WRITE_TIMEOUT_IN_SECONDS);
+	}
 	else
 		dputs("[sectionsd] Fehler/Timeout bei write");
 
@@ -3567,8 +3574,10 @@ static void commandGetEPGPrevNext(int connfd, char *data, const unsigned dataLen
 
  out:
 	if (writeNbytes(connfd, (const char *)&responseHeader, sizeof(responseHeader), WRITE_TIMEOUT_IN_SECONDS))
+	{
 		if (responseHeader.dataLength)
 			writeNbytes(connfd, msgData, responseHeader.dataLength, WRITE_TIMEOUT_IN_SECONDS);
+	}
 	else
 		dputs("[sectionsd] Fehler/Timeout bei write");
 
@@ -3878,8 +3887,10 @@ static void sendShort(int connfd, const SIevent& e, const SItime& t)
 
  out:
 	if(writeNbytes(connfd, (const char *)&responseHeader, sizeof(responseHeader), WRITE_TIMEOUT_IN_SECONDS))
+	{
 		if (responseHeader.dataLength)
 			writeNbytes(connfd, msgData, responseHeader.dataLength, WRITE_TIMEOUT_IN_SECONDS);
+	}
 	else
 		dputs("[sectionsd] Fehler/Timeout bei write");
 
