@@ -42,7 +42,9 @@ class CVideoSetup : public CMenuTarget, CChangeObserver
 {
 	private:
 		CMenuForwarder *   SyncControlerForwarder;
+#ifdef HAVE_DBOX_HARDWARE
 		CRGBCSyncControler * RGBCSyncControler;
+#endif
  		CMenuOptionChooser * VcrVideoOutSignalOptionChooser;
 
 		int video_out_signal;

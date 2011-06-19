@@ -50,7 +50,9 @@
 CVideoSetup::CVideoSetup()
 {
 	SyncControlerForwarder = NULL;
+#ifdef HAVE_DBOX_HARDWARE
 	RGBCSyncControler = NULL;
+#endif
 	VcrVideoOutSignalOptionChooser = NULL;
 
 	width = w_max (500, 100);
@@ -63,7 +65,9 @@ CVideoSetup::CVideoSetup()
 CVideoSetup::~CVideoSetup()
 {
 	delete SyncControlerForwarder;
+#ifdef HAVE_DBOX_HARDWARE
 	delete RGBCSyncControler;
+#endif
 	delete VcrVideoOutSignalOptionChooser;
 }
 
