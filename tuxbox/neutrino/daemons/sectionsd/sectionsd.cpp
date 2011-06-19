@@ -4407,12 +4407,14 @@ static void *insertEventsfromFile(void *)
 	std::string indexname;
 	std::string filename;
 	std::string epgname;
+	int ev_count = 0;
 
 	indexname = epg_dir + "index.xml";
 
 	xmlDocPtr index_parser = parseXmlFile(indexname.c_str());
 
 	if (index_parser != NULL) {
+		time_t now = time(NULL);
 		dprintf("Reading Information from file %s:\n", indexname.c_str());
 
 		eventfile = xmlDocGetRootElement(index_parser)->xmlChildrenNode;
@@ -4525,6 +4527,7 @@ static void *insertEventsfromFile(void *)
 						}
 						//lockEvents();
 						addEvent(e, 0, 0);
+						ev_count++;
 						//unlockEvents();
 
 						event = event->xmlNextNode;
@@ -4538,7 +4541,8 @@ static void *insertEventsfromFile(void *)
 			eventfile = eventfile->xmlNextNode;
 		}
 
-		dprintf("Reading Information finished\n");
+		dprintf("Reading Information finished after %ld seconds (%d events)\n",
+				time(NULL)-now, ev_count);
 	}
 
 	xmlFreeDoc(index_parser);
