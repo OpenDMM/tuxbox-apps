@@ -886,9 +886,55 @@ static void addEvent(const SIevent &evt, const unsigned table_id, const time_t z
 		   (SIlanguage::getMode() == CSectionsdClient::LANGUAGE_MODE_OFF) && (zeit != 0))
 			e->setExtendedText("OFF","");
 	
+		std::vector<event_id_t> to_delete;
+		unsigned short eventID = e->eventID;
+		event_id_t e_key = e->uniqueKey();
+		t_channel_id e_chid = e->get_channel_id();
+		time_t start_time = e->times.begin()->startzeit;
+		time_t end_time = e->times.begin()->startzeit + (long)e->times.begin()->dauer;
+		/* create an event that's surely behind the one to check in the sort order */
+		e->eventID = 0xFFFF; /* lowest order sort criteria is eventID */
+		/* returns an iterator that's behind 'e' */
+		MySIeventsOrderServiceUniqueKeyFirstStartTimeEventUniqueKey::iterator x =
+			mySIeventsOrderServiceUniqueKeyFirstStartTimeEventUniqueKey.upper_bound(e);
+		e->eventID = eventID;
+
+		/* the first decrement of the iterator gives us an event that's a potential
+		 * match *or* from a different channel, then no event for this channel is stored */
+		while (x != mySIeventsOrderServiceUniqueKeyFirstStartTimeEventUniqueKey.begin())
+		{
+			x--;
+			if ((*x)->get_channel_id() != e_chid)
+				break;
+			else
+			{
+				event_id_t x_key = (*x)->uniqueKey();
+				/* do we need this check? */
+				if (x_key == e_key)
+					continue;
+				if ((*x)->times.begin()->startzeit >= end_time)
+					continue;
+				/* iterating backwards: if the endtime of the stored events
+				 * is earlier than the starttime of the new one, we'll never
+				 * find an identical one => bail out */
+				if ((*x)->times.begin()->startzeit + (long)(*x)->times.begin()->dauer <= start_time)
+					break;
+				/* here we have an overlapping event */
+				dprintf("%s: delete 0x%016llx.%02x time = 0x%016llx.%02x\n", __func__,
+					x_key, (*x)->table_id, e_key, e->table_id);
+				to_delete.push_back(x_key);
+			}
+		}
+		unlockEvents();
+
+		while (! to_delete.empty())
+		{
+			deleteEvent(to_delete.back());
+			to_delete.pop_back();
+		}
+
 		// Damit in den nicht nach Event-ID sortierten Mengen
 		// Mehrere Events mit gleicher ID sind, diese vorher loeschen
-		unlockEvents();
 		deleteEvent(e->uniqueKey());
 		readLockEvents();
 		if (mySIeventsOrderUniqueKey.size() >= max_events) {
