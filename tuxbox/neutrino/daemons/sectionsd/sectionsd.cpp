@@ -7579,9 +7579,9 @@ static void *cnThread(void *)
 		{
 			while (!scanning)
 				sleep(1);
-			time_t zeit = time(NULL);
 
 			rc = dmxCN.getSection(static_buf, timeoutInMSeconds, timeoutsDMX);
+			time_t zeit = time(NULL);
 			if (update_eit) {
 				if (dmxCN.get_eit_version() != 0xff) {
 					writeLockMessaging();
