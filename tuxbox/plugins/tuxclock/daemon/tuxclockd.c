@@ -375,7 +375,7 @@ int OpenFB(void)
 #ifdef FT_NEW_CACHE_API
    desc.flags = FT_LOAD_MONOCHROME;
 #else
-   desc.type = ftc_image_mono;
+   desc.image_type = ftc_image_mono;
 #endif
    if ((fb_color_set==-1)||(char_color=-1)||(char_bgcolor=-1)) {
       // search for black and white in FB colortab (same function FindColor() in tuxcal)
