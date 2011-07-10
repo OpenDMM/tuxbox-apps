@@ -587,6 +587,7 @@ int CNeutrinoApp::loadSetup()
 	g_settings.personalize_mediaplayer = configfile.getInt32("personalize_mediaplayer", CPersonalizeGui::PERSONALIZE_MODE_VISIBLE);
 	g_settings.personalize_driver = configfile.getInt32("personalize_driver", CPersonalizeGui::PERSONALIZE_MODE_VISIBLE);
 	g_settings.personalize_misc = configfile.getInt32("personalize_misc", CPersonalizeGui::PERSONALIZE_MODE_VISIBLE);
+	g_settings.personalize_true = CPersonalizeGui::PERSONALIZE_MODE_VISIBLE;
 
 	//recording (server + vcr)
 	g_settings.recording_type = configfile.getInt32("recording_type", RECORDING_OFF);

@@ -256,8 +256,7 @@ void CNeutrinoApp::InitMenuSettings()
 	personalize->addIntroItems(MENU_SETTINGS);
 	
 	// save
-	int show_save = CPersonalizeGui::PERSONALIZE_MODE_VISIBLE;
-	personalize->addItem(MENU_SETTINGS, new CMenuForwarder(LOCALE_MAINSETTINGS_SAVESETTINGSNOW, true, NULL, this, "savesettings", CRCInput::RC_red, NEUTRINO_ICON_BUTTON_RED), &show_save, false, CPersonalizeGui::PERSONALIZE_SHOW_NO);
+	personalize->addItem(MENU_SETTINGS, new CMenuForwarder(LOCALE_MAINSETTINGS_SAVESETTINGSNOW, true, NULL, this, "savesettings", CRCInput::RC_red, NEUTRINO_ICON_BUTTON_RED), &g_settings.personalize_true);
 	
 	// separator line
 	personalize->addItem(MENU_SETTINGS, GenericMenuSeparatorLine, NULL, false, CPersonalizeGui::PERSONALIZE_SHOW_NO);
