@@ -1063,6 +1063,7 @@ const char * locale_real_names[] =
 	"osdsettings.colormenu.gtx_alpha",
 	"osdsettings.colormenu.head",
 	"osdsettings.colormenu.menucolors",
+	"osdsettings.colormenu.progressbar",
 	"osdsettings.colormenu.statusbar",
 	"osdsettings.colormenu.textcolor",
 	"osdsettings.colormenu.textcolor_head",
