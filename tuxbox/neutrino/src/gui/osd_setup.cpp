@@ -266,7 +266,7 @@ void COsdSetup::showOsdSetup()
 		
 
 	//osd progressbar color
-	CMenuOptionChooser *osd_pbcolor_ch = new CMenuOptionChooser(LOCALE_OSDSETTINGS_COLORMENU_PROGRESSBAR, &g_settings.progressbar_color, OPTIONS_OFF0_ON1_OPTIONS, OPTIONS_OFF0_ON1_OPTION_COUNT, true, NULL, CRCInput::RC_yellow, NEUTRINO_ICON_BUTTON_YELLOW);
+	CMenuOptionChooser *osd_pbcolor_ch = new CMenuOptionChooser(LOCALE_OSDSETTINGS_COLORMENU_PROGRESSBAR, &g_settings.progressbar_color, OPTIONS_OFF0_ON1_OPTIONS, OPTIONS_OFF0_ON1_OPTION_COUNT, true);
 	//osd timeout setup forwarder
 	CMenuForwarder *osd_timeout_fw = new CMenuForwarder(LOCALE_TIMING_HEAD, true, NULL,  this, "show_timeout_setup", CRCInput::RC_yellow, NEUTRINO_ICON_BUTTON_YELLOW);
 	//osd screen setup
