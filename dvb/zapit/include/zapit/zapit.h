@@ -38,6 +38,7 @@ void setDemuxMode(int);
 #endif
 void setFastZap(int);
 
+void loadScanSettings(void);
 #ifdef HAVE_TRIPLEDRAGON
 #define PAL	1
 #define NTSC	0

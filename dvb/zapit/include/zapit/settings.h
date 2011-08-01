@@ -33,6 +33,7 @@
 
 #define ZAPITCONFIGDIR  	CONFIGDIR "/zapit"
 
+#define SCANCONFIGFILE		CONFIGDIR "/scan.conf"
 #define CONFIGFILE		ZAPITCONFIGDIR "/zapit.conf"
 #define MOTORCONFIGFILE		ZAPITCONFIGDIR "/motor.conf"
 #define SERVICES_XML		ZAPITCONFIGDIR "/services.xml"
