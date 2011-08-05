@@ -293,7 +293,7 @@ void CScanSetup::showScanService()
 		extMotorSettings->addItem(GenericMenuSeparatorLine);
 
 		//motorspeed (how long to set wait timer for dish to travel to correct position) 
-		extMotorSettings->addItem(new CMenuOptionNumberChooser(LOCALE_SATSETUP_MOTORSPEED, (int *)&scanSettings.motorRotationSpeed, true, 0, 64, NULL));
+		extMotorSettings->addItem(new CMenuOptionNumberChooser(LOCALE_SATSETUP_MOTORSPEED, (int *)&scanSettings.motorRotationSpeed, true, 0, 64)) ;
 		extMotorSettings->addItem(GenericMenuSeparatorLine);
 
 		//gotoxx settings
