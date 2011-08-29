@@ -556,6 +556,9 @@ void CInfoViewer::showTitle(const int ChanNum, const std::string & Channel, cons
 
 		frameBuffer->paintBoxRel(ChanInfoX, BoxEndY + BOTTOM_BAR_OFFSET, BoxEndX - ChanInfoX, InfoHeightY_Info - BOTTOM_BAR_OFFSET, COL_INFOBAR_BUTTONS_BACKGROUND, RADIUS_LARGE, CORNER_BOTTOM);
 
+		if (g_settings.infobar_sat_display)
+			frameBuffer->paintBoxRel(ChanInfoX, BoxEndY, BoxEndX - ChanInfoX, 30, COL_INFOBAR_PLUS_0); // background for satfind
+
 		showButton(SNeutrinoSettings::BUTTON_BLUE); // button blue // USERMENU
 		showInfoIcons();
 		showSatfind();
