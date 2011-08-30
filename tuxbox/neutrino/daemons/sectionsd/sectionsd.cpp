@@ -940,18 +940,33 @@ static void addEvent(const SIevent &evt, const time_t zeit, bool cn = false)
 		deleteEvent(e->uniqueKey());
 		readLockEvents();
 		if (mySIeventsOrderUniqueKey.size() >= max_events) {
-			//FIXME: Set Old Events to 0 if limit is reached...
 			MySIeventsOrderFirstEndTimeServiceIDEventUniqueKey::iterator lastEvent =
-										mySIeventsOrderFirstEndTimeServiceIDEventUniqueKey.end();
-			lastEvent--;
+										mySIeventsOrderFirstEndTimeServiceIDEventUniqueKey.begin();
 
-			//preserve events of current channel
-			readLockMessaging();
-			while ((lastEvent != mySIeventsOrderFirstEndTimeServiceIDEventUniqueKey.begin()) &&
-				((*lastEvent)->get_channel_id() == messaging_current_servicekey)) {
-				lastEvent--;
+			time_t now = time(NULL);
+			bool back = false;
+			if ((*lastEvent)->times.size() == 1)
+			{
+				if ((*lastEvent)->times.begin()->startzeit + (long)(*lastEvent)->times.begin()->dauer >= now - oldEventsAre)
+					back = true;
 			}
-			unlockMessaging();
+			else
+				printf("[sectionsd] addevent: times.size != 1, please report\n");
+
+			if (back)
+			{
+				lastEvent = mySIeventsOrderFirstEndTimeServiceIDEventUniqueKey.end();
+				lastEvent--;
+
+				//preserve events of current channel
+				readLockMessaging();
+				while ((lastEvent != mySIeventsOrderFirstEndTimeServiceIDEventUniqueKey.begin()) &&
+					((*lastEvent)->get_channel_id() == messaging_current_servicekey)) {
+					lastEvent--;
+				}
+				unlockMessaging();
+			}
+
 			unlockEvents();	
 			deleteEvent((*lastEvent)->uniqueKey());
 		}
