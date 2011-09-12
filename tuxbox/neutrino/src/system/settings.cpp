@@ -186,7 +186,6 @@ void CScanSettings::useDefaults(const delivery_system_t _delivery_system)
 	scanType	= CZapitClient::ST_ALL;
 	diseqcMode	= NO_DISEQC;
 	diseqcRepeat	= 0;
-	scan_mode	= 1;
 
 	motorRotationSpeed = 8;
 	useGotoXX = 0;
